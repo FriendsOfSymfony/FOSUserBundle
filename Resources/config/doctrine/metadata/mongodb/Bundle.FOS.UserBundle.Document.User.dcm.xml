@@ -4,7 +4,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <mapped-superclass name="Bundle\FOS\UserBundle\Document\User" collection="fos_user_user" repository-class="Bundle\FOS\UserBundle\Document\UserRepository">
+    <mapped-superclass name="Bundle\FOS\UserBundle\Document\User" collection="fos_user_user">
 
         <field name="id" fieldName="id" id="true" />
 
