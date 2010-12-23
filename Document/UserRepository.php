@@ -26,7 +26,7 @@ class UserRepository extends ObjectRepository implements UserRepositoryInterface
      */
     public function findOneByUsername($username)
     {
-        return $this->findOneBy(array('usernameLower' => strtolower($username)));
+        return $this->findOneBy(array('usernameLower' => String::strtolower($username)));
     }
 
     /**
@@ -67,7 +67,7 @@ class UserRepository extends ObjectRepository implements UserRepositoryInterface
      */
     public function findOneByEmail($email)
     {
-        return $this->findOneBy(array('email' => strtolower($email)));
+        return $this->findOneBy(array('email' => String::strtolower($email)));
     }
 
     /**
