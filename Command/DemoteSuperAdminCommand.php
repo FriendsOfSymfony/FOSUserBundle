@@ -44,7 +44,7 @@ The <info>fos:user:demote</info> command demotes a super administrator as a simp
 
   <info>php app/console fos:user:demote matthieu</info>
 EOT
-        );
+            );
     }
 
     /**

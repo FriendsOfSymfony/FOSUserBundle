@@ -44,7 +44,7 @@ The <info>fos:user:deactivate</info> command deactivates a user (will not be abl
 
   <info>php app/console fos:user:deactivate matthieu</info>
 EOT
-        );
+            );
     }
 
     /**

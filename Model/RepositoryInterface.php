@@ -26,9 +26,9 @@ interface RepositoryInterface
     function getObjectIdentifier();
 
     /**
-     * Returns a fresh object instance 
-     * 
+     * Returns a fresh object instance
+     *
      * @return object
      */
-    function createObjectInstance();    
+    function createObjectInstance();
 }

@@ -462,8 +462,7 @@ abstract class User implements AdvancedAccountInterface
 
     public function removeRole($role)
     {
-        if (false !== $key = array_search(strtoupper($role), $this->roles, true))
-        {
+        if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);
             $this->roles = array_values($this->roles);
         }

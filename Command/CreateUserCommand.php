@@ -64,7 +64,7 @@ You can create an inactive user (will not be able to log in):
   <info>php app/console fos:user:create thibault --inactive</info>
 
 EOT
-        );
+            );
     }
 
     /**

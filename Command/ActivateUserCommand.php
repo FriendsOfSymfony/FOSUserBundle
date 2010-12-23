@@ -44,7 +44,7 @@ The <info>doctrine:user:activate</info> command activates a super (will be able 
 
   <info>php app/console fos:user:activate matthieu</info>
 EOT
-        );
+            );
     }
 
     /**

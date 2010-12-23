@@ -14,7 +14,7 @@ class Password extends Constraint
     {
         return array('passwordProperty');
     }
-    
+
     public function validatedBy()
     {
         return 'fos_user.validator.password';

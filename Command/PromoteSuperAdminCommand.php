@@ -45,7 +45,7 @@ The <info>fos:user:promote</info> command promotes a user as a super administrat
 
   <info>php app/console fos:user:promote matthieu</info>
 EOT
-        );
+            );
     }
 
     /**
