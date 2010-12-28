@@ -73,10 +73,13 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $userRepo = $this->container->get('fos_user.repository.user');
+        $encoder = $this->container->get('fos_user.encoder');
+
         $user = $userRepo->createObjectInstance();
         $user->setUsername($input->getArgument('username'));
         $user->setEmail($input->getArgument('email'));
-        $user->setPlainPassword($input->getArgument('password'));
+        $user->setAlgorithm($this->container->getParameter('fos_user.encoder.algorithm'));
+        $user->setPassword($encoder->encodePassword($input->getArgument('password'), $user->getSalt()));
         $user->setEnabled(!$input->getOption('inactive'));
         $user->setSuperAdmin(!!$input->getOption('super-admin'));
 
