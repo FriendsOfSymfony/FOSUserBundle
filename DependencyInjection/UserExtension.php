@@ -23,6 +23,9 @@ class UserExtension extends Extension
             if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb'))) {
                 throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
             }
+            if ($container->hasDefinition('fos_user.user_manager')){
+                throw new \InvalidArgumentException('The db_driver parameter cannot be defined twice.');
+            }
             $loader->load(sprintf('%s.xml', $config['db_driver']));
         }
 
