@@ -23,4 +23,9 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
     }
+
+    public function logoutAction()
+    {
+        throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+    }
 }
