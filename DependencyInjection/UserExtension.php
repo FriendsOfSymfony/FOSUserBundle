@@ -13,12 +13,29 @@ class UserExtension extends Extension
 {
     public function configLoad(array $config, ContainerBuilder $container)
     {
+        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+
+        // ensure the db_driver is configured
+        if (!isset($config['db_driver']) && !$container->hasDefinition('fos_user.user_manager')) {
+            throw new \InvalidArgumentException('The db_driver parameter must be defined.');
+        }
+        if (isset($config['db_driver'])){
+            if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb'))) {
+                throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
+            }
+            $loader->load(sprintf('%s.xml', $config['db_driver']));
+        }
+
         // load all service configuration files (the db_driver first)
-        if (!$container->hasDefinition('fos_user.document.user_manager')) {
-            $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+        if (!$container->hasDefinition('security.encoder.fos_user')) {
             foreach (array('controller', 'templating', 'email', 'form', 'validator', 'security') as $basename) {
                 $loader->load(sprintf('%s.xml', $basename));
             }
+        }
+
+        // ensure the user model class is configured
+        if (!isset($config['class']['model']['user']) && !$container->hasParameter('fos_user.model.user.class')) {
+            throw new \InvalidArgumentException('The user model class must be defined');
         }
 
         // change authentication provider class to support multiple algorithms
@@ -41,17 +58,6 @@ class UserExtension extends Extension
             'form'          => 'fos_user.form.%s.class',
             'controller'    => 'fos_user.controller.%s.class',
         ));
-
-        // ensure the db_driver is configured
-        if (!isset($config['db_driver'])) {
-            throw new \InvalidArgumentException('The db_driver parameter must be defined.');
-        }
-
-        if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb'))) {
-            throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
-        }
-
-        $loader->load(sprintf('%s.xml', $config['db_driver']));
     }
 
     protected function configurePasswordEncoder($config, ContainerBuilder $container)
