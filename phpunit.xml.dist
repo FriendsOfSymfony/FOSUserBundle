@@ -19,10 +19,10 @@
 
     <filter>
         <whitelist>
-            <directory>../src/Application</directory>
+            <directory>./</directory>
             <exclude>
-                <directory>../src/Application/*/Resources</directory>
-                <directory>../src/Application/*/Tests</directory>
+                <directory>./Resources</directory>
+                <directory>./Tests</directory>
             </exclude>
         </whitelist>
     </filter>
