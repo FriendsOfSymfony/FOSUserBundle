@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
-        {% for key, flash in session.getFlashes() %}
+        {% for key, flash in app.session.getFlashes() %}
         <div class="{{ flash }}">
             {% trans key from 'FOSUserBundle' %}
         </div>
