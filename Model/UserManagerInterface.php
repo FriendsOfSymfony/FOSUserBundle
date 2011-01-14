@@ -61,6 +61,13 @@ interface UserManagerInterface
     function findUserByUsername($username);
 
     /**
+     * Find a user by its display name
+     * @param   string  $displayName
+     * @return  User or null if user does not exist
+     */
+    function findUserByDisplayName($displayName);
+
+    /**
      * Find a user by its email
      * @param   string  $email
      * @return  User or null if user does not exist

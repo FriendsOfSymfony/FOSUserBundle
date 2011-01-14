@@ -14,6 +14,8 @@ use Symfony\Component\Security\User\AdvancedAccountInterface;
 
 interface UserInterface extends AdvancedAccountInterface
 {
+    function getDisplayName();
+
     function addRole($role);
 
     function getAlgorithm();

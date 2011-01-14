@@ -65,6 +65,17 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
     }
 
     /**
+     * Finds a user by its display name
+     *
+     * @param string $displayName
+     * @return User
+     */
+    public function findUserByDisplayName($displayName)
+    {
+        return $this->findUserByUsername($displayName);
+    }
+
+    /**
      * Finds a user either by email, or username
      *
      * @param string $usernameOrEmail

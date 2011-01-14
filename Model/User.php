@@ -237,6 +237,16 @@ abstract class User implements UserInterface
     }
 
     /**
+     * Get the name as it is to be displayed to end users.
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->getUsername();
+    }
+
+    /**
      * Implementation of AccountInterface
      * @return string
      */

@@ -11,6 +11,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
         $user->setUsername('tony');
         $this->assertEquals('tony', $user->getUsername());
+        $this->assertEquals('tony', $user->getDisplayName());
     }
 
     public function testEmail()
@@ -21,7 +22,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $user->setEmail('tony@mail.org');
         $this->assertEquals('tony@mail.org', $user->getEmail());
     }
-    
+
     protected function getUser()
     {
         return $this->getMockForAbstractClass('Bundle\FOS\UserBundle\Model\User');
