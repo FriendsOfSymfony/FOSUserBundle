@@ -17,7 +17,7 @@ class SecurityController extends Controller
             $this->get('request')->getSession()->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        return $this->render('FOSUserBundle:Security:login.html.twig', array(
+        return $this->render('FOSUserBundle:Security:login.html.'.$this->getRenderer(), array(
             // last username entered by the user
             'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
@@ -27,5 +27,10 @@ class SecurityController extends Controller
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+    }
+
+    protected function getRenderer()
+    {
+        return $this->container->getParameter('fos_user.template.renderer');
     }
 }
