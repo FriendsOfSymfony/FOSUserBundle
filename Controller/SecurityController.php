@@ -17,7 +17,7 @@ class SecurityController extends Controller
             $this->get('request')->getSession()->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        return $this->render('FOSUserBundle:Security:login.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:Security:login.html.'.$this->getEngine(), array(
             // last username entered by the user
             'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
@@ -29,7 +29,7 @@ class SecurityController extends Controller
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }
 
-    protected function getRenderer()
+    protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.renderer');
     }

@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $users = $this->get('fos_user.user_manager')->findUsers();
 
-        return $this->render('FOSUserBundle:User:list.html.'.$this->getRenderer(), array('users' => $users));
+        return $this->render('FOSUserBundle:User:list.html.'.$this->getEngine(), array('users' => $users));
     }
 
     /**
@@ -41,7 +41,7 @@ class UserController extends Controller
     public function showAction($username)
     {
         $user = $this->findUserBy('username', $username);
-        return $this->render('FOSUserBundle:User:show.html.'.$this->getRenderer(), array('user' => $user));
+        return $this->render('FOSUserBundle:User:show.html.'.$this->getEngine(), array('user' => $user));
     }
 
     /**
@@ -52,7 +52,7 @@ class UserController extends Controller
         $user = $this->findUserBy('username', $username);
         $form = $this->createForm($user);
 
-        return $this->render('FOSUserBundle:User:edit.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:edit.html.'.$this->getEngine(), array(
             'form'      => $form,
             'username'  => $user->getUsername()
         ));
@@ -74,7 +74,7 @@ class UserController extends Controller
             return $this->redirect($userUrl);
         }
 
-        return $this->render('FOSUserBundle:User:edit.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:edit.html.'.$this->getEngine(), array(
             'form'      => $form,
             'username'  => $user->getUsername()
         ));
@@ -87,7 +87,7 @@ class UserController extends Controller
     {
         $form = $this->createForm();
 
-        return $this->render('FOSUserBundle:User:new.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:new.html.'.$this->getEngine(), array(
             'form' => $form
         ));
     }
@@ -129,7 +129,7 @@ class UserController extends Controller
             return $this->redirect($url);
         }
 
-        return $this->render('FOSUserBundle:User:new.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:new.html.'.$this->getEngine(), array(
             'form' => $form
         ));
     }
@@ -145,7 +145,7 @@ class UserController extends Controller
 
         $this->setFlash('fos_user_user_confirm', 'success');
 
-        return $this->render('FOSUserBundle:User:checkConfirmationEmail.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:checkConfirmationEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -172,7 +172,7 @@ class UserController extends Controller
     {
         $user = $this->getUser();
         $this->setFlash('fos_user_user_confirmed', 'success');
-        return $this->render('FOSUserBundle:User:confirmed.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -197,7 +197,7 @@ class UserController extends Controller
         $user = $this->getUser();
         $form = $this->createChangePasswordForm($user);
 
-        return $this->render('FOSUserBundle:User:changePassword.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
             'form' => $form
         ));
     }
@@ -221,7 +221,7 @@ class UserController extends Controller
             return $this->redirect($userUrl);
         }
 
-        return $this->render('FOSUserBundle:User:changePassword.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
             'form' => $form
         ));
     }
@@ -231,7 +231,7 @@ class UserController extends Controller
      */
     public function requestResetPasswordAction()
     {
-        return $this->render('FOSUserBundle:User:requestResetPassword.html.'.$this->getRenderer());
+        return $this->render('FOSUserBundle:User:requestResetPassword.html.'.$this->getEngine());
     }
 
     /**
@@ -242,7 +242,7 @@ class UserController extends Controller
         $user = $this->findUserBy('username', $this->get('request')->request->get('username'));
 
         if ((null !== $lastRequested = $user->getPasswordRequestedAt()) && $lastRequested->getTimestamp() + 86400 > time()) {
-            return $this->render('FOSUserBundle:User:passwordAlreadyRequested.html.'.$this->getRenderer());
+            return $this->render('FOSUserBundle:User:passwordAlreadyRequested.html.'.$this->getEngine());
         }
 
         $user->generateConfirmationToken();
@@ -264,7 +264,7 @@ class UserController extends Controller
         $user = $this->findUserBy('email', $email);
         $this->setFlash('fos_user_user_reset', 'success');
 
-        return $this->render('FOSUserBundle:User:checkResettingEmail.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:checkResettingEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -282,7 +282,7 @@ class UserController extends Controller
 
         $form = $this->createResetPasswordForm($user);
 
-        return $this->render('FOSUserBundle:User:resetPassword.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form
         ));
@@ -314,7 +314,7 @@ class UserController extends Controller
             return $this->redirect($userUrl);
         }
 
-        return $this->render('FOSUserBundle:User:resetPassword.html.'.$this->getRenderer(), array(
+        return $this->render('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form
         ));
@@ -411,7 +411,7 @@ class UserController extends Controller
     protected function sendConfirmationEmailMessage(User $user)
     {
         $template = $this->container->getParameter('fos_user.email.confirmation.template');
-        $rendered = $this->renderView($template.'.txt.'.$this->getRenderer(), array(
+        $rendered = $this->renderView($template.'.txt.'.$this->getEngine(), array(
             'user' => $user,
             'confirmationUrl' => $this->generateUrl('fos_user_user_confirm', array('token' => $user->getConfirmationToken()), true)
         ));
@@ -421,7 +421,7 @@ class UserController extends Controller
     protected function sendResettingEmailMessage(User $user)
     {
         $template = $this->container->getParameter('fos_user.email.resetting_password.template');
-        $rendered = $this->renderView($template.'.txt.'.$this->getRenderer(), array(
+        $rendered = $this->renderView($template.'.txt.'.$this->getEngine(), array(
             'user' => $user,
             'confirmationUrl' => $this->generateUrl('fos_user_user_reset_password', array('token' => $user->getConfirmationToken()), true)
         ));
@@ -456,7 +456,7 @@ class UserController extends Controller
         return $this->container->getParameter('fos_user.email.from_email');
     }
 
-    protected function getRenderer()
+    protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.renderer');
     }
