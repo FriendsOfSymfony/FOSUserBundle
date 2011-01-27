@@ -302,7 +302,8 @@ All configuration options are listed below::
             user:     ~
             security: ~
         util:
-            canonicalizer: ~
+            email_canonicalizer:    ~
+            username_canonicalizer: ~
     encoder:
         algorithm:        ~
         encode_as_base64: ~
@@ -340,13 +341,13 @@ The ``Resources/config/validation.xml`` file contains definitions for custom
 validator rules for various classes. The rules for the ``User`` class are all in
 the ``Registration`` validation group so you can choose not to use them.
 
-Canonicalizer
--------------
+Canonicalization
+----------------
 
-The ``Canonicalizer`` is used to canonicalize the username and the email in the
-database. The default one uses ``mb_convert_case``. You can change this
-behavior by changing the canonicalizer in your configuration. The canonicalizer
-must implement ``FOS\UserBundle\Util\CanonicalizerInterface``.
+``Canonicalizer`` services are used to canonicalize the username and the email
+fields for database storage. By default, username and email fields are canonicalized
+in the same manner using ``mb_convert_case()``. You may configure your own class
+for each field provided it implements ``FOS\UserBundle\Util\CanonicalizerInterface``.
 
 Note::
     If you do not have the mbstring extension installed you will need to

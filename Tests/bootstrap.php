@@ -16,6 +16,3 @@ spl_autoload_register(function($class)
         return true;
     }
 });
-
-call_user_func(array('FOS\\UserBundle\\Entity\\User', 'setCanonicalizer'), new FOS\UserBundle\Util\Canonicalizer());
-call_user_func(array('FOS\\UserBundle\\Document\\User', 'setCanonicalizer'), new FOS\UserBundle\Util\Canonicalizer());

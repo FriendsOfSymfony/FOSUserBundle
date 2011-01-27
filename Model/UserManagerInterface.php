@@ -105,6 +105,15 @@ interface UserManagerInterface
     function updateUser(UserInterface $user);
 
     /**
+     * Updates the canonical username and email fields for a user
+     *
+     * @SecureParam(name="user", permissions="EDIT")
+     * @param User $user
+     * @return void
+     */
+    function updateCanonicalFields(UserInterface $user);
+
+    /**
      * Updates a user password if a plain password is set
      *
      * @SecureParam(name="user", permissions="EDIT")

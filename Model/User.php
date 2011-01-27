@@ -10,7 +10,6 @@
 
 namespace FOS\UserBundle\Model;
 
-use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Role\RoleInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -27,8 +26,6 @@ abstract class User implements UserInterface
 {
     const ROLE_DEFAULT    = 'ROLE_USER';
     const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
-
-    protected static $canonicalizer;
 
     protected $id;
 
@@ -146,11 +143,6 @@ abstract class User implements UserInterface
      * @var DateTime
      */
     protected $credentialsExpireAt;
-
-    public final static function setCanonicalizer(CanonicalizerInterface $canonicalizer)
-    {
-        self::$canonicalizer = $canonicalizer;
-    }
 
     public function __construct()
     {
@@ -485,12 +477,23 @@ abstract class User implements UserInterface
     }
 
     /**
+     * Set username.
+     *
      * @param string $username
      */
     public function setUsername($username)
     {
         $this->username = $username;
-        $this->usernameCanonical = self::$canonicalizer->canonicalize($username);
+    }
+
+    /**
+     * Set usernameCanonical.
+     *
+     * @param string $usernameCanonical
+     */
+    public function setUsernameCanonical($usernameCanonical)
+    {
+        $this->usernameCanonical = $usernameCanonical;
     }
 
     public function setAlgorithm($algorithm)
@@ -509,14 +512,23 @@ abstract class User implements UserInterface
     }
 
     /**
-     * Set email
-     * @param  string
-     * @return null
+     * Set email.
+     *
+     * @param string $email
      */
     public function setEmail($email)
     {
         $this->email = $email;
-        $this->emailCanonical = self::$canonicalizer->canonicalize($email);
+    }
+
+    /**
+     * Set emailCanonical.
+     *
+     * @param string $emailCanonical
+     */
+    public function setEmailCanonical($emailCanonical)
+    {
+        $this->emailCanonical = $emailCanonical;
     }
 
     /**

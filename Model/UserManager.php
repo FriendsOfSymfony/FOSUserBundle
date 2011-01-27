@@ -2,8 +2,8 @@
 
 namespace FOS\UserBundle\Model;
 
-use Symfony\Component\Security\Encoder\EncoderFactoryInterface;
 use FOS\UserBundle\Util\CanonicalizerInterface;
+use Symfony\Component\Security\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Exception\UnsupportedAccountException;
 use Symfony\Component\Security\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\User\AccountInterface;
@@ -19,13 +19,23 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
 {
     protected $encoderFactory;
     protected $algorithm;
-    protected $canonicalizer;
+    protected $usernameCanonicalizer;
+    protected $emailCanonicalizer;
 
-    public function __construct(EncoderFactoryInterface $encoderFactory, $algorithm, CanonicalizerInterface $canonicalizer)
+    /**
+     * Constructor.
+     *
+     * @param EncoderFactoryInterface $encoderFactory
+     * @param string                  $algorithm
+     * @param CanonicalizerInterface  $usernameCanonicalizer
+     * @param CanonicalizerInterface  $emailCanonicalizer
+     */
+    public function __construct(EncoderFactoryInterface $encoderFactory, $algorithm, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer)
     {
         $this->encoderFactory = $encoderFactory;
         $this->algorithm = $algorithm;
-        $this->canonicalizer = $canonicalizer;
+        $this->usernameCanonicalizer = $usernameCanonicalizer;
+        $this->emailCanonicalizer = $emailCanonicalizer;
     }
 
     /**
@@ -50,7 +60,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function findUserByEmail($email)
     {
-        return $this->findUserBy(array('emailCanonical' => $this->canonicalizer->canonicalize($email)));
+        return $this->findUserBy(array('emailCanonical' => $this->emailCanonicalizer->canonicalize($email)));
     }
 
     /**
@@ -61,7 +71,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function findUserByUsername($username)
     {
-        return $this->findUserBy(array('usernameCanonical' => $this->canonicalizer->canonicalize($username)));
+        return $this->findUserBy(array('usernameCanonical' => $this->usernameCanonicalizer->canonicalize($username)));
     }
 
     /**
@@ -121,6 +131,15 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
         }
 
         return $user;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function updateCanonicalFields(UserInterface $user)
+    {
+        $user->setUsernameCanonical($this->usernameCanonicalizer->canonicalize($user->getUsername()));
+        $user->setEmailCanonical($this->emailCanonicalizer->canonicalize($user->getEmail()));
     }
 
     /**

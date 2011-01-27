@@ -205,6 +205,22 @@ class UserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('iterations', 'fos_user.encoder.iterations');
     }
 
+    public function testUserLoadUtilClassWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertParameter('FOS\UserBundle\Util\Canonicalizer', 'fos_user.util.email_canonicalizer.class');
+        $this->assertParameter('FOS\UserBundle\Util\Canonicalizer', 'fos_user.util.username_canonicalizer.class');
+    }
+
+    public function testUserLoadUtilClass()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('email_canonicalizer', 'fos_user.util.email_canonicalizer.class');
+        $this->assertParameter('username_canonicalizer', 'fos_user.util.username_canonicalizer.class');
+    }
+
     /**
      * @return ContainerBuilder
      */
@@ -247,6 +263,9 @@ class:
     controller:
         user:     ~
         security: ~
+    util:
+        email_canonicalizer:    ~
+        username_canonicalizer: ~
 encoder:
     algorithm:        ~
     encode_as_base64: ~

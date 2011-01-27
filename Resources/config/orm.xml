@@ -14,7 +14,8 @@
         <service id="fos_user.user_manager" class="%fos_user.user_manager.class%">
             <argument type="service" id="security.encoder_factory" />
             <argument>%fos_user.encoder.algorithm%</argument>
-            <argument type="service" id="fos_user.util.canonicalizer" />
+            <argument type="service" id="fos_user.util.username_canonicalizer" />
+            <argument type="service" id="fos_user.util.email_canonicalizer" />
             <argument type="service" id="doctrine.orm.default_entity_manager" />
             <argument>%fos_user.model.user.class%</argument>
         </service>

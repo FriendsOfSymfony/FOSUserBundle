@@ -2,12 +2,12 @@
 
 namespace FOS\UserBundle\Entity;
 
-use FOS\UserBundle\Util\CanonicalizerInterface;
-use FOS\UserBundle\Model\UserInterface;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraint;
+use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
+use FOS\UserBundle\Util\CanonicalizerInterface;
+use Symfony\Component\Security\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Validator\Constraint;
 
 class UserManager extends BaseUserManager
 {
@@ -15,9 +15,19 @@ class UserManager extends BaseUserManager
     protected $class;
     protected $repository;
 
-    public function __construct($encoder, $algorithm, CanonicalizerInterface $canonicalizer, EntityManager $em, $class)
+    /**
+     * Constructor.
+     *
+     * @param EncoderFactoryInterface $encoderFactory
+     * @param string                  $algorithm
+     * @param CanonicalizerInterface  $usernameCanonicalizer
+     * @param CanonicalizerInterface  $emailCanonicalizer
+     * @param EntityManager           $em
+     * @param string                  $class
+     */
+    public function __construct(EncoderFactoryInterface $encoderFactory, $algorithm, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer, EntityManager $em, $class)
     {
-        parent::__construct($encoder, $algorithm, $canonicalizer);
+        parent::__construct($encoderFactory, $algorithm, $usernameCanonicalizer, $emailCanonicalizer);
 
         $this->em = $em;
         $this->repository = $em->getRepository($class);
@@ -64,6 +74,7 @@ class UserManager extends BaseUserManager
      */
     public function updateUser(UserInterface $user)
     {
+        $this->updateCanonicalFields($user);
         $this->updatePassword($user);
 
         $this->em->persist($user);

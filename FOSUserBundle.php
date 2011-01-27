@@ -14,12 +14,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class FOSUserBundle extends Bundle
 {
-    public function boot()
-    {
-        $class = $this->container->get('fos_user.user_manager')->getClass();
-        call_user_func(array($class, 'setCanonicalizer'), $this->container->get('fos_user.util.canonicalizer'));
-    }
-
     public function getNamespace()
     {
         return __NAMESPACE__;
