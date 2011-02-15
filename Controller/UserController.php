@@ -402,7 +402,9 @@ class UserController extends Controller
             'user' => $user,
             'confirmationUrl' => $this->generateUrl('fos_user_user_confirm', array('token' => $user->getConfirmationToken()), true)
         ));
-        $this->sendEmailMessage($rendered, $this->getSenderEmail('confirmation'), $user->getEmail());
+
+        $sender = $this->getSenderEmail('confirmation');
+        $this->sendEmailMessage($rendered, $sender['email'], $user->getEmail());
     }
 
     protected function sendResettingEmailMessage(User $user)
