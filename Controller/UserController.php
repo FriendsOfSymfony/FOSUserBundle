@@ -51,6 +51,9 @@ class UserController extends ContainerAware
     public function editAction($username)
     {
         $user = $this->findUserBy('username', $username);
+        
+        $this->checkPermission($user);
+
         $form = $this->container->get('fos_user.form.user');
 
         $form->process($user);
@@ -67,6 +70,9 @@ class UserController extends ContainerAware
     public function updateAction($username)
     {
         $user = $this->findUserBy('username', $username);
+        
+        $this->checkPermission($user);
+
         $form = $this->container->get('fos_user.form.user');
 
         $process = $form->process($user);
@@ -387,5 +393,16 @@ class UserController extends ContainerAware
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');
+    }
+    
+    /**
+     * Checks if a User is permitted to update the Profile
+     */
+    protected function checkPermission(UserInterface $user)
+    {
+        if ($user->getId() !== $this->container->get('security.context')->getToken()->getUser()->getId())
+        {
+            throw new AccessDeniedException('You are not permitted to update this User.');
+        }
     }
 }
