@@ -18,7 +18,7 @@ class SecurityHelper extends BaseSecurityHelper
      */
     public function getUser()
     {
-        return $this->context->getUser();
+        return $this->context->getToken()->getUser();
     }
 
     /**
