@@ -9,7 +9,7 @@
     </parameters>
 
     <services>
-        <service id="fos_user.twig.extension.user" class="%fos_user.twig.extension.user.class%">
+        <service id="fos_user.twig.extension.user" class="%fos_user.twig.extension.user.class%" public="false">
             <argument type="service" id="security.context" />
             <tag name="twig.extension" />
         </service>
