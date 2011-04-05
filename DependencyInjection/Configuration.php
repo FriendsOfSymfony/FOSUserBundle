@@ -212,6 +212,7 @@ class Configuration
                     ->children()
                         ->scalarNode('engine')->defaultValue('twig')->end()
                         ->scalarNode('theme')->defaultValue('TwigBundle::form.html.twig')->end()
+                        ->scalarNode('bundle')->defaultValue('FOSUserBundle')->end()
                     ->end()
                 ->end()
             ->end();

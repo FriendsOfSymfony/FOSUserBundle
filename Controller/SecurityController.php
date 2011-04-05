@@ -23,7 +23,7 @@ class SecurityController extends ContainerAware
             $error = $error->getMessage();
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->getTemplateBundle() . ':Security:login.html.'.$this->getEngine(), array(
             // last username entered by the user
             'last_username' => $this->container->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
@@ -38,5 +38,10 @@ class SecurityController extends ContainerAware
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');
+    }
+
+    protected function getTemplateBundle()
+    {
+        return $this->container->getParameter('fos_user.template.bundle');
     }
 }
