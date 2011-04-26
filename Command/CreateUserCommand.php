@@ -8,6 +8,7 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
+use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Command\Command as BaseCommand;
@@ -22,6 +23,7 @@ use Symfony\Component\Console\Output\Output;
  *
  * (c) Matthieu Bontemps <matthieu@knplabs.com>
  * (c) Thibault Duplessis <thibault.duplessis@gmail.com>
+ * (c) Luis Cordova <cordoval@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -80,16 +82,20 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
         $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
 
         $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUsername($input->getArgument('username'));
-        $user->setEmail($input->getArgument('email'));
-        $user->setPlainPassword($input->getArgument('password'));
-        $user->setEnabled(!$input->getOption('inactive'));
-        $user->setSuperAdmin(!!$input->getOption('super-admin'));
-        $userManager->updateUser($user);
+
+        $creator = $this->container->get('fos_user.user_creator');
+
+        $username = $input->getArgument('username');
+        $email = $input->getArgument('email');
+        $password = $input->getArgument('password');
+        $inactive = $input->getOption('inactive');
+        $superadmin = $input->getOption('super-admin');
+
+        $creator->create($username, $password, $email, $inactive, $superadmin);
 
         if ($this->container->has('security.acl.provider')) {
             $provider = $this->container->get('security.acl.provider');
@@ -99,7 +105,7 @@ EOT
             $provider->updateAcl($acl);
         }
 
-        $output->writeln(sprintf('Created user <comment>%s</comment>', $user->getUsername()));
+        $output->writeln(sprintf('Created user <comment>%s</comment>', $username)); //$user->getUsername()
     }
 
     /**
