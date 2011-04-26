@@ -49,11 +49,11 @@ layout.logged_in_as: Entrado como %username%
 # Form field labels
 fos_user_group_form_name: "Nombre de grupo:"
 
-fos_user_user_form_username: "Nombre de usuario:"
-fos_user_user_form_email: "Email:"
-fos_user_user_form_plainPassword: "Contraseña (entrar doble):"
-fos_user_user_form_plainPassword_first: "Contraseña:"
-fos_user_user_form_plainPassword_second: "Verificación:"
+user_username:             "Nombre de usuario:"
+user_email:                "Email:"
+user_plainPassword_first:  "Contraseña:"
+user_plainPassword_second: "Verificación:"
+#fos_user_user_form_plainPassword: "Contraseña (entrar doble):"
 
 fos_user_reset_password_form_new: "Nueva contraseña:"
 
