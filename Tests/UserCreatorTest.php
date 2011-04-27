@@ -8,7 +8,15 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
 {
     public function testUserCreator()
     {
+        // create userManagerMock mock object
         $userManagerMock = $this->createUserManagerMock(array());
+
+        // now configuring the mock object userManagerMock
+        $userManagerMock->expects($this->once())
+            ->method('whatmethodgetscalledinUserManager?')
+            ->with($user)
+            ->will($this->returnValue($return1));
+
 
         // ? should it be instead $this->container->get('fos_user:user_creator');
         $creator = new UserCreator($userManagerMock);
@@ -19,12 +27,6 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         $superadmin = 'test_superadmin';
 
         $user = $creator->create($username, $password, $email, $inactive, $superadmin);
-
-        $creator->expects($this->once()) //$game->expects($this->never())
-            ->method('findCancelableByUser')
-            ->with($user)
-            ->will($this->returnValue($games));
-            ->with($user, User::STARTING_ELO);
 
         return $user;
 
