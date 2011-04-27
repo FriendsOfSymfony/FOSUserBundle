@@ -87,7 +87,10 @@ EOT
 
         $userManager = $this->container->get('fos_user.user_manager');
 
+        $provider = $this->container->get('security.acl.provider');
+
         $creator = $this->container->get('fos_user.user_creator');
+
 
         $username = $input->getArgument('username');
         $email = $input->getArgument('email');
@@ -97,8 +100,7 @@ EOT
 
         $creator->create($username, $password, $email, $inactive, $superadmin);
 
-        if ($this->container->has('security.acl.provider')) {
-            $provider = $this->container->get('security.acl.provider');
+        if ($provider) { //$this->container->has('security.acl.provider')
             $oid = ObjectIdentity::fromDomainObject($user);
             $acl = $provider->createAcl($oid);
             $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
