@@ -4,6 +4,9 @@ namespace FOS\UserBundle;
 
 use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Entity\UserManager;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 class UserCreator
 {
@@ -26,7 +29,7 @@ class UserCreator
         $user->setSuperAdmin(!!$superadmin);
         $this->userManager->updateUser($user);
 
-        if ($this->provider)) {
+        if ($this->provider) { // this could be wrong
             $oid = ObjectIdentity::fromDomainObject($user);
             $acl = $this->provider->createAcl($oid);
             $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
