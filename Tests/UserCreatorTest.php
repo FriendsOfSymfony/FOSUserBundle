@@ -24,7 +24,7 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
 
         // now configuring the mock object providerMock
         $providerMock->expects($this->once())
-            ->method('createUser')
+            ->method('providermethod')
             ->will($this->returnValue($user));
 
         // calling the class and not the container - remember isolation

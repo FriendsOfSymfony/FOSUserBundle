@@ -87,7 +87,14 @@ EOT
 
         $userManager = $this->container->get('fos_user.user_manager');
 
-        $provider = $this->container->get('security.acl.provider');
+        if ($this->container->has('security.acl.provider'))
+        {
+            $provider = $this->container->get('security.acl.provider');
+        }         
+        else
+        {
+            $provider = null;
+        }
 
         $creator = $this->container->get('fos_user.user_creator');
 
