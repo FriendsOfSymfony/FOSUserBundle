@@ -13,10 +13,8 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
 
         // now configuring the mock object userManagerMock
         $userManagerMock->expects($this->once())
-            ->method('whatmethodgetscalledinUserManager?')
-            ->with($user)
-            ->will($this->returnValue($return1));
-
+            ->method('createUser')
+            ->will($this->returnValue(new User()));
 
         // ? should it be instead $this->container->get('fos_user:user_creator');
         $creator = new UserCreator($userManagerMock);
@@ -26,7 +24,11 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         $inactive = 'test_inactive';
         $superadmin = 'test_superadmin';
 
+        // experiment
         $user = $creator->create($username, $password, $email, $inactive, $superadmin);
+
+        // testing output of experiment
+        $this->assertEquals($username, $user->getUsername());
 
         return $user;
 
