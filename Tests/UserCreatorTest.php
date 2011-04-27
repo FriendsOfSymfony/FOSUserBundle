@@ -12,6 +12,9 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         // create userManagerMock mock object
         $userManagerMock = $this->createUserManagerMock(array());
 
+        // create provider mock object
+        $providerMock = $this->createProviderMock(array());
+
         $user = new TestUser();
 
         // now configuring the mock object userManagerMock
@@ -19,8 +22,13 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
             ->method('createUser')
             ->will($this->returnValue($user));
 
+        // now configuring the mock object providerMock
+        $providerMock->expects($this->once())
+            ->method('createUser')
+            ->will($this->returnValue($user));
+
         // calling the class and not the container - remember isolation
-        $creator = new UserCreator($userManagerMock);
+        $creator = new UserCreator($userManagerMock, $providerMock);
 
         // experiment
         $username = 'test_username';
@@ -44,6 +52,13 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         $userManager = $this->getMock('FOS\UserBundle\Entity\UserManager', $methods, array(), '', false);
 
         return $userManager;
+    }
+
+    protected function createProviderMock(array $methods)
+    {
+        $provider = $this->getMock('Symfony\Component\Security\Acl\Dbal\AclProvider', $methods, array(), '', false);
+
+        return $provider;
     }
 
 }
