@@ -18,23 +18,21 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
             ->method('createUser')
             ->will($this->returnValue($user));
 
-        // ? should it be instead $this->container->get('fos_user:user_creator');
+        // calling the class and not the container - remember isolation
         $creator = new UserCreator($userManagerMock);
 
         // experiment
         $username = 'test_username';
         $password = 'test_password';
-        $inactive = 'test_inactive';
-        $superadmin = 'test_superadmin';
+        $inactive = false; // it is enabled
+        $superadmin = false;
         $creator->create($username, $password, $email, $inactive, $superadmin);
 
         // testing output of experiment
         $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals($password, $user->getPassword());
-        $this->assertEquals($inactive, $user->getInactive());
-        $this->assertEquals($superadmin, $user->getSuperadmin());
-
-        return $user;
+        $this->assertEquals($password, $user->getPlainPassword());
+        $this->assertEquals($inactive, $user->isEnabled());
+        $this->assertEquals($superadmin, $user->isSuperAdmin());
 
     }
 
