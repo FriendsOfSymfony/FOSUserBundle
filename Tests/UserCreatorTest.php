@@ -1,6 +1,6 @@
 <?php
 
-namespace FOS\UserBundle;
+namespace FOS\UserBundle\Tests;
 
 use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Tests\TestUser;
@@ -25,6 +25,7 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         // experiment
         $username = 'test_username';
         $password = 'test_password';
+        $email = 'test@email.org';
         $inactive = false; // it is enabled
         $superadmin = false;
         $creator->create($username, $password, $email, $inactive, $superadmin);
@@ -32,7 +33,8 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         // testing output of experiment
         $this->assertEquals($username, $user->getUsername());
         $this->assertEquals($password, $user->getPlainPassword());
-        $this->assertEquals($inactive, $user->isEnabled());
+        $this->assertEquals($email, $user->getEmail());
+        $this->assertEquals($inactive, !$user->isEnabled());
         $this->assertEquals($superadmin, $user->isSuperAdmin());
 
     }

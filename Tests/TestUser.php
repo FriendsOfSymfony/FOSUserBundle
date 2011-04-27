@@ -1,6 +1,6 @@
 <?php
 
-namespace FOS\UserBundle;
+namespace FOS\UserBundle\Tests;
 
 use FOS\UserBundle\Model\User;
 
