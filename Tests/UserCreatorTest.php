@@ -3,6 +3,7 @@
 namespace FOS\UserBundle;
 
 use FOS\UserBundle\UserCreator;
+use FOS\UserBundle\Tests\TestUser;
 
 class UserCreatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,7 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         // create userManagerMock mock object
         $userManagerMock = $this->createUserManagerMock(array());
 
-        $user = new User();
+        $user = new TestUser();
 
         // now configuring the mock object userManagerMock
         $userManagerMock->expects($this->once())
