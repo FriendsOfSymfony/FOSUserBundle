@@ -7,7 +7,7 @@
     <services>
         <service id="fos_user.user_creator" class="FOS\UserBundle\UserCreator">
             <argument type="service" id="fos_user.user_manager" />
-            <argument type="service" id="security.acl.provider" />
+            <argument type="service" id="security.acl.provider" on-invalid="ignore" />
         </service>
     </services>
 

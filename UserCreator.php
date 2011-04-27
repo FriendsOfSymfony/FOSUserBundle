@@ -12,12 +12,12 @@ use Symfony\Component\Security\Acl\Dbal\AclProvider;
 class UserCreator
 {
     protected $userManager;
-    protected $provider;
+    protected $aclProvider;
 
-    public function __construct(UserManager $userManager, AclProvider $provider)
+    public function __construct(UserManager $userManager, AclProvider $aclProvider = null )
     {
         $this->userManager = $userManager;
-        $this->provider = $provider;
+        $this->aclProvider = $aclProvider;
     }
 
     public function create($username, $password, $email, $inactive, $superadmin)
@@ -27,14 +27,14 @@ class UserCreator
         $user->setEmail($email);
         $user->setPlainPassword($password);
         $user->setEnabled(!$inactive);
-        $user->setSuperAdmin(!!$superadmin);
+        $user->setSuperAdmin($superadmin);
         $this->userManager->updateUser($user);
 
-        if ($this->provider) {
+        if ($this->aclProvider) {
             $oid = ObjectIdentity::fromDomainObject($user);
-            $acl = $this->provider->createAcl($oid);
+            $acl = $this->aclProvider->createAcl($oid);
             $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
-            $this->provider->updateAcl($acl);
+            $this->aclProvider->updateAcl($acl);
         }
     }
 }
