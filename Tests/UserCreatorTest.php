@@ -24,11 +24,11 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         // create userManagerMock mock object
-        $this->userManagerMock = $this->createUserManagerMock(array());
+        $this->userManagerMock = $this->createUserManagerMock(array('createUser', 'updateUser'));
 
         // create provider mock object
-        $this->aclProviderMock = $this->createProviderMock(array());
-
+        $this->aclProviderMock = $this->createProviderMock(array('createAcl', 'updateAcl'));
+        
         $this->user = new TestUser();
         $this->user->setId(77);
 
@@ -59,6 +59,10 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
             ->method('createAcl')
             ->will($this->returnValue($this->acl))
             ->with($this->isInstanceOf('Symfony\Component\Security\Acl\Model\ObjectIdentityInterface'));
+
+        $this->aclProviderMock->expects($this->once())
+            ->method('updateAcl')
+            ->with($this->isInstanceOf('Symfony\Component\Security\Acl\Domain\Acl'));
 
         $creator = new UserCreator($this->userManagerMock, $this->aclProviderMock);
 
