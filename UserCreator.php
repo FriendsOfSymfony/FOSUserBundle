@@ -31,7 +31,6 @@ class UserCreator
         $this->userManager->updateUser($user);
 
         if ($this->aclProvider != null) {
-            print_r($user);
             $oid = ObjectIdentity::fromDomainObject($user);
             $acl = $this->aclProvider->createAcl($oid);
             $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
