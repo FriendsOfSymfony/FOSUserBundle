@@ -4,6 +4,7 @@ namespace FOS\UserBundle\Tests;
 
 use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Tests\TestUser;
+use Symfony\Component\Security\Acl\Domain\Acl;
 
 class UserCreatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +18,7 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
 
         $user = new TestUser();
         $user->setId(77);
-        $acl = new ACL();
+        $acl = new Acl(1,)
         
         // now configuring the mock object userManagerMock
         $userManagerMock->expects($this->once())
