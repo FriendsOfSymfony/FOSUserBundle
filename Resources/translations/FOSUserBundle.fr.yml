@@ -47,13 +47,13 @@ layout.register: Enregistrer
 layout.logged_in_as: Connecté en tant que %username%
 
 # Form field labels
-fos_user_group_form_name: "Nom du groupe:"
+fos_user_group_form_name:  "Nom du groupe:"
 
-fos_user_user_form_username: "Nom d'utilisateur:"
-fos_user_user_form_email: "Adresse e-mail:"
-fos_user_user_form_plainPassword: "Mot de passe (saisir deux fois):"
-fos_user_user_form_plainPassword_first: "Mot de passe:"
-fos_user_user_form_plainPassword_second: "Vérification:"
+user_username:             "Nom d'utilisateur:"
+user_email:                "Adresse e-mail:"
+user_plainPassword_first:  "Mot de passe:"
+user_plainPassword_second: "Vérification:"
+# fos_user_user_form_plainPassword: "Mot de passe (saisir deux fois):"
 
 fos_user_reset_password_form_new: "Nouveau mot de passe:"
 

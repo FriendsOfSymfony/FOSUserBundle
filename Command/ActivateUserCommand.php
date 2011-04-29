@@ -42,7 +42,7 @@ class ActivateUserCommand extends BaseCommand
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
             ))
             ->setHelp(<<<EOT
-The <info>doctrine:user:activate</info> command activates a super (will be able to log in)
+The <info>fos:user:activate</info> command activates a user (so they will be able to log in):
 
   <info>php app/console fos:user:activate matthieu</info>
 EOT

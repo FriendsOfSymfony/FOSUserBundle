@@ -33,7 +33,7 @@
             <argument type="service" id="fos_user.form.type.change_password" />
             <argument />
             <argument type="collection">
-                <argument key="data_class">%fos_user.model.user.class%</argument>
+                <argument key="data_class">FOS\UserBundle\Form\ChangePassword</argument>
                 <argument key="validation_groups">%fos_user.form.change_password.validation_groups%</argument>
             </argument>
         </service>
@@ -56,7 +56,7 @@
             <argument type="service" id="fos_user.form.type.reset_password" />
             <argument />
             <argument type="collection">
-                <argument key="data_class">%fos_user.model.user.class%</argument>
+                <argument key="data_class">FOS\UserBundle\Form\ResetPassword</argument>
                 <argument key="validation_groups">%fos_user.form.reset_password.validation_groups%</argument>
             </argument>
         </service>

@@ -49,11 +49,11 @@ layout.logged_in_as: Logged in as %username%
 # Form field labels
 fos_user_group_form_name: "Group name:"
 
-fos_user_user_form_username: "Username:"
-fos_user_user_form_email: "Email:"
-fos_user_user_form_plainPassword: "Password (enter twice):"
-fos_user_user_form_plainPassword_first: "Password:"
-fos_user_user_form_plainPassword_second: "Verification:"
+user_username:             "Username:"
+user_email:                "Email:"
+user_plainPassword_first:  "Password:"
+user_plainPassword_second: "Verification:"
+#fos_user_user_form_plainPassword: "Password (enter twice):"
 
 fos_user_reset_password_form_new: "New password:"
 
