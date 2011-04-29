@@ -5,56 +5,75 @@ namespace FOS\UserBundle\Tests;
 use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Tests\TestUser;
 use Symfony\Component\Security\Acl\Domain\Acl;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\PermissionGrantingStrategy;
 
 class UserCreatorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testUserCreator()
+
+    private $userManagerMock;
+    private $aclProviderMock;
+    private $user;
+    private $acl;
+    private $username;
+    private $password;
+    private $email;
+    private $inactive;
+    private $superadmin;
+
+    public function setUp()
     {
         // create userManagerMock mock object
-        $userManagerMock = $this->createUserManagerMock(array());
+        $this->userManagerMock = $this->createUserManagerMock(array());
 
         // create provider mock object
-        $aclProviderMock = $this->createProviderMock(array());
+        $this->aclProviderMock = $this->createProviderMock(array());
 
-        $user = new TestUser();
-        $user->setId(77);
-        $acl = new Acl(1,)
-        
-        // now configuring the mock object userManagerMock
-        $userManagerMock->expects($this->once())
+        $this->user = new TestUser();
+        $this->user->setId(77);
+
+        $objectIdentity = new ObjectIdentity('exampleidentifier','userperhaps');
+        $permissionGrantingStrategy = new PermissionGrantingStrategy();
+        $this->acl = new Acl(1,$objectIdentity,$permissionGrantingStrategy,array(),true);
+
+        $this->username = 'test_username';
+        $this->password = 'test_password';
+        $this->email = 'test@email.org';
+        $this->inactive = false; // it is enabled
+        $this->superadmin = false;
+
+    }
+
+    public function testUserCreator()
+    {
+        $this->userManagerMock->expects($this->once())
             ->method('createUser')
-            ->will($this->returnValue($user));
+            ->will($this->returnValue($this->user));
 
-        // also checks that updateUser gets called
-        // also makes sure that the mock manager returns values set for other fields of $user object
-        $userManagerMock->expects($this->once())
+        $this->userManagerMock->expects($this->once())
             ->method('updateUser')
-            ->will($this->returnValue($user))
+            ->will($this->returnValue($this->user))
             ->with($this->isInstanceOf('FOS\UserBundle\Tests\TestUser'));
 
-        // now configuring the mock object providerMock
-        $aclProviderMock->expects($this->once())
+        $this->aclProviderMock->expects($this->once())
             ->method('createAcl')
-            ->will($this->returnValue($acl))
+            ->will($this->returnValue($this->acl))
             ->with($this->isInstanceOf('Symfony\Component\Security\Acl\Model\ObjectIdentityInterface'));
 
-        // calling the class and not the container - remember isolation
-        $creator = new UserCreator($userManagerMock, $providerMock);
+        $creator = new UserCreator($this->userManagerMock, $this->aclProviderMock);
 
         // experiment
-        $username = 'test_username';
-        $password = 'test_password';
-        $email = 'test@email.org';
-        $inactive = false; // it is enabled
-        $superadmin = false;
-        $creator->create($username, $password, $email, $inactive, $superadmin);
+        $creator->create( $this->username,
+                          $this->password,
+                          $this->email,
+                          $this->inactive,
+                          $this->superadmin );
 
-        // testing output of experiment
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals($password, $user->getPlainPassword());
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($inactive, !$user->isEnabled());
-        $this->assertEquals($superadmin, $user->isSuperAdmin());
+        $this->assertEquals($this->username, $this->user->getUsername());
+        $this->assertEquals($this->password, $this->user->getPlainPassword());
+        $this->assertEquals($this->email, $this->user->getEmail());
+        $this->assertEquals($this->inactive, !$this->user->isEnabled());
+        $this->assertEquals($this->superadmin, $this->user->isSuperAdmin());
 
     }
 
