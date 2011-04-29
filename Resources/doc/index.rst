@@ -113,7 +113,7 @@ enabled in your kernel and in your project's configuration::
         );
     }
 
-    # app/config/config.yml
+    # app/config/security.yml
     security:
         providers:
             # the naming of a security provider is up to you, we chose "fos_userbundle"
