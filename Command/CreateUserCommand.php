@@ -82,22 +82,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
-
-        $userManager = $this->container->get('fos_user.user_manager');
-
-        if ($this->container->has('security.acl.provider'))
-        {
-            $provider = $this->container->get('security.acl.provider');
-        }         
-        else
-        {
-            $provider = null;
-        }
-
-        $creator = $this->container->get('fos_user.user_creator');
-
 
         $username = $input->getArgument('username');
         $email = $input->getArgument('email');
@@ -105,16 +90,11 @@ EOT
         $inactive = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
 
+        $creator = $this->container->get('fos_user.user_creator');
+
         $creator->create($username, $password, $email, $inactive, $superadmin);
 
-        if ($provider) { //$this->container->has('security.acl.provider')
-            $oid = ObjectIdentity::fromDomainObject($user);
-            $acl = $provider->createAcl($oid);
-            $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
-            $provider->updateAcl($acl);
-        }
-
-        $output->writeln(sprintf('Created user <comment>%s</comment>', $username)); //$user->getUsername()
+        $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
 
     /**
