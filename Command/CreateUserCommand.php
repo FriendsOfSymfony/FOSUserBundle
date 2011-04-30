@@ -8,6 +8,7 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
+use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Command\Command as BaseCommand;
@@ -22,6 +23,7 @@ use Symfony\Component\Console\Output\Output;
  *
  * (c) Matthieu Bontemps <matthieu@knplabs.com>
  * (c) Thibault Duplessis <thibault.duplessis@gmail.com>
+ * (c) Luis Cordova <cordoval@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -82,24 +84,17 @@ EOT
     {
         $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
 
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUsername($input->getArgument('username'));
-        $user->setEmail($input->getArgument('email'));
-        $user->setPlainPassword($input->getArgument('password'));
-        $user->setEnabled(!$input->getOption('inactive'));
-        $user->setSuperAdmin(!!$input->getOption('super-admin'));
-        $userManager->updateUser($user);
+        $username = $input->getArgument('username');
+        $email = $input->getArgument('email');
+        $password = $input->getArgument('password');
+        $inactive = $input->getOption('inactive');
+        $superadmin = $input->getOption('super-admin');
 
-        if ($this->container->has('security.acl.provider')) {
-            $provider = $this->container->get('security.acl.provider');
-            $oid = ObjectIdentity::fromDomainObject($user);
-            $acl = $provider->createAcl($oid);
-            $acl->insertObjectAce(UserSecurityIdentity::fromAccount($user), MaskBuilder::MASK_OWNER);
-            $provider->updateAcl($acl);
-        }
+        $creator = $this->container->get('fos_user.user_creator');
 
-        $output->writeln(sprintf('Created user <comment>%s</comment>', $user->getUsername()));
+        $creator->create($username, $password, $email, $inactive, $superadmin);
+
+        $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
 
     /**
