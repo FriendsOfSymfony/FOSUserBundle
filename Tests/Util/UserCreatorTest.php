@@ -25,10 +25,10 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
         $permissionGrantingStrategy = new PermissionGrantingStrategy();
         $acl = new Acl(1,$objectIdentity,$permissionGrantingStrategy,array(),true);
 
-        $username = 'test_username';
-        $password = 'test_password';
-        $email = 'test@email.org';
-        $inactive = false; // it is enabled
+        $username   = 'test_username';
+        $password   = 'test_password';
+        $email      = 'test@email.org';
+        $active     = true; // it is enabled
         $superadmin = false;
 
         $userManagerMock->expects($this->once())
@@ -51,12 +51,12 @@ class UserCreatorTest extends \PHPUnit_Framework_TestCase
 
         $creator = new UserCreator($userManagerMock, $aclProviderMock);
 
-        $creator->create($username, $password, $email, $inactive, $superadmin);
+        $creator->create($username, $password, $email, $active, $superadmin);
 
         $this->assertEquals($username, $user->getUsername());
         $this->assertEquals($password, $user->getPlainPassword());
         $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($inactive, !$user->isEnabled());
+        $this->assertEquals($active, $user->isEnabled());
         $this->assertEquals($superadmin, $user->isSuperAdmin());
     }
 
