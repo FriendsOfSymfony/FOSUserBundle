@@ -52,12 +52,12 @@ class CreateUserCommandTest extends WebTestCase
             'username' => $username,
             'password' => $password,
             'email'    => $email,
-            '--inactive' => true,
+            '--active' => true,
             '--super-admin' => true
         ), array('interactive' => false, 'decorated' => false, 'verbosity' => Output::VERBOSITY_VERBOSE));
 
         $userManager = $this->getService('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($username);
+        $user        = $userManager->findUserByUsername($username);
 
         $this->assertTrue($user instanceof User);
         $this->assertEquals($email, $user->getEmail());

@@ -40,18 +40,18 @@ class UserCreator
      * @param string $username
      * @param string $password
      * @param string $email
-     * @param boolean $inactive
+     * @param boolean $active
      * @param boolean $superadmin
      *
      * @return User the created user
      */
-    public function create($username, $password, $email, $inactive, $superadmin)
+    public function create($username, $password, $email, $active, $superadmin)
     {
         $user = $this->userManager->createUser();
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
-        $user->setEnabled(!$inactive);
+        $user->setEnabled($active);
         $user->setSuperAdmin((bool)$superadmin);
         $this->userManager->updateUser($user);
 
