@@ -61,9 +61,7 @@ class UserPasswordChangerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($invalidusername));
 
         $userManagerMock->expects($this->never())
-            ->method('updateUser')
-            ->will($this->returnValue($user))
-            ->with($this->isInstanceOf('FOS\UserBundle\Tests\TestUser'));
+            ->method('updateUser');
 
         $changer = new UserPasswordChanger($userManagerMock);
 
@@ -71,7 +69,7 @@ class UserPasswordChangerTest extends \PHPUnit_Framework_TestCase
             $changer->change($invalidusername, $password);
         }
 
-        catch (InvalidArgumentException $expected) {
+        catch (\InvalidArgumentException $expected) {
             return;
         }
 
