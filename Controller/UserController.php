@@ -56,7 +56,7 @@ class UserController extends ContainerAware
 
         $process = $formHandler->process($user);
         if ($process) {
-            $this->setFlash('fos_user_user_update', 'success');
+            $this->setFlash('success', 'fos_user_user_update');
             $userUrl =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
             return new RedirectResponse($userUrl);
         }
@@ -96,7 +96,7 @@ class UserController extends ContainerAware
                 $provider->updateAcl($acl);
             }
 
-            $this->setFlash('fos_user_user_create', 'success');
+            $this->setFlash('success', 'fos_user_user_create');
             $url = $this->container->get('router')->generate($route);
             return new RedirectResponse($url);
         }
@@ -115,7 +115,7 @@ class UserController extends ContainerAware
         $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->findUserBy('email', $email);
 
-        $this->setFlash('fos_user_user_confirm', 'success');
+        $this->setFlash('success', 'fos_user_user_confirm');
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:User:checkConfirmationEmail.html.'.$this->getEngine(), array(
             'user' => $user,
@@ -144,7 +144,7 @@ class UserController extends ContainerAware
     {
         $user = $this->getUser();
 
-        $this->setFlash('fos_user_user_confirmed', 'success');
+        $this->setFlash('success', 'fos_user_user_confirmed');
         return $this->container->get('templating')->renderResponse('FOSUserBundle:User:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
@@ -157,7 +157,7 @@ class UserController extends ContainerAware
     {
         $user = $this->findUserBy('username', $username);
         $this->container->get('fos_user.user_manager')->deleteUser($user);
-        $this->setFlash('fos_user_user_delete', 'success');
+        $this->setFlash('success', 'fos_user_user_delete');
 
         return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_list'));
     }
@@ -188,7 +188,7 @@ class UserController extends ContainerAware
 
         $process = $formHandler->process($user);
         if ($process) {
-            $this->setFlash('fos_user_user_password', 'success');
+            $this->setFlash('success', 'fos_user_user_password');
             $url =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
             return new RedirectResponse($url);
         }
@@ -238,7 +238,7 @@ class UserController extends ContainerAware
             return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_request_reset_password'));
         }
 
-        $this->setFlash('fos_user_user_reset', 'success');
+        $this->setFlash('success', 'fos_user_user_reset');
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:User:checkResettingEmail.html.'.$this->getEngine(), array(
             'user' => $user,
@@ -284,7 +284,7 @@ class UserController extends ContainerAware
         if ($process) {
             $this->authenticateUser($user);
 
-            $this->setFlash('fos_user_user_resetted', 'success');
+            $this->setFlash('success', 'fos_user_user_resetted');
             $url =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
             return new RedirectResponse($url);
         }
@@ -350,9 +350,9 @@ class UserController extends ContainerAware
         $this->container->get('security.context')->setToken($token);
     }
 
-    protected function setFlash($action, $value)
+    protected function setFlash($key, $value)
     {
-        $this->container->get('session')->setFlash($action, $value);
+        $this->container->get('session')->setFlash($key, $value);
     }
 
     protected function getPasswordRequestTtl()
