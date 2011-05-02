@@ -10,89 +10,69 @@ use Symfony\Component\Security\Acl\Domain\PermissionGrantingStrategy;
 
 class UserCreatorTest extends \PHPUnit_Framework_TestCase
 {
-
-    private $userManagerMock;
-    private $aclProviderMock;
-    private $user;
-    private $acl;
-    private $username;
-    private $password;
-    private $email;
-    private $inactive;
-    private $superadmin;
-
-    public function setUp()
+    public function testCreate()
     {
         // create userManagerMock mock object
-        $this->userManagerMock = $this->createUserManagerMock(array('createUser', 'updateUser'));
+        $userManagerMock = $this->createUserManagerMock(array('createUser', 'updateUser'));
 
         // create provider mock object
-        $this->aclProviderMock = $this->createProviderMock(array('createAcl', 'updateAcl'));
-        
-        $this->user = new TestUser();
-        $this->user->setId(77);
+        $aclProviderMock = $this->createProviderMock(array('createAcl', 'updateAcl'));
+
+        $user = new TestUser();
+        $user->setId(77);
 
         $objectIdentity = new ObjectIdentity('exampleidentifier','userperhaps');
         $permissionGrantingStrategy = new PermissionGrantingStrategy();
-        $this->acl = new Acl(1,$objectIdentity,$permissionGrantingStrategy,array(),true);
+        $acl = new Acl(1,$objectIdentity,$permissionGrantingStrategy,array(),true);
 
-        $this->username = 'test_username';
-        $this->password = 'test_password';
-        $this->email = 'test@email.org';
-        $this->inactive = false; // it is enabled
-        $this->superadmin = false;
+        $username = 'test_username';
+        $password = 'test_password';
+        $email = 'test@email.org';
+        $inactive = false; // it is enabled
+        $superadmin = false;
 
-    }
-
-    public function testUserCreator()
-    {
-        $this->userManagerMock->expects($this->once())
+        $userManagerMock->expects($this->once())
             ->method('createUser')
-            ->will($this->returnValue($this->user));
+            ->will($this->returnValue($user));
 
-        $this->userManagerMock->expects($this->once())
+        $userManagerMock->expects($this->once())
             ->method('updateUser')
-            ->will($this->returnValue($this->user))
+            ->will($this->returnValue($user))
             ->with($this->isInstanceOf('FOS\UserBundle\Tests\TestUser'));
 
-        $this->aclProviderMock->expects($this->once())
+        $aclProviderMock->expects($this->once())
             ->method('createAcl')
-            ->will($this->returnValue($this->acl))
+            ->will($this->returnValue($acl))
             ->with($this->isInstanceOf('Symfony\Component\Security\Acl\Model\ObjectIdentityInterface'));
 
-        $this->aclProviderMock->expects($this->once())
+        $aclProviderMock->expects($this->once())
             ->method('updateAcl')
             ->with($this->isInstanceOf('Symfony\Component\Security\Acl\Domain\Acl'));
 
-        $creator = new UserCreator($this->userManagerMock, $this->aclProviderMock);
+        $creator = new UserCreator($userManagerMock, $aclProviderMock);
 
-        // experiment
-        $creator->create( $this->username,
-                          $this->password,
-                          $this->email,
-                          $this->inactive,
-                          $this->superadmin );
+        $creator->create($username, $password, $email, $inactive, $superadmin);
 
-        $this->assertEquals($this->username, $this->user->getUsername());
-        $this->assertEquals($this->password, $this->user->getPlainPassword());
-        $this->assertEquals($this->email, $this->user->getEmail());
-        $this->assertEquals($this->inactive, !$this->user->isEnabled());
-        $this->assertEquals($this->superadmin, $this->user->isSuperAdmin());
+        $this->assertEquals($username, $user->getUsername());
+        $this->assertEquals($password, $user->getPlainPassword());
+        $this->assertEquals($email, $user->getEmail());
+        $this->assertEquals($inactive, !$user->isEnabled());
+        $this->assertEquals($superadmin, $user->isSuperAdmin());
 
     }
 
     protected function createUserManagerMock(array $methods)
     {
-        $userManager = $this->getMock('FOS\UserBundle\Entity\UserManager', $methods, array(), '', false);
+        return $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')
+            ->disableOriginalConstructor()
+            ->getMock();
 
         return $userManager;
     }
 
     protected function createProviderMock(array $methods)
     {
-        $aclProvider = $this->getMock('Symfony\Component\Security\Acl\Dbal\AclProvider', $methods, array(), '', false);
-
-        return $aclProvider;
+        return $this->getMock('Symfony\Component\Security\Acl\Dbal\AclProvider', $methods, array(), '', false);
     }
 
 }

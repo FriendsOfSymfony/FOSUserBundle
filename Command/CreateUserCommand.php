@@ -2,13 +2,6 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Component\Security\Acl\Permission\MaskBuilder;
-
-use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
-
-use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-
-use FOS\UserBundle\UserCreator;
 use FOS\UserBundle\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Command\Command as BaseCommand;
@@ -29,14 +22,6 @@ use Symfony\Component\Console\Output\Output;
  * with this source code in the file LICENSE.
  */
 
-/**
- * CreateUserCommand.
- *
- * @package    Bundle
- * @subpackage FOS\UserBundle
- * @author     Matthieu Bontemps <matthieu@knplabs.com>
- * @author     Thibault Duplessis <thibault.duplessis@gmail.com>
- */
 class CreateUserCommand extends BaseCommand
 {
     /**
@@ -82,12 +67,13 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
+        $cliToken = new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN));
+        $this->container->get('security.context')->setToken($cliToken);
 
-        $username = $input->getArgument('username');
-        $email = $input->getArgument('email');
-        $password = $input->getArgument('password');
-        $inactive = $input->getOption('inactive');
+        $username   = $input->getArgument('username');
+        $email      = $input->getArgument('email');
+        $password   = $input->getArgument('password');
+        $inactive   = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
 
         $creator = $this->container->get('fos_user.user_creator');
