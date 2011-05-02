@@ -31,7 +31,7 @@ class UserPasswordChanger
     public function change($username, $password)
     {
         $user = $this->userManager->findUserByUsername($username);
-        
+
         if (!$user) {
             throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
         }

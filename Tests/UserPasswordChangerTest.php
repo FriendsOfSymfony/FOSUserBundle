@@ -24,7 +24,7 @@ class UserPasswordChangerTest extends \PHPUnit_Framework_TestCase
         $userManagerMock->expects($this->once())
             ->method('findUserByUsername')
             ->will($this->returnValue($user))
-            ->with($this->equals($username));
+            ->with($this->equalTo($username));
 
         $userManagerMock->expects($this->once())
             ->method('updateUser')
@@ -58,7 +58,7 @@ class UserPasswordChangerTest extends \PHPUnit_Framework_TestCase
         $userManagerMock->expects($this->once())
             ->method('findUserByUsername')
             ->will($this->returnValue(null))
-            ->with($this->equals($invalidusername));
+            ->with($this->equalTo($invalidusername));
 
         $userManagerMock->expects($this->never())
             ->method('updateUser')
@@ -67,13 +67,21 @@ class UserPasswordChangerTest extends \PHPUnit_Framework_TestCase
 
         $changer = new UserPasswordChanger($userManagerMock);
 
-        $changer->change($invalidusername, $password);
+        try {
+            $changer->change($invalidusername, $password);
+        }
+
+        catch (InvalidArgumentException $expected) {
+            return;
+        }
+
+        $this->fail('An expected exception has not been raised.');
 
     }
 
     protected function createUserManagerMock(array $methods)
     {
-        $userManager = $this->getMockBuilder('FOS\UserBundle\Entity\UserManagerInterface')
+        $userManager = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')
             ->disableOriginalConstructor()
             ->getMock();
 
