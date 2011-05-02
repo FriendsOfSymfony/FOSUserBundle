@@ -42,8 +42,6 @@ class UserCreator
      * @param string $email
      * @param boolean $inactive
      * @param boolean $superadmin
-     *
-     * @return User the created user
      */
     public function create($username, $password, $email, $inactive, $superadmin)
     {

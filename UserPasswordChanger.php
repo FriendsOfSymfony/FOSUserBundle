@@ -3,22 +3,32 @@
 namespace FOS\UserBundle;
 
 use FOS\UserBundle\Model\User;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-//use Symfony\Bundle\FrameworkBundle\Command\Command as BaseCommand;
-//use Symfony\Component\Console\Input\InputArgument;
-//use Symfony\Component\Console\Input\InputInterface;
-//use Symfony\Component\Console\Output\OutputInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 
-class UserChangePassword
+/**
+ * Changes the password for given user
+ */
+class UserPasswordChanger
 {
+    /**
+     * User manager
+     *
+     * @var UserManagerInterface
+     */
     protected $userManager;
 
-    public function __construct(UserManager $userManager)
+    public function __construct(UserManagerInterface $userManager)
     {
         $this->userManager = $userManager;
     }
 
-    public function changePassword($username, $password)
+    /**
+     * Changes the password for given user
+     *
+     * @param string $username
+     * @param string $password
+     */
+    public function change($username, $password)
     {
         $user = $this->userManager->findUserByUsername($username);
         

@@ -9,6 +9,9 @@
             <argument type="service" id="fos_user.user_manager" />
             <argument type="service" id="security.acl.provider" on-invalid="ignore" />
         </service>
+        <service id="fos_user.user_password_changer" class="FOS\UserBundle\UserPasswordChanger">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
     </services>
 
 </container>
