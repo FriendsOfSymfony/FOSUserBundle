@@ -1,0 +1,15 @@
+$userManager->expects($this->once())->method('createUser')->will($this->returnValue(new User()));
+that reads like
+the user manager mock that I pass in
+will be asked to invoke createUser method
+and in response it needs to return User
+ 
+fix that to do whatever it needs to do	
+
+and then mock the correct method	
+
+then verify that the created user has correct values
+by doing $this->assertEquals($username, $user->getUsername());
+
+etc.
+ 
