@@ -1,0 +1,61 @@
+group.edit.submit: Atualizar Grupo
+group.show.name: Nome do Grupo
+group.new.submit: Criar Grupo
+
+security.login.username: "Utilizador:"
+security.login.password: "Password:"
+security.login.remember_me: Lembrar-me
+security.login.submit: Entrar
+security.login.request_reset_password: Esqueci-me da password
+
+user.change_password.submit: Mudar a password
+user.check_confirmation_email.message: Foi enviado um email para %email%. Este contém um link de ativação que terá de visitar para ativar a sua conta.
+user.check_resetting_email.sent: Foi enviado um email para %email%. Este contém um link que terá de visitar para puder recuperar a sua password.
+user.confirmed.message: Parabéns %username%, a sua conta foi confirmada.
+
+user.show.username: Utilizador
+user.show.email: Email
+user.new.submit: Criar conta
+user.edit.submit: Atualizar conta
+user.password_already_requested: Uma password para este utilizador já foi requisitada nas últimas 24 horas.
+user.password_request_reset.username: "Utilizador:"
+user.password_request_reset.submit: Recuperar password
+user.reset_password.submit: Alterar passord
+
+user.email.resetting_password: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para recuperar a password, por favor visite o seguinte link: %confirmationUrl%
+
+    Cumprimentos,
+    A equipa.
+
+user.email.confirmation: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para completar a validação da sua conta, por favor visite o seguinte link: %confirmationUrl%
+
+    Cumprimentos,
+    A equipa.
+
+# Global strings
+layout.logout: Sair
+layout.login: Entrar
+layout.register: Registar
+layout.logged_in_as: Entrou como %username%
+
+# Form field labels
+fos_user_group_form_name: "Nome do Grupo:"
+
+user_username:             "Utilizador:"
+user_email:                "Email:"
+user_plainPassword_first:  "Password:"
+user_plainPassword_second: "Verificar:"
+#fos_user_user_form_plainPassword: "Password (repita):"
+
+fos_user_reset_password_form_new: "Nova password:"
+
+fos_user_change_password_form_new: "Nova password:"
+fos_user_change_password_form_current: "Password atual:"
