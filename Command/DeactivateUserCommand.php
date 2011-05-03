@@ -16,6 +16,7 @@ use FOS\UserBundle\Model\User;
  *
  * (c) Matthieu Bontemps <matthieu@knplabs.com>
  * (c) Thibault Duplessis <thibault.duplessis@gmail.com>
+ * (c) Luis Cordova <cordoval@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -54,19 +55,16 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
+        $cliToken = new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN));
+        $this->container->get('security.context')->setToken($cliToken);
 
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($input->getArgument('username'));
+        $username = $input->getArgument('username');
 
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('The user "%s" does not exist', $input->getArgument('username')));
-        }
-        $user->setEnabled(false);
+        $deactivator = $this->container->get('fos_user.user_deactivator');
 
-        $userManager->updateUser($user);
+        $deactivator->deactivate($username);
 
-        $output->writeln(sprintf('User "%s" has been deactivated.', $user->getUsername()));
+        $output->writeln(sprintf('User "%s" has been deactivated.', $username));
     }
 
     /**

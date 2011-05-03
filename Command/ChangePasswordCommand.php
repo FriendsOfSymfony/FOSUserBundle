@@ -46,17 +46,17 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->container->get('security.context')->setToken(new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN)));
+        $cliToken = new UsernamePasswordToken('command.line', null, $this->container->getParameter('fos_user.firewall_name'), array(User::ROLE_SUPERADMIN));
+        $this->container->get('security.context')->setToken($cliToken);
 
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($input->getArgument('username'));
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $input->getArgument('username')));
-        }
-        $user->setPlainPassword($input->getArgument('password'));
-        $userManager->updateUser($user);
+        $username = $input->getArgument('username');
+        $password = $input->getArgument('password');
 
-        $output->writeln(sprintf('Changed password for user <comment>%s</comment>', $user->getUsername()));
+        $changer = $this->container->get('fos_user.user_password_changer');
+
+        $changer->change($username, $password);
+
+        $output->writeln(sprintf('Changed password for user <comment>%s</comment>', $username));
     }
 
     /**

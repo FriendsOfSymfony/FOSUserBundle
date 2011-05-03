@@ -9,6 +9,25 @@
             <argument type="service" id="fos_user.user_manager" />
             <argument type="service" id="security.acl.provider" on-invalid="ignore" />
         </service>
+        <service id="fos_user.user_password_changer" class="FOS\UserBundle\UserPasswordChanger">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service id="fos_user.user_activator" class="FOS\UserBundle\UserActivator">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service id="fos_user.user_deactivator" class="FOS\UserBundle\UserDeactivator">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service id="fos_user.user_demoter" class="FOS\UserBundle\UserDemoter">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service id="fos_user.user_promoter" class="FOS\UserBundle\UserPromoter">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+        <service id="fos_user.aces_installer" class="FOS\UserBundle\AcesInstaller">
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="security.acl.provider" on-invalid="ignore" />
+        </service>
     </services>
 
 </container>
