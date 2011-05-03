@@ -1,0 +1,61 @@
+group.edit.submit: Edytuj grupę
+group.show.name: Nazwa grupy
+group.new.submit: Utwórz grupę
+
+security.login.username: "Nazwa użytkownika:"
+security.login.password: "Hasło:"
+security.login.remember_me: Nie wylogowuj mnie
+security.login.submit: Zaloguj
+security.login.request_reset_password: Nie pamiętam hasła
+
+user.change_password.submit: Zmień hasło
+user.check_confirmation_email.message: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby aktywować konto.
+user.check_resetting_email.sent: Na adres %email% Wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby zresetować hasło.
+user.confirmed.message: Gratulacje %username%, potwierdziłeś konto.
+
+user.show.username: Nazwa użytkownika
+user.show.email: E-mail
+user.new.submit: Utwórz użytkownika
+user.edit.submit: Edytuj użytkownika
+user.password_already_requested: W przeciągu ostatnich 24 godzin nastąpiła już próba odzyskania hasła.
+user.password_request_reset.username: "Nazwa użytkownika:"
+user.password_request_reset.submit: Resetuj hasło
+user.reset_password.submit: Zmień hasło
+
+user.email.resetting_password: |
+    Witaj %username%!
+    Cześć %username%!
+
+    Aby zresetować hasło - proszę przejść do %confirmationUrl%
+
+    Pozdrawiamy,
+    Zespół.
+
+user.email.confirmation: |
+    Witaj %username%!
+    Cześć %username%!
+
+    Aby potwierdzić swoje konto - proszę przejść do %confirmationUrl%
+
+    Pozdrawiamy,
+    Zespół.
+
+# Global strings
+layout.logout: Wyloguj
+layout.login: Zaloguj
+layout.register: Zarejestruj
+layout.logged_in_as: Zalogowano jako %username%
+
+# Form field labels
+fos_user_group_form_name: "Nazwa grupy:"
+
+user_username:             "Nazwa użytkownika:"
+user_email:                "E-mail:"
+user_plainPassword_first:  "Hasło:"
+user_plainPassword_second: "Weryfikacja:"
+#fos_user_user_form_plainPassword: "Hasło (wpisz dwa razy):"
+
+fos_user_reset_password_form_new: "Nowe hasło:"
+
+fos_user_change_password_form_new: "Nowe hasło:"
+fos_user_change_password_form_current: "Obecne hasło:"
