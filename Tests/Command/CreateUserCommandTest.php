@@ -39,20 +39,20 @@ class CreateUserCommandTest extends WebTestCase
 
     public function testUserCreationWithOptions()
     {
-        $kernel = $this->createKernel();
-        $command = new CreateUserCommand();
+        $kernel      = $this->createKernel();
+        $command     = new CreateUserCommand();
         $application = new Application($kernel);
         $application->setAutoExit(false);
-        $tester = new ApplicationTester($application);
+        $tester   = new ApplicationTester($application);
         $username = 'test_username';
         $password = 'test_password';
         $email    = 'test_email@email.org';
         $tester->run(array(
-            'command'  => $command->getFullName(),
-            'username' => $username,
-            'password' => $password,
-            'email'    => $email,
-            '--active' => true,
+            'command'       => $command->getFullName(),
+            'username'      => $username,
+            'password'      => $password,
+            'email'         => $email,
+            '--inactive'    => true,
             '--super-admin' => true
         ), array('interactive' => false, 'decorated' => false, 'verbosity' => Output::VERBOSITY_VERBOSE));
 
