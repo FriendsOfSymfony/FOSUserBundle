@@ -37,7 +37,7 @@ class CreateUserCommand extends BaseCommand
                 new InputArgument('email', InputArgument::REQUIRED, 'The email'),
                 new InputArgument('password', InputArgument::REQUIRED, 'The password'),
                 new InputOption('super-admin', null, InputOption::VALUE_NONE, 'Set the user as super admin'),
-                new InputOption('active', null, InputOption::VALUE_NONE, 'Set the user as active'),
+                new InputOption('inactive', null, InputOption::VALUE_NONE, 'Set the user as inactive'),
             ))
             ->setHelp(<<<EOT
 The <info>fos:user:create</info> command creates a user:
@@ -54,9 +54,9 @@ You can create a super admin via the super-admin flag:
 
   <info>php app/console fos:user:create admin --super-admin</info>
 
-You can create an active user (will be able to log in):
+You can create an inactive user (will not be able to log in):
 
-  <info>php app/console fos:user:create thibault --active</info>
+  <info>php app/console fos:user:create thibault --inactive</info>
 
 EOT
             );
@@ -73,12 +73,12 @@ EOT
         $username   = $input->getArgument('username');
         $email      = $input->getArgument('email');
         $password   = $input->getArgument('password');
-        $active     = $input->getOption('active');
+        $inactive   = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
 
         $creator = $this->container->get('fos_user.user_creator');
 
-        $creator->create($username, $password, $email, $active, $superadmin);
+        $creator->create($username, $password, $email, !$inactive, $superadmin);
 
         $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
