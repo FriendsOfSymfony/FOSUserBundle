@@ -31,7 +31,7 @@ class ResetPasswordFormHandler
     {
         $this->form->setData(new ResetPassword($user));
 
-        if ('POST' == $this->form->request->getMethod()) {
+        if ('POST' == $this->request->getMethod()) {
             $this->form->bindRequest($this->request);
 
             if ($this->form->isValid()) {
