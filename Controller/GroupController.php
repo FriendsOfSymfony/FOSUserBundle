@@ -51,7 +51,7 @@ class GroupController extends ContainerAware
 
         $process = $formHandler->process($group);
         if ($process) {
-            $this->setFlash('fos_user_group_update', 'success');
+            $this->setFlash('success', 'fos_user_group_update');
             $groupUrl =  $this->container->get('router')->generate('fos_user_group_show', array('groupname' => $group->getName()));
             return new RedirectResponse($groupUrl);
         }
@@ -72,7 +72,7 @@ class GroupController extends ContainerAware
 
         $process = $formHandler->process();
         if ($process) {
-            $this->container->get('session')->setFlash('fos_user_group_update', 'success');
+            $this->container->get('session')->setFlash('success', 'fos_user_group_update');
             $parameters = array('groupname' => $form->getData('group')->getName());
             $url = $this->container->get('router')->generate('fos_user_group_show', $parameters);
             return new RedirectResponse($url);
@@ -90,7 +90,7 @@ class GroupController extends ContainerAware
     {
         $group = $this->findGroupBy('name', $groupname);
         $this->container->get('fos_user.group_manager')->deleteGroup($group);
-        $this->setFlash('fos_user_group_delete', 'success');
+        $this->setFlash('success', 'fos_user_group_delete');
 
         return new RedirectResponse( $this->container->get('router')->generate('fos_user_group_list'));
     }
@@ -121,8 +121,8 @@ class GroupController extends ContainerAware
         return $this->container->getParameter('fos_user.template.engine');
     }
 
-    protected function setFlash($action, $value)
+    protected function setFlash($key, $value)
     {
-        $this->container->get('session')->setFlash($action, $value);
+        $this->container->get('session')->setFlash($key, $value);
     }
 }
