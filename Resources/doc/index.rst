@@ -280,10 +280,10 @@ routes:
 
     # app/config/routing.yml
     fos_user_security:
-        resource: @FOSUserBundle/Resources/config/routing/security.xml
+        resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
     fos_user_user:
-        resource: @FOSUserBundle/Resources/config/routing/user.xml
+        resource: "@FOSUserBundle/Resources/config/routing/user.xml"
         prefix: /user
 
 ::
@@ -357,9 +357,40 @@ A new instance of your User class can be created by the user manager::
 Updating a User object
 ----------------------
 
-When creating or updating a User object you need to call the ``updateUser``
-method of the user manager to update some fields (encoded password, canonical
-fields...). This will also persist the entity.
+When creating or updating a User object you need to update the encoded password
+and the canonical fields. To make it easier, the bundle comes with a Doctrine
+listener handling this for you behind the scene.
+
+If you don't want to use the Doctrine listener, you can disable it. In this case
+you will have to call the ``updateUser`` method of the user manager each time
+you do a change in your entity.
+
+In YAML:
+
+::
+
+    # app/config/config.yml
+    fos_user:
+        db_driver: orm
+        firewall_name: main
+        use_listener: false
+        class:
+            model:
+                user: MyProject\MyBundle\Entity\User
+
+Or if you prefer XML:
+
+::
+
+    # app/config/config.xml
+
+    <fos_user:config db-driver="orm" firewall-name="main" use-listener="false">
+        <fos_user:class>
+            <fos_user:model
+                user="MyProject\MyBundle\Entity\User"
+            />
+        </fos_user:class>
+    </fos_user:config>
 
 .. note::
 
@@ -528,6 +559,7 @@ All configuration options are listed below::
     fos_user:
         db_driver:     mongodb
         firewall_name: main
+        use_listener:  true
         class:
             model:
                 user:  MyProject\MyBundle\Document\User

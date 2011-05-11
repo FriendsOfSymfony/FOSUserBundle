@@ -17,6 +17,10 @@
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
             <argument>%fos_user.model.user.class%</argument>
         </service>
+
+        <service id="fos_user.user_listener" class="FOS\UserBundle\Document\UserListener" public="false">
+            <argument type="service" id="fos_user.user_listener">
+        </service>
     </services>
 
 </container>

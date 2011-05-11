@@ -46,6 +46,21 @@ class FOSUserExtension extends Extension
             ));
         }
 
+        if ($config['use_listener']) {
+            switch ($config['db_driver']) {
+                case 'orm':
+                    $container->getDefinition('fos_user.user_listener')->addTag('doctrine.event_subscriber');
+                    break;
+
+                case 'mongodb':
+                    $container->getDefinition('fos_user.user_listener')->addTag('doctrine.common.event_subscriber');
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         $this->remapParametersNamespaces($config, $container, array(
             ''          => array(
                 'firewall_name' => 'fos_user.firewall_name'

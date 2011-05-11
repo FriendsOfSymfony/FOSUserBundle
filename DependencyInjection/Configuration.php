@@ -30,6 +30,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('db_driver')->cannotBeOverwritten()->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
+                ->booleanNode('use_listener')->defaultTrue()->end()
             ->end();
 
         $this->addClassSection($rootNode);

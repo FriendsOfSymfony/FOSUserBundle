@@ -17,6 +17,10 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%fos_user.model.user.class%</argument>
         </service>
+
+        <service id="fos_user.user_listener" class="FOS\UserBundle\Entity\UserListener" public="false">
+            <argument type="service" id="fos_user.user_listener">
+        </service>
     </services>
 
 </container>
