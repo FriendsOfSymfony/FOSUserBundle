@@ -474,7 +474,7 @@ ODM
 
 ::
 
-    // src/MyProject/MyBundle/Document/Group.php
+    // src/MyProject/MyBundle/Document/UserGroups.php
 
     namespace MyProject\MyBundle\Document;
     use FOS\UserBundle\Document\Group as BaseGroup;
@@ -482,7 +482,7 @@ ODM
     /**
      * @mongodb:Document
      */
-    class Group extends BaseGroup
+    class UserGroups extends BaseGroup
     {
         /** @mongodb:Id(strategy="auto") */
         protected $id;
