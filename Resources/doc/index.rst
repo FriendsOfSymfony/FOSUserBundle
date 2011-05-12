@@ -448,15 +448,16 @@ ORM
 
 ::
 
-    // src/MyProject/MyBundle/Entity/Group.php
+    // src/MyProject/MyBundle/Entity/UserGroups.php
 
     namespace MyProject\MyBundle\Entity;
     use FOS\UserBundle\Entity\Group as BaseGroup;
 
     /**
      * @orm:Entity
+     * @orm:Column(name="user_groups")
      */
-    class Group extends BaseGroup
+    class UserGroups extends BaseGroup
     {
         /**
          * @orm:Id
@@ -465,6 +466,8 @@ ORM
          */
         protected $id;
     }
+
+Note: This class cannot be named as "Group" because it is a mysql reserved word.
 
 ODM
 ~~~
