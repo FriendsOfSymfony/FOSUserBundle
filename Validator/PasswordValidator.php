@@ -20,11 +20,9 @@ class PasswordValidator extends ConstraintValidator
         if (!is_object($object)) {
             throw new \RuntimeException('This is a class constraint.');
         }
-
         $raw = $object->{$constraint->passwordProperty};
         $user = null === $constraint->userProperty ? $object : $object->{$constraint->userProperty};
         $encoder = $this->encoderFactory->getEncoder($user);
-
         if (!$encoder->isPasswordValid($user->getPassword(), $raw, $user->getSalt())) {
             $this->setMessage($constraint->message);
             return false;
