@@ -77,7 +77,7 @@ EOT
 
         $creator = $this->container->get('fos_user.user_creator');
 
-        $creator->create($username, $password, $email, $inactive, $superadmin);
+        $creator->create($username, $password, $email, !$inactive, $superadmin);
 
         $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
