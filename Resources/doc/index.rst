@@ -581,6 +581,12 @@ All configuration options are listed below::
             controller:
                 user:     ~
                 security: ~
+            manager_orm:
+                    user: MyProject\MyBundle\Entity\UserManager
+                    group: MyProject\MyBundle\Entity\GroupManager
+            manager_odm:
+                    user: MyProject\MyBundle\Document\UserManager
+                    group: MyProject\MyBundle\Document\GroupManager
         service:
             mailer: ~
             email_canonicalizer:    ~

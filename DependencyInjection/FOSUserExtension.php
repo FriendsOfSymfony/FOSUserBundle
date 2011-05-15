@@ -76,6 +76,8 @@ class FOSUserExtension extends Extension
             'form'          => 'fos_user.form.type.%s.class',
             'form_handler'  => 'fos_user.form.handler.%s.class',
             'controller'    => 'fos_user.controller.%s.class',
+            'manager_orm'   => 'fos_user.manager_orm.%s.class',
+            'manager_odm'   => 'fos_user.manager_odm.%s.class',
         ));
 
         $this->remapParametersNamespaces($config['email'], $container, array(
