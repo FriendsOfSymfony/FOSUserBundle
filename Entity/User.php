@@ -12,6 +12,6 @@ namespace FOS\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as AbstractUser;
 
-abstract class User extends AbstractUser
+class User extends AbstractUser
 {
 }
