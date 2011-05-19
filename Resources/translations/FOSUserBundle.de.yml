@@ -43,7 +43,7 @@ user.email.confirmation: |
 # Global strings
 layout.logout: Abmelden
 layout.login: Anmelden
-layout.register: Einschreiben
+layout.register: Registrieren
 layout.logged_in_as: Angemeldet als %username%
 
 # Form field labels
