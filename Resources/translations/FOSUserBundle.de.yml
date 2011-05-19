@@ -9,15 +9,15 @@ security.login.submit: Anmelden
 security.login.request_reset_password: Passwort vergessen
 
 user.change_password.submit: Passwort ändern
-user.check_confirmation_email.message: Eine Email wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Benutzerkonto zu bestätigen.
-user.check_resetting_email.sent: Eine Email wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Passwort zurückzusetzen.
+user.check_confirmation_email.message: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Benutzerkonto zu bestätigen.
+user.check_resetting_email.sent: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Passwort zurückzusetzen.
 user.confirmed.message: Glückwunsch %username%, dein Benutzerkonto ist jetzt bestätigt.
 
 user.show.username: Benutzername
-user.show.email: Email
+user.show.email: E-Mail
 user.new.submit: Benutzer erstellen
 user.edit.submit: Benutzer aktualisieren
-user.password_already_requested: Ein neues Passwort wurde in den vergangenene 24 Stunden für diesen Benutzer bereits einmal beantragt.
+user.password_already_requested: Ein neues Passwort wurde in den vergangenen 24 Stunden für diesen Benutzer bereits einmal beantragt.
 user.password_request_reset.username: "Benutzername:"
 user.password_request_reset.submit: Passwort zurücksetzen
 user.reset_password.submit: Passwort ändern
@@ -50,7 +50,7 @@ layout.logged_in_as: Angemeldet als %username%
 fos_user_group_form_name: "Gruppenname:"
 
 user_username:             "Benutzername:"
-user_email:                "Email-Adresse:"
+user_email:                "E-Mail-Adresse:"
 user_plainPassword_first:  "Passwort:"
 user_plainPassword_second: "Bestätigung:"
 #fos_user_user_form_plainPassword: "Passwort (zweimal eingeben):"
