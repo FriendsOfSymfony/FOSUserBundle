@@ -646,7 +646,7 @@ Security configuration
         firewalls:
             main:
                 pattern:      .*
-                form-login:
+                form_login:
                     provider:       fos_userbundle
                     login_path:     /login
                     use_forward:    false
