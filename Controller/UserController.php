@@ -205,7 +205,12 @@ class UserController extends ContainerAware
      */
     public function sendResettingEmailAction()
     {
-        $user = $this->findUserBy('username', $this->container->get('request')->get('username'));
+        try {
+            $user = $this->findUserBy('username', $this->container->get('request')->get('username'));
+        } catch (NotFoundHttpException $e) {
+            $this->setFlash('notice', $e->getMessage());
+            return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_request_reset_password'));
+        }
 
         if ($user->isPasswordRequestNonExpired($this->getPasswordRequestTtl())) {
             return $this->container->get('templating')->renderResponse('FOSUserBundle:User:passwordAlreadyRequested.html.'.$this->getEngine());
