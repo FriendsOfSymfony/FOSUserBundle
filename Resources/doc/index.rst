@@ -595,6 +595,8 @@ All configuration options are listed below::
             reset_password:  ~
         form_validation_groups:
             user: ~             # This value is an array of groups
+            change_password: ~  # This value is an array of groups
+            reset_password: ~   # This value is an array of groups
         email:
             from_email: ~       # { admin@example.com: Sender_name }
             confirmation:
