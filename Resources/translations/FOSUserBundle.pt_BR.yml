@@ -1,0 +1,61 @@
+group.edit.submit: Atualizar Grupo
+group.show.name: Nome do Grupo
+group.new.submit: Criar Grupo
+
+security.login.username: "Usuário:"
+security.login.password: "Senha:"
+security.login.remember_me: Lembrete de senha
+security.login.submit: Entrar
+security.login.request_reset_password: Esqueci minha senha
+
+user.change_password.submit: Alterar senha
+user.check_confirmation_email.message: Foi enviado um email para %email%. Para para ativar a sua conta, clique no link da mensagem.
+user.check_resetting_email.sent: Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.
+user.confirmed.message: Parabéns %username%, a sua conta foi ativada.
+
+user.show.username: Usuário
+user.show.email: Email
+user.new.submit: Criar conta
+user.edit.submit: Atualizar conta
+user.password_already_requested: Este usuário já solicitou uma senha nas últimas 24 horas.
+user.password_request_reset.username: "Usuário:"
+user.password_request_reset.submit: Recuperar senha
+user.reset_password.submit: Alterar senha
+
+user.email.resetting_password: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para recuperar sua senha, por favor clique no seguinte link: %confirmationUrl%
+
+    Atenciosamente,
+    A equipe.
+
+user.email.confirmation: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para completar a validação da sua conta, por favor clique no seguinte link: %confirmationUrl%
+
+    Atenciosamente,
+    A equipe.
+
+# Global strings
+layout.logout: Sair
+layout.login: Entrar
+layout.register: Registar
+layout.logged_in_as: Logado como %username%
+
+# Form field labels
+fos_user_group_form_name: "Nome do Grupo:"
+
+user_username:             "Usuário:"
+user_email:                "Email:"
+user_plainPassword_first:  "Senha:"
+user_plainPassword_second: "Repetir a senha:"
+#fos_user_user_form_plainPassword: "Senha (repetir):"
+
+fos_user_reset_password_form_new: "Nova senha:"
+
+fos_user_change_password_form_new: "Nova senha:"
+fos_user_change_password_form_current: "Senha atual:"
