@@ -16,6 +16,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Storage agnostic user object
  * Has validator annotation, but database mapping must be done in a subclass.
@@ -26,6 +29,14 @@ abstract class User implements UserInterface
     const ROLE_DEFAULT    = 'ROLE_USER';
     const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
 
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Id
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Assert\NotBlank()
+     */
     protected $id;
 
     /**
@@ -35,16 +46,21 @@ abstract class User implements UserInterface
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     protected $usernameCanonical;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     protected $email;
 
     /**
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     protected $emailCanonical;
 
@@ -83,16 +99,19 @@ abstract class User implements UserInterface
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $updatedAt;
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $lastLogin;
 
@@ -105,6 +124,7 @@ abstract class User implements UserInterface
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $passwordRequestedAt;
 
@@ -125,6 +145,7 @@ abstract class User implements UserInterface
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $expiresAt;
 
@@ -140,6 +161,7 @@ abstract class User implements UserInterface
 
     /**
      * @var \DateTime
+     * @Assert\DateTime()
      */
     protected $credentialsExpireAt;
 
@@ -161,7 +183,7 @@ abstract class User implements UserInterface
             return;
         }
 
-        if (!in_array($role, $this->roles, true)) {
+        if (!in_array($role, $this->getRoles(), true)) {
             $this->roles[] = $role;
         }
     }
@@ -332,7 +354,7 @@ abstract class User implements UserInterface
      * Implements SecurityUserInterface
      *
      * @return array The roles
-     **/
+     */
     public function getRoles()
     {
         $roles = $this->roles;
@@ -341,7 +363,6 @@ abstract class User implements UserInterface
             $roles = array_merge($roles, $group->getRoles());
         }
 
-        // we need to make sure to have at least one role
         $roles[] = self::ROLE_DEFAULT;
 
         return array_unique($roles);
@@ -663,7 +684,6 @@ abstract class User implements UserInterface
                 }
             }
 
-            // let's just hope we got a good seed
             if (false === $bytes) {
                 $bytes = hash('sha256', uniqid(mt_rand(), true), true);
             }
@@ -721,7 +741,7 @@ abstract class User implements UserInterface
      * Add a group to the user groups.
      *
      * @param GroupInterface $group
-     **/
+     */
     public function addGroup(GroupInterface $group)
     {
         if (!$this->getGroups()->contains($group)) {
@@ -733,7 +753,7 @@ abstract class User implements UserInterface
      * Remove a group from the user groups.
      *
      * @param GroupInterface $group
-     **/
+     */
     public function removeGroup(GroupInterface $group)
     {
         if ($this->getGroups()->contains($group)) {
