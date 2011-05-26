@@ -108,7 +108,7 @@ MongoDB User class
 
     namespace MyProject\MyBundle\Document;
     use FOS\UserBundle\Document\User as BaseUser;
-    use Doctrine\ODM\MongoDB\Mapping as MongoDB;
+    use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
     /**
      * @MongoDB\Document
