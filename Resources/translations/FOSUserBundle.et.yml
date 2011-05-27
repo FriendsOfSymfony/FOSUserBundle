@@ -1,0 +1,61 @@
+group.edit.submit: Muuda grupp
+group.show.name: Grupi nimi
+group.new.submit: Uus grupp
+
+security.login.username: "Kasutajanimi:"
+security.login.password: "Salasõna:"
+security.login.remember_me: Jäta mind meelde
+security.login.submit: Sisene
+
+user.show.username: Kasutajanimi
+user.show.email: E-mail
+user.edit.submit: Uuenda
+
+# Password change
+change_password.submit: Muuda salasõna
+
+# Registration
+registration.check_email: E-mail on saadetud aadressile %email%. Selles sisaldub viide, mis tuleb konto aktiveerimiseks avada.
+registration.confirmed: Palju õnne %username%, Sinu konto on aktiveeritud.
+registration.submit: Registreeri
+registration.email: |
+    Tere %username%!
+
+    Konto valideerimise edukaks lõpetamiseks palun vajutage viitel %confirmationUrl%
+
+    Parimatega,
+    Tiim.
+
+# Password resetting
+resetting.password_already_requested: Kasutaja salasõna on juba viimase 24 tunni jooksul küsitud.
+resetting.check_email: E-mail on saadetud aadressile %email%. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.
+resetting.request.username: "Kasutajanimi:"
+resetting.request.submit: Saada salasõna
+resetting.reset.submit: Muuda salasõna
+resetting.email: |
+    Tere %username%!
+
+    Salasõna muutmiseks palun vajutage viitel %confirmationUrl%
+
+    Parimatega,
+    Tiim.
+
+# Global strings
+layout.logout: Välju
+layout.login: Sisene
+layout.register: Registreeri
+layout.logged_in_as: "Sisse logitud: %username%"
+
+# Form field labels
+fos_user_group_form_name: "Grupi nimi:"
+
+user_username:             "Kasutajanimi:"
+user_email:                "E-mail:"
+user_plainPassword_first:  "Salasõna:"
+user_plainPassword_second: "Salasõna uuesti:"
+#fos_user_user_form_plainPassword: "Salasõna (sisesta topelt):"
+
+fos_user_reset_password_form_new: "Uus salasõna:"
+
+fos_user_change_password_form_new: "Uus salasõna:"
+fos_user_change_password_form_current: "Vana salasõna:"
