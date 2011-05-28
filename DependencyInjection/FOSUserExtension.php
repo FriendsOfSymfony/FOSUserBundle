@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
@@ -24,7 +33,7 @@ class FOSUserExtension extends Extension
         }
         $loader->load(sprintf('%s.xml', $config['db_driver']));
 
-        foreach (array('services', 'controller', 'form', 'validator', 'security', 'util', 'mailer', 'listener') as $basename) {
+        foreach (array('services', 'form', 'validator', 'security', 'util', 'mailer', 'listener') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
         }
 
@@ -75,7 +84,6 @@ class FOSUserExtension extends Extension
             'model'         => 'fos_user.model.%s.class',
             'form'          => 'fos_user.form.type.%s.class',
             'form_handler'  => 'fos_user.form.handler.%s.class',
-            'controller'    => 'fos_user.controller.%s.class',
         ));
 
         $this->remapParametersNamespaces($config['email'], $container, array(

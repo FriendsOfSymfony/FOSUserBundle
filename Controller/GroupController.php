@@ -1,11 +1,12 @@
 <?php
 
-/**
- * (c) Thibault Duplessis <thibault.duplessis@gmail.com>
- * (c) Christophe Coevoet <stof@notk.org>
+/*
+ * This file is part of the FOSUserBundle package.
  *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace FOS\UserBundle\Controller;
@@ -17,6 +18,9 @@ use FOS\UserBundle\Model\Group;
 
 /**
  * RESTful controller managing group CRUD
+ *
+ * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ * @author Christophe Coevoet <stof@notk.org>
  */
 class GroupController extends ContainerAware
 {

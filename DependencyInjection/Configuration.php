@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -62,7 +71,8 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('user')->defaultValue('FOS\\UserBundle\\Form\\UserFormType')->end()
+                                ->scalarNode('profile')->defaultValue('FOS\\UserBundle\\Form\\ProfileFormType')->end()
+                                ->scalarNode('registration')->defaultValue('FOS\\UserBundle\\Form\\RegistrationFormType')->end()
                                 ->scalarNode('change_password')->defaultValue('FOS\\UserBundle\\Form\\ChangePasswordFormType')->end()
                                 ->scalarNode('reset_password')->defaultValue('FOS\\UserBundle\\Form\\ResetPasswordFormType')->end()
                             ->end()
@@ -70,16 +80,10 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form_handler')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('user')->defaultValue('FOS\\UserBundle\\Form\\UserFormHandler')->end()
+                                ->scalarNode('profile')->defaultValue('FOS\\UserBundle\\Form\\ProfileFormHandler')->end()
+                                ->scalarNode('registration')->defaultValue('FOS\\UserBundle\\Form\\RegistrationFormHandler')->end()
                                 ->scalarNode('change_password')->defaultValue('FOS\\UserBundle\\Form\\ChangePasswordFormHandler')->end()
                                 ->scalarNode('reset_password')->defaultValue('FOS\\UserBundle\\Form\\ResetPasswordFormHandler')->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('controller')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('user')->defaultValue('FOS\\UserBundle\\Controller\\UserController')->end()
-                                ->scalarNode('security')->defaultValue('FOS\\UserBundle\\Controller\\SecurityController')->end()
                             ->end()
                         ->end()
                     ->end()
@@ -126,8 +130,12 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('form_name')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('user')
-                            ->defaultValue('fos_user_user_form')
+                        ->scalarNode('profile')
+                            ->defaultValue('fos_user_profile_form')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('registration')
+                            ->defaultValue('fos_user_registration_form')
                             ->cannotBeEmpty()
                         ->end()
                         ->scalarNode('change_password')
@@ -150,7 +158,12 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('form_validation_groups')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('user')
+                        ->arrayNode('profile')
+                            ->addDefaultsIfNotSet()
+                            ->prototype('scalar')->end()
+                            ->defaultValue(array('Profile'))
+                        ->end()
+                        ->arrayNode('registration')
                             ->addDefaultsIfNotSet()
                             ->prototype('scalar')->end()
                             ->defaultValue(array('Registration'))
@@ -192,13 +205,13 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->booleanNode('enabled')->defaultFalse()->end()
-                                ->scalarNode('template')->defaultValue('FOSUserBundle:User:confirmationEmail')->end()
+                                ->scalarNode('template')->defaultValue('FOSUserBundle:Registration:email.txt.twig')->end()
                             ->end()
                         ->end()
                         ->arrayNode('resetting_password')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('template')->defaultValue('FOSUserBundle:User:resettingPasswordEmail')->end()
+                                ->scalarNode('template')->defaultValue('FOSUserBundle:Resetting:email.txt.twig')->end()
                                 ->scalarNode('token_ttl')->defaultValue(86400)->end()
                             ->end()
                         ->end()

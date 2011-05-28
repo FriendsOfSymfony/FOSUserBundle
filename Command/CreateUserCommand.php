@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\Command;
@@ -10,17 +19,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use FOS\UserBundle\Model\User;
 
-/*
- * This file is part of the FOS\UserBundle
- *
- * (c) Matthieu Bontemps <matthieu@knplabs.com>
- * (c) Thibault Duplessis <thibault.duplessis@gmail.com>
- * (c) Luis Cordova <cordoval@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+/**
+ * @author Matthieu Bontemps <matthieu@knplabs.com>
+ * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ * @author Luis Cordova <cordoval@gmail.com>
  */
-
 class CreateUserCommand extends Command
 {
     /**

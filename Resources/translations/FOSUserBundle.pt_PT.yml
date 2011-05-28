@@ -6,36 +6,41 @@ security.login.username: "Utilizador:"
 security.login.password: "Password:"
 security.login.remember_me: Lembrar-me
 security.login.submit: Entrar
-security.login.request_reset_password: Esqueci-me da password
 
-user.change_password.submit: Mudar a password
-user.check_confirmation_email.message: Foi enviado um email para %email%. Este contém um link de ativação que terá de visitar para ativar a sua conta.
-user.check_resetting_email.sent: Foi enviado um email para %email%. Este contém um link que terá de visitar para puder recuperar a sua password.
-user.confirmed.message: Parabéns %username%, a sua conta foi confirmada.
+# Profile
+profile.show.username: Utilizador
+profile.show.email: Email
+profile.edit.submit: Atualizar conta
 
-user.show.username: Utilizador
-user.show.email: Email
-user.new.submit: Criar conta
-user.edit.submit: Atualizar conta
-user.password_already_requested: Uma password para este utilizador já foi requisitada nas últimas 24 horas.
-user.password_request_reset.username: "Utilizador:"
-user.password_request_reset.submit: Recuperar password
-user.reset_password.submit: Alterar passord
+# Password change
+change_password.submit: Mudar a password
 
-user.email.resetting_password: |
-    Bem-vindo(a) %username%!
-    Olá %username%!
+# Registration
+registration.check_email: Foi enviado um email para %email%. Este contém um link de ativação que terá de visitar para ativar a sua conta.
+registration.confirmed: Parabéns %username%, a sua conta foi confirmada.
+registration.submit: Registar
 
-    Para recuperar a password, por favor visite o seguinte link: %confirmationUrl%
-
-    Cumprimentos,
-    A equipa.
-
-user.email.confirmation: |
+registration.email: |
     Bem-vindo(a) %username%!
     Olá %username%!
 
     Para completar a validação da sua conta, por favor visite o seguinte link: %confirmationUrl%
+
+    Cumprimentos,
+    A equipa.
+
+# Password resetting
+resetting.password_already_requested: Uma password para este utilizador já foi requisitada nas últimas 24 horas.
+resetting.check_email: Foi enviado um email para %email%. Este contém um link que terá de visitar para puder recuperar a sua password.
+resetting.request.username: "Utilizador:"
+resetting.request.submit: Recuperar password
+resetting.reset.submit: Alterar passord
+
+resetting.email: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para recuperar a password, por favor visite o seguinte link: %confirmationUrl%
 
     Cumprimentos,
     A equipa.

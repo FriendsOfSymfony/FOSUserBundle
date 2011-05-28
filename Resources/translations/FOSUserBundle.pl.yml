@@ -6,36 +6,41 @@ security.login.username: "Nazwa użytkownika:"
 security.login.password: "Hasło:"
 security.login.remember_me: Nie wylogowuj mnie
 security.login.submit: Zaloguj
-security.login.request_reset_password: Nie pamiętam hasła
 
-user.change_password.submit: Zmień hasło
-user.check_confirmation_email.message: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby aktywować konto.
-user.check_resetting_email.sent: Na adres %email% Wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby zresetować hasło.
-user.confirmed.message: Gratulacje %username%, potwierdziłeś konto.
+# Profile
+profile.show.username: Nazwa użytkownika
+profile.show.email: E-mail
+profile.edit.submit: Edytuj użytkownika
 
-user.show.username: Nazwa użytkownika
-user.show.email: E-mail
-user.new.submit: Utwórz użytkownika
-user.edit.submit: Edytuj użytkownika
-user.password_already_requested: W przeciągu ostatnich 24 godzin nastąpiła już próba odzyskania hasła.
-user.password_request_reset.username: "Nazwa użytkownika:"
-user.password_request_reset.submit: Resetuj hasło
-user.reset_password.submit: Zmień hasło
+# Password change
+change_password.submit: Zmień hasło
 
-user.email.resetting_password: |
-    Witaj %username%!
-    Cześć %username%!
+# Registration
+registration.check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby aktywować konto.
+registration.confirmed: Gratulacje %username%, potwierdziłeś konto.
+registration.submit: Zarejestruj
 
-    Aby zresetować hasło - proszę przejść do %confirmationUrl%
-
-    Pozdrawiamy,
-    Zespół.
-
-user.email.confirmation: |
+registration.email: |
     Witaj %username%!
     Cześć %username%!
 
     Aby potwierdzić swoje konto - proszę przejść do %confirmationUrl%
+
+    Pozdrawiamy,
+    Zespół.
+
+# Password resetting
+resetting.password_already_requested: W przeciągu ostatnich 24 godzin nastąpiła już próba odzyskania hasła.
+resetting.check_email: Na adres %email% Wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby zresetować hasło.
+resetting.request.username: "Nazwa użytkownika:"
+resetting.request.submit: Resetuj hasło
+resetting.reset.submit: Zmień hasło
+
+resetting.email: |
+    Witaj %username%!
+    Cześć %username%!
+
+    Aby zresetować hasło - proszę przejść do %confirmationUrl%
 
     Pozdrawiamy,
     Zespół.

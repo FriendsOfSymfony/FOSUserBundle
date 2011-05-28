@@ -1,7 +1,0 @@
-<div class="fos_user_user_list">
-    <ul>
-    {% for user in users %}
-        <li><a href="{{ path('fos_user_user_show', {'username': user.getUsername()} ) }}">{{ user.getUsername() }}</a></li>
-    {% endfor %}
-    </ul>
-</div>

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\Command;
@@ -7,20 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Acl\Exception\AclAlreadyExistsException;
 
-/*
- * This file is part of the FOS\UserBundle
- *
- * (c) Johannes M. Schmitt <schmittjoh@gmail.com>
- * (c) Luis Cordova <cordoval@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 /**
  * This command installs global access control entries (ACEs)
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Luis Cordova <cordoval@gmail.com>
  */
 class InstallAcesCommand extends Command
 {

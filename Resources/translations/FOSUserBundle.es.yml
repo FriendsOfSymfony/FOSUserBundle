@@ -6,36 +6,41 @@ security.login.username: "Nombre de usuario:"
 security.login.password: "Contraseña:"
 security.login.remember_me: Recordar
 security.login.submit: Entrar
-security.login.request_reset_password: Olvidé mi contraseña
 
-user.change_password.submit: Cambiar contraseña
-user.check_confirmation_email.message: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
-user.check_resetting_email.sent: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
-user.confirmed.message: Felicidades %username%, tu cuenta está ahora confirmada.
+# Profile
+profile.show.username: Nombre de usuario
+profile.show.email: Email
+profile.edit.submit: Actualizar usuario
 
-user.show.username: Nombre de usuario
-user.show.email: Email
-user.new.submit: Crear usuario
-user.edit.submit: Actualizar usuario
-user.password_already_requested: La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.
-user.password_request_reset.username: "Nombre de usuario:"
-user.password_request_reset.submit: Restablecer contraseña
-user.reset_password.submit: Cambiar contraseña
+# Password change
+change_password.submit: Cambiar contraseña
 
-user.email.resetting_password: |
-    Bienvenido %username%!
-    Hola %username%!
+# Registration
+registration.check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
+registration.confirmed: Felicidades %username%, tu cuenta está ahora confirmada.
+registration.submit: Registrar
 
-    Para restablecer tu contraseña - por favor visita %confirmationUrl%
-
-    Atentamente,
-    el Equipo.
-
-user.email.confirmation: |
+registration.email: |
     Bienvenido %username%!
     Hola %username%!
 
     Para completar la validación de tu cuenta - por favor visita %confirmationUrl%
+
+    Atentamente,
+    el Equipo.
+
+# Password resetting
+resetting.password_already_requested: La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.
+resetting.check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
+resetting.request.username: "Nombre de usuario:"
+resetting.request.submit: Restablecer contraseña
+resetting.reset.submit: Cambiar contraseña
+
+resetting.email: |
+    Bienvenido %username%!
+    Hola %username%!
+
+    Para restablecer tu contraseña - por favor visita %confirmationUrl%
 
     Atentamente,
     el Equipo.

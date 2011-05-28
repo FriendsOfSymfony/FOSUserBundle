@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="UTF-8" />
     </head>
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a href="{{ path('fos_user_user_show', {'username': app.user.username}) }}">
+                <a href="{{ path('fos_user_profile_show') }}">
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                 </a> |
-                <a href="{{ path('_security_logout') }}">
-                    {{ 'layout.logout'|trans([], 'FOSUserBundle') }}
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                 </a>
             {% else %}
-                <a href="{{ path('_security_login') }}">{{ 'layout.login'|trans([], 'FOSUserBundle') }}</a> |
-                <a href="{{ path('fos_user_user_new') }}">{{ 'layout.register'|trans([], 'FOSUserBundle') }}</a>
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> |
+                <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
         </div>
 
         {% for key, flash in app.session.getFlashes() %}
         <div class="{{ flash }}">
-            {{ key|trans([], 'FOSUserBundle') }}
+            {{ key|trans({}, 'FOSUserBundle') }}
         </div>
         {% endfor %}
 

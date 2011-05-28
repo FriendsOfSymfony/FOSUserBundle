@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -68,6 +77,14 @@ class UserManager extends BaseUserManager
     public function findUsers()
     {
         return $this->repository->findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function refreshUser(UserInterface $user)
+    {
+        $this->dm->refresh($user);
     }
 
     /**

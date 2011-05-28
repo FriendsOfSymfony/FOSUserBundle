@@ -6,14 +6,14 @@
 
     <services>
 
-        <service id="fos_user.form.user" factory-method="getForm" factory-service="fos_user.form_builder.user" class="Symfony\Component\Form\Form" />
+        <service id="fos_user.form.profile" factory-method="getForm" factory-service="fos_user.form_builder.profile" class="Symfony\Component\Form\Form" />
 
-        <service id="fos_user.form_builder.user" factory-method="createBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
-            <argument type="service" id="fos_user.form.type.user" />
+        <service id="fos_user.form_builder.profile" factory-method="createBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
+            <argument type="service" id="fos_user.form.type.profile" />
             <argument />
             <argument type="collection">
                 <argument key="data_class">%fos_user.model.user.class%</argument>
-                <argument key="validation_groups">%fos_user.form.user.validation_groups%</argument>
+                <argument key="validation_groups">%fos_user.form.profile.validation_groups%</argument>
             </argument>
             <call method="addEventSubscriber">
                 <argument type="service" id="fos_user.form.listener.user_canonical_fields" />
@@ -24,16 +24,44 @@
             <argument type="service" id="fos_user.user_manager" />
         </service>
 
-        <service id="fos_user.form.type.user" class="%fos_user.form.type.user.class%">
-            <argument>%fos_user.form.user.name%</argument>
+        <service id="fos_user.form.type.profile" class="%fos_user.form.type.profile.class%">
+            <argument>%fos_user.form.profile.name%</argument>
             <argument type="collection">
                 <argument key="theme">%fos_user.template.theme%</argument>
             </argument>
             <tag name="form.type" />
         </service>
 
-        <service id="fos_user.form.handler.user" class="%fos_user.form.handler.user.class%" scope="request">
-            <argument type="service" id="fos_user.form.user" />
+        <service id="fos_user.form.handler.profile" class="%fos_user.form.handler.profile.class%" scope="request">
+            <argument type="service" id="fos_user.form.profile" />
+            <argument type="service" id="request" />
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
+        <service id="fos_user.form.registration" factory-method="getForm" factory-service="fos_user.form_builder.registration" class="Symfony\Component\Form\Form" />
+
+        <service id="fos_user.form_builder.registration" factory-method="createBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
+            <argument type="service" id="fos_user.form.type.registration" />
+            <argument />
+            <argument type="collection">
+                <argument key="data_class">%fos_user.model.user.class%</argument>
+                <argument key="validation_groups">%fos_user.form.registration.validation_groups%</argument>
+            </argument>
+            <call method="addEventSubscriber">
+                <argument type="service" id="fos_user.form.listener.user_canonical_fields" />
+            </call>
+        </service>
+
+        <service id="fos_user.form.type.registration" class="%fos_user.form.type.registration.class%">
+            <argument>%fos_user.form.registration.name%</argument>
+            <argument type="collection">
+                <argument key="theme">%fos_user.template.theme%</argument>
+            </argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="fos_user.form.handler.registration" class="%fos_user.form.handler.registration.class%" scope="request">
+            <argument type="service" id="fos_user.form.registration" />
             <argument type="service" id="request" />
             <argument type="service" id="fos_user.user_manager" />
         </service>

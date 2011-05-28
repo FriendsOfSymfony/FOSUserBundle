@@ -1,8 +1,0 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
-{% block content %}
-{% set email = user.getEmail() %}
-<p>
-{{ 'user.check_resetting_email.message'|trans([], 'FOSUserBundle') }}
-</p>
-{% endblock %}

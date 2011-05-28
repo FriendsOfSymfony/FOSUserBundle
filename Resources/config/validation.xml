@@ -8,49 +8,76 @@
 
         <constraint name="FOS\UserBundle\Validator\Unique">
             <option name="property">usernameCanonical</option>
-            <option name="groups">Registration</option>
+            <option name="groups">
+                <value>Registration</value>
+                <value>Profile</value>
+            </option>
         </constraint>
 
         <constraint name="FOS\UserBundle\Validator\Unique">
             <option name="property">emailCanonical</option>
-            <option name="groups">Registration</option>
+            <option name="groups">
+                <value>Registration</value>
+                <value>Profile</value>
+            </option>
         </constraint>
 
         <property name="username">
             <constraint name="NotBlank">
                 <option name="message">Please enter a username</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="MinLength">
                 <option name="limit">2</option>
                 <option name="message">The username is too short</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="MaxLength">
                 <option name="limit">255</option>
                 <option name="message">The username is too long</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
         </property>
 
         <property name="email">
             <constraint name="NotBlank">
                 <option name="message">Please enter an email</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="MinLength">
                 <option name="limit">2</option>
                 <option name="message">The email is too short</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="MaxLength">
                 <option name="limit">255</option>
                 <option name="message">The email is too long</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="Email">
                 <option name="message">The email is not valid</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
         </property>
 
@@ -62,12 +89,18 @@
             <constraint name="MinLength">
                 <option name="limit">2</option>
                 <option name="message">The password is too short</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
             <constraint name="MaxLength">
                 <option name="limit">255</option>
                 <option name="message">The password is too long</option>
-                <option name="groups">Registration</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
             </constraint>
         </property>
     </class>

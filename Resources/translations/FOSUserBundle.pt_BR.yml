@@ -6,36 +6,41 @@ security.login.username: "Usuário:"
 security.login.password: "Senha:"
 security.login.remember_me: Lembrete de senha
 security.login.submit: Entrar
-security.login.request_reset_password: Esqueci minha senha
 
-user.change_password.submit: Alterar senha
-user.check_confirmation_email.message: Foi enviado um email para %email%. Para para ativar a sua conta, clique no link da mensagem.
-user.check_resetting_email.sent: Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.
-user.confirmed.message: Parabéns %username%, a sua conta foi ativada.
+# Profile
+profile.show.username: Usuário
+profile.show.email: Email
+profile.edit.submit: Atualizar conta
 
-user.show.username: Usuário
-user.show.email: Email
-user.new.submit: Criar conta
-user.edit.submit: Atualizar conta
-user.password_already_requested: Este usuário já solicitou uma senha nas últimas 24 horas.
-user.password_request_reset.username: "Usuário:"
-user.password_request_reset.submit: Recuperar senha
-user.reset_password.submit: Alterar senha
+# Password change
+change_password.submit: Alterar senha
 
-user.email.resetting_password: |
-    Bem-vindo(a) %username%!
-    Olá %username%!
+# Registration
+registration.check_email: Foi enviado um email para %email%. Para para ativar a sua conta, clique no link da mensagem.
+registration.confirmed: Parabéns %username%, a sua conta foi ativada.
+registration.submit: Registar
 
-    Para recuperar sua senha, por favor clique no seguinte link: %confirmationUrl%
-
-    Atenciosamente,
-    A equipe.
-
-user.email.confirmation: |
+registration.email: |
     Bem-vindo(a) %username%!
     Olá %username%!
 
     Para completar a validação da sua conta, por favor clique no seguinte link: %confirmationUrl%
+
+    Atenciosamente,
+    A equipe.
+
+# Password resetting
+resetting.password_already_requested: Este usuário já solicitou uma senha nas últimas 24 horas.
+resetting.check_email: Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.
+resetting.request.username: "Usuário:"
+resetting.request.submit: Recuperar senha
+resetting.reset.submit: Alterar senha
+
+resetting.email: |
+    Bem-vindo(a) %username%!
+    Olá %username%!
+
+    Para recuperar sua senha, por favor clique no seguinte link: %confirmationUrl%
 
     Atenciosamente,
     A equipe.

@@ -6,36 +6,41 @@ security.login.username: "Nom d'utilisateur:"
 security.login.password: "Mot de passe:"
 security.login.remember_me: Se souvenir de moi
 security.login.submit: Connexion
-security.login.request_reset_password: Mot de passe oublié
 
-user.change_password.submit: Modifier le mot de passe
-user.check_confirmation_email.message: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
-user.check_resetting_email.sent: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
-user.confirmed.message: Félicitations %username%, votre compte est maintenant activé.
+# Profile
+profile.show.username: Nom d'utilisateur
+profile.show.email: Adresse e-mail
+profile.edit.submit: Mettre à jour
 
-user.show.username: Nom d'utilisateur
-user.show.email: Adresse e-mail
-user.new.submit: Créer l'utilisateur
-user.edit.submit: Mettre à jour l'utilisateur
-user.password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
-user.password_request_reset.username: "Nom d'utilisateur:"
-user.password_request_reset.submit: Réinitialiser le mot de passe
-user.reset_password.submit: Modifier le mot de passe
+# Password change
+change_password.submit: Modifier le mot de passe
 
-user.email.resetting_password: |
-    Bienvenue %username% !
-    Bonjour %username% !
+# Registration
+registration.check_email: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
+registration.confirmed: Félicitations %username%, votre compte est maintenant activé.
+registration.submit: Enregistrer
 
-    Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
-
-    Cordialement,
-    L'équipe.
-
-user.email.confirmation: |
+registration.email: |
     Bienvenue %username% !
     Bonjour %username% !
 
     Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+    Cordialement,
+    L'équipe.
+
+# Password resetting
+resetting.password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
+resetting.check_email: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
+resetting.request.username: "Nom d'utilisateur:"
+resetting.request.submit: Réinitialiser le mot de passe
+resetting.reset.submit: Modifier le mot de passe
+
+resetting.email: |
+    Bienvenue %username% !
+    Bonjour %username% !
+
+    Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
 
     Cordialement,
     L'équipe.
