@@ -28,9 +28,9 @@ class UserController extends ContainerAware
      */
     public function listAction()
     {
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
+        $users = $this->get('fos_user.user_manager')->findUsers();
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:list.html.'.$this->getEngine(), array('users' => $users));
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:list.html.'.$this->getEngine(), array('users' => $users));
     }
 
     /**
@@ -40,7 +40,7 @@ class UserController extends ContainerAware
     {
         $user = $this->findUserBy('username', $username);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:show.html.'.$this->getEngine(), array('user' => $user));
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:show.html.'.$this->getEngine(), array('user' => $user));
     }
 
     /**
@@ -49,18 +49,18 @@ class UserController extends ContainerAware
     public function editAction($username)
     {
         $user = $this->findUserBy('username', $username);
-        $form = $this->container->get('fos_user.form.user');
-        $formHandler = $this->container->get('fos_user.form.handler.user');
+        $form = $this->get('fos_user.form.user');
+        $formHandler = $this->get('fos_user.form.handler.user');
 
         $process = $formHandler->process($user);
         if ($process) {
             $this->setFlash('fos_user_user_update', 'success');
-            $userUrl =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
+            $userUrl =  $this->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
 
             return new RedirectResponse($userUrl);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:edit.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:edit.html.'.$this->getEngine(), array(
             'form'      => $form->createView(),
             'username'  => $user->getUsername()
         ));
@@ -71,31 +71,31 @@ class UserController extends ContainerAware
      */
     public function newAction()
     {
-        $form = $this->container->get('fos_user.form.user');
-        $formHandler = $this->container->get('fos_user.form.handler.user');
+        $form = $this->get('fos_user.form.user');
+        $formHandler = $this->get('fos_user.form.handler.user');
 
-        $process = $formHandler->process(null, $this->container->getParameter('fos_user.email.confirmation.enabled'));
+        $process = $formHandler->process(null, $this->getParameter('fos_user.email.confirmation.enabled'));
         if ($process) {
 
             $user = $form->getData();
 
-            if ($this->container->getParameter('fos_user.email.confirmation.enabled')) {
-                $this->container->get('fos_user.mailer')->sendConfirmationEmailMessage($user, $this->getEngine());
-                $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
+            if ($this->getParameter('fos_user.email.confirmation.enabled')) {
+                $this->get('fos_user.mailer')->sendConfirmationEmailMessage($user, $this->getEngine());
+                $this->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
                 $route = 'fos_user_user_check_confirmation_email';
             } else {
                 $this->authenticateUser($user);
                 $route = 'fos_user_user_confirmed';
             }
 
-            $this->container->get('fos_user.ace_manager')->createUserAce($user);
+            $this->get('fos_user.ace_manager')->createUserAce($user);
 
             $this->setFlash('fos_user_user_create', 'success');
-            $url = $this->container->get('router')->generate($route);
+            $url = $this->get('router')->generate($route);
             return new RedirectResponse($url);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:new.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:new.html.'.$this->getEngine(), array(
             'form' => $form->createView()
         ));
     }
@@ -105,13 +105,13 @@ class UserController extends ContainerAware
      */
     public function checkConfirmationEmailAction()
     {
-        $email = $this->container->get('session')->get('fos_user_send_confirmation_email/email');
-        $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
+        $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
+        $this->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->findUserBy('email', $email);
 
         $this->setFlash('fos_user_user_confirm', 'success');
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:checkConfirmationEmail.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:checkConfirmationEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -125,10 +125,10 @@ class UserController extends ContainerAware
         $user->setConfirmationToken(null);
         $user->setEnabled(true);
 
-        $this->container->get('fos_user.user_manager')->updateUser($user);
+        $this->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
 
-        return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_confirmed'));
+        return new RedirectResponse( $this->get('router')->generate('fos_user_user_confirmed'));
     }
 
     /**
@@ -139,7 +139,7 @@ class UserController extends ContainerAware
         $user = $this->getUser();
 
         $this->setFlash('fos_user_user_confirmed', 'success');
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:confirmed.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -150,10 +150,10 @@ class UserController extends ContainerAware
     public function deleteAction($username)
     {
         $user = $this->findUserBy('username', $username);
-        $this->container->get('fos_user.user_manager')->deleteUser($user);
+        $this->get('fos_user.user_manager')->deleteUser($user);
         $this->setFlash('fos_user_user_delete', 'success');
 
-        return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_list'));
+        return new RedirectResponse( $this->get('router')->generate('fos_user_user_list'));
     }
 
     /**
@@ -162,11 +162,11 @@ class UserController extends ContainerAware
     public function changePasswordAction()
     {
         $user = $this->getUser();
-        $form = $this->container->get('fos_user.form.change_password');
-        $formHandler = $this->container->get('fos_user.form.handler.change_password');
+        $form = $this->get('fos_user.form.change_password');
+        $formHandler = $this->get('fos_user.form.handler.change_password');
         $formHandler->process($user);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
             'form' => $form->createView()
         ));
     }
@@ -177,17 +177,17 @@ class UserController extends ContainerAware
     public function changePasswordUpdateAction()
     {
         $user = $this->getUser();
-        $form = $this->container->get('fos_user.form.change_password');
-        $formHandler = $this->container->get('fos_user.form.handler.change_password');
+        $form = $this->get('fos_user.form.change_password');
+        $formHandler = $this->get('fos_user.form.handler.change_password');
 
         $process = $formHandler->process($user);
         if ($process) {
             $this->setFlash('fos_user_user_password', 'success');
-            $url =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
+            $url =  $this->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
             return new RedirectResponse($url);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:changePassword.html.'.$this->getEngine(), array(
             'form' => $form->createView()
         ));
     }
@@ -197,7 +197,7 @@ class UserController extends ContainerAware
      */
     public function requestResetPasswordAction()
     {
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:requestResetPassword.html.'.$this->getEngine());
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:requestResetPassword.html.'.$this->getEngine());
     }
 
     /**
@@ -205,19 +205,19 @@ class UserController extends ContainerAware
      */
     public function sendResettingEmailAction()
     {
-        $user = $this->findUserBy('username', $this->container->get('request')->get('username'));
+        $user = $this->findUserBy('username', $this->get('request')->get('username'));
 
         if ($user->isPasswordRequestNonExpired($this->getPasswordRequestTtl())) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:User:passwordAlreadyRequested.html.'.$this->getEngine());
+            return $this->get('templating')->renderResponse('FOSUserBundle:User:passwordAlreadyRequested.html.'.$this->getEngine());
         }
 
         $user->generateConfirmationToken();
-        $this->container->get('session')->set('fos_user_send_resetting_email/email', $user->getEmail());
-        $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user, $this->getEngine());
+        $this->get('session')->set('fos_user_send_resetting_email/email', $user->getEmail());
+        $this->get('fos_user.mailer')->sendResettingEmailMessage($user, $this->getEngine());
         $user->setPasswordRequestedAt(new \DateTime());
-        $this->container->get('fos_user.user_manager')->updateUser($user);
+        $this->get('fos_user.user_manager')->updateUser($user);
 
-        return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_check_resetting_email'));
+        return new RedirectResponse( $this->get('router')->generate('fos_user_user_check_resetting_email'));
     }
 
     /**
@@ -225,16 +225,16 @@ class UserController extends ContainerAware
      */
     public function checkResettingEmailAction()
     {
-        $email = $this->container->get('session')->get('fos_user_send_resetting_email/email');
-        $this->container->get('session')->remove('fos_user_send_resetting_email/email');
-        $user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
+        $email = $this->get('session')->get('fos_user_send_resetting_email/email');
+        $this->get('session')->remove('fos_user_send_resetting_email/email');
+        $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
         if (empty($user)) {
-            return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_request_reset_password'));
+            return new RedirectResponse( $this->get('router')->generate('fos_user_user_request_reset_password'));
         }
 
         $this->setFlash('fos_user_user_reset', 'success');
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:checkResettingEmail.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:checkResettingEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -247,14 +247,14 @@ class UserController extends ContainerAware
         $user = $this->findUserBy('confirmationToken', $token);
 
         if (!$user->isPasswordRequestNonExpired($this->getPasswordRequestTtl())) {
-            return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_request_reset_password'));
+            return new RedirectResponse( $this->get('router')->generate('fos_user_user_request_reset_password'));
         }
 
-        $form = $this->container->get('fos_user.form.reset_password');
-        $formHandler = $this->container->get('fos_user.form.handler.reset_password');
+        $form = $this->get('fos_user.form.reset_password');
+        $formHandler = $this->get('fos_user.form.handler.reset_password');
         $formHandler->process($user);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form->createView()
         ));
@@ -268,22 +268,22 @@ class UserController extends ContainerAware
         $user = $this->findUserBy('confirmationToken', $token);
 
         if (!$user->isPasswordRequestNonExpired($this->getPasswordRequestTtl())) {
-            return new RedirectResponse( $this->container->get('router')->generate('fos_user_user_request_reset_password'));
+            return new RedirectResponse( $this->get('router')->generate('fos_user_user_request_reset_password'));
         }
 
-        $form = $this->container->get('fos_user.form.reset_password');
-        $formHandler = $this->container->get('fos_user.form.handler.reset_password');
+        $form = $this->get('fos_user.form.reset_password');
+        $formHandler = $this->get('fos_user.form.handler.reset_password');
 
         $process = $formHandler->process($user);
         if ($process) {
             $this->authenticateUser($user);
 
             $this->setFlash('fos_user_user_resetted', 'success');
-            $url =  $this->container->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
+            $url =  $this->get('router')->generate('fos_user_user_show', array('username' => $user->getUsername()));
             return new RedirectResponse($url);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:User:resetPassword.html.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form->createView()
         ));
@@ -297,7 +297,7 @@ class UserController extends ContainerAware
      */
     protected function getUser()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -316,7 +316,7 @@ class UserController extends ContainerAware
     protected function findUserBy($key, $value)
     {
         if (!empty($value)) {
-            $user = $this->container->get('fos_user.user_manager')->{'findUserBy'.ucfirst($key)}($value);
+            $user = $this->get('fos_user.user_manager')->{'findUserBy'.ucfirst($key)}($value);
         }
 
         if (empty($user)) {
@@ -334,28 +334,28 @@ class UserController extends ContainerAware
      */
     protected function authenticateUser(UserInterface $user, $reAuthenticate = false)
     {
-        $providerKey = $this->container->getParameter('fos_user.firewall_name');
+        $providerKey = $this->getParameter('fos_user.firewall_name');
         $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
 
         if (true === $reAuthenticate) {
             $token->setAuthenticated(false);
         }
 
-        $this->container->get('security.context')->setToken($token);
+        $this->get('security.context')->setToken($token);
     }
 
     protected function setFlash($action, $value)
     {
-        $this->container->get('session')->setFlash($action, $value);
+        $this->get('session')->setFlash($action, $value);
     }
 
     protected function getPasswordRequestTtl()
     {
-        return $this->container->getParameter('fos_user.email.resetting_password.token_ttl');
+        return $this->getParameter('fos_user.email.resetting_password.token_ttl');
     }
 
     protected function getEngine()
     {
-        return $this->container->getParameter('fos_user.template.engine');
+        return $this->getParameter('fos_user.template.engine');
     }
 }

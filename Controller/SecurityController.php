@@ -11,11 +11,11 @@ class SecurityController extends ContainerAware
     public function loginAction()
     {
         // get the error if any (works with forward and redirect -- see below)
-        if ($this->container->get('request')->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $this->container->get('request')->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        if ($this->get('request')->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $this->get('request')->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
         } else {
-            $error = $this->container->get('request')->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
-            $this->container->get('request')->getSession()->remove(SecurityContext::AUTHENTICATION_ERROR);
+            $error = $this->get('request')->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+            $this->get('request')->getSession()->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
 
         if ($error) {
@@ -23,9 +23,9 @@ class SecurityController extends ContainerAware
             $error = $error->getMessage();
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:Security:login.html.'.$this->getEngine(), array(
             // last username entered by the user
-            'last_username' => $this->container->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
+            'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
     }
@@ -37,6 +37,6 @@ class SecurityController extends ContainerAware
 
     protected function getEngine()
     {
-        return $this->container->getParameter('fos_user.template.engine');
+        return $this->getParameter('fos_user.template.engine');
     }
 }

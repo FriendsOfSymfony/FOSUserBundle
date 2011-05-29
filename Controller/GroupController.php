@@ -25,9 +25,9 @@ class GroupController extends ContainerAware
      */
     public function listAction()
     {
-        $groups = $this->container->get('fos_user.group_manager')->findGroups();
+        $groups = $this->get('fos_user.group_manager')->findGroups();
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups));
+        return $this->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups));
     }
 
     /**
@@ -37,7 +37,7 @@ class GroupController extends ContainerAware
     {
         $group = $this->findGroupBy('name', $groupname);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group));
+        return $this->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group));
     }
 
     /**
@@ -46,18 +46,18 @@ class GroupController extends ContainerAware
     public function editAction($groupname)
     {
         $group = $this->findGroupBy('name', $groupname);
-        $form = $this->container->get('fos_user.form.group');
-        $formHandler = $this->container->get('fos_user.form.handler.group');
+        $form = $this->get('fos_user.form.group');
+        $formHandler = $this->get('fos_user.form.handler.group');
 
         $process = $formHandler->process($group);
         if ($process) {
             $this->setFlash('fos_user_group_update', 'success');
-            $groupUrl =  $this->container->get('router')->generate('fos_user_group_show', array('groupname' => $group->getName()));
+            $groupUrl =  $this->get('router')->generate('fos_user_group_show', array('groupname' => $group->getName()));
 
             return new RedirectResponse($groupUrl);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
             'form'      => $form->createview(),
             'groupname'  => $group->getName()
         ));
@@ -68,19 +68,19 @@ class GroupController extends ContainerAware
      */
     public function newAction()
     {
-        $form = $this->container->get('fos_user.form.group');
-        $formHandler = $this->container->get('fos_user.form.handler.group');
+        $form = $this->get('fos_user.form.group');
+        $formHandler = $this->get('fos_user.form.handler.group');
 
         $process = $formHandler->process();
         if ($process) {
-            $this->container->get('session')->setFlash('fos_user_group_update', 'success');
+            $this->get('session')->setFlash('fos_user_group_update', 'success');
             $parameters = array('groupname' => $form->getData('group')->getName());
-            $url = $this->container->get('router')->generate('fos_user_group_show', $parameters);
+            $url = $this->get('router')->generate('fos_user_group_show', $parameters);
 
             return new RedirectResponse($url);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
+        return $this->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
             'form' => $form->createview()
         ));
     }
@@ -91,10 +91,10 @@ class GroupController extends ContainerAware
     public function deleteAction($groupname)
     {
         $group = $this->findGroupBy('name', $groupname);
-        $this->container->get('fos_user.group_manager')->deleteGroup($group);
+        $this->get('fos_user.group_manager')->deleteGroup($group);
         $this->setFlash('fos_user_group_delete', 'success');
 
-        return new RedirectResponse( $this->container->get('router')->generate('fos_user_group_list'));
+        return new RedirectResponse( $this->get('router')->generate('fos_user_group_list'));
     }
 
     /**
@@ -108,7 +108,7 @@ class GroupController extends ContainerAware
     protected function findGroupBy($key, $value)
     {
         if (!empty($value)) {
-            $group = $this->container->get('fos_user.group_manager')->{'findGroupBy'.ucfirst($key)}($value);
+            $group = $this->get('fos_user.group_manager')->{'findGroupBy'.ucfirst($key)}($value);
         }
 
         if (empty($group)) {
@@ -120,11 +120,11 @@ class GroupController extends ContainerAware
 
     protected function getEngine()
     {
-        return $this->container->getParameter('fos_user.template.engine');
+        return $this->getParameter('fos_user.template.engine');
     }
 
     protected function setFlash($action, $value)
     {
-        $this->container->get('session')->setFlash($action, $value);
+        $this->get('session')->setFlash($action, $value);
     }
 }
