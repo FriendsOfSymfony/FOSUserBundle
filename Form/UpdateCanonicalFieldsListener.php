@@ -2,8 +2,7 @@
 
 namespace FOS\UserBundle\Form;
 
-use Symfony\Component\Form\Events;
-use Symfony\Component\Form\Exception\UnexpectedTypeException;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Event\DataEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
@@ -26,7 +25,7 @@ class UpdateCanonicalFieldsListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return Events::postBind;
+        return array(FormEvents::POST_BIND => 'postBind');
     }
 
     public function postBind(DataEvent $event)
