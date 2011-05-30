@@ -26,13 +26,14 @@ class ProfileController extends ContainerAware
     /**
      * Show the user
      */
-    public function showAction()
+    public function showAction($username)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
+        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($username);
+        
+        if (empty($user)) {
+            throw new NotFoundHttpException(sprintf('The user "%s" does not exist', $username));
         }
-
+        
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user));
     }
 
