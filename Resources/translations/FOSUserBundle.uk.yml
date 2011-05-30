@@ -1,0 +1,61 @@
+group.edit.submit: Обновити групу
+group.show.name: Ім'я групи
+group.new.submit: Створити групу
+
+security.login.username: "Ім'я користувача:"
+security.login.password: "Пароль:"
+security.login.remember_me: Запам'ятати мене
+security.login.submit: Увійти
+security.login.request_reset_password: Забули пароль
+
+user.change_password.submit: Змінити пароль
+user.check_confirmation_email.message: Email відправлено на %email%. Він містить посилання, перейшовши по якому ви зможете активуваті ваш обліковий запис.
+user.check_resetting_email.sent: відправлено на %email%. Він містить посилання, перейшовши по якому ви зможете скинути ваш пароль.
+user.confirmed.message: Поздоровляємо, %username%, ваш обліковий запис підтверджено.
+
+user.show.username: Ім'я користувача
+user.show.email: Email
+user.new.submit: Створити користувача
+user.edit.submit: Обновити користувача
+user.password_already_requested: Пароль для цього користувача уже запитуваввся за останні 24 години.
+user.password_request_reset.username: "І'мя користувача:"
+user.password_request_reset.submit: Скинути пароль
+user.reset_password.submit: Зминити пароль
+
+user.email.resetting_password: |
+    Ласкаво просимо, %username%!
+    Здрастуйте, %username%!
+
+    Для того, щоб скинути ваш пароль, будь-ласка нажміть %confirmationUrl%
+
+    З найкращими побажаннями,
+    Команда.
+
+user.email.confirmation: |
+    Ласкаво просимо, %username%!
+    Здрастуйте, %username%!
+
+    Для того, щоб підтвердити ваш облыковий запис, будь-ласка нажміть %confirmationUrl%
+
+    З найкращими побажаннями,
+    Команда.
+
+# Global strings
+layout.logout: Вихід
+layout.login: Вхід
+layout.register: Реєстрація
+layout.logged_in_as: Ви увійшли як %username%
+
+# Form field labels
+fos_user_group_form_name: "Ім'я групи:"
+
+user_username:             "Ім'я користувача:"
+user_email:                "Email:"
+user_plainPassword_first:  "Пароль:"
+user_plainPassword_second: "Підтвердження пароля:"
+#fos_user_user_form_plainPassword: "Password (enter twice):"
+
+fos_user_reset_password_form_new: "Новий пароль:"
+
+fos_user_change_password_form_new: "Новий пароль:"
+fos_user_change_password_form_current: "Поточний пароль:"
