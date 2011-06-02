@@ -211,7 +211,7 @@ would have to be set to "main", as shown in the proceeding examples:
 
 ::
 
-    # app/config/config.yml
+    # app/config/security.yml
     security:
         providers:
             fos_userbundle:
