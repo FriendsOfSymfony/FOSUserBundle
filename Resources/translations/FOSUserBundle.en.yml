@@ -59,3 +59,6 @@ fos_user_reset_password_form_new: "New password:"
 
 fos_user_change_password_form_new: "New password:"
 fos_user_change_password_form_current: "Current password:"
+
+fos_user_user_create: "Account successfully registered"
+fos_user_user_confirmed: "Account Confirmed"
