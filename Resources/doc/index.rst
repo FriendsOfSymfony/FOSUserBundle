@@ -95,6 +95,7 @@ ORM User class
 
     // src/MyProject/MyBundle/Entity/User.php
 
+    <?php
     namespace MyProject\MyBundle\Entity;
     use FOS\UserBundle\Entity\User as BaseUser;
     use Doctrine\ORM\Mapping as ORM;
@@ -130,6 +131,7 @@ MongoDB User class
 
     // src/MyProject/MyBundle/Document/User.php
 
+    <?php
     namespace MyProject\MyBundle\Document;
     use FOS\UserBundle\Document\User as BaseUser;
     use Doctrine\ODM\MongoDB\Mapping as MongoDB;
@@ -453,6 +455,7 @@ ORM
 
     // src/MyProject/MyBundle/Entity/Group.php
 
+    <?php
     namespace MyProject\MyBundle\Entity;
     use FOS\UserBundle\Entity\Group as BaseGroup;
     use Doctrine\ORM\Mapping as ORM;
@@ -482,6 +485,7 @@ ODM
 
     // src/MyProject/MyBundle/Document/Group.php
 
+    <?php
     namespace MyProject\MyBundle\Document;
     use FOS\UserBundle\Document\Group as BaseGroup;
     use Doctrine\ODM\MongoDB\Mapping as MongoDB;
@@ -507,6 +511,7 @@ ORM
 
     // src/MyProject/MyBundle/Entity/User.php
 
+    <?php
     namespace MyProject\MyBundle\Entity;
     use FOS\UserBundle\Entity\User as BaseUser;
     use Doctrine\ORM\Mapping as ORM;
@@ -541,6 +546,7 @@ ODM
 
     // src/MyProject/MyBundle/Document/User.php
 
+    <?php
     namespace MyProject\MyBundle\Document;
     use FOS\UserBundle\Document\User as BaseUser;
     use Doctrine\ODM\MongoDB\Mapping as MongoDB;
