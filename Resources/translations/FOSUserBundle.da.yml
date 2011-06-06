@@ -1,0 +1,61 @@
+group.edit.submit: Opdater gruppe
+group.show.name: Gruppenavn
+group.new.submit: Opret gruppe
+
+security.login.username: "Brugernavn:"
+security.login.password: "Kodeord:"
+security.login.remember_me: Husk mig
+security.login.submit: Logind
+security.login.request_reset_password: Glemt kodeord
+
+user.change_password.submit: Skift kodeord
+user.check_confirmation_email.message: En email er blevet sendt til %email%. Den indeholde et aktiverings link du skal klikke for at aktiverer din konto.
+user.check_resetting_email.sent: En email er blevet sendt til %email%. Den indeholder et link til at skifte dit kodeord.
+user.confirmed.message: Tillykke %username%, din konto er nu aktiveret
+
+user.show.username: Brugernavn
+user.show.email: Email
+user.new.submit: Opret bruger
+user.edit.submit: Opdater bruger
+user.password_already_requested: Kodeordet for denne bruger er allerede blevet anmodet inden for de sidste 24 timer.
+user.password_request_reset.username: "Brugernavn:"
+user.password_request_reset.submit: Reset kodeord
+user.reset_password.submit: Skift kodeord
+
+user.email.resetting_password: |
+    Velkommen %username%!
+    Hej %username%!
+
+    For at skifte dit koderord - gå til %confirmationUrl%
+
+    Venlig hilsen
+    Teamet
+
+user.email.confirmation: |
+    Velkommen %username%!
+    Hej %username%!
+
+    For at færdiggøre aktiveringen af din konto - gå til %confirmationUrl%
+
+    Venlig Hilsen
+    Teamet
+
+# Global strings
+layout.logout: Logud
+layout.login: Logind
+layout.register: Registrer
+layout.logged_in_as: Logget ind som %username%
+
+# Form field labels
+fos_user_group_form_name: "Gruppenavn:"
+
+user_username:             "Brugernavn:"
+user_email:                "Email:"
+user_plainPassword_first:  "Kodeord:"
+user_plainPassword_second: "Kodeord verificering:"
+#fos_user_user_form_plainPassword: "Password (enter twice):"
+
+fos_user_reset_password_form_new: "Nyt kodeord:"
+
+fos_user_change_password_form_new: "Nyt kodeord:"
+fos_user_change_password_form_current: "Nuværende kodeord:"
