@@ -1,0 +1,61 @@
+group.edit.submit: Обновить группу
+group.show.name: Имя группы
+group.new.submit: Создать группу
+
+security.login.username: "Имя пользователя:"
+security.login.password: "Пароль:"
+security.login.remember_me: Запомнить меня
+security.login.submit: Войти
+security.login.request_reset_password: Забыли пароль
+
+user.change_password.submit: Изменить пароль
+user.check_confirmation_email.message: Email отправлен на %email%. Он содержит ссылку, кликнув по которой вы сможете активировать ваш аккаунт.
+user.check_resetting_email.sent: Email отправлен на %email%. Он содержит ссылку, кликнув по которой вы сожете сбросить ваш пароль.
+user.confirmed.message: Поздравляем, %username%, ваша учетная запись подтверждена.
+
+user.show.username: Имя пользователя
+user.show.email: Email
+user.new.submit: Создать пользователя
+user.edit.submit: Обновить пользователя
+user.password_already_requested: Пароль для этого пользователя уже запрашивался за последние 24 часа.
+user.password_request_reset.username: "Имя пользователя:"
+user.password_request_reset.submit: Сбросить пароль
+user.reset_password.submit: Изменить пароль
+
+user.email.resetting_password: |
+    Добро пожаловать, %username%!
+    Здраствуйте, %username%!
+
+    Для сброса вашего пароля, пожалуйста нажмите %confirmationUrl%
+
+    С наилучшими пожеланиями,
+    Команда.
+
+user.email.confirmation: |
+    Добро пожаловать, %username%!
+    Здраствуйте, %username%!
+
+    Чтобы подтвердить вашу учетную запись, пожалуйста нажмите %confirmationUrl%
+
+    С наилучшими пожеланиями,
+    Команда.
+
+# Global strings
+layout.logout: Выход
+layout.login: Вход
+layout.register: Регистрация
+layout.logged_in_as: Вы вошли как %username%
+
+# Form field labels
+fos_user_group_form_name: "Имя группы:"
+
+user_username:             "Имя пользователя:"
+user_email:                "Email:"
+user_plainPassword_first:  "Пароль:"
+user_plainPassword_second: "Подтверждение пароля:"
+#fos_user_user_form_plainPassword: "Password (enter twice):"
+
+fos_user_reset_password_form_new: "Новый пароль:"
+
+fos_user_change_password_form_new: "Новый пароль:"
+fos_user_change_password_form_current: "Текущий пароль:"
