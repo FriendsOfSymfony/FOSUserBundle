@@ -53,7 +53,7 @@ class AceManager
         $acl = $this->aclProvider->createAcl($oid);
 
         // insert ACEs for the super admin
-        $sid = new RoleSecurityIdentity(User::ROLE_SUPERADMIN);
+        $sid = new RoleSecurityIdentity(User::ROLE_SUPER_ADMIN);
         $acl->insertClassAce($sid, MaskBuilder::MASK_IDDQD);
         $this->aclProvider->updateAcl($acl);
     }

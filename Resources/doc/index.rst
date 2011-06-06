@@ -690,7 +690,7 @@ Security configuration
 
         role_hierarchy:
             ROLE_ADMIN:       ROLE_USER
-            ROLE_SUPERADMIN:  ROLE_ADMIN
+            ROLE_SUPER_ADMIN:  ROLE_ADMIN
 
 Replacing some part by your own implementation
 ==============================================

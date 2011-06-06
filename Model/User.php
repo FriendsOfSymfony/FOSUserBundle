@@ -27,7 +27,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 abstract class User implements UserInterface
 {
     const ROLE_DEFAULT    = 'ROLE_USER';
-    const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     protected $id;
 
@@ -452,7 +452,7 @@ abstract class User implements UserInterface
      */
     public function isSuperAdmin()
     {
-       return $this->hasRole(self::ROLE_SUPERADMIN);
+       return $this->hasRole(self::ROLE_SUPER_ADMIN);
     }
 
     /**
@@ -585,9 +585,9 @@ abstract class User implements UserInterface
     public function setSuperAdmin($boolean)
     {
         if (true === $boolean) {
-            $this->addRole(self::ROLE_SUPERADMIN);
+            $this->addRole(self::ROLE_SUPER_ADMIN);
         } else {
-            $this->removeRole(self::ROLE_SUPERADMIN);
+            $this->removeRole(self::ROLE_SUPER_ADMIN);
         }
     }
 

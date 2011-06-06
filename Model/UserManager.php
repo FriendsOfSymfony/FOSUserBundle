@@ -133,7 +133,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      * It is strongly discouraged to call this method manually as it bypasses
      * all ACL checks.
      *
-     * @extra:RunAs(roles="ROLE_SUPERADMIN")
+     * @extra:RunAs(roles="ROLE_SUPER_ADMIN")
      * @param string $username
      * @return UserInterface
      */
