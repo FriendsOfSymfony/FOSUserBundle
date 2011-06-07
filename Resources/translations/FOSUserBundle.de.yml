@@ -16,8 +16,8 @@ profile.edit.submit: Benutzer aktualisieren
 change_password.submit: Passwort ändern
 
 # Registration
-registration.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Benutzerkonto zu bestätigen.
-registration.confirmed: Glückwunsch %username%, dein Benutzerkonto ist jetzt bestätigt.
+registration.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um Dein Benutzerkonto zu bestätigen.
+registration.confirmed: Glückwunsch %username%, Dein Benutzerkonto ist jetzt bestätigt.
 registration.submit: Registrieren
 
 registration.email: |
@@ -31,7 +31,8 @@ registration.email: |
 
 # Password resetting
 resetting.password_already_requested: Ein neues Passwort wurde in den vergangenen 24 Stunden für diesen Benutzer bereits einmal beantragt.
-resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um dein Passwort zurückzusetzen.
+resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um Dein Passwort zurückzusetzen.
+resetting.request.invalid_username: Der Benutzer "%username%" existiert nicht.
 resetting.request.username: "Benutzername:"
 resetting.request.submit: Passwort zurücksetzen
 resetting.reset.submit: Passwort ändern
@@ -50,6 +51,19 @@ layout.logout: Abmelden
 layout.login: Anmelden
 layout.register: Registrieren
 layout.logged_in_as: Angemeldet als %username%
+
+# Flash messages
+fos_user_change_password: Das Passwort wurde geändert
+
+fos_user_group_updated: Die Gruppe wurde aktualisiert
+fos_user_group_created: Die Gruppe wurde erstellt
+fos_user_group_deleted: Die Gruppe wurde gelöscht
+
+fos_user_profile_updated: Das Benutzerprofil wurde aktualisiert
+
+fos_user_registration_created: Der Benutzer wurde erfolgreich erstellt
+
+fos_user_resetted: Das Passwort wurde erfolgreich zurückgesetzt
 
 # Form field labels
 fos_user_group_form_name: "Gruppenname:"
