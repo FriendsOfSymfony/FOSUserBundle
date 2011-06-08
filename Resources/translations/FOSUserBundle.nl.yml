@@ -1,0 +1,86 @@
+group.edit.submit: Groep bijwerken
+group.show.name: Groep naam
+group.new.submit: Groep aanmaken
+
+security.login.username: "Gebruikersnaam:"
+security.login.password: "Wachtwoord:"
+security.login.remember_me: Onthoud mijn gegevens
+security.login.submit: Inloggen
+
+# Profile
+profile.show.username: Gebruikersnaam
+profile.show.email: Email
+profile.edit.submit: Bijwerken
+
+# Password change
+change_password.submit: Wachtwoord wijzigen
+
+# Registration
+registration.check_email: Er is een email gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
+registration.confirmed: Gefeliciteerd %username%, uw account is nu bevestigd.
+registration.submit: Registreer
+
+registration.email: |
+    Welkom %username%!
+    Hallo %username%!
+
+    U moet uw account nog valideren, ga naar %confirmationUrl%
+
+    Vriendelijke groeten,
+    het Team.
+
+# Password resetting
+resetting.password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd in de laatste 24 uur.
+resetting.check_email: Er is een email gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
+resetting.request.invalid_username: De gebruiker "%username%" bestaat niet.
+resetting.request.username: "Gebruikersnaam:"
+resetting.request.submit: Reset wachtwoord
+resetting.reset.submit: Wachtwoord bijwerken
+
+resetting.email: |
+    Welkom %username%!
+    Hallo %username%!
+
+    Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
+
+    Met vriendelijke groet,
+    het Team.
+
+# Global strings
+layout.logout: Uitloggen
+layout.login: Inloggen
+layout.register: Registreer
+layout.logged_in_as: Ingelogd als %username%
+
+# Flash messages
+fos_user_change_password: Het wachtwoord is bijgewerkt.
+
+fos_user_group_updated: De groep is bijgewerkt
+fos_user_group_created: De groep is aangemaakt
+fos_user_group_deleted: De groep is verwijderd
+
+fos_user_profile_updated: Het profiel is bijgewerkt
+
+fos_user_registration_created: De gebruiker is succesvol aangemaakt
+
+fos_user_resetted: Het wachtworod is succesvol gereset
+
+# Form field labels
+fos_user_group_form_name: "Groep naam:"
+
+fos_user_profile_form_username:             "Gebruikersnaam:"
+fos_user_profile_form_email:                "Email:"
+fos_user_profile_form_plainPassword_first:  "Wachtwoord:"
+fos_user_profile_form_plainPassword_second: "Verificatie:"
+
+fos_user_registration_form_username:             "Gebruikersnaam:"
+fos_user_registration_form_email:                "Email:"
+fos_user_registration_form_plainPassword_first:  "Wachtwoord:"
+fos_user_registration_form_plainPassword_second: "Verificatie:"
+
+fos_user_resetting_form_new_first:  "Nieuw wachtwoord:"
+fos_user_resetting_form_new_second: "Verificatie:"
+
+fos_user_change_password_form_first:    "Nieuw wachtwoord:"
+fos_user_change_password_form_second:   "Verificatie:"
+fos_user_change_password_form_current:  "Huidig wachtwoord:"
