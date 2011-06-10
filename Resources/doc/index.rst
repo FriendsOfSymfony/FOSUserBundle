@@ -37,12 +37,16 @@ Installation
 Add FOSUserBundle to your vendor/bundles/ dir
 ------------------------------------------
 
-Using the vendors.php script
+Using the vendors script
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add the following line in your ``bin/deps`` file::
+Add the following line in your ``deps`` file::
 
-    /bundles/FOS    UserBundle      git://github.com/FriendsOfSymfony/UserBundle.git
+    UserBundle            /bundles/FOS            git://github.com/FriendsOfSymfony/UserBundle.git
+
+Run the vendors script::
+
+    ./bin/vendors install
 
 Using submodules
 ~~~~~~~~~~~~~~~~
