@@ -81,6 +81,6 @@ fos_user_registration_form_plainPassword_second: "Verificering:"
 fos_user_resetting_form_new_first:  "Nyt kodeord:"
 fos_user_resetting_form_new_second: "Verificering:"
 
-fos_user_change_password_form_first:    "Nyt kodeord:"
-fos_user_change_password_form_second:   "Verificering:"
+fos_user_change_password_form_new_first:    "Nyt kodeord:"
+fos_user_change_password_form_new_second:   "Verificering:"
 fos_user_change_password_form_current:  "Nuværende kodeord:"

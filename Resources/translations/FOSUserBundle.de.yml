@@ -81,6 +81,6 @@ fos_user_registration_form_plainPassword_second: "Bestätigung:"
 fos_user_resetting_form_new_first:  "Neues Passwort:"
 fos_user_resetting_form_new_second: "Bestätigung:"
 
-fos_user_change_password_form_first:    "Neues Passwort:"
-fos_user_change_password_form_second:   "Bestätigung:"
+fos_user_change_password_form_new_first:    "Neues Passwort:"
+fos_user_change_password_form_new_second:   "Bestätigung:"
 fos_user_change_password_form_current:  "Derzeitiges Passwort:"

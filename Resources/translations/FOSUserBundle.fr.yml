@@ -81,6 +81,6 @@ fos_user_registration_form_plainPassword_second: "Vérification:"
 fos_user_resetting_form_new_first:  "Nouveau mot de passe:"
 fos_user_resetting_form_new_second: "Vérification:"
 
-fos_user_change_password_form_first:    "Nouveau mot de passe:"
-fos_user_change_password_form_second:   "Vérification:"
+fos_user_change_password_form_new_first:    "Nouveau mot de passe:"
+fos_user_change_password_form_new_second:   "Vérification:"
 fos_user_change_password_form_current:  "Mot de passe actuel:"
