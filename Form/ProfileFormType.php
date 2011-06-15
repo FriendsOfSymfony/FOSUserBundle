@@ -21,6 +21,6 @@ class ProfileFormType extends AbstractType
         $builder
             ->add('username')
             ->add('email')
-            ->add('plainPassword', 'repeated', array('type' => 'password', 'options' => array('required' => 'false')));
+            ->add('plainPassword', 'repeated', array('type' => 'password', 'options' => array('required' => false)));
     }
 }
