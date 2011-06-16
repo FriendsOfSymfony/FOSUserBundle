@@ -16,8 +16,8 @@
         </div>
 
         {% for key, flash in app.session.getFlashes() %}
-        <div class="{{ flash }}">
-            {{ key|trans({}, 'FOSUserBundle') }}
+        <div class="{{ key }}">
+            {{ flash|trans({}, 'FOSUserBundle') }}
         </div>
         {% endfor %}
 
