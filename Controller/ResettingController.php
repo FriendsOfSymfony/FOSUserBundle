@@ -49,7 +49,7 @@ class ResettingController extends ContainerAware
             return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
         }
 
-        $user->generateConfirmationToken();
+        $user->updateConfirmationToken();
         $this->container->get('session')->set('fos_user_send_resetting_email/email', $user->getEmail());
         $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
