@@ -38,7 +38,7 @@ resetting.request.submit: Reset password
 resetting.reset.submit: Change password
 
 resetting.email: |
-    Welcome %username%!
+    Reset Password
     Hello %username%!
 
     To reset your password - please visit %confirmationUrl%
