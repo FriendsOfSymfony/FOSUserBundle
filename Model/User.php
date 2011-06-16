@@ -652,7 +652,7 @@ abstract class User implements UserInterface
     }
 
     /**
-     * Updates the confirmation token if it is not set.
+     * Generates the confirmation token if it is not set.
      */
     public function generateConfirmationToken()
     {
