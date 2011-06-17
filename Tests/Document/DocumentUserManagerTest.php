@@ -20,6 +20,10 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
         $this->userManager->expects($this->once())
             ->method('findUserBy')
             ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeUsername')
+            ->with($this->equalTo('jack'))
+            ->will($this->returnValue('jack'));
 
         $this->userManager->findUserByUsername('jack');
     }
@@ -29,6 +33,10 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
         $this->userManager->expects($this->once())
             ->method('findUserBy')
             ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeUsername')
+            ->with($this->equalTo('JaCk'))
+            ->will($this->returnValue('jack'));
 
         $this->userManager->findUserByUsername('JaCk');
     }
@@ -37,7 +45,11 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->userManager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('email' => 'jack@email.org')));
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeEmail')
+            ->with($this->equalTo('jack@email.org'))
+            ->will($this->returnValue('jack@email.org'));
 
         $this->userManager->findUserByEmail('jack@email.org');
     }
@@ -46,7 +58,11 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->userManager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('email' => 'jack@email.org')));
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeEmail')
+            ->with($this->equalTo('JaCk@EmAiL.oRg'))
+            ->will($this->returnValue('jack@email.org'));
 
         $this->userManager->findUserByEmail('JaCk@EmAiL.oRg');
     }
@@ -56,6 +72,10 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
         $this->userManager->expects($this->once())
             ->method('findUserBy')
             ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeUsername')
+            ->with($this->equalTo('JaCk'))
+            ->will($this->returnValue('jack'));
 
         $this->userManager->findUserByUsernameOrEmail('JaCk');
     }
@@ -64,7 +84,11 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->userManager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('email' => 'jack@email.org')));
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->userManager->expects($this->once())
+            ->method('canonicalizeEmail')
+            ->with($this->equalTo('JaCk@EmAiL.oRg'))
+            ->will($this->returnValue('jack@email.org'));
 
         $this->userManager->findUserByUsernameOrEmail('JaCk@EmAiL.oRg');
     }
@@ -73,12 +97,17 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $userMock = $this->getMock('FOS\UserBundle\Document\User', array(), array('sha1'));
 
-        $this->userManager->expects($this->once())
-            ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => 'jack')))
+        $manager = $this->getMockBuilder('FOS\UserBundle\Document\UserManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('findUserByUsername'))
+            ->getMock();
+
+        $manager->expects($this->once())
+            ->method('findUserByUsername')
+            ->with($this->equalTo('jack'))
             ->will($this->returnValue($userMock));
 
-        $this->userManager->loadUserByUsername('jack');
+        $manager->loadUserByUsername('jack');
     }
 
     /**
@@ -86,12 +115,17 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoadUserByUsernameWithMissingUser()
     {
-        $this->userManager->expects($this->once())
-            ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => 'jack')))
+        $manager = $this->getMockBuilder('FOS\UserBundle\Document\UserManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('findUserByUsername'))
+            ->getMock();
+
+        $manager->expects($this->once())
+            ->method('findUserByUsername')
+            ->with($this->equalTo('jack'))
             ->will($this->returnValue(null));
 
-        $this->userManager->loadUserByUsername('jack');
+        $manager->loadUserByUsername('jack');
     }
 
     protected function setUp()
@@ -110,9 +144,9 @@ class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
 
     protected function getManagerMock()
     {
-        $methods = array('findUserBy');
-        $userManager = $this->getMock('FOS\UserBundle\Document\UserManager', $methods, array(), '', false);
-
-        return $userManager;
+        return $this->getMockBuilder('FOS\UserBundle\Document\UserManager')
+            ->disableOriginalConstructor()
+            ->setMethods(array('findUserBy', 'canonicalizeUsername', 'canonicalizeEmail'))
+            ->getMock();
     }
 }

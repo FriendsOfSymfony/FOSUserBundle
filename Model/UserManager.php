@@ -69,7 +69,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function findUserByEmail($email)
     {
-        return $this->findUserBy(array('emailCanonical' => $this->emailCanonicalizer->canonicalize($email)));
+        return $this->findUserBy(array('emailCanonical' => $this->canonicalizeEmail($email)));
     }
 
     /**
@@ -80,7 +80,7 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function findUserByUsername($username)
     {
-        return $this->findUserBy(array('usernameCanonical' => $this->usernameCanonicalizer->canonicalize($username)));
+        return $this->findUserBy(array('usernameCanonical' => $this->canonicalizeUsername($username)));
     }
 
     /**
@@ -153,8 +153,8 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function updateCanonicalFields(UserInterface $user)
     {
-        $user->setUsernameCanonical($this->usernameCanonicalizer->canonicalize($user->getUsername()));
-        $user->setEmailCanonical($this->emailCanonicalizer->canonicalize($user->getEmail()));
+        $user->setUsernameCanonical($this->canonicalizeUsername($user->getUsername()));
+        $user->setEmailCanonical($this->canonicalizeEmail($user->getEmail()));
     }
 
     /**
@@ -168,6 +168,28 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
             $user->setPassword($encoder->encodePassword($password, $user->getSalt()));
             $user->eraseCredentials();
         }
+    }
+
+    /**
+     * Canonicalizes an email
+     *
+     * @param string $email
+     * @return string
+     */
+    protected function canonicalizeEmail($email)
+    {
+        return $this->emailCanonicalizer->canonicalize($email);
+    }
+
+    /**
+     * Canonicalizes a username
+     *
+     * @param string $username
+     * @return string
+     */
+    protected function canonicalizeUsername($username)
+    {
+        return $this->usernameCanonicalizer->canonicalize($username);
     }
 
     protected function getEncoder(UserInterface $user)
