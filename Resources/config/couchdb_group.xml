@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="fos_user.group_manager.class">FOS\UserBundle\CouchDocument\GroupManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="fos_user.group_manager" class="%fos_user.group_manager.class%">
+            <argument type="service" id="doctrine.odm.couchdb.document_manager" />
+            <argument>%fos_user.model.group.class%</argument>
+        </service>
+    </services>
+
+</container>

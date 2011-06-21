@@ -28,7 +28,7 @@ class FOSUserExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb'))) {
+        if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb', 'couchdb'))) {
             throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
         }
         $loader->load(sprintf('%s.xml', $config['db_driver']));
@@ -50,6 +50,10 @@ class FOSUserExtension extends Extension
 
                 case 'mongodb':
                     $container->getDefinition('fos_user.user_listener')->addTag('doctrine.common.event_subscriber');
+                    break;
+
+                case 'couchdb':
+                    $container->getDefinition('fos_user.user_listener')->addTag('doctrine_couchdb.event_subscriber');
                     break;
 
                 default:

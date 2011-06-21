@@ -3,7 +3,7 @@ Provides user persistence for your Symfony2 Project.
 Features
 ========
 
-- Compatible with Doctrine ORM **and** ODM thanks to a generic repository.
+- Compatible with Doctrine ORM, MongoDB and CouchDB ODM thanks to a generic repository.
 - Model is extensible at will
 - REST-ful authentication
 - Current user available in your controllers and views
@@ -162,6 +162,32 @@ MongoDB User class
     Take care to call the parent constructor when you overwrite it in your own
     entity as it initializes some fields.
 
+CouchDB User class
+~~~~~~~~~~~~~~~~~~
+
+::
+
+    // src/MyProject/MyBundle/CouchDocument/User.php
+
+    namespace MyProject\MyBundle\Document;
+    use FOS\UserBundle\Document\User as BaseUser;
+    use Doctrine\ODM\CouchDB\Mapping as CouchDB;
+
+    /**
+     * @CouchDB\Document
+     */
+    class User extends BaseUser
+    {
+        /** @CouchDB\Id */
+        protected $id;
+
+        public function __construct()
+        {
+            parent::__construct();
+            // your own logic
+        }
+    }
+
 Configure your project
 ----------------------
 
@@ -249,8 +275,8 @@ Or if you prefer XML:
         user-class="MyProject\MyBundle\Entity\User"
     />
 
-ODM
-~~~
+MongoDB
+~~~~~~~
 
 In YAML:
 
@@ -274,6 +300,34 @@ Or if you prefer XML:
         user-class="MyProject\MyBundle\Document\User"
     />
 
+CouchDB
+~~~~~~~
+
+In YAML:
+
+::
+
+    # app/config/config.yml
+    fos_user:
+        db_driver: couchdb
+        firewall_name: main
+        class:
+            model:
+                user: MyProject\MyBundle\CouchDocument\User
+
+Or if you prefer XML:
+
+::
+
+    # app/config/config.xml
+
+    <fos_user:config db-driver="couchdb" firewall-name="main">
+        <fos_user:class>
+            <fos_user:model
+                user="MyProject\MyBundle\CouchDocument\User"
+            />
+        </fos_user:class>
+    </fos_user:config>
 
 Add authentication routes
 -------------------------
@@ -350,10 +404,13 @@ of the container.
 If you configure the db_driver to orm, this service is an instance of
 ``FOS\UserBundle\Entity\UserManager``.
 
-If you configure the db_driver to odm, this service is an instance of
+If you configure the db_driver to mongodb, this service is an instance of
 ``FOS\UserBundle\Document\UserManager``.
 
-Both these classes implement ``FOS\UserBundle\Model\UserManagerInterface``.
+If you configure the db_driver to couchdb, this service is an instance of
+``FOS\UserBundle\CouchDocument\UserManager``.
+
+All these classes implement ``FOS\UserBundle\Model\UserManagerInterface``.
 
 Access the user manager service
 -------------------------------
@@ -365,8 +422,8 @@ ORM and ODM, use the fos_user.user_manager service::
 
 That's the way FOSUserBundle's internal controllers are built.
 
-Access the current user class
------------------------------
+Create a new user
+-----------------
 
 A new instance of your User class can be created by the user manager::
 
@@ -418,7 +475,7 @@ Or if you prefer XML:
 Using groups
 ============
 
-The bundle allows to optionnally use groups. You need to explicitly
+The bundle allows to optionally use groups. You need to explicitly
 enable it in your configuration by giving the Group class which must
 implement ``FOS\UserBundle\Model\GroupInterface``.
 
@@ -484,8 +541,8 @@ ORM
 
     ``Group`` is also a reserved keyword in SQL so it cannot be used either.
 
-ODM
-~~~
+MongoDB
+~~~~~~~
 
 ::
 
@@ -502,6 +559,26 @@ ODM
     class Group extends BaseGroup
     {
         /** @MongoDB\Id(strategy="auto") */
+        protected $id;
+    }
+
+CouchDB
+~~~~~~~
+
+::
+
+    // src/MyProject/MyBundle/CouchDocument/Group.php
+
+    namespace MyProject\MyBundle\CouchDocument;
+    use FOS\UserBundle\Document\Group as BaseGroup;
+    use Doctrine\ODM\CouchDB\Mapping as MongoDB;
+
+    /**
+     * @CouchDB\Document
+     */
+    class Group extends BaseGroup
+    {
+        /** @CouchDB\Id */
         protected $id;
     }
 
@@ -545,8 +622,8 @@ ORM
         protected $groups;
     }
 
-ODM
-~~~
+MongoDB
+~~~~~~~
 
 ::
 
@@ -566,6 +643,29 @@ ODM
         protected $id;
 
         /** @MongoDB\ReferenceMany(targetDocument="MyProject\MyBundle\Document\Group") */
+        protected $groups;
+    }
+
+CouchDB
+~~~~~~~
+
+::
+
+    // src/MyProject/MyBundle/CouchDocument/User.php
+
+    namespace MyProject\MyBundle\CouchDocument;
+    use FOS\UserBundle\Document\User as BaseUser;
+    use Doctrine\ODM\CouchDB\Mapping as CouchDB;
+
+    /**
+     * @CouchDB\Document
+     */
+    class User extends BaseUser
+    {
+        /** @CouchDB\Id */
+        protected $id;
+
+        /** @CouchDB\ReferenceMany(targetDocument="MyProject\MyBundle\Document\Group") */
         protected $groups;
     }
 

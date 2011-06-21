@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+    <mapped-superclass name="FOS\UserBundle\Document\Group" indexed="true">
+
+        <field name="name" fieldName="name" type="string" indexed="true" />
+        <field name="roles" fieldName="roles" type="mixed" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>
