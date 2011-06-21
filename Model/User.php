@@ -207,6 +207,44 @@ abstract class User implements UserInterface
     }
 
     /**
+     * Serializes the user.
+     *
+     * The serialized data have to contain the fields used by the equals method.
+     *
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->password,
+            $this->salt,
+            $this->usernameCanonical,
+            $this->expired,
+            $this->locked,
+            $this->credentialsExpired,
+            $this->enabled,
+        ));
+    }
+
+    /**
+     * Unserializes the user.
+     *
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->password,
+            $this->salt,
+            $this->usernameCanonical,
+            $this->expired,
+            $this->locked,
+            $this->credentialsExpired,
+            $this->enabled
+        ) = unserialize($serialized);
+    }
+
+    /**
      * Removes sensitive data from the user.
      *
      * Implements SecurityUserInterface
