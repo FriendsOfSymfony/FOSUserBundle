@@ -311,9 +311,7 @@ In YAML:
     fos_user:
         db_driver: couchdb
         firewall_name: main
-        class:
-            model:
-                user: MyProject\MyBundle\CouchDocument\User
+        user_class: MyProject\MyBundle\CouchDocument\User
 
 Or if you prefer XML:
 
@@ -321,13 +319,11 @@ Or if you prefer XML:
 
     # app/config/config.xml
 
-    <fos_user:config db-driver="couchdb" firewall-name="main">
-        <fos_user:class>
-            <fos_user:model
-                user="MyProject\MyBundle\CouchDocument\User"
-            />
-        </fos_user:class>
-    </fos_user:config>
+    <fos_user:config
+        db-driver="couchdb"
+        firewall-name="main">
+        user-class="MyProject\MyBundle\CouchDocument\User"
+    />
 
 Add authentication routes
 -------------------------
