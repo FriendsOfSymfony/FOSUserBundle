@@ -108,8 +108,12 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
-    public function validateUnique($value, Constraint $constraint)
+    public function validateUnique(UserInterface $value, Constraint $constraint)
     {
+        // Since we probably want to validate the canonical fields,
+        // we'd better make sure we have them.
+        $this->updateCanonicalFields($value);
+
         $classMetadata = $this->dm->getClassMetadata($this->class);
         // TODO: ODM seems to be missing handling for multiple properties
         // $fields = array_map('trim', explode(',', $constraint->property));

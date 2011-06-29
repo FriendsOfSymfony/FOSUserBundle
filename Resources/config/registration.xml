@@ -16,9 +16,6 @@
                 <argument key="data_class">%fos_user.model.user.class%</argument>
                 <argument key="validation_groups">%fos_user.registration.form.validation_groups%</argument>
             </argument>
-            <call method="addEventSubscriber">
-                <argument type="service" id="fos_user.form.listener.user_canonical_fields" />
-            </call>
         </service>
 
         <service id="fos_user.registration.form.type" class="%fos_user.registration.form.type.class%">

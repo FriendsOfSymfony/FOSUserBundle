@@ -17,10 +17,6 @@
         <service id="fos_user.util.ace_manager" class="FOS\UserBundle\Util\AceManager">
             <argument type="service" id="security.acl.provider" on-invalid="ignore" />
         </service>
-
-        <service id="fos_user.form.listener.user_canonical_fields" class="FOS\UserBundle\Form\UpdateCanonicalFieldsListener" public="false">
-            <argument type="service" id="fos_user.user_manager" />
-        </service>
     </services>
 
 </container>
