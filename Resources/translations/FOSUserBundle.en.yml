@@ -63,7 +63,7 @@ fos_user_profile_updated: The profile has been updated
 
 fos_user_registration_created: The user has been created successfully
 
-fos_user_resetted: The password has resetted successfully
+fos_user_resetted: The password has been reset successfully
 
 # Form field labels
 fos_user_group_form_name: "Group name:"
