@@ -1,0 +1,86 @@
+group.edit.submit: Grupp aktualiséieren
+group.show.name: Gruppennumm
+group.new.submit: Grupp creéieren
+
+security.login.username: "Benotzernumm:"
+security.login.password: "Passwuert:"
+security.login.remember_me: U mech erënneren
+security.login.submit: Umellen
+
+# Profile
+profile.show.username: Benotzernumm
+profile.show.email: E-Mail
+profile.edit.submit: Benotzer aktualiséieren
+
+# Password change
+change_password.submit: Passwuert ännern
+
+# Registration
+registration.check_email: Eng E-Mail gouf un %email% geschéckt. Se enthält e Link deen s Du uklicke muss, fir Däi Benotzerkonto ze bestätegen.
+registration.confirmed: Gléckwonsch %username%, Däi Benutzerkonto ass elo bestätegt.
+registration.submit: Registréieren
+
+registration.email: |
+    Wëllkomm %username%!
+    Hallo %username%!
+
+    Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
+
+    Mat beschte Gréiss,
+    d'Equipe.
+
+# Password resetting
+resetting.password_already_requested: Een neit Passwuert gouf an de vergaangene 24 Stunden fir dëse Benotzer schon emol ugefrot.
+resetting.check_email: Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.
+resetting.request.invalid_username: De Benotzer "%username%" existéiert net.
+resetting.request.username: "Benotzernumm:"
+resetting.request.submit: Passwuert zerécksetzen
+resetting.reset.submit: Passwuert ännern
+
+resetting.email: |
+    Wëllkomm %username%!
+    Hallo %username%!
+
+    Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
+
+    Mat beschte Gréiss,
+    d'Equipe.
+
+# Global strings
+layout.logout: Ofmellen
+layout.login: Umellen
+layout.register: Registréieren
+layout.logged_in_as: Ugemellt als %username%
+
+# Flash messages
+fos_user_change_password: D'Passwuert gouf geännert
+
+fos_user_group_updated: D'Grupp gouf aktualiséiert
+fos_user_group_created: D'Grupp gouf creéiert
+fos_user_group_deleted: D'Grupp gouf geläscht
+
+fos_user_profile_updated: De Benotzerprofil gouf aktualiséiert
+
+fos_user_registration_created: De Benotzer gouf erfollegräich creéiert
+
+fos_user_resetted: D'Passwuert gouf erfollegräich zeréckgesat
+
+# Form field labels
+fos_user_group_form_name: "Gruppennumm:"
+
+fos_user_profile_form_username:             "Benotzernumm:"
+fos_user_profile_form_email:                "E-Mail-Adress:"
+fos_user_profile_form_plainPassword_first:  "Passwuert:"
+fos_user_profile_form_plainPassword_second: "Bestätegung:"
+
+fos_user_registration_form_username:             "Benotzernumm:"
+fos_user_registration_form_email:                "E-Mail-Adress:"
+fos_user_registration_form_plainPassword_first:  "Passwuert:"
+fos_user_registration_form_plainPassword_second: "Bestätegung:"
+
+fos_user_resetting_form_new_first:  "Neit Passwuert:"
+fos_user_resetting_form_new_second: "Bestätegung:"
+
+fos_user_change_password_form_new_first:    "Neit Passwuert:"
+fos_user_change_password_form_new_second:   "Bestätegung:"
+fos_user_change_password_form_current:  "Aktuellt Passwuert:"
