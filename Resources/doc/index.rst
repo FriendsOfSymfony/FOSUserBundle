@@ -43,7 +43,7 @@ Add the following lines in your ``deps`` file::
 
     [FOSUserBundle]
         git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
-        target=/bundles/FOS/UserBundle
+        target=bundles/FOS/UserBundle
 
 Run the vendors script::
 
