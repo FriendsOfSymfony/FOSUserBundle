@@ -70,6 +70,8 @@ Add the FOS namespace to your autoloader
 Add UserBundle to your application kernel
 -----------------------------------------
 
+Make sure to register the SecurityBundle before the FOSUserBundle.
+
 ::
 
     // app/AppKernel.php
@@ -240,12 +242,6 @@ would have to be set to "main", as shown in the proceeding examples:
 
     # app/config/security.yml
     security:
-        encoders:
-            MyProject\MyBundle\Entity\User:
-                algorithm:          sha512
-                encode_as_base64:   false
-                iterations:         1
-
         providers:
             fos_userbundle:
                 id: fos_user.user_manager
@@ -725,6 +721,10 @@ All configuration options are listed below::
             email_canonicalizer:    fos_user.util.email_canonicalizer.default
             username_canonicalizer: fos_user.util.username_canonicalizer.default
             user_manager:           fos_user.user_manager.default
+        encoder:
+            algorithm:          sha512
+            encode_as_base64:   false
+            iterations:         1
         template:
             engine: twig
             theme:  FOSUserBundle::form.html.twig
@@ -759,12 +759,6 @@ Security configuration
 
     # app/config/security.yml
     security:
-        encoders:
-            MyProject\MyBundle\Entity\User:
-                algorithm:          sha512
-                encode_as_base64:   false
-                iterations:         1
-
         providers:
             fos_userbundle:
                 id: fos_user.user_manager
