@@ -1,0 +1,85 @@
+group.edit.submit: Обновить группу
+group.show.name: Название группы
+group.new.submit: Создать группу
+
+security.login.username: "Имя пользователя:"
+security.login.password: "Пароль:"
+security.login.remember_me: Запомнить меня
+security.login.submit: Войти
+
+# Profile
+profile.show.username: Имя пользователя
+profile.show.email: Электронная почта
+profile.edit.submit: Обновить
+
+# Password change
+change_password.submit: Изменить пароль
+
+# Registration
+registration.check_email: Письмо отправлено на адрес %email%. В нём содержится ссылка, по которой вы можете подтвердить свою регистрацию.
+registration.confirmed: Поздравляем %username%, ваш аккаунт подтвержден.
+registration.submit: Регистрация
+
+registration.email: |
+    Добро пожаловать %username%!
+    Привествуем %username%!
+
+    Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
+
+    С наилучшими пожеланиями,
+    команда сайта.
+
+# Password resetting
+resetting.password_already_requested: Пароль для данного пользователя уже запрашивался за последние 24 часа.
+resetting.check_email: Письмо на адрес %email% уже отправлено. Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
+resetting.request.invalid_username: Пользователь "%username%" не существует.
+resetting.request.username: "Имя пользователя:"
+resetting.request.submit: Сбросить пароль
+resetting.reset.submit: Изменить пароль
+
+resetting.email: |
+    Сброс пароля
+    Привествуем %username%!
+
+    Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
+
+    С наилучшими пожеланиями,
+    команда сайта.
+
+# Global strings
+layout.logout: Выход
+layout.login: Вход
+layout.register: Регистрация
+layout.logged_in_as: Вы вошли как %username%
+
+# Flash messages
+fos_user_change_password: Пароль изменен
+
+fos_user_group_updated: Группа обновлена
+fos_user_group_created: Группа создана
+fos_user_group_deleted: Группа удалена
+
+fos_user_profile_updated: Профиль пользователя обновлен
+
+fos_user_registration_created: Пользователь успешно создан
+
+fos_user_resetted: Пароль успешно сброшен
+
+# Form field labels
+fos_user_group_form_name: "Название группы:"
+
+fos_user_profile_form_user_username: "Имя пользователя:"
+fos_user_profile_form_user_email: "Электронная почта:"
+fos_user_profile_form_current: "Текущий пароль:"
+
+fos_user_registration_form_username: "Имя пользователя:"
+fos_user_registration_form_email: "Электронная почта:"
+fos_user_registration_form_plainPassword_first: "Пароль:"
+fos_user_registration_form_plainPassword_second: "Подтвердите пароль:"
+
+fos_user_resetting_form_new_first: "Новый пароль:"
+fos_user_resetting_form_new_second: "Подтвердите пароль:"
+
+fos_user_change_password_form_new_first: "Новый пароль:"
+fos_user_change_password_form_new_second: "Подтвердите пароль:"
+fos_user_change_password_form_current: "Текущий пароль:"
