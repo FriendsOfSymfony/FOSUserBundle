@@ -78,6 +78,13 @@ class EncoderFactory implements EncoderFactoryInterface
     {
         $class = $this->encoderClass;
 
+        $rc = new \ReflectionClass($class);
+        if (false == $rc->isSubclassOf('Symfony\\Component\\Security\\Core\\Encoder\\MessageDigestPasswordEncoder')) {
+            throw new \RuntimeException(sprintf('Cannot create encoder because the encoder class "%s" is not instance of "%s".', 
+                $class,
+                'Symfony\\Component\\Security\\Core\\Encoder\\MessageDigestPasswordEncoder'));
+        }
+
         return new $class(
             $algorithm,
             $this->encodeHashAsBase64,
