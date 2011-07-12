@@ -19,7 +19,6 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /**
  * Storage agnostic user object
- * Has validator annotation, but database mapping must be done in a subclass.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>

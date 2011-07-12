@@ -133,8 +133,7 @@
             <constraint name="MinLength">
                 <option name="limit">2</option>
                 <option name="message">The new password is too short</option>
-                <option name="groups">ResetPasswor
-                </option>
+                <option name="groups">ResetPassword</option>
             </constraint>
         </property>
     </class>
