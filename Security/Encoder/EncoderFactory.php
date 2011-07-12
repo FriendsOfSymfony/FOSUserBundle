@@ -51,15 +51,21 @@ class EncoderFactory implements EncoderFactoryInterface
      */
     public function getEncoder(SecurityUserInterface $user)
     {
-        if (!$user instanceof UserInterface) {
+        try {
             return $this->genericFactory->getEncoder($user);
-        }
 
-        if (isset($this->encoders[$algorithm = $user->getAlgorithm()])) {
-            return $this->encoders[$algorithm];
-        }
+        // it would be changed to a custom exception if symfony guys submit this: https://github.com/symfony/symfony/issues/1645
+        } catch (\Exception $e) {
+            if (false == ($user instanceof UserInterface)) {
+                throw $e;
+            }
 
-        return $this->encoders[$algorithm] = $this->createEncoder($algorithm);
+            if (isset($this->encoders[$algorithm = $user->getAlgorithm()])) {
+                return $this->encoders[$algorithm];
+            }
+
+            return $this->encoders[$algorithm] = $this->createEncoder($algorithm);
+        }
     }
 
     /**
