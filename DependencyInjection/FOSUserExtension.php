@@ -60,6 +60,9 @@ class FOSUserExtension extends Extension
                     break;
             }
         }
+        if ($config['use_username_form_type']) {
+            $loader->load('username_form_type.xml');
+        }
 
         $this->remapParametersNamespaces($config, $container, array(
             ''          => array(

@@ -41,6 +41,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
+                ->booleanNode('use_username_form_type')->defaultFalse()->end()
                 ->arrayNode('from_email')
                     ->addDefaultsIfNotSet()
                     ->children()

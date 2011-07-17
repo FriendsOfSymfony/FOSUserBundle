@@ -821,6 +821,28 @@ your own class for each field provided it implements
     If you do not have the mbstring extension installed you will need to
     define your own ``canonicalizer``.
 
+Use the username form type
+==========================
+
+The bundle also provides a convenient username form type.
+It appears as a text input, accepts usernames and convert them to a User instance.
+
+You can enable this feature from the configuration::
+
+    # app/config/config.yml
+    fos_user:
+        use_username_form_type: true
+
+And then use it in your forms::
+
+    class MessageFormType extends AbstractType
+    {
+        public function buildForm(FormBuilder $builder, array $options)
+        {
+            $builder->add('recipient', 'fos_user_username');
+        }
+
+
 Configuration reference
 =======================
 
@@ -832,6 +854,7 @@ All available configuration options are listed below with their default values::
         firewall_name:  ~ # Required
         user_class:     ~ # Required
         use_listener:   true
+        use_username_form_type: false
         from_email:
             address:        webmaster@example.com
             sender_name:    Admin
