@@ -16,7 +16,7 @@ profile.edit.submit: Benutzer aktualisieren
 change_password.submit: Passwort ändern
 
 # Registration
-registration.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um Dein Benutzerkonto zu bestätigen.
+registration.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Benutzerkonto zu bestätigen.
 registration.confirmed: Glückwunsch %username%, Dein Benutzerkonto ist jetzt bestätigt.
 registration.submit: Registrieren
 
@@ -24,14 +24,14 @@ registration.email: |
     Willkommen %username%!
     Hallo %username%!
 
-    Besuche bitte folgende Seite um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
+    Besuche bitte folgende Seite, um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
 
     Mit besten Grüßen,
     das Team.
 
 # Password resetting
 resetting.password_already_requested: Für diesen Benutzer wurde in den vergangenen 24 Stunden bereits ein neues Passwort beantragt.
-resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um Dein Passwort zurückzusetzen.
+resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Passwort zurückzusetzen.
 resetting.request.invalid_username: Der Benutzer "%username%" existiert nicht.
 resetting.request.username: "Benutzername:"
 resetting.request.submit: Passwort zurücksetzen
@@ -41,7 +41,7 @@ resetting.email: |
     Passwort zurücksetzen
     Hallo %username%!
 
-    Besuche bitte folgende Seite um Dein Passwort zurückzusetzen: %confirmationUrl%
+    Besuche bitte folgende Seite, um Dein Passwort zurückzusetzen: %confirmationUrl%
 
     Mit besten Grüßen,
     das Team.
