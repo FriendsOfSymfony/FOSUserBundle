@@ -24,13 +24,13 @@ registration.email: |
     Willkommen %username%!
     Hallo %username%!
 
-    Um Dein Benutzerkonto zu bestätigen, besuche bitte die Seite %confirmationUrl%
+    Besuche bitte folgende Seite um dein Benutzerkonto zu bestätigen: %confirmationUrl%
 
     Mit besten Grüßen,
     das Team.
 
 # Password resetting
-resetting.password_already_requested: Ein neues Passwort wurde in den vergangenen 24 Stunden für diesen Benutzer bereits einmal beantragt.
+resetting.password_already_requested: Für diesen Benutzer wurde in den vergangenen 24 Stunden bereits einmal ein neues Passwort beantragt.
 resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link den Du anklicken musst, um Dein Passwort zurückzusetzen.
 resetting.request.invalid_username: Der Benutzer "%username%" existiert nicht.
 resetting.request.username: "Benutzername:"
@@ -38,10 +38,10 @@ resetting.request.submit: Passwort zurücksetzen
 resetting.reset.submit: Passwort ändern
 
 resetting.email: |
-    Willkommen %username%!
+    Passwort zurücksetzen
     Hallo %username%!
 
-    Um Dein Passwort zurückzusetzen, besuche bitte die Seite %confirmationUrl%
+    Besuche bitte folgende Seite um dein Passwort zurückzusetzen: %confirmationUrl%
 
     Mit besten Grüßen,
     das Team.
