@@ -30,12 +30,13 @@ class RegistrationController extends ContainerAware
     {
         $form = $this->container->get('fos_user.registration.form');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
+        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
 
-        $process = $formHandler->process($this->container->getParameter('fos_user.registration.confirmation.enabled'));
+        $process = $formHandler->process($confirmationEnabled);
         if ($process) {
             $user = $form->getData();
 
-            if ($this->container->getParameter('fos_user.registration.confirmation.enabled')) {
+            if ($confirmationEnabled) {
                 $this->container->get('fos_user.mailer')->sendConfirmationEmailMessage($user);
                 $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
                 $route = 'fos_user_registration_check_email';
