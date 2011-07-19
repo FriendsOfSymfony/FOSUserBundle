@@ -17,6 +17,8 @@ The documentation is available in the bundle:
 
     Resources/doc/index.rst
 
+See on github: https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.rst
+
 License
 -------
 
