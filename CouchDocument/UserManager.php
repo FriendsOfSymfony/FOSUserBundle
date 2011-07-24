@@ -98,7 +98,7 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
-    public function validateUnique($value, Constraint $constraint)
+    public function validateUnique(UserInterface $value, Constraint $constraint)
     {
         // for now unique checks are not implemented in Doctrine CouchDB yet
         return true;
