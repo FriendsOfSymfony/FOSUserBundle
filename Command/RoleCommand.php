@@ -55,7 +55,7 @@ abstract class RoleCommand extends ContainerAwareCommand
             throw new \RuntimeException('Not enough arguments.');
         }
         
-        $manipulator = $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
+        $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
         $this->executeRoleCommand($manipulator, $output, $username, $super, $role);
     }
     
