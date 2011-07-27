@@ -39,9 +39,10 @@ class ResettingController extends ContainerAware
     public function sendEmailAction()
     {
         $username = $this->container->get('request')->request->get('username');
-        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($username);
 
-        if(null === $user){
+        $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
+
+        if (null === $user){
             return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
         }
 
@@ -83,7 +84,7 @@ class ResettingController extends ContainerAware
     {
         $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
 
-        if(null === $user){
+        if (null === $user){
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
         }
 

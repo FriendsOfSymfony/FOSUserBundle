@@ -32,8 +32,8 @@ registration.email: |
 # Password resetting
 resetting.password_already_requested: Für diesen Benutzer wurde in den vergangenen 24 Stunden bereits ein neues Passwort beantragt.
 resetting.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Passwort zurückzusetzen.
-resetting.request.invalid_username: Der Benutzer "%username%" existiert nicht.
-resetting.request.username: "Benutzername:"
+resetting.request.invalid_username: Der Benutzer oder die E-Mail-Adresse "%username%" existiert nicht.
+resetting.request.username: "Benutzername oder E-Mail-Adresse:"
 resetting.request.submit: Passwort zurücksetzen
 resetting.reset.submit: Passwort ändern
 
