@@ -133,7 +133,7 @@ abstract class User implements UserInterface
     /**
      * @var array
      */
-    protected $roles;
+    protected $roles = array();
 
     /**
      * @var Boolean
