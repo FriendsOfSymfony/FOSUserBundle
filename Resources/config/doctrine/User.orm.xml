@@ -22,10 +22,6 @@
 
         <field name="password" column="password" type="string" />
 
-        <field name="createdAt" column="created_at" type="datetime" />
-
-        <field name="updatedAt" column="updated_at" type="datetime" />
-
         <field name="lastLogin" column="last_login" type="datetime" nullable="true" />
 
         <field name="locked" column="locked" type="boolean" />
@@ -43,11 +39,6 @@
         <field name="credentialsExpired" column="credentials_expired" type="boolean" />
 
         <field name="credentialsExpireAt" column="credentials_expire_at" type="datetime" nullable="true" />
-
-        <lifecycle-callbacks>
-            <lifecycle-callback type="prePersist" method="incrementCreatedAt" />
-            <lifecycle-callback type="preUpdate" method="incrementUpdatedAt" />
-        </lifecycle-callbacks>
 
     </mapped-superclass>
 

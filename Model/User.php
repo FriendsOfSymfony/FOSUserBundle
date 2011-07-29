@@ -15,7 +15,6 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
-use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /**
  * Storage agnostic user object
@@ -23,7 +22,7 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class User implements UserInterface
+abstract class User implements UserInterface, GroupableInterface
 {
     const ROLE_DEFAULT = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -82,16 +81,6 @@ abstract class User implements UserInterface
      * @var string
      */
     protected $plainPassword;
-
-    /**
-     * @var \DateTime
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    protected $updatedAt;
 
     /**
      * @var \DateTime
@@ -176,7 +165,7 @@ abstract class User implements UserInterface
     /**
      * Implementation of SecurityUserInterface.
      *
-     * @param SecurityUserInterface $user
+     * @param \Symfony\Component\Security\Core\User\UserInterface $user
      * @return Boolean
      */
     public function equals(SecurityUserInterface $user)
@@ -350,22 +339,6 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * Gets the last login time.
      *
      * @return \DateTime
@@ -522,19 +495,6 @@ abstract class User implements UserInterface
     public function isUser(UserInterface $user = null)
     {
         return null !== $user && $this->getId() === $user->getId();
-    }
-
-    public function incrementCreatedAt()
-    {
-        if (null === $this->createdAt) {
-            $this->createdAt = new \DateTime();
-        }
-        $this->updatedAt = new \DateTime();
-    }
-
-    public function incrementUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime();
     }
 
     /**

@@ -11,8 +11,6 @@
         <field name="algorithm" fieldName="algorithm" type="string" />
         <field name="salt" fieldName="salt" type="string" />
         <field name="password" fieldName="password" type="string" />
-        <field name="createdAt" fieldName="createdAt" type="datetime" />
-        <field name="updatedAt" fieldName="updatedAt" type="datetime" />
         <field name="lastLogin" fieldName="lastLogin" type="datetime" />
         <field name="locked" fieldName="locked" type="mixed" />
         <field name="expired" fieldName="expired" type="mixed" />
@@ -20,11 +18,6 @@
         <field name="confirmationToken" fieldName="confirmationToken" type="string" />
         <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="datetime" />
         <field name="roles" fieldName="roles" type="mixed" />
-
-        <lifecycle-callbacks>
-            <lifecycle-callback type="prePersist" method="incrementCreatedAt" />
-            <lifecycle-callback type="preUpdate" method="incrementUpdatedAt" />
-        </lifecycle-callbacks>
 
     </mapped-superclass>
 

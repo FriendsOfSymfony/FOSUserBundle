@@ -20,13 +20,6 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 interface UserInterface extends AdvancedUserInterface, \Serializable
 {
     /**
-     * Adds a role to the user.
-     *
-     * @param string $role
-     */
-    function addRole($role);
-
-    /**
      * Gets the algorithm used to encode the password.
      *
      * @return string
@@ -210,45 +203,16 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     function setRoles(array $roles);
 
     /**
+     * Adds a role to the user.
+     *
+     * @param string $role
+     */
+    function addRole($role);
+
+    /**
      * Removes a role to the user.
      *
      * @param string $role
      */
     function removeRole($role);
-
-    /**
-     * Gets the groups granted to the user.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    function getGroups();
-
-    /**
-     * Gets the name of the groups which includes the user.
-     *
-     * @return array
-     */
-    function getGroupNames();
-
-    /**
-     * Indicates whether the user belongs to the specified group or not.
-     *
-     * @param string $name Name of the group
-     * @return Boolean
-     */
-    function hasGroup($name);
-
-    /**
-     * Add a group to the user groups.
-     *
-     * @param GroupInterface $group
-     */
-    function addGroup(GroupInterface $group);
-
-    /**
-     * Remove a group from the user groups.
-     *
-     * @param GroupInterface $group
-     */
-    function removeGroup(GroupInterface $group);
 }

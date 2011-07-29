@@ -22,10 +22,6 @@
 
         <field name="password" fieldName="password" type="string" />
 
-        <field name="createdAt" fieldName="createdAt" type="date" />
-
-        <field name="updatedAt" fieldName="updatedAt" type="date" />
-
         <field name="lastLogin" fieldName="lastLogin" type="date" />
 
         <field name="locked" fieldName="locked" type="boolean" />
@@ -39,11 +35,6 @@
         <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="date" />
 
         <field name="roles" fieldName="roles" type="hash" />
-
-        <lifecycle-callbacks>
-            <lifecycle-callback type="prePersist" method="incrementCreatedAt" />
-            <lifecycle-callback type="preUpdate" method="incrementUpdatedAt" />
-        </lifecycle-callbacks>
 
         <indexes>
             <index unique="true" dropDups="true">

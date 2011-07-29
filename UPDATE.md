@@ -6,6 +6,13 @@ the next one. It only discusses changes that need to be done when using
 the "public" API of the bundle. If you "hack" the core, you should probably
 follow the timeline closely anyway.
 
+* The methods relative to the groups have been removed from `FOS\UserBundle\Model\UserInterface`
+  and a new `FOS\UserBundle\Model\GroupableInterface` has been added (implemented
+  by `FOS\UserBundle\Model\User`).
+
+* The User class of the bundle does not contain the timestampable fields anymore
+  as they were not used by the bundle.
+
 * The `fos:user:changePassword` command has been renamed to `fos:user:change-password`.
 
 * The way to configure the forms has been refactored to give more flexibility:
