@@ -40,7 +40,6 @@ class OAuthExchanger implements TokenExchangerInterface
     {
         $request = new Request(Request::METHOD_POST, $this->endpoint, $this->host);
 
-
         $request -> setContent(http_build_query(array(
             'client_id'         => $this->clientId,
             'client_secret'     => $this->clientSecret,
@@ -49,9 +48,8 @@ class OAuthExchanger implements TokenExchangerInterface
 
         $response = new Response();
         $this->client->send($request, $response);
-var_dump($response->getContent());
-        $hasToken = preg_match('/access_token=(.*)\&?/U', $response->getContent(), $matches);
-        if($hasToken) {
+        $hasToken = preg_match('/access_token=([^&]*)/', $response->getContent(), $matches);
+        if ($hasToken) {
             return $matches[1];
         }
         return;

@@ -280,6 +280,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('authorize_url')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('access_token_url')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('scope')->defaultValue('user')->cannotBeEmpty()->end()
+                    ->scalarNode('user_api_provider')->cannotBeEmpty()->end()
                 ->end()
             ->end();
     }

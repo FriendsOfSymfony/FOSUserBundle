@@ -180,6 +180,10 @@ class FOSUserExtension extends Extension
             foreach(array('client_id', 'secret', 'authorize_host', 'authorize_url', 'access_token_url', 'scope') as $key) {
                 $container->setParameter(sprintf('fos_user.security.core.authentication.oauth.%s', $key), $config['oauth'][$key]);
             }
+
+            $container->setAlias('fos_user.oauth.api_provider',
+                sprintf('fos_user.oauth.api.provider.%s', $config['oauth']['user_api_provider'])
+            );
         }
     }
 

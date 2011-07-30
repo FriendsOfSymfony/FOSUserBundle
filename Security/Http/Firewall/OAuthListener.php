@@ -19,12 +19,17 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use FOS\UserBundle\Security\Core\Authentication\Token\OAuthToken;
 use FOS\UserBundle\Security\Core\Authentication\Token\Exchanger\TokenExchangerInterface;
+use FOS\UserBundle\OAuth\Api\Provider\ApiProviderInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 
 /**
  *
  * @author   Marcel Beerta <marcel@etcpasswd.de>
+ *
+ * @todo this needs some cleanup work, way too many dependencies now
  */
 class OAuthListener implements ListenerInterface
 {
@@ -32,12 +37,24 @@ class OAuthListener implements ListenerInterface
     protected $securityContext;
     protected $authenticationManager;
     protected $exchanger;
+    protected $apiProvider;
+    protected $authenticationUrl;
+    protected $userManager;
+    protected $encoderFactory;
+    protected $algorithm;
+    protected $clientId;
 
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, TokenExchangerInterface $exchanger)
+    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, TokenExchangerInterface $exchanger, ApiProviderInterface $provider, UserManagerInterface $userManager, EncoderFactoryInterface $encoderFactory, $algorithm, $authenticationUrl, $clientId)
     {
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
         $this->exchanger = $exchanger;
+        $this->apiProvider = $provider;
+        $this->authenticationUrl = $authenticationUrl;
+        $this->userManager = $userManager;
+        $this->encoderFactory = $encoderFactory;
+        $this->algorithm = $algorithm;
+        $this->clientId  = $clientId;
     }
 
     public function handle(GetResponseEvent $event)
@@ -45,26 +62,47 @@ class OAuthListener implements ListenerInterface
         $request = $event->getRequest();
 
         $code = $request->get('code');
+
+        // No "code" means we haven't been redirecting the user to the
+        // authentication page yet
         if (is_null($code)) {
             $response = new Response();
-            // TODO: Fix URL
-            $response->headers->set('Location', 'https://github.com/login/oauth/authorize?client_id=68ef21c49fc2b6c5f9f7&scope=public_repo');
+            $response->headers->set('Location', sprintf('%s?client_id=%s', $this->authenticationUrl, $this->clientId));
             $response->setStatusCode(302);
             $event->setResponse($response);
             return;
         }
 
-
         // get the access token
         $token = $this->exchanger->getAccessToken($code);
-        var_dump($token);
-        exit();
         if (!is_null($token)) {
-            $authToken = new OAuthToken();
-            $authToken->setUser($token);
+            $this->apiProvider->setAccessToken($token);
+            $username = $this->apiProvider->getUsername();
+            $email    = $this->apiProvider->getEmail();
+
+            // Now comes the trick, we lookup the user, if he's not here,
+            // we just create him. Otherwise we validate the "password"
+            // which in this case is the accessToken.
+            //
+            // @todo: figure out what to do when the token changes
+            $user = $this->userManager->findUserByUsername($username);
+
+            if (is_null($user)) {
+                $user = $this->userManager->createUser();
+                $user -> setUsername($username);
+                $user -> setPlainPassword($token);
+                $user -> setEmail($email);
+                $user -> setEnabled(true);
+                $user -> setConfirmationToken(null);
+                $this->userManager->updateUser($user);
+            }
+
+            $authenticationToken = new OAuthToken($user->getRoles());
+            $authenticationToken -> setUser($user);
+            $authenticationToken -> setAttribute('access_token', $token);
 
             try {
-                $returnValue = $this->authenticationManager->authenticate($token);
+                $returnValue = $this->authenticationManager->authenticate($authenticationToken);
                 if ($returnValue instanceof TokenInterface) {
                     return $this->securityContext->setToken($returnValue);
                 } else if ($returnValue instanceof Response) {
