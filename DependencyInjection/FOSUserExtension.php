@@ -173,6 +173,14 @@ class FOSUserExtension extends Extension
                 'form' => 'fos_user.group.form.%s',
             ));
         }
+
+        if(!empty($config['oauth'])) {
+            $loader->load('oauth.xml');
+
+            foreach(array('client_id', 'secret', 'authorize_host', 'authorize_url', 'access_token_url', 'scope') as $key) {
+                $container->setParameter(sprintf('fos_user.security.core.authentication.oauth.%s', $key), $config['oauth'][$key]);
+            }
+        }
     }
 
     protected function remapParameters(array $config, ContainerBuilder $container, array $map)

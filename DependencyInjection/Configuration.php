@@ -60,6 +60,7 @@ class Configuration implements ConfigurationInterface
         $this->addEncoderSection($rootNode);
         $this->addTemplateSection($rootNode);
         $this->addGroupSection($rootNode);
+        $this->addOAuthSection($rootNode);
 
         return $treeBuilder;
     }
@@ -261,6 +262,24 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                     ->end()
+                ->end()
+            ->end();
+    }
+
+    private function addOAuthSection(ArrayNodeDefinition $node)
+    {
+
+        $node
+            ->children()
+              ->arrayNode('oauth')
+                ->canBeUnset()
+                ->children()
+                    ->scalarNode('client_id')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('authorize_host')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('authorize_url')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('access_token_url')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('scope')->defaultValue('user')->cannotBeEmpty()->end()
                 ->end()
             ->end();
     }
