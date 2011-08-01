@@ -1,0 +1,82 @@
+# Group
+group.edit.submit: Csoport frissítése
+group.show.name: Csoport név
+group.new.submit: Csoport létrehozása
+group.flash.updated: A csoport frissítve
+group.flash.created: A csoport létrehozva
+group.flash.deleted: A csoport törölve
+
+# Security
+security.login.username: "Felhasználónév:"
+security.login.password: "Jelszó:"
+security.login.remember_me: Megjegyzés
+security.login.submit: Belépés
+
+# Profile
+profile.show.username: Felhasználónév
+profile.show.email: E-mail
+profile.edit.submit: Frissítés
+profile.flash.updated: A profil frissítve
+
+# Password change
+change_password.submit: Jelszó megváltoztazása
+change_password.flash.success: A jelszó megváltoztatva
+
+# Registration
+registration.check_email: Egy e-mail lett küldve a(z) %email% címre. Egy aktivációs linket tartalmaz, amire rá kell kattintani a fiók aktiválásához.
+registration.confirmed: Gratulálunk %username%, a fiók visszaigazolva.
+registration.back: Vissza az előző oldalra.
+registration.submit: Regisztráció
+registration.flash.user_created: A felhasználó sikeresen létrehozva
+
+registration.email: |
+    Üdvözöljük %username%!
+    Hello %username%!
+
+    A fiókja visszaigazolásához kérjük látogasson el a következő linkre: %confirmationUrl%
+
+    Üdvözlettel,
+    the Team.
+
+# Password resetting
+resetting.password_already_requested: Az elmúlt 24 órában ehhez a felhasználóhoz már kértek új jelszót.
+resetting.check_email: Egy e-mail lett küldve a(z) %email% címre. Egy linket tartalmaz, amire rá kell kattintani a jeszó lecseréléséhez.
+resetting.request.invalid_username: A(z) %username% felhasználónév vagy e-mail cím nem létezik.
+resetting.request.username: "Felhasználónév vagy e-mail cím:"
+resetting.request.submit: Jelszó lecserélése
+resetting.reset.submit: Jelszó megváltoztatása
+resetting.flash.success: A jelszó sikeresen lecserélve
+
+resetting.email: |
+    Jelszó lecserélése
+    Hello %username%!
+
+    A jelszó lecseréléséhez kérjük látogasson el a következő linkre: %confirmationUrl%
+
+    Üdvözlettel,
+    the Team.
+
+# Global strings
+layout.logout: Kijelentkezés
+layout.login: Bejelentkezés
+layout.register: Regisztráció
+layout.logged_in_as: Belépve mint %username%
+
+# Form field labels
+fos_user_group_form_name: "Csoport név:"
+
+fos_user_profile_form_user_username: "Felhasználónév:"
+fos_user_profile_form_user_email: "E-mail:"
+fos_user_profile_form_current: "Jelenlegi jelszó:"
+
+fos_user_registration_form_username: "Felhasználónév:"
+fos_user_registration_form_email: "E-mail:"
+fos_user_registration_form_plainPassword_first: "Jelszó:"
+fos_user_registration_form_plainPassword_second: "Megerősítés:"
+
+fos_user_resetting_form_new_first: "Új jelszó:"
+fos_user_resetting_form_new_second: "Megerősítés:"
+
+fos_user_change_password_form_new_first: "Új jelszó:"
+fos_user_change_password_form_new_second: "Megerősítés:"
+fos_user_change_password_form_current: "Jelenlegi jelszó:"
