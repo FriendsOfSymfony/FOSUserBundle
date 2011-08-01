@@ -1,23 +1,31 @@
-**Caution:** This bundles is developed in sync with [symfony's repository](https://github.com/symfony/symfony)
+FOSUserBundle
+=============
 
-FOSUserBundle provides user persistence for your Symfony2 Project.
+The FOSUserBundle adds support for a database-backed user system in Symfony2.
+It provides a flexible framework for user management that aims to handle
+common tasks such as user login, registration and password retrieval.
 
-Features
-========
+Features include:
 
-- Compatible with Doctrine ORM, MongoDB and CouchDB ODM thanks to a generic repository.
-- Model is extensible at will
+- Users can be stored via Doctrine ORM, MongoDB or CouchDB ODM
 - REST-ful authentication
+- Registration and password reset support
 - Unit tested
+
+**Caution:** This bundles is developed in sync with [symfony's repository](https://github.com/symfony/symfony)
 
 Documentation
 -------------
 
-The documentation is available in the bundle:
+The bulk of the documentation is stored in the `Resources/doc/index.md`
+file in this bundle:
 
-    Resources/doc/index.rst
+[Read the Documentation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md)
 
-See on GitHub: https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.rst
+Installation
+------------
+
+All the installation instructions are located in [documentation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md).
 
 License
 -------
@@ -35,9 +43,9 @@ See also the list of [contributors](https://github.com/FriendsOfSymfony/FOSUserB
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [GitHub issue tracker](https://github.com/FriendsOfSymfony/FOSUserBundle/issues).
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/FriendsOfSymfony/FOSUserBundle/issues).
 
 When reporting a bug, it may be a good idea to reproduce it in a basic project
-built using the [Symfony Standard Edition](https://github.com/symfony/symfony-standard)
+build using the [Symfony Standard Edition](https://github.com/symfony/symfony-standard)
 to allow developers of the bundle to reproduce the issue by simply cloning it
 and following some steps.
