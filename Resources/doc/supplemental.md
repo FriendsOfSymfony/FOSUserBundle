@@ -219,35 +219,6 @@ fos_user_group:
 
 ```
 
-FOSUserBundle Command Line Tools
-================================
-
-FOSUserBundle provides command line utilities to help manage your
-application's users.
-
-### Create a User
-
-This command creates a new user.
-
-``` bash
-$ php app/console fos:user:create username email password
-```
-
-If you don't provide the required arguments, an interactive prompt will
-ask you to enter them.
-
-``` bash
-$ php app/console fos:user:create
-```
-
-### Promote a User to Super Administrator
-
-This command promotes a user as a super administrator.
-
-``` bash
-$ php app/console fos:user:promote
-```
-
 About FOSUserBundle User Manager Service
 ========================================
 
