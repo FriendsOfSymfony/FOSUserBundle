@@ -130,6 +130,9 @@ in the `src/Acme/UserBundle/Resources/views` directory named `layout.html.twig`.
 how this file resides in the same exact path relative to the bundle directory as it 
 does in the FOSUserBundle.
 
+After overriding a template in your child bundle, you must clear the cache for the override
+to take effect, even in a development environment.
+
 Overriding all of the other templates provided by the FOSUserBundle can be done 
 in a similar fashion using either of the two methods shown in this document.
 
