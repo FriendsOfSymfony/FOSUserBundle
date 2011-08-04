@@ -24,7 +24,7 @@ change_password.submit: Wachtwoord wijzigen
 # Registration
 registration.check_email: Er is een email gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
 registration.confirmed: Gefeliciteerd %username%, uw account is nu bevestigd.
-#registration.back: Back to the previous page.
+#registration.back: Back to the originating page.
 registration.submit: Registreer
 registration.flash.user_created: De gebruiker is succesvol aangemaakt
 

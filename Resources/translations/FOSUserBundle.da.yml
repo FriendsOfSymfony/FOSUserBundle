@@ -25,7 +25,7 @@ change_password.flash.success: Kodeordet er blevet opdateret
 # Registration
 registration.check_email: En email er blevet send til %email%. Den indeholder et aktiverings link du skal bruge for at aktiverer din konto.
 registration.confirmed: Tillykke %username%, din konto er nu aktiveret
-#registration.back: Back to the previous page.
+#registration.back: Back to the originating page.
 registration.submit: Registrer
 registration.flash.user_created: Bruger er blevet oprettet
 

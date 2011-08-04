@@ -25,7 +25,7 @@ change_password.flash.success: Hasło zostało zmienione
 # Registration
 registration.check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby aktywować konto.
 registration.confirmed: Gratulacje %username%, potwierdziłeś konto.
-#registration.back: Back to the previous page.
+#registration.back: Back to the originating page.
 registration.submit: Zarejestruj
 registration.flash.user_created: Stworzono użytkownika
 

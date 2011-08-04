@@ -25,7 +25,7 @@ change_password.flash.success: Das Passwort wurde geändert
 # Registration
 registration.check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Benutzerkonto zu bestätigen.
 registration.confirmed: Glückwunsch %username%, Dein Benutzerkonto ist jetzt bestätigt.
-#registration.back: Back to the previous page.
+registration.back: Zurück zur ursprünglichen Seite.
 registration.submit: Registrieren
 registration.flash.user_created: Der Benutzer wurde erfolgreich erstellt
 
