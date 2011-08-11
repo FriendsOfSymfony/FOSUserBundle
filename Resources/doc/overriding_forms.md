@@ -122,7 +122,7 @@ Or if you prefer YAML:
 ``` yaml
 # src/Acme/UserBundle/Resources/config/services.yml
 services:
-    acme_user.registration.form.type
+    acme_user.registration.form.type:
         class: Acme\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
         tags:
