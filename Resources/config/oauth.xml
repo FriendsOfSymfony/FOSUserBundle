@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="fos_user.security.authentication.provider.oauth.class">FOS\UserBundle\Security\Core\Authentication\Provider\OAuthProvider</parameter>
+        <parameter key="fos_user.security.authentication.listener.oauth.class">FOS\UserBundle\Security\Http\Firewall\OAuthListener</parameter>
+        <parameter key="fos_user.security.authentication.token.exchanger.oauth.class">FOS\UserBundle\Security\Core\Authentication\Token\Exchanger\OAuthExchanger</parameter>
+        <parameter key="fos_user.client.class">Buzz\Client\Curl</parameter>
+    </parameters>
+
+    <services>
+
+        <service id="fos_user.client" class="%fos_user.client.class%" public="false" />
+
+        <service id="fos_user.security.authentication.token.exchanger.oauth" class="%fos_user.security.authentication.token.exchanger.oauth.class%" public="false">
+            <argument type="service" id="fos_user.client" />
+            <argument type="string">%fos_user.security.core.authentication.oauth.authorize_host%</argument>
+            <argument type="string">%fos_user.security.core.authentication.oauth.access_token_url%</argument>
+            <argument type="string">%fos_user.security.core.authentication.oauth.client_id%</argument>
+            <argument type="string">%fos_user.security.core.authentication.oauth.secret%</argument>
+        </service>
+        <service id="fos_user.security.authentication.provider.oauth" class="%fos_user.security.authentication.provider.oauth.class%">
+            <argument />
+        </service>
+
+        <service id="fos_user.security.authentication.listener.oauth" class="%fos_user.security.authentication.listener.oauth.class%" public="false">
+            <argument type="service" id="security.context" />
+            <argument type="service" id="security.authentication.manager" />
+            <argument type="service" id="fos_user.security.authentication.token.exchanger.oauth" />
+            <argument type="service" id="fos_user.oauth.api_provider" />
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="security.encoder_factory" />
+            <argument>%fos_user.encoder.algorithm%</argument>
+            <argument type="string">%fos_user.security.core.authentication.oauth.authorize_host%%fos_user.security.core.authentication.oauth.authorize_url%</argument>
+            <argument type="string">%fos_user.security.core.authentication.oauth.client_id%</argument>
+        </service>
+
+        <service id="fos_user.oauth.api.provider.github" class="FOS\UserBundle\OAuth\Api\Provider\GithubProvider" public="false">
+            <argument type="service" id="fos_user.client" />
+        </service>
+    </services>
+</container>
