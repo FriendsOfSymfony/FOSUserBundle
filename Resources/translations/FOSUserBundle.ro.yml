@@ -1,0 +1,83 @@
+# Group
+group.edit.submit: Updateaza grupul
+group.show.name: Numele grupului
+group.new.submit: Creeaza grup
+group.flash.updated: Grupul a fost updatat
+group.flash.created: Grupul a fost creat
+group.flash.deleted: Grupul a fost sters
+
+# Security
+security.login.username: "Nume de utilizator:"
+security.login.password: "Parola:"
+security.login.remember_me: Tine-ma minte
+security.login.submit: Login
+
+# Profile
+profile.show.username: Numele de utilizator
+profile.show.email: Email
+profile.edit.submit: Updateaza
+profile.flash.updated: Profilul a fost updatat
+
+# Password change
+change_password.submit: Schimba parola
+change_password.flash.success: Parola a fost schimbata
+
+# Registration
+registration.check_email: Un email a fost trimis catre %email%. Contine un link de activare pe care trebuie sa il accesezi pentru a-ti activa contul.
+registration.confirmed: Felicitari %username%, contul tau a fost confirmat.
+registration.back: Inapoi la pagina de la care ai venit.
+registration.submit: Inregistreaza-te
+registration.flash.user_created: Utilizatorul a fost creat cu succes
+
+registration.email: |
+    Bine ai venit %username%!
+    Salut %username%!
+
+    Pentru a-ti valida contul - acceseaza %confirmationUrl%
+
+    Toate cele bune,
+    Echipa
+
+# Password resetting
+resetting.password_already_requested: Deja s-a facut o cerere in ultimele 24 de ore pentru parola acestui utilizator.
+resetting.check_email: A fost trimit un email catre %email%. Contine un link pe care trebuie sa il accesezi pentru a-ti reseta parola.
+resetting.request.invalid_username: Numele de utilizator sau adresa de email "%username%" nu exista.
+resetting.request.username: "Numele de utilizator sau adresa de email:"
+resetting.request.submit: Reseteaza parola
+resetting.reset.submit: Schimba parola
+resetting.flash.success: Parola a fost resetata cu succes
+
+resetting.email: |
+    Resetare parola
+    Salut %username%!
+
+    Pentru a-ti reseta parola - acceseaza %confirmationUrl%
+
+    Toate cele bune,
+    Echipa
+
+# Global strings
+layout.logout: Logout
+layout.login: Login
+layout.register: Inregistrare
+layout.logged_in_as: Logat ca %username%
+
+# Form field labels
+fos_user_group_form_name: "Numele grupului:"
+
+fos_user_profile_form_user_username: "Nume de utilizator:"
+fos_user_profile_form_user_email: "Email:"
+fos_user_profile_form_current: "Parola curenta:"
+
+fos_user_registration_form_username: "Numele de utilizator:"
+fos_user_registration_form_email: "Email:"
+fos_user_registration_form_plainPassword_first: "Parola:"
+fos_user_registration_form_plainPassword_second: "Verificare parola:"
+
+fos_user_resetting_form_new_first: "Noua parola:"
+fos_user_resetting_form_new_second: "Verificare parola:"
+
+fos_user_change_password_form_new_first: "Noua parola:"
+fos_user_change_password_form_new_second: "Verificare parola:"
+fos_user_change_password_form_current: "Parola curenta:"
+
