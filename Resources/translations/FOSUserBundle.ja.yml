@@ -1,0 +1,82 @@
+# Group
+group.edit.submit: グループの更新
+group.show.name: グループ名
+group.new.submit: グループの作成
+group.flash.updated: グループが更新されました
+group.flash.created: グループが作成されました
+group.flash.deleted: グループが削除されました
+
+# Security
+security.login.username: "ユーザー名:"
+security.login.password: "パスワード:"
+security.login.remember_me: ログイン状態を記憶する
+security.login.submit: ログイン
+
+# Profile
+profile.show.username: ユーザー名
+profile.show.email: メールアドレス
+profile.edit.submit: 更新
+profile.flash.updated: プロフィールが更新されました
+
+# Password change
+change_password.submit: パスワードの変更
+change_password.flash.success: パスワードが変更されました
+
+# Registration
+registration.check_email: %email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。
+registration.confirmed: %username% さんのアカウントの確認が完了しました。
+registration.back: 元のページに戻る
+registration.submit: 登録
+registration.flash.user_created: ユーザーの作成が完了しました
+
+registration.email: |
+    %username% さん、ようこそ!
+    こんにちは %username% さん!
+
+    アカウントを有効化するには、次の確認 URL へアクセスしてください %confirmationUrl%
+
+    
+    開発チーム
+
+# Password resetting
+resetting.password_already_requested: このユーザーのパスワードは 24 時間以内ですでにリクエストされています。
+resetting.check_email: %email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。
+resetting.request.invalid_username: "%username%" というユーザー名またはメールアドレスは存在しません。
+resetting.request.username: "ユーザー名かメールアドレス:"
+resetting.request.submit: パスワードのリセット
+resetting.reset.submit: パスワードの変更
+resetting.flash.success: パスワードのリセットが完了しました
+
+resetting.email: |
+    パスワードのリセット
+    こんにちは %username% さん!
+
+    パスワードをリセットするには、次のリセット URL へアクセスしてください %confirmationUrl%
+
+    
+    開発チーム
+
+# Global strings
+layout.logout: ログアウト
+layout.login: ログイン
+layout.register: 登録
+layout.logged_in_as: %username% でログイン中
+
+# Form field labels
+fos_user_group_form_name: "グループ名:"
+
+fos_user_profile_form_user_username: "ユーザー名:"
+fos_user_profile_form_user_email: "メールアドレス:"
+fos_user_profile_form_current: "現在のパスワード:"
+
+fos_user_registration_form_username: "ユーザー名:"
+fos_user_registration_form_email: "メールアドレス:"
+fos_user_registration_form_plainPassword_first: "パスワード:"
+fos_user_registration_form_plainPassword_second: "確認:"
+
+fos_user_resetting_form_new_first: "新しいパスワード:"
+fos_user_resetting_form_new_second: "確認:"
+
+fos_user_change_password_form_new_first: "新しいパスワード:"
+fos_user_change_password_form_new_second: "確認:"
+fos_user_change_password_form_current: "現在のパスワード:"
