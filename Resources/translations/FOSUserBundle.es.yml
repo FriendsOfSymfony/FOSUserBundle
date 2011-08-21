@@ -1,7 +1,12 @@
+# Group
 group.edit.submit: Actualizar grupo
 group.show.name: Nombre de grupo
 group.new.submit: Crear grupo
+group.flash.updated: El grupo ha sido actualizado
+group.flash.created: El grupo ha sido creado
+group.flash.deleted: El grupo ha sido borrado
 
+# Security
 security.login.username: "Nombre de usuario:"
 security.login.password: "Contraseña:"
 security.login.remember_me: Recordar
@@ -11,14 +16,18 @@ security.login.submit: Entrar
 profile.show.username: Nombre de usuario
 profile.show.email: Email
 profile.edit.submit: Actualizar usuario
+profile.flash.updated: El perfil ha sido actualizado
 
 # Password change
 change_password.submit: Cambiar contraseña
+change_password.flash.success: La contraseña se ha cambiado con éxito
 
 # Registration
 registration.check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
 registration.confirmed: Felicidades %username%, tu cuenta está ahora confirmada.
+registration.back: Volver a la página original.
 registration.submit: Registrar
+registration.flash.user_created: El usuario se ha creado satisfactoriamente
 
 registration.email: |
     Bienvenido %username%!
@@ -32,9 +41,11 @@ registration.email: |
 # Password resetting
 resetting.password_already_requested: La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.
 resetting.check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
+resetting.request.invalid_username: El usuario o dirección de correo "%username%" no existe.
 resetting.request.username: "Nombre de usuario:"
 resetting.request.submit: Restablecer contraseña
 resetting.reset.submit: Cambiar contraseña
+resetting.flash.success: La contraseña se ha cambiado con éxito
 
 resetting.email: |
     Bienvenido %username%!
@@ -69,3 +80,4 @@ fos_user_resetting_form_new_second: "Verificación:"
 fos_user_change_password_form_new_first: "Nueva contraseña:"
 fos_user_change_password_form_new_second: "Verificación:"
 fos_user_change_password_form_current: "Actual contraseña:"
+
