@@ -1,0 +1,82 @@
+# Group
+group.edit.submit: Aggiorna gruppo
+group.show.name: Nome gruppo
+group.new.submit: Crea gruppo
+group.flash.updated: Il gruppo è stato aggiornato 
+group.flash.created: Il gruppo è stato creato
+group.flash.deleted: Il gruppo è stato cancellato
+
+# Security
+security.login.username: "Username:"
+security.login.password: "Password:"
+security.login.remember_me: Ricordami
+security.login.submit: Login
+
+# Profile
+profile.show.username: Username
+profile.show.email: Email
+profile.edit.submit: Aggiorna
+profile.flash.updated: Il profilo è stato aggiornato
+
+# Password change
+change_password.submit: Cambia password
+change_password.flash.success: La password è stata cambiata
+
+# Registration
+registration.check_email: Una mail è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per attivare il tuo account.
+registration.confirmed: Congratulazioni %username%, il tuo account è confermato.
+registration.back: Torna alla pagina d'origine.
+registration.submit: Registra
+registration.flash.user_created: Utente creato con successo
+
+registration.email: |
+    Benvenuto %username%!
+    Ciao %username%!
+
+    Per terminare la validazione del tuo account visita %confirmationUrl%
+
+    Saluti,
+    il Team.
+
+# Password resetting
+resetting.password_already_requested: La password per questo utente è già stata richiesta nelle ultime 24 ore.
+resetting.check_email: Una email è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per il reset della password.
+resetting.request.invalid_username: Username o indirizzo email "%username%" non esistente.
+resetting.request.username: "Username o indirizzo email:"
+resetting.request.submit: Password reset
+resetting.reset.submit: Cambia password
+resetting.flash.success: La password è stata resettata
+
+resetting.email: |
+    Password reset
+    Ciao %username%!
+
+    Per resettare la password visita %confirmationUrl%
+
+    Saluti,
+    il Team.
+
+# Global strings
+layout.logout: Logout
+layout.login: Login
+layout.register: Registra
+layout.logged_in_as: Collegato come %username%
+
+# Form field labels
+fos_user_group_form_name: "Nome gruppo:"
+
+fos_user_profile_form_user_username: "Username:"
+fos_user_profile_form_user_email: "Email:"
+fos_user_profile_form_current: "Password corrente:"
+
+fos_user_registration_form_username: "Username:"
+fos_user_registration_form_email: "Email:"
+fos_user_registration_form_plainPassword_first: "Password:"
+fos_user_registration_form_plainPassword_second: "Verifica:"
+
+fos_user_resetting_form_new_first: "Nuova password:"
+fos_user_resetting_form_new_second: "Verifica:"
+
+fos_user_change_password_form_new_first: "Nuova password:"
+fos_user_change_password_form_new_second: "Verifica:"
+fos_user_change_password_form_current: "Password corrente:"
