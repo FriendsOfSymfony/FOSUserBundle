@@ -27,7 +27,7 @@ class SecurityEncoderFactoryPass implements CompilerPassInterface
         if ($container->hasAlias('security.encoder_factory')) {
             // security.encoder_factory is an alias.
             // Register a private alias for this service to inject it as the parent
-            $container->setAlias(new Alias('fos_user.encoder_factory.parent', false), (string) $container->getAlias('security.encoder_factory'));
+            $container->setAlias('fos_user.encoder_factory.parent', new Alias((string) $container->getAlias('security.encoder_factory'), false));
         } else {
             // security.encoder_factory is a definition.
             // Register it again as a private service to inject it as the parent
