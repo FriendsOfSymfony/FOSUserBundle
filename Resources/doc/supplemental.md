@@ -304,7 +304,7 @@ public function MainController extends Controller
 
         $user->setEmail($newEmail);
 
-        $this->get('fos_user.user_manager')->udpateUser($user, false);
+        $this->get('fos_user.user_manager')->updateUser($user, false);
 
         // make more modifications to the database
 
