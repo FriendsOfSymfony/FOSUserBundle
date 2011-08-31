@@ -20,7 +20,7 @@ abstract class Group implements GroupInterface
     protected $name;
     protected $roles;
 
-    public function __construct($name, $roles = array())
+    public function __construct($name = null, $roles = array())
     {
         $this->name = $name;
         $this->roles = $roles;
