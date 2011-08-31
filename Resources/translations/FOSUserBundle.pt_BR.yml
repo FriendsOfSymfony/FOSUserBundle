@@ -2,65 +2,65 @@
 group.edit.submit: Atualizar Grupo
 group.show.name: Nome do Grupo
 group.new.submit: Criar Grupo
-#group.flash.updated: The group has been updated
-#group.flash.created: The group has been created
-#group.flash.deleted: The group has been deleted
+group.flash.updated: O grupo foi atualizado
+group.flash.created: O grupo foi criado
+group.flash.deleted: O grupo foi removido
 
 # Security
 security.login.username: "Usuário:"
 security.login.password: "Senha:"
-security.login.remember_me: Lembrete de senha
+security.login.remember_me: Permanecer conectado
 security.login.submit: Entrar
 
 # Profile
 profile.show.username: Usuário
 profile.show.email: Email
-profile.edit.submit: Atualizar conta
-#profile.flash.updated: The profile has been updated
+profile.edit.submit: Atualizar
+profile.flash.updated: O perfil foi atualizado.
 
 # Password change
 change_password.submit: Alterar senha
-#change_password.flash.success: The password has been changed
+change_password.flash.success: A senha foi alterada.
 
 # Registration
-registration.check_email: Foi enviado um email para %email%. Para para ativar a sua conta, clique no link da mensagem.
-registration.confirmed: Parabéns %username%, a sua conta foi ativada.
-#registration.back: Back to the originating page.
-registration.submit: Registar
-#registration.flash.user_created: The user has been created successfully
+registration.check_email: Um email foi enviado para o endereço %email%. Para para ativar a sua conta, clique no link na mensagem.
+registration.confirmed: Parabéns, %username%. A sua conta foi ativada.
+registration.back: Retornar para a página de origem.
+registration.submit: Registrar
+registration.flash.user_created: O usuário foi criado com sucesso.
 
 registration.email: |
-    Bem-vindo(a) %username%!
-    Olá %username%!
+    Bem-vindo(a), %username%!
+    Olá, %username%!
 
-    Para completar a validação da sua conta, por favor clique no seguinte link: %confirmationUrl%
+    Para completar a validação da sua conta, clique no link: %confirmationUrl%
 
     Atenciosamente,
-    A equipe.
+    a Equipe.
 
 # Password resetting
 resetting.password_already_requested: Este usuário já solicitou uma senha nas últimas 24 horas.
 resetting.check_email: Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.
-#resetting.request.invalid_username: The username or email address "%username%" does not exist.
-resetting.request.username: "Usuário:"
+resetting.request.invalid_username: O usuário ou endereço de email "%username%" não está cadastrado.
+resetting.request.username: "Usuário ou email:"
 resetting.request.submit: Recuperar senha
 resetting.reset.submit: Alterar senha
-#resetting.flash.success: The password has been reset successfully
+resetting.flash.success: A senha foi redefinida com sucesso.
 
 resetting.email: |
-    Bem-vindo(a) %username%!
-    Olá %username%!
+    Redefinir senha
+    Olá, %username%!
 
-    Para recuperar sua senha, por favor clique no seguinte link: %confirmationUrl%
+    Para redefinir sua senha, clique no link: %confirmationUrl%
 
     Atenciosamente,
-    A equipe.
+    a Equipe.
 
 # Global strings
 layout.logout: Sair
 layout.login: Entrar
 layout.register: Registar
-layout.logged_in_as: Logado como %username%
+layout.logged_in_as: Conectado como %username%
 
 # Form field labels
 fos_user_group_form_name: "Nome do Grupo:"
@@ -72,11 +72,11 @@ fos_user_profile_form_current: "Senha atual:"
 fos_user_registration_form_username: "Usuário:"
 fos_user_registration_form_email: "Email:"
 fos_user_registration_form_plainPassword_first:  "Senha:"
-fos_user_registration_form_plainPassword_second: "Repetir a senha:"
+fos_user_registration_form_plainPassword_second: "Repita a senha:"
 
 fos_user_resetting_form_new_first: "Nova senha:"
-#fos_user_resetting_form_new_second: "Verification:"
+fos_user_resetting_form_new_second: "Repita a senha:"
 
 fos_user_change_password_form_new_first: "Nova senha:"
-#fos_user_change_password_form_new_second: "Verification:"
+fos_user_change_password_form_new_second: "Repita a senha:"
 fos_user_change_password_form_current: "Senha atual:"
