@@ -92,6 +92,35 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($user1->equals($user3));
     }
 
+    public function testUserHasDefaultRoleOnlyIfNoOtherRolesArePresent()
+    {
+        $user = $this->getUser();
+
+        $this->assertTrue($user->hasRole(User::ROLE_DEFAULT));
+        
+        $newrole = 'ROLE_X';
+        
+        $user->addRole($newrole);
+
+        $this->assertFalse($user->hasRole(User::ROLE_DEFAULT));
+        $this->assertTrue($user->hasRole($newrole));
+    }
+    
+    public function testUserHasDefaultRoleWhenExplicitlySet()
+    {
+        $user = $this->getUser();
+        
+        $newrole = 'ROLE_X';
+        
+        $user->addRole($newrole);
+        
+        $this->assertFalse($user->hasRole(User::ROLE_DEFAULT));
+        
+        $user->addRole(User::ROLE_DEFAULT);
+        
+        $this->assertTrue($user->hasRole(User::ROLE_DEFAULT));
+    }
+    
     protected function getUser()
     {
         return $this->getMockForAbstractClass('FOS\UserBundle\Model\User');
