@@ -153,7 +153,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function addRole($role)
     {
         $role = strtoupper($role);
-        if ($role === self::ROLE_DEFAULT) {
+        if ($role === static::ROLE_DEFAULT) {
             return;
         }
 
@@ -374,7 +374,7 @@ abstract class User implements UserInterface, GroupableInterface
         }
 
         // we need to make sure to have at least one role
-        $roles[] = self::ROLE_DEFAULT;
+        $roles[] = static::ROLE_DEFAULT;
 
         return array_unique($roles);
     }
@@ -481,7 +481,7 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function isSuperAdmin()
     {
-        return $this->hasRole(self::ROLE_SUPER_ADMIN);
+        return $this->hasRole(static::ROLE_SUPER_ADMIN);
     }
 
     /**
@@ -611,9 +611,9 @@ abstract class User implements UserInterface, GroupableInterface
     public function setSuperAdmin($boolean)
     {
         if (true === $boolean) {
-            $this->addRole(self::ROLE_SUPER_ADMIN);
+            $this->addRole(static::ROLE_SUPER_ADMIN);
         } else {
-            $this->removeRole(self::ROLE_SUPER_ADMIN);
+            $this->removeRole(static::ROLE_SUPER_ADMIN);
         }
     }
 
