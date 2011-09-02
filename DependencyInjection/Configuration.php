@@ -217,6 +217,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('encoder')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('enabled')->defaultTrue()->end()
                         ->scalarNode('algorithm')->defaultValue('sha512')->end()
                         ->booleanNode('encode_as_base64')->defaultFalse()->end()
                         ->scalarNode('iterations')->defaultValue(1)->end()

@@ -254,6 +254,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createEmptyConfiguration();
 
+        $this->assertParameter(true, 'fos_user.encoder.enabled');
         $this->assertParameter('sha512', 'fos_user.encoder.algorithm');
         $this->assertParameter(false, 'fos_user.encoder.encode_as_base64');
         $this->assertParameter(1, 'fos_user.encoder.iterations');
@@ -263,6 +264,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createFullConfiguration();
 
+        $this->assertParameter(false, 'fos_user.encoder.enabled');
         $this->assertParameter('sha1', 'fos_user.encoder.algorithm');
         $this->assertParameter(true, 'fos_user.encoder.encode_as_base64');
         $this->assertParameter(3, 'fos_user.encoder.iterations');
@@ -380,6 +382,7 @@ service:
     username_canonicalizer: acme_my.username_canonicalizer
     user_manager: acme_my.user_manager
 encoder:
+    enabled: false
     algorithm: sha1
     encode_as_base64: true
     iterations: 3
