@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="FOS\UserBundle\Entity\Group" table="fos_user_group">
+    <mapped-superclass name="FOS\UserBundle\Entity\Group">
 
         <field name="name" column="name" type="string" length="255" unique="true" />
 
