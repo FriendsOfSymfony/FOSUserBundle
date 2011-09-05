@@ -9,7 +9,7 @@
         <requirement key="_method">GET</requirement>
     </route>
 
-    <route id="fos_user_profile_edit" pattern="/edit">
+    <route id="fos_user_profile_edit" pattern="/edit/">
         <default key="_controller">FOSUserBundle:Profile:edit</default>
     </route>
 
