@@ -109,11 +109,9 @@ and place your `User` class in it.
 
 **Warning:**
 
-```
-If you override the __construct() method in your User class, be sure
-to call parent::__construct(), as the base User class depends on
-this to initialize some fields.
-```
+> If you override the __construct() method in your User class, be sure
+> to call parent::__construct(), as the base User class depends on
+> this to initialize some fields.
 
 **a) Doctrine ORM User class**
 
@@ -151,7 +149,9 @@ class User extends BaseUser
 }
 ```
 
-**Note**: `User` is a reserved keyword in SQL so you cannot use it as table name.
+**Note:**
+
+> `User` is a reserved keyword in SQL so you cannot use it as table name.
 
 **b) MongoDB User class**
 
@@ -268,12 +268,10 @@ provider for the firewall to use as part of the authentication process.
 
 **Note:**
 
-```
-Although we have used the form login mechanism in this example, the FOSUserBundle
-user provider is compatible with many other authentication methods as well. Please
-read the Symfony2 Security component documention for more information on the
-other types of authentication methods.
-```
+> Although we have used the form login mechanism in this example, the FOSUserBundle
+> user provider is compatible with many other authentication methods as well. Please
+> read the Symfony2 Security component documention for more information on the
+> other types of authentication methods.
 
 The `access_control` section is where you specify the credentials necessary for
 users trying to access specific parts of your application. The bundle requires
@@ -290,11 +288,9 @@ security component [documentation](http://symfony.com/doc/current/book/security.
 
 **Note:**
 
-```
-Pay close attention to the name, `main`, that we have given to the firewall which
-the FOSUserBundle is configured in. You will use this in the next step when you
-configure the FOSUserBundle.
-```
+> Pay close attention to the name, `main`, that we have given to the firewall which
+> the FOSUserBundle is configured in. You will use this in the next step when you
+> configure the FOSUserBundle.
 
 ### Step 6: Configure the FOSUserBundle
 
@@ -378,10 +374,8 @@ Or if you prefer XML:
 
 **Note:**
 
-```
-In order to use the built-in email functionality (confirmation of the account,
-resetting of the password), you must activate and configure the SwiftmailerBundle.
-```
+> In order to use the built-in email functionality (confirmation of the account,
+> resetting of the password), you must activate and configure the SwiftmailerBundle.
 
 ### Step 8: Update your database schema
 
