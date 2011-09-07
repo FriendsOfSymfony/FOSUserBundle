@@ -9,6 +9,22 @@ and easy to store users in a database.
 So, if you need to persist and fetch the users in your system to and from
 a database, then you're in the right place.
 
+## Prerequisites
+
+### Translations
+
+If you wish to use default texts provided in this bundle, you have to make
+sure you have translator enabled in your config.
+
+```
+# app/config/config.yml
+
+framework:
+    translator: ~
+```
+
+For more information about translations, check [Symfony documentation](http://symfony.com/doc/2.0/book/translation.html).
+
 ## Installation
 
 Installation is a quick (I promise!) 8 step process:
