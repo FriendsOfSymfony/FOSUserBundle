@@ -32,7 +32,7 @@ fos_user:
             from_email: # Use this node only if you don't want the global email address for the confirmation email
                 address:        ...
                 sender_name:    ...
-            enabled:    false
+            enabled:    false # change to true for required email confirmation
             template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type:               fos_user_registration
