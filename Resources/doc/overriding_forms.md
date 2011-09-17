@@ -275,7 +275,7 @@ Or if you prefer YAML:
 ``` yaml
 # src/Acme/UserBundle/Resources/config/services.yml
 services:
-    acme_user.form.handler.registration
+    acme_user.form.handler.registration:
         class: Acme\UserBundle\Form\Handler\RegistrationFormHandler
         arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer"]
         scope: request
