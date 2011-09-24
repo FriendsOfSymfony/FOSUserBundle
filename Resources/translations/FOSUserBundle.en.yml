@@ -40,7 +40,7 @@ registration.email: |
 
 # Password resetting
 resetting.password_already_requested: The password for this user has already been requested within the last 24 hours.
-resetting.check_email: An email has been sent to %email%. It contains an link you must click to reset your password.
+resetting.check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
 resetting.request.invalid_username: The username or email address "%username%" does not exist.
 resetting.request.username: "Username or email address:"
 resetting.request.submit: Reset password
