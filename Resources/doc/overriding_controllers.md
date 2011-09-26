@@ -29,10 +29,9 @@ class AcmeUserBundle extends Bundle
 
 **Note:**
 
-```
-The Symfony2 framework only allows a bundle to have one child. You cannot create
-another bundle that is also a child of FOSUserBundle.
-```
+> The Symfony2 framework only allows a bundle to have one child. You cannot create
+> another bundle that is also a child of FOSUserBundle.
+
 
 Now that you have created the new child bundle you can simply create a controller class
 with the same name and in the same location as the one you want to override. This
@@ -94,9 +93,7 @@ class RegistrationController extends BaseController
 
 **Note:**
 
-```
-If you do not extend the FOSUserBundle controller class that you want to override
-and instead extend ContainerAware or the Controller class provided by the FrameworkBundle
-then you must implement all of the methods of the FOSUserBundle controller that
-you are overriding.
-```
+> If you do not extend the FOSUserBundle controller class that you want to override
+> and instead extend ContainerAware or the Controller class provided by the FrameworkBundle
+> then you must implement all of the methods of the FOSUserBundle controller that
+> you are overriding.

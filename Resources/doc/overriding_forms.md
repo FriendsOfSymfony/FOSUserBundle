@@ -49,11 +49,9 @@ class User extends BaseUser
 
 **Note:**
 
-```
-By default, the Registration validation group is used when validating a new 
-user registration. Unless you have overriden this value in the configuration, 
-make sure you add the validation group named Registration to your name property.
-```
+> By default, the Registration validation group is used when validating a new 
+> user registration. Unless you have overriden this value in the configuration, 
+> make sure you add the validation group named Registration to your name property.
 
 If you try and register using the default registration form you will find that 
 your new `name` property is not part of the form. You need to create a custom 
@@ -131,12 +129,10 @@ services:
 
 **Note:**
 
-```
-In the form type service configuration you have specified the `fos_user.model.user.class` 
-container parameter as a constructor argument. Unless you have redefined the 
-constructor in your form type class, you must include this argument as it is a 
-requirement of the FOSUserBundle form type that you extended.
-```
+> In the form type service configuration you have specified the `fos_user.model.user.class` 
+> container parameter as a constructor argument. Unless you have redefined the 
+> constructor in your form type class, you must include this argument as it is a 
+> requirement of the FOSUserBundle form type that you extended.
 
 Finally, you must update the configuration of the FOSUserBundle so that it will 
 use your form type instead of the default one. Below is the configuration for 
@@ -196,11 +192,9 @@ class RegistrationFormHandler extends BaseHandler
 
 **Note:**
 
-```
-If you do not call the onSuccess method of the parent class then the default 
-logic that the FOSUserBundle handler normally executes upon a successful 
-submission will not be performed.
-```
+> If you do not call the onSuccess method of the parent class then the default 
+> logic that the FOSUserBundle handler normally executes upon a successful 
+> submission will not be performed.
 
 You can also choose to override the `process` method of the handler. If you choose 
 to override the `process` method then you will be responsible for binding the form 
@@ -239,10 +233,8 @@ class RegistrationFormHandler extends BaseHandler
 
 **Note:**
 
-```
-The process method should return true for a successful submission and false 
-otherwise.
-```
+> The process method should return true for a successful submission and false 
+> otherwise.
 
 Now that you have created and implemented your custom form handler class, you 
 must configure it as a service in the container. Below is an example of 
