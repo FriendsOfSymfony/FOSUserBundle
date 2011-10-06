@@ -61,14 +61,28 @@ class Mailer implements MailerInterface
         // Render the email, use the first line as the subject, and the rest as the body
         $renderedLines = explode("\n", trim($renderedTemplate));
         $subject = $renderedLines[0];
-        $body = implode("\n", array_slice($renderedLines, 1));
+        $content = implode("\n", array_slice($renderedLines, 1));
+
+        $template = $this->parameters['base.email.template'];
+
+        $body = $this->templating->render($template, array('content' => $content));
+
+        if ($body[0] == '<') {
+            $body = nl2br($body);
+            $contentType = 'text/html';
+        } else {
+            $contentType = 'text/plain';
+        }
 
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($fromEmail)
             ->setTo($toEmail)
-            ->setBody($body);
+            ->setBody($body)
+            ->setContentType($contentType);
+
 
         $this->mailer->send($message);
     }
+
 }
