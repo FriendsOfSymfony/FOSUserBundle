@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="fos_user.resetting.email.template">FOSUserBundle:Resetting:email.txt.twig</parameter>
         <parameter key="fos_user.registration.confirmation.template">FOSUserBundle:Registration:email.txt.twig</parameter>
+	<parameter key="fos_user.base.email.template">FOSUserBundle::email_layout.html.twig</parameter>
     </parameters>
 
     <services>
@@ -17,6 +18,7 @@
             <argument type="collection">
                 <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
                 <argument key="resetting.template">%fos_user.resetting.email.template%</argument>
+		<argument key="base.email.template">%fos_user.base.email.template%</argument>
                 <argument key="from_email" type="collection">
                     <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
                     <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
