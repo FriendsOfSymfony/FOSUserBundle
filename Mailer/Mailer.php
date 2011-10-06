@@ -68,21 +68,19 @@ class Mailer implements MailerInterface
 
         $body = $this->templating->render($template, array('content' => $content));
         if ($body[0] == '<')
+	{
             $body = nl2br($body);
+	    $contentType = 'text/html';
+	}
+	else
+	    $contentType = 'text/plain';
 
-        if ($body[0] == '<')
-            $message = \Swift_Message::newInstance()
-                    ->setSubject($subject)
-                    ->setFrom($fromEmail)
-                    ->setTo($toEmail)
-                    ->setBody($body)
-                    ->setContentType('text/html');
-        else
-            $message = \Swift_Message::newInstance()
-                    ->setSubject($subject)
-                    ->setFrom($fromEmail)
-                    ->setTo($toEmail)
-                    ->setBody($body);
+        $message = \Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setFrom($fromEmail)
+                ->setTo($toEmail)
+                ->setBody($body)
+                ->setContentType($contentType);
 
 
         $this->mailer->send($message);
