@@ -40,7 +40,7 @@ class Mailer implements MailerInterface
         $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
-            'confirmationUrl' => $url
+            'confirmationUrl' =>  $url
         ));
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
     }
