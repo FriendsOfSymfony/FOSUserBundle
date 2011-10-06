@@ -21,6 +21,7 @@ use FOS\UserBundle\Mailer\MailerInterface;
  */
 class Mailer implements MailerInterface
 {
+
     protected $mailer;
     protected $router;
     protected $templating;
@@ -40,8 +41,8 @@ class Mailer implements MailerInterface
         $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
-            'confirmationUrl' =>  $url
-        ));
+            'confirmationUrl' => $url
+                ));
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
     }
 
@@ -52,7 +53,7 @@ class Mailer implements MailerInterface
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'confirmationUrl' => $url
-        ));
+                ));
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['resetting'], $user->getEmail());
     }
 
@@ -61,18 +62,30 @@ class Mailer implements MailerInterface
         // Render the email, use the first line as the subject, and the rest as the body
         $renderedLines = explode("\n", trim($renderedTemplate));
         $subject = $renderedLines[0];
-	$content = implode("\n", array_slice($renderedLines, 1));
+        $content = implode("\n", array_slice($renderedLines, 1));
 
-	$template = $this->parameters['base.email.template'];
+        $template = $this->parameters['base.email.template'];
 
-	$body = $this->templating->render($template, array('content' => $content));
+        $body = $this->templating->render($template, array('content' => $content));
+        if ($body[0] == '<')
+            $body = nl2br($body);
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject($subject)
-            ->setFrom($fromEmail)
-            ->setTo($toEmail)
-            ->setBody($body);
+        if ($body[0] == '<')
+            $message = \Swift_Message::newInstance()
+                    ->setSubject($subject)
+                    ->setFrom($fromEmail)
+                    ->setTo($toEmail)
+                    ->setBody($body)
+                    ->setContentType('text/html');
+        else
+            $message = \Swift_Message::newInstance()
+                    ->setSubject($subject)
+                    ->setFrom($fromEmail)
+                    ->setTo($toEmail)
+                    ->setBody($body);
+
 
         $this->mailer->send($message);
     }
+
 }
