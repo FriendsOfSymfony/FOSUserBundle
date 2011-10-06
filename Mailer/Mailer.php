@@ -21,7 +21,6 @@ use FOS\UserBundle\Mailer\MailerInterface;
  */
 class Mailer implements MailerInterface
 {
-
     protected $mailer;
     protected $router;
     protected $templating;
@@ -42,7 +41,7 @@ class Mailer implements MailerInterface
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'confirmationUrl' => $url
-                ));
+        ));
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
     }
 
@@ -53,7 +52,7 @@ class Mailer implements MailerInterface
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'confirmationUrl' => $url
-                ));
+        ));
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['resetting'], $user->getEmail());
     }
 
@@ -67,20 +66,20 @@ class Mailer implements MailerInterface
         $template = $this->parameters['base.email.template'];
 
         $body = $this->templating->render($template, array('content' => $content));
-        if ($body[0] == '<')
-	{
+
+        if ($body[0] == '<') {
             $body = nl2br($body);
-	    $contentType = 'text/html';
-	}
-	else
-	    $contentType = 'text/plain';
+            $contentType = 'text/html';
+        } else {
+            $contentType = 'text/plain';
+        }
 
         $message = \Swift_Message::newInstance()
-                ->setSubject($subject)
-                ->setFrom($fromEmail)
-                ->setTo($toEmail)
-                ->setBody($body)
-                ->setContentType($contentType);
+            ->setSubject($subject)
+            ->setFrom($fromEmail)
+            ->setTo($toEmail)
+            ->setBody($body)
+            ->setContentType($contentType);
 
 
         $this->mailer->send($message);
