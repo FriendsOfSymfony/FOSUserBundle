@@ -41,8 +41,8 @@ registration.email: |
 # Password resetting
 resetting.password_already_requested: W przeciągu ostatnich 24 godzin nastąpiła już próba odzyskania hasła.
 resetting.check_email: Na adres %email% Wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby zresetować hasło.
-resetting.request.invalid_username: Użytkownik "%username%" nie istnieje.
-resetting.request.username: "Nazwa użytkownika:"
+resetting.request.invalid_username: Nazwa użytkownika lub e-mail "%username%" nie istnieje.
+resetting.request.username: "Nazwa użytkownika lub e-mail:"
 resetting.request.submit: Resetuj hasło
 resetting.reset.submit: Zmień hasło
 resetting.flash.success: Hasło zostało zresetowane
