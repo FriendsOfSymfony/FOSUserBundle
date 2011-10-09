@@ -24,7 +24,7 @@ change_password.flash.success: The password has been changed
 
 # Registration
 registration.check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
-registration.confirmed: Congrats %username%, your account is now confirmed.
+registration.confirmed: Congrats %username%, your account is now activated.
 registration.back: Back to the originating page.
 registration.submit: Register
 registration.flash.user_created: The user has been created successfully
@@ -33,7 +33,7 @@ registration.email: |
     Welcome %username%!
     Hello %username%!
 
-    To finish validating your account - please visit %confirmationUrl%
+    To finish activating your account - please visit %confirmationUrl%
 
     Regards,
     the Team.
