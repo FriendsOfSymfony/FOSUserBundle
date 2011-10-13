@@ -174,25 +174,25 @@ abstract class User implements UserInterface, GroupableInterface
             return false;
         }
 
-        if ($this->password !== $user->getPassword()) {
+        if ($this->getPassword() !== $user->getPassword()) {
             return false;
         }
         if ($this->getSalt() !== $user->getSalt()) {
             return false;
         }
-        if ($this->usernameCanonical !== $user->getUsernameCanonical()) {
+        if ($this->getUsernameCanonical() !== $user->getUsernameCanonical()) {
             return false;
         }
         if ($this->isAccountNonExpired() !== $user->isAccountNonExpired()) {
             return false;
         }
-        if (!$this->locked !== $user->isAccountNonLocked()) {
+        if ($user->isAccountNonLocked() !== $user->isAccountNonLocked()) {
             return false;
         }
         if ($this->isCredentialsNonExpired() !== $user->isCredentialsNonExpired()) {
             return false;
         }
-        if ($this->enabled !== $user->isEnabled()) {
+        if ($user->isEnabled() !== $user->isEnabled()) {
             return false;
         }
 
