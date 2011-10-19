@@ -84,7 +84,7 @@ your `app/Resources` folder. To override the layout template located at
 `Resources/views/layout.html.twig` in the `FOSUserBundle` directory, you would place 
 you new layout template at `app/Resources/FOSUserBundle/views/layout.html.twig`.
 
-As you can see the the pattern for overriding templates in this way is to 
+As you can see the pattern for overriding templates in this way is to 
 create a folder with the name of the bundle class in the `app/Resources` directory. 
 Then add your new template to this folder, preserving the directory structure from the 
 original bundle.
