@@ -16,7 +16,7 @@
         </service>
 
         <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
-            <argument>%fos_user.model.user.class%</argument>
+            <argument>%fos_user.model.user.form_data_class%</argument>
             <tag name="form.type" alias="fos_user_profile" />
         </service>
 

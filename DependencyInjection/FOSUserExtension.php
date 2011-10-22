@@ -29,7 +29,7 @@ class FOSUserExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb', 'couchdb'))) {
+        if (!in_array(strtolower($config['db_driver']), array('orm', 'mongodb', 'couchdb', 'propel'))) {
             throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
         }
         $loader->load(sprintf('%s.xml', $config['db_driver']));
@@ -55,6 +55,9 @@ class FOSUserExtension extends Extension
 
                 case 'couchdb':
                     $container->getDefinition('fos_user.user_listener')->addTag('doctrine_couchdb.event_subscriber');
+                    break;
+
+                case 'propel':
                     break;
 
                 default:
@@ -172,6 +175,20 @@ class FOSUserExtension extends Extension
                 ),
                 'form' => 'fos_user.group.form.%s',
             ));
+        }
+
+        if ('propel' == $config['db_driver']) {
+            $container->setParameter('fos_user.model.user.form_data_class', $container->getParameter('fos_user.model.user.proxy_class'));
+
+            if (!empty($config['group'])) {
+                $container->setParameter('fos_user.model.group.form_data_class', $container->getParameter('fos_user.model.group.proxy_class'));
+            }
+        } else {
+            $container->setParameter('fos_user.model.user.form_data_class', $container->getParameter('fos_user.model.user.class'));
+
+            if (!empty($config['group'])) {
+                $container->setParameter('fos_user.model.group.form_data_class', $container->getParameter('fos_user.model.group.class'));
+            }
         }
     }
 

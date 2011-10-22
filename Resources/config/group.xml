@@ -17,7 +17,7 @@
 
         <service id="fos_user.group.form.type" class="FOS\UserBundle\Form\Type\GroupFormType">
             <tag name="form.type" alias="fos_user_group" />
-            <argument>%fos_user.model.group.class%</argument>
+            <argument>%fos_user.model.group.form_data_class%</argument>
         </service>
 
         <service id="fos_user.group.form.handler.default" class="FOS\UserBundle\Form\Handler\GroupFormHandler" scope="request" public="false">
