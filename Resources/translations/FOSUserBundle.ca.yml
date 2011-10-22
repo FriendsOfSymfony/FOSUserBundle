@@ -24,7 +24,7 @@ change_password.flash.success: S'ha canviat la contrasenya
 
 # Registration
 registration.check_email: S'ha enviat un correu electrònic a %email%. Conté un enllaç d'activació que heu de clicar per activar el compte.
-registration.confirmed: Enhorabona %username%, el vostre compte s'ha confirmat.
+registration.confirmed: Enhorabona %username%, el vostre compte s'ha activat.
 registration.back: Torna a la pàgina original.
 registration.submit: Registra
 registration.flash.user_created: S'ha creat l'usuari correctament
@@ -33,7 +33,7 @@ registration.email: |
     Benvingut %username%!
     Hola %username%!
 
-    Per finalitzar la validació del seu compte - si us plau visiteu %confirmationUrl%
+    Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
 
     Atentament,
     L'equip.
