@@ -4,7 +4,7 @@ namespace FOS\UserBundle\CouchDocument;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ODM\CouchDB\Event;
-use Doctrine\ODM\CouchDB\Events\LifecycleEventArgs;
+use Doctrine\ODM\CouchDB\Event\LifecycleEventArgs;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
