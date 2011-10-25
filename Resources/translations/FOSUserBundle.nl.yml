@@ -44,7 +44,7 @@ resetting.request.invalid_username: De gebruiker "%username%" bestaat niet.
 resetting.request.username: "Gebruikersnaam:"
 resetting.request.submit: Reset wachtwoord
 resetting.reset.submit: Wachtwoord bijwerken
-resetting.flash.success: Het wachtworod is succesvol gereset
+resetting.flash.success: Het wachtwoord is succesvol gereset
 
 resetting.email: |
     Welkom %username%!
