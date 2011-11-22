@@ -90,6 +90,11 @@ class RegistrationController extends ContainerAware
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
+        
+        if ($user instanceof UserInterface) {
+            $user->setLastLogin(new DateTime());
+            $this->container->get('fos_user.user_manager')->updateUser($user);
+        }
 
         return new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
     }
