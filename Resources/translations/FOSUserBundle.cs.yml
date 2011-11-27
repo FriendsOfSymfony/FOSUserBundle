@@ -1,0 +1,82 @@
+# Group
+group.edit.submit: Upravit skupinu
+group.show.name: Název skupiny
+group.new.submit: Vytvořit skupinu
+group.flash.updated: Skupina byla úspěšně aktualizována
+group.flash.created: Skupina byla úspěšně vytvořena
+group.flash.deleted: Skupina byla úspěšně vymazána
+
+# Security
+security.login.username: "Uživatelské jméno:"
+security.login.password: "Heslo:"
+security.login.remember_me: Zapamatovat si
+security.login.submit: Přihlásit
+
+# Profile
+profile.show.username: Uživatelské jméno
+profile.show.email: E-mail
+profile.edit.submit: Upravit
+profile.flash.updated: Profil byl úspěšně aktualizován
+
+# Password change
+change_password.submit: Nastavit nové heslo
+change_password.flash.success: Nové heslo bylo úspěšně nastaveno
+
+# Registration
+registration.check_email: Na adresu %email% byl zaslán aktivační e-mail. Obsahuje aktivační odkaz, na který je nutné kliknout pro aktivaci Vašeho účtu.
+registration.confirmed: Gratulujeme, %username%, Váš účet je nyní aktivní.
+registration.back: Návrat na předchozí stránku.
+registration.submit: Registrovat se
+registration.flash.user_created: Váš účet byl úspěšně vytvořen
+
+registration.email: |
+    Vítejte, %username%!
+    Dobrý den, %username%!
+
+    Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
+
+    S pozdravem,
+    realizační tým.
+
+# Password resetting
+resetting.password_already_requested: Tento uživatel již zažádal o nastavení nového hesla (během posledních 24 hodin).
+resetting.check_email: Na adresu %email% byl zaslán e-mail s návodem na nastavení nového hesla. E-mail obsahuje odkaz, na který je nutné kliknout, bez tohoto úkonu není možné nové heslo nastavit.
+resetting.request.invalid_username: Uživatelské jméno nebo e-mail "%username%" neexistují.
+resetting.request.username: "Uživatelské jméno nebo e-mail:"
+resetting.request.submit: Nastavit nové heslo
+resetting.reset.submit: Nastavit nové heslo
+resetting.flash.success: Heslo bylo úspěšně změněné
+
+resetting.email: |
+    Zaslání zapomenutého hesla
+    Dobrý den, %username%!
+
+    Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
+
+    S pozdravem,
+    realizační tým.
+
+# Global strings
+layout.logout: Odhlásit se
+layout.login: Přihlášení
+layout.register: Registrace
+layout.logged_in_as: "Přihlášený uživatel: %username%"
+
+# Form field labels
+fos_user_group_form_name: "Název skupiny:"
+
+fos_user_profile_form_user_username: "Uživatelské jméno:"
+fos_user_profile_form_user_email: "E-mail:"
+fos_user_profile_form_current: "Současné heslo:"
+
+fos_user_registration_form_username: "Uživatelské jméno:"
+fos_user_registration_form_email: "E-mail:"
+fos_user_registration_form_plainPassword_first: "Heslo:"
+fos_user_registration_form_plainPassword_second: "Potvrzení hesla:"
+
+fos_user_resetting_form_new_first: "Nové heslo:"
+fos_user_resetting_form_new_second: "Potvrzení hesla:"
+
+fos_user_change_password_form_new_first: "Nové heslo:"
+fos_user_change_password_form_new_second: "Potvrzení hesla:"
+fos_user_change_password_form_current: "Současné heslo:"
