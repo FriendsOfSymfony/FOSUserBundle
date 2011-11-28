@@ -57,6 +57,7 @@ fos_user:
         username_canonicalizer: fos_user.util.username_canonicalizer.default
         user_manager:           fos_user.user_manager.default
     encoder:
+        enabled:            true
         algorithm:          sha512
         encode_as_base64:   false
         iterations:         1

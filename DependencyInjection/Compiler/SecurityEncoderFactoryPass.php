@@ -24,6 +24,10 @@ class SecurityEncoderFactoryPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
+        if (!$container->getParameter('fos_user.encoder.enabled')) {
+            return;
+        }
+        
         if ($container->hasAlias('security.encoder_factory')) {
             // security.encoder_factory is an alias.
             // Register a private alias for this service to inject it as the parent

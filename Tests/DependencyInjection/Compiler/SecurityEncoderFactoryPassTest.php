@@ -28,6 +28,7 @@ class SecurityEncoderFactoryPassTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldComposeAlias()
     {
+        $this->container->setParameter('fos_user.encoder.enabled', true);
         $this->container->setDefinition('security.encoder_factory.real', new Definition());
         $this->container->setAlias('security.encoder_factory', 'security.encoder_factory.real');
 
@@ -40,6 +41,7 @@ class SecurityEncoderFactoryPassTest extends \PHPUnit_Framework_TestCase
 
     public function testShouldComposeDefinition()
     {
+        $this->container->setParameter('fos_user.encoder.enabled', true);
         $this->container->setDefinition('security.encoder_factory', $originalDefinition = new Definition());
 
         $this->pass->process($this->container);
@@ -50,9 +52,25 @@ class SecurityEncoderFactoryPassTest extends \PHPUnit_Framework_TestCase
 
         $this->assertServiceHasAlias('fos_user.encoder_factory', 'security.encoder_factory');
     }
+    
+    public function testDisableEncoder()
+    {
+        $this->container->setParameter('fos_user.encoder.enabled', false);
+        $this->container->setDefinition('security.encoder_factory', $originalDefinition = new Definition());
+        
+        $this->pass->process($this->container);
+        
+        $this->assertNotHasDefinition('fos_user.encoder_factory.parent');
+        $this->assertSame($originalDefinition, $this->container->getDefinition('security.encoder_factory'));
+    }
 
     private function assertServiceHasAlias($serviceId, $aliasId)
     {
         $this->assertEquals($serviceId, (string) $this->container->getAlias($aliasId), sprintf('Service "%s" has alias "%s"', $serviceId, $aliasId));
+    }
+    
+    private function assertNotHasDefinition($id)
+    {
+        $this->assertFalse(($this->container->hasDefinition($id) ?: $this->container->hasAlias($id)));
     }
 }
