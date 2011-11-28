@@ -50,14 +50,21 @@ class UserListener implements EventSubscriber
 
     private function handleEvent(LifecycleEventArgs $args)
     {
-        if (null === $this->userManager) {
-            $this->userManager = $this->container->get('fos_user.user_manager');
-        }
-
         $document = $args->getDocument();
         if ($document instanceof UserInterface) {
+            if (null === $this->userManager) {
+                $this->userManager = $this->container->get('fos_user.user_manager');
+            }
             $this->userManager->updateCanonicalFields($document);
             $this->userManager->updatePassword($document);
+            if ($args instanceof PreUpdateEventArgs) {
+                // We are doing a update, so we must force Doctrine to update the
+                // changeset in case we changed something above
+                $dm   = $args->getDocumentManager();
+                $uow  = $dm->getUnitOfWork();
+                $meta = $dm->getClassMetadata(get_class($entity));
+                $uow->recomputeSingleEntityChangeSet($meta, $entity);
+            }
         }
     }
 }
