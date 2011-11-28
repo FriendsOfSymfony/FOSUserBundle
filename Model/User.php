@@ -174,25 +174,25 @@ abstract class User implements UserInterface, GroupableInterface
             return false;
         }
 
-        if ($this->password !== $user->getPassword()) {
+        if ($this->getPassword() !== $user->getPassword()) {
             return false;
         }
         if ($this->getSalt() !== $user->getSalt()) {
             return false;
         }
-        if ($this->usernameCanonical !== $user->getUsernameCanonical()) {
+        if ($this->getUsernameCanonical() !== $user->getUsernameCanonical()) {
             return false;
         }
         if ($this->isAccountNonExpired() !== $user->isAccountNonExpired()) {
             return false;
         }
-        if (!$this->locked !== $user->isAccountNonLocked()) {
+        if ($this->isAccountNonLocked() !== $user->isAccountNonLocked()) {
             return false;
         }
         if ($this->isCredentialsNonExpired() !== $user->isCredentialsNonExpired()) {
             return false;
         }
-        if ($this->enabled !== $user->isEnabled()) {
+        if ($this->isEnabled() !== $user->isEnabled()) {
             return false;
         }
 
@@ -471,7 +471,7 @@ abstract class User implements UserInterface, GroupableInterface
 
     public function isLocked()
     {
-        return $this->locked;
+        return !$this->isAccountNonLocked();
     }
 
     /**
@@ -685,8 +685,8 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function isPasswordRequestNonExpired($ttl)
     {
-        return $this->passwordRequestedAt instanceof \DateTime &&
-               $this->passwordRequestedAt->getTimestamp() + $ttl > time();
+        return $this->getPasswordRequestedAt() instanceof \DateTime &&
+               $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
     /**
@@ -694,8 +694,8 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function generateConfirmationToken()
     {
-        if (null === $this->confirmationToken) {
-            $this->confirmationToken = $this->generateToken();
+        if (null === $this->getConfirmationToken()) {
+            $this->setConfirmationToken($this->generateToken());
         }
     }
 

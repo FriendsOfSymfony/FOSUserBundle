@@ -11,71 +11,70 @@
 
 namespace FOS\UserBundle\Propel;
 
-use FOS\UserBundle\Model\Group as ModelGroup;
+use FOS\UserBundle\Model\GroupInterface;
 
-class GroupProxy extends ModelGroup
+class GroupProxy implements GroupInterface
 {
     protected $group;
-    protected $roles;
 
     public function __construct(Group $group)
     {
         $this->group = $group;
-        $this->updateFormPropel();
     }
 
-    public function getGroup()
+    public function getPropelGroup()
     {
         return $this->group;
     }
 
     public function __call($method, $arguments)
     {
-        if (is_callable(array($this->getGroup(), $method))) {
+        if (is_callable(array($this->getPropelGroup(), $method))) {
             return call_user_func_array(array($this->getGroup(), $method), $arguments);
         }
 
         throw new \BadMethodCallException('Can\'t call method '.$method);
     }
 
-    public function save()
+    public function getId()
     {
-        $this->updatePropelGroup();
-        $this->getGroup()->save();
-
-        return $this;
+        return $this->group->getId();
     }
 
-    protected function updateFormPropel()
+    public function getName()
     {
-        $group = $this->getGroup();
+        return $this->group->getName();
+    }
 
-        $this->name = $group->getName();
+    public function setName($name)
+    {
+        $this->group->setName($name);
+    }
 
-        $this->roles = array();
-        foreach ($group->getRoles() as $role) {
-            $this->roles[] = $role->getName();
+    public function hasRole($role)
+    {
+        return $this->group->hasRole(strtoupper($role));
+    }
+
+    public function getRoles()
+    {
+        return $this->group->getRoles();
+    }
+
+    public function removeRole($role)
+    {
+        $this->group->removeRole(strtoupper($role));
+    }
+
+    public function addRole($role)
+    {
+        if (!$this->hasRole($role)) {
+            $this->group->addRole(strtoupper($role));
         }
     }
 
-    protected function updatePropelGroup()
+    public function setRoles(array $roles)
     {
-        $group = $this->getGroup();
-
-        $group->setName($this->name);
-
-        $collection = new \PropelObjectCollection();
-        $collection->setModel(RolePeer::OM_CLASS);
-        foreach ($this->roles as $role) {
-            $roleObject = RoleQuery::create()->findOneByName($role);
-            if (!$roleObject) {
-                $roleObject = new Role();
-                $roleObject->setName($role);
-                $roleObject->save();
-            }
-
-            $collection[] = $roleObject;
-        }
-        $group->setRoles($collection);
+        $this->group->setRoles(array_map('strtoupper', $roles));
     }
 }

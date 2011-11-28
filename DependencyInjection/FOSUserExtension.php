@@ -73,6 +73,7 @@ class FOSUserExtension extends Extension
                 'firewall_name' => 'fos_user.firewall_name',
                 'model_manager_name' => 'fos_user.model_manager_name',
                 'user_class' => 'fos_user.model.user.class',
+                'propel_user_class' => 'fos_user.model.user.propel_class',
             ),
             'encoder'   => 'fos_user.encoder.%s',
             'template'  => 'fos_user.template.%s',
@@ -172,23 +173,10 @@ class FOSUserExtension extends Extension
             $this->remapParametersNamespaces($config['group'], $container, array(
                 '' => array(
                     'group_class' => 'fos_user.model.group.class',
+                    'propel_group_class' => 'fos_user.model.group.propel_class',
                 ),
                 'form' => 'fos_user.group.form.%s',
             ));
-        }
-
-        if ('propel' == $config['db_driver']) {
-            $container->setParameter('fos_user.model.user.form_data_class', $container->getParameter('fos_user.model.user.proxy_class'));
-
-            if (!empty($config['group'])) {
-                $container->setParameter('fos_user.model.group.form_data_class', $container->getParameter('fos_user.model.group.proxy_class'));
-            }
-        } else {
-            $container->setParameter('fos_user.model.user.form_data_class', $container->getParameter('fos_user.model.user.class'));
-
-            if (!empty($config['group'])) {
-                $container->setParameter('fos_user.model.group.form_data_class', $container->getParameter('fos_user.model.group.class'));
-            }
         }
     }
 

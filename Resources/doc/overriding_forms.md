@@ -107,7 +107,7 @@ Below is an example of configuring your form type as a service in XML:
 
         <service id="acme_user.registration.form.type" class="Acme\UserBundle\Form\Type\RegistrationFormType">
             <tag name="form.type" alias="acme_user_registration" />
-            <argument>%fos_user.model.user.form_data_class%</argument>
+            <argument>%fos_user.model.user.class%</argument>
         </service>
 
     </services>
@@ -122,7 +122,7 @@ Or if you prefer YAML:
 services:
     acme_user.registration.form.type:
         class: Acme\UserBundle\Form\Type\RegistrationFormType
-        arguments: [%fos_user.model.user.form_data_class%]
+        arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: acme_user_registration }
 ```

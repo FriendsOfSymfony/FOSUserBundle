@@ -237,10 +237,16 @@ class User extends BaseUser
 
 **d) Propel User class**
 
-Currently, FOSUserBundle does not allow to extend the user class with your
-own stuff when using Propel. So you must use the `FOS\UserBundle\Propel\User`
-class in your configuration (see step 6) and you don't have to create another
-class.
+When using Propel, the `FOS\UserBundle\Model\UserInterface` is implemented
+by a proxy object.
+If you don't want to add your own logic in your user class, you can simply use
+`FOS\UserBundle\Propel\UserProxy` as proxy user class and `FOS\UserBundle\Propel\User`
+as model class in your configuration (see step 6) and you don't have to create
+another class.
+
+If you want to add your own fields, you can extend the model class. But the
+Form component does not support using `__call` to access properties so you
+will have to extend the proxy class as well to support these fields.
 
 ### Step 5: Configure your application's security.yml
 
@@ -351,6 +357,12 @@ Only three configuration values are required to use the bundle:
 * The type of datastore you are using (`orm`, `mongodb`, `couchdb` or `propel`).
 * The firewall name which you configured in Step 5.
 * The fully qualified class name (FQCN) of the `User` class which you created in Step 4.
+
+**Note:**
+
+> When using Propel, the `user_class` key refers to the proxy class implementing
+> the FOSUserBundle interface. Thus, a fourth key named `propel_user_class`
+> is also required, refering to the actual model class.
 
 ### Step 7: Import FOSUserBundle routing files
 

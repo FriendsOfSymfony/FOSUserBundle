@@ -36,9 +36,18 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('fos_user');
 
         $rootNode
+            ->validate()
+                ->ifTrue(function($v){return 'propel' === $v['db_driver'] && empty($v['propel_user_class']);})
+                ->thenInvalid('The propel model class must be defined by using the "propel_user_class" key.')
+            ->end()
+            ->validate()
+                ->ifTrue(function($v){return 'propel' === $v['db_driver'] && !empty($v['group']) && empty($v['group']['propel_group_class']);})
+                ->thenInvalid('The propel model class must be defined by using the "group.propel_group_class" key.')
+            ->end()
             ->children()
                 ->scalarNode('db_driver')->cannotBeOverwritten()->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('propel_user_class')->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
@@ -247,6 +256,7 @@ class Configuration implements ConfigurationInterface
                     ->canBeUnset()
                     ->children()
                         ->scalarNode('group_class')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('propel_group_class')->end()
                         ->scalarNode('group_manager')->defaultValue('fos_user.group_manager.default')->end()
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()

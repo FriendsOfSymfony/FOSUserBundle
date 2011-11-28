@@ -123,7 +123,8 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      */
     public function refreshUser(SecurityUserInterface $user)
     {
-        if (!$user instanceof $this->class) {
+        $class = $this->getClass();
+        if (!$user instanceof $class) {
             throw new UnsupportedUserException('Account is not supported.');
         }
 

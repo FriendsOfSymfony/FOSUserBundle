@@ -19,12 +19,12 @@ class GroupManager extends BaseGroupManager
 {
     protected $class;
 
-    protected $proxyClass;
+    protected $modelClass;
 
-    public function __construct($class, $proxyClass)
+    public function __construct($proxyClass, $modelClass)
     {
-        $this->class = $class;
-        $this->proxyClass = $proxyClass;
+        $this->class = $proxyClass;
+        $this->modelClass = $modelClass;
     }
 
     /**
@@ -35,7 +35,7 @@ class GroupManager extends BaseGroupManager
     */
     public function createGroup($name)
     {
-        $class = $this->getClass();
+        $class = $this->modelClass;
         $group = new $class();
         $group->setName($name);
 
@@ -47,6 +47,10 @@ class GroupManager extends BaseGroupManager
      */
     public function deleteGroup(GroupInterface $group)
     {
+        if (!$group instanceof GroupProxy) {
+            throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');
+        }
+
         $group->delete();
     }
 
@@ -58,9 +62,9 @@ class GroupManager extends BaseGroupManager
         return $this->class;
     }
 
-    public function getProxyClass()
+    public function getModelClass()
     {
-        return $this->proxyClass;
+        return $this->modelClass;
     }
 
     /**
@@ -100,6 +104,10 @@ class GroupManager extends BaseGroupManager
      */
     public function updateGroup(GroupInterface $group)
     {
+        if (!$group instanceof GroupProxy) {
+            throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');
+        }
+
         $group->save();
     }
 
@@ -110,12 +118,12 @@ class GroupManager extends BaseGroupManager
     */
     protected function createQuery()
     {
-        return \PropelQuery::from($this->class);
+        return \PropelQuery::from($this->modelClass);
     }
 
     protected function proxyfy(Group $group)
     {
-        $proxyClass = $this->getProxyClass();
+        $proxyClass = $this->getClass();
         $proxy = new $proxyClass($group);
 
         return $proxy;

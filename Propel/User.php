@@ -13,7 +13,35 @@ namespace FOS\UserBundle\Propel;
 
 use FOS\UserBundle\Propel\om\BaseUser;
 
-class User extends BaseUser
+class User extends BaseUser implements \Serializable
 {
+    public function serialize()
+    {
+        return serialize(
+            array(
+                $this->id,
+                $this->username,
+                $this->salt,
+                $this->password,
+                $this->expired,
+                $this->locked,
+                $this->credentials_expired,
+                $this->locked,
+            )
+        );
+    }
 
-} // User
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->salt,
+            $this->password,
+            $this->expired,
+            $this->locked,
+            $this->credentials_expired,
+            $this->locked
+        ) = unserialize($serialized);
+    }
+}

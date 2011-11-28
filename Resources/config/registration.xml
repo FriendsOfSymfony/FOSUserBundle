@@ -17,7 +17,7 @@
 
         <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
             <tag name="form.type" alias="fos_user_registration" />
-            <argument>%fos_user.model.user.form_data_class%</argument>
+            <argument>%fos_user.model.user.class%</argument>
         </service>
 
         <service id="fos_user.registration.form.handler.default" class="FOS\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="false">

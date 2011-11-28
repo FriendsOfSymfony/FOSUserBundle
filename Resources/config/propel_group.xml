@@ -6,13 +6,12 @@
 
     <parameters>
         <parameter key="fos_user.group_manager.class">FOS\UserBundle\Propel\GroupManager</parameter>
-        <parameter key="fos_user.model.group.proxy_class">FOS\UserBundle\Propel\GroupProxy</parameter>
     </parameters>
 
     <services>
         <service id="fos_user.group_manager.default" class="%fos_user.group_manager.class%" public="false">
             <argument>%fos_user.model.group.class%</argument>
-            <argument>%fos_user.model.group.proxy_class%</argument>
+            <argument>%fos_user.model.group.propel_class%</argument>
         </service>
     </services>
 

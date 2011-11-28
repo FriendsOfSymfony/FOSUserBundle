@@ -21,45 +21,19 @@
         <column name="password" type="varchar" size="255" required="true" />
         <column name="last_login" type="timestamp" required="false" />
         <column name="locked" type="boolean" />
+        <column name="expired" type="boolean" />
         <column name="expires_at" type="timestamp" required="false" />
         <column name="confirmation_token" type="varchar" size="255" required="false" />
         <column name="password_requested_at" type="timestamp" required="false" />
+        <column name="credentials_expired" type="boolean" />
         <column name="credentials_expire_at" type="timestamp" required="false" />
-        <column name="super_admin" type="boolean" />
-    </table>
-
-    <table name="user_role" isCrossRef="true">
-        <column name="user_id" type="integer" required="true" primaryKey="true" />
-        <column name="role_id" type="integer" required="true" primaryKey="true" />
-        <foreign-key foreignTable="user">
-            <reference local="user_id" foreign="id" />
-        </foreign-key>
-
-        <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id" />
-        </foreign-key>
-    </table>
-
-    <table name="role">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
-        <column name="name" type="varchar" size="255" required="true" primaryString="true" />
+        <column name="roles" type="array" />
     </table>
 
     <table name="group">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="name" type="varchar" size="255" required="true" primaryString="true" />
-    </table>
-
-    <table name="group_role" isCrossRef="true">
-        <column name="group_id" type="integer" required="true" primaryKey="true" />
-        <column name="role_id" type="integer" required="true" primaryKey="true" />
-        <foreign-key foreignTable="group">
-            <reference local="group_id" foreign="id" />
-        </foreign-key>
-
-        <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id" />
-        </foreign-key>
+        <column name="roles" type="array" />
     </table>
 
     <table name="user_group" isCrossRef="true">
