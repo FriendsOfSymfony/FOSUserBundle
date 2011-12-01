@@ -365,28 +365,6 @@ class MessageFormType extends AbstractType
     }
 ```
 
-FOSUserBundle Emails
-====================
-
-The default mailer relies on Swiftmailer to send the mails of the bundle.
-If you want to use another mailer in your project you can change it by defining
-your own service implementing `FOS\UserBundle\Mailer\MailerInterface` and
-setting its id in the configuration.
-
-In YAML:
-
-``` yaml
-fos_user:
-    # ...
-    service:
-        mailer: custom_mailer_id
-```
-
-This bundle comes with two mailer implementations.
-
-- `fos_user.mailer.default` is the default implementation, and uses Swiftmailer to send emails.
-- `fos_user.mailer.noop` does nothing and can be used if your project does not depend on Swiftmailer.
-
 FOSUserBundle Canonicalization
 ==============================
 

@@ -451,5 +451,7 @@ The following documents are available:
 3. [Overriding Forms](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/overriding_forms.md)
 4. [Command Line Tools](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/command_line_tools.md)
 5. [Logging by username or email](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/logging_by_username_or_email.md)
-6. [Supplemental Documentation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/supplemental.md)
-7. [Configuration Reference](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md)
+6. [Emails](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/emails.md)
+7. [Supplemental Documenation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/supplemental.md)
+8. [Configuration Reference](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md)
+
