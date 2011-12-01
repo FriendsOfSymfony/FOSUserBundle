@@ -48,6 +48,7 @@ the base controller and adds logging a new user registration to it.
 
 namespace Acme\UserBundle\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 class RegistrationController extends BaseController
@@ -65,7 +66,7 @@ class RegistrationController extends BaseController
             /*****************************************************
              * Add new functionality (e.g. log the registration) *
              *****************************************************/
-            $this->get('logger')->info(
+            $this->container->get('logger')->info(
                 sprintf('New user registration: %s', $user)
             );
 
