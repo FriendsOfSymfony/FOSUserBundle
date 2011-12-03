@@ -89,7 +89,7 @@
                 <option name="groups">Registration</option>
             </constraint>
             <constraint name="MinLength">
-                <option name="limit">2</option>
+                <option name="limit">8</option>
                 <option name="message">The password is too short</option>
                 <option name="groups">
                     <value>Registration</value>
@@ -117,7 +117,7 @@
                 <option name="groups">ChangePassword</option>
             </constraint>
             <constraint name="MinLength">
-                <option name="limit">2</option>
+                <option name="limit">8</option>
                 <option name="message">The new password is too short</option>
                 <option name="groups">ChangePassword</option>
             </constraint>
@@ -131,7 +131,7 @@
                 <option name="groups">ResetPassword</option>
             </constraint>
             <constraint name="MinLength">
-                <option name="limit">2</option>
+                <option name="limit">8</option>
                 <option name="message">The new password is too short</option>
                 <option name="groups">ResetPassword</option>
             </constraint>
