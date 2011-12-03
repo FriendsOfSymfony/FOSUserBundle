@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Dieser Benutzername wird bereits verwendet
+        blank: Bitte geben Sie einen Benutzernamen an
+        short: Dieser Benutzername ist zu kurz
+        long: Dieser Benutzername ist zu lang
+    email:
+        already_used: Diese E-Mail-Adresse wird bereits verwendet
+        blank: Bitte geben Sie eine E-Mail-Adresse an
+        short: Diese E-Mail-Adresse ist zu kurz
+        long: Diese E-Mail-Adresse ist zu lang
+        invalid: Diese E-Mail-Adresse ist ungültig
+    password:
+        blank: Bitte geben Sie ein Passwort an
+        short: Das Passwort ist zu kurz
+    new_password:
+        blank: Bitte geben Sie ein neues Passwort an
+        short: Das neue Passwort ist zu kurz
+    current_password:
+        invalid: Das angegebene Passwort ist ungültig
+    group:
+        blank: Bitte geben Sie einen Namen an
+        short: Dieser Name ist zu kurz
+        long: Dieser Name ist zu lang
