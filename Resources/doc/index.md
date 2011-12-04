@@ -459,6 +459,7 @@ The following documents are available:
 - [Logging by username or email](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/logging_by_username_or_email.md)
 - [Transforming a username to a user in forms](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/form_type.md)
 - [Emails](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/emails.md)
+- [Using the groups](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/groups.md)
 - [Supplemental Documenation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/supplemental.md)
 - [Replacing the canonicalizer](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/canonicalizer.md)
 - [Configuration Reference](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md)
