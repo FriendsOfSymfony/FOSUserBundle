@@ -13,7 +13,7 @@ group:
 
 # Security
 security:
-    login
+    login:
         username: "Имя пользователя:"
         password: "Пароль:"
         remember_me: Запомнить меня
@@ -62,7 +62,7 @@ resetting:
         submit: Сбросить пароль
     reset:
         submit: Изменить пароль
-    flash;
+    flash:
         success: Пароль успешно сброшен
     email: |
         Сброс пароля
