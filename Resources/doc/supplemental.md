@@ -225,19 +225,3 @@ Overriding Default FOSUserBundle Validation
 The `Resources/config/validation.xml` file contains definitions for custom
 validator rules for various classes. The rules defined by FOSUserBundle are
 all in validation groups so you can choose not to use them.
-
-FOSUserBundle Canonicalization
-==============================
-
-`Canonicalizer` services are used to canonicalize the username and the email
-fields for database storage. By default, username and email fields are
-canonicalized in the same manner using `mb_convert_case()`. You may configure
-your own class for each field provided it implements
-`FOS\UserBundle\Util\CanonicalizerInterface`.
-
-**Note:**
-
-```
-If you do not have the mbstring extension installed you will need to define your
-own `canonicalizer`.
-```
