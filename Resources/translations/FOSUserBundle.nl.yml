@@ -6,7 +6,7 @@ group:
         name: Groep naam
     new:
         submit: Groep aanmaken
-    flash
+    flash:
         updated: De groep is bijgewerkt
         created: De groep is aangemaakt
         deleted: De groep is verwijderd
