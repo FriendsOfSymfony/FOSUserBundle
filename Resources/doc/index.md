@@ -402,7 +402,7 @@ fos_user_resetting:
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /change-password
+    prefix: /profile
 ```
 
 Or if you prefer XML:
@@ -413,7 +413,7 @@ Or if you prefer XML:
 <import resource="@FOSUserBundle/Resources/config/routing/profile.xml" prefix="/profile" />
 <import resource="@FOSUserBundle/Resources/config/routing/registration.xml" prefix="/register" />
 <import resource="@FOSUserBundle/Resources/config/routing/resetting.xml" prefix="/resetting" />
-<import resource="@FOSUserBundle/Resources/config/routing/change_password.xml" prefix="/change-password" />
+<import resource="@FOSUserBundle/Resources/config/routing/change_password.xml" prefix="/profile" />
 ```
 
 **Note:**
