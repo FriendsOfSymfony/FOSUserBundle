@@ -39,7 +39,7 @@ change_password:
 registration:
     check_email: Письмо отправлено на адрес %email%. В нём содержится ссылка, по которой вы можете подтвердить свою регистрацию.
     confirmed: Поздравляем %username%, ваш аккаунт подтвержден.
-    #back: Back to the originating page.
+    back: Вернуться на предыдущую страницу.
     submit: Регистрация
     flash:
         user_created: Пользователь успешно создан
