@@ -214,7 +214,7 @@ class UserManager extends BaseUserManager
         return \PropelQuery::from($this->modelClass);
     }
 
-    protected function proxyfy(User $user)
+    protected function proxyfy($user)
     {
         $proxyClass = $this->getClass();
         $proxy = new $proxyClass($user);

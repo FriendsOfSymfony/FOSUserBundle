@@ -19,7 +19,7 @@ class UserProxy extends FosUser
 {
     protected $user;
 
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
         if ($user->isNew()) {
