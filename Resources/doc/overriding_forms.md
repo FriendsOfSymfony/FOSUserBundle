@@ -221,7 +221,10 @@ class RegistrationFormHandler extends BaseHandler
             if ($this->form->isValid()) {
 
                 // do your custom logic here
-
+                
+                // if we don't call onSuccess, it's not going to save the user!
+                $this->onSuccess($user, $confirmation);
+                
                 return true;
             }
         }
