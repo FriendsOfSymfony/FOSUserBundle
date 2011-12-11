@@ -35,7 +35,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('fos_user');
 
-        $supportedDrivers = array('orm', 'mongodb', 'couchdb', 'propel');
+        $supportedDrivers = array('orm', 'mongodb', 'couchdb', 'propel', 'custom');
 
         $rootNode
             ->validate()
@@ -69,6 +69,15 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('sender_name')->defaultValue('webmaster')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
+            ->end()
+            // Using the custom driver requires changing the manager services
+            ->validate()
+                ->ifTrue(function($v){return 'custom' === $v['db_driver'] && 'fos_user.user_manager.default' === $v['service']['user_manager'];})
+                ->thenInvalid('You need to specify your own user manager service when using the "custom" driver.')
+            ->end()
+            ->validate()
+                ->ifTrue(function($v){return 'custom' === $v['db_driver'] && !empty($v['group']) && 'fos_user.group_manager.default' === $v['group']['group_manager'];})
+                ->thenInvalid('You need to specify your own group manager service when using the "custom" driver.')
             ->end();
 
         $this->addProfileSection($rootNode);

@@ -74,6 +74,30 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $loader->load(array($config), new ContainerBuilder());
     }
 
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function testCustomDriverWithoutManager()
+    {
+        $loader = new FOSUserExtension();
+        $config = $this->getEmptyConfig();
+        $config['db_driver'] = 'custom';
+        $loader->load(array($config), new ContainerBuilder());
+    }
+
+    public function testCustomDriver()
+    {
+        $this->configuration = new ContainerBuilder();
+        $loader = new FOSUserExtension();
+        $config = $this->getEmptyConfig();
+        $config['db_driver'] = 'custom';
+        $config['service']['user_manager'] = 'acme.user_manager';
+        $loader->load(array($config), $this->configuration);
+
+        $this->assertNotHasDefinition('fos_user.user_manager.default');
+        $this->assertAlias('acme.user_manager', 'fos_user.user_manager');
+    }
+
     public function testDisableRegistration()
     {
         $this->configuration = new ContainerBuilder();

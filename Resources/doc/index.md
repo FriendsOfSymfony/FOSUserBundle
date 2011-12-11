@@ -474,4 +474,5 @@ The following documents are available:
 - [More about the Doctrine implementations](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/doctrine.md)
 - [Supplemental Documenation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/supplemental.md)
 - [Replacing the canonicalizer](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/canonicalizer.md)
+- [Using a custom storage layer](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/custom_storage_layer.md)
 - [Configuration Reference](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/configuration_reference.md)

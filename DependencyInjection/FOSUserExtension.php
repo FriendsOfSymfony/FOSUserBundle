@@ -29,7 +29,9 @@ class FOSUserExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $loader->load(sprintf('%s.xml', $config['db_driver']));
+        if ('custom' !== $config['db_driver']) {
+            $loader->load(sprintf('%s.xml', $config['db_driver']));
+        }
 
         foreach (array('validator', 'security', 'util', 'mailer') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
@@ -177,7 +179,9 @@ class FOSUserExtension extends Extension
     private function loadGroups(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
     {
         $loader->load('group.xml');
-        $loader->load(sprintf('%s_group.xml', $dbDriver));
+        if ('custom' !== $dbDriver) {
+            $loader->load(sprintf('%s_group.xml', $dbDriver));
+        }
 
         $container->setAlias('fos_user.group_manager', $config['group_manager']);
         $container->setAlias('fos_user.group.form.handler', $config['form']['handler']);
