@@ -5,9 +5,5 @@ catalog.xml
 Propel/om/*
 Propel/map/*
 
-vendor/doctrine
-vendor/doctrine-common
-vendor/doctrine-dbal
-vendor/doctrine-mongodb
-vendor/doctrine-mongodb-odm
-vendor/symfony
+vendor/*
+!vendor/vendors.php
