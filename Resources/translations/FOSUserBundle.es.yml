@@ -85,7 +85,7 @@ fos_user_group_form_name: "Nombre de grupo:"
 
 fos_user_profile_form_user_username: "Nombre de usuario:"
 fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Actual contraseña:"
+fos_user_profile_form_current: "Contraseña actual:"
 
 fos_user_registration_form_username: "Nombre de usuario:"
 fos_user_registration_form_email: "Email:"
@@ -97,5 +97,5 @@ fos_user_resetting_form_new_second: "Verificación:"
 
 fos_user_change_password_form_new_first: "Nueva contraseña:"
 fos_user_change_password_form_new_second: "Verificación:"
-fos_user_change_password_form_current: "Actual contraseña:"
+fos_user_change_password_form_current: "Contraseña actual:"
 
