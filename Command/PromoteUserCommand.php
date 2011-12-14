@@ -48,7 +48,7 @@ EOT
             $output->writeln(sprintf('User "%s" has been promoted as a super administrator.', $username));
         } else {
             if ($added = $manipulator->addRole($username, $role)) {
-                $output->writeln(sprintf('Role "%s" has been added to user "%s".', $role, $username));                              
+                $output->writeln(sprintf('Role "%s" has been added to user "%s".', $role, $username));
             } else {
                 $output->writeln(sprintf('User "%s" did already have "%s" role.', $username, $role));
             }

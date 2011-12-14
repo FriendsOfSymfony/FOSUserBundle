@@ -26,7 +26,7 @@ class DemoteUserCommand extends RoleCommand
     protected function configure()
     {
         parent::configure();
-        
+
         $this
             ->setName('fos:user:demote')
             ->setDescription('Demote a user by removing a role')
@@ -38,7 +38,7 @@ The <info>fos:user:demote</info> command demotes a user by removing a role
 EOT
             );
     }
-    
+
     protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role)
     {
         if ($super) {

@@ -66,6 +66,7 @@ class EncoderFactory implements EncoderFactoryInterface
      * Creates an encoder for the given algorithm.
      *
      * @param string $algorithm
+     *
      * @return PasswordEncoderInterface
      */
     protected function createEncoder($algorithm)

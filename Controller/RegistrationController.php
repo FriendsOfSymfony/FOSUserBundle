@@ -113,7 +113,7 @@ class RegistrationController extends ContainerAware
     /**
      * Authenticate a user with Symfony Security
      *
-     * @param Boolean $reAuthenticate
+     * @param \FOS\UserBundle\Model\UserInterface $user
      */
     protected function authenticateUser(UserInterface $user)
     {

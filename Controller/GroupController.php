@@ -99,14 +99,15 @@ class GroupController extends ContainerAware
         $this->container->get('fos_user.group_manager')->deleteGroup($group);
         $this->setFlash('fos_user_success', 'group.flash.deleted');
 
-        return new RedirectResponse( $this->container->get('router')->generate('fos_user_group_list'));
+        return new RedirectResponse($this->container->get('router')->generate('fos_user_group_list'));
     }
 
     /**
      * Find a group by a specific property
      *
-     * @param string $key property name
-     * @param mixed $value property value
+     * @param string $key   property name
+     * @param mixed  $value property value
+     *
      * @throws NotFoundException if user does not exist
      * @return \FOS\UserBundle\Model\GroupInterface
      */

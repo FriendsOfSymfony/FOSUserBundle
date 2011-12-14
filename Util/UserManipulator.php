@@ -41,6 +41,7 @@ class UserManipulator
      * @param string $email
      * @param Boolean $active
      * @param Boolean $superadmin
+     *
      * @return \FOS\UserBundle\Model\UserInterface
      */
     public function create($username, $password, $email, $active, $superadmin)
@@ -49,8 +50,8 @@ class UserManipulator
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
-        $user->setEnabled((Boolean)$active);
-        $user->setSuperAdmin((Boolean)$superadmin);
+        $user->setEnabled((Boolean) $active);
+        $user->setSuperAdmin((Boolean) $superadmin);
         $this->userManager->updateUser($user);
 
         return $user;
@@ -142,6 +143,7 @@ class UserManipulator
      *
      * @param string $username
      * @param string $role
+     *
      * @return Boolean true if role was added, false if user already had the role
      */
     public function addRole($username, $role)
@@ -156,7 +158,7 @@ class UserManipulator
         }
         $user->addRole($role);
         $this->userManager->updateUser($user);
-        
+
         return true;
     }
     /**
@@ -164,6 +166,7 @@ class UserManipulator
      *
      * @param string $username
      * @param string $role
+     *
      * @return Boolean true if role was removed, false if user didn't have the role
      */
     public function removeRole($username, $role)
@@ -178,8 +181,7 @@ class UserManipulator
         }
         $user->removeRole($role);
         $this->userManager->updateUser($user);
-        
+
         return true;
     }
-    
 }

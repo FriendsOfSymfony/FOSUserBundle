@@ -28,6 +28,7 @@ class UsernameToUserTransformer implements DataTransformerInterface
      * Transforms a UserInterface instance to a username string
      *
      * @param mixed $value a UserInterface instance
+     *
      * @return string the username
      */
     public function transform($value)
@@ -45,7 +46,8 @@ class UsernameToUserTransformer implements DataTransformerInterface
     /**
      * Transforms a username to a UserInterface instance
      *
-     * @param string $username
+     * @param string $value username
+     *
      * @return UserInterface the corresponding user instance
      */
     public function reverseTransform($value)

@@ -44,7 +44,7 @@ class ResettingController extends ContainerAware
 
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
-        if (null === $user){
+        if (null === $user) {
             return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
         }
 
@@ -87,7 +87,7 @@ class ResettingController extends ContainerAware
     {
         $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
 
-        if (null === $user){
+        if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
         }
 
@@ -117,7 +117,7 @@ class ResettingController extends ContainerAware
     /**
      * Authenticate a user with Symfony Security
      *
-     * @param UserInterface $user
+     * @param \FOS\UserBundle\Model\UserInterface $user
      */
     protected function authenticateUser(UserInterface $user)
     {
@@ -130,7 +130,8 @@ class ResettingController extends ContainerAware
     /**
      * Generate the redirection url when the resetting is completed.
      *
-     * @param UserInterface $user
+     * @param \FOS\UserBundle\Model\UserInterface $user
+     *
      * @return string
      */
     protected function getRedirectionUrl(UserInterface $user)
@@ -144,6 +145,7 @@ class ResettingController extends ContainerAware
      * The default implementation only keeps the part following @ in the address.
      *
      * @param \FOS\UserBundle\Model\UserInterface $user
+     *
      * @return string
      */
     protected function getObfuscatedEmail(UserInterface $user)
