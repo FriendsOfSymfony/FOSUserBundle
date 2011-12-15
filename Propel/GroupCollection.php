@@ -24,8 +24,7 @@ class GroupCollection implements Collection
 
     public function add($element)
     {
-        $this->checkInstance($element);
-        $this->collection->append($element->getPropelGroup());
+        $this->collection->append($element);
 
         return true;
     }
@@ -37,9 +36,7 @@ class GroupCollection implements Collection
 
     public function contains($element)
     {
-        $this->checkInstance($element);
-
-        return $this->collection->contains($element->getPropelGroup());
+        return $this->collection->contains($element);
     }
 
     public function isEmpty()
@@ -54,9 +51,7 @@ class GroupCollection implements Collection
 
     public function removeElement($element)
     {
-        $this->checkInstance($element);
-
-        $key = $this->collection->search($element->getPropelGroup());
+        $key = $this->collection->search($element);
 
         if (false !== $key) {
             $this->collection->remove($key);
@@ -74,7 +69,7 @@ class GroupCollection implements Collection
 
     public function get($key)
     {
-        return $this->proxyfy($this->collection->get($key));
+        return $this->collection->get($key);
     }
 
     public function getKeys()
@@ -89,23 +84,22 @@ class GroupCollection implements Collection
 
     public function set($key, $value)
     {
-        $this->checkInstance($value);
-        $this->collection->set($key, $value->getPropelGroup());
+        $this->collection->set($key, $value);
     }
 
     public function toArray()
     {
-        return array_map(array($this, 'proxyfy'), $this->collection->getArrayCopy());
+        return $this->collection->getArrayCopy();
     }
 
     public function first()
     {
-        return $this->proxyfy($this->collection->getFirst());
+        return $this->collection->getFirst();
     }
 
     public function last()
     {
-        return $this->proxyfy($this->collection->getLast());
+        return $this->collection->getLast();
     }
 
     public function key()
@@ -115,18 +109,18 @@ class GroupCollection implements Collection
 
     public function current()
     {
-        return $this->proxyfy($this->collection->getCurrent());
+        return $this->collection->getCurrent();
     }
 
     public function next()
     {
-        return $this->proxyfy($this->collection->getNext());
+        return $this->collection->getNext();
     }
 
     public function exists(\Closure $p)
     {
         foreach ($this->collection as $key => $element) {
-            if ($p($key, $this->proxyfy($element))) {
+            if ($p($key, $element)) {
                 return true;
             }
         }
@@ -143,7 +137,7 @@ class GroupCollection implements Collection
     public function forAll(\Closure $p)
     {
         foreach ($this->collection as $key => $element) {
-            if (!$p($key, $this->proxyfy($element))) {
+            if (!$p($key, $element)) {
                 return false;
             }
         }
@@ -173,11 +167,6 @@ class GroupCollection implements Collection
         return array_slice($this->toArray(), $offset, $length, true);
     }
 
-    public function getIterator()
-    {
-        return new ProxyfyingIterator($this->collection->getIterator());
-    }
-
     public function offsetExists($offset)
     {
         return $this->collection->offsetExists($offset);
@@ -198,20 +187,13 @@ class GroupCollection implements Collection
         $this->collection->offsetUnset($offset);
     }
 
+    public function getIterator()
+    {
+        return $this->collection->getIterator();
+    }
+
     public function count()
     {
         return $this->collection->count();
-    }
-
-    private function checkInstance($group)
-    {
-        if (!$group instanceof GroupProxy) {
-            throw new \InvalidArgumentException(sprintf('A FOS\UserBundle\Propel\GroupCollection can only hold FOS\UserBundle\Propel\GroupProxy instances but got "%s"', get_class($group)));
-        }
-    }
-
-    private function proxyfy(Group $group)
-    {
-        return new GroupProxy($group);
     }
 }

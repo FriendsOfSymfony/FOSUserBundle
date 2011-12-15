@@ -43,16 +43,6 @@ Or if you prefer XML:
 </fos_user:config>
 ```
 
-**Note:**
-
-> When using Propel, you need to fill the `group_class` option with the name
-> of the proxy class (`FOS\UserBundle\Propel\GroupProxy`). And the `propel_group_class`
-> option is also mandatory, containing the name of the actual model class
-> (`FOS\UserBundle\Propel\Group`).
-> As the relation is mapped in the schema of the user class, it is currently
-> not possible to use a different group class with Propel (the next 2 sections
-> can be skipped).
-
 ### The Group class
 
 The simpliest way to create a Group class is to extend the mapped superclass

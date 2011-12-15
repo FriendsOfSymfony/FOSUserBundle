@@ -19,12 +19,9 @@ class GroupManager extends BaseGroupManager
 {
     protected $class;
 
-    protected $modelClass;
-
-    public function __construct($proxyClass, $modelClass)
+    public function __construct($class)
     {
-        $this->class = $proxyClass;
-        $this->modelClass = $modelClass;
+        $this->class = $class;
     }
 
     /**
@@ -35,11 +32,11 @@ class GroupManager extends BaseGroupManager
     */
     public function createGroup($name)
     {
-        $class = $this->modelClass;
+        $class = $this->class;
         $group = new $class();
         $group->setName($name);
 
-        return $this->proxyfy($group);
+        return $group;
     }
 
     /**
@@ -47,7 +44,7 @@ class GroupManager extends BaseGroupManager
      */
     public function deleteGroup(GroupInterface $group)
     {
-        if (!$group instanceof GroupProxy) {
+        if (!$group instanceof \Persistent) {
             throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');
         }
 
@@ -62,11 +59,6 @@ class GroupManager extends BaseGroupManager
         return $this->class;
     }
 
-    public function getModelClass()
-    {
-        return $this->modelClass;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -79,13 +71,7 @@ class GroupManager extends BaseGroupManager
             $query->$method($value);
         }
 
-        $group = $query->findOne();
-
-        if ($group) {
-            $group = $this->proxyfy($group);
-        }
-
-        return $group;
+        return $query->findOne();
     }
 
     /**
@@ -104,7 +90,7 @@ class GroupManager extends BaseGroupManager
      */
     public function updateGroup(GroupInterface $group)
     {
-        if (!$group instanceof GroupProxy) {
+        if (!$group instanceof \Persistent) {
             throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');
         }
 
@@ -118,14 +104,6 @@ class GroupManager extends BaseGroupManager
     */
     protected function createQuery()
     {
-        return \PropelQuery::from($this->modelClass);
-    }
-
-    protected function proxyfy(Group $group)
-    {
-        $proxyClass = $this->getClass();
-        $proxy = new $proxyClass($group);
-
-        return $proxy;
+        return \PropelQuery::from($this->class);
     }
 }

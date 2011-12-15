@@ -446,11 +446,38 @@ For MongoDB users you can run the following command to create the indexes.
 $ php app/console doctrine:mongodb:schema:create --index
 ```
 
-For Propel users you can run the following command to create the table
+For Propel users you have to install the [TypehintableBehavior](https://github.com/willdurand/TypehintableBehavior) before to
+build your model. First, install it:
 
-```bash
-$ php app/console propel:build
+By using Git submodules:
+
+``` bash
+$ git submodule add http://github.com/willdurand/TypehintableBehavior.git vendor/propel-behaviors/TypehintableBehavior
 ```
+
+By using the Symfony2 vendor management:
+
+```
+[PropelBundle]
+    git=http://github.com/willdurand/TypehintableBehavior.git
+    target=/propel-behaviors/TypehintableBehavior
+```
+
+Then, register it:
+
+``` ini
+# app/config/propel.ini
+propel.behavior.typehintable.class = vendor.propel-behaviors.TypehintableBehavior.src.TypehintableBehavior
+```
+
+You now can run the following command to create the model:
+
+``` bash
+$ php app/console propel:build-model
+```
+
+> To create SQL, run the command `propel:build-sql` and insert it or use migration commands if you have an existing schema in your database.
+
 
 You now can login at `http://app.com/app_dev.php/login`!
 

@@ -28,12 +28,21 @@
         <column name="credentials_expired" type="boolean" />
         <column name="credentials_expire_at" type="timestamp" required="false" />
         <column name="roles" type="array" />
+
+        <behavior name="typehintable">
+            <parameter name="roles" value="array" />
+            <parameter name="group" value="\FOS\UserBundle\Model\GroupInterface" />
+        </behavior>
     </table>
 
     <table name="group">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="name" type="varchar" size="255" required="true" primaryString="true" />
         <column name="roles" type="array" />
+
+        <behavior name="typehintable">
+            <parameter name="roles" value="array" />
+        </behavior>
     </table>
 
     <table name="user_group" isCrossRef="true">
