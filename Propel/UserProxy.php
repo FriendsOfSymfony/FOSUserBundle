@@ -262,6 +262,7 @@ class UserProxy extends FosUser
      */
     public function setUsername($username)
     {
+        parent::setUsername($username);
         $this->user->setUsername($username);
     }
 
@@ -272,6 +273,7 @@ class UserProxy extends FosUser
      */
     public function setUsernameCanonical($usernameCanonical)
     {
+        parent::setUsernameCanonical($usernameCanonical);
         $this->user->setUsernameCanonical($usernameCanonical);
     }
 
@@ -292,6 +294,7 @@ class UserProxy extends FosUser
      */
     public function setEmail($email)
     {
+        parent::setEmail($email);
         $this->user->setEmail($email);
     }
 
@@ -302,6 +305,7 @@ class UserProxy extends FosUser
      */
     public function setEmailCanonical($emailCanonical)
     {
+        parent::setEmailCanonical($emailCanonical);
         $this->user->setEmailCanonical($emailCanonical);
     }
 
@@ -310,6 +314,7 @@ class UserProxy extends FosUser
      */
     public function setEnabled($boolean)
     {
+        parent::setEnabled($boolean);
         $this->user->setEnabled((Boolean) $boolean);
     }
 
@@ -320,11 +325,13 @@ class UserProxy extends FosUser
      */
     public function setExpired($boolean)
     {
+        parent::setExpired($boolean);
         $this->user->setExpired($boolean);
     }
 
     public function setExpiresAt(\DateTime $date)
     {
+        parent::setExpiredAt($date);
         $this->user->setExpiresAt($date);
     }
 
@@ -335,6 +342,7 @@ class UserProxy extends FosUser
      */
     public function setPassword($password)
     {
+        parent::setPassword($password);
         $this->user->setPassword($password);
     }
 
@@ -345,6 +353,7 @@ class UserProxy extends FosUser
      */
     public function setPlainPassword($password)
     {
+        parent::setPlainPassword($password);
         $this->plainPassword = $password;
     }
 
@@ -355,6 +364,7 @@ class UserProxy extends FosUser
      */
     public function setLastLogin(\DateTime $time)
     {
+        parent::setLastLogin($time);
         $this->user->setLastLogin($time);
     }
 
@@ -365,6 +375,7 @@ class UserProxy extends FosUser
      */
     public function setLocked($boolean)
     {
+        parent::setLocked($boolean);
         $this->user->setLocked($boolean);
     }
 
@@ -375,6 +386,7 @@ class UserProxy extends FosUser
      */
     public function setConfirmationToken($confirmationToken)
     {
+        parent::setConfirmationToken($confirmationToken);
         $this->user->setConfirmationToken($confirmationToken);
     }
 
@@ -385,6 +397,7 @@ class UserProxy extends FosUser
      */
     public function setPasswordRequestedAt(\DateTime $date)
     {
+        parent::setPasswordRequestedAt($date);
         $this->user->setPasswordRequestedAt($date);
     }
 
