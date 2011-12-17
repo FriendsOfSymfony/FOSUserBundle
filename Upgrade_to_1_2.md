@@ -1,11 +1,11 @@
-Upgrading from 1.1 tp 1.2
+Upgrading from 1.1 to 1.2
 =========================
 
 This file describes the needed changes when upgrading from 1.1 to 1.2
 
 ### Removed the user-level algorithm.
 
-The encoder now need to be configured in the SecurityBundle configuration
+The encoder now needs to be configured in the SecurityBundle configuration
 as described in the official documentation. If you were using the default
 value of the bundle, the config should look like this to reuse the same settings:
 
