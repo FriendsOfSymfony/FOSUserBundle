@@ -132,7 +132,7 @@ class FOSUserExtension extends Extension
             $fromEmail = $config['confirmation']['from_email'];
             unset($config['confirmation']['from_email']);
         }
-        $container->setParameter('fos_user.registration.confirmation.from_email',  array($fromEmail['address'] => $fromEmail['sender_name']));
+        $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
 
         $this->remapParametersNamespaces($config, $container, array(
             'confirmation' => 'fos_user.registration.confirmation.%s',

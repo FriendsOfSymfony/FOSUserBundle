@@ -11,8 +11,6 @@
 
 namespace FOS\UserBundle\Form\Model;
 
-use FOS\UserBundle\Model\UserInterface;
-
 class ResetPassword
 {
     /**
