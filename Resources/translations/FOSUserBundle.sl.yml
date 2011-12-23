@@ -41,7 +41,7 @@ registration:
     confirmed: Pozdravljeni %username%, vaš račun je sedaj aktiviran.
     back: Nazaj na prvotno stran.
     submit: Registracija
-    flash;
+    flash:
         user_created: Uporabnik je bil uspešno ustvarjen
     email: |
         Aktivacija računa

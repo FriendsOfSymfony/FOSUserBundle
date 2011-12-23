@@ -4,15 +4,15 @@ group:
         submit: Grupp aktualiséieren
     show:
         name: Gruppennumm
-    new
+    new:
         submit: Grupp creéieren
-    flash
+    flash:
         updated: D'Grupp gouf aktualiséiert
         created: D'Grupp gouf creéiert
         deleted: D'Grupp gouf geläscht
 
 # Security
-security
+security:
     login:
         username: "Benotzernumm:"
         password: "Passwuert:"
