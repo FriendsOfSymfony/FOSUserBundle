@@ -27,7 +27,7 @@ profile:
     edit:
         submit: Shrani
     flash:
-        updated: Profil je bila uspešno shranjen
+        updated: Profil je bil uspešno shranjen
 
 # Password change
 change_password:
@@ -47,28 +47,28 @@ registration:
         Aktivacija računa
         Pozdravljeni %username%!
 
-        Za aktivacijo računa prosim obiščite  %confirmationUrl%
+        Za aktivacijo računa prosimo, obiščite %confirmationUrl%
 
         lp,
         ekipa.
 
 # Password resetting
 resetting:
-    password_already_requested: V zadnjih 24h ste že zahtevali ponastavitev gesla.
-    check_email: Na %email% smo vam poslali sporočilo s kodo za ponastavitev gesla. Geslo boste ponastavili po kliku na to povezavo.
+    password_already_requested: V zadnjih 24h ste že zahtevali spremembo gesla.
+    check_email: Na %email% smo vam poslali sporočilo s kodo za spremembo gesla. Geslo boste spremenili po kliku na to povezavo.
     request:
-        invalid_username: Uporabnik z uporabniškim imenom "%username%" ne obstaja.
+        invalid_username: Uporabnik "%username%" ne obstaja.
         username: "Uporabniško ime:"
-        submit: Ponastavi geslo
+        submit: Spremeni geslo
     reset:
         submit: Spremeni geslo
-    #flash:
-    #    success: The password has been reset successfully
+    flash:
+        success: Geslo je bilo uspešno spremenjeno
     email: |
-        Ponastavitev gesla
+        Sprememba gesla
         Pozdravljeni %username%!
 
-        Za ponastavitev gesla prosim obiščite %confirmationUrl%
+        Za spremembo gesla prosimo, obiščite %confirmationUrl%
 
         lp,
         ekipa.
