@@ -1,15 +1,15 @@
 fos_user:
     username:
-        already_used: Uporabniöko ime ûe obstaja
-        blank: Prosimo, vnesite uporabniöko ime
-        short: Uporabniöko ime je prekratko
-        long: Uporabniöko ime je predolgo
+        already_used: Uporabni≈°ko ime ≈æe obstaja
+        blank: Prosimo, vnesite uporabni≈°ko ime
+        short: Uporabni≈°ko ime je prekratko
+        long: Uporabni≈°ko ime je predolgo
     email:
-        already_used: Email ûe obstaja
+        already_used: Email ≈æe obstaja
         blank: Prosimo, vnesite email
         short: Email je prekratek
         long: Email je predolg
-        invalid: Email je napaËen
+        invalid: Email je napaƒçen
     password:
         blank: Prosimo, vnesite geslo
         short: Geslo je prekratko
@@ -17,7 +17,7 @@ fos_user:
         blank: Prosimo, vnesite novo geslo
         short: Novo geslo je prekratko
     current_password:
-        invalid: Geslo je napaËno
+        invalid: Geslo je napaƒçno
     group:
         blank: Prosimo, vnesite ime
         short: Ime je prekratko
