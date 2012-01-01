@@ -90,7 +90,7 @@ class UserManager extends BaseUserManager
      * Updates a user.
      *
      * @param UserInterface $user
-     * @param Boolean $andFlush Whether to flush the changes (default true)
+     * @param Boolean       $andFlush Whether to flush the changes (default true)
      */
     public function updateUser(UserInterface $user, $andFlush = true)
     {

@@ -36,9 +36,9 @@ class UserManipulator
     /**
      * Creates a user and returns it.
      *
-     * @param string $username
-     * @param string $password
-     * @param string $email
+     * @param string  $username
+     * @param string  $password
+     * @param string  $email
      * @param Boolean $active
      * @param Boolean $superadmin
      *

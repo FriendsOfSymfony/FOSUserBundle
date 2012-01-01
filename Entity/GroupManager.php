@@ -67,7 +67,7 @@ class GroupManager extends BaseGroupManager
      * Updates a group
      *
      * @param GroupInterface $group
-     * @param Boolean $andFlush Whether to flush the changes (default true)
+     * @param Boolean        $andFlush Whether to flush the changes (default true)
      * @return void
      */
     public function updateGroup(GroupInterface $group, $andFlush = true)

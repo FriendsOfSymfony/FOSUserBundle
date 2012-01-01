@@ -128,7 +128,7 @@ interface UserManagerInterface
      * Checks the uniqueness of the given fields, returns true if its unique.
      *
      * @param UserInterface $value
-     * @param Constraint $constraint
+     * @param Constraint    $constraint
      * @return Boolean
      */
     function validateUnique(UserInterface $value, Constraint $constraint);

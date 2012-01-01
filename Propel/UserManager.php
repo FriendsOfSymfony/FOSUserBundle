@@ -33,7 +33,7 @@ class UserManager extends BaseUserManager
      * @param CanonicalizerInterface  $usernameCanonicalizer
      * @param CanonicalizerInterface  $emailCanonicalizer
      * @param string                  $proxyClass
-     * @param string                  $class
+     * @param string                  $modelClass
      */
     public function __construct(EncoderFactoryInterface $encoderFactory, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer, $proxyClass, $modelClass)
     {
@@ -167,7 +167,7 @@ class UserManager extends BaseUserManager
      * Indicates whether the given user and all compared objects correspond to the same record.
      *
      * @param UserInterface $user
-     * @param array $comparisons
+     * @param array         $comparisons
      * @return Boolean
      */
     protected function anyIsUser($user, array $comparisons)
@@ -187,7 +187,7 @@ class UserManager extends BaseUserManager
      * Gets conflictual users for the given user and constraint.
      *
      * @param UserInterface $value
-     * @param array $fields
+     * @param array         $fields
      * @return array
      */
     protected function findConflictualUsers($value, array $fields)
