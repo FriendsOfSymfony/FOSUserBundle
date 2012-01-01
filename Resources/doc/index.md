@@ -281,6 +281,7 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                csrf_provider: form.csrf_provider
             logout:       true
             anonymous:    true
 
