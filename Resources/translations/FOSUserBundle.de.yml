@@ -43,8 +43,8 @@ registration:
     submit: Registrieren
     flash:
         user_created: Der Benutzer wurde erfolgreich erstellt
-    email: |
-        Willkommen %username%!
+    email.subject: Willkommen %username%!
+    email.body: |
         Hallo %username%!
 
         Besuche bitte folgende Seite, um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
@@ -64,8 +64,8 @@ resetting:
         submit: Passwort ändern
     flash:
         success: Das Passwort wurde erfolgreich zurückgesetzt
-    email: |
-        Passwort zurücksetzen
+    email.subject: Passwort zurücksetzen
+    email.body: |
         Hallo %username%!
 
         Besuche bitte folgende Seite, um Dein Passwort zurückzusetzen: %confirmationUrl%
