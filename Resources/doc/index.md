@@ -64,7 +64,7 @@ $ php bin/vendors install
 
 **Using submodules**
 
-If you prefer instead to use git submodules, the run the following:
+If you prefer instead to use git submodules, then run the following:
 
 ``` bash
 $ git submodule add git://github.com/FriendsOfSymfony/FOSUserBundle.git vendor/bundles/FOS/UserBundle
