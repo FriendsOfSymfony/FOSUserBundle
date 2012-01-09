@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Nom d'utilisateur:"
-        password: "Mot de passe:"
+        username: "Nom d'utilisateur :"
+        password: "Mot de passe :"
         remember_me: Se souvenir de moi
         submit: Connexion
 
@@ -58,7 +58,7 @@ resetting:
     check_email: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
     request:
         invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
-        username: "Nom d'utilisateur ou adresse e-mail:"
+        username: "Nom d'utilisateur ou adresse e-mail :"
         submit: Réinitialiser le mot de passe
     reset:
         submit: Modifier le mot de passe
@@ -81,21 +81,21 @@ layout:
     logged_in_as: Connecté en tant que %username%
 
 # Form field labels
-fos_user_group_form_name: "Nom du groupe:"
+fos_user_group_form_name: "Nom du groupe :"
 
-fos_user_profile_form_username:             "Nom d'utilisateur:"
-fos_user_profile_form_email:                "Adresse e-mail:"
-fos_user_profile_form_plainPassword_first:  "Mot de passe:"
-fos_user_profile_form_plainPassword_second: "Vérification:"
+fos_user_profile_form_username:             "Nom d'utilisateur :"
+fos_user_profile_form_email:                "Adresse e-mail :"
+fos_user_profile_form_plainPassword_first:  "Mot de passe :"
+fos_user_profile_form_plainPassword_second: "Vérification :"
 
-fos_user_registration_form_username:             "Nom d'utilisateur:"
-fos_user_registration_form_email:                "Adresse e-mail:"
-fos_user_registration_form_plainPassword_first:  "Mot de passe:"
-fos_user_registration_form_plainPassword_second: "Vérification:"
+fos_user_registration_form_username:             "Nom d'utilisateur :"
+fos_user_registration_form_email:                "Adresse e-mail :"
+fos_user_registration_form_plainPassword_first:  "Mot de passe :"
+fos_user_registration_form_plainPassword_second: "Vérification :"
 
 fos_user_resetting_form_new_first:  "Nouveau mot de passe:"
 fos_user_resetting_form_new_second: "Vérification:"
 
-fos_user_change_password_form_new_first:    "Nouveau mot de passe:"
-fos_user_change_password_form_new_second:   "Vérification:"
-fos_user_change_password_form_current:  "Mot de passe actuel:"
+fos_user_change_password_form_new_first:    "Nouveau mot de passe :"
+fos_user_change_password_form_new_second:   "Vérification :"
+fos_user_change_password_form_current:  "Mot de passe actuel :"
