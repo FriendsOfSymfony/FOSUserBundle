@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: De gebruikersnaam is al in gebruik
+        blank: Voer een gebruikersnaam in
+        short: De gebruikersnaam is te kort
+        long: De gebruikersnaam is te lang
+    email:
+        already_used: Het email adres is al in gebruik
+        blank: Voer een email adres in
+        short: Het email adres is te kort
+        long: Het email adres is te lang
+        invalid: Het email adres is ongeldig
+    password:
+        blank: Voer een wachtwoord in
+        short: Het wachtwoord is te kort
+    new_password:
+        blank: Voer een nieuw wachtwoord in
+        short: Het nieuwe wachtwoord is te kort
+    current_password:
+        invalid: Het ingevulde wachtwoord is ongeldig
+    group:
+        blank: Voer een naam in
+        short: De naam is te kort
+        long: De naam is te lang
