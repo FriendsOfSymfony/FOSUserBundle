@@ -73,8 +73,18 @@ security:
     providers:
         custom:
             id: acme_user.my_provider
-    # the firewall config is omitted here.
+    firewall:
+        main:
+            # ...
+            form_login:
+                # Point to the new provider key you've just created
+                provider: custom
+            # ...
 ```
+
+**Note:**
+
+> The provider key under your firewall is optional. If left out, the first provider is used automatically.
 
 ## Extending the UserManager class
 
