@@ -1,3 +1,11 @@
-{% autoescape false %}
-{{ 'resetting.email'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
-{% endautoescape %}
+{% extends "FOSUserBundle::layout_email.html.twig" %}
+
+{% block body %}
+    {% autoescape false %}
+        {{ 'resetting.email.body'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+    {% endautoescape %}
+{% endblock body %}
+
+{% block subject -%}
+        {{ 'resetting.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endblock subject %}
