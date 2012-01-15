@@ -436,7 +436,7 @@ Or if you prefer XML:
 
 Now that the bundle is configured, the last thing you need to do is update your
 database schema because you have added a new entity, the `User` class which you
-created in Step 2.
+created in Step 4.
 
 For ORM run the following command.
 
