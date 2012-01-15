@@ -43,14 +43,15 @@ registration:
     submit: Registrácia
     flash:
         user_created: Vaše konto bolo úspešne vytvorené.
-    email: |
-        Vitaj %username%!
-        Ahoj %username%!
+    email:
+        subject: Vitaj %username%!
+        message: |
+            Ahoj %username%!
 
-        Pre ukončenie registrácie, prosím klikni na nasledovnú linku: %confirmationUrl%
+            Pre ukončenie registrácie, prosím klikni na nasledovnú linku: %confirmationUrl%
 
-        S pozdravom,
-        Realizačný tím
+            S pozdravom,
+            Realizačný tím
 
 # Password resetting
 resetting:

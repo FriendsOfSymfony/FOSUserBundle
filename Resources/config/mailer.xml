@@ -24,6 +24,22 @@
             </argument>
         </service>
 
+        <service id="fos_user.mailer.twig_swift" class="FOS\UserBundle\Mailer\TwigSwiftMailer" public="false">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="twig" />
+            <argument type="collection">
+                <argument key="template" type="collection">
+                    <argument key="confirmation">%fos_user.registration.confirmation.template%</argument>
+                    <argument key="resetting">%fos_user.resetting.email.template%</argument>
+                </argument>
+                <argument key="from_email" type="collection">
+                    <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
+                    <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
+                </argument>
+            </argument>
+        </service>
+
         <service id="fos_user.mailer.noop" class="FOS\UserBundle\Mailer\NoopMailer" public="false" />
     </services>
 

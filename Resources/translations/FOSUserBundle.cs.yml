@@ -43,14 +43,15 @@ registration:
     submit: Registrovat se
     flash:
         user_created: Váš účet byl úspěšně vytvořen
-    email: |
-        Vítejte, %username%!
-        Dobrý den, %username%!
+    email:
+        subject: Vítejte, %username%!
+        message: |
+            Dobrý den, %username%!
 
-        Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
+            Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
 
-        S pozdravem,
-        realizační tým.
+            S pozdravem,
+            realizační tým.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Nastavit nové heslo
     flash:
         success: Heslo bylo úspěšně změněné
-    email: |
-        Zaslání zapomenutého hesla
-        Dobrý den, %username%!
+    email:
+        subject: Zaslání zapomenutého hesla
+        message: |
+            Dobrý den, %username%!
 
-        Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
+            Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
 
-        S pozdravem,
-        realizační tým.
+            S pozdravem,
+            realizační tým.
 
 # Global strings
 layout:

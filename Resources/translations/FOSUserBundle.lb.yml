@@ -43,14 +43,15 @@ registration:
     submit: Registréieren
     flash:
         user_created: De Benotzer gouf erfollegräich creéiert
-    email: |
-        Wëllkomm %username%!
-        Hallo %username%!
+    email:
+        subject: Wëllkomm %username%!
+        message: |
+            Hallo %username%!
 
-        Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
+            Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
 
-        Mat beschte Gréiss,
-        d'Equipe.
+            Mat beschte Gréiss,
+            d'Equipe.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Passwuert ännern
     flash:
         success: D'Passwuert gouf erfollegräich zeréckgesat
-    email: |
-        Wëllkomm %username%!
-        Hallo %username%!
+    email:
+        subject: Wëllkomm %username%!
+        message: |
+            Hallo %username%!
 
-        Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
+            Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
 
-        Mat beschte Gréiss,
-        d'Equipe.
+            Mat beschte Gréiss,
+            d'Equipe.
 
 # Global strings
 layout:

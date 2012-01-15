@@ -43,14 +43,15 @@ registration:
     submit: 登録
     flash:
         user_created: ユーザーの作成が完了しました
-    email: |
-        %username% さん、ようこそ!
-        こんにちは %username% さん!
+    email:
+        subject: %username% さん、ようこそ!
+        message: |
+            こんにちは %username% さん!
 
-        アカウントを有効化するには、次の確認 URL へアクセスしてください %confirmationUrl%
+            アカウントを有効化するには、次の確認 URL へアクセスしてください %confirmationUrl%
 
 
-        開発チーム
+            開発チーム
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: パスワードの変更
     flash:
         success: パスワードのリセットが完了しました
-    email: |
-        パスワードのリセット
-        こんにちは %username% さん!
+    email:
+        subject: パスワードのリセット
+        message: |
+            こんにちは %username% さん!
 
-        パスワードをリセットするには、次のリセット URL へアクセスしてください %confirmationUrl%
+            パスワードをリセットするには、次のリセット URL へアクセスしてください %confirmationUrl%
 
 
-        開発チーム
+            開発チーム
 
 # Global strings
 layout:

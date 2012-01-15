@@ -43,14 +43,15 @@ registration:
     submit: Registrer
     flash:
         user_created: Bruger er blevet oprettet
-    email: |
-        Velkommen %username%!
-        Hej %username%!
+    email:
+        subject: Velkommen %username%!
+        message: |
+            Hej %username%!
 
-        For at færdiggøre valideringen af din konto - besøg venligst %confirmationUrl%
+            For at færdiggøre valideringen af din konto - besøg venligst %confirmationUrl%
 
-        Venlig Hilsen,
-        Holdet bag siden.
+            Venlig Hilsen,
+            Holdet bag siden.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Skift kodeord
     flash:
         success: Kodeordet er blevet nulstillet
-    email: |
-        Velkommen %username%!
-        Hej %username%!
+    email:
+        subject: Velkommen %username%!
+        message: |
+            Hej %username%!
 
-        For at nulstille dit kodeord - besøg venligst %confirmationUrl%
+            For at nulstille dit kodeord - besøg venligst %confirmationUrl%
 
-        Venlig Hilsen,
-        Holdet bag siden.
+            Venlig Hilsen,
+            Holdet bag siden.
 
 # Global strings
 layout:

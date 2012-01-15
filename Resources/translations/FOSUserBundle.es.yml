@@ -43,14 +43,15 @@ registration:
     submit: Registrar
     flash:
         user_created: El usuario se ha creado satisfactoriamente
-    email: |
-        Bienvenido %username%!
-        Hola %username%!
+    email:
+        subject: Bienvenido %username%!
+        message: |
+            Hola %username%!
 
-        Para completar la validación de tu cuenta - por favor visita %confirmationUrl%
+            Para completar la validación de tu cuenta - por favor visita %confirmationUrl%
 
-        Atentamente,
-        el Equipo.
+            Atentamente,
+            el Equipo.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Cambiar contraseña
     flash:
         success: La contraseña se ha cambiado con éxito
-    email: |
-        Bienvenido %username%!
-        Hola %username%!
+    email:
+        subject: Bienvenido %username%!
+        message : |
+            Hola %username%!
 
-        Para restablecer tu contraseña - por favor visita %confirmationUrl%
+            Para restablecer tu contraseña - por favor visita %confirmationUrl%
 
-        Atentamente,
-        el Equipo.
+            Atentamente,
+            el Equipo.
 
 # Global strings
 layout:

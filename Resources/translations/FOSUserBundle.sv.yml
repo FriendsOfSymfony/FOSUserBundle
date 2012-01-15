@@ -43,14 +43,15 @@ registration:
     submit: Registrera
     flash:
         user_created: Användaren har skapats.
-    email: |
-        Välkommen %username%!
-        Hej %username%!
+    email:
+        subject: Välkommen %username%!
+        message: |
+            Hej %username%!
 
-        För att aktivera ditt konto - vänligen besök %confirmationUrl%
+            För att aktivera ditt konto - vänligen besök %confirmationUrl%
 
-        Hälsningar,
-        Teamet.
+            Hälsningar,
+            Teamet.
 
 # Password resetting
 resetting:

@@ -43,14 +43,15 @@ registration:
     submit: Registreer
     flash:
         user_created: De gebruiker is succesvol aangemaakt
-    email: |
-        Welkom %username%!
-        Hallo %username%!
+    email:
+        subject: Welkom %username%!
+        message: |
+            Hallo %username%!
 
-        U moet uw account nog valideren, ga naar %confirmationUrl%
+            U moet uw account nog valideren, ga naar %confirmationUrl%
 
-        Vriendelijke groeten,
-        het Team.
+            Vriendelijke groeten,
+            het Team.
 
 # Password resetting
 resetting:
@@ -63,14 +64,15 @@ resetting:
         submit: Wachtwoord bijwerken
     flash:
         success: Het wachtwoord is succesvol gereset
-    email: |
-        Welkom %username%!
-        Hallo %username%!
+    email:
+        subject: Welkom %username%!
+        message: |
+            Hallo %username%!
 
-        Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
+            Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
 
-        Met vriendelijke groet,
-        het Team.
+            Met vriendelijke groet,
+            het Team.
 
 # Global strings
 layout:

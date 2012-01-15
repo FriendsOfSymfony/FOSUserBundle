@@ -43,14 +43,15 @@ registration:
     submit: Registra
     flash:
         user_created: S'ha creat l'usuari correctament
-    email: |
-        Benvingut %username%!
-        Hola %username%!
+    email:
+        subject: Benvingut %username%!
+        message: |
+            Hola %username%!
 
-        Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
+            Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
 
-        Atentament,
-        L'equip.
+            Atentament,
+            L'equip.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Canvia la contrasenya
     flash:
         success: S'ha restablert la contrasenya correctament
-    email: |
-        Restablir la contrasenya
-        Hola %username%!
+    email:
+        subject: Restablir la contrasenya
+        message: |
+            Hola %username%!
 
-        Per restablir la contrasenya - si us plau visiteu %confirmationUrl%
+            Per restablir la contrasenya - si us plau visiteu %confirmationUrl%
 
-        Atentament,
-        L'equip.
+            Atentament,
+            L'equip.
 
 # Global strings
 layout:

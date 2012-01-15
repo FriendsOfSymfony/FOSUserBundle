@@ -43,14 +43,15 @@ registration:
     submit: Registracija
     flash:
         user_created: Uporabnik je bil uspešno ustvarjen
-    email: |
-        Aktivacija računa
-        Pozdravljeni %username%!
+    email:
+        subject: Aktivacija računa
+        message: |
+            Pozdravljeni %username%!
 
-        Za aktivacijo računa prosimo, obiščite %confirmationUrl%
+            Za aktivacijo računa prosimo, obiščite %confirmationUrl%
 
-        lp,
-        ekipa.
+            lp,
+            ekipa.
 
 # Password resetting
 resetting:

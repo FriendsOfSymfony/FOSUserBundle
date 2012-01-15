@@ -43,14 +43,15 @@ registration:
     submit: Регистрация
     flash:
         user_created: Пользователь успешно создан
-    email: |
-        Добро пожаловать %username%!
-        Привествуем %username%!
+    email:
+        subject: Добро пожаловать %username%!
+        message: |
+            Привествуем %username%!
 
-        Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
+            Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
 
-        С наилучшими пожеланиями,
-        команда сайта.
+            С наилучшими пожеланиями,
+            команда сайта.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Изменить пароль
     flash:
         success: Пароль успешно сброшен
-    email: |
-        Сброс пароля
-        Привествуем %username%!
+    email:
+        subject: Сброс пароля
+        message: |
+            Привествуем %username%!
 
-        Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
+            Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
 
-        С наилучшими пожеланиями,
-        команда сайта.
+            С наилучшими пожеланиями,
+            команда сайта.
 
 # Global strings
 layout:

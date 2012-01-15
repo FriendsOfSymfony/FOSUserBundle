@@ -43,14 +43,15 @@ registration:
     submit: Inregistreaza-te
     flash:
         user_created: Utilizatorul a fost creat cu succes
-    email: |
-        Bine ai venit %username%!
-        Salut %username%!
+    email:
+        subject: Bine ai venit %username%!
+        message: |
+            Salut %username%!
 
-        Pentru a-ti valida contul - acceseaza %confirmationUrl%
+            Pentru a-ti valida contul - acceseaza %confirmationUrl%
 
-        Toate cele bune,
-        Echipa
+            Toate cele bune,
+            Echipa
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Schimba parola
     flash:
         success: Parola a fost resetata cu succes
-    email: |
-        Resetare parola
-        Salut %username%!
+    email:
+        subject: Resetare parola
+        message: |
+            Salut %username%!
 
-        Pentru a-ti reseta parola - acceseaza %confirmationUrl%
+            Pentru a-ti reseta parola - acceseaza %confirmationUrl%
 
-        Toate cele bune,
-        Echipa
+            Toate cele bune,
+            Echipa
 
 # Global strings
 layout:

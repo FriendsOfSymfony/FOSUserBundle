@@ -43,13 +43,15 @@ registration:
     submit: Registreeri
     #flash:
     #    user_created: The user has been created successfully
-    email: |
-        Tere %username%!
+    email:
+        #subject: Welcome %username%!
+        message: |
+            Tere %username%!
 
-        Konto valideerimise edukaks lõpetamiseks palun vajutage viitel %confirmationUrl%
+            Konto valideerimise edukaks lõpetamiseks palun vajutage viitel %confirmationUrl%
 
-        Parimatega,
-        Tiim.
+            Parimatega,
+            Tiim.
 
 # Password resetting
 resetting:
@@ -63,13 +65,15 @@ resetting:
         submit: Muuda salasõna
     #flash:
     #    success: The password has been reset successfully
-    email: |
-        Tere %username%!
+    email:
+        #subject: Reset Password
+        message: |
+            Tere %username%!
 
-        Salasõna muutmiseks palun vajutage viitel %confirmationUrl%
+            Salasõna muutmiseks palun vajutage viitel %confirmationUrl%
 
-        Parimatega,
-        Tiim.
+            Parimatega,
+            Tiim.
 
 # Global strings
 layout:

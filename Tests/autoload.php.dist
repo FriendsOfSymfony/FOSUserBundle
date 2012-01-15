@@ -25,7 +25,16 @@ $loader->registerNamespaces(array(
     'Doctrine\\CouchDB'      => $vendorDir.'/doctrine-couchdb/lib',
     'Doctrine'               => $vendorDir.'/doctrine/lib',
 ));
+$loader->registerPrefixes(array(
+    'Twig_' => $vendorDir.'/twig/lib',
+));
 $loader->register();
+
+$swiftAutoloader = $vendorDir.'/swiftmailer/lib/classes/Swift.php';
+if (file_exists($swiftAutoloader)) {
+    require_once $swiftAutoloader;
+    Swift::registerAutoload($vendorDir.'/swiftmailer/lib/swift_init.php');
+}
 
 set_include_path($vendorDir.'/phing/classes'.PATH_SEPARATOR.get_include_path());
 

@@ -43,14 +43,15 @@ registration:
     submit: Registrar
     flash:
         user_created: O usuário foi criado com sucesso.
-    email: |
-        Bem-vindo(a), %username%!
-        Olá, %username%!
+    email:
+        subject: Bem-vindo(a), %username%!
+        message: |
+            Olá, %username%!
 
-        Para completar a validação da sua conta, clique no link: %confirmationUrl%
+            Para completar a validação da sua conta, clique no link: %confirmationUrl%
 
-        Atenciosamente,
-        a Equipe.
+            Atenciosamente,
+            a Equipe.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Alterar senha
     flash:
         success: A senha foi redefinida com sucesso.
-    email: |
-        Redefinir senha
-        Olá, %username%!
+    email:
+        subject: Redefinir senha
+        message: |
+            Olá, %username%!
 
-        Para redefinir sua senha, clique no link: %confirmationUrl%
+            Para redefinir sua senha, clique no link: %confirmationUrl%
 
-        Atenciosamente,
-        a Equipe.
+            Atenciosamente,
+            a Equipe.
 
 # Global strings
 layout:
