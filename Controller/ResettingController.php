@@ -15,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use FOS\UserBundle\Model\UserInterface;
 
 /**
@@ -121,6 +122,13 @@ class ResettingController extends ContainerAware
      */
     protected function authenticateUser(UserInterface $user)
     {
+        try {
+            $this->container->get('security.user_checker')->checkPostAuth($user);
+        } catch (AccountStatusException $e) {
+            // Don't authenticate locked, disabled or expired users
+            return;
+        }
+
         $providerKey = $this->container->getParameter('fos_user.firewall_name');
         $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
 
