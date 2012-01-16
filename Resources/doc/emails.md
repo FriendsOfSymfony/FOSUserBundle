@@ -120,7 +120,8 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
     resetting:
-        template: AcmeDemoBundle:User:resetting.email.twig
+        email:
+            template: AcmeDemoBundle:User:resetting.email.twig
 ```
 
 ```jinja
