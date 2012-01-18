@@ -23,7 +23,10 @@ class ResettingFormType extends AbstractType
 
     public function getDefaultOptions(array $options)
     {
-        return array('data_class' => 'FOS\UserBundle\Form\Model\ResetPassword');
+        return array(
+            'data_class' => 'FOS\UserBundle\Form\Model\ResetPassword',
+            'intention'  => 'resetting',
+        );
     }
 
     public function getName()

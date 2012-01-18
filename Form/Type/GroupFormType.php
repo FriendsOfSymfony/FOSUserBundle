@@ -33,7 +33,10 @@ class GroupFormType extends AbstractType
 
     public function getDefaultOptions(array $options)
     {
-        return array('data_class' => $this->class);
+        return array(
+            'data_class' => $this->class,
+            'intention'  => 'group',
+        );
     }
 
     public function getName()

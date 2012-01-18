@@ -39,7 +39,10 @@ class ProfileFormType extends AbstractType
 
     public function getDefaultOptions(array $options)
     {
-        return array('data_class' => 'FOS\UserBundle\Form\Model\CheckPassword');
+        return array(
+            'data_class' => 'FOS\UserBundle\Form\Model\CheckPassword',
+            'intention'  => 'profile',
+        );
     }
 
     public function getName()

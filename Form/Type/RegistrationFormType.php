@@ -36,7 +36,10 @@ class RegistrationFormType extends AbstractType
 
     public function getDefaultOptions(array $options)
     {
-        return array('data_class' => $this->class);
+        return array(
+            'data_class' => $this->class,
+            'intention'  => 'registration',
+        );
     }
 
     public function getName()
