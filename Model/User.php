@@ -641,6 +641,14 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
+     * Clears the timestamp that the user requested a password reset. 
+     */
+    public function clearPasswordRequestedAt()
+    {
+        $this->passwordRequestedAt = null;
+    }
+
+    /**
      * Gets the timestamp that the user requested a password reset.
      *
      * @return \DateTime
