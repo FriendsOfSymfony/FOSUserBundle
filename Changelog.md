@@ -4,6 +4,7 @@ Changelog
 ### 1.2.0
 
 * Removed the user-level algorithm. Use FOSAdvancedEncoderBundle instead if you need such feature.
+* Fixed resetting password clearing the token but not the token expiration. Github issue #501
 
 ### 1.1.0  (2011-12-15)
 

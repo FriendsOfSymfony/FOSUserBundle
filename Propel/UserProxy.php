@@ -383,7 +383,7 @@ class UserProxy extends FosUser
      *
      * @param \DateTime $date
      */
-    public function setPasswordRequestedAt(\DateTime $date)
+    public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->user->setPasswordRequestedAt($date);
     }
