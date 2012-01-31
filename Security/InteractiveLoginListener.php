@@ -29,6 +29,10 @@ class InteractiveLoginListener
     {
         $user = $event->getAuthenticationToken()->getUser();
 
+        if ($user->getId() === null) {
+            $user = $this->userManager->findUserByUsername($user->getUsername());
+        }
+
         if ($user instanceof UserInterface) {
             $user->setLastLogin(new DateTime());
             $this->userManager->updateUser($user);
