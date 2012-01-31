@@ -149,7 +149,7 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      *
      * @param \DateTime $date
      */
-    function setPasswordRequestedAt(\DateTime $date);
+    function setPasswordRequestedAt(\DateTime $date = null);
 
     /**
      * Checks whether the password reset request has expired.
