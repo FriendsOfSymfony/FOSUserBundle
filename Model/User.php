@@ -635,7 +635,7 @@ abstract class User implements UserInterface, GroupableInterface
      *
      * @param \DateTime $date
      */
-    public function setPasswordRequestedAt(\DateTime $date)
+    public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->passwordRequestedAt = $date;
     }
