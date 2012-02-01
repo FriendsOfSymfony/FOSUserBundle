@@ -45,6 +45,18 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($user->isPasswordRequestNonExpired(5));
     }
 
+    public function testIsPasswordRequestAtCleared()
+    {
+        $user = $this->getUser();
+        $passwordRequestedAt = new \DateTime('-10 seconds');
+
+        $user->setPasswordRequestedAt($passwordRequestedAt);
+        $user->setPasswordRequestedAt(null);
+
+        $this->assertFalse($user->isPasswordRequestNonExpired(15));
+        $this->assertFalse($user->isPasswordRequestNonExpired(5));
+    }
+
     public function testTrueHasRole()
     {
         $user = $this->getUser();
