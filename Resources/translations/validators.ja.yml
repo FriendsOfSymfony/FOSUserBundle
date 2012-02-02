@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: ユーザー名は既に使用されています
+        blank: ユーザー名を入力してください
+        short: ユーザー名が短すぎます
+        long: ユーザー名が長すぎます
+    email:
+        already_used: メールアドレスは既に使用されています
+        blank: メールアドレスを入力してください
+        short: メールアドレスが短すぎます、
+        long: メールアドレスが長すぎます
+        invalid: メールアドレスが正しくありません
+    password:
+        blank: パスワードを入力してください
+        short: パスワードが短すぎます
+    new_password:
+        blank: 新しいパスワードを入力してください
+        short: パスワードが短すぎます
+    current_password:
+        invalid: 正しいパスワードを入力してください
+    group:
+        blank: 名前を入力してください
+        short: 名前が短すぎます
+        long: 名前が長すぎます
