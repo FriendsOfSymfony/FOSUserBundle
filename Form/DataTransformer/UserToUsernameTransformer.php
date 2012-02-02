@@ -2,17 +2,17 @@
 
 namespace FOS\UserBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\DataTransformerInterface;
-use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 /**
- * Transforms between a UserInterface and a username
+ * Transforms between a UserInterface instance and a username string.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class UsernameToUserTransformer implements DataTransformerInterface
+class UserToUsernameTransformer implements DataTransformerInterface
 {
     /**
      * @var UserManagerInterface
@@ -25,17 +25,20 @@ class UsernameToUserTransformer implements DataTransformerInterface
     }
 
     /**
-     * Transforms a UserInterface instance to a username string
+     * Transforms a UserInterface instance into a username string.
      *
-     * @param mixed $value a UserInterface instance
+     * @param mixed $value UserInterface instance
      *
-     * @return string the username
+     * @return string Username
+     *
+     * @throws UnexpectedTypeException if the given value is not a UserInterface instance
      */
     public function transform($value)
     {
         if (null === $value) {
             return null;
         }
+
         if (!$value instanceof UserInterface) {
             throw new UnexpectedTypeException($value, 'FOS\UserBundle\Model\UserInterface');
         }
@@ -44,17 +47,20 @@ class UsernameToUserTransformer implements DataTransformerInterface
     }
 
     /**
-     * Transforms a username to a UserInterface instance
+     * Transforms a username string into a UserInterface instance.
      *
-     * @param string $value username
+     * @param string $value Username
      *
-     * @return UserInterface the corresponding user instance
+     * @return UserInterface the corresponding UserInterface instance
+     *
+     * @throws UnexpectedTypeException if the given value is not a string
      */
     public function reverseTransform($value)
     {
-        if (null === $value) {
+        if (null === $value || '' === $value) {
             return null;
         }
+
         if (!is_string($value)) {
             throw new UnexpectedTypeException($value, 'string');
         }

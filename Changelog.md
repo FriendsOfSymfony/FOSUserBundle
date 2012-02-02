@@ -5,6 +5,7 @@ Changelog
 
 * Removed the user-level algorithm. Use FOSAdvancedEncoderBundle instead if you need such feature.
 * Fixed resetting password clearing the token but not the token expiration. Github issue #501
+* Renamed UsernameToUsernameTransformer to UserToUsernameTransformer and changed its service ID to `fos_user.user_to_username_transformer`.
 
 ### 1.1.0  (2011-12-15)
 
