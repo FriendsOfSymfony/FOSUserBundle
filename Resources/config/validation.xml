@@ -67,7 +67,7 @@
                 </option>
             </constraint>
             <constraint name="MaxLength">
-                <option name="limit">255</option>
+                <option name="limit">254</option>
                 <option name="message">fos_user.email.long</option>
                 <option name="groups">
                     <value>Registration</value>
