@@ -91,7 +91,7 @@ fos_user_profile_form_current: "Trenutno geslo:"
 fos_user_registration_form_username: "Uporabniško ime:"
 fos_user_registration_form_email: "Email:"
 fos_user_registration_form_plainPassword_first:  "Geslo:"
-fos_user_registration_form_plainPassword_second: "Trenutno geslo:"
+fos_user_registration_form_plainPassword_second: "Preverjanje gesla:"
 
 fos_user_resetting_form_new_first: "Novo geslo:"
 fos_user_resetting_form_new_second: "Preverjanje gesla:"
