@@ -19,7 +19,7 @@ use FOS\UserBundle\Model\UserManagerInterface;
  * @author Christophe Coevoet <stof@notk.org>
  * @author Luis Cordova <cordoval@gmail.com>
  */
-class UserManipulator
+class UserManipulator implements UserManipulatorInterface
 {
     /**
      * User manager

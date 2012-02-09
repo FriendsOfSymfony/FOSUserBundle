@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use FOS\UserBundle\Model\User;
-use FOS\UserBundle\Util\UserManipulator;
+use FOS\UserBundle\Util\UserManipulatorInterface;
 
 /**
  * @author Lenar Lõhmus <lenar@city.ee>
@@ -62,7 +62,7 @@ abstract class RoleCommand extends ContainerAwareCommand
     /**
      * @see Command
      */
-    abstract protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role);
+    abstract protected function executeRoleCommand(UserManipulatorInterface $manipulator, OutputInterface $output, $username, $super, $role);
 
     /**
      * @see Command
