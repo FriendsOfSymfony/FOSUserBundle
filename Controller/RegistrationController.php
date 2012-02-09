@@ -63,7 +63,6 @@ class RegistrationController extends ContainerAware
     public function checkEmailAction()
     {
         $email = $this->container->get('session')->get('fos_user_send_confirmation_email/email');
-        $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
 
         if (null === $user) {
@@ -92,7 +91,9 @@ class RegistrationController extends ContainerAware
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $this->authenticateUser($user);
-
+        
+        $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
+        
         return new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
     }
 
