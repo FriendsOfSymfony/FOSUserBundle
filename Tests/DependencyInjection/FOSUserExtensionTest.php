@@ -403,12 +403,12 @@ EOF;
 
     private function assertAlias($value, $key)
     {
-        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
+        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is not correct', $key));
     }
 
     private function assertParameter($value, $key)
     {
-        $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
+        $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is not correct', $key));
     }
 
     private function assertHasDefinition($id)
