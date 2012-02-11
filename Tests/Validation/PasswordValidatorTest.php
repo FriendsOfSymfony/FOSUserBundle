@@ -25,24 +25,22 @@ class PasswordValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->constraint = new Password();
-        $this->constraint->passwordProperty = 'current';
-        $this->constraint->userProperty = 'user';
+        $options = array(
+            'passwordProperty' => 'current',
+            'userProperty'     => 'user'
+        );
+        $context = $this->getMockBuilder('Symfony\Component\Validator\ExecutionContext')
+                ->disableOriginalConstructor()
+                ->getMock();
+        $this->constraint = new Password($options);
 
         $this->changePasswordObject = new ChangePassword($this->getMock('FOS\UserBundle\Model\UserInterface'));
         $this->encoderFactory = $this->getMock('Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface');
         $this->encoder = $this->getMock('Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface');
 
         $this->validator = new PasswordValidator();
+        $this->validator->initialize($context);
         $this->validator->setEncoderFactory($this->encoderFactory);
-    }
-
-    /**
-     * @expectedException \RuntimeException
-     */
-    public function testExceptionForNonObject()
-    {
-        $this->validator->isValid('propertyValue', $this->constraint);
     }
 
     public function testFalseOnInvalidPassword()
@@ -69,5 +67,13 @@ class PasswordValidatorTest extends \PHPUnit_Framework_TestCase
                 ->will($this->returnValue(true));
 
         $this->assertTrue($this->validator->isValid($this->changePasswordObject, $this->constraint));
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
+     */
+    public function testBadType()
+    {
+        $this->validator->isValid('bad_type', $this->constraint);
     }
 }

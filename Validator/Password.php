@@ -22,9 +22,9 @@ class Password extends Constraint
     public $passwordProperty;
     public $userProperty;
 
-    public function requiredOptions()
+    public function getRequiredOptions()
     {
-        return array('passwordProperty');
+        return array('passwordProperty', 'userProperty');
     }
 
     public function validatedBy()
