@@ -123,6 +123,21 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($confirmationToken, $user->getConfirmationToken());
     }
 
+    public function testGenerateToken()
+    {
+        $user = new GenerateTokenTestUser();
+
+        $token1 = $user->testGenerateToken();
+        $token2 = $user->testGenerateToken(10);
+        $token3 = $user->testGenerateToken(100);
+
+        $this->assertGreaterThanOrEqual(49, strlen($token1));
+        $this->assertLessThanOrEqual(50, strlen($token1));
+        $this->assertEquals(10, strlen($token2));
+        $this->assertGreaterThanOrEqual(49, strlen($token3));
+        $this->assertLessThanOrEqual(50, strlen($token3));
+    }
+
     protected function getUser()
     {
         return $this->getMockForAbstractClass('FOS\UserBundle\Model\User');

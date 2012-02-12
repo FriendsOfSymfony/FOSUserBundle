@@ -756,9 +756,10 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Generates a token.
      *
+     * @param int $maxLength
      * @return string
      */
-    protected function generateToken()
+    protected function generateToken($maxLength = null)
     {
         $bytes = false;
         if (function_exists('openssl_random_pseudo_bytes') && 0 !== stripos(PHP_OS, 'win')) {
@@ -774,6 +775,8 @@ abstract class User implements UserInterface, GroupableInterface
             $bytes = hash('sha256', uniqid(mt_rand(), true), true);
         }
 
-        return base_convert(bin2hex($bytes), 16, 36);
+        $wholeToken = base_convert(bin2hex($bytes), 16, 36);
+
+        return null === $maxLength ? $wholeToken : substr($wholeToken, 0, $maxLength);
     }
 }
