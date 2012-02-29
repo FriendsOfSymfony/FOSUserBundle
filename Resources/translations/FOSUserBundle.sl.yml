@@ -12,6 +12,8 @@ group:
         deleted: Skupina je bila uspešno izbrisana
 
 # Security
+"Bad credentials": Napačno uporabniško ime ali geslo
+
 security:
     login:
         username: "Uporabniško ime:"
@@ -65,14 +67,15 @@ resetting:
         submit: Spremeni geslo
     flash:
         success: Geslo je bilo uspešno spremenjeno
-    email: |
-        Sprememba gesla
-        Pozdravljeni %username%!
+    email:
+        subject: Sprememba gesla
+        message: |
+            Pozdravljeni %username%!
 
-        Za spremembo gesla prosimo, obiščite %confirmationUrl%
+            Za spremembo gesla prosimo, obiščite %confirmationUrl%
 
-        lp,
-        ekipa.
+            Lep pozdrav,
+            ekipa.
 
 # Global strings
 layout:

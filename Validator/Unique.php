@@ -21,12 +21,12 @@ class Unique extends Constraint
     public $message = 'The value for "%property%" already exists.';
     public $property;
 
-    public function defaultOption()
+    public function getDefaultOption()
     {
         return 'property';
     }
 
-    public function requiredOptions()
+    public function getRequiredOptions()
     {
         return array('property');
     }
