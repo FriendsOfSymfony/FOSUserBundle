@@ -150,6 +150,10 @@ abstract class User implements UserInterface, GroupableInterface
             return;
         }
 
+        // make sure we check for empty roles
+        if (!$this->roles)
+           $this->roles = array();
+
         if (!in_array($role, $this->roles, true)) {
             $this->roles[] = $role;
         }
@@ -487,6 +491,10 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function removeRole($role)
     {
+        // check if we have roles defined
+        if (!$this->roles)
+           $this->roles = array();
+
         if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);
             $this->roles = array_values($this->roles);
