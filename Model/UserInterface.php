@@ -136,6 +136,13 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      * @return string
      */
     function getConfirmationToken();
+    
+    /**
+     * Gets the plain confirmation token.
+     *
+     * @return string
+     */
+    function getPlainConfirmationToken();
 
     /**
      * Sets the confirmation token

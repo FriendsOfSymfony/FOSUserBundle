@@ -36,8 +36,12 @@ class Mailer implements MailerInterface
 
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
+    	if (!$user->getPlainConfirmationToken() && $user->getConfirmationToken()) {
+    		throw new \RuntimeException('No plain confirmation token. You missed the right time to send');
+    	}
+    	
         $template = $this->parameters['confirmation.template'];
-        $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
+        $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getPlainConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'confirmationUrl' =>  $url
@@ -47,8 +51,12 @@ class Mailer implements MailerInterface
 
     public function sendResettingEmailMessage(UserInterface $user)
     {
+    	if (!$user->getPlainConfirmationToken() && $user->getConfirmationToken()) {
+    		throw new \RuntimeException('No plain confirmation token. You missed the right time to send');
+    	}
+    	
         $template = $this->parameters['resetting.template'];
-        $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
+        $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getPlainConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,
             'confirmationUrl' => $url

@@ -86,10 +86,10 @@ class ResettingController extends ContainerAware
      */
     public function resetAction($token)
     {
-        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
+        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($digest = hash('sha256', $token));
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
+            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $digest));
         }
 
         if (!$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {

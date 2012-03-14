@@ -169,6 +169,16 @@ class UserProxy extends FosUser
     {
         return $this->user->getConfirmationToken();
     }
+    
+	/**
+     * Gets the plain confirmation token.
+     *
+     * @return string
+     */
+    public function getPlainConfirmationToken()
+    {
+        return $this->user->getPlainConfirmationToken();
+    }
 
     /**
      * Returns the user roles

@@ -80,10 +80,10 @@ class RegistrationController extends ContainerAware
      */
     public function confirmAction($token)
     {
-        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
+        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($digest = hash('sha256', $token));
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
+            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $digest));
         }
 
         $user->setConfirmationToken(null);
