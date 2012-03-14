@@ -726,8 +726,8 @@ abstract class User implements UserInterface, GroupableInterface
     public function generateConfirmationToken()
     {
         if (null === $this->getConfirmationToken()) {
-        	$this->plainConfirmationToken = $token = $this->generateToken();
-            $this->setConfirmationToken(hash('sha256', $token));
+        	$this->plainConfirmationToken = $this->generateToken();
+            $this->setConfirmationToken(hash('sha256', $this->plainConfirmationToken));
         }
     }
 
