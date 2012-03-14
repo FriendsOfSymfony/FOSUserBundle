@@ -108,6 +108,8 @@ class UserTest extends \PHPUnit_Framework_TestCase
     {
         $user = $this->getUser();
         $this->assertNotNull($user->getConfirmationToken());
+        $this->assertNotNull($user->getPlainConfirmationToken());
+        $this->assertSame($user->getConfirmationToken(), hash('sha256', $user->getPlainConfirmationToken()));
     }
 
     public function testSameConfirmationToken()

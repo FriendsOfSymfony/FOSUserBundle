@@ -81,11 +81,18 @@ abstract class User implements UserInterface, GroupableInterface
     protected $lastLogin;
 
     /**
-     * Random string sent to the user email address in order to verify it
+     * A digest with plain confirmation token as an input, to protect it from plain sight.
      *
      * @var string
      */
     protected $confirmationToken;
+    
+    /**
+     * Plain confirmation token that is sent to user email address in order to verify it. Must not be persisted.
+     *
+     * @var string
+     */
+    protected $plainConfirmationToken;
 
     /**
      * @var \DateTime
@@ -339,6 +346,16 @@ abstract class User implements UserInterface, GroupableInterface
     public function getConfirmationToken()
     {
         return $this->confirmationToken;
+    }
+    
+	/**
+     * Gets the plain confirmation token.
+     *
+     * @return string
+     */
+    public function getPlainConfirmationToken()
+    {
+        return $this->plainConfirmationToken;
     }
 
     /**
@@ -709,7 +726,8 @@ abstract class User implements UserInterface, GroupableInterface
     public function generateConfirmationToken()
     {
         if (null === $this->getConfirmationToken()) {
-            $this->setConfirmationToken($this->generateToken());
+        	$this->plainConfirmationToken = $token = $this->generateToken();
+            $this->setConfirmationToken(hash('sha256', $token));
         }
     }
 
