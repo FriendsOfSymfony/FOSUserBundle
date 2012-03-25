@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name="default" namespace="FOS\UserBundle\Propel" defaultIdMethod="native">
 
-    <table name="user">
+    <table name="fos_user" phpName="User">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="username" type="varchar" size="255" primaryString="true" />
         <column name="username_canonical" type="varchar" size="255" />
@@ -34,7 +34,7 @@
         </behavior>
     </table>
 
-    <table name="group">
+    <table name="fos_group" phpName="Group">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="name" type="varchar" size="255" required="true" primaryString="true" />
         <column name="roles" type="array" />
@@ -44,14 +44,14 @@
         </behavior>
     </table>
 
-    <table name="user_group" isCrossRef="true">
-        <column name="user_id" type="integer" required="true" primaryKey="true" />
-        <column name="group_id" type="integer" required="true" primaryKey="true" />
-        <foreign-key foreignTable="user">
+    <table name="fos_user_group" phpName="UserGroup" isCrossRef="true">
+        <column name="fos_user_id" type="integer" required="true" primaryKey="true" />
+        <column name="fos_group_id" type="integer" required="true" primaryKey="true" />
+        <foreign-key foreignTable="fos_user">
             <reference local="user_id" foreign="id" />
         </foreign-key>
 
-        <foreign-key foreignTable="group">
+        <foreign-key foreignTable="fos_group">
             <reference local="group_id" foreign="id" />
         </foreign-key>
     </table>
