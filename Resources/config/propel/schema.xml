@@ -48,11 +48,11 @@
         <column name="fos_user_id" type="integer" required="true" primaryKey="true" />
         <column name="fos_group_id" type="integer" required="true" primaryKey="true" />
         <foreign-key foreignTable="fos_user">
-            <reference local="user_id" foreign="id" />
+            <reference local="fos_user_id" foreign="id" />
         </foreign-key>
 
         <foreign-key foreignTable="fos_group">
-            <reference local="group_id" foreign="id" />
+            <reference local="fos_group_id" foreign="id" />
         </foreign-key>
     </table>
 </database>
