@@ -35,17 +35,23 @@ class RegistrationController extends ContainerAware
 
         $process = $formHandler->process($confirmationEnabled);
         if ($process) {
+            $response = null;
             $user = $form->getData();
 
             if ($confirmationEnabled) {
                 $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
                 $route = 'fos_user_registration_check_email';
             } else {
-                $this->authenticateUser($user);
+                $response = $this->authenticateUser($user);
                 $route = 'fos_user_registration_confirmed';
             }
 
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
+            
+            if (!is_null($response)) {
+                return $response;
+            }
+            
             $url = $this->container->get('router')->generate($route);
 
             return new RedirectResponse($url);
@@ -91,7 +97,10 @@ class RegistrationController extends ContainerAware
         $user->setLastLogin(new \DateTime());
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
-        $this->authenticateUser($user);
+        $response = $this->authenticateUser($user);
+        if (!is_null($response)) {
+            return $response;
+        }
 
         return new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
     }
@@ -127,8 +136,18 @@ class RegistrationController extends ContainerAware
 
         $providerKey = $this->container->getParameter('fos_user.firewall_name');
         $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+        $request = $this->container->get('request');
 
         $this->container->get('security.context')->setToken($token);
+        
+        $loginEvent = new InteractiveLoginEvent($request, $token);
+        $this->container->get('event_dispatcher')->dispatch(SecurityEvents::INTERACTIVE_LOGIN, $loginEvent);
+        
+        if ($this->container->has('security.authentication.success_handler')) {
+            return $this->container->get('security.authentication.success_handler')->onAuthenticationSuccess($request, $token);
+        }
+
+        return null;
     }
 
     protected function setFlash($action, $value)
