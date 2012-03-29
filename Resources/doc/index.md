@@ -16,11 +16,11 @@ a database, then you're in the right place.
 If you wish to use default texts provided in this bundle, you have to make
 sure you have translator enabled in your config.
 
-```
+``` yaml
 # app/config/config.yml
 
 framework:
-    translator: ~
+    translator:      { fallback: %locale% }
 ```
 
 For more information about translations, check [Symfony documentation](http://symfony.com/doc/2.0/book/translation.html).
@@ -50,10 +50,12 @@ method is the standard Symfony2 method.
 
 Add the following lines in your `deps` file:
 
-```
+``` ini
+; deps
+
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
-    target=bundles/FOS/UserBundle
+    target=/bundles/FOS/UserBundle
 ```
 
 Now, run the vendors script to download the bundle:
@@ -81,7 +83,7 @@ Add the `FOS` namespace to your autoloader:
 
 $loader->registerNamespaces(array(
     // ...
-    'FOS' => __DIR__.'/../vendor/bundles',
+    'FOS'              => __DIR__.'/../vendor/bundles',
 ));
 ```
 
@@ -128,6 +130,11 @@ Your `User` class can live inside any bundle in your application. For example,
 if you work at "Acme" company, then you might create a bundle called `AcmeUserBundle`
 and place your `User` class in it.
 
+``` bash
+# to run this command you must unregister the bundle (registered in step 3)
+$ php app/console generate:bundle --namespace=Acme/UserBundle
+```
+
 **Warning:**
 
 > If you override the __construct() method in your User class, be sure
@@ -136,28 +143,38 @@ and place your `User` class in it.
 
 **a) Doctrine ORM User class**
 
+``` bash
+# to run this command you must unregister the bundle (registered in step 3)
+$ php app/console generate:doctrine:entity --entity=AcmeUserBundle:User --no-interaction
+```
+
 If you're persisting your users via the Doctrine ORM, then your `User` class
 should live in the `Entity` namespace of your bundle and look like this to
 start:
 
 ``` php
 <?php
+
 // src/Acme/UserBundle/Entity/User.php
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
+ * Acme\UserBundle\Entity\User
+ *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
 {
     /**
-     * @ORM\Id
+     * @var integer
+     *
      * @ORM\Column(type="integer")
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -165,9 +182,19 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
+
 ```
 
 **Note:**
@@ -268,32 +295,47 @@ in your application:
 
 ``` yaml
 # app/config/security.yml
+
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
     providers:
         fos_userbundle:
             id: fos_user.user_manager
 
-    encoders:
-        "FOS\UserBundle\Model\UserInterface": sha512
-
     firewalls:
+        dev:
+            pattern:    ^/(_(profiler|wdt)|css|images|js)/
+            security:   false
         main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-            logout:       true
-            anonymous:    true
+            pattern:    ^/
+            form_login: { provider: fos_userbundle, csrf_provider: form.csrf_provider }
+            logout:     true
+            anonymous:  true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        -
+            path:  ^/login$
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        -
+            path:  ^/register
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        -
+            path:  ^/resetting
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        -
+            path:  ^/admin/
+            roles: ROLE_ADMIN
+        #-
+        #    path:  ^/_internal
+        #    roles: IS_AUTHENTICATED_ANONYMOUSLY
+        #    ip:    127.0.0.1
 
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
 ```
 
 Under the `providers` section, you are making the bundle's packaged user provider
@@ -345,23 +387,23 @@ of datastore you are using.
 
 ``` yaml
 # app/config/config.yml
+
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    db_driver:     orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Acme\UserBundle\Entity\User
+    user_class:    Acme\UserBundle\Entity\User
 ```
 
 Or if you prefer XML:
 
 ``` xml
-# app/config/config.xml
 <!-- app/config/config.xml -->
 
-<!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
+<!-- other valid values are 'db-driver' values are 'mongodb' and 'couchdb' -->
 <fos_user:config
-    db-driver="orm"
-    firewall-name="main"
-    user-class="Acme\UserBundle\Entity\User"
+    db-driver     = "orm"
+    firewall-name = "main"
+    user-class    = "Acme\UserBundle\Entity\User"
 />
 ```
 
@@ -396,35 +438,41 @@ In YAML:
 
 ``` yaml
 # app/config/routing.yml
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+    prefix:   /profile
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix:   /register
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix:   /resetting
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    prefix:   /profile
 ```
 
 Or if you prefer XML:
 
 ``` xml
 <!-- app/config/routing.xml -->
-<import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
-<import resource="@FOSUserBundle/Resources/config/routing/profile.xml" prefix="/profile" />
-<import resource="@FOSUserBundle/Resources/config/routing/registration.xml" prefix="/register" />
-<import resource="@FOSUserBundle/Resources/config/routing/resetting.xml" prefix="/resetting" />
-<import resource="@FOSUserBundle/Resources/config/routing/change_password.xml" prefix="/profile" />
+
+<import resource = "@FOSUserBundle/Resources/config/routing/security.xml" />
+<import resource = "@FOSUserBundle/Resources/config/routing/profile.xml"
+        prefix   = "/profile" />
+<import resource = "@FOSUserBundle/Resources/config/routing/registration.xml"
+        prefix   = "/register" />
+<import resource = "@FOSUserBundle/Resources/config/routing/resetting.xml"
+        prefix   = "/resetting" />
+<import resource = "@FOSUserBundle/Resources/config/routing/change_password.xml"
+        prefix   = "/profile" />
 ```
 
 **Note:**
@@ -471,6 +519,7 @@ Then, register it:
 
 ``` ini
 # app/config/propel.ini
+
 propel.behavior.typehintable.class = vendor.propel-behaviors.TypehintableBehavior.src.TypehintableBehavior
 ```
 
@@ -482,8 +531,15 @@ $ php app/console propel:build-model
 
 > To create SQL, run the command `propel:build-sql` and insert it or use migration commands if you have an existing schema in your database.
 
+**Creating a fresh user**
 
-You now can login at `http://app.com/app_dev.php/login`!
+``` bash
+$ php app/console fos:user:create me me@example.com secret
+```
+
+**Logging in**
+
+You now can login at `http://localhost/app_dev.php/login`!
 
 ### Next Steps
 
