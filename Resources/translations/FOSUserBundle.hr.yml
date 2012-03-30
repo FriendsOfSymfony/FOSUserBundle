@@ -33,7 +33,7 @@ profile:
 
 # Password change
 change_password:
-    submit: Izmijeni lozinku	
+    submit: Izmijeni lozinku
     flash:
         success: Lozinka je uspješno spremljena
 

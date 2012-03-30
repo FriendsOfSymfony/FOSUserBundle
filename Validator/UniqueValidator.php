@@ -57,6 +57,7 @@ class UniqueValidator extends ConstraintValidator
             $this->setMessage($constraint->message, array(
                 '%property%' => $constraint->property
             ));
+
             return false;
         }
 

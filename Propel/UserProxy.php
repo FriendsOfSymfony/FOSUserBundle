@@ -264,6 +264,7 @@ class UserProxy extends FosUser
     public function setUsername($username)
     {
         $this->user->setUsername($username);
+
         return $this;
     }
 
@@ -276,18 +277,21 @@ class UserProxy extends FosUser
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->user->setUsernameCanonical($usernameCanonical);
+
         return $this;
     }
 
     public function setCredentialsExpireAt(\DateTime $date)
     {
         $this->user->setCredentialsExpireAt($date);
+
         return $this;
     }
 
     public function setCredentialsExpired($boolean)
     {
         $this->user->setCredentialsExpired($boolean);
+
         return $this;
     }
 
@@ -300,6 +304,7 @@ class UserProxy extends FosUser
     public function setEmail($email)
     {
         $this->user->setEmail($email);
+
         return $this;
     }
 
@@ -312,6 +317,7 @@ class UserProxy extends FosUser
     public function setEmailCanonical($emailCanonical)
     {
         $this->user->setEmailCanonical($emailCanonical);
+
         return $this;
     }
 
@@ -322,6 +328,7 @@ class UserProxy extends FosUser
     public function setEnabled($boolean)
     {
         $this->user->setEnabled((Boolean) $boolean);
+
         return $this;
     }
 
@@ -334,16 +341,18 @@ class UserProxy extends FosUser
     public function setExpired($boolean)
     {
         $this->user->setExpired($boolean);
+
         return $this;
     }
 
-	/**
-	 * @param \DateTime $date
-	 * @return UserProxy
-	 */
+    /**
+     * @param \DateTime $date
+     * @return UserProxy
+     */
     public function setExpiresAt(\DateTime $date)
     {
         $this->user->setExpiresAt($date);
+
         return $this;
     }
 
@@ -356,6 +365,7 @@ class UserProxy extends FosUser
     public function setPassword($password)
     {
         $this->user->setPassword($password);
+
         return $this;
     }
 
@@ -368,6 +378,7 @@ class UserProxy extends FosUser
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
+
         return $this;
     }
 
@@ -380,6 +391,7 @@ class UserProxy extends FosUser
     public function setLastLogin(\DateTime $time)
     {
         $this->user->setLastLogin($time);
+
         return $this;
     }
 
@@ -392,6 +404,7 @@ class UserProxy extends FosUser
     public function setLocked($boolean)
     {
         $this->user->setLocked($boolean);
+
         return $this;
     }
 
@@ -404,6 +417,7 @@ class UserProxy extends FosUser
     public function setConfirmationToken($confirmationToken)
     {
         $this->user->setConfirmationToken($confirmationToken);
+
         return $this;
     }
 
@@ -416,6 +430,7 @@ class UserProxy extends FosUser
     public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->user->setPasswordRequestedAt($date);
+
         return $this;
     }
 
@@ -444,6 +459,7 @@ class UserProxy extends FosUser
         }
 
         $this->user->addRole($role);
+
         return $this;
     }
 
@@ -456,6 +472,7 @@ class UserProxy extends FosUser
     public function removeRole($role)
     {
         $this->user->removeRole($role);
+
         return $this;
     }
 
@@ -474,6 +491,7 @@ class UserProxy extends FosUser
         foreach ($roles as $role) {
             $this->addRole($role);
         }
+
         return $this;
     }
 
