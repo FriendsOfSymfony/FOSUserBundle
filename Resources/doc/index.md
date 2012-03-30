@@ -16,7 +16,7 @@ a database, then you're in the right place.
 If you wish to use default texts provided in this bundle, you have to make
 sure you have translator enabled in your config.
 
-```
+``` yaml
 # app/config/config.yml
 
 framework:
@@ -50,7 +50,7 @@ method is the standard Symfony2 method.
 
 Add the following lines in your `deps` file:
 
-```
+``` ini
 [FOSUserBundle]
     git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
     target=bundles/FOS/UserBundle
@@ -461,7 +461,7 @@ $ git submodule add http://github.com/willdurand/TypehintableBehavior.git vendor
 
 By using the Symfony2 vendor management:
 
-```
+``` ini
 [TypehintableBehavior]
     git=http://github.com/willdurand/TypehintableBehavior.git
     target=/propel-behaviors/TypehintableBehavior

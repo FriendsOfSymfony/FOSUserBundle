@@ -18,7 +18,7 @@ is demonstrated below using both of the overriding options listed above.
 
 Here is the default `layout.html.twig` provided by the FOSUserBundle:
 
-``` twig
+``` html+jinja
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,7 +60,7 @@ use to override the default one.
 The following Twig template file is an example of a layout file that might be used
 to override the one provided by the bundle.
 
-``` twig
+``` html+jinja
 {% extends 'AcmeDemoBundle::layout.html.twig' %}
 
 {% block title %}Acme Demo Application{% endblock %}
