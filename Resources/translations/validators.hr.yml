@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Korisničko ime već postoji
+        blank: Molimo, unesite korisničko ime
+        short: Korisničko ime je prekratko
+        long: Korisničko ime je predugo
+    email:
+        already_used: Email već postoji
+        blank: Molimo, unesite email
+        short: Email je prekratak
+        long: Email je predug
+        invalid: Email nije ispravan
+    password:
+        blank: Molimo, unesite lozinku
+        short: Lozinka je prekratka
+    new_password:
+        blank: Molimo, unesite novu lozinku
+        short: Nova lozinka je prekratka
+    current_password:
+        invalid: Lozinka nije ispravna
+    group:
+        blank: Molimo unesite naziv
+        short: Naziv je prekratak
+        long: Naziv je predug

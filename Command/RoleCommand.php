@@ -78,6 +78,7 @@ abstract class RoleCommand extends ContainerAwareCommand
                     if (empty($username)) {
                         throw new \Exception('Username can not be empty');
                     }
+
                     return $username;
                 }
             );
@@ -92,6 +93,7 @@ abstract class RoleCommand extends ContainerAwareCommand
                     if (empty($role)) {
                         throw new \Exception('Role can not be empty');
                     }
+
                     return $role;
                 }
             );

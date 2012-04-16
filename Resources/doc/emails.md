@@ -112,7 +112,7 @@ implementation instead. It expects your twig template to define 3 blocks:
 
 Here is how you can use it:
 
-```yaml
+``` yaml
 # app/config/config.yml
 
 fos_user:
@@ -124,7 +124,7 @@ fos_user:
             template: AcmeDemoBundle:User:resetting.email.twig
 ```
 
-```jinja
+``` html+jinja
 {# src/Acme/DemoBundle/Resources/views/User/resetting.email.twig #}
 
 {% block subject %}Resetting your password{% endblock %}

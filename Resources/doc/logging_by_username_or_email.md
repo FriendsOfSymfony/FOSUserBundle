@@ -11,7 +11,7 @@ in 2 ways.
 The first way to achieve it is to create a custom UserProvider wrapping the
 UserManager. The class will look like this:
 
-```php
+``` php
 <?php
 
 namespace Acme\UserBundle\Security\Provider;
@@ -55,7 +55,7 @@ class MyProvider implements UserProviderInterface
 
 You now need to register a new service for your provider:
 
-```yaml
+``` yaml
 # src/Acme/UserBundle/Resources/config/services.yml
 services:
     acme_user.my_provider:
@@ -67,7 +67,7 @@ services:
 You can now configure SecurityBundle to use your own service as the user
 provider instead of using the `fos_user.user_manager` service:
 
-```yaml
+``` yaml
 # app/config/security.yml
 security:
     providers:
@@ -93,7 +93,7 @@ provided by the bundle. To do this, simply create a new class that extends
 the bundle's UserManager class and override the `loadUserByUsername` method.
 The class would look like this:
 
-```php
+``` php
 <?php
 
 namespace Acme\UserBundle\Model;
@@ -119,7 +119,7 @@ class MyUserManager extends UserManager
 
 Then register your user manager as a service:
 
-```yaml
+``` yaml
 # src/Acme/UserBundle/Resources/config/services.yml
 services:
     acme_user.my_user_manager:
@@ -135,7 +135,7 @@ services:
 
 Finally let FOSUserBundle know that it should use your own service:
 
-```yaml
+``` yaml
 # app/config/config.yml
 fos_user:
     service:

@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Používateľské meno už existuje
+        blank: Zadajte, prosím, svoje používateľské meno
+        short: Používateľské meno je príliš krátke
+        long: Používateľské meno je príliš dlhé
+    email:
+        already_used: E-mail už existuje
+        blank: Zadajte prosím e-mail
+        short: E-mail je príliš krátky
+        long: E-mail je príliš dlhý
+        invalid: E-mail nie je platný
+    password:
+        blank: Zadajte, prosím, heslo
+        short: Heslo je príliš krátke
+    new_password:
+        blank: Zadajte, prosím, nové heslo
+        short: Nové heslo je príliš krátke
+    current_password:
+        invalid: Zadané heslo je neplatné
+    group:
+        blank: Zadajte, prosím, názov
+        short: Názov je príliš krátky
+        long: Názov je príliš dlhý

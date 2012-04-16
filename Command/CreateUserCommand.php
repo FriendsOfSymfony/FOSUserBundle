@@ -95,6 +95,7 @@ EOT
                     if (empty($username)) {
                         throw new \Exception('Username can not be empty');
                     }
+
                     return $username;
                 }
             );
@@ -110,6 +111,7 @@ EOT
                     if (empty($email)) {
                         throw new \Exception('Email can not be empty');
                     }
+
                     return $email;
                 }
             );
@@ -125,6 +127,7 @@ EOT
                     if (empty($password)) {
                         throw new \Exception('Password can not be empty');
                     }
+
                     return $password;
                 }
             );

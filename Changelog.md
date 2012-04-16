@@ -1,8 +1,16 @@
 Changelog
 =========
 
-### 1.2.0
+### 1.2.0 (2012-04-12)
 
+* Prefixed fos table names in propel schema with "fos_" to avoid using reserved sql words
+* Added a fluent interface for the entities
+* Added a mailer able to use twig blocks for the each part of the message
+* Fixed the authentication in case of locked or disabled users. Github issue #464
+* Add CSRF protection to the login form
+* Added translations: bg, hr
+* Updated translations
+* Added translations for the validation errors and the login error
 * Removed the user-level algorithm. Use FOSAdvancedEncoderBundle instead if you need such feature.
 * Fixed resetting password clearing the token but not the token expiration. Github issue #501
 * Renamed UsernameToUsernameTransformer to UserToUsernameTransformer and changed its service ID to `fos_user.user_to_username_transformer`.

@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', 'repeated', array('type' => 'password'));
     }
 
-    public function getDefaultOptions(array $options)
+    public function getDefaultOptions()
     {
         return array(
             'data_class' => $this->class,

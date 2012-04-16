@@ -35,6 +35,7 @@ abstract class Group implements GroupInterface
         if (!$this->hasRole($role)) {
             $this->roles[] = strtoupper($role);
         }
+
         return $this;
     }
 
@@ -68,6 +69,7 @@ abstract class Group implements GroupInterface
             unset($this->roles[$key]);
             $this->roles = array_values($this->roles);
         }
+
         return $this;
     }
 
@@ -78,6 +80,7 @@ abstract class Group implements GroupInterface
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -88,6 +91,7 @@ abstract class Group implements GroupInterface
     public function setRoles(array $roles)
     {
         $this->roles = $roles;
+
         return $this;
     }
 }

@@ -11,81 +11,46 @@ a database, then you're in the right place.
 
 ## Prerequisites
 
+This version of the bundle requires Symfony 2.1. If you are using Symfony
+2.0.x, please use the 1.2.0 release of the bundle.
+
 ### Translations
 
 If you wish to use default texts provided in this bundle, you have to make
 sure you have translator enabled in your config.
 
-```
+``` yaml
 # app/config/config.yml
 
 framework:
     translator: ~
 ```
 
-For more information about translations, check [Symfony documentation](http://symfony.com/doc/2.0/book/translation.html).
+For more information about translations, check [Symfony documentation](http://symfony.com/doc/current/book/translation.html).
 
 ## Installation
 
 Installation is a quick (I promise!) 8 step process:
 
-1. Download FOSUserBundle
-2. Configure the Autoloader
-3. Enable the Bundle
-4. Create your User class
-5. Configure your application's security.yml
-6. Configure the FOSUserBundle
-7. Import FOSUserBundle routing
-8. Update your database schema
+1. Add FOSUserBundle in your composer.json
+2. Enable the Bundle
+3. Create your User class
+4. Configure your application's security.yml
+5. Configure the FOSUserBundle
+6. Import FOSUserBundle routing
+7. Update your database schema
 
-### Step 1: Download FOSUserBundle
+### Step 1: Add FOSUserBundle in your composer.json
 
-Ultimately, the FOSUserBundle files should be downloaded to the
-`vendor/bundles/FOS/UserBundle` directory.
-
-This can be done in several ways, depending on your preference. The first
-method is the standard Symfony2 method.
-
-**Using the vendors script**
-
-Add the following lines in your `deps` file:
-
-```
-[FOSUserBundle]
-    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
-    target=bundles/FOS/UserBundle
+```js
+{
+    "require": {
+        "friendsofsymfony/user-bundle": "*"
+    }
+}
 ```
 
-Now, run the vendors script to download the bundle:
-
-``` bash
-$ php bin/vendors install
-```
-
-**Using submodules**
-
-If you prefer instead to use git submodules, then run the following:
-
-``` bash
-$ git submodule add git://github.com/FriendsOfSymfony/FOSUserBundle.git vendor/bundles/FOS/UserBundle
-$ git submodule update --init
-```
-
-### Step 2: Configure the Autoloader
-
-Add the `FOS` namespace to your autoloader:
-
-``` php
-<?php
-// app/autoload.php
-
-$loader->registerNamespaces(array(
-    // ...
-    'FOS' => __DIR__.'/../vendor/bundles',
-));
-```
-
-### Step 3: Enable the bundle
+### Step 2: Enable the bundle
 
 Finally, enable the bundle in the kernel:
 
@@ -102,7 +67,7 @@ public function registerBundles()
 }
 ```
 
-### Step 4: Create your User class
+### Step 3: Create your User class
 
 The goal of this bundle is to persist some `User` class to a database (MySql,
 MongoDB, CouchDB, etc). Your first job, then, is to create the `User` class
@@ -257,7 +222,7 @@ access properties, you will have to extend the proxy class as well to support th
 added a `website_url` attribute to the overrided schema, you'll need to declare both `getWebsiteUrl()` and
 `setWebsiteUrl()` methods in your own proxy class (just forward methods to the `user` attribute).
 
-### Step 5: Configure your application's security.yml
+### Step 4: Configure your application's security.yml
 
 In order for Symfony's security component to use the FOSUserBundle, you must
 tell it to do so in the `security.yml` file. The `security.yml` file is where the
@@ -334,7 +299,7 @@ security component [documentation](http://symfony.com/doc/current/book/security.
 > the FOSUserBundle is configured in. You will use this in the next step when you
 > configure the FOSUserBundle.
 
-### Step 6: Configure the FOSUserBundle
+### Step 5: Configure the FOSUserBundle
 
 Now that you have properly configured your application's `security.yml` to work
 with the FOSUserBundle, the next step is to configure the bundle to work with
@@ -384,7 +349,7 @@ Only three configuration values are required to use the bundle:
 > DoctrineBundle in the standard distribution) or to activate the mapping
 > for FOSUserBundle otherwise the base mapping will be ignored.
 
-### Step 7: Import FOSUserBundle routing files
+### Step 6: Import FOSUserBundle routing files
 
 Now that you have activated and configured the bundle, all that is left to do is
 import the FOSUserBundle routing files.
@@ -432,7 +397,7 @@ Or if you prefer XML:
 > In order to use the built-in email functionality (confirmation of the account,
 > resetting of the password), you must activate and configure the SwiftmailerBundle.
 
-### Step 8: Update your database schema
+### Step 7: Update your database schema
 
 Now that the bundle is configured, the last thing you need to do is update your
 database schema because you have added a new entity, the `User` class which you
@@ -461,7 +426,7 @@ $ git submodule add http://github.com/willdurand/TypehintableBehavior.git vendor
 
 By using the Symfony2 vendor management:
 
-```
+``` ini
 [TypehintableBehavior]
     git=http://github.com/willdurand/TypehintableBehavior.git
     target=/propel-behaviors/TypehintableBehavior

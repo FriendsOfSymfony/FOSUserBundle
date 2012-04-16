@@ -5,8 +5,8 @@ This file describes the needed changes when upgrading from 1.1 to 1.2
 
 ### Removed the user-level algorithm.
 
-If you are experiencing the exception 
-`No encoder has been configured for account "Acme\DemoBundle\Entity\User"` 
+If you are experiencing the exception
+`No encoder has been configured for account "Acme\DemoBundle\Entity\User"`
 after upgrading, please consider the following.
 
 The encoder now needs to be configured in the SecurityBundle configuration

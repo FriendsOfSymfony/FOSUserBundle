@@ -15,7 +15,7 @@
             <argument type="service" id="fos_user.user_manager" />
             <tag name="validator.constraint_validator" alias="fos_user.validator.unique" />
         </service>
-        
+
         <!-- Password Validator Service -->
         <service id="fos_user.validator.password" class="%fos_user.validator.password.class%">
             <call method="setEncoderFactory">

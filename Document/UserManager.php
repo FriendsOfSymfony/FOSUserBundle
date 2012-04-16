@@ -168,6 +168,7 @@ class UserManager extends BaseUserManager
     protected function getFieldNameFromPropertyPath($field)
     {
         $pieces = explode('.', $field);
+
         return $pieces[0];
     }
 }

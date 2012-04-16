@@ -70,7 +70,7 @@ class UserListener implements EventSubscriber
             if (null === $this->userManager) {
                 $this->userManager = $this->container->get('fos_user.user_manager');
             }
-            
+
             $this->userManager->updateCanonicalFields($entity);
             $this->userManager->updatePassword($entity);
             if ($args instanceof PreUpdateEventArgs) {

@@ -46,7 +46,7 @@ registration:
     email:
         subject: Добро пожаловать %username%!
         message: |
-            Привествуем %username%!
+            Приветствуем %username%!
 
             Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
 

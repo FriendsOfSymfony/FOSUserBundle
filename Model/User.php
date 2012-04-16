@@ -502,6 +502,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -514,6 +515,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->usernameCanonical = $usernameCanonical;
+
         return $this;
     }
 
@@ -524,6 +526,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setCredentialsExpireAt(\DateTime $date)
     {
         $this->credentialsExpireAt = $date;
+
         return $this;
     }
 
@@ -534,6 +537,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setCredentialsExpired($boolean)
     {
         $this->credentialsExpired = $boolean;
+
         return $this;
     }
 
@@ -546,6 +550,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -558,6 +563,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setEmailCanonical($emailCanonical)
     {
         $this->emailCanonical = $emailCanonical;
+
         return $this;
     }
 
@@ -568,6 +574,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setEnabled($boolean)
     {
         $this->enabled = (Boolean) $boolean;
+
         return $this;
     }
 
@@ -580,6 +587,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setExpired($boolean)
     {
         $this->expired = (Boolean) $boolean;
+
         return $this;
     }
 
@@ -590,6 +598,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setExpiresAt(\DateTime $date)
     {
         $this->expiresAt = $date;
+
         return $this;
     }
 
@@ -602,6 +611,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setPassword($password)
     {
         $this->password = $password;
+
         return $this;
     }
 
@@ -618,6 +628,7 @@ abstract class User implements UserInterface, GroupableInterface
         } else {
             $this->removeRole(static::ROLE_SUPER_ADMIN);
         }
+
         return $this;
     }
 
@@ -630,6 +641,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
+
         return $this;
     }
 
@@ -642,6 +654,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setLastLogin(\DateTime $time)
     {
         $this->lastLogin = $time;
+
         return $this;
     }
 
@@ -654,6 +667,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setLocked($boolean)
     {
         $this->locked = $boolean;
+
         return $this;
     }
 
@@ -666,6 +680,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setConfirmationToken($confirmationToken)
     {
         $this->confirmationToken = $confirmationToken;
+
         return $this;
     }
 
@@ -678,6 +693,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->passwordRequestedAt = $date;
+
         return $this;
     }
 
@@ -728,6 +744,7 @@ abstract class User implements UserInterface, GroupableInterface
         foreach ($roles as $role) {
             $this->addRole($role);
         }
+
         return $this;
     }
 
@@ -778,6 +795,7 @@ abstract class User implements UserInterface, GroupableInterface
         if (!$this->getGroups()->contains($group)) {
             $this->getGroups()->add($group);
         }
+
         return $this;
     }
 
@@ -792,6 +810,7 @@ abstract class User implements UserInterface, GroupableInterface
         if ($this->getGroups()->contains($group)) {
             $this->getGroups()->removeElement($group);
         }
+
         return $this;
     }
 

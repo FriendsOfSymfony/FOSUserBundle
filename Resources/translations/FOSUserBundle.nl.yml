@@ -23,7 +23,7 @@ security:
 profile:
     show:
         username: Gebruikersnaam
-        email: Email
+        email: E-mail
     edit:
         submit: Bijwerken
     flash:
@@ -37,7 +37,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Er is een email gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
+    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
     confirmed: Gefeliciteerd %username%, uw account is nu bevestigd.
     #back: Back to the originating page.
     submit: Registreer
@@ -56,12 +56,11 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd in de laatste 24 uur.
-    check_email: Er is een email gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
+    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
     request:
         invalid_username: De gebruiker "%username%" bestaat niet.
-        username: "Gebruikersnaam:"
+        username: "Gebruikersnaam of e-mailadres:"
         submit: Reset wachtwoord
-        submit: Wachtwoord bijwerken
     flash:
         success: Het wachtwoord is succesvol gereset
     email:
@@ -85,11 +84,11 @@ layout:
 fos_user_group_form_name: "Groep naam:"
 
 fos_user_profile_form_user_username: "Gebruikersnaam:"
-fos_user_profile_form_user_email: "Email:"
+fos_user_profile_form_user_email: "E-mail:"
 fos_user_profile_form_current: "Huidig wachtwoord:"
 
 fos_user_registration_form_username: "Gebruikersnaam:"
-fos_user_registration_form_email: "Email:"
+fos_user_registration_form_email: "E-mail:"
 fos_user_registration_form_plainPassword_first: "Wachtwoord:"
 fos_user_registration_form_plainPassword_second: "Verificatie:"
 
