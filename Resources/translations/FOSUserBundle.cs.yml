@@ -64,7 +64,7 @@ resetting:
     reset:
         submit: Nastavit nové heslo
     flash:
-        success: Heslo bylo úspěšně změněné
+        success: Heslo bylo úspěšně změněno
     email:
         subject: Zaslání zapomenutého hesla
         message: |

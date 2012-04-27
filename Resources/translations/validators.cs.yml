@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Toto uživatelské jméno je již zaregistrované
+        blank: Vyplňte uživatelské jméno
+        short: Toto uživatelské jméno je příliš krátké
+        long: Toto uživatelské jméno je příliš dlouhé
+    email:
+        already_used: Tento e-mail je již zaregistrovaný
+        blank: Vyplňte e-mail
+        short: E-mail je příliš krátký
+        long: E-mail je příliš dlouhý
+        invalid: Neplatný e-mail
+    password:
+        blank: Vyplňte heslo
+        short: Heslo je příliš krátké
+    new_password:
+        blank: Vyplňte nové heslo
+        short: Nové heslo je příliš krátké
+    current_password:
+        invalid: Nesprávné heslo
+    group:
+        blank: Vyplňte název skupiny
+        short: Název skupiny je příliš krátký
+        long: Název skupiny je příliš dlouohý
