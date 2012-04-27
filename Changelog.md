@@ -14,6 +14,8 @@ Changelog
 * Removed the user-level algorithm. Use FOSAdvancedEncoderBundle instead if you need such feature.
 * Fixed resetting password clearing the token but not the token expiration. Github issue #501
 * Renamed UsernameToUsernameTransformer to UserToUsernameTransformer and changed its service ID to `fos_user.user_to_username_transformer`.
+* Abstract UserManager and GroupManager classes now implement update and delete functions directly, calling abstract doUpdate functions. Any extended managers should take this into account if they have overridden update*() or delete*() functions.
+* Abstract Manager classes now have an optional dependency on the Symfony2 EventDispatcher.
 
 ### 1.1.0  (2011-12-15)
 

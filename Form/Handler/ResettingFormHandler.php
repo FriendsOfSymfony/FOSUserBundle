@@ -11,24 +11,28 @@
 
 namespace FOS\UserBundle\Form\Handler;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
-
+use FOS\UserBundle\Events;
+use FOS\UserBundle\Event\UserEvent;
+use FOS\UserBundle\Form\Model\ResetPassword;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
-use FOS\UserBundle\Form\Model\ResetPassword;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ResettingFormHandler
 {
     protected $request;
     protected $userManager;
     protected $form;
+    protected $dispatcher;
 
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager)
+    public function __construct(Form $form, Request $request, UserManagerInterface $userManager, EventDispatcherInterface $dispatcher)
     {
         $this->form = $form;
         $this->request = $request;
         $this->userManager = $userManager;
+        $this->dispatcher = $dispatcher;
     }
 
     public function getNewPassword()
@@ -45,6 +49,9 @@ class ResettingFormHandler
 
             if ($this->form->isValid()) {
                 $this->onSuccess($user);
+
+                $event = new UserEvent($user);
+                $this->dispatcher->dispatch(Events::USER_RESET_PASSWORD, $event);
 
                 return true;
             }

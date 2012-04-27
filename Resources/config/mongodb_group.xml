@@ -12,6 +12,7 @@
         <service id="fos_user.group_manager.default" class="%fos_user.group_manager.class%" public="false">
             <argument type="service" id="fos_user.document_manager" />
             <argument>%fos_user.model.group.class%</argument>
+            <call method="setDispatcher"><argument type="service" id="event_dispatcher" /></call>
         </service>
     </services>
 

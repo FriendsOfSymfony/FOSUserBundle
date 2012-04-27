@@ -46,7 +46,7 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
-    public function deleteUser(UserInterface $user)
+    protected function doDeleteUser(UserInterface $user)
     {
         if (!$user instanceof UserProxy) {
             throw new \InvalidArgumentException('This user instance is not supported by the Propel UserManager implementation');
@@ -62,8 +62,7 @@ class UserManager extends BaseUserManager
     */
     public function createUser()
     {
-        $class = $this->modelClass;
-        $user = new $class();
+        $user = parent::createUser();
 
         return $this->proxyfy($user);
     }
@@ -127,7 +126,7 @@ class UserManager extends BaseUserManager
      *
      * @param UserInterface $user
      */
-    public function updateUser(UserInterface $user)
+    protected function doUpdateUser(UserInterface $user)
     {
         if (!$user instanceof UserProxy) {
             throw new \InvalidArgumentException('This user instance is not supported by the Propel UserManager implementation');

@@ -11,7 +11,11 @@
 
 namespace FOS\UserBundle\Model;
 
+use FOS\UserBundle\Events;
+use FOS\UserBundle\Event\UserEvent;
+use FOS\UserBundle\Event\UserPersistEvent;
 use FOS\UserBundle\Util\CanonicalizerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -31,6 +35,11 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
     protected $emailCanonicalizer;
 
     /**
+     * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+     */
+    protected $dispatcher;
+
+    /**
      * Constructor.
      *
      * @param EncoderFactoryInterface $encoderFactory
@@ -45,6 +54,16 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
     }
 
     /**
+     * Sets the event dispatcher used by the manager.
+     *
+     * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher
+     */
+    public function setDispatcher(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
+    /**
      * Returns an empty user instance
      *
      * @return UserInterface
@@ -54,7 +73,82 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
         $class = $this->getClass();
         $user = new $class;
 
+        if (null !== $this->dispatcher) {
+            $event = new UserEvent($user);
+            $this->dispatcher->dispatch(Events::USER_CREATE, $event);
+
+            return $event->getUser();
+        }
+
         return $user;
+    }
+
+    /**
+     * Updates a user.
+     *
+     * @param UserInterface $user
+     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     */
+    abstract protected function doUpdateUser(UserInterface $user, $andFlush = true);
+
+    /**
+     * Updates a user.
+     *
+     * @param UserInterface $user
+     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     */
+    public function updateUser(UserInterface $user, $andFlush = true)
+    {
+        if (null !== $this->dispatcher) {
+            $event = new UserPersistEvent($user);
+            $this->dispatcher->dispatch(Events::USER_PRE_PERSIST, $event);
+
+            if ($event->isPersistenceAborted()) {
+                return;
+            }
+        }
+
+        $this->doUpdateUser($user, $andFlush);
+
+        if (null !== $this->dispatcher) {
+            $event = new UserEvent($user);
+            $this->dispatcher->dispatch(Events::USER_POST_PERSIST, $event);
+        }
+    }
+
+    /**
+     * This function is to be implemented and perform the actual deletion
+     * of the user object.
+     *
+     * @param UserInterface $user
+     * @param bool $andFlush
+     */
+    abstract protected function doDeleteUser(UserInterface $user);
+
+    /**
+     * Deletes a user.
+     *
+     * @param UserInterface $user
+     * @param Boolean $andFlush
+     * @return void
+     */
+    public function deleteUser(UserInterface $user)
+    {
+        if (null !== $this->dispatcher) {
+            $event = new UserPersistEvent($user);
+            $this->dispatcher->dispatch(Events::USER_PRE_DELETE, $event);
+
+            if ($event->isPersistenceAborted()) {
+                return;
+            }
+        }
+
+        $this->doDeleteUser($user);
+
+        if (null !== $this->dispatcher) {
+            $event = new UserEvent($user);
+            $this->dispatcher->dispatch(Events::USER_POST_DELETE, $event);
+        }
     }
 
     /**

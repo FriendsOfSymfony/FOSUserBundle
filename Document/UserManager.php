@@ -48,7 +48,7 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
-    public function deleteUser(UserInterface $user)
+    protected function doDeleteUser(UserInterface $user)
     {
         $this->dm->remove($user);
         $this->dm->flush();
@@ -92,7 +92,7 @@ class UserManager extends BaseUserManager
      * @param UserInterface $user
      * @param Boolean       $andFlush Whether to flush the changes (default true)
      */
-    public function updateUser(UserInterface $user, $andFlush = true)
+    protected function doUpdateUser(UserInterface $user, $andFlush = true)
     {
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);

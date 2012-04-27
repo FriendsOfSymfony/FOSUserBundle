@@ -11,6 +11,8 @@
 
 namespace FOS\UserBundle\Propel;
 
+use FOS\UserBundle\Events;
+use FOS\UserBundle\Event\GroupPersistEvent;
 use FOS\UserBundle\Model\GroupInterface;
 use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Model\GroupManager as BaseGroupManager;
@@ -32,9 +34,16 @@ class GroupManager extends BaseGroupManager
     */
     public function createGroup($name)
     {
-        $class = $this->class;
+        $class = $this->getClass();
         $group = new $class();
         $group->setName($name);
+
+        if (null !== $this->dispatcher) {
+            $event = new GroupPersistEvent($group);
+            $this->dispatcher->dispatch(Events::GROUP_CREATE, $event);
+
+            return $event->getGroup();
+        }
 
         return $group;
     }
@@ -42,7 +51,7 @@ class GroupManager extends BaseGroupManager
     /**
      * {@inheritDoc}
      */
-    public function deleteGroup(GroupInterface $group)
+    protected function doDeleteGroup(GroupInterface $group)
     {
         if (!$group instanceof \Persistent) {
             throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');
@@ -88,7 +97,7 @@ class GroupManager extends BaseGroupManager
      * @param GroupInterface $group
      * @return void
      */
-    public function updateGroup(GroupInterface $group)
+    protected function doUpdateGroup(GroupInterface $group)
     {
         if (!$group instanceof \Persistent) {
             throw new \InvalidArgumentException('This group instance is not supported by the Propel GroupManager implementation');

@@ -11,6 +11,7 @@
             <argument type="service" id="fos_user.util.email_canonicalizer" />
             <argument type="service" id="fos_user.document_manager" />
             <argument>%fos_user.model.user.class%</argument>
+            <call method="setDispatcher"><argument type="service" id="event_dispatcher" /></call>
         </service>
 
         <service id="fos_user.user_listener" class="FOS\UserBundle\Document\UserListener" public="false">

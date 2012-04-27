@@ -33,7 +33,7 @@ class GroupManager extends BaseGroupManager
     /**
      * {@inheritDoc}
      */
-    public function deleteGroup(GroupInterface $group)
+    protected function doDeleteGroup(GroupInterface $group)
     {
         $this->em->remove($group);
         $this->em->flush();
@@ -70,7 +70,7 @@ class GroupManager extends BaseGroupManager
      * @param Boolean        $andFlush Whether to flush the changes (default true)
      * @return void
      */
-    public function updateGroup(GroupInterface $group, $andFlush = true)
+    protected function doUpdateGroup(GroupInterface $group, $andFlush = true)
     {
         $this->em->persist($group);
         if ($andFlush) {
