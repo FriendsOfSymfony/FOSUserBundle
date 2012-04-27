@@ -12,7 +12,7 @@
 namespace FOS\UserBundle\Command;
 
 use Symfony\Component\Console\Output\OutputInterface;
-use FOS\UserBundle\Util\UserManipulator;
+use FOS\UserBundle\Util\UserManipulatorInterface;
 
 /**
  * @author Matthieu Bontemps <matthieu@knplabs.com>
@@ -41,7 +41,7 @@ EOT
             );
     }
 
-    protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role)
+    protected function executeRoleCommand(UserManipulatorInterface $manipulator, OutputInterface $output, $username, $super, $role)
     {
         if ($super) {
             $manipulator->promote($username);
