@@ -136,8 +136,19 @@ public function MainController extends Controller
 
 You can extend the user manger to include custom commands you require. To do so simply create a new file in your document or entity
 
-ORM
+Setup a service for your manager and pass in the required arguments. Also pass the argument to your user entity class.
 ```
+
+services:
+    acme_user.user_manager:
+        class: acme\UserBundle\Etity\AcmeUserManager
+        arguments: ["@security.encoder_factory", "@fos_user.util.username_canonicalizer", "@fos_user.util.email_canonicalizer","@fos_user.document_manager",%fos_user.model.user.class%]
+```
+
+ORM Manager example
+```
+namespace BIM\UserBundle\Entity;
+
 use FOS\UserBundle\Entity\UserManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 /*
@@ -151,8 +162,10 @@ class AcmeUserManager extends UserManager
 }
 ```
 
-ODM
+ODM Manager example
 ```
+namespace BIM\UserBundle\Document;
+
 use FOS\UserBundle\Document\UserManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 /*
@@ -166,14 +179,30 @@ class AcmeUserManager extends UserManager
 }
 ```
 
+Finally make your new manager extension available
+In YAML:
+
+``` yaml
+fos_user:
+    # ...
+    service:
+        user_manager: acme_user.user_manager
+```
+
+Now you can access your manager by the following method and it will include your custom manager methods and the standard methods available in fosUserBundle
+```
+    $userManager = $this->container->get('acme_user.user_manager');
+```
+
 ## Overriding the User Manager
 
 You can replace the default implementation of the user manager by defining
 a service implementing `FOS\UserBundle\Model\UserManagerInterface` and
 setting its id in the configuration.
+
 The id of the default implementation is `fos_user.user_manager.default`
 
-In YAML:
+In app/config/config.yml:
 
 ``` yaml
 fos_user:
@@ -181,7 +210,6 @@ fos_user:
     service:
         user_manager: custom_user_manager_id
 ```
-
 Your custom implementation can extend `FOS\UserBundle\Model\UserManager`
 to reuse the common logic.
 
