@@ -132,6 +132,39 @@ public function MainController extends Controller
     }
 }
 ```
+## Extending the User Manager
+
+You can extend the user manger to include custom commands you require. To do so simply create a new file in your document or entity
+
+ORM
+```
+use FOS\UserBundle\Entity\UserManager;
+use Symfony\Component\DependencyInjection\ContainerAware;
+/*
+* This class extends the user manager so that we can add in specific needs of the admin tool.
+*
+*/
+
+class AcmeUserManager extends UserManager 
+{
+   function somethingNew(){}
+}
+```
+
+ODM
+```
+use FOS\UserBundle\Document\UserManager;
+use Symfony\Component\DependencyInjection\ContainerAware;
+/*
+* This class extends the user manager so that we can add in specific needs of the admin tool.
+*
+*/
+
+class AcmeUserManager extends UserManager 
+{
+   function somethingNew(){}
+}
+```
 
 ## Overriding the User Manager
 
