@@ -7,7 +7,12 @@ php:
 env:
   - SYMFONY_VERSION=origin/master
 
-before_script: php vendor/vendors.php
+before_script:
+  - php-cgi --version
+  - sudo apt-get -qq install nginx
+  - php-cgi -b 127.0.0.1:9000 &
+  - sudo nginx -c vendor/nginx.conf -p "$PWD/"
+  - php vendor/vendors.php
 
 notifications:
   email:

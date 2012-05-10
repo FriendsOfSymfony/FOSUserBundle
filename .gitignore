@@ -7,3 +7,4 @@ Propel/map/*
 
 vendor/*
 !vendor/vendors.php
+!vendor/nginx.conf
