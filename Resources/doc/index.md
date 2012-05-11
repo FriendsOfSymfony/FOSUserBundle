@@ -239,7 +239,7 @@ security:
             id: fos_user.user_manager
 
     encoders:
-        "FOS\UserBundle\Model\UserInterface": sha512
+        FOS\UserBundle\Model\UserInterface: sha512
 
     firewalls:
         main:
