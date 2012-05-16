@@ -64,6 +64,13 @@ services:
         arguments: ["@fos_user.user_manager"]
 ```
 
+```xml
+<!-- src/Acme/UserBundle/Resources/config/services.xml -->
+<service id="acme_user.my_provider" class="Acme\UserBundle\Security\Provider\MyProvider" public="false">
+    <argument type="service" id="fos_user.user_manager" />
+</service>
+```
+
 You can now configure SecurityBundle to use your own service as the user
 provider instead of using the `fos_user.user_manager` service:
 
