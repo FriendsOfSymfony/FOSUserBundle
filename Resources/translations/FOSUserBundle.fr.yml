@@ -12,6 +12,8 @@ group:
         deleted: Le groupe a été supprimé
 
 # Security
+"Bad credentials": Nom d'utilisateur ou mot de passe incorrect
+
 security:
     login:
         username: "Nom d'utilisateur :"
@@ -37,7 +39,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
+    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
     confirmed: Félicitations %username%, votre compte est maintenant activé.
     back: Retour à la page d'origine.
     submit: Enregistrer
@@ -56,7 +58,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
-    check_email: Un e-mail a été envoyé à l'adresse %email%. Veuillez suivre les instructions qui vous y sont indiquées.
+    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
     request:
         invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
         username: "Nom d'utilisateur ou adresse e-mail :"
@@ -79,25 +81,24 @@ resetting:
 layout:
     logout: Déconnexion
     login: Connexion
-    register: Enregistrer
+    register: Inscription
     logged_in_as: Connecté en tant que %username%
 
 # Form field labels
 fos_user_group_form_name: "Nom du groupe :"
 
-fos_user_profile_form_username:             "Nom d'utilisateur :"
-fos_user_profile_form_email:                "Adresse e-mail :"
-fos_user_profile_form_plainPassword_first:  "Mot de passe :"
-fos_user_profile_form_plainPassword_second: "Vérification :"
+fos_user_profile_form_user_username: "Nom d'utilisateur :"
+fos_user_profile_form_user_email: "Adresse e-mail :"
+fos_user_profile_form_current: "Mot de passe actuel :"
 
-fos_user_registration_form_username:             "Nom d'utilisateur :"
-fos_user_registration_form_email:                "Adresse e-mail :"
-fos_user_registration_form_plainPassword_first:  "Mot de passe :"
+fos_user_registration_form_username: "Nom d'utilisateur :"
+fos_user_registration_form_email: "Adresse e-mail :"
+fos_user_registration_form_plainPassword_first: "Mot de passe :"
 fos_user_registration_form_plainPassword_second: "Vérification :"
 
-fos_user_resetting_form_new_first:  "Nouveau mot de passe:"
-fos_user_resetting_form_new_second: "Vérification:"
+fos_user_resetting_form_new_first: "Nouveau mot de passe :"
+fos_user_resetting_form_new_second: "Vérification :"
 
-fos_user_change_password_form_new_first:    "Nouveau mot de passe :"
-fos_user_change_password_form_new_second:   "Vérification :"
-fos_user_change_password_form_current:  "Mot de passe actuel :"
+fos_user_change_password_form_new_first: "Nouveau mot de passe :"
+fos_user_change_password_form_new_second: "Vérification :"
+fos_user_change_password_form_current: "Mot de passe actuel :"
