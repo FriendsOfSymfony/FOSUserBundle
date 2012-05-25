@@ -12,7 +12,8 @@
 namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ProfileFormType extends AbstractType
 {
@@ -26,7 +27,7 @@ class ProfileFormType extends AbstractType
         $this->class = $class;
     }
 
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $child = $builder->create('user', 'form', array('data_class' => $this->class));
         $this->buildUserForm($child, $options);
@@ -37,12 +38,12 @@ class ProfileFormType extends AbstractType
         ;
     }
 
-    public function getDefaultOptions()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'data_class' => 'FOS\UserBundle\Form\Model\CheckPassword',
             'intention'  => 'profile',
-        );
+        ));
     }
 
     public function getName()
@@ -56,7 +57,7 @@ class ProfileFormType extends AbstractType
      * @param FormBuilder $builder
      * @param array       $options
      */
-    protected function buildUserForm(FormBuilder $builder, array $options)
+    protected function buildUserForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('username')
