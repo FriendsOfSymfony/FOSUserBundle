@@ -7,8 +7,8 @@
     <services>
 
         <service id="fos_user.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
-            <argument>%fos_user.registration.form.type%</argument>
             <argument>%fos_user.registration.form.name%</argument>
+            <argument>%fos_user.registration.form.type%</argument>
             <argument />
             <argument type="collection">
                 <argument key="validation_groups">%fos_user.registration.form.validation_groups%</argument>

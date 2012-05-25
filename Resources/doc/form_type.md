@@ -8,7 +8,7 @@ instance.
 ``` php
 class MessageFormType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('recipient', 'fos_user_username');
     }
