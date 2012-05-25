@@ -19,9 +19,7 @@ class UsernameFormType extends AbstractType
     protected $usernameTransformer;
 
     /**
-     * Constructor.
-     *
-     * @param UserToUsernameTransformer $usernameTransformer
+     * {@inheritDoc}
      */
     public function __construct(UserToUsernameTransformer $usernameTransformer)
     {
@@ -29,17 +27,17 @@ class UsernameFormType extends AbstractType
     }
 
     /**
-     * @see Symfony\Component\Form\AbstractType::buildForm()
+     * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
-        $builder->prependClientTransformer($this->usernameTransformer);
+        $builder->addViewTransformer($this->usernameTransformer);
     }
 
     /**
-     * @see Symfony\Component\Form\AbstractType::getParent()
+     * {@inheritDoc}
      */
     public function getParent()
     {
@@ -47,7 +45,7 @@ class UsernameFormType extends AbstractType
     }
 
     /**
-     * @see Symfony\Component\Form\FormTypeInterface::getName()
+     * {@inheritDoc}
      */
     public function getName()
     {
