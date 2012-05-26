@@ -1,0 +1,106 @@
+# Group
+group:
+    edit:
+        submit: Gurubu Güncelle
+    show:
+        name: Gurup Adı
+    new:
+        submit: Burup Yarat
+    flash:
+        updated: Gurup Güncellendi
+        created: Gurup Yaratıldı
+        deleted: Gurup Silindi
+
+# Security
+"Bad credentials": Geçersiz kullanıcı adı ya da parola
+
+security:
+    login:
+        username: "Kullanıcı adı:"
+        password: "Parola:"
+        remember_me: Beni hatırla
+        submit: Giriş
+
+# Profile
+profile:
+    show:
+        username: Kullanıcı adı
+        email: e-posta
+    edit:
+        submit: Güncelle
+    flash:
+        updated: Profil Güncellendi
+
+# Password change
+change_password:
+    submit: Parolayı Değiştir
+    flash:
+        success: Parola değiştirildi
+
+# Registration
+registration:
+    check_email: %email% adresine hesabınızı aktive etmek için kullanacağınız aktivasyon linkini barındıran bir e-posta gönderildi.
+    confirmed: Tebrikler %username%. Hesabınız şu anda aktifleştirildi.
+    back: Asıl sayfaya geri dön.
+    submit: Kayıt
+    flash:
+        user_created: Kullanıcı başarıyla yaratıldı
+    email:
+        subject: Hoşgeldin %username%!
+        message: |
+            Hoşgeldiniz %username%!
+
+            Hesabınızın aktivasyonunu tamamlamak için lütfen  %confirmationUrl%
+            adresini ziyaret ediniz.
+
+            Teşekkürler,
+            Web Takımı.
+
+# Password resetting
+resetting:
+    password_already_requested: Son 24 saat içerisinde bu kullanıcı parola için istekte bulunmuş.
+    check_email:%email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.
+    request:
+        invalid_username: "%username%" şeklinde bu kullanıcı adı ya da e-posta adresi bulunamadı.
+        username: "Kullanıcı adı ya da e-posta adresi:"
+        submit: Parolayı Sıfırla
+    reset:
+        submit: Parolayı değiştir
+    flash:
+        success: Parola başarıyla sıfırlandı
+    email:
+        subject: Parolayı sıfırla
+        message: |
+            Merhaba  %username%!
+
+           Parolanızı sıfırlamak için  %confirmationUrl%
+           adresini ziyaret ediniz.
+
+           Teşekkürler,
+           Web Takımı.
+
+# Global strings
+layout:
+    logout: Çıkış
+    login: Giriş
+    register: Kayıt
+    logged_in_as: %username% olarak giriş yapıldı
+
+# Form field labels
+fos_user_group_form_name: "Gurup Adı:"
+
+fos_user_profile_form_user_username: "Kullanıcı adı:"
+fos_user_profile_form_user_email: "e-posta:"
+fos_user_profile_form_current: "Geçerli Parola:"
+
+fos_user_registration_form_username: "Kullanıcı adı:"
+fos_user_registration_form_email: "e-posta:"
+fos_user_registration_form_plainPassword_first: "Parola:"
+fos_user_registration_form_plainPassword_second: "Onay:"
+
+fos_user_resetting_form_new_first: "Yeni Parola:"
+fos_user_resetting_form_new_second: "Onay:"
+
+fos_user_change_password_form_new_first: "Yeni Parola:"
+fos_user_change_password_form_new_second: "Onay:"
+fos_user_change_password_form_current: "Geçerli Parola:"
