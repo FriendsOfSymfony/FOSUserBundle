@@ -2,23 +2,23 @@ fos_user:
     username:
         already_used: Ta nazwa użytkownika jest juz zajęta
         blank: Proszę podać nazwę użytkownika
-        short: Nazwa użytkownika jest za krótka
-        long: Nazwa użytkownika jest za długa
+        short: "[-Inf,Inf]Nazwa użytkownika jest za krótka"
+        long: "[-Inf,Inf]Nazwa użytkownika jest za długa"
     email:
         already_used: Podany email jest zajęty
         blank: Proszę podać adres email
-        short: Podany email jest za krótki
-        long: Podany email jest za długi
+        short: "[-Inf,Inf]Podany email jest za krótki"
+        long: "[-Inf,Inf]Podany email jest za długi"
         invalid: Podany adres email jest nieprawidłowy
     password:
         blank: Proszę podać hasło
-        short: Podane hasło jest za krótkie
+        short: "[-Inf,Inf]Podane hasło jest za krótkie"
     new_password:
         blank: Proszę podać nowe hasło
-        short: Podane nowe hasło jest za krótkie
+        short: "[-Inf,Inf]Podane nowe hasło jest za krótkie"
     current_password:
         invalid: Podane hasło jest nieprawidłowe
     group:
         blank: Proszę podać nazwę
-        short: Podana nazwa jest za krótka
-        long: Podana nazwa jest za długa
+        short: "[-Inf,Inf]Podana nazwa jest za krótka"
+        long: "[-Inf,Inf]Podana nazwa jest za długa"
