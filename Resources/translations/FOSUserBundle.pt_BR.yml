@@ -43,14 +43,15 @@ registration:
     submit: Registrar
     flash:
         user_created: O usuário foi criado com sucesso.
-    email: |
-        Bem-vindo(a), %username%!
-        Olá, %username%!
+    email:
+        subject: Bem-vindo(a), %username%!
+        message: |
+            Olá, %username%!
 
-        Para completar a validação da sua conta, clique no link: %confirmationUrl%
+            Para completar a validação da sua conta, clique no link: %confirmationUrl%
 
-        Atenciosamente,
-        a Equipe.
+            Atenciosamente,
+            a Equipe.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Alterar senha
     flash:
         success: A senha foi redefinida com sucesso.
-    email: |
-        Redefinir senha
-        Olá, %username%!
+    email:
+        subject: Redefinir senha
+        message: |
+            Olá, %username%!
 
-        Para redefinir sua senha, clique no link: %confirmationUrl%
+            Para redefinir sua senha, clique no link: %confirmationUrl%
 
-        Atenciosamente,
-        a Equipe.
+            Atenciosamente,
+            a Equipe.
 
 # Global strings
 layout:
@@ -81,20 +83,12 @@ layout:
     logged_in_as: Conectado como %username%
 
 # Form field labels
-fos_user_group_form_name: "Nome do Grupo:"
-
-fos_user_profile_form_user_username: "Usuário:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Senha atual:"
-
-fos_user_registration_form_username: "Usuário:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first:  "Senha:"
-fos_user_registration_form_plainPassword_second: "Repita a senha:"
-
-fos_user_resetting_form_new_first: "Nova senha:"
-fos_user_resetting_form_new_second: "Repita a senha:"
-
-fos_user_change_password_form_new_first: "Nova senha:"
-fos_user_change_password_form_new_second: "Repita a senha:"
-fos_user_change_password_form_current: "Senha atual:"
+form:
+    group_name: "Nome do Grupo:"
+    username: "Usuário:"
+    email: "Email:"
+    current_password: "Senha atual:"
+    password: "Senha:"
+    password_confirmation: "Repita a senha:"
+    new_password: "Nova senha:"
+    new_password_confirmation: "Repita a senha:"

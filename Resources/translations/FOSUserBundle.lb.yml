@@ -43,14 +43,15 @@ registration:
     submit: Registréieren
     flash:
         user_created: De Benotzer gouf erfollegräich creéiert
-    email: |
-        Wëllkomm %username%!
-        Hallo %username%!
+    email:
+        subject: Wëllkomm %username%!
+        message: |
+            Hallo %username%!
 
-        Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
+            Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
 
-        Mat beschte Gréiss,
-        d'Equipe.
+            Mat beschte Gréiss,
+            d'Equipe.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Passwuert ännern
     flash:
         success: D'Passwuert gouf erfollegräich zeréckgesat
-    email: |
-        Wëllkomm %username%!
-        Hallo %username%!
+    email:
+        subject: Wëllkomm %username%!
+        message: |
+            Hallo %username%!
 
-        Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
+            Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
 
-        Mat beschte Gréiss,
-        d'Equipe.
+            Mat beschte Gréiss,
+            d'Equipe.
 
 # Global strings
 layout:
@@ -81,20 +83,12 @@ layout:
     logged_in_as: Ugemellt als %username%
 
 # Form field labels
-fos_user_group_form_name: "Gruppennumm:"
-
-fos_user_profile_form_user_username: "Benotzernumm:"
-fos_user_profile_form_user_email: "E-Mail-Adress:"
-fos_user_profile_form_current: "Aktuellt Passwuert:"
-
-fos_user_registration_form_username: "Benotzernumm:"
-fos_user_registration_form_email: "E-Mail-Adress:"
-fos_user_registration_form_plainPassword_first: "Passwuert:"
-fos_user_registration_form_plainPassword_second: "Bestätegung:"
-
-fos_user_resetting_form_new_first: "Neit Passwuert:"
-fos_user_resetting_form_new_second: "Bestätegung:"
-
-fos_user_change_password_form_new_first: "Neit Passwuert:"
-fos_user_change_password_form_new_second: "Bestätegung:"
-fos_user_change_password_form_current: "Aktuellt Passwuert:"
+form:
+    group_name: "Gruppennumm:"
+    username: "Benotzernumm:"
+    email: "E-Mail-Adress:"
+    current_password: "Aktuellt Passwuert:"
+    password: "Passwuert:"
+    password_confirmation: "Bestätegung:"
+    new_password: "Neit Passwuert:"
+    new_password_confirmation: "Bestätegung:"

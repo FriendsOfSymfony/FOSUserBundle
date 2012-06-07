@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Käyttäjätunnus on jo käytössä
+        blank: Syötä käyttäjätunnus
+        short: "[-Inf,Inf]Käyttäjätunnus on liian lyhyt"
+        long: "[-Inf,Inf]Käyttäjätunnus on liian pitkä"
+    email:
+        already_used: Sähköpostiosoite on jo käytössä
+        blank: Syötä sähköpostiosoite
+        short: "[-Inf,Inf]Sähköpostiosoite on liian lyhyt"
+        long: "[-Inf,Inf]Sähköpostiosoite on liian pitkä"
+        invalid: Sähköpostiosoite ei ole kelvollinen
+    password:
+        blank: Syötä salasana
+        short: "[-Inf,Inf]Salasana on liian lyhyt"
+    new_password:
+        blank: Syötä uusi salasana
+        short: "[-Inf,Inf]Uusi salasana on liian lyhyt"
+    current_password:
+        invalid: Annettu salasana ei ole kelvollinen
+    group:
+        blank: Syötä nimi
+        short: "[-Inf,Inf]Nimi on liian lyhyt"
+        long: "[-Inf,Inf]Nimi on liian pitkä"

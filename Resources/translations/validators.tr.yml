@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Kullanıcı adı zaten kullanılıyor
+        blank: Lütfen bir kullanıcı adı girin
+        short: "[-Inf,Inf]Kullanıcı adı çok kısa"
+        long: "[-Inf,Inf]Kullanıcı adı çok uzun"
+    email:
+        already_used: e-posta zaten kullanılıyor
+        blank: Lütfen bir e-posta girin
+        short: "[-Inf,Inf]e-posta çok kısa"
+        long: "[-Inf,Inf]e-posta çok uzun"
+        invalid: e-posta geçerli değil
+    password:
+        blank: Lütfen bir parola girin
+        short: "[-Inf,Inf]Parola çok kısa"
+    new_password:
+        blank: Lütfen yeni parolayı girin
+        short: "[-Inf,Inf]Yeni parola çok kısa"
+    current_password:
+        invalid: Girilen parola geçersiz
+    group:
+        blank: Lütfen bir isim girin
+        short: "[-Inf,Inf]İsim çok kısa"
+        long: "[-Inf,Inf]İsim çok uzun"

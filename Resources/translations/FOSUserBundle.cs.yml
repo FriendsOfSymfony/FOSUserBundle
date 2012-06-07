@@ -43,14 +43,15 @@ registration:
     submit: Registrovat se
     flash:
         user_created: Váš účet byl úspěšně vytvořen
-    email: |
-        Vítejte, %username%!
-        Dobrý den, %username%!
+    email:
+        subject: Vítejte, %username%!
+        message: |
+            Dobrý den, %username%!
 
-        Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
+            Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
 
-        S pozdravem,
-        realizační tým.
+            S pozdravem,
+            realizační tým.
 
 # Password resetting
 resetting:
@@ -63,15 +64,16 @@ resetting:
     reset:
         submit: Nastavit nové heslo
     flash:
-        success: Heslo bylo úspěšně změněné
-    email: |
-        Zaslání zapomenutého hesla
-        Dobrý den, %username%!
+        success: Heslo bylo úspěšně změněno
+    email:
+        subject: Zaslání zapomenutého hesla
+        message: |
+            Dobrý den, %username%!
 
-        Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
+            Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
 
-        S pozdravem,
-        realizační tým.
+            S pozdravem,
+            realizační tým.
 
 # Global strings
 layout:
@@ -81,20 +83,12 @@ layout:
     logged_in_as: "Přihlášený uživatel: %username%"
 
 # Form field labels
-fos_user_group_form_name: "Název skupiny:"
-
-fos_user_profile_form_user_username: "Uživatelské jméno:"
-fos_user_profile_form_user_email: "E-mail:"
-fos_user_profile_form_current: "Současné heslo:"
-
-fos_user_registration_form_username: "Uživatelské jméno:"
-fos_user_registration_form_email: "E-mail:"
-fos_user_registration_form_plainPassword_first: "Heslo:"
-fos_user_registration_form_plainPassword_second: "Potvrzení hesla:"
-
-fos_user_resetting_form_new_first: "Nové heslo:"
-fos_user_resetting_form_new_second: "Potvrzení hesla:"
-
-fos_user_change_password_form_new_first: "Nové heslo:"
-fos_user_change_password_form_new_second: "Potvrzení hesla:"
-fos_user_change_password_form_current: "Současné heslo:"
+form:
+    group_name: "Název skupiny:"
+    username: "Uživatelské jméno:"
+    email: "E-mail:"
+    current_password: "Současné heslo:"
+    password: "Heslo:"
+    password_confirmation: "Potvrzení hesla:"
+    new_password: "Nové heslo:"
+    new_password_confirmation: "Potvrzení hesla:"

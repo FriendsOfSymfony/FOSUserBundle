@@ -43,14 +43,15 @@ registration:
     submit: Inregistreaza-te
     flash:
         user_created: Utilizatorul a fost creat cu succes
-    email: |
-        Bine ai venit %username%!
-        Salut %username%!
+    email:
+        subject: Bine ai venit %username%!
+        message: |
+            Salut %username%!
 
-        Pentru a-ti valida contul - acceseaza %confirmationUrl%
+            Pentru a-ti valida contul - acceseaza %confirmationUrl%
 
-        Toate cele bune,
-        Echipa
+            Toate cele bune,
+            Echipa
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Schimba parola
     flash:
         success: Parola a fost resetata cu succes
-    email: |
-        Resetare parola
-        Salut %username%!
+    email:
+        subject: Resetare parola
+        message: |
+            Salut %username%!
 
-        Pentru a-ti reseta parola - acceseaza %confirmationUrl%
+            Pentru a-ti reseta parola - acceseaza %confirmationUrl%
 
-        Toate cele bune,
-        Echipa
+            Toate cele bune,
+            Echipa
 
 # Global strings
 layout:
@@ -81,21 +83,12 @@ layout:
     logged_in_as: Logat ca %username%
 
 # Form field labels
-fos_user_group_form_name: "Numele grupului:"
-
-fos_user_profile_form_user_username: "Nume de utilizator:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Parola curenta:"
-
-fos_user_registration_form_username: "Numele de utilizator:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Parola:"
-fos_user_registration_form_plainPassword_second: "Verificare parola:"
-
-fos_user_resetting_form_new_first: "Noua parola:"
-fos_user_resetting_form_new_second: "Verificare parola:"
-
-fos_user_change_password_form_new_first: "Noua parola:"
-fos_user_change_password_form_new_second: "Verificare parola:"
-fos_user_change_password_form_current: "Parola curenta:"
-
+form:
+    group_name: "Numele grupului:"
+    username: "Nume de utilizator:"
+    email: "Email:"
+    current_password: "Parola curenta:"
+    password: "Parola:"
+    password_confirmation: "Verificare parola:"
+    new_password: "Noua parola:"
+    new_password_confirmation: "Verificare parola:"

@@ -63,7 +63,6 @@ class GroupController extends ContainerAware
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
             'form'      => $form->createview(),
             'groupname'  => $group->getName(),
-            'theme' => $this->container->getParameter('fos_user.template.theme'),
         ));
     }
 
@@ -86,7 +85,6 @@ class GroupController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
             'form' => $form->createview(),
-            'theme' => $this->container->getParameter('fos_user.template.theme'),
         ));
     }
 

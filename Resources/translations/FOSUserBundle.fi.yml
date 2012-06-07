@@ -1,0 +1,94 @@
+# Group
+group:
+    edit:
+        submit: Päivitä ryhmä
+    show:
+        name: Ryhmän nimi
+    new:
+        submit: Luo ryhmä
+    flash:
+        updated: Ryhmä on päivitetty
+        created: Ryhmä on luotu
+        deleted: Ryhmä on poistettu
+
+# Security
+"Bad credentials": Epäkelpo käyttäjätunnus tai salasana
+
+security:
+    login:
+        username: "Käyttäjätunnus:"
+        password: "Salasana:"
+        remember_me: Muista minut
+        submit: Kirjaudu
+
+# Profile
+profile:
+    show:
+        username: Käyttäjätunnus
+        email: Sähköpostiosoite
+    edit:
+        submit: Päivitä
+    flash:
+        updated: Profiili on päivitetty
+
+# Password change
+change_password:
+    submit: Vaihda salasana
+    flash:
+        success: Salasana on vaihdettu
+
+# Registration
+registration:
+    check_email: Sähköposti on lähetetty osoitteeseen %email%. Se sisältää aktivointilinkin, jota klikkaamalla tunnus aktivoidaan.
+    confirmed: Onnittelut %username%, tunnuksesi on nyt aktivoitu.
+    back: Takaisin alkuperäiselle sivulle.
+    submit: Luo tunnus
+    flash:
+        user_created: Käyttäjätunnus on luotu onnistuneesti
+    email:
+        subject: Tervetuloa %username%!
+        message: |
+            Hei %username%!
+
+            Aktivoidaksesi tunnuksesi, ole hyvä ja klikkaa %confirmationUrl%
+
+            Terveisin ylläpito
+
+# Password resetting
+resetting:
+    password_already_requested: Tälle käyttäjälle on jo pyydetty salasanaa viimeisen 24 tunnin aikana.
+    check_email: Sähköposti on lähetetty osoitteeseen %email%. Se sisältää linkin, jota klikkaamalla salasana alustetaan.
+    request:
+        invalid_username: Käyttäjätunnusta tai sähköpostiosoitetta "%username%" ei löydy järjestelmästä.
+        username: "Käyttäjätunnus tai sähköpostiosoite:"
+        submit: Alusta salasana
+    reset:
+        submit: Vaihda salasana
+    flash:
+        success: Salasana on alustettu onnistuneesti
+    email:
+        subject: Alusta salasana
+        message: |
+            Hei %username%!
+
+            Alustaaksesi salasanasi, ole hyvä ja klikkaa %confirmationUrl%
+
+            Terveisin ylläpito
+
+# Global strings
+layout:
+    logout: Ulos
+    login: Kirjaudu
+    register: Luo tunnus
+    logged_in_as: Kirjautuneena %username%
+
+# Form field labels
+form:
+    group_name: "Ryhmän nimi:"
+    username: "Käyttäjätunnus:"
+    email: "Sähköpostiosoite:"
+    current_password: "Nykyinen salasana:"
+    password: "Salasana:"
+    password_confirmation: "Salasana uudestaan:"
+    new_password: "Uusi salasana:"
+    new_password_confirmation: "Salasana uudestaan:"

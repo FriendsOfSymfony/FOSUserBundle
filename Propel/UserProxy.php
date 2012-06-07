@@ -259,139 +259,186 @@ class UserProxy extends FosUser
      * Sets the username.
      *
      * @param string $username
+     * @return UserProxy
      */
     public function setUsername($username)
     {
         $this->user->setUsername($username);
+
+        return $this;
     }
 
     /**
      * Sets the canonical username.
      *
      * @param string $usernameCanonical
+     * @return UserProxy
      */
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->user->setUsernameCanonical($usernameCanonical);
+
+        return $this;
     }
 
     public function setCredentialsExpireAt(\DateTime $date)
     {
         $this->user->setCredentialsExpireAt($date);
+
+        return $this;
     }
 
     public function setCredentialsExpired($boolean)
     {
         $this->user->setCredentialsExpired($boolean);
+
+        return $this;
     }
 
     /**
      * Sets the email.
      *
      * @param string $email
+     * @return UserProxy
      */
     public function setEmail($email)
     {
         $this->user->setEmail($email);
+
+        return $this;
     }
 
     /**
      * Set the canonical email.
      *
      * @param string $emailCanonical
+     * @return UserProxy
      */
     public function setEmailCanonical($emailCanonical)
     {
         $this->user->setEmailCanonical($emailCanonical);
+
+        return $this;
     }
 
     /**
      * @param Boolean $boolean
+     * @return UserProxy
      */
     public function setEnabled($boolean)
     {
         $this->user->setEnabled((Boolean) $boolean);
+
+        return $this;
     }
 
     /**
      * Sets this user to expired.
      *
      * @param Boolean $boolean
+     * @return UserProxy
      */
     public function setExpired($boolean)
     {
         $this->user->setExpired($boolean);
+
+        return $this;
     }
 
+    /**
+     * @param \DateTime $date
+     * @return UserProxy
+     */
     public function setExpiresAt(\DateTime $date)
     {
         $this->user->setExpiresAt($date);
+
+        return $this;
     }
 
     /**
      * Sets the hashed password.
      *
      * @param string $password
+     * @return UserProxy
      */
     public function setPassword($password)
     {
         $this->user->setPassword($password);
+
+        return $this;
     }
 
     /**
      * Sets the plain password.
      *
      * @param string $password
+     * @return UserProxy
      */
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
+
+        return $this;
     }
 
     /**
      * Sets the last login time
      *
      * @param \DateTime $time
+     * @return UserProxy
      */
     public function setLastLogin(\DateTime $time)
     {
         $this->user->setLastLogin($time);
+
+        return $this;
     }
 
     /**
      * Sets the locking status of the user.
      *
      * @param Boolean $boolean
+     * @return UserProxy
      */
     public function setLocked($boolean)
     {
         $this->user->setLocked($boolean);
+
+        return $this;
     }
 
     /**
      * Sets the confirmation token
      *
      * @param string $confirmationToken
+     * @return UserProxy
      */
     public function setConfirmationToken($confirmationToken)
     {
         $this->user->setConfirmationToken($confirmationToken);
+
+        return $this;
     }
 
     /**
      * Sets the timestamp that the user requested a password reset.
      *
      * @param \DateTime $date
+     * @return UserProxy
      */
-    public function setPasswordRequestedAt(\DateTime $date)
+    public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->user->setPasswordRequestedAt($date);
+
+        return $this;
     }
 
     /**
      * Gets the timestamp that the user requested a password reset.
      *
      * @return \DateTime
+     * @return UserProxy
      */
     public function getPasswordRequestedAt()
     {
@@ -402,25 +449,31 @@ class UserProxy extends FosUser
      * Adds a role to the user.
      *
      * @param string $role
+     * @return UserProxy
      */
     public function addRole($role)
     {
         $role = strtoupper($role);
         if ($role === static::ROLE_DEFAULT) {
-            return;
+            return $this;
         }
 
         $this->user->addRole($role);
+
+        return $this;
     }
 
     /**
      * Removes a role to the user.
      *
      * @param string $role
+     * @return UserProxy
      */
     public function removeRole($role)
     {
         $this->user->removeRole($role);
+
+        return $this;
     }
 
     /**
@@ -429,6 +482,7 @@ class UserProxy extends FosUser
      * This overwrites any previous roles.
      *
      * @param array $roles
+     * @return UserProxy
      */
     public function setRoles(array $roles)
     {
@@ -437,6 +491,8 @@ class UserProxy extends FosUser
         foreach ($roles as $role) {
             $this->addRole($role);
         }
+
+        return $this;
     }
 
     /**

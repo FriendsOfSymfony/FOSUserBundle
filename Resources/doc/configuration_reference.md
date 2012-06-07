@@ -59,7 +59,6 @@ fos_user:
         user_manager:           fos_user.user_manager.default
     template:
         engine: twig
-        theme:  FOSUserBundle::form.html.twig
     group:
         group_class:    ~ # Required when using groups
         propel_group_class:    ~ # Required when using groups and propel

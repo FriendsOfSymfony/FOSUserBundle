@@ -12,6 +12,8 @@ group:
         deleted: Grupa została usunięta
 
 # Security
+"Bad credentials": Nieprawidłowa nazwa użytkownika lub hasło
+
 security:
     login:
         username: "Nazwa użytkownika:"
@@ -43,14 +45,15 @@ registration:
     submit: Zarejestruj
     flash:
         user_created: Stworzono użytkownika
-    email: |
-        Witaj %username%!
-        Cześć %username%!
+    email:
+        subject: Witaj %username%!
+        message: |
+            Cześć %username%!
 
-        Aby potwierdzić swoje konto - proszę przejść do %confirmationUrl%
+            Aby potwierdzić swoje konto - proszę przejść do %confirmationUrl%
 
-        Pozdrawiamy,
-        Zespół.
+            Pozdrawiamy,
+            Zespół.
 
 # Password resetting
 resetting:
@@ -64,14 +67,15 @@ resetting:
         submit: Zmień hasło
     flash:
         success: Hasło zostało zresetowane
-    email: |
-        Witaj %username%!
-        Cześć %username%!
+    email:
+        subject: Witaj %username%!
+        message: |
+            Cześć %username%!
 
-        Aby zresetować hasło - proszę przejść do %confirmationUrl%
+            Aby zresetować hasło - proszę przejść do %confirmationUrl%
 
-        Pozdrawiamy,
-        Zespół.
+            Pozdrawiamy,
+            Zespół.
 
 # Global strings
 layout:
@@ -81,20 +85,12 @@ layout:
     logged_in_as: Zalogowano jako %username%
 
 # Form field labels
-fos_user_group_form_name: "Nazwa grupy:"
-
-fos_user_profile_form_user_username: "Nazwa użytkownika:"
-fos_user_profile_form_user_email: "E-mail:"
-fos_user_profile_form_current: "Obecne hasło:"
-
-fos_user_registration_form_username: "Nazwa użytkownika:"
-fos_user_registration_form_email: "E-mail:"
-fos_user_registration_form_plainPassword_first: "Hasło:"
-fos_user_registration_form_plainPassword_second: "Weryfikacja:"
-
-fos_user_resetting_form_new_first: "Nowe hasło:"
-fos_user_resetting_form_new_second: "Weryfikacja:"
-
-fos_user_change_password_form_new_first: "Nowe hasło:"
-fos_user_change_password_form_new_second: "Weryfikacja:"
-fos_user_change_password_form_current: "Obecne hasło:"
+form:
+    group_name: "Nazwa grupy:"
+    username: "Nazwa użytkownika:"
+    email: "E-mail:"
+    current_password: "Obecne hasło:"
+    password: "Hasło:"
+    password_confirmation: "Powtórz hasło:"
+    new_password: "Nowe hasło:"
+    new_password_confirmation: "Powtórz hasło:"

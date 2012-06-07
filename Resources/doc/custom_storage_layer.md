@@ -28,7 +28,7 @@ implement these interfaces.
 To use your own implementation, create a service for your user manager. The
 following example will assume that its id is `acme_user.custom_manager`.
 
-```yaml
+``` yaml
 #app/config/config.yml
 fos_user:
     db_driver: custom  # custom means that none of the built-in implementation is used

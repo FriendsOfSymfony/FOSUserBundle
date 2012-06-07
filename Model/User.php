@@ -497,89 +497,129 @@ abstract class User implements UserInterface, GroupableInterface
      * Sets the username.
      *
      * @param string $username
+     * @return User
      */
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
      * Sets the canonical username.
      *
      * @param string $usernameCanonical
+     * @return User
      */
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->usernameCanonical = $usernameCanonical;
+
+        return $this;
     }
 
+    /**
+     * @param \DateTime $date
+     * @return User
+     */
     public function setCredentialsExpireAt(\DateTime $date)
     {
         $this->credentialsExpireAt = $date;
+
+        return $this;
     }
 
+    /**
+     * @param boolean $boolean
+     * @return User
+     */
     public function setCredentialsExpired($boolean)
     {
         $this->credentialsExpired = $boolean;
+
+        return $this;
     }
 
     /**
      * Sets the email.
      *
      * @param string $email
+     * @return User
      */
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
      * Set the canonical email.
      *
      * @param string $emailCanonical
+     * @return User
      */
     public function setEmailCanonical($emailCanonical)
     {
         $this->emailCanonical = $emailCanonical;
+
+        return $this;
     }
 
     /**
      * @param Boolean $boolean
+     * @return User
      */
     public function setEnabled($boolean)
     {
         $this->enabled = (Boolean) $boolean;
+
+        return $this;
     }
 
     /**
      * Sets this user to expired.
      *
      * @param Boolean $boolean
+     * @return User
      */
     public function setExpired($boolean)
     {
         $this->expired = (Boolean) $boolean;
+
+        return $this;
     }
 
+    /**
+     * @param \DateTime $date
+     * @return User
+     */
     public function setExpiresAt(\DateTime $date)
     {
         $this->expiresAt = $date;
+
+        return $this;
     }
 
     /**
      * Sets the hashed password.
      *
      * @param string $password
+     * @return User
      */
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
     }
 
     /**
      * Sets the super admin status
      *
      * @param Boolean $boolean
+     * @return User
      */
     public function setSuperAdmin($boolean)
     {
@@ -588,56 +628,73 @@ abstract class User implements UserInterface, GroupableInterface
         } else {
             $this->removeRole(static::ROLE_SUPER_ADMIN);
         }
+
+        return $this;
     }
 
     /**
      * Sets the plain password.
      *
      * @param string $password
+     * @return User
      */
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
+
+        return $this;
     }
 
     /**
      * Sets the last login time
      *
      * @param \DateTime $time
+     * @return User
      */
     public function setLastLogin(\DateTime $time)
     {
         $this->lastLogin = $time;
+
+        return $this;
     }
 
     /**
      * Sets the locking status of the user.
      *
      * @param Boolean $boolean
+     * @return User
      */
     public function setLocked($boolean)
     {
         $this->locked = $boolean;
+
+        return $this;
     }
 
     /**
      * Sets the confirmation token
      *
      * @param string $confirmationToken
+     * @return User
      */
     public function setConfirmationToken($confirmationToken)
     {
         $this->confirmationToken = $confirmationToken;
+
+        return $this;
     }
 
     /**
      * Sets the timestamp that the user requested a password reset.
      *
      * @param \DateTime $date
+     * @return User
      */
-    public function setPasswordRequestedAt(\DateTime $date)
+    public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->passwordRequestedAt = $date;
+
+        return $this;
     }
 
     /**
@@ -678,6 +735,7 @@ abstract class User implements UserInterface, GroupableInterface
      * This overwrites any previous roles.
      *
      * @param array $roles
+     * @return User
      */
     public function setRoles(array $roles)
     {
@@ -686,6 +744,8 @@ abstract class User implements UserInterface, GroupableInterface
         foreach ($roles as $role) {
             $this->addRole($role);
         }
+
+        return $this;
     }
 
     /**
@@ -728,24 +788,30 @@ abstract class User implements UserInterface, GroupableInterface
      * Add a group to the user groups.
      *
      * @param GroupInterface $group
+     * @return User
      */
     public function addGroup(GroupInterface $group)
     {
         if (!$this->getGroups()->contains($group)) {
             $this->getGroups()->add($group);
         }
+
+        return $this;
     }
 
     /**
      * Remove a group from the user groups.
      *
      * @param GroupInterface $group
+     * @return User
      */
     public function removeGroup(GroupInterface $group)
     {
         if ($this->getGroups()->contains($group)) {
             $this->getGroups()->removeElement($group);
         }
+
+        return $this;
     }
 
     public function __toString()

@@ -13,6 +13,8 @@
             <argument type="service" id="fos_user.user_manager" />
             <tag name="kernel.event_listener" event="security.interactive_login" method="onSecurityInteractiveLogin" />
         </service>
+
+        <service id="fos_user.user_checker" alias="security.user_checker" />
     </services>
 
 </container>

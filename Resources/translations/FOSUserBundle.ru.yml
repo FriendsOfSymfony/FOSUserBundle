@@ -43,14 +43,15 @@ registration:
     submit: Регистрация
     flash:
         user_created: Пользователь успешно создан
-    email: |
-        Добро пожаловать %username%!
-        Привествуем %username%!
+    email:
+        subject: Добро пожаловать %username%!
+        message: |
+            Приветствуем %username%!
 
-        Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
+            Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
 
-        С наилучшими пожеланиями,
-        команда сайта.
+            С наилучшими пожеланиями,
+            команда сайта.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Изменить пароль
     flash:
         success: Пароль успешно сброшен
-    email: |
-        Сброс пароля
-        Привествуем %username%!
+    email:
+        subject: Сброс пароля
+        message: |
+            Привествуем %username%!
 
-        Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
+            Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
 
-        С наилучшими пожеланиями,
-        команда сайта.
+            С наилучшими пожеланиями,
+            команда сайта.
 
 # Global strings
 layout:
@@ -81,20 +83,12 @@ layout:
     logged_in_as: Вы вошли как %username%
 
 # Form field labels
-fos_user_group_form_name: "Название группы:"
-
-fos_user_profile_form_user_username: "Имя пользователя:"
-fos_user_profile_form_user_email: "Электронная почта:"
-fos_user_profile_form_current: "Текущий пароль:"
-
-fos_user_registration_form_username: "Имя пользователя:"
-fos_user_registration_form_email: "Электронная почта:"
-fos_user_registration_form_plainPassword_first: "Пароль:"
-fos_user_registration_form_plainPassword_second: "Подтвердите пароль:"
-
-fos_user_resetting_form_new_first: "Новый пароль:"
-fos_user_resetting_form_new_second: "Подтвердите пароль:"
-
-fos_user_change_password_form_new_first: "Новый пароль:"
-fos_user_change_password_form_new_second: "Подтвердите пароль:"
-fos_user_change_password_form_current: "Текущий пароль:"
+form:
+    group_name: "Название группы:"
+    username: "Имя пользователя:"
+    email: "Электронная почта:"
+    current_password: "Текущий пароль:"
+    password: "Пароль:"
+    password_confirmation: "Подтвердите пароль:"
+    new_password: "Новый пароль:"
+    new_password_confirmation: "Подтвердите пароль:"

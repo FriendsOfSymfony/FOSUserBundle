@@ -43,14 +43,15 @@ registration:
     submit: Registar
     #flash:
     #    user_created: The user has been created successfully
-    email: |
-        Bem-vindo(a) %username%!
-        Olá %username%!
+    email:
+        subject: Bem-vindo(a) %username%!
+        message: |
+            Olá %username%!
 
-        Para completar a validação da sua conta, por favor visite o seguinte link: %confirmationUrl%
+            Para completar a validação da sua conta, por favor visite o seguinte link: %confirmationUrl%
 
-        Cumprimentos,
-        A equipa.
+            Cumprimentos,
+            A equipa.
 
 # Password resetting
 resetting:
@@ -65,14 +66,15 @@ resetting:
         submit: Alterar passord
     #flash:
     #    success: The password has been reset successfully
-    email: |
-        Bem-vindo(a) %username%!
-        Olá %username%!
+    email:
+        subject: Bem-vindo(a) %username%!
+        message: |
+            Olá %username%!
 
-        Para recuperar a password, por favor visite o seguinte link: %confirmationUrl%
+            Para recuperar a password, por favor visite o seguinte link: %confirmationUrl%
 
-        Cumprimentos,
-        A equipa.
+            Cumprimentos,
+            A equipa.
 
 # Global strings
 layout:
@@ -82,20 +84,12 @@ layout:
     logged_in_as: Entrou como %username%
 
 # Form field labels
-fos_user_group_form_name: "Nome do Grupo:"
-
-fos_user_profile_form_user_username: "Utilizador:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Password atual:"
-
-fos_user_registration_form_username: "Utilizador:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Password:"
-fos_user_registration_form_plainPassword_second: "Verificar:"
-
-fos_user_resetting_form_new_first: "Nova password:"
-fos_user_resetting_form_new_second: "Verificar:"
-
-fos_user_change_password_form_new_first: "Nova password:"
-fos_user_change_password_form_new_second: "Verificar:"
-fos_user_change_password_form_current: "Password atual:"
+form:
+    group_name: "Nome do Grupo:"
+    username: "Utilizador:"
+    email: "Email:"
+    current_password: "Password atual:"
+    password: "Password:"
+    password_confirmation: "Verificar:"
+    new_password: "Nova password:"
+    new_password_confirmation: "Verificar:"

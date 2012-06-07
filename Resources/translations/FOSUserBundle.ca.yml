@@ -43,14 +43,15 @@ registration:
     submit: Registra
     flash:
         user_created: S'ha creat l'usuari correctament
-    email: |
-        Benvingut %username%!
-        Hola %username%!
+    email:
+        subject: Benvingut %username%!
+        message: |
+            Hola %username%!
 
-        Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
+            Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
 
-        Atentament,
-        L'equip.
+            Atentament,
+            L'equip.
 
 # Password resetting
 resetting:
@@ -64,14 +65,15 @@ resetting:
         submit: Canvia la contrasenya
     flash:
         success: S'ha restablert la contrasenya correctament
-    email: |
-        Restablir la contrasenya
-        Hola %username%!
+    email:
+        subject: Restablir la contrasenya
+        message: |
+            Hola %username%!
 
-        Per restablir la contrasenya - si us plau visiteu %confirmationUrl%
+            Per restablir la contrasenya - si us plau visiteu %confirmationUrl%
 
-        Atentament,
-        L'equip.
+            Atentament,
+            L'equip.
 
 # Global strings
 layout:
@@ -81,20 +83,12 @@ layout:
     logged_in_as: Heu iniciat sessió com a %username%
 
 # Form field labels
-fos_user_group_form_name: "Nom del grup:"
-
-fos_user_profile_form_user_username: "Nom d'usuari:"
-fos_user_profile_form_user_email: "Correu electrònic:"
-fos_user_profile_form_current: "Contrasenya actual:"
-
-fos_user_registration_form_username: "Nom d'usuari:"
-fos_user_registration_form_email: "Correu electrònic:"
-fos_user_registration_form_plainPassword_first: "Contrasenya:"
-fos_user_registration_form_plainPassword_second: "Verificació:"
-
-fos_user_resetting_form_new_first: "Nova contrasenya:"
-fos_user_resetting_form_new_second: "Verificació:"
-
-fos_user_change_password_form_new_first: "Nova contrasenya:"
-fos_user_change_password_form_new_second: "Verificació:"
-fos_user_change_password_form_current: "Contrasenya actual:"
+form:
+    group_name: "Nom del grup:"
+    username: "Nom d'usuari:"
+    email: "Correu electrònic:"
+    current_password: "Contrasenya actual:"
+    password: "Contrasenya:"
+    password_confirmation: "Verificació:"
+    new_password: "Nova contrasenya:"
+    new_password_confirmation: "Verificació:"

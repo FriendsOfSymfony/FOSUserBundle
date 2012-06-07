@@ -2,40 +2,51 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
-use FOS\UserBundle\Form\DataTransformer\UsernameToUserTransformer;
+use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Takes a username as input,
- * exposes a User instance
+ * Form type for representing a UserInterface instance by its username string.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
 class UsernameFormType extends AbstractType
 {
     /**
-     * @var UsernameToUserTransformer
+     * @var UserToUsernameTransformer
      */
     protected $usernameTransformer;
 
-    public function __construct(UsernameToUserTransformer $usernameTransformer)
+    /**
+     * Constructor.
+     *
+     * @param UserToUsernameTransformer $usernameTransformer
+     */
+    public function __construct(UserToUsernameTransformer $usernameTransformer)
     {
         $this->usernameTransformer = $usernameTransformer;
     }
 
-    public function buildForm(FormBuilder $builder, array $options)
+    /**
+     * @see Symfony\Component\Form\AbstractType::buildForm()
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
-        $builder->appendClientTransformer($this->usernameTransformer);
+        $builder->addModelTransformer($this->usernameTransformer);
     }
 
-    public function getParent(array $options)
+    /**
+     * @see Symfony\Component\Form\AbstractType::getParent()
+     */
+    public function getParent()
     {
         return 'text';
     }
 
+    /**
+     * @see Symfony\Component\Form\FormTypeInterface::getName()
+     */
     public function getName()
     {
         return 'fos_user_username';

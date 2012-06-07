@@ -69,6 +69,7 @@ EOT
                     if (empty($username)) {
                         throw new \Exception('Username can not be empty');
                     }
+
                     return $username;
                 }
             );

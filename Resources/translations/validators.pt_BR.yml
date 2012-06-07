@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Este nome de usuário já está sendo usado
+        blank: É necessário preencher o nome de usuário
+        short: "[-Inf,Inf]Este de usuário é muito curto"
+        long: "[-Inf,Inf]Este de usuário é muito longo"
+    email:
+        already_used: Este email já está sendo usado
+        blank: É necessário preencher o email
+        short: "[-Inf,Inf]Este email é muito curto"
+        long: "[-Inf,Inf]Este email é muito longo"
+        invalid: Este email é inválido
+    password:
+        blank: É necessário preencher sua senha
+        short: "[-Inf,Inf]Esta senha é muito curta"
+    new_password:
+        blank: É necessário preencher a nova senha
+        short: "[-Inf,Inf]A nova senha é muito curta"
+    current_password:
+        invalid: A senha senha está incorreta
+    group:
+        blank: É necessário preencher o nome
+        short: "[-Inf,Inf]O nome é muito curto"
+        long: "[-Inf,Inf]O nome é muito longo"

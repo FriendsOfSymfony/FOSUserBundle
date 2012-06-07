@@ -263,7 +263,6 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createEmptyConfiguration();
 
         $this->assertParameter('twig', 'fos_user.template.engine');
-        $this->assertParameter('FOSUserBundle::form.html.twig', 'fos_user.template.theme');
     }
 
     public function testUserLoadTemplateConfig()
@@ -271,7 +270,6 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createFullConfiguration();
 
         $this->assertParameter('php', 'fos_user.template.engine');
-        $this->assertParameter('AcmeMyBundle:Form:theme.html.twig', 'fos_user.template.theme');
     }
 
     public function testUserLoadUtilServiceWithDefaults()
@@ -387,7 +385,6 @@ service:
     user_manager: acme_my.user_manager
 template:
     engine: php
-    theme: AcmeMyBundle:Form:theme.html.twig
 group:
     group_class: Acme\MyBundle\Entity\Group
     form:

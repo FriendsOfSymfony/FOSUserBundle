@@ -12,7 +12,8 @@
 namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RegistrationFormType extends AbstractType
 {
@@ -26,17 +27,26 @@ class RegistrationFormType extends AbstractType
         $this->class = $class;
     }
 
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('email', 'email')
-            ->add('plainPassword', 'repeated', array('type' => 'password'));
+            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+            ))
+        ;
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array('data_class' => $this->class);
+        $resolver->setDefaults(array(
+            'data_class' => $this->class,
+            'intention'  => 'registration',
+        ));
     }
 
     public function getName()

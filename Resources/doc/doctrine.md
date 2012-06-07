@@ -11,7 +11,7 @@ object manager. If you are using multiple ones and want to handle your users
 with a non-default one, you can change the object manager used in the configuration
 by giving its name to FOSUserBundle.
 
-```yaml
+``` yaml
 # app/config/config.yml
 fos_user:
     db_driver: orm

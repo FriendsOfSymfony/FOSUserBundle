@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Потребителското име е заето
+        blank: Моля въведете потребителско име
+        short: "[-Inf,Inf]Потребителското име е прекалено късо"
+        long: "[-Inf,Inf]Потребителското име е прекалено дълго"
+    email:
+        already_used: E-mail адреса е зает
+        blank: Моля въведете E-mail адрес
+        short: "[-Inf,Inf]E-mail адреса е прекалено къс"
+        long: "[-Inf,Inf]E-mail адреса е прекалено дълъг"
+        invalid: E-mail адреса е невалиден
+    password:
+        blank: Моля въведете парола
+        short: "[-Inf,Inf]Паролата е прекалено къса"
+    new_password:
+        blank: Моля въведете нова парола
+        short: "[-Inf,Inf]Новата парола е прекалено къса"
+    current_password:
+        invalid: Въведената парола е невалидна
+    group:
+        blank: Моля въведете име
+        short: "[-Inf,Inf]Името е прекалено късо"
+        long: "[-Inf,Inf]Името е прекалено дълго"

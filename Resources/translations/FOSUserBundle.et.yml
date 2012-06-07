@@ -43,13 +43,15 @@ registration:
     submit: Registreeri
     #flash:
     #    user_created: The user has been created successfully
-    email: |
-        Tere %username%!
+    email:
+        #subject: Welcome %username%!
+        message: |
+            Tere %username%!
 
-        Konto valideerimise edukaks lõpetamiseks palun vajutage viitel %confirmationUrl%
+            Konto valideerimise edukaks lõpetamiseks palun vajutage viitel %confirmationUrl%
 
-        Parimatega,
-        Tiim.
+            Parimatega,
+            Tiim.
 
 # Password resetting
 resetting:
@@ -63,13 +65,15 @@ resetting:
         submit: Muuda salasõna
     #flash:
     #    success: The password has been reset successfully
-    email: |
-        Tere %username%!
+    email:
+        #subject: Reset Password
+        message: |
+            Tere %username%!
 
-        Salasõna muutmiseks palun vajutage viitel %confirmationUrl%
+            Salasõna muutmiseks palun vajutage viitel %confirmationUrl%
 
-        Parimatega,
-        Tiim.
+            Parimatega,
+            Tiim.
 
 # Global strings
 layout:
@@ -79,20 +83,12 @@ layout:
     logged_in_as: "Sisse logitud: %username%"
 
 # Form field labels
-fos_user_group_form_name: "Grupi nimi:"
-
-fos_user_profile_form_user_username: "Kasutajanimi:"
-fos_user_profile_form_user_email: "E-mail:"
-fos_user_profile_form_current: "Vana salasõna:"
-
-fos_user_registration_form_username: "Kasutajanimi:"
-fos_user_registration_form_email: "E-mail:"
-fos_user_registration_form_plainPassword_first: "Salasõna:"
-fos_user_registration_form_plainPassword_second: "Salasõna uuesti:"
-
-fos_user_resetting_form_new_first: "Uus salasõna:"
-fos_user_resetting_form_new_second: "Salasõna uuesti:"
-
-fos_user_change_password_form_new_first: "Uus salasõna:"
-fos_user_change_password_form_new_second: "Salasõna uuesti:"
-fos_user_change_password_form_current: "Vana salasõna:"
+form:
+    group_name: "Grupi nimi:"
+    username: "Kasutajanimi:"
+    email: "E-mail:"
+    current_password: "Vana salasõna:"
+    password: "Salasõna:"
+    password_confirmation: "Salasõna uuesti:"
+    new_password: "Uus salasõna:"
+    new_password_confirmation: "Salasõna uuesti:"

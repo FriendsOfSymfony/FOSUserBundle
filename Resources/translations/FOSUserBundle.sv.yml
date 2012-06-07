@@ -43,14 +43,15 @@ registration:
     submit: Registrera
     flash:
         user_created: Användaren har skapats.
-    email: |
-        Välkommen %username%!
-        Hej %username%!
+    email:
+        subject: Välkommen %username%!
+        message: |
+            Hej %username%!
 
-        För att aktivera ditt konto - vänligen besök %confirmationUrl%
+            För att aktivera ditt konto - vänligen besök %confirmationUrl%
 
-        Hälsningar,
-        Teamet.
+            Hälsningar,
+            Teamet.
 
 # Password resetting
 resetting:
@@ -81,20 +82,12 @@ layout:
     logged_in_as: Inloggad som %username%
 
 # Form field labels
-fos_user_group_form_name: "Gruppnamn:"
-
-fos_user_profile_form_user_username: "Användarnamn:"
-fos_user_profile_form_user_email: "Epost:"
-fos_user_profile_form_current: "Nuvarande lösenord:"
-
-fos_user_registration_form_username: "Användarnamn:"
-fos_user_registration_form_email: "Epost:"
-fos_user_registration_form_plainPassword_first: "Lösenord:"
-fos_user_registration_form_plainPassword_second: "Verifiering:"
-
-fos_user_resetting_form_new_first: "Nytt lösenord:"
-fos_user_resetting_form_new_second: "Verifiering:"
-
-fos_user_change_password_form_new_first: "Nytt lösenord:"
-fos_user_change_password_form_new_second: "Verifiering:"
-fos_user_change_password_form_current: "Nuvarande lösenord:"
+form:
+    group_name: "Gruppnamn:"
+    username: "Användarnamn:"
+    email: "Epost:"
+    current_password: "Nuvarande lösenord:"
+    password: "Lösenord:"
+    password_confirmation: "Verifiering:"
+    new_password: "Nytt lösenord:"
+    new_password_confirmation: "Verifiering:"

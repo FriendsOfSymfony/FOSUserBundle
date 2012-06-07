@@ -23,9 +23,16 @@ class UniqueValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $options = array(
+            'property' => 'username',
+        );
+        $context = $this->getMockBuilder('Symfony\Component\Validator\ExecutionContext')
+                ->disableOriginalConstructor()
+                ->getMock();
+        $this->constraint = new Unique($options);
         $this->userManagerMock = $this->getMock('FOS\UserBundle\Model\UserManagerInterface');
-        $this->constraint = new Unique();
         $this->validator = new UniqueValidator($this->userManagerMock);
+        $this->validator->initialize($context);
         $this->user = $this->getMock('FOS\UserBundle\Model\UserInterface');
     }
 
@@ -47,5 +54,13 @@ class UniqueValidatorTest extends \PHPUnit_Framework_TestCase
                 ->with($this->equalTo($this->user), $this->equalTo($this->constraint));
 
         $this->assertTrue($this->validator->isValid($this->user, $this->constraint));
+    }
+
+    /**
+     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
+     */
+    public function testBadType()
+    {
+        $this->validator->isValid('bad_type', $this->constraint);
     }
 }

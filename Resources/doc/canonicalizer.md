@@ -18,7 +18,7 @@ If you want to change the way the caconical fields are populated, simply
 create a class implementing `FOS\UserBundle\Util\CanonicalizerInterface`
 and register it as a service:
 
-```yaml
+``` yaml
 # app/config/config.yml
 services:
     my_canonicalizer:
@@ -28,7 +28,7 @@ services:
 
 You can now configure FOSUserBundle to use your own implementation:
 
-```yaml
+``` yaml
 # app/config/config.yml
 fos_user:
     # ...

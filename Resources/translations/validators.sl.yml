@@ -2,23 +2,23 @@ fos_user:
     username:
         already_used: Uporabniško ime že obstaja
         blank: Prosimo, vnesite uporabniško ime
-        short: Uporabniško ime je prekratko
-        long: Uporabniško ime je predolgo
+        short: "[-Inf,Inf]Uporabniško ime je prekratko"
+        long: "[-Inf,Inf]Uporabniško ime je predolgo"
     email:
         already_used: Email že obstaja
         blank: Prosimo, vnesite email
-        short: Email je prekratek
-        long: Email je predolg
+        short: "[-Inf,Inf]Email je prekratek"
+        long: "[-Inf,Inf]Email je predolg"
         invalid: Email je napačen
     password:
         blank: Prosimo, vnesite geslo
-        short: Geslo je prekratko
+        short: "[-Inf,Inf]Geslo je prekratko"
     new_password:
         blank: Prosimo, vnesite novo geslo
-        short: Novo geslo je prekratko
+        short: "[-Inf,Inf]Novo geslo je prekratko"
     current_password:
         invalid: Geslo je napačno
     group:
         blank: Prosimo, vnesite ime
-        short: Ime je prekratko
-        long: Ime je predolgo
+        short: "[-Inf,Inf]Ime je prekratko"
+        long: "[-Inf,Inf]Ime je predolgo"

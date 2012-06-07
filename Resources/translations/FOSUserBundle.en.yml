@@ -12,6 +12,8 @@ group:
         deleted: The group has been deleted
 
 # Security
+"Bad credentials": Invalid username or password
+
 security:
     login:
         username: "Username:"
@@ -43,14 +45,15 @@ registration:
     submit: Register
     flash:
         user_created: The user has been created successfully
-    email: |
-        Welcome %username%!
-        Hello %username%!
+    email:
+        subject: Welcome %username%!
+        message: |
+            Hello %username%!
 
-        To finish activating your account - please visit %confirmationUrl%
+            To finish activating your account - please visit %confirmationUrl%
 
-        Regards,
-        the Team.
+            Regards,
+            the Team.
 
 # Password resetting
 resetting:
@@ -64,14 +67,15 @@ resetting:
         submit: Change password
     flash:
         success: The password has been reset successfully
-    email: |
-        Reset Password
-        Hello %username%!
+    email:
+        subject: Reset Password
+        message: |
+            Hello %username%!
 
-        To reset your password - please visit %confirmationUrl%
+            To reset your password - please visit %confirmationUrl%
 
-        Regards,
-        the Team.
+            Regards,
+            the Team.
 
 # Global strings
 layout:
@@ -81,20 +85,12 @@ layout:
     logged_in_as: Logged in as %username%
 
 # Form field labels
-fos_user_group_form_name: "Group name:"
-
-fos_user_profile_form_user_username: "Username:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Current Password:"
-
-fos_user_registration_form_username: "Username:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Password:"
-fos_user_registration_form_plainPassword_second: "Verification:"
-
-fos_user_resetting_form_new_first: "New password:"
-fos_user_resetting_form_new_second: "Verification:"
-
-fos_user_change_password_form_new_first: "New password:"
-fos_user_change_password_form_new_second: "Verification:"
-fos_user_change_password_form_current: "Current password:"
+form:
+    group_name: "Group name:"
+    username: "Username:"
+    email: "Email:"
+    current_password: "Current Password:"
+    password: "Password:"
+    password_confirmation: "Verification:"
+    new_password: "New password:"
+    new_password_confirmation: "Verification:"

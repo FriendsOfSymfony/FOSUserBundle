@@ -23,7 +23,7 @@ security:
 profile:
     show:
         username: Gebruikersnaam
-        email: Email
+        email: E-mail
     edit:
         submit: Bijwerken
     flash:
@@ -37,40 +37,41 @@ change_password:
 
 # Registration
 registration:
-    check_email: Er is een email gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
+    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
     confirmed: Gefeliciteerd %username%, uw account is nu bevestigd.
     #back: Back to the originating page.
     submit: Registreer
     flash:
         user_created: De gebruiker is succesvol aangemaakt
-    email: |
-        Welkom %username%!
-        Hallo %username%!
+    email:
+        subject: Welkom %username%!
+        message: |
+            Hallo %username%!
 
-        U moet uw account nog valideren, ga naar %confirmationUrl%
+            U moet uw account nog valideren, ga naar %confirmationUrl%
 
-        Vriendelijke groeten,
-        het Team.
+            Vriendelijke groeten,
+            het Team.
 
 # Password resetting
 resetting:
     password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd in de laatste 24 uur.
-    check_email: Er is een email gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
+    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
     request:
         invalid_username: De gebruiker "%username%" bestaat niet.
-        username: "Gebruikersnaam:"
+        username: "Gebruikersnaam of e-mailadres:"
         submit: Reset wachtwoord
-        submit: Wachtwoord bijwerken
     flash:
         success: Het wachtwoord is succesvol gereset
-    email: |
-        Welkom %username%!
-        Hallo %username%!
+    email:
+        subject: Welkom %username%!
+        message: |
+            Hallo %username%!
 
-        Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
+            Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
 
-        Met vriendelijke groet,
-        het Team.
+            Met vriendelijke groet,
+            het Team.
 
 # Global strings
 layout:
@@ -80,20 +81,12 @@ layout:
     logged_in_as: Ingelogd als %username%
 
 # Form field labels
-fos_user_group_form_name: "Groep naam:"
-
-fos_user_profile_form_user_username: "Gebruikersnaam:"
-fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Huidig wachtwoord:"
-
-fos_user_registration_form_username: "Gebruikersnaam:"
-fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Wachtwoord:"
-fos_user_registration_form_plainPassword_second: "Verificatie:"
-
-fos_user_resetting_form_new_first: "Nieuw wachtwoord:"
-fos_user_resetting_form_new_second: "Verificatie:"
-
-fos_user_change_password_form_new_first: "Nieuw wachtwoord:"
-fos_user_change_password_form_new_second: "Verificatie:"
-fos_user_change_password_form_current: "Huidig wachtwoord:"
+form:
+    group_name: "Groep naam:"
+    username: "Gebruikersnaam:"
+    email: "E-mail:"
+    current_password: "Huidig wachtwoord:"
+    password: "Wachtwoord:"
+    password_confirmation: "Verificatie:"
+    new_password: "Nieuw wachtwoord:"
+    new_password_confirmation: "Verificatie:"

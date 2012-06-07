@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: Обнови група
+    show:
+        name: Име на групата
+    new:
+        submit: Нова група
+    flash:
+        updated: Групата беше обновена успешно
+        created: Групата беше създадена успешно
+        deleted: Групата беше изтрита успешно
+
+# Security
+"Bad credentials": Невалидно потребителско име или парола
+
+security:
+    login:
+        username: "Потребителско име:"
+        password: "Парола:"
+        remember_me: Запомни ме
+        submit: Вход
+
+# Profile
+profile:
+    show:
+        username: Потребителско име
+        email: E-mail
+    edit:
+        submit: Запази
+    flash:
+        updated: Профила беше успешно обновен
+
+# Password change
+change_password:
+    submit: Промени паролата
+    flash:
+        success: Паролата беше успешно променена
+
+# Registration
+registration:
+    check_email: Изпратихме писмо с линк за активация на посочения E-mail адрес: %email%. Ако не откривате писмото проверете и в папка СПАМ.
+    confirmed: Честито, %username%, акаунта Ви беше успешно активиран.
+    back: Обратно към предишната страница.
+    submit: Регистрация
+    flash:
+        user_created: Потребителят беше успешно създаден
+    email:
+        subject: Добре дошли, %username%!
+        message: |
+            Здравейте, %username%!
+
+            За да активирате своя профил, моля отворете %confirmationUrl%
+
+            Поздрави,
+            от екипа.
+
+# Password resetting
+resetting:
+    password_already_requested: Този потребител вече е поискал смяна на парола в последните 24 часа.
+    check_email: Изпратихме писмо с линк за активация на посочения E-mail адрес: %email%. Ако не откривате писмото проверете и в папка СПАМ.
+    request:
+        invalid_username: Потребителското име или E-mail адрес "%username%" не съществува.
+        username: "Потребителско име / E-mail:"
+        submit: Промени паролата
+    reset:
+        submit: Промени паролата
+    flash:
+        success: Паролата беше успешно променена
+    email:
+        subject: Забравена парола
+        message: |
+            Здравейте, %username%!
+
+            За да промените своята парола, моля отворете %confirmationUrl%
+
+            Поздрави,
+            от екипа.
+
+# Global strings
+layout:
+    logout: Изход
+    login: Вход
+    register: Регистрация
+    logged_in_as: Логнат като %username%
+
+# Form field labels
+form:
+    group_name: "Име на група:"
+    username: "Потребителско име:"
+    email: "E-mail:"
+    current_password: "Текуща парола:"
+    password: "Парола:"
+    password_confirmation: "Парола (отново):"
+    new_password: "Нова парола:"
+    new_password_confirmation: "Нова парола (отново):"

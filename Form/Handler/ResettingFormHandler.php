@@ -40,7 +40,7 @@ class ResettingFormHandler
     {
         $this->form->setData(new ResetPassword());
 
-        if ('POST' == $this->request->getMethod()) {
+        if ('POST' === $this->request->getMethod()) {
             $this->form->bindRequest($this->request);
 
             if ($this->form->isValid()) {
@@ -57,6 +57,7 @@ class ResettingFormHandler
     {
         $user->setPlainPassword($this->getNewPassword());
         $user->setConfirmationToken(null);
+        $user->setPasswordRequestedAt(null);
         $user->setEnabled(true);
         $this->userManager->updateUser($user);
     }

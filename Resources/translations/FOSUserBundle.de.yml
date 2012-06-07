@@ -12,6 +12,8 @@ group:
         deleted: Die Gruppe wurde gelöscht
 
 # Security
+"Bad credentials": Benutzername oder Passwort ungültig
+
 security:
     login:
         username: "Benutzername:"
@@ -43,14 +45,15 @@ registration:
     submit: Registrieren
     flash:
         user_created: Der Benutzer wurde erfolgreich erstellt
-    email: |
-        Willkommen %username%!
-        Hallo %username%!
+    email:
+        subject: Willkommen %username%!
+        message: |
+            Hallo %username%!
 
-        Besuche bitte folgende Seite, um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
+            Besuche bitte folgende Seite, um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
 
-        Mit besten Grüßen,
-        das Team.
+            Mit besten Grüßen,
+            das Team.
 
 # Password resetting
 resetting:
@@ -64,14 +67,15 @@ resetting:
         submit: Passwort ändern
     flash:
         success: Das Passwort wurde erfolgreich zurückgesetzt
-    email: |
-        Passwort zurücksetzen
-        Hallo %username%!
+    email:
+        subject: Passwort zurücksetzen
+        message: |
+            Hallo %username%!
 
-        Besuche bitte folgende Seite, um Dein Passwort zurückzusetzen: %confirmationUrl%
+            Besuche bitte folgende Seite, um Dein Passwort zurückzusetzen: %confirmationUrl%
 
-        Mit besten Grüßen,
-        das Team.
+            Mit besten Grüßen,
+            das Team.
 
 # Global strings
 layout:
@@ -81,20 +85,12 @@ layout:
     logged_in_as: Angemeldet als %username%
 
 # Form field labels
-fos_user_group_form_name: "Gruppenname:"
-
-fos_user_profile_form_user_username: "Benutzername:"
-fos_user_profile_form_user_email: "E-Mail-Adresse:"
-fos_user_profile_form_current: "Derzeitiges Passwort:"
-
-fos_user_registration_form_username: "Benutzername:"
-fos_user_registration_form_email: "E-Mail-Adresse:"
-fos_user_registration_form_plainPassword_first: "Passwort:"
-fos_user_registration_form_plainPassword_second: "Bestätigung:"
-
-fos_user_resetting_form_new_first: "Neues Passwort:"
-fos_user_resetting_form_new_second: "Bestätigung:"
-
-fos_user_change_password_form_new_first: "Neues Passwort:"
-fos_user_change_password_form_new_second: "Bestätigung:"
-fos_user_change_password_form_current: "Derzeitiges Passwort:"
+form:
+    group_name: "Gruppenname:"
+    username: "Benutzername:"
+    email: "E-Mail-Adresse:"
+    current_password: "Derzeitiges Passwort:"
+    password: "Passwort:"
+    password_confirmation: "Bestätigung:"
+    new_password: "Neues Passwort:"
+    new_password_confirmation: "Bestätigung:"

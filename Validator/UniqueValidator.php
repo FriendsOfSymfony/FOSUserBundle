@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
-use Symfony\Component\Validator\Exception\ValidatorException;
+use FOS\UserBundle\Model\UserInterface;
 
 /**
  * UniqueValidator
@@ -38,37 +38,26 @@ class UniqueValidator extends ConstraintValidator
     }
 
     /**
-     * Sets the user manager
+     * Checks if the passed value is valid.
      *
-     * @param UserManagerInterface $userManager
-     */
-    public function setUserManager(UserManagerInterface $userManager)
-    {
-        $this->userManager = $userManager;
-    }
-
-    /**
-     * Gets the user manager
+     * @param mixed      $value      The value that should be validated
+     * @param Constraint $constraint The constrain for the validation
      *
-     * @return UserManagerInterface
-     */
-    public function getUserManager()
-    {
-        return $this->userManager;
-    }
-
-    /**
-     * Indicates whether the constraint is valid
+     * @return Boolean Whether or not the value is valid
      *
-     * @param Entity     $value
-     * @param Constraint $constraint
+     * @throws UnexpectedTypeException if $value is not instance of \FOS\UserBundle\Model\UserInterface
      */
     public function isValid($value, Constraint $constraint)
     {
-        if (!$this->getUserManager()->validateUnique($value, $constraint)) {
+        if (!$value instanceof UserInterface) {
+            throw new UnexpectedTypeException($value, 'FOS\UserBundle\Model\UserInterface');
+        }
+
+        if (!$this->userManager->validateUnique($value, $constraint)) {
             $this->setMessage($constraint->message, array(
                 '%property%' => $constraint->property
             ));
+
             return false;
         }
 

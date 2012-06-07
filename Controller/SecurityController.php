@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class SecurityController extends ContainerAware
 {

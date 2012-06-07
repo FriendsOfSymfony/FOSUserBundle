@@ -2,23 +2,23 @@ fos_user:
     username:
         already_used: The username is already used
         blank: Please enter a username
-        short: The username is too short
-        long: The username is too long
+        short: "[-Inf,Inf]The username is too short"
+        long: "[-Inf,Inf]The username is too long"
     email:
         already_used: The email is already used
         blank: Please enter an email
-        short: The email is too short
-        long: The email is too long
+        short: "[-Inf,Inf]The email is too short"
+        long: "[-Inf,Inf]The email is too long"
         invalid: The email is not valid
     password:
         blank: Please enter a password
-        short: The password is too short
+        short: "[-Inf,Inf]The password is too short"
     new_password:
         blank: Please enter a new password
-        short: The new password is too short
+        short: "[-Inf,Inf]The new password is too short"
     current_password:
         invalid: The entered password is invalid
     group:
         blank: Please enter a name
-        short: The name is too short
-        long: The name is too long
+        short: "[-Inf,Inf]The name is too short"
+        long: "[-Inf,Inf]The name is too long"

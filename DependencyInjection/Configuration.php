@@ -241,7 +241,6 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('engine')->defaultValue('twig')->end()
-                        ->scalarNode('theme')->defaultValue('FOSUserBundle::form.html.twig')->end()
                     ->end()
                 ->end()
             ->end();
