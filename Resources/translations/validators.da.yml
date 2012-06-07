@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Brugernavnet er optaget
+        blank: Indtast venligst et brugernavn
+        short: Brugernavnet er for kort
+        long: Brugernavnet er for langt
+    email:
+        already_used: E-mail adressen er allerede brugt
+        blank: Indtast venligst en e-mail adresse
+        short: E-mail adressen er for kort
+        long: E-mail adressen er for lang
+        invalid: E-mail adressen er ikke gyldig
+    password:
+        blank: Indtast venligst et kodeord
+        short: Kodeordet er for kort
+    new_password:
+        blank: Indtast venligst et nyt kodeord
+        short: Det nye kodeord er for kort
+    current_password:
+        invalid: Det indtastede kodeord er forkert
+    group:
+        blank: Indtast venligst et navn
+        short: Navnet er for kort
+        long: Navnet er for langt
