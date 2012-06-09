@@ -472,3 +472,4 @@ The following documents are available:
 - [Replacing the canonicalizer](canonicalizer.md)
 - [Using a custom storage layer](custom_storage_layer.md)
 - [Configuration Reference](configuration_reference.md)
+- [Adding invitations to registration](adding_invitation_registration.md)
