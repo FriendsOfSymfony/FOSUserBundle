@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: Ažuriraj grupu
+    show:
+        name: Naziv grupe
+    new:
+        submit: Kreiraj grupu
+    flash:
+        updated: Grupa je ažurirana
+        created: Grupa je kreirana
+        deleted: Grupa je obrisana
+
+# Security
+"Bad credentials": Nevalidno korisničko ime ili lozinka
+
+security:
+    login:
+        username: "Korisničko ime:"
+        password: "Lozinka:"
+        remember_me: Zapamti me
+        submit: Prijavi se
+
+# Profile
+profile:
+    show:
+        username: Korisničko ime
+        email: Adresa e-pošte
+    edit:
+        submit: Ažuriraj
+    flash:
+        updated: Profil je ažuriran
+
+# Password change
+change_password:
+    submit: Izmeni lozinku
+    flash:
+        success: Lozinka je izmenjena
+
+# Registration
+registration:
+    check_email: Poruka je poslata na adresu %email%. Ona sadrži aktivacioni link koji morate kliknuti da bi aktivirali Vaš nalog.
+    confirmed: Čestitamo %username%, Vaš nalog je sada aktivan.
+    back: Nazad na prethodnu stranu.
+    submit: Registruj se
+    flash:
+        user_created: Korisnički nalog je uspešno kreiran
+    email:
+        subject: Dobrodošli %username%!
+        message: |
+            Zdravo %username%!
+
+            Da bi aktivirali Vaš nalog posetite %confirmationUrl%
+
+            S poštovanjem,
+            tim sajta.
+
+# Password resetting
+resetting:
+    password_already_requested: Lozinka za ovog korisnika je već zahtevana u poslednjih 24 sata.
+    check_email: Poruka je poslata na adresu %email%. Ona sadrži link koji morate kliknuti da bi resetovali Vašu lozinku.
+    request:
+        invalid_username: Korisničko ime ili adresa e-pošte "%username%" ne postoji.
+        username: "Korisničko ime ili adresa e-pošte:"
+        submit: Resetuj lozinku
+    reset:
+        submit: Izmeni lozinku
+    flash:
+        success: Lozinka je uspešno resetovana
+    email:
+        subject: Resetovanje lozinke
+        message: |
+            Zdravo %username%!
+
+            Da bi resetovali Vašu lozinku posetite %confirmationUrl%
+
+            S poštovanjem,
+            tim sajta.
+
+# Global strings
+layout:
+    logout: Odjavljivanje
+    login: Prijavljivanje
+    register: Registracija
+    logged_in_as: Prijavljen kao %username%
+
+# Form field labels
+form:
+    group_name: "Naziv grupe:"
+    username: "Korisničko ime:"
+    email: "Adresa e-pošte:"
+    current_password: "Trenutna lozinka:"
+    password: "Lozinka:"
+    password_confirmation: "Potvrda lozinke:"
+    new_password: "Nova lozinka:"
+    new_password_confirmation: "Potvrda lozinke:"
