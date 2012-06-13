@@ -170,7 +170,7 @@ class UserManager extends BaseUserManager
 
         $criteria = array();
         foreach ($fields as $field) {
-            if (!$classMetadata->hasField($field)) {
+            if (!$classMetadata->hasField($field) && !$classMetadata->hasAssociation($field)) {
                 throw new \InvalidArgumentException(sprintf('The "%s" class metadata does not have any "%s" field or association mapping.', $this->class, $field));
             }
 
