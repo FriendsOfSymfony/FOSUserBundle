@@ -45,7 +45,7 @@ class PasswordValidator extends ConstraintValidator
         $user = null === $constraint->userProperty ? $object : $object->{$constraint->userProperty};
         $encoder = $this->encoderFactory->getEncoder($user);
         if (!$encoder->isPasswordValid($user->getPassword(), $raw, $user->getSalt())) {
-            $this->setMessage($constraint->message);
+            $this->context->addViolationAtSubPath($constraint->passwordProperty, $constraint->message);
 
             return false;
         }
