@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Document;
+namespace FOS\UserBundle\Tests\Document;
 
 class DocumentUserManagerTest extends \PHPUnit_Framework_TestCase
 {
