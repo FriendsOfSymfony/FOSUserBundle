@@ -109,6 +109,9 @@
                 <value>Profile</value>
             </option>
         </constraint>
+        <property name="user">
+            <constraint name="Valid" />
+        </property>
     </class>
 
     <class name="FOS\UserBundle\Form\Model\ChangePassword">
