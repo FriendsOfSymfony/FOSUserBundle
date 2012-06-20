@@ -12,6 +12,8 @@ group:
         deleted: El grupo ha sido borrado
 
 # Security
+"Bad credentials": Nombre de usuario o Contraseña inválido
+
 security:
     login:
         username: "Nombre de usuario:"
