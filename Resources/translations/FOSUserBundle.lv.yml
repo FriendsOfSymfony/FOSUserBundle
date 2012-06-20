@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: Saglabāt izmaiņas
+    show:
+        name: Grupas nosaukums
+    new:
+        submit: Izveidot grupu
+    flash:
+        updated: Grupa tika atjaunināta
+        created: Grupa tika izveidota
+        deleted: Grupa tika dzēsta
+
+# Security
+"Bad credentials": Nederīgs lietotājvārds vai parole
+
+security:
+    login:
+        username: "Lietotājvārds:"
+        password: "Parole:"
+        remember_me: Atcerēties mani
+        submit: Ienākt
+
+# Profile
+profile:
+    show:
+        username: Lietotājvārds
+        email: E-pasts
+    edit:
+        submit: Saglabāt
+    flash:
+        updated: Profila izmaiņas tika saglabātas
+
+# Password change
+change_password:
+    submit: Nomainīt paroli
+    flash:
+        success: Parole tika nomainīta
+
+# Registration
+registration:
+    check_email: Uz %email% tika nosūtīts e-pasts ar aktivizācijas saiti. Lūdzu sekojiet tai, lai aktivizētu savu kontu.
+    confirmed: Apsveicam, %username%, tavs konts tika aktivizēts!
+    back: Atpakaļ uz sākotnējo lapu.
+    submit: Reģistrēties
+    flash:
+        user_created: Lietotājs tika izveidots
+    email:
+        subject: Sveiki, %username%!
+        message: |
+            Sveiks, %username%!
+
+            Lai pabeigtu aktivizēt savu kontu, lūdzu apmeklē %confirmationUrl%
+
+            Jauku dienu,
+            lapas kolektīvs.
+
+# Password resetting
+resetting:
+    password_already_requested: Parole šim lietotājam jau tikusi pieprasīta pēdējo 24 stundu laikā.
+    check_email: Uz %email% tika nosūtīts e-pasts ar saiti, kurai jāseko, lai atiestatītu paroli.
+    request:
+        invalid_username: Lietotājs vai e-pasta adrese "%username%" neeksistē.
+        username: "Lietotājvārds vai e-pasta adrese:"
+        submit: Atiestatīt paroli
+    reset:
+        submit: Nomainīt paroli
+    flash:
+        success: Parole tika atiestatīta
+    email:
+        subject: Paroles atiestatīšana
+        message: |
+            Sveiki, %username%!
+
+            Lai atiestatītu savu paroli, lūdzu apmeklē %confirmationUrl%
+
+            Jauku dienu,
+            lapas kolektīvs.
+
+# Global strings
+layout:
+    logout: Iziet
+    login: Ienākt
+    register: Reģistrēties
+    logged_in_as: Autorizējies kā %username%
+
+# Form field labels
+form:
+    group_name: "Grupas nosaukums:"
+    username: "Lietotājvārds:"
+    email: "E-pasts:"
+    current_password: "Esošā parole:"
+    password: "Parole:"
+    password_confirmation: "Atkārtoti:"
+    new_password: "Jaunā parole:"
+    new_password_confirmation: "Atkārtoti:"

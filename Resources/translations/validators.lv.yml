@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Šis lietotājvārds jau ir aizņemts
+        blank: Lūdzu ievadiet lietotājvārdu
+        short: "[-Inf,Inf]Lietotājvārds ir pārāk īss"
+        long: "[-Inf,Inf]Lietotājvārds ir pārāk garš"
+    email:
+        already_used: Šis e-pasts jau ir aizņemts
+        blank: Lūdzu ievadiet e-pastu
+        short: "[-Inf,Inf]E-pasts ir pārāk īss"
+        long: "[-Inf,Inf]E-pasts ir pārāk garš"
+        invalid: E-pasts nav derīgs
+    password:
+        blank: Lūdzu ievadiet paroli
+        short: "[-Inf,Inf]Parole ir pārāk īsa"
+    new_password:
+        blank: Lūdzu ievadiet jaunu paroli
+        short: "[-Inf,Inf]Jaunā parole ir pārāk īsa"
+    current_password:
+        invalid: Ievadītā parole nav pareiza
+    group:
+        blank: Lūdzu ievadiet nosaukumu
+        short: "[-Inf,Inf]Nosaukums ir pārāk īss"
+        long: "[-Inf,Inf]Nosaukums ir pārāk garš"
