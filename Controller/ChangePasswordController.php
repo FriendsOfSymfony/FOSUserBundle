@@ -38,7 +38,7 @@ class ChangePasswordController extends ContainerAware
         if ($process) {
             $this->setFlash('fos_user_success', 'change_password.flash.success');
 
-            return new RedirectResponse($this->getRedirectionUrl());
+            return new RedirectResponse($this->getRedirectionUrl($user));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -54,7 +54,7 @@ class ChangePasswordController extends ContainerAware
      *
      * @return string
      */
-    protected function getRedirectionUrl()
+    protected function getRedirectionUrl(UserInterface $user)
     {
         return $this->container->get('router')->generate('fos_user_profile_show');
     }
