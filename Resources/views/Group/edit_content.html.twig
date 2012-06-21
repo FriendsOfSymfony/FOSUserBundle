@@ -1,4 +1,4 @@
-<form action="{{ path('fos_user_group_edit', {'groupname': groupname} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_group_edit">
+<form action="{{ path('fos_user_group_edit', {'groupname': group.name} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_group_edit">
     {{ form_widget(form) }}
     <div>
         <input type="submit" value="{{ 'group.edit.submit'|trans([], 'FOSUserBundle') }}" />

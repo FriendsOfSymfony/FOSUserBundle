@@ -26,47 +26,25 @@ class ChangePasswordController extends ContainerAware
 {
     public function changePasswordAction()
     {
-        $user = $this->getUser();
+        $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $process = $this->getUserFormHandler()->process($user);
+        $form = $this->container->get('fos_user.change_password.form');
+        $formHandler = $this->container->get('fos_user.change_password.form.handler');
+
+        $process = $formHandler->process($user);
         if ($process) {
             $this->setFlash('fos_user_success', 'change_password.flash.success');
 
-            return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_profile_show'));
         }
 
-        return $this->renderResponse(
+        return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $this->getUserForm()->createView())
+            array('form' => $form->createView())
         );
-    }
-
-    protected function getUser()
-    {
-        return  $this->container->get('security.context')->getToken()->getUser();
-    }
-
-    protected function getUserForm()
-    {
-        return $this->container->get('fos_user.change_password.form');
-    }
-
-    protected function getUserFormHandler()
-    {
-        return $this->container->get('fos_user.change_password.form.handler');
-    }
-
-    protected function renderResponse($template, array $args)
-    {
-        return $this->container->get('templating')->renderResponse($template, $args);
-    }
-
-    protected function generateUrl($route)
-    {
-        return $this->container->get('router')->generate($route);
     }
 
     protected function setFlash($action, $value)
