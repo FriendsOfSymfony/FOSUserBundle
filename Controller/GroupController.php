@@ -23,108 +23,119 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class GroupController extends ContainerAware
 {
-    /**
-     * Show all groups
-     */
     public function listAction()
     {
-        $groups = $this->container->get('fos_user.group_manager')->findGroups();
+        $groups = $this->getGroupManager()
+            ->findGroups();
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups));
+        return $this->renderResponse(
+            'FOSUserBundle:Group:list.html.'.$this->getEngine(),
+            array('groups' => $groups)
+        );
     }
 
-    /**
-     * Show one group
-     */
     public function showAction($groupname)
     {
-        $group = $this->findGroupBy('name', $groupname);
+        $group = $this->getGroupManager()
+            ->findGroupByName($groupname);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group));
+        return $this->renderResponse(
+            'FOSUserBundle:Group:show.html.'.$this->getEngine(),
+            array('group' => $group)
+        );
     }
 
-    /**
-     * Edit one group, show the edit form
-     */
-    public function editAction($groupname)
-    {
-        $group = $this->findGroupBy('name', $groupname);
-        $form = $this->container->get('fos_user.group.form');
-        $formHandler = $this->container->get('fos_user.group.form.handler');
-
-        $process = $formHandler->process($group);
-        if ($process) {
-            $this->setFlash('fos_user_success', 'group.flash.updated');
-            $groupUrl =  $this->container->get('router')->generate('fos_user_group_show', array('groupname' => $group->getName()));
-
-            return new RedirectResponse($groupUrl);
-        }
-
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
-            'form'      => $form->createview(),
-            'groupname'  => $group->getName(),
-        ));
-    }
-
-    /**
-     * Show the new form
-     */
     public function newAction()
     {
-        $form = $this->container->get('fos_user.group.form');
-        $formHandler = $this->container->get('fos_user.group.form.handler');
+        $group = $this->getGroupManager()
+            ->createGroup('');
 
-        $process = $formHandler->process();
+        $process = $this->getGroupFormHandler()->process($group);
         if ($process) {
             $this->setFlash('fos_user_success', 'group.flash.created');
-            $parameters = array('groupname' => $form->getData('group')->getName());
-            $url = $this->container->get('router')->generate('fos_user_group_show', $parameters);
 
-            return new RedirectResponse($url);
+            return new RedirectResponse($this->generateUrl('fos_user_group_show', array('groupname' => $group->getName())));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
-            'form' => $form->createview(),
+        return $this->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
+            'form' => $this->getGroupForm->createview(),
         ));
     }
 
-    /**
-     * Delete one group
-     */
-    public function deleteAction($groupname)
+    public function editAction($groupname)
     {
-        $group = $this->findGroupBy('name', $groupname);
-        $this->container->get('fos_user.group_manager')->deleteGroup($group);
-        $this->setFlash('fos_user_success', 'group.flash.deleted');
+        $group = $this->getGroupManager()
+            ->findGroupByName($groupname);
 
-        return new RedirectResponse($this->container->get('router')->generate('fos_user_group_list'));
+        $process = $this->getGroupFormHandler()->process($group);
+        if ($process) {
+            $this->setFlash('fos_user_success', 'group.flash.updated');
+
+            return new RedirectResponse($this->generateUrl('fos_user_group_show', array('groupname' => $group->getName())));
+        }
+
+        return $this->renderResponse(
+            'FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
+                'form'      => $this->getGroupForm->createview(),
+                'groupname'  => $group->getName(),
+            )
+        );
     }
 
-    /**
-     * Find a group by a specific property
-     *
-     * @param string $key   property name
-     * @param mixed  $value property value
-     *
-     * @throws NotFoundException if user does not exist
-     * @return \FOS\UserBundle\Model\GroupInterface
-     */
-    protected function findGroupBy($key, $value)
+    public function deleteAction($groupname)
     {
-        if (!empty($value)) {
-            $group = $this->container->get('fos_user.group_manager')->{'findGroupBy'.ucfirst($key)}($value);
+        $group = $this->getGroupManager()
+            ->findGroupByName($groupname);
+
+        if (!$group) {
+            throw new NotFoundHttpException(sprintf('No group found with name "%s".', $groupname));
         }
 
-        if (empty($group)) {
-            throw new NotFoundHttpException(sprintf('The group with "%s" does not exist for value "%s"', $key, $value));
+        if ($this->getRequest()->getMethod() == 'DELETE') {
+            $this->getGroupManager()->deleteGroup($group);
+            $this->setFlash('fos_user_success', 'group.flash.deleted');
+
+            return new RedirectResponse($this->generateUrl('fos_user_group_list'));
         }
 
-        return $group;
+        return $this->renderResponse('FOSUserBundle:Group:delete.html.'.$this->getEngine(), array(
+            'group' => $group,
+        ));
+    }
+
+    protected function getGroupForm()
+    {
+        return $this->container->get('fos_user.group.form');
+    }
+
+    protected function getGroupFormHandler()
+    {
+        return $this->container->get('fos_user.group.form.handler');
+    }
+
+    protected function getGroupManager()
+    {
+        return $this->container->get('fos_user.group_manager');
+    }
+
+    protected function generateUrl($route, array $args = null)
+    {
+        return $this->container->get('router')->generate($route, $args);
+    }
+
+    protected function getRequest()
+    {
+        return $this->container->get('request');
     }
 
     protected function getEngine()
     {
         return $this->container->getParameter('fos_user.template.engine');
+    }
+
+    protected function renderResponse($template, array $args)
+    {
+        return $this->container->get('templating')->renderResponse($template, $args);
     }
 
     protected function setFlash($action, $value)

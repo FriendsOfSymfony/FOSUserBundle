@@ -1,0 +1,8 @@
+<div class="fos_user_group_delete">
+    <p>{{ 'group.show.name'|trans([], 'FOSUserBundle') }}: {{ group.getName() }}</p>
+    <form method="post">
+        <input type="hidden" name="_method" value="delete">
+
+        <button type="submit">Delete Group</button>
+    </form>
+</div>
