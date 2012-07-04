@@ -1,15 +1,15 @@
 # Group
 group:
     edit:
-        submit: Gurubu Güncelle
+        submit: Grubu Güncelle
     show:
-        name: Gurup Adı
+        name: Grup Adı
     new:
-        submit: Burup Yarat
+        submit: Grup Yarat
     flash:
-        updated: Gurup Güncellendi
-        created: Gurup Yaratıldı
-        deleted: Gurup Silindi
+        updated: Grup Güncellendi
+        created: Grup Yaratıldı
+        deleted: Grup Silindi
 
 # Security
 "Bad credentials": Geçersiz kullanıcı adı ya da parola
@@ -59,7 +59,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Son 24 saat içerisinde bu kullanıcı parola için istekte bulunmuş.
-    check_email:%email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.
+    check_email: %email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.
     request:
         invalid_username: "%username%" şeklinde bu kullanıcı adı ya da e-posta adresi bulunamadı.
         username: "Kullanıcı adı ya da e-posta adresi:"
