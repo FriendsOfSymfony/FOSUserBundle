@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Security\Core\Validator\Constraint\UserPassword;
 
 class ProfileFormType extends AbstractType
 {
@@ -29,19 +30,20 @@ class ProfileFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $child = $builder->create('user', 'form', array('data_class' => $this->class));
-        $this->buildUserForm($child, $options);
+        $this->buildUserForm($builder, $options);
 
-        $builder
-            ->add($child)
-            ->add('current', 'password', array('label' => 'form.current_password', 'translation_domain' => 'FOSUserBundle'))
-        ;
+        $builder->add('current_password', 'password', array(
+            'label' => 'form.current_password',
+            'translation_domain' => 'FOSUserBundle',
+            'mapped' => false,
+            'constraints' => new UserPassword(),
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FOS\UserBundle\Form\Model\CheckPassword',
+            'data_class' => $this->class,
             'intention'  => 'profile',
         ));
     }

@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use Symfony\Bundle\SecurityBundle\Validator\Constraint\UserPassword;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
@@ -19,7 +20,12 @@ class ChangePasswordFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('current', 'password', array('label' => 'form.current_password', 'translation_domain' => 'FOSUserBundle'));
+        $builder->add('current_password', 'password', array(
+            'label' => 'form.current_password',
+            'translation_domain' => 'FOSUserBundle',
+            'mapped' => false,
+            'constraints' => new UserPassword(),
+        ));
         $builder->add('new', 'repeated', array(
             'type' => 'password',
             'options' => array('translation_domain' => 'FOSUserBundle'),

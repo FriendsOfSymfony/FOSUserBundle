@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Form\Model;
 
-class ChangePassword extends CheckPassword
+class ChangePassword
 {
     /**
      * @var string

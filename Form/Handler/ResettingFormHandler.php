@@ -11,12 +11,11 @@
 
 namespace FOS\UserBundle\Form\Handler;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
-
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
-use FOS\UserBundle\Form\Model\ResetPassword;
+use FOS\UserBundle\Form\Model\ChangePassword;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ResettingFormHandler
 {
@@ -24,7 +23,7 @@ class ResettingFormHandler
     protected $userManager;
     protected $form;
 
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager)
+    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager)
     {
         $this->form = $form;
         $this->request = $request;
@@ -38,7 +37,7 @@ class ResettingFormHandler
 
     public function process(UserInterface $user)
     {
-        $this->form->setData(new ResetPassword());
+        $this->form->setData(new ChangePassword());
 
         if ('POST' === $this->request->getMethod()) {
             $this->form->bindRequest($this->request);

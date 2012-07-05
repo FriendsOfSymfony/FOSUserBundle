@@ -11,11 +11,10 @@
 
 namespace FOS\UserBundle\Form\Handler;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
-
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\GroupManagerInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class GroupFormHandler
 {
@@ -23,7 +22,7 @@ class GroupFormHandler
     protected $groupManager;
     protected $form;
 
-    public function __construct(Form $form, Request $request, GroupManagerInterface $groupManager)
+    public function __construct(FormInterface $form, Request $request, GroupManagerInterface $groupManager)
     {
         $this->form = $form;
         $this->request = $request;

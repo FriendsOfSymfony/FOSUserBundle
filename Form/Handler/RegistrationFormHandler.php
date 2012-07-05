@@ -11,11 +11,11 @@
 
 namespace FOS\UserBundle\Form\Handler;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationFormHandler
 {
@@ -24,7 +24,7 @@ class RegistrationFormHandler
     protected $form;
     protected $mailer;
 
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer)
+    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer)
     {
         $this->form = $form;
         $this->request = $request;

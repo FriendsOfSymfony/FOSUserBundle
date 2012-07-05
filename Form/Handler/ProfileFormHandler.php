@@ -11,12 +11,10 @@
 
 namespace FOS\UserBundle\Form\Handler;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
-
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
-use FOS\UserBundle\Form\Model\CheckPassword;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProfileFormHandler
 {
@@ -24,7 +22,7 @@ class ProfileFormHandler
     protected $userManager;
     protected $form;
 
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager)
+    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager)
     {
         $this->form = $form;
         $this->request = $request;
@@ -33,7 +31,7 @@ class ProfileFormHandler
 
     public function process(UserInterface $user)
     {
-        $this->form->setData(new CheckPassword($user));
+        $this->form->setData($user);
 
         if ('POST' === $this->request->getMethod()) {
             $this->form->bindRequest($this->request);

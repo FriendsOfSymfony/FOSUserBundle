@@ -99,42 +99,22 @@
         </property>
     </class>
 
-    <class name="FOS\UserBundle\Form\Model\CheckPassword">
-        <constraint name="FOS\UserBundle\Validator\Password">
-            <option name="passwordProperty">current</option>
-            <option name="userProperty">user</option>
-            <option name="message">fos_user.current_password.invalid</option>
-            <option name="groups">
-                <value>ChangePassword</value>
-                <value>Profile</value>
-            </option>
-        </constraint>
-    </class>
-
     <class name="FOS\UserBundle\Form\Model\ChangePassword">
         <property name="new">
             <constraint name="NotBlank">
                 <option name="message">fos_user.new_password.blank</option>
-                <option name="groups">ChangePassword</option>
+                <option name="groups">
+                    <value>ChangePassword</value>
+                    <value>ResetPassword</value>
+                </option>
             </constraint>
             <constraint name="MinLength">
                 <option name="limit">2</option>
                 <option name="message">fos_user.new_password.short</option>
-                <option name="groups">ChangePassword</option>
-            </constraint>
-        </property>
-    </class>
-
-    <class name="FOS\UserBundle\Form\Model\ResetPassword">
-        <property name="new">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.new_password.blank</option>
-                <option name="groups">ResetPassword</option>
-            </constraint>
-            <constraint name="MinLength">
-                <option name="limit">2</option>
-                <option name="message">fos_user.new_password.short</option>
-                <option name="groups">ResetPassword</option>
+                <option name="groups">
+                    <value>ChangePassword</value>
+                    <value>ResetPassword</value>
+                </option>
             </constraint>
         </property>
     </class>
