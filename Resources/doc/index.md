@@ -246,7 +246,7 @@ in your application:
 security:
     providers:
         fos_userbundle:
-            id: fos_user.user_manager
+            id: fos_user.user_provider.username
 
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
@@ -273,7 +273,7 @@ security:
 
 Under the `providers` section, you are making the bundle's packaged user provider
 service available via the alias `fos_userbundle`. The id of the bundle's user
-provider service is `fos_user.user_manager`.
+provider service is `fos_user.user_provider.username`.
 
 Next, take a look at examine the `firewalls` section. Here we have declared a
 firewall named `main`. By specifying `form_login`, you have told the Symfony2

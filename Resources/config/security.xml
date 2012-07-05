@@ -15,6 +15,14 @@
         </service>
 
         <service id="fos_user.user_checker" alias="security.user_checker" />
+
+        <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
+        <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
     </services>
 
 </container>
