@@ -30,9 +30,9 @@ For more information about translations, check [Symfony documentation](http://sy
 
 ## Installation
 
-Installation is a quick (I promise!) 8 step process:
+Installation is a quick (I promise!) 7 step process:
 
-1. Add FOSUserBundle in your composer.json
+1. Download FOSUserBundle using composer
 2. Enable the Bundle
 3. Create your User class
 4. Configure your application's security.yml
@@ -40,7 +40,9 @@ Installation is a quick (I promise!) 8 step process:
 6. Import FOSUserBundle routing
 7. Update your database schema
 
-### Step 1: Add FOSUserBundle in your composer.json
+### Step 1: Download FOSUserBundle using composer
+
+Add FOSUserBundle in your composer.json:
 
 ```js
 {
@@ -50,9 +52,17 @@ Installation is a quick (I promise!) 8 step process:
 }
 ```
 
+Now tell composer to download the bundle by running the command:
+
+``` bash
+$ php composer.phar update friendsofsymfony/user-bundle
+```
+    
+Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
+
 ### Step 2: Enable the bundle
 
-Finally, enable the bundle in the kernel:
+Enable the bundle in the kernel:
 
 ``` php
 <?php
