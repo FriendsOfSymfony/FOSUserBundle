@@ -24,9 +24,6 @@ use FOS\UserBundle\Model\UserInterface;
  */
 class ChangePasswordController extends ContainerAware
 {
-    /**
-     * Change user password
-     */
     public function changePasswordAction()
     {
         $user = $this->container->get('security.context')->getToken()->getUser();

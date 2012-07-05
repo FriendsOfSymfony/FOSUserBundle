@@ -29,15 +29,11 @@ class GroupFormHandler
         $this->groupManager = $groupManager;
     }
 
-    public function process(GroupInterface $group = null)
+    public function process(GroupInterface $group)
     {
-        if (null === $group) {
-            $group = $this->groupManager->createGroup('');
-        }
-
         $this->form->setData($group);
 
-        if ('POST' === $this->request->getMethod()) {
+        if ('POST' === $this->request->getMethod() || 'PUT' === $this->request->getMethod()) {
             $this->form->bindRequest($this->request);
 
             if ($this->form->isValid()) {

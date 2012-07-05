@@ -23,103 +23,101 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class GroupController extends ContainerAware
 {
-    /**
-     * Show all groups
-     */
     public function listAction()
     {
-        $groups = $this->container->get('fos_user.group_manager')->findGroups();
+        $groups = $this->getGroupManager()->findGroups();
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups));
+        return $this->container->get('templating')->renderResponse(
+            'FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups)
+        );
     }
 
-    /**
-     * Show one group
-     */
-    public function showAction($groupname)
+    public function showAction($name)
     {
-        $group = $this->findGroupBy('name', $groupname);
+        $group = $this->getGroupManager()->findGroupByName($name);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group));
+        if (!$group) {
+            throw new NotFoundHttpException(sprintf('No group found with name "%s".', $name));
+        }
+
+        return $this->container->get('templating')->renderResponse(
+            'FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group)
+        );
     }
 
-    /**
-     * Edit one group, show the edit form
-     */
-    public function editAction($groupname)
+    public function newAction()
     {
-        $group = $this->findGroupBy('name', $groupname);
+        $group = $this->getGroupManager()->createGroup('');
+
+        $form = $this->container->get('fos_user.group.form');
+        $formHandler = $this->container->get('fos_user.group.form.handler');
+
+        $process = $formHandler->process($group);
+        if ($process) {
+            $this->setFlash('fos_user_success', 'group.flash.created');
+            $url = $this->container->get('router')->generate('fos_user_group_show',
+                array('name' => $group->getName())
+            );
+
+            return new RedirectResponse($url);
+        }
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(),
+            array('form' => $form->createview())
+        );
+    }
+
+    public function editAction($name)
+    {
+        $group = $this->getGroupManager()->findGroupByName($name);
+
+        if (!$group) {
+            throw new NotFoundHttpException(sprintf('No group found with name "%s".', $name));
+        }
+
         $form = $this->container->get('fos_user.group.form');
         $formHandler = $this->container->get('fos_user.group.form.handler');
 
         $process = $formHandler->process($group);
         if ($process) {
             $this->setFlash('fos_user_success', 'group.flash.updated');
-            $groupUrl =  $this->container->get('router')->generate('fos_user_group_show', array('groupname' => $group->getName()));
-
-            return new RedirectResponse($groupUrl);
-        }
-
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
-            'form'      => $form->createview(),
-            'groupname'  => $group->getName(),
-        ));
-    }
-
-    /**
-     * Show the new form
-     */
-    public function newAction()
-    {
-        $form = $this->container->get('fos_user.group.form');
-        $formHandler = $this->container->get('fos_user.group.form.handler');
-
-        $process = $formHandler->process();
-        if ($process) {
-            $this->setFlash('fos_user_success', 'group.flash.created');
-            $parameters = array('groupname' => $form->getData('group')->getName());
-            $url = $this->container->get('router')->generate('fos_user_group_show', $parameters);
+            $url =  $this->container->get('router')->generate('fos_user_group_show',
+                array('group' => $group->getName())
+            );
 
             return new RedirectResponse($url);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
-            'form' => $form->createview(),
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
+            'form'      => $form->createview(),
+            'group'  => $group,
         ));
     }
 
-    /**
-     * Delete one group
-     */
-    public function deleteAction($groupname)
+    public function deleteAction($name)
     {
-        $group = $this->findGroupBy('name', $groupname);
-        $this->container->get('fos_user.group_manager')->deleteGroup($group);
-        $this->setFlash('fos_user_success', 'group.flash.deleted');
+        $group = $this->getGroupManager()
+            ->findGroupByName($name);
 
-        return new RedirectResponse($this->container->get('router')->generate('fos_user_group_list'));
+        if (!$group) {
+            throw new NotFoundHttpException(sprintf('No group found with name "%s".', $name));
+        }
+
+        if ($this->container->get('request')->getMethod() == 'DELETE') {
+            $this->getGroupManager()->deleteGroup($group);
+            $this->setFlash('fos_user_success', 'group.flash.deleted');
+
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_group_list'));
+        }
+
+        return $this->renderResponse('FOSUserBundle:Group:delete.html.'.$this->getEngine(), array(
+            'group' => $group,
+        ));
     }
 
-    /**
-     * Find a group by a specific property
-     *
-     * @param string $key   property name
-     * @param mixed  $value property value
-     *
-     * @throws NotFoundException if user does not exist
-     * @return \FOS\UserBundle\Model\GroupInterface
-     */
-    protected function findGroupBy($key, $value)
+    protected function getGroupManager()
     {
-        if (!empty($value)) {
-            $group = $this->container->get('fos_user.group_manager')->{'findGroupBy'.ucfirst($key)}($value);
-        }
-
-        if (empty($group)) {
-            throw new NotFoundHttpException(sprintf('The group with "%s" does not exist for value "%s"', $key, $value));
-        }
-
-        return $group;
+        return $this->container->get('fos_user.group_manager');
     }
 
     protected function getEngine()
