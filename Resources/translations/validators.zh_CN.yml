@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: 用户名已存在
+        blank: 请输入用户名
+        short: "[-Inf,Inf]用户名字数不够"
+        long: "[-Inf,Inf]用户名字数超出限制"
+    email:
+        already_used: 邮箱已被使用
+        blank: 请输入邮箱
+        short: "[-Inf,Inf]邮箱字数不够"
+        long: "[-Inf,Inf]邮箱字数超出限制"
+        invalid: 邮箱格式不正确
+    password:
+        blank: 请输入密码
+        short: "[-Inf,Inf]密码字数不够"
+    new_password:
+        blank: 请输入新密码
+        short: "[-Inf,Inf]新密码字数不够"
+    current_password:
+        invalid: 密码格式不正确
+    group:
+        blank: 请输入小组名称
+        short: "[-Inf,Inf]小组名称字数不够"
+        long: "[-Inf,Inf]小组名称字数超出限制"

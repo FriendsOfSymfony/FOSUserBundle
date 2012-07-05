@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: 更新小组
+    show:
+        name: 小组名称
+    new:
+        submit: 创建小组
+    flash:
+        updated: 小组已被更新
+        created: 小组已创建
+        deleted: 小组已被删除
+
+# Security
+"Bad credentials": 用户名或密码不正确
+
+security:
+    login:
+        username: 用户名：
+        password: 密码：
+        remember_me: 自动登录
+        submit: 登录
+
+# Profile
+profile:
+    show:
+        username: 用户名
+        email: 电子邮箱
+    edit:
+        submit: 更新
+    flash:
+        updated: 用户信息已更新
+
+# Password change
+change_password:
+    submit: 修改密码
+    flash:
+        success: 密码已成功修改
+
+# Registration
+registration:
+    check_email: 系统向%email%发送了一封包含激活链接的邮件，请访问该链接以启用你的帐户。
+    confirmed: %username%，恭喜你，你的帐户已启用！
+    back: 返回前一页面
+    submit: 注册
+    flash:
+        user_created: 用户已创建
+    email:
+        subject: %username%，欢迎你
+        message: |
+            %username%，你好！
+
+            要启用你的用户帐号，请访问：%confirmationUrl%
+
+            祝好
+            网站团队
+
+# Password resetting
+resetting:
+    password_already_requested: 该用户在过去的24小时内，已经请求过一次找回密码了。
+    check_email: 系统向%email%发送了一封包含密码重置链接的邮件，请查收。
+    request:
+        invalid_username: 用户名“%username%”不存在
+        username: 用户名或邮箱：
+        submit: 重置密码
+    reset:
+        submit: 修改密码
+    flash:
+        success: 密码已重置。
+    email:
+        subject: 重置密码
+        message: |
+            %username%，你好！
+
+            请访问 %confirmationUrl% 以重置你的帐户密码。
+
+            祝好
+            网站团队
+
+# Global strings
+layout:
+    logout: 退出
+    login: 登录
+    register: 注册
+    logged_in_as: 已登录为：%username%
+
+# Form field labels
+form:
+    group_name: 小组名称：
+    username: 用户名：
+    email: 电子邮箱：
+    current_password: 当前密码：
+    password: 密码：
+    password_confirmation: 确认密码：
+    new_password: 新密码：
+    new_password_confirmation: 确认新密码：
