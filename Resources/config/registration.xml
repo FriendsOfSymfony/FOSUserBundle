@@ -25,6 +25,7 @@
             <argument type="service" id="request" />
             <argument type="service" id="fos_user.user_manager" />
             <argument type="service" id="fos_user.mailer" />
+            <argument type="service" id="fos_user.util.token_generator" />
         </service>
 
     </services>

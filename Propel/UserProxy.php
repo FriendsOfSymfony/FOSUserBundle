@@ -27,7 +27,6 @@ class UserProxy extends FosUser
         $this->user = $user;
         if ($user->isNew()) {
             $this->user->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
-            $this->generateConfirmationToken();
             $this->setEnabled(false);
             $this->setCredentialsExpired(false);
             $this->setLocked(false);

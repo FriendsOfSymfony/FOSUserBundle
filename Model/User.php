@@ -130,7 +130,6 @@ abstract class User implements UserInterface, GroupableInterface
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
-        $this->generateConfirmationToken();
         $this->enabled = false;
         $this->locked = false;
         $this->expired = false;
@@ -722,16 +721,6 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Generates the confirmation token if it is not set.
-     */
-    public function generateConfirmationToken()
-    {
-        if (null === $this->getConfirmationToken()) {
-            $this->setConfirmationToken($this->generateToken());
-        }
-    }
-
-    /**
      * Sets the roles of the user.
      *
      * This overwrites any previous roles.
@@ -819,29 +808,5 @@ abstract class User implements UserInterface, GroupableInterface
     public function __toString()
     {
         return (string) $this->getUsername();
-    }
-
-    /**
-     * Generates a token.
-     *
-     * @return string
-     */
-    protected function generateToken()
-    {
-        $bytes = false;
-        if (function_exists('openssl_random_pseudo_bytes') && 0 !== stripos(PHP_OS, 'win')) {
-            $bytes = openssl_random_pseudo_bytes(32, $strong);
-
-            if (true !== $strong) {
-                $bytes = false;
-            }
-        }
-
-        // let's just hope we got a good seed
-        if (false === $bytes) {
-            $bytes = hash('sha256', uniqid(mt_rand(), true), true);
-        }
-
-        return base_convert(bin2hex($bytes), 16, 36);
     }
 }

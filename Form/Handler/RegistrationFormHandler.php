@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Form\Handler;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
+use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -23,13 +24,15 @@ class RegistrationFormHandler
     protected $userManager;
     protected $form;
     protected $mailer;
+    protected $tokenGenerator;
 
-    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer)
+    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator)
     {
         $this->form = $form;
         $this->request = $request;
         $this->userManager = $userManager;
         $this->mailer = $mailer;
+        $this->tokenGenerator = $tokenGenerator;
     }
 
     public function process($confirmation = false)
@@ -54,9 +57,12 @@ class RegistrationFormHandler
     {
         if ($confirmation) {
             $user->setEnabled(false);
+            if (null === $user->getConfirmationToken()) {
+                $user->setConfirmationToken($this->tokenGenerator->generateToken());
+            }
+
             $this->mailer->sendConfirmationEmailMessage($user);
         } else {
-            $user->setConfirmationToken(null);
             $user->setEnabled(true);
         }
 

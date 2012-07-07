@@ -3,6 +3,7 @@ Changelog
 
 ### 2.0.0 (2012-XX-XX)
 
+* Moved the generation of the token to a dedicated class
 * Refactored the translation of form labels using the translation_domain option of Symfony 2.1
 
 ### 1.2.0 (2012-04-12)

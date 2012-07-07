@@ -126,11 +126,6 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     function setSuperAdmin($boolean);
 
     /**
-     * Generates the confirmation token if it is not set.
-     */
-    function generateConfirmationToken();
-
-    /**
      * Gets the confirmation token.
      *
      * @return string

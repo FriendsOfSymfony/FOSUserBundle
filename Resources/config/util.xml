@@ -12,6 +12,10 @@
             <argument type="service" id="fos_user.user_manager" />
         </service>
 
+        <service id="fos_user.util.token_generator.default" class="FOS\UserBundle\Util\TokenGenerator" public="false">
+            <argument type="service" id="logger" on-invalid="ignore" />
+        </service>
+
     </services>
 
 </container>

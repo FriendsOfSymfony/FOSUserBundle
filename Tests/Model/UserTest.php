@@ -104,25 +104,6 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($user1->equals($user3));
     }
 
-    public function testConfirmationToken()
-    {
-        $user = $this->getUser();
-        $this->assertNotNull($user->getConfirmationToken());
-    }
-
-    public function testSameConfirmationToken()
-    {
-        $user = $this->getUser();
-        $user->setConfirmationToken(null);
-
-        $user->generateConfirmationToken();
-        $confirmationToken = $user->getConfirmationToken();
-        $this->assertNotNull($confirmationToken);
-
-        $user->generateConfirmationToken();
-        $this->assertSame($confirmationToken, $user->getConfirmationToken());
-    }
-
     protected function getUser()
     {
         return $this->getMockForAbstractClass('FOS\UserBundle\Model\User');

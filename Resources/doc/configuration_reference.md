@@ -56,6 +56,7 @@ fos_user:
         mailer:                 fos_user.mailer.default
         email_canonicalizer:    fos_user.util.canonicalizer.default
         username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:        fos_user.util.token_generator.default
         user_manager:           fos_user.user_manager.default
     template:
         engine: twig
