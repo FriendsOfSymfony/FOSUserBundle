@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
-use Symfony\Bundle\SecurityBundle\Validator\Constraint\UserPassword;
+use Symfony\Component\Security\Core\Validator\Constraint\UserPassword;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
