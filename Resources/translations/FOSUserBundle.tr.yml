@@ -25,7 +25,7 @@ security:
 profile:
     show:
         username: Kullanıcı adı
-        email: e-posta
+        email: E-posta adresi
     edit:
         submit: Güncelle
     flash:
@@ -42,7 +42,7 @@ registration:
     check_email: %email% adresine hesabınızı aktive etmek için kullanacağınız aktivasyon linkini barındıran bir e-posta gönderildi.
     confirmed: Tebrikler %username%. Hesabınız şu anda aktifleştirildi.
     back: Asıl sayfaya geri dön.
-    submit: Kayıt
+    submit: Kayıt ol
     flash:
         user_created: Kullanıcı başarıyla yaratıldı
     email:
@@ -61,19 +61,19 @@ resetting:
     password_already_requested: Son 24 saat içerisinde bu kullanıcı parola için istekte bulunmuş.
     check_email: %email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.
     request:
-        invalid_username: "%username%" şeklinde bu kullanıcı adı ya da e-posta adresi bulunamadı.
+        invalid_username: %username% şeklinde bir kullanıcı adı ya da e-posta adresi bulunamadı.
         username: "Kullanıcı adı ya da e-posta adresi:"
         submit: Parolayı Sıfırla
     reset:
         submit: Parolayı değiştir
     flash:
-        success: Parola başarıyla sıfırlandı
+        success: Parola başarıyla değiştirildi
     email:
-        subject: Parolayı sıfırla
+        subject: Parola Yenileme
         message: |
-            Merhaba  %username%!
+           Merhaba  %username%!
 
-           Parolanızı sıfırlamak için  %confirmationUrl%
+           Parolanızı yenilemek için  %confirmationUrl%
            adresini ziyaret ediniz.
 
            Teşekkürler,
@@ -83,14 +83,14 @@ resetting:
 layout:
     logout: Çıkış
     login: Giriş
-    register: Kayıt
+    register: Kayıt ol
     logged_in_as: %username% olarak giriş yapıldı
 
 # Form field labels
 form:
     group_name: "Gurup Adı:"
     username: "Kullanıcı adı:"
-    email: "e-posta:"
+    email: "E-posta adresi:"
     current_password: "Geçerli Parola:"
     password: "Parola:"
     password_confirmation: "Onay:"
