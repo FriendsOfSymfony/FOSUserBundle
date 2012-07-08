@@ -11,13 +11,24 @@
 
 namespace FOS\UserBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction()
+
+    /**
+     * 
+     *
+     * @Template()
+     */
+    public function loginFormAction()
     {
+        /**
+         * Copy of FOSUserBundle:Security:loginAction
+         */ 
+
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
         $session = $request->getSession();
@@ -42,11 +53,18 @@ class SecurityController extends ContainerAware
 
         $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login.html.'.$this->container->getParameter('fos_user.template.engine'), array(
+        return array(
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
-        ));
+        );
+    }
+
+    public function loginAction()
+    {
+        $parameters = $this->loginFormAction();
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:login.html.'.$this->container->getParameter('fos_user.template.engine'), $parameters);
     }
 
     public function checkAction()
