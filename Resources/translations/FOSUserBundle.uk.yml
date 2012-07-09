@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: Оновити групу
+    show:
+        name: Назва групи
+    new:
+        submit: Створити групу
+    flash:
+        updated: Група оновлена
+        created: Група створена
+        deleted: Група видалена
+
+# Security
+"Bad credentials": "Невірне ім'я користувача або пароль"
+
+security:
+    login:
+        username: "Ім'я користувача:"
+        password: "Пароль:"
+        remember_me: "Запам'ятати мене"
+        submit: Увійти
+
+# Profile
+profile:
+    show:
+        username: "Ім'я користувача"
+        email: Електронна адреса
+    edit:
+        submit: Оновити
+    flash:
+        updated: Профіль користувача оновлено
+
+# Password change
+change_password:
+    submit: Змінити пароль
+    flash:
+        success: Пароль змінено
+
+# Registration
+registration:
+    check_email: Листа надіслано на адресу %email%. У ньому міститься посилання, за яким Ви можете підтвердити свою реєстрацію.
+    confirmed: Вітаємо %username%, ваш аккаунт підтверджено.
+    back: Повернутися на попередню сторінку.
+    submit: Реєстрація
+    flash:
+        user_created: Користувач успішно створений
+    email:
+        subject: Вітаємо %username%!
+        message: |
+            Вітаємо %username%!
+
+            Для підтверждення Вашої реєстрації, перейдіть за посиланням %confirmationUrl%
+
+            З найкращими побажаннями,
+            команда сайту.
+
+# Password resetting
+resetting:
+    password_already_requested: Пароль для данного користувача вже було запрошено за останні 24 години.
+    check_email: Листа на адресу %email% вже відправлено. Воно містить посилання, при переході за яким Ваш пароль буде скинуто.
+    request:
+        invalid_username: Користувач "%username%" не існує.
+        username: "Ім'я користувача:"
+        submit: Скинути пароль
+    reset:
+        submit: Змінити пароль
+    flash:
+        success: Пароль успішно скинуто
+    email:
+        subject: Скидання пароля
+        message: |
+            Вітаємо %username%!
+
+            Для скидання пароля - будь ласа, перейдіть за посиланням %confirmationUrl%
+
+            З найкращими побажаннями,
+            команда сайту.
+
+# Global strings
+layout:
+    logout: Вихід
+    login: Вхід
+    register: Реєстрація
+    logged_in_as: Ви увійшли як %username%
+
+# Form field labels
+form:
+    group_name: "Назва групи:"
+    username: "Ім'я користувача:"
+    email: "Електронна адреса:"
+    current_password: "Поточний пароль:"
+    password: "Пароль:"
+    password_confirmation: "Підтвердіть пароль:"
+    new_password: "Новий пароль:"
+    new_password_confirmation: "Підтвердіть пароль:"

@@ -1,0 +1,24 @@
+fos_user:
+    username:
+        already_used: Логін вже використовується
+        blank: Будь ласка, вкажіть логін
+        short: "[-Inf,Inf]Логін занадто короткий"
+        long: "[-Inf,Inf]Логін занадто довгий"
+    email:
+        already_used: Email вже використовується
+        blank: Будь ласка, вкажіть Ваш email
+        short: "[-Inf,Inf]Email занадто короткий"
+        long: "[-Inf,Inf]Email занадто довгий"
+        invalid: Email у невірному форматі
+    password:
+        blank: Будь ласка, вкажіть пароль
+        short: "[-Inf,Inf]Пароль занадто короткий"
+    new_password:
+        blank: Будь ласка, вкажіть новый пароль
+        short: "[-Inf,Inf]Новий пароль занадто короткий"
+    current_password:
+        invalid: Ви невірно ввели Ваш поточний пароль
+    group:
+        blank: Будь ласка, вкажіть назву групи
+        short: "[-Inf,Inf]Назва групи занадто коротка"
+        long: "[-Inf,Inf]Назва групи занадто довга"
