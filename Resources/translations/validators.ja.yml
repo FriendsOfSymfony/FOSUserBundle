@@ -7,7 +7,7 @@ fos_user:
     email:
         already_used: メールアドレスは既に使用されています
         blank: メールアドレスを入力してください
-        short: メールアドレスが短すぎます、
+        short: メールアドレスが短すぎます
         long: メールアドレスが長すぎます
         invalid: メールアドレスが正しくありません
     password:
