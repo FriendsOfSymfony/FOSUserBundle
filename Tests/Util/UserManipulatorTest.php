@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Tests\Util;
 
 use FOS\UserBundle\Util\UserManipulator;
 use FOS\UserBundle\Tests\TestUser;
-use Symfony\Component\Security\Acl\Domain\Acl;
 
 class UserManipulatorTest extends \PHPUnit_Framework_TestCase
 {

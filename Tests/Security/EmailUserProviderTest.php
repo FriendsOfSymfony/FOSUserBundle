@@ -51,7 +51,7 @@ class EmailUserProviderTest extends \PHPUnit_Framework_TestCase
         $user = $this->getMockBuilder('FOS\UserBundle\Model\User')
                     ->setMethods(array('getId'))
                     ->getMock();
-        
+
         $user->expects($this->once())
             ->method('getId')
             ->will($this->returnValue('123'));

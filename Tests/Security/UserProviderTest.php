@@ -51,7 +51,7 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
         $user = $this->getMockBuilder('FOS\UserBundle\Model\User')
                     ->setMethods(array('getId'))
                     ->getMock();
-        
+
         $user->expects($this->once())
             ->method('getId')
             ->will($this->returnValue('123'));
@@ -64,7 +64,7 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($refreshedUser, $this->userProvider->refreshUser($user));
     }
-    
+
     /**
      * @expectedException Symfony\Component\Security\Core\Exception\UsernameNotFoundException
      */
@@ -74,7 +74,7 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
         $this->userManager->expects($this->once())
             ->method('findUserBy')
             ->will($this->returnValue(null));
-        
+
         $this->userProvider->refreshUser($user);
     }
 
