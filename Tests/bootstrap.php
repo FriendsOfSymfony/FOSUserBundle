@@ -15,20 +15,10 @@ if (!is_file($autoloadFile = __DIR__.'/../vendor/autoload.php')) {
 
 require $autoloadFile;
 
-spl_autoload_register(function($class) {
-    if (0 === strpos($class, 'FOS\\UserBundle\\')) {
-        $path = __DIR__.'/../'.implode('/', array_slice(explode('\\', $class), 2)).'.php';
-        if (!stream_resolve_include_path($path)) {
-            return false;
-        }
-        require_once $path;
+if (class_exists('Propel')) {
+    set_include_path(__DIR__ . '/../vendor/phing/phing/classes' . PATH_SEPARATOR . get_include_path());
 
-        return true;
-    }
-});
-
-if (class_exists('PropelQuickBuilder') && class_exists('TypehintableBehavior')) {
-    $class = new \ReflectionClass('TypehintableBehavior');
+    $class   = new \ReflectionClass('TypehintableBehavior');
     $builder = new \PropelQuickBuilder();
     $builder->getConfig()->setBuildProperty('behavior.typehintable.class', $class->getFileName());
     $builder->setSchema(file_get_contents(__DIR__.'/../Resources/config/propel/schema.xml'));

@@ -21,7 +21,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.2", 
+        "php": ">=5.3.2",
         "symfony/framework-bundle": "2.1.*",
         "symfony/security-bundle": "2.1.*"
     },
@@ -30,7 +30,8 @@
         "doctrine/doctrine-bundle": "*",
         "doctrine/mongodb-odm-bundle": "*",
         "swiftmailer/swiftmailer": "*",
-        "propel/propel": "*"
+        "willdurand/propel-typehintable-behavior": "dev-master",
+        "symfony/validator": "2.1.*"
     },
     "autoload": {
         "psr-0": { "FOS\\UserBundle": "" }
