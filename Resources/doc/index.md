@@ -286,9 +286,15 @@ provider for the firewall to use as part of the authentication process.
 **Note:**
 
 > Although we have used the form login mechanism in this example, the FOSUserBundle
-> user provider is compatible with many other authentication methods as well. Please
-> read the Symfony2 Security component documention for more information on the
-> other types of authentication methods.
+> user provider is compatible with many other authentication methods as well.
+>
+> The FOSUserBundle cannot be used with the http_digest authentication method. HTTP
+> digest authentication relies on server-side plaintext passwords; the
+> FOSUserBundle salts and hashes passwords making the plaintext password
+> irretrievable.
+> 
+> Please read the Symfony2 Security component documention for more information on
+> the other types of authentication methods.
 
 The `access_control` section is where you specify the credentials necessary for
 users trying to access specific parts of your application. The bundle requires
