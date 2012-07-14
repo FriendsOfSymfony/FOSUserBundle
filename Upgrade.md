@@ -12,6 +12,13 @@ The profile form no longer wraps the user in a CheckPassword class. If you
 were overriding the form handler, you will need to update it to pass the
 user object directly.
 
+### Manager classes
+
+The different Doctrine-based manager classes will be removed on July 31st
+in favor of the common implementation. If you were extending the UserManager
+class for a Doctrine implementation, you need to change the parent class
+to `FOS\UserBundle\Doctrine\UserManager`.
+
 ### Token generation
 
 The generation of the token is not done by the User class anymore. If you

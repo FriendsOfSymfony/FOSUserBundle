@@ -72,6 +72,84 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
 
+    public function testFindUserByUsername()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->usernameCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('jack')
+            ->will($this->returnValue('jack'));
+
+        $this->manager->findUserByUsername('jack');
+    }
+
+    public function testFindUserByUsernameLowercasesTheUsername()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->usernameCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('JaCk')
+            ->will($this->returnValue('jack'));
+
+        $this->manager->findUserByUsername('JaCk');
+    }
+
+    public function testFindUserByEmail()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->emailCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('jack@email.org')
+            ->will($this->returnValue('jack@email.org'));
+
+        $this->manager->findUserByEmail('jack@email.org');
+    }
+
+    public function testFindUserByEmailLowercasesTheEmail()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->emailCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('JaCk@EmAiL.oRg')
+            ->will($this->returnValue('jack@email.org'));
+
+        $this->manager->findUserByEmail('JaCk@EmAiL.oRg');
+    }
+
+    public function testFindUserByUsernameOrEmailWithUsername()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+        $this->usernameCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('JaCk')
+            ->will($this->returnValue('jack'));
+
+        $this->manager->findUserByUsernameOrEmail('JaCk');
+    }
+
+    public function testFindUserByUsernameOrEmailWithEmail()
+    {
+        $this->manager->expects($this->once())
+            ->method('findUserBy')
+            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+        $this->emailCanonicalizer->expects($this->once())
+            ->method('canonicalize')
+            ->with('JaCk@EmAiL.oRg')
+            ->will($this->returnValue('jack@email.org'));
+
+        $this->manager->findUserByUsernameOrEmail('JaCk@EmAiL.oRg');
+    }
+
     private function getMockCanonicalizer()
     {
         return $this->getMock('FOS\UserBundle\Util\CanonicalizerInterface');

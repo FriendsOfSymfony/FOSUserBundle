@@ -3,6 +3,7 @@ Changelog
 
 ### 2.0.0 (2012-XX-XX)
 
+* Refactored the Doctrine implementations to use the same manager classes
 * Removed the custom uniqueness validation in favor of the core constraints
 * Added getRedirectionUrl method to ProfileController
 * Added an extension point in the registration handler
