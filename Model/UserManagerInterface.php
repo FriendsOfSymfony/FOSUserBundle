@@ -11,8 +11,6 @@
 
 namespace FOS\UserBundle\Model;
 
-use Symfony\Component\Validator\Constraint;
-
 /**
  * Interface to be implemented by user managers. This adds an additional level
  * of abstraction between your application, and the actual repository.
@@ -128,14 +126,4 @@ interface UserManagerInterface
      * @param UserInterface $user
      */
     public function updatePassword(UserInterface $user);
-
-    /**
-     * Checks the uniqueness of the given fields, returns true if its unique.
-     *
-     * @param UserInterface $value
-     * @param Constraint    $constraint
-     *
-     * @return Boolean
-     */
-    public function validateUnique(UserInterface $value, Constraint $constraint);
 }

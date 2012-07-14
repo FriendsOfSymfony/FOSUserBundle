@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="FOS\UserBundle\Model\User">
+        <constraint name="Propel\PropelBundle\Validator\Constraints\UniqueObject">
+            <option name="fields">usernameCanonical</option>
+            <option name="message">fos_user.username.already_used</option>
+            <option name="groups">
+                <value>Registration</value>
+                <value>Profile</value>
+            </option>
+        </constraint>
+
+        <constraint name="Propel\PropelBundle\Validator\Constraints\UniqueObject">
+            <option name="fields">emailCanonical</option>
+            <option name="message">fos_user.email.already_used</option>
+            <option name="groups">
+                <value>Registration</value>
+                <value>Profile</value>
+            </option>
+        </constraint>
+    </class>
+
+</constraint-mapping>

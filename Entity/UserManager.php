@@ -16,7 +16,6 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Validator\Constraint;
 
 class UserManager extends BaseUserManager
 {
@@ -100,83 +99,5 @@ class UserManager extends BaseUserManager
         if ($andFlush) {
             $this->em->flush();
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validateUnique(UserInterface $value, Constraint $constraint)
-    {
-        // Since we probably want to validate the canonical fields,
-        // we'd better make sure we have them.
-        $this->updateCanonicalFields($value);
-
-        $fields = array_map('trim', explode(',', $constraint->property));
-        $users = $this->findConflictualUsers($value, $fields);
-
-        // there is no conflictual user
-        if (empty($users)) {
-            return true;
-        }
-
-        // there is no conflictual user which is not the same as the value
-        if ($this->anyIsUser($value, $users)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Indicates whether the given user and all compared objects correspond to the same record.
-     *
-     * @param UserInterface $user
-     * @param array         $comparisons
-     * @return Boolean
-     */
-    protected function anyIsUser($user, array $comparisons)
-    {
-        foreach ($comparisons as $comparison) {
-            if (!$user->isUser($comparison)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Gets conflictual users for the given user and constraint.
-     *
-     * @param UserInterface $value
-     * @param array         $fields
-     * @return array
-     */
-    protected function findConflictualUsers($value, array $fields)
-    {
-        return $this->repository->findBy($this->getCriteria($value, $fields));
-    }
-
-    /**
-     * Gets the criteria used to find conflictual entities.
-     *
-     * @param UserInterface $value
-     * @param array         $fields
-     * @return array
-     */
-    protected function getCriteria($value, array $fields)
-    {
-        $classMetadata = $this->em->getClassMetadata($this->class);
-
-        $criteria = array();
-        foreach ($fields as $field) {
-            if (!$classMetadata->hasField($field)) {
-                throw new \InvalidArgumentException(sprintf('The "%s" class metadata does not have any "%s" field or association mapping.', $this->class, $field));
-            }
-
-            $criteria[$field] = $classMetadata->getFieldValue($value, $field);
-        }
-
-        return $criteria;
     }
 }

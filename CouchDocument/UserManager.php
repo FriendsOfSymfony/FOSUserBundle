@@ -16,7 +16,6 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Validator\Constraint;
 
 class UserManager extends BaseUserManager
 {
@@ -101,15 +100,6 @@ class UserManager extends BaseUserManager
         if ($andFlush) {
             $this->dm->flush();
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validateUnique(UserInterface $value, Constraint $constraint)
-    {
-        // for now unique checks are not implemented in Doctrine CouchDB yet
-        return true;
     }
 
     public function reloadUser(UserInterface $user)

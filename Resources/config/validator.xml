@@ -10,18 +10,9 @@
     </parameters>
 
     <services>
-        <!-- Unique Validator Service -->
-        <service id="fos_user.validator.unique" class="%fos_user.validator.unique.class%">
+        <service id="fos_user.validator.initializer" class="FOS\UserBundle\Validator\Initializer" public="false">
+            <tag name="validator.initializer" />
             <argument type="service" id="fos_user.user_manager" />
-            <tag name="validator.constraint_validator" alias="fos_user.validator.unique" />
-        </service>
-
-        <!-- Password Validator Service -->
-        <service id="fos_user.validator.password" class="%fos_user.validator.password.class%">
-            <call method="setEncoderFactory">
-                <argument type="service" id="security.encoder_factory" />
-            </call>
-            <tag name="validator.constraint_validator" alias="fos_user.validator.password" />
         </service>
     </services>
 

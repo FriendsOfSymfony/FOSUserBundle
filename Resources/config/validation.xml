@@ -6,24 +6,6 @@
 
     <class name="FOS\UserBundle\Model\User">
 
-        <constraint name="FOS\UserBundle\Validator\Unique">
-            <option name="property">usernameCanonical</option>
-            <option name="message">fos_user.username.already_used</option>
-            <option name="groups">
-                <value>Registration</value>
-                <value>Profile</value>
-            </option>
-        </constraint>
-
-        <constraint name="FOS\UserBundle\Validator\Unique">
-            <option name="property">emailCanonical</option>
-            <option name="message">fos_user.email.already_used</option>
-            <option name="groups">
-                <value>Registration</value>
-                <value>Profile</value>
-            </option>
-        </constraint>
-
         <property name="username">
             <constraint name="NotBlank">
                 <option name="message">fos_user.username.blank</option>

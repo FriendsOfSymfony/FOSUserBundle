@@ -16,7 +16,6 @@ use FOS\UserBundle\Model\UserManager as BaseUserManager;
 use FOS\UserBundle\Propel\User;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Validator\Constraint;
 
 class UserManager extends BaseUserManager
 {
@@ -134,70 +133,6 @@ class UserManager extends BaseUserManager
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);
         $user->save();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function validateUnique(UserInterface $value, Constraint $constraint)
-    {
-        // Since we probably want to validate the canonical fields,
-        // we'd better make sure we have them.
-        $this->updateCanonicalFields($value);
-
-        $fields = array_map('trim', explode(',', $constraint->property));
-        $users = $this->findConflictualUsers($value, $fields);
-
-        // there is no conflictual user
-        if (empty($users)) {
-            return true;
-        }
-
-        // there is no conflictual user which is not the same as the value
-        if ($this->anyIsUser($value, $users)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Indicates whether the given user and all compared objects correspond to the same record.
-     *
-     * @param UserInterface $user
-     * @param array         $comparisons
-     * @return Boolean
-     */
-    protected function anyIsUser($user, array $comparisons)
-    {
-        foreach ($comparisons as $comparison) {
-            foreach ($comparison as $field => $value) {
-                if ($user->{'get'.$field}() !== $value) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Gets conflictual users for the given user and constraint.
-     *
-     * @param UserInterface $value
-     * @param array         $fields
-     * @return array
-     */
-    protected function findConflictualUsers($value, array $fields)
-    {
-        $query = $this->createQuery();
-
-        foreach ($fields as $field) {
-            $method = 'get'.ucfirst($field);
-            $query->filterBy(ucfirst($field), $value->$method());
-        }
-
-        return $query->find()->toArray();
     }
 
     /**
