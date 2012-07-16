@@ -50,7 +50,7 @@ class User extends BaseUser
 **Note:**
 
 > By default, the Registration validation group is used when validating a new
-> user registration. Unless you have overriden this value in the configuration,
+> user registration. Unless you have overridden this value in the configuration,
 > make sure you add the validation group named Registration to your name property.
 
 If you try and register using the default registration form you will find that

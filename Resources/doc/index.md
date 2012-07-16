@@ -229,7 +229,7 @@ Just copy the `Resources/config/propel/schema.xml` file to `app/Resources/FOSUse
 and customize it to fit your needs.
 Due to an issue with the Form component that does not support using `__call` to
 access properties, you will have to extend the proxy class as well to support these fields. For instance, if you've
-added a `website_url` attribute to the overrided schema, you'll need to declare both `getWebsiteUrl()` and
+added a `website_url` attribute to the overridden schema, you'll need to declare both `getWebsiteUrl()` and
 `setWebsiteUrl()` methods in your own proxy class (just forward methods to the `user` attribute).
 
 ### Step 4: Configure your application's security.yml
@@ -350,7 +350,7 @@ Only three configuration values are required to use the bundle:
 
 > When using Propel, the `user_class` key refers to the proxy class implementing
 > the FOSUserBundle interface. Thus, a fourth key named `propel_user_class`
-> is also required, refering to the actual model class.
+> is also required, referring to the actual model class.
 
 **Warning:**
 
