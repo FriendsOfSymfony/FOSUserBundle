@@ -136,6 +136,11 @@ class RegistrationFormType extends BaseRegistrationFormType
 
         $builder->add('invitation', 'acme_invitation_type');
     }
+    
+    public function getName()
+    {
+        return 'acme_user_registration';
+    }
 }
 ```
 
@@ -180,7 +185,7 @@ class InvitationFormType extends AbstractType
 
     public function getName()
     {
-        return 'invitation';
+        return 'acme_invitation_type';
     }
 }
 ```
