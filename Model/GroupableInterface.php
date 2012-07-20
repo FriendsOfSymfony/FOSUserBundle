@@ -21,7 +21,7 @@ interface GroupableInterface
     /**
      * Gets the groups granted to the user.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Traversable
      */
     public function getGroups();
 

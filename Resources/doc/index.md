@@ -57,7 +57,7 @@ Now tell composer to download the bundle by running the command:
 ``` bash
 $ php composer.phar update friendsofsymfony/user-bundle
 ```
-    
+
 Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
 
 ### Step 2: Enable the bundle
@@ -217,20 +217,13 @@ class User extends BaseUser
 
 **d) Propel User class**
 
-When using Propel, the `FOS\UserBundle\Model\UserInterface` is implemented
-by a proxy object.
 If you don't want to add your own logic in your user class, you can simply use
-`FOS\UserBundle\Propel\UserProxy` as proxy user class and `FOS\UserBundle\Propel\User`
-as model class in your configuration (see step 6) and you don't have to create
+`FOS\UserBundle\Propel\User` as user class and you don't have to create
 another class.
 
 If you want to add your own fields, you can extend the model class by overriding the database schema.
 Just copy the `Resources/config/propel/schema.xml` file to `app/Resources/FOSUserBundle/config/propel/schema.xml`,
 and customize it to fit your needs.
-Due to an issue with the Form component that does not support using `__call` to
-access properties, you will have to extend the proxy class as well to support these fields. For instance, if you've
-added a `website_url` attribute to the overridden schema, you'll need to declare both `getWebsiteUrl()` and
-`setWebsiteUrl()` methods in your own proxy class (just forward methods to the `user` attribute).
 
 ### Step 4: Configure your application's security.yml
 
@@ -346,12 +339,6 @@ Only three configuration values are required to use the bundle:
 * The firewall name which you configured in Step 5.
 * The fully qualified class name (FQCN) of the `User` class which you created in Step 4.
 
-**Note:**
-
-> When using Propel, the `user_class` key refers to the proxy class implementing
-> the FOSUserBundle interface. Thus, a fourth key named `propel_user_class`
-> is also required, referring to the actual model class.
-
 **Warning:**
 
 > When using one of the Doctrine implementation, you need either to use the
@@ -428,35 +415,22 @@ $ php app/console doctrine:mongodb:schema:create --index
 For Propel users you have to install the [TypehintableBehavior](https://github.com/willdurand/TypehintableBehavior) before to
 build your model. First, install it:
 
-By using Git submodules:
-
-``` bash
-$ git submodule add http://github.com/willdurand/TypehintableBehavior.git vendor/propel-behaviors/TypehintableBehavior
-```
-
-By using the Symfony2 vendor management:
-
-``` ini
-[TypehintableBehavior]
-    git=http://github.com/willdurand/TypehintableBehavior.git
-    target=/propel-behaviors/TypehintableBehavior
-```
-
-Then, register it:
-
-``` ini
-# app/config/propel.ini
-propel.behavior.typehintable.class = vendor.propel-behaviors.TypehintableBehavior.src.TypehintableBehavior
+```json
+{
+    "require": {
+        "willdurand/propel-typehintable-behavior": "*"
+    }
+}
 ```
 
 You now can run the following command to create the model:
 
 ``` bash
-$ php app/console propel:build-model
+$ php app/console propel:build
 ```
 
-> To create SQL, run the command `propel:build-sql` and insert it or use migration commands if you have an existing schema in your database.
-
+> To create SQL, run the command `propel:build --insert-sql` or use migration
+> commands if you have an existing schema in your database.
 
 You now can login at `http://app.com/app_dev.php/login`!
 

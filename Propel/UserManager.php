@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Propel;
 
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
-use FOS\UserBundle\Propel\User;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
@@ -21,23 +20,19 @@ class UserManager extends BaseUserManager
 {
     protected $class;
 
-    protected $modelClass;
-
     /**
      * Constructor.
      *
      * @param EncoderFactoryInterface $encoderFactory
      * @param CanonicalizerInterface  $usernameCanonicalizer
      * @param CanonicalizerInterface  $emailCanonicalizer
-     * @param string                  $proxyClass
-     * @param string                  $modelClass
+     * @param string                  $class
      */
-    public function __construct(EncoderFactoryInterface $encoderFactory, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer, $proxyClass, $modelClass)
+    public function __construct(EncoderFactoryInterface $encoderFactory, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer, $class)
     {
         parent::__construct($encoderFactory, $usernameCanonicalizer, $emailCanonicalizer);
 
-        $this->class = $proxyClass;
-        $this->modelClass = $modelClass;
+        $this->class = $class;
     }
 
     /**
@@ -45,29 +40,11 @@ class UserManager extends BaseUserManager
      */
     public function deleteUser(UserInterface $user)
     {
-        if (!$user instanceof UserProxy) {
+        if (!$user instanceof \Persistent) {
             throw new \InvalidArgumentException('This user instance is not supported by the Propel UserManager implementation');
         }
 
         $user->delete();
-    }
-
-    /**
-    * Returns an empty user instance
-    *
-    * @return UserInterface
-    */
-    public function createUser()
-    {
-        $class = $this->modelClass;
-        $user = new $class();
-
-        return $this->proxyfy($user);
-    }
-
-    public function getModelClass()
-    {
-        return $this->modelClass;
     }
 
     /**
@@ -90,13 +67,7 @@ class UserManager extends BaseUserManager
             $query->$method($value);
         }
 
-        $user = $query->findOne();
-
-        if ($user) {
-            $user = $this->proxyfy($user);
-        }
-
-        return $user;
+        return $query->findOne();
     }
 
     /**
@@ -112,7 +83,7 @@ class UserManager extends BaseUserManager
      */
     public function reloadUser(UserInterface $user)
     {
-        if (!$user instanceof UserProxy) {
+        if (!$user instanceof \Persistent) {
             throw new \InvalidArgumentException('This user instance is not supported by the Propel UserManager implementation');
         }
 
@@ -120,13 +91,11 @@ class UserManager extends BaseUserManager
     }
 
     /**
-     * Updates a user.
-     *
-     * @param UserInterface $user
+     * {@inheritDoc}
      */
     public function updateUser(UserInterface $user)
     {
-        if (!$user instanceof UserProxy) {
+        if (!$user instanceof \Persistent) {
             throw new \InvalidArgumentException('This user instance is not supported by the Propel UserManager implementation');
         }
 
@@ -142,14 +111,6 @@ class UserManager extends BaseUserManager
      */
     protected function createQuery()
     {
-        return \PropelQuery::from($this->modelClass);
-    }
-
-    protected function proxyfy($user)
-    {
-        $proxyClass = $this->getClass();
-        $proxy = new $proxyClass($user);
-
-        return $proxy;
+        return \PropelQuery::from($this->class);
     }
 }

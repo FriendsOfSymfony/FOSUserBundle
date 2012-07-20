@@ -120,4 +120,102 @@
         </property>
     </class>
 
+    <!-- Propel classes. This should stay in sync with the Model classes -->
+
+    <class name="FOS\UserBundle\Propel\User">
+
+        <property name="username">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.username.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="MinLength">
+                <option name="limit">2</option>
+                <option name="message">fos_user.username.short</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="MaxLength">
+                <option name="limit">255</option>
+                <option name="message">fos_user.username.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.email.blank</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="MinLength">
+                <option name="limit">2</option>
+                <option name="message">fos_user.email.short</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="MaxLength">
+                <option name="limit">254</option>
+                <option name="message">fos_user.email.long</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">fos_user.email.invalid</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="plainPassword">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.password.blank</option>
+                <option name="groups">Registration</option>
+            </constraint>
+            <constraint name="MinLength">
+                <option name="limit">2</option>
+                <option name="message">fos_user.password.short</option>
+                <option name="groups">
+                    <value>Registration</value>
+                    <value>Profile</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="FOS\UserBundle\Propel\Group">
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">fos_user.group.blank</option>
+                <option name="groups">Registration</option>
+            </constraint>
+            <constraint name="MinLength">
+                <option name="limit">2</option>
+                <option name="message">fos_user.group.short</option>
+                <option name="groups">Registration</option>
+            </constraint>
+            <constraint name="MaxLength">
+                <option name="limit">255</option>
+                <option name="message">fos_user.group.long</option>
+                <option name="groups">Registration</option>
+            </constraint>
+        </property>
+    </class>
+
 </constraint-mapping>

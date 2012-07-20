@@ -15,22 +15,26 @@
             <unique-column name="email_canonical" />
         </unique>
 
-        <column name="enabled" type="boolean" />
+        <column name="enabled" type="boolean" defaultValue="false" />
         <column name="salt" type="varchar" size="255" required="true" />
         <column name="password" type="varchar" size="255" required="true" />
         <column name="last_login" type="timestamp" required="false" />
-        <column name="locked" type="boolean" />
-        <column name="expired" type="boolean" />
+        <column name="locked" type="boolean" defaultValue="false" />
+        <column name="expired" type="boolean" defaultValue="false" />
         <column name="expires_at" type="timestamp" required="false" />
         <column name="confirmation_token" type="varchar" size="255" required="false" />
         <column name="password_requested_at" type="timestamp" required="false" />
-        <column name="credentials_expired" type="boolean" />
+        <column name="credentials_expired" type="boolean" defaultValue="false" />
         <column name="credentials_expire_at" type="timestamp" required="false" />
         <column name="roles" type="array" />
 
         <behavior name="typehintable">
+            <parameter name="last_login" value="DateTime" />
+            <parameter name="password_requested_at" value="DateTime" />
             <parameter name="roles" value="array" />
-            <parameter name="group" value="\FOS\UserBundle\Model\GroupInterface" />
+            <parameter name="fos_group" value="FOS\UserBundle\Model\GroupInterface" />
+
+            <parameter name="nullable_columns" value="password_requested_at" />
         </behavior>
     </table>
 

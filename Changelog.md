@@ -3,6 +3,9 @@ Changelog
 
 ### 2.0.0 (2012-XX-XX)
 
+* Refactored the Propel implementation to get rid of the UserProxy
+* Changed the expectation for `FOS\UserBundle\Model\GroupableInterface#getGroups` to `Traversable`
+* Moved the role constants to the UserInterface instead of the abstract User class
 * Refactored the Doctrine implementations to use the same manager classes
 * Removed the custom uniqueness validation in favor of the core constraints
 * Added getRedirectionUrl method to ProfileController

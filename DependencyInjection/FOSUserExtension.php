@@ -73,7 +73,6 @@ class FOSUserExtension extends Extension
                 'firewall_name' => 'fos_user.firewall_name',
                 'model_manager_name' => 'fos_user.model_manager_name',
                 'user_class' => 'fos_user.model.user.class',
-                'propel_user_class' => 'fos_user.model.user.propel_class',
             ),
             'template'  => 'fos_user.template.%s',
         ));
@@ -180,7 +179,6 @@ class FOSUserExtension extends Extension
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
                 'group_class' => 'fos_user.model.group.class',
-                'propel_group_class' => 'fos_user.model.group.propel_class',
             ),
             'form' => 'fos_user.group.form.%s',
         ));

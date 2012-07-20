@@ -38,10 +38,6 @@ class Configuration implements ConfigurationInterface
         $supportedDrivers = array('orm', 'mongodb', 'couchdb', 'propel', 'custom');
 
         $rootNode
-            ->validate()
-                ->ifTrue(function($v){return 'propel' === $v['db_driver'] && empty($v['propel_user_class']);})
-                ->thenInvalid('The propel model class must be defined by using the "propel_user_class" key.')
-            ->end()
             ->children()
                 ->scalarNode('db_driver')
                     ->validate()
@@ -53,7 +49,6 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('propel_user_class')->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
