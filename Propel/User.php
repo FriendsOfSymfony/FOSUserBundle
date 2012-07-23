@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Propel;
 
 use FOS\UserBundle\Model\GroupableInterface;
+use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Propel\om\BaseUser;
 
@@ -266,5 +267,17 @@ class User extends BaseUser implements UserInterface, GroupableInterface
     public function hasGroup($name)
     {
         return in_array($name, $this->getGroupNames());
+    }
+
+    /**
+    * Remove a group from the user groups.
+    *
+    * @param GroupInterface $group
+    */
+    public function removeGroup(GroupInterface $group)
+    {
+        $groups = $this->getGroups();
+        $groups->remove($groups->search($group));
+        $this->setGroups($groups);
     }
 }
