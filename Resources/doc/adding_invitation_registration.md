@@ -126,12 +126,12 @@ Override the default registration form with your own:
 namespace Acme\UserBundle\Form\Type;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 use Doctrine\ORM\EntityRepository;
 
 class RegistrationFormType extends BaseRegistrationFormType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
@@ -153,7 +153,8 @@ Create the invitation field:
 namespace Acme\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\EntityRepository;
 use Acme\UserBundle\Form\DataTransformer\InvitationToCodeTransformer;
 
@@ -166,20 +167,20 @@ class InvitationFormType extends AbstractType
         $this->invitationTransformer = $invitationTransformer;
     }
 
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->prependClientTransformer($this->invitationTransformer);
     }
 
-    public function getDefaultOptions()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
             'class' => 'Acme\UserBundle\Entity\Invitation',
             'required' => true,
-        );
+        ));
     }
 
-    public function getParent(array $options)
+    public function getParent()
     {
         return 'text';
     }
