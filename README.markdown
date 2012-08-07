@@ -17,7 +17,7 @@ provide the user provider for the core [SecurityBundle](http://symfony.com/doc/c
 
 **Caution:** This bundle is developed in sync with [symfony's repository](https://github.com/symfony/symfony)
 
-[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=master)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle)
+[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=1.2.x)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle)
 
 Documentation
 -------------
