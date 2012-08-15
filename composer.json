@@ -28,7 +28,7 @@
     "require-dev": {
         "twig/twig": "*",
         "doctrine/doctrine-bundle": "*",
-        "doctrine/mongodb-odm-bundle": "*",
+        "doctrine/mongodb-odm-bundle": "dev-master",
         "swiftmailer/swiftmailer": "*",
         "willdurand/propel-typehintable-behavior": "dev-master",
         "symfony/yaml": "2.1.*",
