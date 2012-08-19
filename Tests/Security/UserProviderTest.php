@@ -87,4 +87,21 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
 
         $this->userProvider->refreshUser($user);
     }
+
+    public function testRefreshPropelClassFromUserManager()
+    {
+        $user = $this->getMockForAbstractClass('FOS\UserBundle\Tests\TestCustomUser', array(), 'UserRefreshClassFromUserManager');
+        $user->setId(42);
+
+        $this->userManager->expects($this->atLeastOnce())
+            ->method('getClass')
+            ->will($this->returnValue('UserRefreshClassFromUserManager'));
+
+        $this->userManager->expects($this->once())
+            ->method('findUserBy')
+            ->with(array('id' => 42))
+            ->will($this->returnValue($user));
+
+        $this->assertSame($user, $this->userProvider->refreshUser($user));
+    }
 }
