@@ -18,6 +18,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Event\ManualLoginEvent;
+use FOS\UserBundle\Event\RouteEvent;
 
 /**
  * Controller managing the registration
@@ -30,29 +32,33 @@ class RegistrationController extends ContainerAware
     public function registerAction()
     {
         $form = $this->container->get('fos_user.registration.form');
+        $dispatcher = $this->container->get('event_dispatcher');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
-        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');        
 
         $process = $formHandler->process($confirmationEnabled);
         if ($process) {
             $user = $form->getData();
-
-            $authUser = false;
+            
+            $routeEvent = new RouteEvent();
+            $this->dispatcher->dispatch('fos_user.registration_success', $routeEvent);
+            if (!$routeEvent->isProcessed()) {
+                throw new \RuntimeException(sprintf('A listener for the event "%s" is needed', 'fos_user.registration_success'));
+            }
+            
+            $route = $eventRoute->getRoute();
+            
+            $url = $this->container->get('router')->generate($route);
+            $response = new RedirectResponse($url);
+            
             if ($confirmationEnabled) {
                 $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
-                $route = 'fos_user_registration_check_email';
             } else {
-                $authUser = true;
-                $route = 'fos_user_registration_confirmed';
+                $loginEvent = new ManualLoginEvent($user, $response, $this->container->getParameter('fos_user.firewall_name'));                
+                $dispatcher->dispatch('fos_user.manual_login', $loginEvent);
             }
 
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
-            $url = $this->container->get('router')->generate($route);
-            $response = new RedirectResponse($url);
-
-            if ($authUser) {
-                $this->authenticateUser($user, $response);
-            }
 
             return $response;
         }
@@ -97,7 +103,10 @@ class RegistrationController extends ContainerAware
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
         $response = new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
-        $this->authenticateUser($user, $response);
+        
+        $dispatcher = $this->container->get('event_dispatcher');
+        $loginEvent = new ManualLoginEvent($user, $response);                
+        $dispatcher->dispatch('fos_user.manual_login', $loginEvent);
 
         return $response;
     }
@@ -115,25 +124,6 @@ class RegistrationController extends ContainerAware
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
-    }
-
-    /**
-     * Authenticate a user with Symfony Security
-     *
-     * @param \FOS\UserBundle\Model\UserInterface        $user
-     * @param \Symfony\Component\HttpFoundation\Response $response
-     */
-    protected function authenticateUser(UserInterface $user, Response $response)
-    {
-        try {
-            $this->container->get('fos_user.security.login_manager')->loginUser(
-                $this->container->getParameter('fos_user.firewall_name'),
-                $user,
-                $response);
-        } catch (AccountStatusException $ex) {
-            // We simply do not authenticate users which do not pass the user
-            // checker (not enabled, expired, etc.).
-        }
     }
 
     protected function setFlash($action, $value)
