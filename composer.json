@@ -37,5 +37,10 @@
     "autoload": {
         "psr-0": { "FOS\\UserBundle": "" }
     },
-    "target-dir": "FOS/UserBundle"
+    "target-dir": "FOS/UserBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
 }
