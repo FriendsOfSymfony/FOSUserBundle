@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: بهنگام سازی
+    show:
+        name: نام گروه
+    new:
+        submit: ایجاد گروه
+    flash:
+        updated: گروه بهنگام شده است 
+        created: گروه ساخته شده است
+        deleted: گروه حذف شده است
+
+# Security
+"Bad credentials": نام کاربری یا کلمه عبور غیر مجاز
+
+security:
+    login:
+        username: "نام کاربری:"
+        password: "کلمه عبور:"
+        remember_me: مرا به یاد سپار
+        submit: ورود
+
+# Profile
+profile:
+    show:
+        username: نام کاربری
+        email: ایمیل
+    edit:
+        submit: بهنگام سازی
+    flash:
+        updated: نمایه بهنگام شده است
+
+# Password change
+change_password:
+    submit: تغییر کلمه عبور
+    flash:
+        success: کلمه عبور تغییر کرده است
+
+# Registration
+registration:
+    check_email: ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای فعال سازی باید روی آن کلیک کنید.
+    confirmed: %username% تبریک, کاربری شما اکنون فعال شده است.
+    back: برگشت به صفحه اصلی.
+    submit: ثبت نام
+    flash:
+        user_created: کاربر با موفقیت ساخته شده است
+    email:
+        subject: %username% خوش آمدید!
+        message: |
+            %username% سلام!
+
+            برای تکمیل فعال سازی کاربری خود - لطفا %confirmationUrl% را مشاهده کنید
+
+            با احترام،
+            تیم.
+
+# Password resetting
+resetting:
+    password_already_requested: کلمه عبور برای این کاربر هم اکنون طی ۲۴ ساعت گذشته درخواست شده است.
+    check_email: ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای بازنشانی کلمه عبور باید روی آن کلیک کنید.
+    request:
+        invalid_username: نام کاربری یا ایمیل "%username%" موجود نیست.
+        username: "نام کاربری یا ایمیل:"
+        submit: بازنشانی کلمه عبور
+    reset:
+        submit: تغییر کلمه عبور
+    flash:
+        success: کلمه عبور با موفقیت بازنشانی شده است
+    email:
+        subject: بازنشانی کلمه عبور
+        message: |
+            %username% سلام!
+
+            برای بازنشانی کلمه عبور خود - لطفا %confirmationUrl% را مشاهده کنید
+
+            با احترام،
+            تیم.
+
+# Global strings
+layout:
+    logout: خروج
+    login: ورود
+    register: ثبت نام
+    logged_in_as: وارد شده با %username%
+
+# Form field labels
+form:
+    group_name: "نام گروه:"
+    username: "نام کاربری:"
+    email: "ایمیل:"
+    current_password: "کلمه عبور کنونی:"
+    password: "کلمه عبور:"
+    password_confirmation: "تایید کلمه عبور:"
+    new_password: "کلمه عبور جدید:"
+    new_password_confirmation: "تایید کلمه عبور جدید:"
