@@ -29,6 +29,11 @@
         <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
             <argument type="service" id="fos_user.user_manager" />
         </service>
+        
+        <service id="fos_user.security.manual_login_manager" class="FOS\UserBundle\Security\ManualLoginManager">
+                <argument type="service" id="fos_user.security.login_manager" />
+                <tag name="kernel.event_listener" event="fos_user.manual_login" />
+        </service>
     </services>
 
 </container>
