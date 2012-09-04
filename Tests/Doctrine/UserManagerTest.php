@@ -9,9 +9,9 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 {
     const USER_CLASS = 'FOS\UserBundle\Tests\Doctrine\DummyUser';
 
-    private $userManager;
-    private $om;
-    private $repository;
+    protected $userManager;
+    protected $om;
+    protected $repository;
 
     public function setUp()
     {
@@ -27,22 +27,22 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->om->expects($this->any())
             ->method('getRepository')
-            ->with($this->equalTo(self::USER_CLASS))
+            ->with($this->equalTo(static::USER_CLASS))
             ->will($this->returnValue($this->repository));
         $this->om->expects($this->any())
             ->method('getClassMetadata')
-            ->with($this->equalTo(self::USER_CLASS))
+            ->with($this->equalTo(static::USER_CLASS))
             ->will($this->returnValue($class));
         $class->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue(self::USER_CLASS));
+            ->will($this->returnValue(static::USER_CLASS));
 
-        $this->userManager = new UserManager($ef, $c, $c, $this->om, self::USER_CLASS);
+        $this->userManager = $this->createUserManager($ef, $c, $this->om, static::USER_CLASS);
     }
 
     public function testDeleteUser()
     {
-        $user = new DummyUser();
+        $user = $this->getUser();
         $this->om->expects($this->once())->method('remove')->with($this->equalTo($user));
         $this->om->expects($this->once())->method('flush');
 
@@ -51,7 +51,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetClass()
     {
-        $this->assertEquals(self::USER_CLASS, $this->userManager->getClass());
+        $this->assertEquals(static::USER_CLASS, $this->userManager->getClass());
     }
 
     public function testFindUserBy()
@@ -71,11 +71,22 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdateUser()
     {
-        $user = new DummyUser();
+        $user = $this->getUser();
         $this->om->expects($this->once())->method('persist')->with($this->equalTo($user));
         $this->om->expects($this->once())->method('flush');
 
         $this->userManager->updateUser($user);
+    }
+
+    protected function createUserManager($encoderFactory, $canonicalizer, $objectManager, $userClass)
+    {
+        return new UserManager($encoderFactor, $canonicalizer, $canonicalizer, $objectManager, $userClass);
+    }
+
+    protected function getUser()
+    {
+        $userClass = static::USER_CLASS;
+        return new $userClass();
     }
 }
 
