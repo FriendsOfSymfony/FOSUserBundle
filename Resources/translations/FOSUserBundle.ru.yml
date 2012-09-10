@@ -70,7 +70,7 @@ resetting:
     email:
         subject: Сброс пароля
         message: |
-            Привествуем %username%!
+            Приветствуем %username%!
 
             Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
 
