@@ -17,6 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use FOS\UserBundle\Model\User;
+use FOS\UserBundle\Event\UserCreatedEvent;
 
 /**
  * @author Matthieu Bontemps <matthieu@knplabs.com>
@@ -75,7 +76,10 @@ EOT
         $superadmin = $input->getOption('super-admin');
 
         $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
-        $manipulator->create($username, $password, $email, !$inactive, $superadmin);
+        $user = $manipulator->create($username, $password, $email, !$inactive, $superadmin);
+
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch('user_bundle.user_created', new UserCreatedEvent($user));
 
         $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
