@@ -49,7 +49,7 @@ class FOSUserExtension extends Extension
                     break;
 
                 case 'mongodb':
-                    $container->getDefinition('fos_user.user_listener')->addTag('doctrine_mongodb.odm.event_subscriber');
+                    $container->getDefinition('fos_user.user_listener')->addTag('doctrine.odm.mongodb.event_subscriber');
                     break;
 
                 case 'couchdb':
