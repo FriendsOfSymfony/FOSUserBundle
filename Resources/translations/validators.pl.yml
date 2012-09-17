@@ -1,6 +1,6 @@
 fos_user:
     username:
-        already_used: Ta nazwa użytkownika jest juz zajęta
+        already_used: Ta nazwa użytkownika jest już zajęta
         blank: Proszę podać nazwę użytkownika
         short: "[-Inf,Inf]Nazwa użytkownika jest za krótka"
         long: "[-Inf,Inf]Nazwa użytkownika jest za długa"
