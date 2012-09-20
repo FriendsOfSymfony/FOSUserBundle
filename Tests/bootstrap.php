@@ -22,5 +22,6 @@ if (class_exists('Propel')) {
     $builder = new \PropelQuickBuilder();
     $builder->getConfig()->setBuildProperty('behavior.typehintable.class', $class->getFileName());
     $builder->setSchema(file_get_contents(__DIR__.'/../Resources/config/propel/schema.xml'));
-    $builder->buildClasses();
+    $builder->setClassTargets(array('tablemap', 'peer', 'object', 'query'));
+    $builder->build();
 }
