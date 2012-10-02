@@ -294,7 +294,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return ContainerBuilder
+     * @return void
      */
     protected function createEmptyConfiguration()
     {
@@ -306,7 +306,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return ContainerBuilder
+     * @return void
      */
     protected function createFullConfiguration()
     {
@@ -320,7 +320,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * getEmptyConfig
      *
-     * @return array
+     * @return mixed
      */
     protected function getEmptyConfig()
     {
@@ -401,21 +401,35 @@ EOF;
         return  $parser->parse($yaml);
     }
 
+    /**
+     * @param string $value
+     * @param string $key
+     */
     private function assertAlias($value, $key)
     {
         $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
     }
 
+    /**
+     * @param string|null|array<string,string>|integer|boolean $value
+     * @param string                                           $key
+     */
     private function assertParameter($value, $key)
     {
         $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
     }
 
+    /**
+     * @param string $id
+     */
     private function assertHasDefinition($id)
     {
         $this->assertTrue(($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id)));
     }
 
+    /**
+     * @param string $id
+     */
     private function assertNotHasDefinition($id)
     {
         $this->assertFalse(($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id)));

@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Entity;
 
-use FOS\UserBundle\Model\GroupInterface;
 use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Doctrine\GroupManager as BaseGroupManager;
 

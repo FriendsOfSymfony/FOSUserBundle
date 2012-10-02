@@ -93,7 +93,7 @@ class GroupManager extends BaseGroupManager
     /**
     * Create the propel query class corresponding to your queryclass
     *
-    * @return \ModelCriteria the queryClass
+    * @return string the queryClass
     */
     protected function createQuery()
     {

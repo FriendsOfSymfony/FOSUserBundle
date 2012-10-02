@@ -170,6 +170,10 @@ class ResettingController extends ContainerAware
         return $email;
     }
 
+    /**
+     * @param string $action
+     * @param string $value
+     */
     protected function setFlash($action, $value)
     {
         $this->container->get('session')->setFlash($action, $value);

@@ -30,6 +30,9 @@ class ChangePasswordFormHandler
         $this->userManager = $userManager;
     }
 
+    /**
+     * @return string
+     */
     public function getNewPassword()
     {
         return $this->form->getData()->new;

@@ -25,7 +25,8 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the username.
      *
-     * @param string $username
+     * @param  string $username
+     * @return User
      */
     public function setUsername($username);
 
@@ -39,7 +40,8 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the canonical username.
      *
-     * @param string $usernameCanonical
+     * @param  string $usernameCanonical
+     * @return User
      */
     public function setUsernameCanonical($usernameCanonical);
 
@@ -53,7 +55,8 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the email.
      *
-     * @param string $email
+     * @param  string $email
+     * @return User
      */
     public function setEmail($email);
 
@@ -67,7 +70,8 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Set the canonical email.
      *
-     * @param string $emailCanonical
+     * @param  string $emailCanonical
+     * @return User
      */
     public function setEmailCanonical($emailCanonical);
 
@@ -81,14 +85,16 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the plain password.
      *
-     * @param string $password
+     * @param  string                           $password
+     * @return User|\FOS\UserBundle\Propel\User
      */
     public function setPlainPassword($password);
 
     /**
      * Sets the hashed password.
      *
-     * @param string $password
+     * @param  string $password
+     * @return User
      */
     public function setPassword($password);
 
@@ -104,28 +110,31 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      *
      * Useful when not hydrating all fields.
      *
-     * @param UserInterface $user
+     * @param null|UserInterface $user
      *
      * @return Boolean
      */
     public function isUser(UserInterface $user = null);
 
     /**
-     * @param Boolean $boolean
+     * @param  Boolean $boolean
+     * @return User
      */
     public function setEnabled($boolean);
 
     /**
      * Sets the locking status of the user.
      *
-     * @param Boolean $boolean
+     * @param  Boolean $boolean
+     * @return User
      */
     public function setLocked($boolean);
 
     /**
      * Sets the super admin status
      *
-     * @param Boolean $boolean
+     * @param  Boolean                          $boolean
+     * @return User|\FOS\UserBundle\Propel\User
      */
     public function setSuperAdmin($boolean);
 
@@ -139,14 +148,16 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the confirmation token
      *
-     * @param string $confirmationToken
+     * @param  string $confirmationToken
+     * @return User
      */
     public function setConfirmationToken($confirmationToken);
 
     /**
      * Sets the timestamp that the user requested a password reset.
      *
-     * @param \DateTime $date
+     * @param  null|\DateTime $date
+     * @return User
      */
     public function setPasswordRequestedAt(\DateTime $date = null);
 
@@ -162,7 +173,8 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     /**
      * Sets the last login time
      *
-     * @param \DateTime $time
+     * @param  \DateTime $time
+     * @return User
      */
     public function setLastLogin(\DateTime $time);
 
@@ -185,21 +197,24 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      *
      * This overwrites any previous roles.
      *
-     * @param array $roles
+     * @param  array $roles
+     * @return User
      */
     public function setRoles(array $roles);
 
     /**
      * Adds a role to the user.
      *
-     * @param string $role
+     * @param  string                           $role
+     * @return User|\FOS\UserBundle\Propel\User
      */
     public function addRole($role);
 
     /**
      * Removes a role to the user.
      *
-     * @param string $role
+     * @param  string $role
+     * @return void
      */
     public function removeRole($role);
 }

@@ -56,6 +56,10 @@ class Mailer implements MailerInterface
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['resetting'], $user->getEmail());
     }
 
+    /**
+     * @param string $renderedTemplate
+     * @param string $toEmail
+     */
     protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail)
     {
         // Render the email, use the first line as the subject, and the rest as the body

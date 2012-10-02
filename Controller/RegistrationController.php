@@ -136,6 +136,10 @@ class RegistrationController extends ContainerAware
         }
     }
 
+    /**
+     * @param string $action
+     * @param string $value
+     */
     protected function setFlash($action, $value)
     {
         $this->container->get('session')->setFlash($action, $value);

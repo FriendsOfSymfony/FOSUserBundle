@@ -2,7 +2,6 @@
 
 namespace FOS\UserBundle\CouchDocument;
 
-use FOS\UserBundle\Model\GroupInterface;
 use Doctrine\ODM\CouchDB\DocumentManager;
 use FOS\UserBundle\Doctrine\GroupManager as BaseGroupManager;
 

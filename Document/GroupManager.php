@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Document;
 
-use FOS\UserBundle\Model\GroupInterface;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use FOS\UserBundle\Doctrine\GroupManager as BaseGroupManager;
 

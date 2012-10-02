@@ -29,7 +29,7 @@ class UserToUsernameTransformer implements DataTransformerInterface
      *
      * @param mixed $value UserInterface instance
      *
-     * @return string Username
+     * @return null|string Username
      *
      * @throws UnexpectedTypeException if the given value is not a UserInterface instance
      */

@@ -12,7 +12,6 @@
 namespace FOS\UserBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
-use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Doctrine\UserManager as BaseUserManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;

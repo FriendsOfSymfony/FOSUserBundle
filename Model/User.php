@@ -277,7 +277,7 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Gets the plain password.
      *
-     * @return string
+     * @return null|string
      */
     public function getPlainPassword()
     {
@@ -434,7 +434,7 @@ abstract class User implements UserInterface, GroupableInterface
      *
      * Useful when not hydrating all fields.
      *
-     * @param UserInterface $user
+     * @param null|UserInterface $user
      *
      * @return Boolean
      */
@@ -665,7 +665,7 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Sets the timestamp that the user requested a password reset.
      *
-     * @param \DateTime $date
+     * @param null|\DateTime $date
      *
      * @return User
      */
@@ -679,7 +679,7 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Gets the timestamp that the user requested a password reset.
      *
-     * @return \DateTime
+     * @return null|\DateTime
      */
     public function getPasswordRequestedAt()
     {
@@ -722,7 +722,7 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Gets the groups granted to the user.
      *
-     * @return Collection
+     * @return ArrayCollection
      */
     public function getGroups()
     {

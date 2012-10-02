@@ -56,6 +56,10 @@ class TwigSwiftMailer implements MailerInterface
         $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail());
     }
 
+    /**
+     * @param array<string,UserInterface|string> $context
+     * @param string                             $toEmail
+     */
     protected function sendMessage($templateName, $context, $fromEmail, $toEmail)
     {
         $template = $this->twig->loadTemplate($templateName);

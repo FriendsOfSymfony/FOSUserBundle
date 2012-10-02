@@ -62,6 +62,10 @@ class ChangePasswordController extends ContainerAware
         return $this->container->get('router')->generate('fos_user_profile_show');
     }
 
+    /**
+     * @param string $action
+     * @param string $value
+     */
     protected function setFlash($action, $value)
     {
         $this->container->get('session')->setFlash($action, $value);

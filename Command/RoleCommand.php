@@ -59,6 +59,7 @@ abstract class RoleCommand extends ContainerAwareCommand
 
     /**
      * @see Command
+     * @param boolean $super
      */
     abstract protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role);
 

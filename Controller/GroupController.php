@@ -127,6 +127,10 @@ class GroupController extends ContainerAware
         return $this->container->getParameter('fos_user.template.engine');
     }
 
+    /**
+     * @param string $action
+     * @param string $value
+     */
     protected function setFlash($action, $value)
     {
         $this->container->get('session')->setFlash($action, $value);

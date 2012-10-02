@@ -13,5 +13,8 @@ namespace FOS\UserBundle\Util;
 
 interface TokenGeneratorInterface
 {
+    /**
+     * @return string
+     */
     public function generateToken();
 }

@@ -78,6 +78,11 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
         $this->userManager->updateUser($user);
     }
 
+    /**
+     * @param \PHPUnit_Framework_MockObject_MockObject $encoderFactory
+     * @param \PHPUnit_Framework_MockObject_MockObject $canonicalizer
+     * @param \PHPUnit_Framework_MockObject_MockObject $objectManager
+     */
     protected function createUserManager($encoderFactory, $canonicalizer, $objectManager, $userClass)
     {
         return new UserManager($encoderFactory, $canonicalizer, $canonicalizer, $objectManager, $userClass);
@@ -86,6 +91,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
     protected function getUser()
     {
         $userClass = static::USER_CLASS;
+
         return new $userClass();
     }
 }

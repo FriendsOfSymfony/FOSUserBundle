@@ -50,6 +50,9 @@ abstract class Group implements GroupInterface
         return $this->name;
     }
 
+    /**
+     * @param string $role
+     */
     public function hasRole($role)
     {
         return in_array(strtoupper($role), $this->roles, true);

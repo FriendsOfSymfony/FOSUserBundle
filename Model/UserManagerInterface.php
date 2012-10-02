@@ -36,7 +36,8 @@ interface UserManagerInterface
     /**
      * Deletes a user.
      *
-     * @param UserInterface $user
+     * @param  UserInterface $user
+     * @return void
      */
     public function deleteUser(UserInterface $user);
 
@@ -102,28 +103,32 @@ interface UserManagerInterface
     /**
      * Reloads a user.
      *
-     * @param UserInterface $user
+     * @param  UserInterface $user
+     * @return void
      */
     public function reloadUser(UserInterface $user);
 
     /**
      * Updates a user.
      *
-     * @param UserInterface $user
+     * @param  UserInterface $user
+     * @return void
      */
     public function updateUser(UserInterface $user);
 
     /**
      * Updates the canonical username and email fields for a user.
      *
-     * @param UserInterface $user
+     * @param  UserInterface $user
+     * @return void
      */
     public function updateCanonicalFields(UserInterface $user);
 
     /**
      * Updates a user password if a plain password is set.
      *
-     * @param UserInterface $user
+     * @param  UserInterface $user
+     * @return void
      */
     public function updatePassword(UserInterface $user);
 }
