@@ -21,8 +21,8 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": "2.1.*,<=2.2.*",
-        "symfony/security-bundle": "2.1.*,<=2.2.*"
+        "symfony/framework-bundle": ">=2.1.0,<2.3-dev",
+        "symfony/security-bundle": ">=2.1.0,<2.3-dev"
     },
     "suggest": {
         "doctrine/doctrine-bundle": "*",
