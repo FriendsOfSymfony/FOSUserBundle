@@ -39,7 +39,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
+    check_email: Se ha enviado un email a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
     confirmed: Felicidades %username%, tu cuenta está ahora confirmada.
     back: Volver a la página original.
     submit: Registrar
@@ -82,7 +82,7 @@ layout:
     logout: Salir
     login: Entrar
     register: Registrar
-    logged_in_as: Entrado como %username%
+    logged_in_as: Identificado como %username%
 
 # Form field labels
 form:
@@ -91,6 +91,6 @@ form:
     email: "Email:"
     current_password: "Contraseña actual:"
     password: "Contraseña:"
-    password_confirmation: "Verificación:"
+    password_confirmation: "Repita la contraseña:"
     new_password: "Nueva contraseña:"
-    new_password_confirmation: "Verificación:"
+    new_password_confirmation: "Repita la contraseña:"
