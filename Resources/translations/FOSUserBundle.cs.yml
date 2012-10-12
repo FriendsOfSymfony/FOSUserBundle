@@ -12,6 +12,8 @@ group:
         deleted: Skupina byla úspěšně vymazána
 
 # Security
+"Bad credentials": Neplatné přihlašovací údaje
+
 security:
     login:
         username: "Uživatelské jméno:"
