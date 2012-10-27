@@ -32,14 +32,14 @@ profile:
 # Password change
 change_password:
     submit: Wachtwoord wijzigen
-#    flash:
-#        success: The password has been changed
+    flash:
+        success: Het wachtwoord is gewijzigd
 
 # Registration
 registration:
-    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een activatielink die u moet aanklikken om uw account te activeren.
-    confirmed: Gefeliciteerd %username%, uw account is nu bevestigd.
-    #back: Back to the originating page.
+    check_email: Er is een e-mail verstuurd naar %email%. Met een activatielink om uw account te activeren.
+    confirmed: Gefeliciteerd %username%, uw account is nu geactiveerd.
+    back: Terug naar de oorspronkelijke pagina.
     submit: Registreer
     flash:
         user_created: De gebruiker is succesvol aangemaakt
@@ -55,8 +55,8 @@ registration:
 
 # Password resetting
 resetting:
-    password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd in de laatste 24 uur.
-    check_email: Er is een e-mail gestuurd naar %email%. Het bevat een link om uw wachtwoord te resetten..
+    password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.
+    check_email: Er is een e-mail verstuurd naar %email%. Met een link om uw wachtwoord te resetten.
     request:
         invalid_username: De gebruiker "%username%" bestaat niet.
         username: "Gebruikersnaam of e-mailadres:"
@@ -87,6 +87,6 @@ form:
     email: "E-mail:"
     current_password: "Huidig wachtwoord:"
     password: "Wachtwoord:"
-    password_confirmation: "Verificatie:"
+    password_confirmation: "Wachtwoord controle:"
     new_password: "Nieuw wachtwoord:"
-    new_password_confirmation: "Verificatie:"
+    new_password_confirmation: "Wachtwoord controle:"
