@@ -89,7 +89,7 @@ form:
     group_name: "Group name:"
     username: "Username:"
     email: "Email:"
-    current_password: "Current Password:"
+    current_password: "Current password:"
     password: "Password:"
     password_confirmation: "Verification:"
     new_password: "New password:"

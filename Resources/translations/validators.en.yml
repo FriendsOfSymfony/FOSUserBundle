@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: Please enter a password
         short: "[-Inf,Inf]The password is too short"
+        mismatch: The entered passwords don't match
     new_password:
         blank: Please enter a new password
         short: "[-Inf,Inf]The new password is too short"

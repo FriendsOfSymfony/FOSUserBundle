@@ -31,6 +31,7 @@ class ChangePasswordFormType extends AbstractType
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => 'form.new_password'),
             'second_options' => array('label' => 'form.new_password_confirmation'),
+            'invalid_message' => 'fos_user.password.mismatch',
         ));
     }
 

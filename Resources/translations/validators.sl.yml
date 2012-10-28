@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: Prosimo, vnesite geslo
         short: "[-Inf,Inf]Geslo je prekratko"
+        mismatch: Vpisani gesli se ne ujemata
     new_password:
         blank: Prosimo, vnesite novo geslo
         short: "[-Inf,Inf]Novo geslo je prekratko"
