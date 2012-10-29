@@ -5,14 +5,15 @@ fos_user:
         short: "[-Inf,Inf]De gebruikersnaam is te kort"
         long: "[-Inf,Inf]De gebruikersnaam is te lang"
     email:
-        already_used: Het email adres is al in gebruik
-        blank: Voer een email adres in
-        short: "[-Inf,Inf]Het email adres is te kort"
-        long: "[-Inf,Inf]Het email adres is te lang"
-        invalid: Het email adres is ongeldig
+        already_used: Het e-mailadres is al in gebruik
+        blank: Voer een e-mailadres in
+        short: "[-Inf,Inf]Het e-mailadres is te kort"
+        long: "[-Inf,Inf]Het e-mailadres is te lang"
+        invalid: Het e-mailadres is ongeldig
     password:
         blank: Voer een wachtwoord in
         short: "[-Inf,Inf]Het wachtwoord is te kort"
+        mismatch: Het ingevoerde wachtwoord komt niet overeen
     new_password:
         blank: Voer een nieuw wachtwoord in
         short: "[-Inf,Inf]Het nieuwe wachtwoord is te kort"
