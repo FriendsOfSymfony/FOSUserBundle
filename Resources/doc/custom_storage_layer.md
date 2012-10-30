@@ -2,7 +2,7 @@ Using a custom storage layer
 ============================
 
 FOSUserBundle has been designed to allow you to easily change the storage
-layer used by your application and keep and keep all of the functionality
+layer used by your application and keep all of the functionality
 provided by the bundle.
 
 Implementing a new storage layer requires providing two classes: the user
