@@ -65,14 +65,15 @@ resetting:
         submit: Ändra lösenord
     flash:
         success: Lösenordet har återställts
-    email: |
-        Återställ lösenord
-        Hej %username%!
-
-        För att återställa ditt lösenord - vänligen besök %confirmationUrl%
-
-        Hälsningar,
-        Teamet.
+    email:
+        subject: Återställ lösenord
+        message: |
+            Hej %username%!
+    
+            För att återställa ditt lösenord - vänligen besök %confirmationUrl%
+    
+            Hälsningar,
+            Teamet.
 
 # Global strings
 layout:
