@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Este nome de usuário já está sendo usado
-        blank: É necessário preencher o nome de usuário
-        short: "[-Inf,Inf]Este de usuário é muito curto"
-        long: "[-Inf,Inf]Este de usuário é muito longo"
+        already_used: Este utilizador já existe
+        blank: Por favor introduza o nome de utilizador
+        short: "[-Inf,Inf]O nome de utilizador é muito curto"
+        long: "[-Inf,Inf]O nome de utilizador é muito longo"
     email:
-        already_used: Este email já está sendo usado
-        blank: É necessário preencher o email
+        already_used: Este email já está a ser usado
+        blank: Por favor introduza o email
         short: "[-Inf,Inf]Este email é muito curto"
         long: "[-Inf,Inf]Este email é muito longo"
         invalid: Este email é inválido
     password:
-        blank: É necessário preencher sua senha
+        blank: Por favor introduza a senha
         short: "[-Inf,Inf]Esta senha é muito curta"
         mismatch: As senhas não correspondem
     new_password:
-        blank: É necessário preencher a nova senha
+        blank: Por favor introduza a nova senha
         short: "[-Inf,Inf]A nova senha é muito curta"
     current_password:
         invalid: A senha está incorreta
     group:
-        blank: É necessário preencher o nome
+        blank: Por favor introduza o nome
         short: "[-Inf,Inf]O nome é muito curto"
         long: "[-Inf,Inf]O nome é muito longo"
