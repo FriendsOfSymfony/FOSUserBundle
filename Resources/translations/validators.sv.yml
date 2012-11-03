@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Användarnamnet är upptaget
+        blank: Ange ett användarnamn
+        short: "[-Inf,Inf]Användarnamnet är för kort"
+        long: "[-Inf,Inf]Användarnamnet är för långt"
+    email:
+        already_used: E-postadressen är upptagen
+        blank: Ange en e-postadress
+        short: "[-Inf,Inf]E-postadressen är för kort"
+        long: "[-Inf,Inf]E-postadressen är för lång"
+        invalid: E-postadressen är ogiltig
+    password:
+        blank: Ange ett lösenord
+        short: "[-Inf,Inf]Lösenordet är för kort"
+        mismatch: De angivna lösenorden matchar inte
+    new_password:
+        blank: Ange ett nytt lösenord
+        short: "[-Inf,Inf]Det nya lösenordet är för kort"
+    current_password:
+        invalid: Det nuvarande lösenordet är felaktigt
+    group:
+        blank: Ange ett namn
+        short: "[-Inf,Inf]Namnet är för kort"
+        long: "[-Inf,Inf]Namnet är för långt"
