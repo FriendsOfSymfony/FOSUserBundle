@@ -220,7 +220,7 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->scalarNode('mailer')->defaultValue('fos_user.mailer.default')->end()
                             ->scalarNode('email_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
-                           ->scalarNode('token_generator')->defaultValue('fos_user.util.token_generator.default')->end()
+                            ->scalarNode('token_generator')->defaultValue('fos_user.util.token_generator.default')->end()
                             ->scalarNode('username_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
                             ->scalarNode('user_manager')->defaultValue('fos_user.user_manager.default')->end()
                         ->end()
