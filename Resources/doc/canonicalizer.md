@@ -32,7 +32,7 @@ You can now configure FOSUserBundle to use your own implementation:
 # app/config/config.yml
 fos_user:
     # ...
-    services:
+    service:
         email_canonicalizer:    my_canonicalizer
         username_canonicalizer: my_canonicalizer
 ```
