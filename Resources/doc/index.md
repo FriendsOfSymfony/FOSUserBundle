@@ -328,7 +328,6 @@ fos_user:
 Or if you prefer XML:
 
 ``` xml
-# app/config/config.xml
 <!-- app/config/config.xml -->
 
 <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
