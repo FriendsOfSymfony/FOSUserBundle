@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: 请输入密码
         short: "[-Inf,Inf]密码字数不够"
+        mismatch: 两次输入密码不一致
     new_password:
         blank: 请输入新密码
         short: "[-Inf,Inf]新密码字数不够"
