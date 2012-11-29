@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: Bitte geben Sie ein Passwort an
         short: "[-Inf,Inf]Das Passwort ist zu kurz"
+        mismatch: Die Passwörter stimmen nicht überein
     new_password:
         blank: Bitte geben Sie ein neues Passwort an
         short: "[-Inf,Inf]Das neue Passwort ist zu kurz"
