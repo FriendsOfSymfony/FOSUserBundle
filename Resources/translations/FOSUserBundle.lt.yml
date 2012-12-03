@@ -1,0 +1,97 @@
+# Group
+group:
+    edit:
+        submit: Atnaujinti grupę
+    show:
+        name: Grupės vardas
+    new:
+        submit: Sukurti grupę
+    flash:
+        updated: Grupė buvo atnaujinta
+        created: Grupė buvo sukurta
+        deleted: Grupė buvo ištrinta
+
+# Security
+"Bad credentials": Neteisingas naudotojas arba slaptažodis
+
+security:
+    login:
+        username: "Naudotojas:"
+        password: "Slaptažodis:"
+        remember_me: Atsiminti mane
+        submit: Prisijungti
+
+# Profile
+profile:
+    show:
+        username: Naudotojo vardas
+        email: El. paštas
+    edit:
+        submit: Atnaujinti
+    flash:
+        updated: Profilis buvo atnaujintas 
+
+# Password change
+change_password:
+    submit: Pakeisti slaptažodi
+    flash:
+        success: slaptažodis buvo pakeistas
+
+# Registration
+registration:
+    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią aplankę aktyvuosite savo paskyrą.
+    confirmed: Sveikiname %username%, jusu paskyra buvo aktyvuota.
+    back: Gryžti i praeitą puslapi.
+    submit: Registruotis
+    flash:
+        user_created: Naudotojas buvo sukurtas sėkmingai
+    email:
+        subject: Sveiki %username%!
+        message: |
+            Sveiki %username%!
+
+            Kad pabaigtumėte savo paskyros aktyvavymą - prašome apsilankyti %confirmationUrl%
+
+            Pagarbiai,
+            Komanda.
+
+# Password resetting
+resetting:
+    password_already_requested: Slaptažodis šitam naudotojui jau buvo prašytas pakeisti per pastarąsias 24 valandas.
+    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodi.
+    request:
+        invalid_username: Naudotojas arba el. paštas "%username%" neegzistuoja.
+        username: "Naudotojo vardas arba el. paštas:"
+        submit: Nustatyti slaptažodi
+    reset:
+        submit: Pakeisti slaptažodi
+    flash:
+        success: Slaptažodis pakeistas sėkmingai
+    email:
+        subject: Nustatyti slaptažodi
+        message: |
+            Sveiki %username%!
+
+            Kad pakeistumėte savo slaptažodį - prašome apsilankyti %confirmationUrl%
+
+            Pagarbiai,
+            Komanda.
+
+# Global strings
+layout:
+    logout: Atsijungti
+    login: Prisijungti
+    register: Registruotis
+    logged_in_as: Prisijungęs kaip %username%
+
+# Form field labels
+form:
+    group_name: "Grupės vardas:"
+    username: "Naudotojas:"
+    email: "El. paštas:"
+    current_password: "Dabartinis slaptažodis:"
+    password: "Slaptažodis:"
+    password_confirmation: "Patvirtinti:"
+    new_password: "Naujas slaptažodis:"
+    new_password_confirmation: "Patvirtinti:"
+
