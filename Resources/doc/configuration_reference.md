@@ -20,13 +20,13 @@ fos_user:
             type:               fos_user_profile
             handler:            fos_user.profile.form.handler.default
             name:               fos_user_profile_form
-            validation_groups:  [Profile]
+            validation_groups:  [Profile, Default]
     change_password:
         form:
             type:               fos_user_change_password
             handler:            fos_user.change_password.form.handler.default
             name:               fos_user_change_password_form
-            validation_groups:  [ChangePassword]
+            validation_groups:  [ChangePassword, Default]
     registration:
         confirmation:
             from_email: # Use this node only if you don't want the global email address for the confirmation email
@@ -38,7 +38,7 @@ fos_user:
             type:               fos_user_registration
             handler:            fos_user.registration.form.handler.default
             name:               fos_user_registration_form
-            validation_groups:  [Registration]
+            validation_groups:  [Registration, Default]
     resetting:
         token_ttl: 86400
         email:
@@ -50,7 +50,7 @@ fos_user:
             type:               fos_user_resetting
             handler:            fos_user.resetting.form.handler.default
             name:               fos_user_resetting_form
-            validation_groups:  [ResetPassword]
+            validation_groups:  [ResetPassword, Default]
     service:
         mailer:                 fos_user.mailer.default
         email_canonicalizer:    fos_user.util.canonicalizer.default
@@ -66,5 +66,5 @@ fos_user:
             type:               fos_user_group
             handler:            fos_user.group.form.handler.default
             name:               fos_user_group_form
-            validation_groups:  [Registration]
+            validation_groups:  [Registration, Default]
 ```
