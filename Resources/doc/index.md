@@ -457,7 +457,7 @@ The following documents are available:
 - [Emails](emails.md)
 - [Using the groups](groups.md)
 - [More about the Doctrine implementations](doctrine.md)
-- [Supplemental Documenation](supplemental.md)
+- [Supplemental Documentation](supplemental.md)
 - [Replacing the canonicalizer](canonicalizer.md)
 - [Using a custom storage layer](custom_storage_layer.md)
 - [Configuration Reference](configuration_reference.md)
