@@ -15,6 +15,9 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
 class UserManager extends BaseUserManager
 {
@@ -112,5 +115,26 @@ class UserManager extends BaseUserManager
     protected function createQuery()
     {
         return \PropelQuery::from($this->class);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function refreshUser(SecurityUserInterface $user)
+    {
+        $class = $this->getClass();
+        if (!$user instanceof $class) {
+            throw new UnsupportedUserException('Account is not supported.');
+        }
+        if (!$user instanceof \Persistent) {
+            throw new UnsupportedUserException(sprintf('This user instance is not supported by the Propel UserManager implementation'));
+        }
+
+        $refreshedUser = $this->findUserBy(array('id' => $user->getId()));
+        if (null === $refreshedUser) {
+            throw new UsernameNotFoundException(sprintf('User with ID "%d" could not be reloaded.', $user->getId()));
+        }
+
+        return $refreshedUser;
     }
 }
