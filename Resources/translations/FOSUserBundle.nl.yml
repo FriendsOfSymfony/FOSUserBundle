@@ -12,6 +12,8 @@ group:
         deleted: De groep is verwijderd
 
 # Security
+"Bad credentials": Gebruikersnaam of wachtwoord ongeldig
+
 security:
     login:
         username: "Gebruikersnaam:"
@@ -61,6 +63,8 @@ resetting:
         invalid_username: De gebruiker "%username%" bestaat niet.
         username: "Gebruikersnaam of e-mailadres:"
         submit: Reset wachtwoord
+    reset:
+        submit: Wijzig wachtwoord
     flash:
         success: Het wachtwoord is succesvol gereset
     email:
