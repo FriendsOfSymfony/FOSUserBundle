@@ -12,6 +12,8 @@ group:
         deleted: De groep is verwijderd
 
 # Security
+"Bad credentials": Verkeerd wachtwoord of gebruikersnaam
+
 security:
     login:
         username: "Gebruikersnaam:"
@@ -62,6 +64,8 @@ resetting:
         username: "Gebruikersnaam:"
         submit: Reset wachtwoord
         submit: Wachtwoord bijwerken
+    reset:
+        submit: Verander wachtwoord
     flash:
         success: Het wachtwoord is succesvol gereset
     email:
