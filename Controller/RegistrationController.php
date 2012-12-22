@@ -18,6 +18,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Event\UserCreatedEvent;
 
 /**
  * Controller managing the registration
@@ -45,6 +46,9 @@ class RegistrationController extends ContainerAware
                 $authUser = true;
                 $route = 'fos_user_registration_confirmed';
             }
+
+            $dispatcher = $this->container->get('event_dispatcher');
+            $dispatcher->dispatch('user_bundle.user_created', new UserCreatedEvent($user));
 
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
             $url = $this->container->get('router')->generate($route);
