@@ -235,7 +235,7 @@ and customize it to fit your needs.
 
 In order for Symfony's security component to use the FOSUserBundle, you must
 tell it to do so in the `security.yml` file. The `security.yml` file is where the
-basic configuration for the security for your application is contained.
+basic security configuration for your application is contained.
 
 Below is a minimal example of the configuration necessary to use the FOSUserBundle
 in your application:
@@ -274,19 +274,19 @@ Under the `providers` section, you are making the bundle's packaged user provide
 service available via the alias `fos_userbundle`. The id of the bundle's user
 provider service is `fos_user.user_provider.username`.
 
-Next, take a look at examine the `firewalls` section. Here we have declared a
+Next, take a look at and examine the `firewalls` section. Here we have declared a
 firewall named `main`. By specifying `form_login`, you have told the Symfony2
 framework that any time a request is made to this firewall that leads to the
 user needing to authenticate himself, the user will be redirected to a form
 where he will be able to enter his credentials. It should come as no surprise
-then that you have specified the user provider we declared earlier as the
+then that you have specified the user provider service we declared earlier as the
 provider for the firewall to use as part of the authentication process.
 
 **Note:**
 
 > Although we have used the form login mechanism in this example, the FOSUserBundle
-> user provider is compatible with many other authentication methods as well. Please
-> read the Symfony2 Security component documention for more information on the
+> user provider service is compatible with many other authentication methods as well.
+> Please read the Symfony2 Security component documention for more information on the
 > other types of authentication methods.
 
 The `access_control` section is where you specify the credentials necessary for
@@ -294,7 +294,7 @@ users trying to access specific parts of your application. The bundle requires
 that the login form and all the routes used to create a user and reset the password
 be available to unauthenticated users but use the same firewall as
 the pages you want to secure with the bundle. This is why you have specified that
-the any request matching the `/login` pattern or starting with `/register` or
+any request matching the `/login` pattern or starting with `/register` or
 `/resetting` have been made available to anonymous users. You have also specified
 that any request beginning with `/admin` will require a user to have the
 `ROLE_ADMIN` role.
