@@ -11,12 +11,15 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Exception\AccountStatusException;
-use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Controller managing the resetting of the password
@@ -39,9 +42,9 @@ class ResettingController extends ContainerAware
     /**
      * Request reset user password: submit form and send email
      */
-    public function sendEmailAction()
+    public function sendEmailAction(Request $request)
     {
-        $username = $this->container->get('request')->request->get('username');
+        $username = $request->request->get('username');
 
         /** @var $user UserInterface */
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
@@ -90,65 +93,55 @@ class ResettingController extends ContainerAware
     /**
      * Reset user password
      */
-    public function resetAction($token)
+    public function resetAction(Request $request, $token)
     {
-        $user = $this->container->get('fos_user.user_manager')->findUserByConfirmationToken($token);
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->container->get('fos_user.resetting.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->container->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+
+        $user = $userManager->findUserByConfirmationToken($token);
 
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
         }
 
-        if (!$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
         }
 
-        $form = $this->container->get('fos_user.resetting.form');
-        $formHandler = $this->container->get('fos_user.resetting.form.handler');
-        $process = $formHandler->process($user);
+        $form = $formFactory->createForm();
+        $form->setData($user);
 
-        if ($process) {
-            $this->setFlash('fos_user_success', 'resetting.flash.success');
-            $response = new RedirectResponse($this->getRedirectionUrl($user));
-            $this->authenticateUser($user, $response);
+        if ('POST' === $request->getMethod()) {
+            $form->bind($request);
 
-            return $response;
+            if ($form->isValid()) {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_SUCCESS, $event);
+
+                $userManager->updateUser($user);
+
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->container->get('router')->generate('fos_user_profile_show');
+                    $response = new RedirectResponse($url);
+                }
+
+                $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+                return $response;
+            }
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form->createView(),
         ));
-    }
-
-    /**
-     * Authenticate a user with Symfony Security
-     *
-     * @param \FOS\UserBundle\Model\UserInterface        $user
-     * @param \Symfony\Component\HttpFoundation\Response $response
-     */
-    protected function authenticateUser(UserInterface $user, Response $response)
-    {
-        try {
-            $this->container->get('fos_user.security.login_manager')->loginUser(
-                $this->container->getParameter('fos_user.firewall_name'),
-                $user,
-                $response);
-        } catch (AccountStatusException $ex) {
-            // We simply do not authenticate users which do not pass the user
-            // checker (not enabled, expired, etc.).
-        }
-    }
-
-    /**
-     * Generate the redirection url when the resetting is completed.
-     *
-     * @param \FOS\UserBundle\Model\UserInterface $user
-     *
-     * @return string
-     */
-    protected function getRedirectionUrl(UserInterface $user)
-    {
-        return $this->container->get('router')->generate('fos_user_profile_show');
     }
 
     /**
@@ -168,15 +161,6 @@ class ResettingController extends ContainerAware
         }
 
         return $email;
-    }
-
-    /**
-     * @param string $action
-     * @param string $value
-     */
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->setFlash($action, $value);
     }
 
     protected function getEngine()

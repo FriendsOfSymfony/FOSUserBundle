@@ -448,6 +448,7 @@ of the bundle.
 The following documents are available:
 
 - [Overriding Templates](overriding_templates.md)
+- [Hooking into the controllers](controller_events.md)
 - [Overriding Controllers](overriding_controllers.md)
 - [Overriding Forms](overriding_forms.md)
 - [Using the UserManager](user_manager.md)

@@ -12,16 +12,15 @@
 namespace FOS\UserBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction()
+    public function loginAction(Request $request)
     {
-        $request = $this->container->get('request');
-        /* @var $request \Symfony\Component\HttpFoundation\Request */
+        /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
-        /* @var $session \Symfony\Component\HttpFoundation\Session */
 
         // get the error if any (works with forward and redirect -- see below)
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {

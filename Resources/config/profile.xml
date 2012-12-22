@@ -6,24 +6,16 @@
 
     <services>
 
-        <service id="fos_user.profile.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
             <argument>%fos_user.profile.form.name%</argument>
             <argument>%fos_user.profile.form.type%</argument>
-            <argument>null</argument>
-            <argument type="collection">
-                <argument key="validation_groups">%fos_user.profile.form.validation_groups%</argument>
-            </argument>
+            <argument>%fos_user.profile.form.validation_groups%</argument>
         </service>
 
         <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
             <argument>%fos_user.model.user.class%</argument>
             <tag name="form.type" alias="fos_user_profile" />
-        </service>
-
-        <service id="fos_user.profile.form.handler.default" class="FOS\UserBundle\Form\Handler\ProfileFormHandler" scope="request" public="false">
-            <argument type="service" id="fos_user.profile.form" />
-            <argument type="service" id="request" />
-            <argument type="service" id="fos_user.user_manager" />
         </service>
 
     </services>

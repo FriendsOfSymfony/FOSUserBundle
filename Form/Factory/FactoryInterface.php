@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Form\Model;
+namespace FOS\UserBundle\Form\Factory;
 
-class ChangePassword
+interface FactoryInterface
 {
     /**
-     * @var string
+     * @return \Symfony\Component\Form\FormInterface
      */
-    public $new;
+    public function createForm();
 }

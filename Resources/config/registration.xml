@@ -6,26 +6,16 @@
 
     <services>
 
-        <service id="fos_user.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
             <argument>%fos_user.registration.form.name%</argument>
             <argument>%fos_user.registration.form.type%</argument>
-            <argument>null</argument>
-            <argument type="collection">
-                <argument key="validation_groups">%fos_user.registration.form.validation_groups%</argument>
-            </argument>
+            <argument>%fos_user.registration.form.validation_groups%</argument>
         </service>
 
         <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
             <tag name="form.type" alias="fos_user_registration" />
             <argument>%fos_user.model.user.class%</argument>
-        </service>
-
-        <service id="fos_user.registration.form.handler.default" class="FOS\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="false">
-            <argument type="service" id="fos_user.registration.form" />
-            <argument type="service" id="request" />
-            <argument type="service" id="fos_user.user_manager" />
-            <argument type="service" id="fos_user.mailer" />
-            <argument type="service" id="fos_user.util.token_generator" />
         </service>
 
     </services>

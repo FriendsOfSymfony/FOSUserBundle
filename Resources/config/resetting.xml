@@ -6,23 +6,22 @@
 
     <services>
 
-        <service id="fos_user.resetting.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
             <argument>%fos_user.resetting.form.name%</argument>
             <argument>%fos_user.resetting.form.type%</argument>
-            <argument>null</argument>
-            <argument type="collection">
-                <argument key="validation_groups">%fos_user.resetting.form.validation_groups%</argument>
-            </argument>
+            <argument>%fos_user.resetting.form.validation_groups%</argument>
         </service>
 
         <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
             <tag name="form.type" alias="fos_user_resetting" />
+            <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.resetting.form.handler.default" class="FOS\UserBundle\Form\Handler\ResettingFormHandler" scope="request" public="false">
-            <argument type="service" id="fos_user.resetting.form" />
-            <argument type="service" id="request" />
-            <argument type="service" id="fos_user.user_manager" />
+        <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="router" />
+            <argument>%fos_user.resetting.token_ttl%</argument>
         </service>
 
     </services>

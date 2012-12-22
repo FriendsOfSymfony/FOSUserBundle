@@ -5,27 +5,17 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
-        <service id="fos_user.group.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.group.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
             <argument>%fos_user.group.form.name%</argument>
             <argument>%fos_user.group.form.type%</argument>
-            <argument>null</argument>
-            <argument type="collection">
-                <argument key="validation_groups">%fos_user.group.form.validation_groups%</argument>
-            </argument>
+            <argument>%fos_user.group.form.validation_groups%</argument>
         </service>
 
         <service id="fos_user.group.form.type" class="FOS\UserBundle\Form\Type\GroupFormType">
             <tag name="form.type" alias="fos_user_group" />
             <argument>%fos_user.model.group.class%</argument>
         </service>
-
-        <service id="fos_user.group.form.handler.default" class="FOS\UserBundle\Form\Handler\GroupFormHandler" scope="request" public="false">
-            <argument type="service" id="fos_user.group.form" />
-            <argument type="service" id="request" />
-            <argument type="service" id="fos_user.group_manager" />
-        </service>
-
     </services>
 
 </container>
