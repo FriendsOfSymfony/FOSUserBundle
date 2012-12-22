@@ -191,16 +191,16 @@ class User extends BaseUser
 **c) CouchDB User class**
 
 If you're persisting your users via the Doctrine CouchDB ODM, then your `User`
-class should live in the `Document` namespace of your bundle and look like
+class should live in the `CouchDocument` namespace of your bundle and look like
 this to start:
 
 ``` php
 <?php
-// src/Acme/UserBundle/Document/User.php
+// src/Acme/UserBundle/CouchDocument/User.php
 
 namespace Acme\UserBundle\Document;
 
-use FOS\UserBundle\Document\User as BaseUser;
+use FOS\UserBundle\CouchDocument\User as BaseUser;
 use Doctrine\ODM\CouchDB\Mapping as CouchDB;
 
 /**
@@ -322,7 +322,7 @@ of datastore you are using.
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Acme\UserBundle\Entity\User
+    user_class: Acme\UserBundle\Entity\User     # Acme\UserBundle\CouchDocument\User using 'couchdb', Acme\UserBundle\Document\User using 'mongodb'
 ```
 
 Or if you prefer XML:

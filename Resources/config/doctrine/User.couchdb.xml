@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doctrine-mapping>
+<doctrine-couchdb-mapping>
 
-    <mapped-superclass name="FOS\UserBundle\Document\User" indexed="true">
+    <mapped-superclass name="FOS\UserBundle\CouchDocument\User" indexed="true">
 
         <field name="username" fieldName="username" type="string" indexed="true" />
         <field name="usernameCanonical" fieldName="usernameCanonical" type="string" indexed="true" />
@@ -20,4 +20,4 @@
 
     </mapped-superclass>
 
-</doctrine-mapping>
+</doctrine-couchdb-mapping>
