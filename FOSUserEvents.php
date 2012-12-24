@@ -129,6 +129,14 @@ final class FOSUserEvents
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
     /**
+     * The REGISTRATION_VIEW event occurs when the registration view should be rendered.
+     *
+     * This event allows you to access the context which will be used for rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const REGISTRATION_VIEW = 'fos_user.registration.view';
+
+    /**
      * The RESETTING_RESET_INITIALIZE event occurs when the resetting process is initialized.
      *
      * This event allows you to set the response to bypass the processing.

@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Event\ViewEvent;
 
 /**
  * Controller managing the registration
@@ -68,9 +69,15 @@ class RegistrationController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
-            'form' => $form->createView(),
-        ));
+        $context = array('form' => $form->createView());
+        $event = new ViewEvent($context);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_VIEW, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.' . $this->getEngine(), $context);
     }
 
     /**
