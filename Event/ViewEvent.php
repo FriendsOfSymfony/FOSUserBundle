@@ -11,22 +11,36 @@
 
 namespace FOS\UserBundle\Event;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Response;
 
 class ViewEvent extends Event
 {
     private $context;
+    private $request;
     private $response;
 
-    public function __construct(array $context)
+    public function __construct(array $context, Request $request)
     {
         $this->context = $context;
+        $this->request = $request;
     }
 
+    /**
+     * @return array
+     */
     public function getContext()
     {
         return $this->context;
+    }
+
+    /**
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return $this->request;
     }
 
     /**

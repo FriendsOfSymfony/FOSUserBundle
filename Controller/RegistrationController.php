@@ -70,7 +70,7 @@ class RegistrationController extends ContainerAware
         }
 
         $context = array('form' => $form->createView());
-        $event = new ViewEvent($context);
+        $event = new ViewEvent($context, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_VIEW, $event);
 
         if (null !== $response = $event->getResponse()) {
