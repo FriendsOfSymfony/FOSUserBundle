@@ -18,7 +18,6 @@ fos_user:
     profile:
         form:
             type:               fos_user_profile
-            handler:            fos_user.profile.form.handler.default
             name:               fos_user_profile_form
             validation_groups:  [Profile, Default]
     change_password:
