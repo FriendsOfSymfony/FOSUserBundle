@@ -20,6 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use FOS\UserBundle\Event\ViewEvent;
 
 /**
  * Controller managing the resetting of the password
@@ -34,9 +35,19 @@ class ResettingController extends ContainerAware
     /**
      * Request reset user password: show form
      */
-    public function requestAction()
+    public function requestAction(Request $request)
     {
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine());
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+
+        $event = new ViewEvent(array(), $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_REQUEST_VIEW, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.' . $this->getEngine());
     }
 
     /**
@@ -44,17 +55,35 @@ class ResettingController extends ContainerAware
      */
     public function sendEmailAction(Request $request)
     {
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+
         $username = $request->request->get('username');
 
         /** @var $user UserInterface */
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
+            $context = array('invalid_username' => $username);
+            $event = new ViewEvent($context, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_REQUEST_VIEW, $event);
+
+            if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
+
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.' . $this->getEngine(), $context);
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
+            $event = new ViewEvent(array('user' => $user), $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_ALREADY_REQUESTED_VIEW, $event);
+
+            if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
+
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.' . $this->getEngine());
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -67,6 +96,13 @@ class ResettingController extends ContainerAware
         $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
         $this->container->get('fos_user.user_manager')->updateUser($user);
+
+        $event = new ViewEvent(array('user' => $user), $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_REQUEST_COMPLETED_VIEW, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
 
         return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email'));
     }
@@ -138,10 +174,19 @@ class ResettingController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
+        $context = array(
             'token' => $token,
-            'form' => $form->createView(),
-        ));
+            'form' => $form->createView()
+        );
+
+        $event = new ViewEvent($context, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_VIEW, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.' . $this->getEngine(), $context);
     }
 
     /**
