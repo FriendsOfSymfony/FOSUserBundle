@@ -10,7 +10,7 @@ specific needs of your application.
 
 > Overriding the controller requires to duplicate all the logic of the action.
 > Most of the time, it is easier to use the [events](controller_events.md)
-> to implement the functionnality. Replacing the whole controller should be
+> to implement the functionality. Replacing the whole controller should be
 > considered as the last solution when nothing else is possible.
 
 The first step to overriding a controller in the bundle is to create a child
