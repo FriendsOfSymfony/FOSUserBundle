@@ -45,7 +45,6 @@ fos_user:
             template:   FOSUserBundle:Resetting:email.txt.twig
         form:
             type:               fos_user_resetting
-            handler:            fos_user.resetting.form.handler.default
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
     service:
