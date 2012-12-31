@@ -60,7 +60,6 @@ fos_user:
         group_manager:  fos_user.group_manager.default
         form:
             type:               fos_user_group
-            handler:            fos_user.group.form.handler.default
             name:               fos_user_group_form
             validation_groups:  [Registration, Default]
 ```
