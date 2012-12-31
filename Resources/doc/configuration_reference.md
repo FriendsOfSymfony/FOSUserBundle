@@ -23,7 +23,6 @@ fos_user:
     change_password:
         form:
             type:               fos_user_change_password
-            handler:            fos_user.change_password.form.handler.default
             name:               fos_user_change_password_form
             validation_groups:  [ChangePassword, Default]
     registration:
