@@ -34,7 +34,6 @@ fos_user:
             template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type:               fos_user_registration
-            handler:            fos_user.registration.form.handler.default
             name:               fos_user_registration_form
             validation_groups:  [Registration, Default]
     resetting:
