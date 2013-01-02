@@ -91,6 +91,6 @@ form:
     email: "E-Mail-Adresse:"
     current_password: "Derzeitiges Passwort:"
     password: "Passwort:"
-    password_confirmation: "Bestätigung:"
+    password_confirmation: "Passwort bestätigen:"
     new_password: "Neues Passwort:"
-    new_password_confirmation: "Bestätigung:"
+    new_password_confirmation: "Neues Passwort bestätigen:"
