@@ -20,7 +20,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 class FlashListener implements EventSubscriberInterface
 {
     private static $successMessages = array(
-        FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'change_password.flash.updated',
+        FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'change_password.flash.success',
         FOSUserEvents::GROUP_CREATE_COMPLETED => 'group.flash.created',
         FOSUserEvents::GROUP_DELETE_COMPLETED => 'group.flash.deleted',
         FOSUserEvents::GROUP_EDIT_COMPLETED => 'group.flash.updated',
