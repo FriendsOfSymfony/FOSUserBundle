@@ -23,7 +23,6 @@ fos_user:
     change_password:
         form:
             type:               fos_user_change_password
-            handler:            fos_user.change_password.form.handler.default
             name:               fos_user_change_password_form
             validation_groups:  [ChangePassword, Default]
     registration:
@@ -35,7 +34,6 @@ fos_user:
             template:   FOSUserBundle:Registration:email.txt.twig
         form:
             type:               fos_user_registration
-            handler:            fos_user.registration.form.handler.default
             name:               fos_user_registration_form
             validation_groups:  [Registration, Default]
     resetting:
@@ -47,7 +45,6 @@ fos_user:
             template:   FOSUserBundle:Resetting:email.txt.twig
         form:
             type:               fos_user_resetting
-            handler:            fos_user.resetting.form.handler.default
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
     service:
@@ -63,7 +60,6 @@ fos_user:
         group_manager:  fos_user.group_manager.default
         form:
             type:               fos_user_group
-            handler:            fos_user.group.form.handler.default
             name:               fos_user_group_form
             validation_groups:  [Registration, Default]
 ```
