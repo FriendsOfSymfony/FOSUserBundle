@@ -11,10 +11,13 @@ their logic. All events can be found in the constants of the
 `FOS\UserBundle\FOSUserEvents` class.
 
 All controllers follow the same convention: they dispatch a `SUCCESS` event
-when the form is valid before saving the user, and a `COMPLETE` event when
+when the form is valid before saving the user, and a `COMPLETED` event when
 it is done. Thus, all `SUCCESS` events allow you to set a response if you
-don't want the default redirection. and all `COMPLETE` events give you access
+don't want the default redirection. and all `COMPLETED` events give you access
 to the response before it is returned.
+
+Controllers with a form also dispatch an `INITIALIZE` event after the entity is
+fetched, but before the form is created.
 
 For instance, this listener will change the redirection after the password
 resetting to go to the homepage instead of the profile:
