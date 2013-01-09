@@ -32,7 +32,7 @@
 
         <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="date" />
 
-        <field name="roles" fieldName="roles" type="hash" />
+        <field name="roles" fieldName="roles" type="collection" />
 
         <indexes>
             <index unique="true" dropDups="true">

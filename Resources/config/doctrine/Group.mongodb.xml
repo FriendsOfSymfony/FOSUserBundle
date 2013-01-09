@@ -8,7 +8,7 @@
 
         <field name="name" fieldName="name" type="string" />
 
-        <field name="roles" fieldName="roles" type="hash" />
+        <field name="roles" fieldName="roles" type="collection" />
 
         <indexes>
             <index unique="true" dropDups="true">
