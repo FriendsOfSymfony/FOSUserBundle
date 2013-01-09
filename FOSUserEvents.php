@@ -124,7 +124,7 @@ final class FOSUserEvents
      * The REGISTRATION_INITIALIZE event occurs when the registration process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     * The event listener method receives a FOS\UserBundle\Event\UserEvent instance.
      */
     const REGISTRATION_INITIALIZE = 'fos_user.registration.initialize';
 
@@ -148,7 +148,7 @@ final class FOSUserEvents
      * The REGISTRATION_CONFIRM event occurs just before confirming the account.
      *
      * This event allows you to access the user which will be confirmed.
-     * The event listener method receives a FOS\UserBundle\Event\UserEvent instance.
+     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
      */
     const REGISTRATION_CONFIRM = 'fos_user.registration.confirm';
 
