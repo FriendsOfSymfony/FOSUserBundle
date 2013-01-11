@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: اسم المستخدم موجود مسبقا
+        blank: فضلا ادخل اسم مستخدم
+        short: "[-Inf,Inf] اسم المستخدم قصير جدا"
+        long: "[-Inf,Inf] اسم المستخدم طويل جدا"
+    email:
+        already_used: البريد الالكتروني موجود مسبقا
+        blank: فضلا ادخل بريد المتروني
+        short: "[-Inf,Inf] البريد الالكتروني قصير"
+        long: "[-Inf,Inf] البريد الالكتروني طويل"
+        invalid: البريد الالمتروني غير صحيح
+    password:
+        blank: فضلا ادخل كلمة مرور
+        short: "[-Inf,Inf] كلمة المرور قصيره"
+        mismatch: كلمة المرور المدخلة غير متطابقة مع التاكيد
+    new_password:
+        blank: فضلا ادخل كلمة مرور جديدة
+        short: "[-Inf,Inf] كلمة المرور الجديدة قصيرة"
+    current_password:
+        invalid: كلمة المرور المدخلة غير صحيحة
+    group:
+        blank: فضلا اذخل اسم
+        short: "[-Inf,Inf] الاسم طويل "
+        long: "[-Inf,Inf]الاسم قصير"
