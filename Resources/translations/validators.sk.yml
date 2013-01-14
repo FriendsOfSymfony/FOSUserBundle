@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: Zadajte, prosím, heslo
         short: "[-Inf,Inf]Heslo je príliš krátke"
+        mismatch: "Zadané heslá sa nezhodujú"
     new_password:
         blank: Zadajte, prosím, nové heslo
         short: "[-Inf,Inf]Nové heslo je príliš krátke"
