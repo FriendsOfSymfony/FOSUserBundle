@@ -35,7 +35,7 @@ class Invitation
      */
     protected $sent = false;
 
-    /** @ORM\OneToOne(targetEntity="User", mappedBy="invitation", cascade={"persist", "merge"}) */
+    /** @ORM\OneToOne(targetEntity="User", inversedBy="invitation", cascade={"persist", "merge"}) */
     protected $user;
 
     public function __construct()
@@ -98,7 +98,7 @@ class User extends \FOS\UserBundle\Entity\User
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="Invitation", mappedBy="user")
      * @ORM\JoinColumn(referencedColumnName="code")
      * @Assert\NotNull(message="Your invitation is wrong")
      */
