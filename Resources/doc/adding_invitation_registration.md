@@ -35,7 +35,7 @@ class Invitation
      */
     protected $sent = false;
 
-    /** @ORM\OneToOne(targetEntity="User", inversedBy="invitation", cascade={"persist", "merge"}) */
+    /** @ORM\OneToOne(targetEntity="User", mappedBy="invitation", cascade={"persist", "merge"}) */
     protected $user;
 
     public function __construct()
@@ -98,8 +98,8 @@ class User extends \FOS\UserBundle\Entity\User
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Invitation", mappedBy="user")
-     * @ORM\JoinColumn(referencedColumnName="code")
+     * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
+     * @ORM\JoinColumn(name="invitation_id", referencedColumnName="code")
      * @Assert\NotNull(message="Your invitation is wrong")
      */
     protected $invitation;
@@ -228,6 +228,22 @@ class InvitationToCodeTransformer implements DataTransformerInterface
 
         return $value->getCode();
     }
+    
+    public function findOneByCode($value)
+	{
+	    $query = $this->entityManager
+		            ->createQuery('
+					    SELECT u, i FROM Acme\UserBundle\Entity\User u
+						JOIN u.code i
+						WHERE u.code = :code'
+					)->setParameter('code', $value);
+		
+		try {
+			return $query->getSingleResult();
+		} catch (\Doctrine\ORM\NoResultException $e){
+			return null;
+		}
+	}
 
     public function reverseTransform($value)
     {
@@ -241,10 +257,7 @@ class InvitationToCodeTransformer implements DataTransformerInterface
 
         return $this->entityManager
             ->getRepository('Acme\UserBundle\Entity\Invitation')
-            ->findOneBy(array(
-                'code' => $value,
-                'user' => null,
-            ));
+            ->findOneByCode($value);
     }
 }
 ```
