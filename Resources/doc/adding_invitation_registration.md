@@ -235,7 +235,7 @@ class InvitationToCodeTransformer implements DataTransformerInterface
                     ->createQuery('
                         SELECT i, u FROM Acme\UserBundle\Entity\Invitation i
                         JOIN i.code u
-                        WHERE i.code = :code'
+                        WHERE u.code = :code'
                     )->setParameter('code', $value);
 
         try {
