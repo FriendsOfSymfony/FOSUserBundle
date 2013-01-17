@@ -230,20 +230,20 @@ class InvitationToCodeTransformer implements DataTransformerInterface
     }
     
     public function findOneByCode($value)
-	{
-	    $query = $this->entityManager
-		            ->createQuery('
-					    SELECT u, i FROM Acme\UserBundle\Entity\User u
-						JOIN u.code i
-						WHERE u.code = :code'
-					)->setParameter('code', $value);
-		
-		try {
-			return $query->getSingleResult();
-		} catch (\Doctrine\ORM\NoResultException $e){
-			return null;
-		}
-	}
+    {
+        $query = $this->entityManager
+                    ->createQuery('
+                        SELECT i, u FROM Acme\UserBundle\Entity\Invitation i
+                        JOIN i.code u
+                        WHERE i.code = :code'
+                    )->setParameter('code', $value);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e){
+            return null;
+        }
+    }
 
     public function reverseTransform($value)
     {
