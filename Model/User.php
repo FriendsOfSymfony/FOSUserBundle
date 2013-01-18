@@ -451,7 +451,7 @@ abstract class User implements UserInterface, GroupableInterface
      *
      * @return User
      */
-    public function setExpiresAt(\DateTime $date)
+    public function setExpiresAt(\DateTime $date = null)
     {
         $this->expiresAt = $date;
 
