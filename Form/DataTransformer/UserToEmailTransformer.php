@@ -10,7 +10,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 /**
  * Transforms between a UserInterface instance and a email string.
  *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ * @author Florian Krauthan <fkrauthan@gmx.net>
  */
 class UserToEmailTransformer implements DataTransformerInterface
 {

@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * Form type for representing a UserInterface instance by its email string.
  *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ * @author Florian Krauthan <fkrauthan@gmx.net>
  */
 class UsernameFormType extends AbstractType
 {
