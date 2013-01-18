@@ -53,6 +53,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('model_manager_name')->defaultNull()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
                 ->booleanNode('use_username_form_type')->defaultTrue()->end()
+                ->booleanNode('use_email_form_type')->defaultTrue()->end()
                 ->arrayNode('from_email')
                     ->addDefaultsIfNotSet()
                     ->children()
