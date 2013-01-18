@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  *
  * @author Florian Krauthan <fkrauthan@gmx.net>
  */
-class UsernameFormType extends AbstractType
+class EmailFormType extends AbstractType
 {
     /**
      * @var UserToEmailTransformer
