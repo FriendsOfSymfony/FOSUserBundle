@@ -13,9 +13,8 @@ namespace FOS\UserBundle\Propel;
 
 use FOS\UserBundle\Model\GroupableInterface;
 use FOS\UserBundle\Model\UserInterface;
-use FOS\UserBundle\Propel\om\BaseUser;
 
-class User extends BaseUser implements UserInterface, GroupableInterface
+class User implements UserInterface, GroupableInterface
 {
     /**
      * Plain password. Used when changing the password. Must not be persisted.
