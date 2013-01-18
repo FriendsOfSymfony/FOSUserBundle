@@ -188,7 +188,7 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      *
      * @return self
      */
-    public function setLastLogin(\DateTime $time);
+    public function setLastLogin(\DateTime $time = null);
 
     /**
      * Never use this to check if this user has access to anything!
