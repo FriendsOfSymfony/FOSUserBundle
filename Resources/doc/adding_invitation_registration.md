@@ -228,22 +228,6 @@ class InvitationToCodeTransformer implements DataTransformerInterface
 
         return $value->getCode();
     }
-    
-    public function findOneByCode($value)
-    {
-        $query = $this->entityManager
-                    ->createQuery('
-                        SELECT i, u FROM Acme\UserBundle\Entity\Invitation i
-                        JOIN i.code u
-                        WHERE u.code = :code'
-                    )->setParameter('code', $value);
-
-        try {
-            return $query->getSingleResult();
-        } catch (\Doctrine\ORM\NoResultException $e){
-            return null;
-        }
-    }
 
     public function reverseTransform($value)
     {
@@ -256,8 +240,10 @@ class InvitationToCodeTransformer implements DataTransformerInterface
         }
 
         return $this->entityManager
-            ->getRepository('Acme\UserBundle\Entity\Invitation')
-            ->findOneByCode($value);
+            ->getRepository('Deo\SecureBundle\Entity\Invitation')
+            ->findOneBy(
+                array('code' => $value)
+            );
     }
 }
 ```
