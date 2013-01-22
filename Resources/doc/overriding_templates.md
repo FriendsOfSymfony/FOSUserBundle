@@ -36,7 +36,7 @@ Here is the default `layout.html.twig` provided by the FOSUserBundle:
             {% endif %}
         </div>
 
-        {% for key, message in app.session.getFlashes() %}
+        {% for key, message in app.session.flashbag.all() %}
         <div class="{{ key }}">
             {{ message|trans({}, 'FOSUserBundle') }}
         </div>
