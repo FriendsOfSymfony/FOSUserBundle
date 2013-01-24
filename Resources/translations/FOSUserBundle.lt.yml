@@ -16,8 +16,8 @@ group:
 
 security:
     login:
-        username: "Naudotojas:"
-        password: "Slaptažodis:"
+        username: "Naudotojas"
+        password: "Slaptažodis"
         remember_me: Atsiminti mane
         submit: Prisijungti
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodi.
     request:
         invalid_username: Naudotojas arba el. paštas "%username%" neegzistuoja.
-        username: "Naudotojo vardas arba el. paštas:"
+        username: "Naudotojo vardas arba el. paštas"
         submit: Nustatyti slaptažodi
     reset:
         submit: Pakeisti slaptažodi
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Grupės vardas:"
-    username: "Naudotojas:"
-    email: "El. paštas:"
-    current_password: "Dabartinis slaptažodis:"
-    password: "Slaptažodis:"
-    password_confirmation: "Patvirtinti:"
-    new_password: "Naujas slaptažodis:"
-    new_password_confirmation: "Patvirtinti:"
+    group_name: "Grupės vardas"
+    username: "Naudotojas"
+    email: "El. paštas"
+    current_password: "Dabartinis slaptažodis"
+    password: "Slaptažodis"
+    password_confirmation: "Patvirtinti"
+    new_password: "Naujas slaptažodis"
+    new_password_confirmation: "Patvirtinti"

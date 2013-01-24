@@ -17,8 +17,8 @@ group:
 # Security
 security:
     login:
-        username: "Username:"
-        password: "Password:"
+        username: "Username"
+        password: "Password"
         remember_me: Ricordami
         submit: Login
 
@@ -62,7 +62,7 @@ resetting:
     check_email: Una email è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per il reset della password.
     request:
         invalid_username: Username o indirizzo email "%username%" non esistente.
-        username: "Username o indirizzo email:"
+        username: "Username o indirizzo email"
         submit: Password reset
     reset:
         submit: Cambia password
@@ -87,11 +87,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nome gruppo:"
-    username: "Username:"
-    email: "Email:"
-    current_password: "Password corrente:"
-    password: "Password:"
-    password_confirmation: "Verifica:"
-    new_password: "Nuova password:"
-    new_password_confirmation: "Verifica:"
+    group_name: "Nome gruppo"
+    username: "Username"
+    email: "Email"
+    current_password: "Password corrente"
+    password: "Password"
+    password_confirmation: "Verifica"
+    new_password: "Nuova password"
+    new_password_confirmation: "Verifica"

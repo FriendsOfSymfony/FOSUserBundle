@@ -16,8 +16,8 @@ group:
 
 security:
     login:
-        username: "Nom d'utilisateur :"
-        password: "Mot de passe :"
+        username: "Nom d'utilisateur "
+        password: "Mot de passe "
         remember_me: Se souvenir de moi
         submit: Connexion
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
     request:
         invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
-        username: "Nom d'utilisateur ou adresse e-mail :"
+        username: "Nom d'utilisateur ou adresse e-mail "
         submit: Réinitialiser le mot de passe
     reset:
         submit: Modifier le mot de passe
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nom du groupe :"
-    username: "Nom d'utilisateur :"
-    email: "Adresse e-mail :"
-    current_password: "Mot de passe actuel :"
-    password: "Mot de passe :"
-    password_confirmation: "Vérification :"
-    new_password: "Nouveau mot de passe :"
-    new_password_confirmation: "Vérification :"
+    group_name: "Nom du groupe "
+    username: "Nom d'utilisateur "
+    email: "Adresse e-mail "
+    current_password: "Mot de passe actuel "
+    password: "Mot de passe "
+    password_confirmation: "Vérification "
+    new_password: "Nouveau mot de passe "
+    new_password_confirmation: "Vérification "

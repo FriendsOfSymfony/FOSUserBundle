@@ -16,8 +16,8 @@ group:
 
 security:
     login:
-        username: "اسم المستخدم:"
-        password: "كلمة المرور:"
+        username: "اسم المستخدم"
+        password: "كلمة المرور"
         remember_me: تذكرني
         submit: تسجيل دخول
 
@@ -62,7 +62,7 @@ resetting:
     check_email: لقد تم إرسال رسالة إلكترونية إلى %email%  يحتوي على رابط يجب اتباعه لإعادة تعيين كلمة المرور الخاصة بك.
     request:
         invalid_username: اسم المستخدم او  البريد الالكتروني "%username%" غير موجود
-        username: "اسم المستخدم او البريد الالكتروني:"
+        username: "اسم المستخدم او البريد الالكتروني"
         submit: اعادة ضبط كلمة المرور
     reset:
         submit: تغيير كلمة المرور
@@ -87,11 +87,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "اسم المجموعة:"
-    username: "اسم المستخدم:"
-    email: "بريد الكتر،ني:"
-    current_password: "كلمة المرور الحالية:"
-    password: "كلمة المرور:"
-    password_confirmation: "تاكيد:"
-    new_password: "كلمة المرور الجديدة:"
-    new_password_confirmation: "تاكيد:"
+    group_name: "اسم المجموعة"
+    username: "اسم المستخدم"
+    email: "بريد الكتر،ني"
+    current_password: "كلمة المرور الحالية"
+    password: "كلمة المرور"
+    password_confirmation: "تاكيد"
+    new_password: "كلمة المرور الجديدة"
+    new_password_confirmation: "تاكيد"
