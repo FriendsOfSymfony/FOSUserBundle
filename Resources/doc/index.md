@@ -243,12 +243,16 @@ in your application:
 ``` yaml
 # app/config/security.yml
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
-
-    encoders:
-        FOS\UserBundle\Model\UserInterface: sha512
 
     firewalls:
         main:
@@ -264,10 +268,6 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
 ```
 
 Under the `providers` section, you are making the bundle's packaged user provider
