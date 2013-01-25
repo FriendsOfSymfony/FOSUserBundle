@@ -16,8 +16,8 @@ group:
 
 security:
     login:
-        username: "Nombre de usuario:"
-        password: "Contraseña:"
+        username: "Nombre de usuario"
+        password: "Contraseña"
         remember_me: Recordar
         submit: Entrar
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
     request:
         invalid_username: El usuario o dirección de correo "%username%" no existe.
-        username: "Nombre de usuario:"
+        username: "Nombre de usuario"
         submit: Restablecer contraseña
     reset:
         submit: Cambiar contraseña
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nombre de grupo:"
-    username: "Nombre de usuario:"
-    email: "Email:"
-    current_password: "Contraseña actual:"
-    password: "Contraseña:"
-    password_confirmation: "Repita la contraseña:"
-    new_password: "Nueva contraseña:"
-    new_password_confirmation: "Repita la contraseña:"
+    group_name: "Nombre de grupo"
+    username: "Nombre de usuario"
+    email: "Email"
+    current_password: "Contraseña actual"
+    password: "Contraseña"
+    password_confirmation: "Repita la contraseña"
+    new_password: "Nueva contraseña"
+    new_password_confirmation: "Repita la contraseña"
