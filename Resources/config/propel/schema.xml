@@ -34,7 +34,7 @@
             <parameter name="roles" value="array" />
             <parameter name="fos_group" value="FOS\UserBundle\Model\GroupInterface" />
 
-            <parameter name="nullable_columns" value="password_requested_at" />
+            <parameter name="nullable_columns" value="password_requested_at, expires_at, last_login, credentials_expire_at" />
         </behavior>
     </table>
 

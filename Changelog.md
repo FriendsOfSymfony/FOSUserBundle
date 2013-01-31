@@ -6,6 +6,8 @@ Changelog
 * Removed the deprecated UserManager and GroupManager classes for the different Doctrine implementations
 * [BC break] Refactored the structure of controller to dispatch events instead of using form handlers
 * Removed all form handlers
+* [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
+* [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
 
 ### 1.3.1 (2012-12-22)
 
