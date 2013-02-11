@@ -90,6 +90,7 @@ namespace Acme\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Acme\UserBundle\Component\Validator\Constraints as AcmeAssert;
 
 /** @ORM\Entity */
 class User extends \FOS\UserBundle\Entity\User
@@ -101,6 +102,7 @@ class User extends \FOS\UserBundle\Entity\User
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="code")
      * @Assert\NotNull(message="Your invitation is wrong")
+     * @AcmeAssert\ConstraintAvailableInvitationCode()
      */
     protected $invitation;
 
@@ -115,6 +117,85 @@ class User extends \FOS\UserBundle\Entity\User
     }
 }
 ```
+### Create Custom validation
+
+Create a custom validation to avoid the invitation code being used more than once.
+
+The constraint:
+```php
+# Acme/UserBundle/Component/Validator/Constraints/ConstraintAvailableInvitationCode.php
+<?php
+
+namespace Acme\UserBundle\Component\Validator\Constraints;
+
+use Symfony\Component\Validator\Constraint;
+
+/**
+ * @Annotation
+ */
+class ConstraintAvailableInvitationCode extends Constraint
+{
+    public $message = 'The invitation code "%string%" is not valid anymore.';
+
+    public function validatedBy()
+    {
+        return 'available_invitation_code';
+    }
+}
+```
+
+The validator:
+```php
+# Acme/UserBundle/Component/Validator/Constraints/ConstraintAvailableInvitationCodeValidator.php
+<?php
+
+namespace Acme\UserBundle\Component\Validator\Constraints;
+
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidator;
+
+/**
+ * @Annotation
+ */
+class ConstraintAvailableInvitationCodeValidator extends ConstraintValidator
+{
+    private $entityManager;
+
+    public function __construct(UserManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    public function validate($value, Constraint $constraint)
+    {
+        $code = $this->entityManager
+            ->findUserBy(array('invitation' => $value));
+
+        if (!empty($code)) {
+            $this->context->addViolation($constraint->message, array('%string%' => $value));
+        }
+    }
+}
+```
+The service configuration to inject the user manager
+```yaml
+# Acme/UserBundle/Resource/config/services.yml
+parameters:
+    acme.validator.validinvitationcode.class: Acme\UserBundle\Component\Validator\Constraints\ConstraintAvailableInvitationCodeValidator
+
+services:
+    validator.unique.is_available_invitation_code:
+        class: %acme.validator.validinvitationcode.class%
+        arguments: [@fos_user.user_manager]
+        tags:
+            - { name: validator.constraint_validator, alias: available_invitation_code }
+```
+
+The validation will be triggered thanks to the annotation in the `User` entity:
+`@AcmeAssert\ConstraintAvailableInvitationCode()`
+
+
 
 ### Add invitation to RegistrationFormType
 
