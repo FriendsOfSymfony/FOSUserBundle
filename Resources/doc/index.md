@@ -260,6 +260,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
+                login_path: fos_user_security_login
             logout:       true
             anonymous:    true
 
