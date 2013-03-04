@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Brukernavnet er allerede i bruk
+        blank: Vennligst skriv inn et brukernavn
+        short: "[-Inf,Inf]Brukernavnet er for kort"
+        long: "[-Inf,Inf]Brukernavnet er for langt"
+    email:
+        already_used: Epostadressen er allerede i bruk
+        blank: Vennligst skriv inn en epostadresse
+        short: "[-Inf,Inf]Epostadressen er for kort"
+        long: "[-Inf,Inf]Epostadressen er for lang"
+        invalid: Epostadressen er ikke gyldig
+    password:
+        blank: Vennligst skriv inn et passord
+        short: "[-Inf,Inf]Passordet er for kort"
+        mismatch: De innskrevne passordene stemmer ikke overens
+    new_password:
+        blank: Vennligst skriv inn et nytt passord
+        short: "[-Inf,Inf]Det nye passordet er for kort"
+    current_password:
+        invalid: Det innskrevne passordet er ugyldig
+    group:
+        blank: Vennligst skriv inn et navn
+        short: "[-Inf,Inf]Navnet er for kort"
+        long: "[-Inf,Inf]Navnet er for langt"
