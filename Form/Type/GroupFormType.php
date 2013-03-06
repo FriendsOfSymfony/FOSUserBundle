@@ -37,6 +37,7 @@ class GroupFormType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'intention'  => 'group',
+            'compound' => false
         ));
     }
 
