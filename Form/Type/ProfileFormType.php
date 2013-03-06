@@ -45,6 +45,7 @@ class ProfileFormType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'intention'  => 'profile',
+            'compound' => false
         ));
     }
 
