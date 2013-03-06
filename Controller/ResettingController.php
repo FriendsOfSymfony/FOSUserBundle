@@ -57,6 +57,10 @@ class ResettingController extends Controller
             return $this->render('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
         }
 
+        if (!$this->container->get('fos_user.security.login_manager')->checkUser($user)) {
+            return $this->render('FOSUserBundle:Resetting:userStatusError.html.twig');
+        }
+
         if (null === $user->getConfirmationToken()) {
             /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
             $tokenGenerator = $this->get('fos_user.util.token_generator');
@@ -94,12 +98,8 @@ class ResettingController extends Controller
      */
     public function resetAction(Request $request, $token)
     {
-        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
-        $formFactory = $this->get('fos_user.resetting.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
-        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
-        $dispatcher = $this->get('event_dispatcher');
 
         $user = $userManager->findUserByConfirmationToken($token);
 
@@ -107,12 +107,18 @@ class ResettingController extends Controller
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
         }
 
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
+
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->container->get('fos_user.resetting.form.factory');
 
         $form = $formFactory->createForm();
         $form->setData($user);

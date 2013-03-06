@@ -15,8 +15,9 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\User\UserCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Http\RememberMe\RememberMeServicesInterface;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
 
@@ -66,6 +67,24 @@ class LoginManager implements LoginManagerInterface
         }
 
         $this->securityContext->setToken($token);
+    }
+
+    /**
+     * Check that user is enabled, not expired, etc.
+     *
+     * @param  UserInterface $user
+     *
+     * @return bool
+     */
+    public function checkUser(UserInterface $user)
+    {
+        try {
+            $this->userChecker->checkPreAuth($user);
+        } catch (AccountStatusException $e) {
+            return false;
+        }
+
+        return true;
     }
 
     protected function createToken($firewall, UserInterface $user)
