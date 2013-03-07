@@ -14,7 +14,7 @@ to achieve this result.
 
 ### Replacing the canonicalizers
 
-If you want to change the way the caconical fields are populated, simply
+If you want to change the way the canonical fields are populated, simply
 create a class implementing `FOS\UserBundle\Util\CanonicalizerInterface`
 and register it as a service:
 
