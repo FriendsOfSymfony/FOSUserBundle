@@ -4,6 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="fos_user.listener.flash.class">FOS\UserBundle\EventListener\FlashListener</parameter>
+    </parameters>
+
     <services>
         <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
             <tag name="kernel.event_subscriber" />
@@ -11,7 +15,7 @@
             <argument>%fos_user.firewall_name%</argument>
         </service>
 
-        <service id="fos_user.listener.flash" class="FOS\UserBundle\EventListener\FlashListener">
+        <service id="fos_user.listener.flash" class="%fos_user.listener.flash.class%">
             <tag name="kernel.event_subscriber" />
             <argument type="service" id="session" />
             <argument type="service" id="translator" />
