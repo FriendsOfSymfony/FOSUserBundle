@@ -26,7 +26,7 @@ class Mailer implements MailerInterface
     protected $templating;
     protected $parameters;
 
-    public function __construct($mailer, RouterInterface $router, EngineInterface $templating, array $parameters)
+    public function __construct(\Swift_Mailer $mailer, RouterInterface $router, EngineInterface $templating, array $parameters)
     {
         $this->mailer = $mailer;
         $this->router = $router;
