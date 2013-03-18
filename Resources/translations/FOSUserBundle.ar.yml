@@ -18,7 +18,7 @@ security:
     login:
         username: "اسم المستخدم:"
         password: "كلمة المرور:"
-        remember_me: تذكرني
+        remember_me: حفظ البيانات
         submit: تسجيل دخول
 
 # Profile
@@ -39,19 +39,20 @@ change_password:
 
 # Registration
 registration:
-    check_email: لقد تم إرسال رسالة إلكترونية إلى %email%  يحتوي على رابط يجب اتباعه لتفعيل حسابك الشخصي.
+    check_email: لقد تم إرسال رسالة إلكترونية إلى %email% تحتوي على رابط يجب اتباعه لتفعيل حسابك الشخصي.
+
     confirmed: تهانينا %username%، لقد تم تفعيل حسابك.
-    back: عودة إلى الصفحة السابقة
+    back: عودة إلى الصفحة الرئيسية
     submit: تسجيل
     flash:
-        user_created: تم إنشاء المستخدم بنجاح
+        user_created: تم إنشاء حسابك بنجاح
     email:
         subject:  %username%! مرحبا
         message: |
             مرحبا %username%!
 
             
-             لتفعيل حسابك فضلا اتبع الوصلة التالية %confirmationUrl%
+             لتفعيل حسابك يرجا إتباع الرابط التالي %confirmationUrl%
 
             شكرا،
             فريق العمل.
@@ -73,9 +74,9 @@ resetting:
         message: |
             مرحبا %username%!
 
-            لإعادة ضبط كلمة المرور - فضلا اضغط على  %confirmationUrl%
+            لإعادة ضبط كلمة المرور يرجا إتباع الرابط التالي %confirmationUrl%
 
-            مع التحية،
+            شكرا،
             فريق العمل.
 
 # Global strings
@@ -87,11 +88,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "اسم المجموعة:"
-    username: "اسم المستخدم:"
-    email: "بريد الكتر،ني:"
-    current_password: "كلمة المرور الحالية:"
-    password: "كلمة المرور:"
-    password_confirmation: "تاكيد:"
-    new_password: "كلمة المرور الجديدة:"
-    new_password_confirmation: "تاكيد:"
+    group_name: "اسم المجموعة :"
+    username: "اسم المستخدم :"
+    email: "البريد الإلكتروني :" 
+    current_password: "كلمة المرور الحالية :"
+    password: "كلمة المرور :"
+    password_confirmation: "تاكيد :"
+    new_password: "كلمة المرور الجديدة :"
+    new_password_confirmation: "تأكيد كلمة المرور :"
