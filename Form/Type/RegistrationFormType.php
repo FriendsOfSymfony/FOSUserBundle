@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RegistrationFormType extends AbstractType
 {
-    private $class;
+    protected $class;
 
     /**
      * @param string $class The User class name
