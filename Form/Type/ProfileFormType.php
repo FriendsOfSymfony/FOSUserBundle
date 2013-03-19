@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ProfileFormType extends AbstractType
 {
-    private $class;
+    protected $class;
 
     /**
      * @param string $class The User class name

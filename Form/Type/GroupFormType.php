@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GroupFormType extends AbstractType
 {
-    private $class;
+    protected $class;
 
     /**
      * @param string $class The Group class name
