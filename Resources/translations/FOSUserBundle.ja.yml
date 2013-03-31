@@ -58,7 +58,7 @@ resetting:
     password_already_requested: このユーザーのパスワードは 24 時間以内ですでにリクエストされています。
     check_email: %email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。
     request:
-        invalid_username: "%username%" というユーザー名またはメールアドレスは存在しません。
+        invalid_username: '"%username%" というユーザー名またはメールアドレスは存在しません。'
         username: "ユーザー名かメールアドレス:"
         submit: パスワードのリセット
     reset:
