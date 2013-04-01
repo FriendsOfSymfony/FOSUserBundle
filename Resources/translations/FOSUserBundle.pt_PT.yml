@@ -11,6 +11,8 @@ group:
 #        created: The group has been created
 #        deleted: The group has been deleted
 
+"Bad credentials": Utilizador e/ou password inválidos
+
 # Security
 security:
     login:
