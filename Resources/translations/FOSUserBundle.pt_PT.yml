@@ -65,7 +65,7 @@ resetting:
         username: "Utilizador:"
         submit: Recuperar password
     reset:
-        submit: Alterar passord
+        submit: Alterar password
     #flash:
     #    success: The password has been reset successfully
     email:
