@@ -33,7 +33,7 @@ profile:
 
 # Password change
 change_password:
-    submit: Pakeisti slaptažodi
+    submit: Pakeisti slaptažodį
     flash:
         success: slaptažodis buvo pakeistas
 
@@ -41,7 +41,7 @@ change_password:
 registration:
     check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią aplankę aktyvuosite savo paskyrą.
     confirmed: Sveikiname %username%, jusu paskyra buvo aktyvuota.
-    back: Gryžti i praeitą puslapi.
+    back: Grįžti i praeitą puslapį.
     submit: Registruotis
     flash:
         user_created: Naudotojas buvo sukurtas sėkmingai
@@ -50,7 +50,7 @@ registration:
         message: |
             Sveiki %username%!
 
-            Kad pabaigtumėte savo paskyros aktyvavymą - prašome apsilankyti %confirmationUrl%
+            Norėdami aktyvuoti savo paskyrą - prašome apsilankyti %confirmationUrl%
 
             Pagarbiai,
             Komanda.
@@ -58,21 +58,21 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Slaptažodis šitam naudotojui jau buvo prašytas pakeisti per pastarąsias 24 valandas.
-    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodi.
+    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodį.
     request:
         invalid_username: Naudotojas arba el. paštas "%username%" neegzistuoja.
         username: "Naudotojo vardas arba el. paštas:"
-        submit: Nustatyti slaptažodi
+        submit: Nustatyti slaptažodį
     reset:
-        submit: Pakeisti slaptažodi
+        submit: Pakeisti slaptažodį
     flash:
         success: Slaptažodis pakeistas sėkmingai
     email:
-        subject: Nustatyti slaptažodi
+        subject: Nustatyti slaptažodį
         message: |
             Sveiki %username%!
 
-            Kad pakeistumėte savo slaptažodį - prašome apsilankyti %confirmationUrl%
+            Norėdami pakeisti savo slaptažodį - prašome apsilankyti %confirmationUrl%
 
             Pagarbiai,
             Komanda.
