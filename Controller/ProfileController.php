@@ -80,8 +80,7 @@ class ProfileController extends ContainerAware
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_profile_show');
-                    $response = new RedirectResponse($url);
+                    $response = new RedirectResponse($this->getRedirectionUrl($user));
                 }
 
                 $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -94,5 +93,17 @@ class ProfileController extends ContainerAware
             'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
             array('form' => $form->createView())
         );
+    }
+    
+    /**
+    * Generate the redirection url when editing is completed.
+    *
+    * @param \FOS\UserBundle\Model\UserInterface $user
+    *
+    * @return string
+    */
+    protected function getRedirectionUrl(UserInterface $user)
+    {
+        return $this->container->get('router')->generate('fos_user_profile_show');
     }
 }
