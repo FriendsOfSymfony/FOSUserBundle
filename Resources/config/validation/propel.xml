@@ -7,8 +7,7 @@
     <class name="FOS\UserBundle\Propel\User">
         <constraint name="Propel\PropelBundle\Validator\Constraints\UniqueObject">
             <option name="fields">username_canonical</option>
-            <!-- PropelBundle does not support custom messages yet
-            <option name="message">fos_user.username.already_used</option>-->
+            <option name="message">fos_user.username.already_used</option>
             <option name="groups">
                 <value>Registration</value>
                 <value>Profile</value>
@@ -17,8 +16,7 @@
 
         <constraint name="Propel\PropelBundle\Validator\Constraints\UniqueObject">
             <option name="fields">email_canonical</option>
-            <!-- PropelBundle does not support custom messages yet
-            <option name="message">fos_user.email.already_used</option>-->
+            <option name="message">fos_user.email.already_used</option>
             <option name="groups">
                 <value>Registration</value>
                 <value>Profile</value>
