@@ -48,6 +48,7 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
+                ->scalarNode('template')->defaultValue('FOSUserBundle::layout.html')->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
@@ -71,6 +72,7 @@ class Configuration implements ConfigurationInterface
                 ->thenInvalid('You need to specify your own group manager service when using the "custom" driver.')
             ->end();
 
+        $this->addSecuritySection($rootNode);
         $this->addProfileSection($rootNode);
         $this->addChangePasswordSection($rootNode);
         $this->addRegistrationSection($rootNode);
@@ -82,6 +84,20 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
+    private function addSecuritySection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('login')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset(true)
+                    ->children()
+                        ->scalarNode('template')->defaultValue('FOSUserBundle:Security:login.html')->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
     private function addProfileSection(ArrayNodeDefinition $node)
     {
         $node
@@ -90,6 +106,13 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->arrayNode('templates')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('show')->defaultValue('FOSUserBundle:Profile:show.html')->end()
+                                ->scalarNode('edit')->defaultValue('FOSUserBundle:Profile:edit.html')->end()
+                            ->end()
+                        ->end()
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
@@ -114,6 +137,14 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->arrayNode('templates')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('register')->defaultValue('FOSUserBundle:Registration:register.html')->end()
+                                ->scalarNode('already_requested')->defaultValue('FOSUserBundle:Registration:confirmed.html')->end()
+                                ->scalarNode('check_mail')->defaultValue('FOSUserBundle:Registration:checkEmail.html')->end()
+                            ->end()
+                        ->end()
                         ->arrayNode('confirmation')
                             ->addDefaultsIfNotSet()
                             ->children()
@@ -152,6 +183,15 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->arrayNode('templates')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('request')->defaultValue('FOSUserBundle:Resetting:request.html')->end()
+                                ->scalarNode('already_requested')->defaultValue('FOSUserBundle:Resetting:passwordAlreadyRequested.html')->end()
+                                ->scalarNode('check_mail')->defaultValue('FOSUserBundle:Resetting:checkEmail.html')->end()
+                                ->scalarNode('reset')->defaultValue('FOSUserBundle:Resetting:reset.html')->end()
+                            ->end()
+                        ->end()
                         ->scalarNode('token_ttl')->defaultValue(86400)->end()
                         ->arrayNode('email')
                             ->addDefaultsIfNotSet()
@@ -190,6 +230,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->scalarNode('template')->defaultValue('FOSUserBundle:ChangePassword:changePassword.html')->end()
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
@@ -245,6 +286,15 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('group')
                     ->canBeUnset()
                     ->children()
+                        ->arrayNode('templates')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('new')->defaultValue('FOSUserBundle:Group:new.html')->end()
+                                ->scalarNode('edit')->defaultValue('FOSUserBundle:Group:edit.html')->end()
+                                ->scalarNode('show')->defaultValue('FOSUserBundle:Group:show.html')->end()
+                                ->scalarNode('list')->defaultValue('FOSUserBundle:Group:list.html')->end()
+                            ->end()
+                        ->end()
                         ->scalarNode('group_class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('group_manager')->defaultValue('fos_user.group_manager.default')->end()
                         ->arrayNode('form')
