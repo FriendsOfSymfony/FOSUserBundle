@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseGroupEvent;
 use FOS\UserBundle\Event\GroupEvent;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,13 +31,25 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class GroupController extends ContainerAware
 {
     /**
+     * @var array
+     */
+    protected $templates;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+
+        $this->templates = $this->container->getParameter('fos_user.group.templates');
+    }
+
+    /**
      * Show all groups
      */
     public function listAction()
     {
         $groups = $this->container->get('fos_user.group_manager')->findGroups();
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:list.html.'.$this->getEngine(), array('groups' => $groups));
+        return $this->container->get('templating')->renderResponse($this->templates['list'].'.'.$this->getEngine(), array('groups' => $groups));
     }
 
     /**
@@ -46,7 +59,7 @@ class GroupController extends ContainerAware
     {
         $group = $this->findGroupBy('name', $groupName);
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:show.html.'.$this->getEngine(), array('group' => $group));
+        return $this->container->get('templating')->renderResponse($this->templates['show'].'.'.$this->getEngine(), array('group' => $group));
     }
 
     /**
@@ -95,9 +108,10 @@ class GroupController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['edit'].'.'.$this->getEngine(), array(
             'form'      => $form->createview(),
             'group_name'  => $group->getName(),
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 
@@ -140,8 +154,9 @@ class GroupController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['new'].'.'.$this->getEngine(), array(
             'form' => $form->createview(),
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 

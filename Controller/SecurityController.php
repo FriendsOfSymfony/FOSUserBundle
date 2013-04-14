@@ -47,6 +47,7 @@ class SecurityController extends ContainerAware
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 
@@ -60,9 +61,9 @@ class SecurityController extends ContainerAware
      */
     protected function renderLogin(array $data)
     {
-        $template = sprintf('FOSUserBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = $this->container->getParameter('fos_user.login.template').'.'.$this->container->getParameter('fos_user.template.engine');
 
-        return $this->container->get('templating')->renderResponse($template, $data);
+        return $this->container->get('templating')->renderResponse($template, \array_merge($data));
     }
 
     public function checkAction()
