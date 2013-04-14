@@ -77,6 +77,12 @@ class FOSUserExtension extends Extension
             'template'  => 'fos_user.template.%s',
         ));
 
+        $container->setParameter('fos_user.template', $config['template']);
+
+        if (!empty($config['login'])) {
+            $container->setParameter('fos_user.login.template', $config['login']['template']);
+        }
+
         if (!empty($config['profile'])) {
             $this->loadProfile($config['profile'], $container, $loader);
         }
@@ -102,6 +108,8 @@ class FOSUserExtension extends Extension
     {
         $loader->load('profile.xml');
 
+        $container->setParameter('fos_user.profile.templates', $config['templates']);
+
         $this->remapParametersNamespaces($config, $container, array(
             'form' => 'fos_user.profile.form.%s',
         ));
@@ -121,6 +129,7 @@ class FOSUserExtension extends Extension
             unset($config['confirmation']['from_email']);
         }
         $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+        $container->setParameter('fos_user.registration.templates', $config['templates']);
 
         $this->remapParametersNamespaces($config, $container, array(
             'confirmation' => 'fos_user.registration.confirmation.%s',
@@ -131,6 +140,8 @@ class FOSUserExtension extends Extension
     private function loadChangePassword(array $config, ContainerBuilder $container, XmlFileLoader $loader)
     {
         $loader->load('change_password.xml');
+
+        $container->setParameter('fos_user.change_password.template', $config['template']);
 
         $this->remapParametersNamespaces($config, $container, array(
             'form' => 'fos_user.change_password.form.%s',
@@ -147,6 +158,7 @@ class FOSUserExtension extends Extension
             unset($config['email']['from_email']);
         }
         $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+        $container->setParameter('fos_user.resetting.templates', $config['templates']);
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array (
@@ -165,6 +177,7 @@ class FOSUserExtension extends Extension
         }
 
         $container->setAlias('fos_user.group_manager', $config['group_manager']);
+        $container->setParameter('fos_user.group.templates', $config['templates']);
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
