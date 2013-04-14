@@ -77,7 +77,7 @@ class FOSUserExtension extends Extension
             'template'  => 'fos_user.template.%s',
         ));
 
-        $container->setParameter('fos_user.template', $config['template']);
+        $container->setParameter('fos_user.template.base_layout', $config['template']['base_layout'].'.'.$config['template']['engine']);
 
         if (!empty($config['login'])) {
             $container->setParameter('fos_user.login.template', $config['login']['template']);
