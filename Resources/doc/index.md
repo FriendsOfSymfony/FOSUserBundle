@@ -55,6 +55,7 @@ Add FOSUserBundle in your composer.json:
 Now tell composer to download the bundle by running the command:
 
 ``` bash
+$ php composer.phar install friendsofsymfony/user-bundle
 $ php composer.phar update friendsofsymfony/user-bundle
 ```
 
