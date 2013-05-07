@@ -200,7 +200,7 @@ this to start:
 
 namespace Acme\UserBundle\CouchDocument;
 
-use FOS\UserBundle\CouchDocument\User as BaseUser;
+use FOS\UserBundle\Document\User as BaseUser;
 use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
 
 /**
