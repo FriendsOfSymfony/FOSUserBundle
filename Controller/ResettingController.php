@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -32,11 +33,23 @@ class ResettingController extends ContainerAware
     const SESSION_EMAIL = 'fos_user_send_resetting_email/email';
 
     /**
+     * @var array
+     */
+    protected $templates;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+
+        $this->templates = $this->container->getParameter('fos_user.resetting.templates');
+    }
+
+    /**
      * Request reset user password: show form
      */
     public function requestAction()
     {
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine());
+        return $this->container->get('templating')->renderResponse($this->templates['request'].'.'.$this->getEngine(), array('fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))));
     }
 
     /**
@@ -50,11 +63,11 @@ class ResettingController extends ContainerAware
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
+            return $this->container->get('templating')->renderResponse($this->templates['request'].'.'.$this->getEngine(), array('invalid_username' => $username));
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
+            return $this->container->get('templating')->renderResponse($this->container->getParameter('fos_user.resetting.templates.already_requested').'.'.$this->getEngine());
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -85,8 +98,9 @@ class ResettingController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['check_mail'].'.'.$this->getEngine(), array(
             'email' => $email,
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 
@@ -138,9 +152,10 @@ class ResettingController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['reset'].'.'.$this->getEngine(), array(
             'token' => $token,
             'form' => $form->createView(),
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 

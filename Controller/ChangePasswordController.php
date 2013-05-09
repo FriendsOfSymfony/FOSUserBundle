@@ -79,8 +79,11 @@ class ChangePasswordController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView())
+            $this->container->getParameter('fos_user.change_password.template').'.'.$this->container->getParameter('fos_user.template.engine'),
+            array(
+                'form' => $form->createView(),
+                'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
+            )
         );
     }
 }

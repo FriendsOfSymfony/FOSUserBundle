@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -31,6 +32,18 @@ use FOS\UserBundle\Model\UserInterface;
  */
 class RegistrationController extends ContainerAware
 {
+    /**
+     * @var array
+     */
+    protected $templates;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+
+        $this->templates = $this->container->getParameter('fos_user.registration.templates');
+    }
+
     public function registerAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -68,8 +81,9 @@ class RegistrationController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['register'].'.'.$this->getEngine(), array(
             'form' => $form->createView(),
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 
@@ -86,8 +100,9 @@ class RegistrationController extends ContainerAware
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['check_mail'].'.'.$this->getEngine(), array(
             'user' => $user,
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 
@@ -136,8 +151,9 @@ class RegistrationController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templates['confirmed'].'.'.$this->getEngine(), array(
             'user' => $user,
+            'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
         ));
     }
 

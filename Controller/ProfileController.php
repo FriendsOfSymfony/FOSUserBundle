@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -29,6 +30,18 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class ProfileController extends ContainerAware
 {
     /**
+     * @var array
+     */
+    protected $templates;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        parent::setContainer($container);
+
+        $this->templates = $this->container->getParameter('fos_user.profile.templates');
+    }
+
+    /**
      * Show the user
      */
     public function showAction()
@@ -38,7 +51,11 @@ class ProfileController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user));
+        return $this->container->get('templating')->renderResponse($this->templates['show'].'.'.$this->container->getParameter('fos_user.template.engine'),
+            array(
+                'user' => $user,
+                'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
+            ));
     }
 
     /**
@@ -91,8 +108,11 @@ class ProfileController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView())
+            $this->templates['edit'].'.'.$this->container->getParameter('fos_user.template.engine'),
+            array(
+                'form' => $form->createView(),
+                'fos_user' => array('base_template' => $this->container->getParameter('fos_user.template.base_layout'))
+            )
         );
     }
 }
