@@ -154,5 +154,5 @@ to reuse the common logic.
 
 ## SecurityBundle integration
 
-The built-in user managers also implement `Symfony\Component\Security\Core\UserProviderInterface`
+The built-in user managers also implement `Symfony\Component\Security\Core\User\UserProviderInterface`
 so they can be used as provider for the Security component.
