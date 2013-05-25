@@ -116,11 +116,13 @@ or CouchDB ODM).
 > to call parent::__construct(), as the base User class depends on
 > this to initialize some fields.
 
-**a) Doctrine ORM User class**
+#### a) Doctrine ORM User class
 
 If you're persisting your users via the Doctrine ORM, then your `User` class
 should live in the `Entity` namespace of your bundle and look like this to
 start:
+
+##### Annotations
 
 ``` php
 <?php
@@ -156,7 +158,48 @@ class User extends BaseUser
 
 > `User` is a reserved keyword in SQL so you cannot use it as table name.
 
-**b) MongoDB User class**
+##### yaml
+
+If you use yml to configure Doctrine you must add two files. The Entity and the orm.yml:
+
+```php
+<?php
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Acme\UserBundle\Entity;
+
+use FOS\UserBundle\Entity\User as BaseUser;
+
+/**
+ * User
+ */
+class User extends BaseUser
+{
+    /**
+     * @var integer
+     */
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+```yaml
+# src/Acme/UserBundle/Resources/config/doctrine/User.orm.yml
+Acme\UserBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+```
+
+#### b) MongoDB User class
 
 If you're persisting your users via the Doctrine MongoDB ODM, then your `User`
 class should live in the `Document` namespace of your bundle and look like
@@ -189,7 +232,7 @@ class User extends BaseUser
 }
 ```
 
-**c) CouchDB User class**
+#### c) CouchDB User class
 
 If you're persisting your users via the Doctrine CouchDB ODM, then your `User`
 class should live in the `CouchDocument` namespace of your bundle and look like
