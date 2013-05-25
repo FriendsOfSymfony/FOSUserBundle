@@ -75,3 +75,13 @@ services:
             - { name: kernel.event_subscriber }
 ```
 
+or if you prefer XML service definitions:
+
+```
+// src/Acme/UserBundle/Resources/config/services.xml
+<service id="acme_user.password_resetting" class="Acme\UserBundle\EventListener\PasswordResettingListener">
+    <tag name="kernel.event_subscriber"/>
+    <argument type="service" id="router"/>
+</service>
+```
+
