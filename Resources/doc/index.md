@@ -156,6 +156,29 @@ class User extends BaseUser
 
 > `User` is a reserved keyword in SQL so you cannot use it as table name.
 
+**Another Note:**
+
+If you are using YML instead of Annotation format in your Models, you need to convert.  You will know if you need to do this because you will get the following error:
+
+MappingException: No mapping file found named '...src/X/MyBundle/Resources/config/doctrine/User.orm.yml' for class 'X\MyBundle\Entity\User'.
+
+To solve this, a dummy User.orm.yml file is required in your src/X/MyBundle/Resources/config/doctrine directory:
+
+```
+X\MyBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            strategy: { generator: "AUTO" }
+```
+
+The remaining stuff is taken care of by FOSUserBundle, as the BaseModel is a mapped-superclass and already describes the stuff in the User.orm.xml, but you could just as well replace the existing values or add additional values just like you would do with your own models.
+
+If you don't use annotations throughout your app, you might also want to disable them in your app/config/config.yml to prevent side effects.
+
+
 **b) MongoDB User class**
 
 If you're persisting your users via the Doctrine MongoDB ODM, then your `User`
