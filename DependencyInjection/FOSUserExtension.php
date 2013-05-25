@@ -30,6 +30,7 @@ class FOSUserExtension extends Extension
 
         if ('custom' !== $config['db_driver']) {
             $loader->load(sprintf('%s.xml', $config['db_driver']));
+            $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
         }
 
         foreach (array('validator', 'security', 'util', 'mailer', 'listeners') as $basename) {

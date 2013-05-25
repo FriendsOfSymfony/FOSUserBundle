@@ -4,19 +4,6 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <mapped-superclass name="FOS\UserBundle\Document\Group" collection="fos_user_group">
-
-        <field name="name" fieldName="name" type="string" />
-
-        <field name="roles" fieldName="roles" type="collection" />
-
-        <indexes>
-            <index unique="true" dropDups="true">
-                <key name="name" order="asc" />
-                <option name="safe" value="true" />
-            </index>
-        </indexes>
-
-    </mapped-superclass>
+    <mapped-superclass name="FOS\UserBundle\Document\Group" collection="fos_user_group"/>
 
 </doctrine-mongo-mapping>

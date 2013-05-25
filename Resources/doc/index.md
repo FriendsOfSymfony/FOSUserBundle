@@ -87,7 +87,8 @@ properties or methods you find useful. This is *your* `User` class.
 The bundle provides base classes which are already mapped for most fields
 to make it easier to create your entity. Here is how you use it:
 
-1. Extend the base `User` class (the class to use depends of your storage)
+1. Extend the base `User` class (from the ``Model`` folder if you are using
+   any of the doctrine variants, or ``Propel`` for propel)
 2. Map the `id` field. It must be protected as it is inherited from the parent class.
 
 **Warning:**
@@ -95,13 +96,13 @@ to make it easier to create your entity. Here is how you use it:
 > When you extend from the mapped superclass provided by the bundle, don't
 > redefine the mapping for the other fields as it is provided by the bundle.
 
-In the following sections, you'll see examples of how your `User` class should
-look, depending on how you're storing your users (Doctrine ORM, MongoDB ODM,
-or CouchDB ODM).
-
 Your `User` class can live inside any bundle in your application. For example,
 if you work at "Acme" company, then you might create a bundle called `AcmeUserBundle`
 and place your `User` class in it.
+
+In the following sections, you'll see examples of how your `User` class should
+look, depending on how you're storing your users (Doctrine ORM, MongoDB ODM,
+or CouchDB ODM).
 
 **Note:**
 
@@ -127,7 +128,7 @@ start:
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -167,7 +168,7 @@ this to start:
 
 namespace Acme\UserBundle\Document;
 
-use FOS\UserBundle\Document\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
@@ -191,17 +192,17 @@ class User extends BaseUser
 **c) CouchDB User class**
 
 If you're persisting your users via the Doctrine CouchDB ODM, then your `User`
-class should live in the `Document` namespace of your bundle and look like
+class should live in the `CouchDocument` namespace of your bundle and look like
 this to start:
 
 ``` php
 <?php
 // src/Acme/UserBundle/Document/User.php
 
-namespace Acme\UserBundle\Document;
+namespace Acme\UserBundle\CouchDocument;
 
-use FOS\UserBundle\Document\User as BaseUser;
-use Doctrine\ODM\CouchDB\Mapping as CouchDB;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
 
 /**
  * @CouchDB\Document
@@ -286,7 +287,7 @@ provider for the firewall to use as part of the authentication process.
 
 > Although we have used the form login mechanism in this example, the FOSUserBundle
 > user provider service is compatible with many other authentication methods as well.
-> Please read the Symfony2 Security component documention for more information on the
+> Please read the Symfony2 Security component documentation for more information on the
 > other types of authentication methods.
 
 The `access_control` section is where you specify the credentials necessary for
@@ -344,12 +345,12 @@ Only three configuration values are required to use the bundle:
 * The firewall name which you configured in Step 5.
 * The fully qualified class name (FQCN) of the `User` class which you created in Step 4.
 
-**Warning:**
+**Note:**
 
-> When using one of the Doctrine implementation, you need either to use the
-> `auto_mapping` option of the corresponding bundle (done by default for
-> DoctrineBundle in the standard distribution) or to activate the mapping
-> for FOSUserBundle otherwise the base mapping will be ignored.
+> FOSUserBundle uses a compiler pass to register mappings for the base
+> User and Group model classes with the object manager that you configured
+> it to use. (Unless specified explicitly, this is the default manager
+> of your doctrine configuration.)
 
 ### Step 6: Import FOSUserBundle routing files
 

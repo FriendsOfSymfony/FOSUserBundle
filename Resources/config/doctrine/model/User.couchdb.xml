@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping>
+
+    <mapped-superclass name="FOS\UserBundle\Model\User" indexed="true">
+
+        <field name="username" fieldName="username" type="string" indexed="true" />
+        <field name="usernameCanonical" fieldName="usernameCanonical" type="string" indexed="true" />
+        <field name="email" fieldName="email" type="string" indexed="true" />
+        <field name="emailCanonical" fieldName="emailCanonical" type="string" indexed="true" />
+        <field name="enabled" fieldName="enabled" type="mixed" />
+        <field name="salt" fieldName="salt" type="string" />
+        <field name="password" fieldName="password" type="string" />
+        <field name="lastLogin" fieldName="lastLogin" type="datetime" />
+        <field name="locked" fieldName="locked" type="mixed" />
+        <field name="expired" fieldName="expired" type="mixed" />
+        <field name="expiresAt" fieldName="expiresAt" type="datetime" />
+        <field name="confirmationToken" fieldName="confirmationToken" type="string" />
+        <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="datetime" />
+        <field name="roles" fieldName="roles" type="mixed" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>
