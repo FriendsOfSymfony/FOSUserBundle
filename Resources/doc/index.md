@@ -168,7 +168,7 @@ If you use yml to configure Doctrine you must add two files. The Entity and the 
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * User
