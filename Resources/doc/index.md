@@ -87,7 +87,7 @@ properties or methods you find useful. This is *your* `User` class.
 The bundle provides base classes which are already mapped for most fields
 to make it easier to create your entity. Here is how you use it:
 
-1. Extend the base `User` class (from the ``Model`` folder if you are using
+1. Extend the base `User` class (from the ``Entity`` folder if you are using
    any of the doctrine variants, or ``Propel`` for propel)
 2. Map the `id` field. It must be protected as it is inherited from the parent class.
 
@@ -130,7 +130,7 @@ start:
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
