@@ -13,6 +13,10 @@ group:
 
 # Security
 "Bad credentials": Nom d'utilisateur ou mot de passe incorrect
+"User account is locked.": Compte bloqué
+"User account is disabled.": Compte désactivé
+"User account has expired.": Compte expiré
+"User credentials have expired.": Mot de passe expiré
 
 security:
     login:
