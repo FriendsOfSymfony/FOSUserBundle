@@ -70,7 +70,7 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
      */
     public function testRefreshDeleted()
     {
-        $user = $this->getMockForAbstractClass('FOS\UserBundle\Model\User');
+        $user = $this->getMock('FOS\UserBundle\Model\User');
         $this->userManager->expects($this->once())
             ->method('findUserByUsername')
             ->will($this->returnValue(null));
