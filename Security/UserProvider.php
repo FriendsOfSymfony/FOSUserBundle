@@ -58,7 +58,7 @@ class UserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Expected an instance of FOS\UserBundle\Model\UserInterface, but got "%s".', get_class($user)));
         }
 
-        if (null === $reloadedUser = $this->findUser($user->getUsername())) {
+        if (null === $reloadedUser = $this->userManager->findUserByUsername($user->getUsername())) {
             throw new UsernameNotFoundException(sprintf('User with username "%d" could not be reloaded.', $user->getUsername()));
         }
 
