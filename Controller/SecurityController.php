@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class SecurityController extends ContainerAware
 {
@@ -34,7 +35,11 @@ class SecurityController extends ContainerAware
 
         if ($error) {
             // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
-            $error = $error->getMessage();
+            if ($error instanceof AuthenticationException) {
+                $error = $error->getMessageKey();
+            } else {
+                $error = $error->getMessage();
+            }
         }
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
