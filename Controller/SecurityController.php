@@ -17,7 +17,15 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction(Request $request)
+    public function loginAction(Request $request) {
+       return $this->renderLogin('FOSUserBundle:Security:login.html.%s', $this->processForm($request));
+    }
+
+    public function loginFormAction(Request $request) {
+       return $this->renderLogin('FOSUserBundle:Security:login_content.html.%s', $this->processForm($request));
+    }
+
+    protected function processForm(Request $request)
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
@@ -43,11 +51,11 @@ class SecurityController extends ContainerAware
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
 
-        return $this->renderLogin(array(
+        return array(
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
-        ));
+        );
     }
 
     /**
@@ -58,9 +66,9 @@ class SecurityController extends ContainerAware
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function renderLogin(array $data)
+    protected function renderLogin($route, array $data)
     {
-        $template = sprintf('FOSUserBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = sprintf($route, $this->container->getParameter('fos_user.template.engine'));
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }
