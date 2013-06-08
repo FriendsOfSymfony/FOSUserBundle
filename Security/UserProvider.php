@@ -56,7 +56,7 @@ class UserProvider implements UserProviderInterface
      */
     public function refreshUser(SecurityUserInterface $user)
     {
-        if (!$user instanceof User && !$user instanceof PropelUser) {
+        if (!$user instanceof UserInterface) {
             throw new UnsupportedUserException(sprintf('Expected an instance of FOS\UserBundle\Model\User, but got "%s".', get_class($user)));
         }
 
