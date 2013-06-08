@@ -49,17 +49,17 @@ class EmailUserProviderTest extends \PHPUnit_Framework_TestCase
     public function testRefreshUserBy()
     {
         $user = $this->getMockBuilder('FOS\UserBundle\Model\User')
-                    ->setMethods(array('getId'))
+                    ->setMethods(array('getUsername'))
                     ->getMock();
 
         $user->expects($this->once())
-            ->method('getId')
-            ->will($this->returnValue('123'));
+            ->method('getUsername')
+            ->will($this->returnValue('user123'));
 
         $refreshedUser = $this->getMock('FOS\UserBundle\Model\UserInterface');
         $this->userManager->expects($this->once())
-            ->method('findUserBy')
-            ->with(array('id' => '123'))
+            ->method('findUserByUsername')
+            ->with('user123')
             ->will($this->returnValue($refreshedUser));
 
         $this->assertSame($refreshedUser, $this->userProvider->refreshUser($user));
