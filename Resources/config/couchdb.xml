@@ -21,7 +21,7 @@
             <argument>%fos_user.model_manager_name%</argument>
         </service>
 
-        <service id="fos_user.user_listener" class="FOS\UserBundle\CouchDocument\UserListener" public="false">
+        <service id="fos_user.user_listener" class="FOS\UserBundle\Doctrine\CouchDB\UserListener" public="false">
             <argument type="service" id="service_container" />
         </service>
     </services>
