@@ -19,6 +19,7 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -94,5 +95,29 @@ class ProfileController extends ContainerAware
             'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
             array('form' => $form->createView())
         );
+    }
+
+    /**
+     * Receive the confirmation token from user email provider
+     */
+    public function confirmAction(Request $request, $token)
+    {
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->container->get('fos_user.user_manager');
+
+        $user = $userManager->findUserByConfirmationToken($token);
+
+        if (null === $user) {
+            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
+        }
+
+        $user->setConfirmationToken(null);
+        $user->setEmail($user->getEmailPending());
+        $user->setEmailPending(null);
+
+        $userManager->updateUser($user);
+
+        $url = $this->container->get('router')->generate('fos_user_profile_show');
+        return new RedirectResponse($url);
     }
 }
