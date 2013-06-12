@@ -34,10 +34,10 @@ class SecurityController extends ContainerAware
         }
 
         if ($error) {
-            // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
             if ($error instanceof AuthenticationException) {
                 $error = $error->getMessageKey();
             } else {
+                // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
                 $error = $error->getMessage();
             }
         }
