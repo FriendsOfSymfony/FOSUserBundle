@@ -121,6 +121,14 @@ final class FOSUserEvents
     const PROFILE_EDIT_COMPLETED = 'fos_user.profile.edit.completed';
 
     /**
+     * The PROFILE_EDIT_EMAIL_CONFIRMED event occurs after confirming the email in the profile edit process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     */
+    const PROFILE_EDIT_EMAIL_CONFIRMED = 'fos_user.profile.edit_email.confirmed';
+
+    /**
      * The REGISTRATION_INITIALIZE event occurs when the registration process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.

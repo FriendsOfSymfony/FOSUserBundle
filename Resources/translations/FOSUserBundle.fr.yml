@@ -30,6 +30,7 @@ profile:
         submit: Mettre à jour
     flash:
         updated: Le profil a été mis à jour
+        email_confirmed: L'email a été mis à jour
     email:
         subject: Modification de votre email
         message: |

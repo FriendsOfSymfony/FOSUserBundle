@@ -118,6 +118,12 @@ class ProfileController extends ContainerAware
         $userManager->updateUser($user);
 
         $url = $this->container->get('router')->generate('fos_user_profile_show');
-        return new RedirectResponse($url);
+        $response = new RedirectResponse($url);
+
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+        $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_EMAIL_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
+
+        return $response;
     }
 }
