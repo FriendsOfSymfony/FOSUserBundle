@@ -51,9 +51,9 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function sendConfirmationEmail2Message(UserInterface $user)
+    public function sendProfileConfirmationEmailMessage(UserInterface $user)
     {
-        $template = $this->parameters['confirmation.template'];
+        $template = $this->parameters['profile.template'];
         $url = $this->router->generate('fos_user_profile_confirm', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,

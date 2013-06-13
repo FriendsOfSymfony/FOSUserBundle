@@ -27,6 +27,11 @@ class NoopMailer implements MailerInterface
         // nothing happens.
     }
 
+    public function sendProfileConfirmationEmailMessage(UserInterface $user)
+    {
+        // nothing happens.
+    }
+
     public function sendResettingEmailMessage(UserInterface $user)
     {
         // nothing happens.
