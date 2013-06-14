@@ -14,6 +14,7 @@
         <unique>
             <unique-column name="email_canonical" />
         </unique>
+        <column name="email_pending" type="varchar" size="255" />
 
         <column name="enabled" type="boolean" defaultValue="false" />
         <column name="salt" type="varchar" size="255" required="true" />
@@ -34,7 +35,7 @@
             <parameter name="roles" value="array" />
             <parameter name="fos_group" value="FOS\UserBundle\Model\GroupInterface" />
 
-            <parameter name="nullable_columns" value="password_requested_at, expires_at, last_login, credentials_expire_at" />
+            <parameter name="nullable_columns" value="email_pending, password_requested_at, expires_at, last_login, credentials_expire_at" />
         </behavior>
     </table>
 
