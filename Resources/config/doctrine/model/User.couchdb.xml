@@ -7,6 +7,7 @@
         <field name="usernameCanonical" fieldName="usernameCanonical" type="string" indexed="true" />
         <field name="email" fieldName="email" type="string" indexed="true" />
         <field name="emailCanonical" fieldName="emailCanonical" type="string" indexed="true" />
+        <field name="emailPending" fieldName="emailPending" type="string" />
         <field name="enabled" fieldName="enabled" type="mixed" />
         <field name="salt" fieldName="salt" type="string" />
         <field name="password" fieldName="password" type="string" />
