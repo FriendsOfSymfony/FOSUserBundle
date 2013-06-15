@@ -29,7 +29,7 @@
     "require-dev": {
         "twig/twig": "~1.5",
         "doctrine/doctrine-bundle": "*",
-        "swiftmailer/swiftmailer": "~4.3",
+        "swiftmailer/swiftmailer": ">=4.3, <6.0",
         "willdurand/propel-typehintable-behavior": "dev-master",
         "symfony/yaml": "~2.1",
         "symfony/validator": "~2.1"
