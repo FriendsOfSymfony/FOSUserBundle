@@ -72,11 +72,17 @@ class EmailConfirmationListener implements EventSubscriberInterface
         $userUpdated = clone $user;
         $this->userManager->reloadUser($user);
 
-        $user->setEmailPending($userUpdated->getEmail());
-        if (null === $user->getConfirmationToken()) {
-            $user->setConfirmationToken($this->tokenGenerator->generateToken());
+        if ($userUpdated->getEmail() == $user->getEmail()) {
+            return;
         }
 
-        $this->mailer->sendProfileConfirmationEmailMessage($user);
+        $user->setEmailPending($userUpdated->getEmail());
+        if (null === $user->getConfirmationToken()) {
+            $confirmationToken = $this->tokenGenerator->generateToken();
+            $user->setConfirmationToken($confirmationToken);
+            $userUpdated->setConfirmationToken($confirmationToken);
+        }
+
+        $this->mailer->sendProfileConfirmationEmailMessage($userUpdated);
     }
 }
