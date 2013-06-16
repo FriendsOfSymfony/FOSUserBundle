@@ -34,9 +34,9 @@ profile:
     email:
         subject: Modification de votre email
         message: |
-            Bonjour %username%,
+            Bonjour %username% !
 
-            pour valider la modification de votre email, merci de vous rendre sur %confirmationUrl%
+            Pour valider la modification de votre email, merci de vous rendre sur %confirmationUrl%
 
             Cordialement,
             L'équipe
