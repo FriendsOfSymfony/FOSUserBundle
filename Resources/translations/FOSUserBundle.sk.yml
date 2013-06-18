@@ -65,14 +65,15 @@ resetting:
         submit: Zmeniť heslo
     flash:
         success: Heslo bolo úspešne zmenené.
-    email: |
-        Vynulovanie hesla
-        Ahoj %username%!
+    email: 
+        subject: Vynulovanie hesla
+        message: |
+            Ahoj %username%!
 
-        Pre zmenu hesla, klikni prosím na nasledovnú linku: %confirmationUrl%
+            Pre zmenu hesla, klikni prosím na nasledovnú linku: %confirmationUrl%
 
-        S pozdravom,
-        Realizačný tím
+            S pozdravom,
+            Realizačný tím
 
 # Global strings
 layout:
