@@ -1,22 +1,24 @@
 # Group
 group:
     edit:
-        submit: Updateaza grupul
+        submit: Updatează grupul
     show:
         name: Numele grupului
     new:
-        submit: Creeaza grup
+        submit: Creează grup
     flash:
         updated: Grupul a fost updatat
         created: Grupul a fost creat
-        deleted: Grupul a fost sters
+        deleted: Grupul a fost șters
 
 # Security
+"Bad credentials": Nume de utilizator sau parolă greșită
+
 security:
     login:
         username: "Nume de utilizator:"
         password: "Parola:"
-        remember_me: Tine-ma minte
+        remember_me: Ține-mă minte
         submit: Login
 
 # Profile
@@ -25,22 +27,22 @@ profile:
         username: Numele de utilizator
         email: Email
     edit:
-        submit: Updateaza
+        submit: Updatează
     flash:
         updated: Profilul a fost updatat
 
 # Password change
 change_password:
-    submit: Schimba parola
+    submit: Schimbă parola
     flash:
-        success: Parola a fost schimbata
+        success: Parola a fost schimbată
 
 # Registration
 registration:
-    check_email: Un email a fost trimis catre %email%. Contine un link de activare pe care trebuie sa il accesezi pentru a-ti activa contul.
-    confirmed: Felicitari %username%, contul tau a fost confirmat.
-    back: Inapoi la pagina de la care ai venit.
-    submit: Inregistreaza-te
+    check_email: Un email a fost trimis către %email%. Conține un link de activare pe care trebuie să îl accesezi pentru a-ți activa contul.
+    confirmed: Felicitări %username%, contul tău a fost confirmat.
+    back: Înapoi la pagina de la care ai venit.
+    submit: Înregistrează-te
     flash:
         user_created: Utilizatorul a fost creat cu succes
     email:
@@ -48,29 +50,29 @@ registration:
         message: |
             Salut %username%!
 
-            Pentru a-ti valida contul - acceseaza %confirmationUrl%
+            Pentru a-ți valida contul - accesează %confirmationUrl%
 
             Toate cele bune,
             Echipa
 
 # Password resetting
 resetting:
-    password_already_requested: Deja s-a facut o cerere in ultimele 24 de ore pentru parola acestui utilizator.
-    check_email: A fost trimit un email catre %email%. Contine un link pe care trebuie sa il accesezi pentru a-ti reseta parola.
+    password_already_requested: Deja s-a făcut o cerere în ultimele 24 de ore pentru parola acestui utilizator.
+    check_email: A fost trimis un email către %email%. Conține un link pe care trebuie să îl accesezi pentru a-ți reseta parola.
     request:
-        invalid_username: Numele de utilizator sau adresa de email "%username%" nu exista.
+        invalid_username: Numele de utilizator sau adresa de email "%username%" nu există.
         username: "Numele de utilizator sau adresa de email:"
-        submit: Reseteaza parola
+        submit: Resetează parola
     reset:
-        submit: Schimba parola
+        submit: Schimbă parola
     flash:
-        success: Parola a fost resetata cu succes
+        success: Parola a fost resetată cu succes
     email:
-        subject: Resetare parola
+        subject: Resetare parolă
         message: |
             Salut %username%!
 
-            Pentru a-ti reseta parola - acceseaza %confirmationUrl%
+            Pentru a-ți reseta parola - accesează %confirmationUrl%
 
             Toate cele bune,
             Echipa
@@ -79,7 +81,7 @@ resetting:
 layout:
     logout: Logout
     login: Login
-    register: Inregistrare
+    register: Înregistrare
     logged_in_as: Logat ca %username%
 
 # Form field labels
@@ -87,8 +89,8 @@ form:
     group_name: "Numele grupului:"
     username: "Nume de utilizator:"
     email: "Email:"
-    current_password: "Parola curenta:"
-    password: "Parola:"
-    password_confirmation: "Verificare parola:"
-    new_password: "Noua parola:"
-    new_password_confirmation: "Verificare parola:"
+    current_password: "Parola curentă:"
+    password: "Parolă:"
+    password_confirmation: "Verificare parolă:"
+    new_password: "Parola nouă:"
+    new_password_confirmation: "Verificare parolă:"
