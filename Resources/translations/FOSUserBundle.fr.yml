@@ -26,6 +26,7 @@ profile:
     show:
         username: Nom d'utilisateur
         email: Adresse e-mail
+        email_pending: L'adresse e-mail %emailPending% est en attente de confirmation. Un e-mail vous a été envoyé avec un lien de confirmation.
     edit:
         submit: Mettre à jour
     flash:

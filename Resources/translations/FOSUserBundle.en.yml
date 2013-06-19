@@ -26,6 +26,7 @@ profile:
     show:
         username: Username
         email: Email
+        email_pending: The email %emailPending% is pending confirmation. An email has been sent with a confirmation link.
     edit:
         submit: Update
     flash:
