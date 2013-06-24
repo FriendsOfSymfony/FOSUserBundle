@@ -161,6 +161,14 @@ final class FOSUserEvents
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
     /**
+     * The REGISTRATION_VIEW event occurs when the registration view should be rendered.
+     *
+     * This event allows you to access the context which will be used for rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const REGISTRATION_VIEW = 'fos_user.registration.view';
+
+    /**
      * The RESETTING_RESET_INITIALIZE event occurs when the resetting process is initialized.
      *
      * This event allows you to set the response to bypass the processing.
@@ -183,6 +191,38 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const RESETTING_RESET_COMPLETED = 'fos_user.resetting.reset.completed';
+
+    /**
+     * The RESETTING_RESET_VIEW event occurs when the resetting view should be rendered.
+     *
+     * This event allows you to access the context which will be used for rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const RESETTING_RESET_VIEW = 'fos_user.resetting.reset.view';
+
+    /**
+     * The RESETTING_REQUEST_VIEW event occurs when the resetting request view should be rendered.
+     *
+     * This event allows you to access the context which will be used for rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const RESETTING_REQUEST_VIEW = 'fos_user.resetting.request.view';
+
+    /**
+     * The RESETTING_REQUEST_COMPLETED_VIEW event occurs when the resetting request is completed.
+     *
+     * This event allows you to access the context which could be used for redirecting or rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const RESETTING_REQUEST_COMPLETED_VIEW = 'fos_user.resetting.request.completed.view';
+
+    /**
+     * The RESETTING_ALREADY_REQUESTED_VIEW event occurs when the resetting request is already sent.
+     *
+     * This event allows you to access the context which will be used for rendering.
+     * The event listener method receives a FOS\UserBundle\Event\ViewEvent instance.
+     */
+    const RESETTING_ALREADY_REQUESTED_VIEW = 'fos_user.resetting.already_requested.view';
 
     /**
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.
