@@ -130,6 +130,7 @@ abstract class User implements UserInterface, GroupableInterface
         $this->expired = false;
         $this->roles = array();
         $this->credentialsExpired = false;
+        $this->groups = new ArrayCollection();
     }
 
     public function addRole($role)
@@ -545,7 +546,7 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function getGroups()
     {
-        return $this->groups ?: $this->groups = new ArrayCollection();
+        return $this->groups;
     }
 
     public function getGroupNames()
