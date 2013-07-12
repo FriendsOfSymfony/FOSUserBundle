@@ -31,21 +31,8 @@ class ProfileFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if (class_exists('Symfony\Component\Security\Core\Validator\Constraints\UserPassword')) {
-            $constraint = new UserPassword();
-        } else {
-            // Symfony 2.1 support with the old constraint class
-            $constraint = new OldUserPassword();
-        }
-
         $this->buildUserForm($builder, $options);
-
-        $builder->add('current_password', 'password', array(
-            'label' => 'form.current_password',
-            'translation_domain' => 'FOSUserBundle',
-            'mapped' => false,
-            'constraints' => $constraint,
-        ));
+        $this->addCurrentPasswordToForm($builder);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -73,5 +60,25 @@ class ProfileFormType extends AbstractType
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;
+    }
+
+    /**
+     * @param FormBuilderInterface $builder
+     */
+    protected function addCurrentPasswordToForm(FormBuilderInterface $builder)
+    {
+        if (class_exists('Symfony\Component\Security\Core\Validator\Constraints\UserPassword')) {
+            $constraint = new UserPassword();
+        } else {
+            // Symfony 2.1 support with the old constraint class
+            $constraint = new OldUserPassword();
+        }
+
+        $builder->add('current_password', 'password', array(
+            'label' => 'form.current_password',
+            'translation_domain' => 'FOSUserBundle',
+            'mapped' => false,
+            'constraints' => $constraint,
+        ));
     }
 }
