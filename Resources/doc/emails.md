@@ -121,11 +121,11 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     resetting:
         email:
-            template: AcmeDemoBundle:User:resetting.email.twig
+            template: AcmeDemoBundle:User:resetting.email.html.twig
 ```
 
 ``` html+jinja
-{# src/Acme/DemoBundle/Resources/views/User/resetting.email.twig #}
+{# src/Acme/DemoBundle/Resources/views/User/resetting.email.html.twig #}
 
 {% block subject %}Resetting your password{% endblock %}
 
