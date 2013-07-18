@@ -26,10 +26,21 @@ profile:
     show:
         username: Nom d'utilisateur
         email: Adresse e-mail
+        email_pending: L'adresse e-mail %emailPending% est en attente de confirmation. Un e-mail vous a été envoyé avec un lien de confirmation.
     edit:
         submit: Mettre à jour
     flash:
         updated: Le profil a été mis à jour
+        email_confirmed: L'email a été mis à jour
+    email:
+        subject: Modification de votre email
+        message: |
+            Bonjour %username% !
+
+            Pour valider la modification de votre email, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe
 
 # Password change
 change_password:

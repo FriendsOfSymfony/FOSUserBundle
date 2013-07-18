@@ -14,6 +14,8 @@
 
         <field name="emailCanonical" fieldName="emailCanonical" type="string" />
 
+        <field name="emailPending" fieldName="emailPending" type="string" />
+
         <field name="enabled" fieldName="enabled" type="boolean" />
 
         <field name="salt" fieldName="salt" type="string" />

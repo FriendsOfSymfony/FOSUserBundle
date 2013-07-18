@@ -51,6 +51,20 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
+    public function sendProfileConfirmationEmailMessage(UserInterface $user)
+    {
+        $template = $this->parameters['profile.template'];
+        $url = $this->router->generate('fos_user_profile_confirm', array('token' => $user->getConfirmationToken()), true);
+        $rendered = $this->templating->render($template, array(
+            'user' => $user,
+            'confirmationUrl' =>  $url
+        ));
+        $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function sendResettingEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['resetting.template'];

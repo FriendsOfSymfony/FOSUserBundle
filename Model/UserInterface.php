@@ -80,6 +80,22 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     public function setEmailCanonical($emailCanonical);
 
     /**
+     * Gets the email when confirmation is activate.
+     *
+     * @return string
+     */
+    public function getEmailPending();
+
+    /**
+     * Set the email waiting for confirmation.
+     *
+     * @param string $emailPending
+     *
+     * @return self
+     */
+    public function setEmailPending($emailPending);
+
+    /**
      * Gets the plain password.
      *
      * @return string

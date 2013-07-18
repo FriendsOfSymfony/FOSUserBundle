@@ -45,6 +45,11 @@ abstract class User implements UserInterface, GroupableInterface
     protected $emailCanonical;
 
     /**
+     * @var string
+     */
+    protected $emailPending;
+
+    /**
      * @var boolean
      */
     protected $enabled;
@@ -236,6 +241,11 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->emailCanonical;
     }
 
+    public function getEmailPending()
+    {
+        return $this->emailPending;
+    }
+
     /**
      * Gets the encrypted password.
      *
@@ -421,6 +431,13 @@ abstract class User implements UserInterface, GroupableInterface
     public function setEmailCanonical($emailCanonical)
     {
         $this->emailCanonical = $emailCanonical;
+
+        return $this;
+    }
+
+    public function setEmailPending($emailPending)
+    {
+        $this->emailPending = $emailPending;
 
         return $this;
     }

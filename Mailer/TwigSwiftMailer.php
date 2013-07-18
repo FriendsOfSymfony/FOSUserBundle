@@ -45,6 +45,18 @@ class TwigSwiftMailer implements MailerInterface
         $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
     }
 
+    public function sendProfileConfirmationEmailMessage(UserInterface $user)
+    {
+        $template = $this->parameters['template']['profile'];
+        $url = $this->router->generate('fos_user_profile_confirm', array('token' => $user->getConfirmationToken()), true);
+        $context = array(
+            'user' => $user,
+            'confirmationUrl' => $url
+        );
+
+        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
+    }
+
     public function sendResettingEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['template']['resetting'];

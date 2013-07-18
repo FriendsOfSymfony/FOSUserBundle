@@ -11,6 +11,7 @@
             <argument type="service" id="fos_user.util.token_generator" />
             <argument type="service" id="router" />
             <argument type="service" id="session" />
+            <argument type="service" id="fos_user.user_manager" />
         </service>
     </services>
 

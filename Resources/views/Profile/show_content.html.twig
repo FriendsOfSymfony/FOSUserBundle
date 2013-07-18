@@ -4,3 +4,8 @@
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
 </div>
+{% if user.emailPending is not empty %}
+<div>
+    <p>{{ 'profile.show.email_pending'|trans({'%emailPending%': user.emailPending}) }}</p>
+</div>
+{% endif %}

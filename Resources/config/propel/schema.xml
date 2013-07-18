@@ -14,6 +14,7 @@
         <unique>
             <unique-column name="email_canonical" />
         </unique>
+        <column name="email_pending" type="varchar" size="255" />
 
         <column name="enabled" type="boolean" defaultValue="false" />
         <column name="salt" type="varchar" size="255" required="true" />

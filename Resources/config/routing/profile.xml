@@ -13,4 +13,9 @@
         <default key="_controller">FOSUserBundle:Profile:edit</default>
     </route>
 
+    <route id="fos_user_profile_confirm" pattern="/edit/confirm/{token}">
+        <default key="_controller">FOSUserBundle:Profile:confirm</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+
 </routes>

@@ -28,6 +28,15 @@ interface MailerInterface
     public function sendConfirmationEmailMessage(UserInterface $user);
 
     /**
+     * Send an email to a user to confirm the email updated in profile
+     *
+     * @param UserInterface $user
+     *
+     * @return void
+     */
+    public function sendProfileConfirmationEmailMessage(UserInterface $user);
+
+    /**
      * Send an email to a user to confirm the password reset
      *
      * @param UserInterface $user
