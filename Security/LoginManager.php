@@ -42,7 +42,7 @@ class LoginManager implements LoginManagerInterface
         $this->container = $container;
     }
 
-    final public function loginUser($firewallName, UserInterface $user, Response $response = null)
+    final public function logInUser($firewallName, UserInterface $user, Response $response = null)
     {
         $this->userChecker->checkPostAuth($user);
 

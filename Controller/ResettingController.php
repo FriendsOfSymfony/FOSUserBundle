@@ -129,7 +129,7 @@ class ResettingController extends ContainerAware
     protected function authenticateUser(UserInterface $user, Response $response)
     {
         try {
-            $this->container->get('fos_user.security.login_manager')->loginUser(
+            $this->container->get('fos_user.security.login_manager')->logInUser(
                 $this->container->getParameter('fos_user.firewall_name'),
                 $user,
                 $response);

@@ -437,7 +437,7 @@ $ php app/console propel:build
 > To create SQL, run the command `propel:build --insert-sql` or use migration
 > commands if you have an existing schema in your database.
 
-You now can login at `http://app.com/app_dev.php/login`!
+You now can log in at `http://app.com/app_dev.php/login`!
 
 ### Next Steps
 

@@ -23,5 +23,5 @@ interface LoginManagerInterface
      *
      * @return void
      */
-    public function loginUser($firewallName, UserInterface $user, Response $response = null);
+    public function logInUser($firewallName, UserInterface $user, Response $response = null);
 }

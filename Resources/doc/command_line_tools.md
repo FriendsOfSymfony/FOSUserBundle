@@ -50,7 +50,7 @@ $ php app/console fos:user:create adminuser --super-admin
 ```
 
 If you specify the `--inactive` option, then the user that you create will no be
-able to login until he is activated.
+able to log in until he is activated.
 
 ``` bash
 $ php app/console fos:user:create testuser --inactive
