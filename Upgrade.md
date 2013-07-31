@@ -21,7 +21,7 @@ security:
 
 ### User and Group class
 
-This bundle now (registers mappings)[http://symfony.com/doc/master/cookbook/doctrine/mapping_model_classes.html]
+This bundle now [registers mappings](http://symfony.com/doc/master/cookbook/doctrine/mapping_model_classes.html)
 for the classes in the Model namespace directly, instead
 of having empty extending classes. The User and Group classes in the Entity and
 Document namespaces are deprecated, you should update your User and Group
