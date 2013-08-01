@@ -43,7 +43,9 @@ class RegistrationController extends ContainerAware
         $user = $userManager->createUser();
         $user->setEnabled(true);
 
-        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, new UserEvent($user, $request));
+        $event = new UserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+        $user = $event->getUser();
 
         $form = $formFactory->createForm();
         $form->setData($user);

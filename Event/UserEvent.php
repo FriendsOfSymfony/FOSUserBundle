@@ -35,6 +35,14 @@ class UserEvent extends Event
     }
 
     /**
+     * @var UserInterface $user
+     */
+    public function setUser(UserInterface $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
      * @return Request
      */
     public function getRequest()
