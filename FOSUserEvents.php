@@ -39,6 +39,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const CHANGE_PASSWORD_COMPLETED = 'fos_user.change_password.edit.completed';
+    
+    /**
+     * The CHANGE_PASSWORD_FAILED event occurs when the change password form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const CHANGE_PASSWORD_FAILED = 'fos_user.change_password.edit.failed';
 
     /**
      * The GROUP_CREATE_INITIALIZE event occurs when the group creation process is initialized.
@@ -63,6 +71,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
      */
     const GROUP_CREATE_COMPLETED = 'fos_user.group.create.completed';
+    
+    /**
+     * The GROUP_CREATE_FAILED event occurs when the group creation form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const GROUP_CREATE_FAILED = 'fos_user.group.create.failed';
 
     /**
      * The GROUP_DELETE_COMPLETED event occurs after deleting the group.
@@ -71,6 +87,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
      */
     const GROUP_DELETE_COMPLETED = 'fos_user.group.delete.completed';
+    
+    /**
+     * The GROUP_DELETE_FAILED event occurs when the group creation form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const GROUP_DELETE_FAILED = 'fos_user.group.create.failed';
 
     /**
      * The GROUP_EDIT_INITIALIZE event occurs when the group editing process is initialized.
@@ -95,6 +119,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
      */
     const GROUP_EDIT_COMPLETED = 'fos_user.group.edit.completed';
+    
+    /**
+     * The GROUP_EDIT_FAILED event occurs when the group edit form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const GROUP_EDIT_FAILED = 'fos_user.group.edit.failed';
 
     /**
      * The PROFILE_EDIT_INITIALIZE event occurs when the profile editing process is initialized.
@@ -119,6 +151,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const PROFILE_EDIT_COMPLETED = 'fos_user.profile.edit.completed';
+    
+    /**
+     * The PROFILE_EDIT_FAILED event occurs when the profile edit form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const PROFILE_EDIT_FAILED = 'fos_user.profile.edit.failed';
 
     /**
      * The REGISTRATION_INITIALIZE event occurs when the registration process is initialized.
@@ -143,6 +183,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const REGISTRATION_COMPLETED = 'fos_user.registration.completed';
+    
+    /**
+     * The REGISTRATION_FAILED event occurs when the registration form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const REGISTRATION_FAILED = 'fos_user.registration.failed';
 
     /**
      * The REGISTRATION_CONFIRM event occurs just before confirming the account.
@@ -183,6 +231,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const RESETTING_RESET_COMPLETED = 'fos_user.resetting.reset.completed';
+    
+    /**
+     * The RESETTING_RESET_FAILED event occurs when the resetting form is not valid.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const RESETTING_RESET_FAILED = 'fos_user.resetting.reset.failed';
 
     /**
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.
