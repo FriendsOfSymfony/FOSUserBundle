@@ -136,12 +136,17 @@ class ResettingController extends ContainerAware
 
                 return $response;
             }
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_FAILED, $event);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
-            'token' => $token,
-            'form' => $form->createView(),
-        ));
+        if (null === $response = $event->getResponse()) {
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
+                'token' => $token,
+                'form' => $form->createView(),
+            ));
+        }
+        return $response;
     }
 
     /**
