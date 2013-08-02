@@ -79,7 +79,7 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
      */
     const GROUP_CREATE_FAILED = 'fos_user.group.create.failed';
-
+ 
     /**
      * The GROUP_DELETE_COMPLETED event occurs after deleting the group.
      *
