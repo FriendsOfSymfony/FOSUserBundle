@@ -87,14 +87,6 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
      */
     const GROUP_DELETE_COMPLETED = 'fos_user.group.delete.completed';
-    
-    /**
-     * The GROUP_DELETE_FAILED event occurs when the group creation form is not valid.
-     *
-     * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
-     */
-    const GROUP_DELETE_FAILED = 'fos_user.group.create.failed';
 
     /**
      * The GROUP_EDIT_INITIALIZE event occurs when the group editing process is initialized.
