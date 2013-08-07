@@ -266,6 +266,27 @@ If you don't want to add your own logic in your user class, you can simply use
 `FOS\UserBundle\Propel\User` as user class and you don't have to create
 another class.
 
+``` php
+<?php
+//src/Acme/UserBundle/Users/User.php
+
+namespace Acme\UserBundle\Users;
+
+use FOS\UserBundle\Propel\User as BaseUser;
+
+
+class User extends BaseUser
+{
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+
 If you want to add your own fields, you can extend the model class by overriding the database schema.
 Just copy the `Resources/config/propel/schema.xml` file to `app/Resources/FOSUserBundle/config/propel/schema.xml`,
 and customize it to fit your needs.
