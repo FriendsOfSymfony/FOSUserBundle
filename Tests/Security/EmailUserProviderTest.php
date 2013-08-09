@@ -62,6 +62,10 @@ class EmailUserProviderTest extends \PHPUnit_Framework_TestCase
             ->with(array('id' => '123'))
             ->will($this->returnValue($refreshedUser));
 
+        $this->userManager->expects($this->atLeastOnce())
+            ->method('getClass')
+            ->will($this->returnValue(get_class($user)));
+
         $this->assertSame($refreshedUser, $this->userProvider->refreshUser($user));
     }
 
