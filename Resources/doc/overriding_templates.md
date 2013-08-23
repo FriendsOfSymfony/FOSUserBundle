@@ -7,7 +7,8 @@ the bundle. Although the template names are not configurable, the Symfony2
 framework provides two ways to override the templates of a bundle.
 
 1. Define a new template of the same name in the `app/Resources` directory
-2. Create a new bundle that is defined as a child of `FOSUserBundle`
+2. Change your configuration file
+3. Create a new bundle that is defined as a child of `FOSUserBundle`
 
 ### Example: Overriding The Default layout.html.twig
 
@@ -91,14 +92,25 @@ create a folder with the name of the bundle class in the `app/Resources` directo
 Then add your new template to this folder, preserving the directory structure from the
 original bundle.
 
-**b) Create A Child Bundle And Override Template**
+**b) Change your configuration file**
+
+This method doesn't require extending the FOSUserBundle. Create your template anywhere and refer to it in your configuration file using fos_user.template.login. This approach is useful when you develop 3rd party bundles that depend on FOSUserBundle. Example:
+
+``` php
+// app/config/config.yml
+fos_user:
+  template:
+    login: AcmeUserBundle:User:login.html.twig
+```
+
+**c) Create A Child Bundle And Override Template**
 
 **Note:**
 
 ```
-This method is more complicated than the one outlined above. Unless  you are
+This method is more complicated than the ones outlined above. Unless you are
 planning to override the controllers as well as the templates, it is recommended
-that you use the other method.
+that you use the other methods.
 ```
 
 As listed above, you can also create a bundle defined as child of FOSUserBundle

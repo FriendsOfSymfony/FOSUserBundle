@@ -233,6 +233,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('engine')->defaultValue('twig')->end()
+                        ->scalarNode('login')->defaultValue('FOSUserBundle:Security:login.html.%s')->end()
                     ->end()
                 ->end()
             ->end();
