@@ -380,8 +380,8 @@ Or if you prefer XML:
 Only three configuration values are required to use the bundle:
 
 * The type of datastore you are using (`orm`, `mongodb`, `couchdb` or `propel`).
-* The firewall name which you configured in Step 5.
-* The fully qualified class name (FQCN) of the `User` class which you created in Step 4.
+* The firewall name which you configured in Step 4.
+* The fully qualified class name (FQCN) of the `User` class which you created in Step 3.
 
 **Note:**
 
