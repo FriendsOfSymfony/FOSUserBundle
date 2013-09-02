@@ -114,6 +114,10 @@ class FOSUserExtension extends Extension
 
         if ($config['confirmation']['enabled']) {
             $loader->load('email_confirmation.xml');
+            $container->setParameter('fos_user.registration.confirmation.form.name', $config['confirmation']['form']['name']);
+            $container->setParameter('fos_user.registration.confirmation.form.type', $config['confirmation']['form']['type']);
+            $container->setParameter('fos_user.registration.confirmation.form.validation_groups', $config['confirmation']['form']['validation_groups']);
+
         }
 
         if (isset($config['confirmation']['from_email'])) {
