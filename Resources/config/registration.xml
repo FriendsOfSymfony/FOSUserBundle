@@ -22,7 +22,7 @@
             <argument type="service" id="form.factory" />
             <argument>fos_user_resend_confirm_form</argument>
             <argument>fos_user_resend_confirm</argument>
-            <argument>%fos_user.registration.form.validation_groups%</argument>
+            <argument type="collection">ResendConfirm</argument>
         </service>
 
         <service id="fos_user.resend_confirm.form.type" class="FOS\UserBundle\Form\Type\ResendConfirmFormType">
