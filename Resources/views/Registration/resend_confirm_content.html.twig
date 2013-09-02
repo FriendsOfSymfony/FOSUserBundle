@@ -1,0 +1,8 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_resend_confirm') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_resend_confirm">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'resend_confirm.submit'|trans }}" />
+    </div>
+</form>
