@@ -161,6 +161,11 @@ final class FOSUserEvents
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
     /**
+     * The RESEND_CONFIRM event occurs after requesting a new confirmation email
+     */
+    const RESEND_CONFIRM = 'fos_user.registration.resend_confirm';
+
+    /**
      * The RESETTING_RESET_INITIALIZE event occurs when the resetting process is initialized.
      *
      * This event allows you to set the response to bypass the processing.
