@@ -189,6 +189,11 @@ final class FOSUserEvents
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
     /**
+     * The RESEND_CONFIRM event occurs after requesting a new confirmation email
+     */
+    const RESEND_CONFIRM = 'fos_user.registration.resend_confirm';
+
+    /**
      * The RESETTING_RESET_REQUEST event occurs when a user requests a password reset of the account.
      *
      * This event allows you to check if a user is locked out before requesting a password.
