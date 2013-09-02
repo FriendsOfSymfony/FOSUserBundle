@@ -32,6 +32,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
             <constraint name="Length">
@@ -42,6 +43,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
             <constraint name="Email">
@@ -49,6 +51,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
         </property>
@@ -122,6 +125,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
             <constraint name="Length">
@@ -132,6 +136,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
             <constraint name="Email">
@@ -139,6 +144,7 @@
                 <option name="groups">
                     <value>Registration</value>
                     <value>Profile</value>
+                    <value>ResendConfirm</value>
                 </option>
             </constraint>
         </property>
