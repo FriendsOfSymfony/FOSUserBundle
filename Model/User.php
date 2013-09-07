@@ -235,6 +235,16 @@ abstract class User implements UserInterface, GroupableInterface
     {
         return $this->emailCanonical;
     }
+    
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
 
     /**
      * Gets the encrypted password.
