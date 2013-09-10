@@ -12,6 +12,8 @@ group:
         deleted: S'ha eliminat el grup
 
 # Security
+"Bad credentials": Nom d'usuari o Contrasenya incorrectes
+
 security:
     login:
         username: "Nom d'usuari:"
