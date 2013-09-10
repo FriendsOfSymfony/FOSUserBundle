@@ -64,11 +64,7 @@ class UserManipulator
      */
     public function activate($username)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(true);
         $this->userManager->updateUser($user);
     }
@@ -80,11 +76,7 @@ class UserManipulator
      */
     public function deactivate($username)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(false);
         $this->userManager->updateUser($user);
     }
@@ -97,11 +89,7 @@ class UserManipulator
      */
     public function changePassword($username, $password)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         $user->setPlainPassword($password);
         $this->userManager->updateUser($user);
     }
@@ -113,11 +101,7 @@ class UserManipulator
      */
     public function promote($username)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(true);
         $this->userManager->updateUser($user);
     }
@@ -129,11 +113,7 @@ class UserManipulator
      */
     public function demote($username)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(false);
         $this->userManager->updateUser($user);
     }
@@ -148,11 +128,7 @@ class UserManipulator
      */
     public function addRole($username, $role)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         if ($user->hasRole($role)) {
             return false;
         }
@@ -161,6 +137,7 @@ class UserManipulator
 
         return true;
     }
+
     /**
      * Removes role from the given user.
      *
@@ -171,11 +148,7 @@ class UserManipulator
      */
     public function removeRole($username, $role)
     {
-        $user = $this->userManager->findUserByUsername($username);
-
-        if (!$user) {
-            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
-        }
+        $user = $this->findUserByUsernameOrThrowException($username);
         if (!$user->hasRole($role)) {
             return false;
         }
@@ -183,5 +156,23 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         return true;
+    }
+
+    /**
+     * Finds a user by his username and throws an exception if we can't find it.
+     *
+     * @param string $username
+     *
+     * @return UserInterface
+     */
+    private function findUserByUsernameOrThrowException($username)
+    {
+        $user = $this->userManager->findUserByUsername($username);
+
+        if (!$user) {
+            throw new \InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
+        }
+
+        return $user;
     }
 }
