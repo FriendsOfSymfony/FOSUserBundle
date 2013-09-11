@@ -12,16 +12,17 @@
 namespace FOS\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Controller managing the registration
@@ -33,8 +34,8 @@ class RegistrationController extends ContainerAware
 {
     public function registerAction(Request $request)
     {
-        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
-        $formFactory = $this->container->get('fos_user.registration.form.factory');
+        /** @var $formFactory FactoryInterface */
+        $formFactory = $this->getFormFactory($request);
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->container->get('fos_user.user_manager');
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
@@ -139,6 +140,18 @@ class RegistrationController extends ContainerAware
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
+    }
+
+    /**
+     * Retrieve the form factory providing the registration form for the given request.
+     *
+     * @param Request $request
+     *
+     * @return FactoryInterface
+     */
+    protected function getFormFactory(Request $request)
+    {
+        return $this->container->get('fos_user.registration.form.factory');
     }
 
     protected function getEngine()
