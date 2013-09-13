@@ -37,7 +37,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Aktivačný email bol zaslaný na adresu %email%. V tele správy je aktivačná linka, na ktorú treba kliknúť pre úspešné dokončenie registrácie.
+    check_email: Aktivačný email bol zaslaný na adresu %email%. V tele správy je aktivačný link, na ktorú treba kliknúť pre úspešné dokončenie registrácie.
     confirmed: Gratulujeme %username%, Vaše konto bolo aktivované.
     back: Návrat na predchádzajúcu stránku.
     submit: Registrácia
@@ -48,7 +48,7 @@ registration:
         message: |
             Ahoj %username%!
 
-            Pre ukončenie registrácie, prosím klikni na nasledovnú linku: %confirmationUrl%
+            Pre ukončenie registrácie, prosím klikni na nasledovný link: %confirmationUrl%
 
             S pozdravom,
             Realizačný tím
@@ -56,7 +56,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Požiadavka na heslo už bola vykonaná za posledných 24 hodín.
-    check_email: Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje linku, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.
+    check_email: Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.
     request:
         invalid_username: Používateľské meno alebo emailová adresa "%username%" neexistuje. Skontrolujte si prosím Vami zadané údaje a skúste znovu.
         username: "Používateľské meno alebo emailová adresa:"
@@ -70,7 +70,7 @@ resetting:
         message: |
             Ahoj %username%!
 
-            Pre zmenu hesla, klikni prosím na nasledovnú linku: %confirmationUrl%
+            Pre zmenu hesla, klikni prosím na nasledovný link: %confirmationUrl%
 
             S pozdravom,
             Realizačný tím
