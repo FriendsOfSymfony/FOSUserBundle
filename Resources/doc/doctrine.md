@@ -29,10 +29,11 @@ None of the Doctrine projects currently allow overwriting part of the mapping
 of a mapped superclass in the child entity.
 
 If you need to change the mapping (for instance to adapt the field names
-to a legacy database), the only solution is to write the whole mapping again
+to a legacy database), one solution could be to write the whole mapping again
 without inheriting the mapping from the mapped superclass. In such case,
 your entity should extend directly from `FOS\UserBundle\Model\User` (and
-`FOS\UserBundle\Model\Group` for the group).
+`FOS\UserBundle\Model\Group` for the group). Another solution can be through
+doctrine attribute and relations [overrides](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html#overrides.)
 
 **Warning:**
 
