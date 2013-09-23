@@ -46,9 +46,9 @@ registration:
     flash:
         user_created: Пользователь успешно создан
     email:
-        subject: Добро пожаловать %username%!
+        subject: Добро пожаловать, %username%!
         message: |
-            Приветствуем %username%!
+            Приветствуем, %username%!
 
             Для подтверждения вашей регистрации, пройдите по ссылке %confirmationUrl%
 
@@ -70,9 +70,9 @@ resetting:
     email:
         subject: Сброс пароля
         message: |
-            Приветствуем %username%!
+            Приветствуем, %username%!
 
-            Для сброса пароля - пожалуйста пройдите по ссылке %confirmationUrl%
+            Для сброса пароля, пожалуйста, пройдите по ссылке %confirmationUrl%
 
             С наилучшими пожеланиями,
             команда сайта.
