@@ -50,6 +50,7 @@ class ResettingController extends ContainerAware
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
+            $request->getSession()->getFlashBag()->add('warning', 'Email not found');
             return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
         }
 
