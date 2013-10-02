@@ -20,6 +20,7 @@ fos_user:
     current_password:
         invalid: La contrasenya no és vàlida
     group:
+        already_used: El nom de grup ja està sent utilitzat
         blank: Si us plau, introdueix un nom de grup
         short: "[-Inf,Inf]El nom de grup és massa curt"
         long: "[-Inf,Inf]El nom de grup és massa llarg"
