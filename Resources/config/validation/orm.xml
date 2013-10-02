@@ -25,5 +25,13 @@
             </option>
         </constraint>
     </class>
+    
+    <class name="FOS\UserBundle\Model\Group">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">name</option>
+            <option name="errorPath">name</option>
+            <option name="message">fos_user.group.already_used</option>
+        </constraint>
+    </class>    
 
 </constraint-mapping>
