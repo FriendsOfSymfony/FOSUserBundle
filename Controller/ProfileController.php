@@ -87,6 +87,8 @@ class ProfileController extends ContainerAware
                 $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
+            } else {
+                $this->container->get('fos_user.user_manager')->reloadUser($user);
             }
         }
 
