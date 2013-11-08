@@ -134,6 +134,14 @@ services:
 
 **Note:**
 
+> You must import the services.yml or services.xml file into your app/config/config.yml file
+> in order for the services to be read. 
+> For example:
+``` yaml 
+imports:
+    - { resource: @AcmeUserBundle/Resources/config/services.yml }
+```
+
 > In the form type service configuration you have specified the `fos_user.model.user.class`
 > container parameter as a constructor argument. Unless you have redefined the
 > constructor in your form type class, you must include this argument as it is a
