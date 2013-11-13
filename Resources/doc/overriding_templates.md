@@ -6,7 +6,8 @@ find that you need to override the default templates that are provided by
 the bundle. Although the template names are not configurable, the Symfony2
 framework provides two ways to override the templates of a bundle.
 
-1. Define a new template of the same name in the `app/Resources` directory
+1. Define a new template of the same name in the `app/Resources` directory, 
+   e.g. `app/Resources/FOSUserBundle/views/Security/login.html.twig`
 2. Create a new bundle that is defined as a child of `FOSUserBundle`
 
 ### Example: Overriding The Default layout.html.twig
