@@ -143,8 +143,8 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')))
-        	->will($this->returnValue($this->returnValue($this->getMockBuilder("FOS\UserBundle\Model\UserInterface")->disableOriginalConstructor()->getMock())));
+            ->with(array('emailCanonical' => 'jack@email.org'))
+        	->will($this->returnValue($this->getUser()));
 
         $this->emailCanonicalizer->expects($this->once())
             ->method('canonicalize')
