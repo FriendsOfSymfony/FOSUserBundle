@@ -165,6 +165,8 @@ abstract class User implements UserInterface, GroupableInterface
             $this->credentialsExpired,
             $this->enabled,
             $this->id,
+            $this->email,
+            $this->emailCanonical,
         ));
     }
 
@@ -189,7 +191,9 @@ abstract class User implements UserInterface, GroupableInterface
             $this->locked,
             $this->credentialsExpired,
             $this->enabled,
-            $this->id
+            $this->id,
+            $this->email,
+            $this->emailCanonical
         ) = $data;
     }
 
