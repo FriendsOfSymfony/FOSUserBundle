@@ -80,6 +80,7 @@ class TwigSwiftMailer implements MailerInterface
 
         if (!empty($htmlBody)) {
             $message->setBody($htmlBody, 'text/html')
+                ->setContentType("text/html");
                 ->addPart($textBody, 'text/plain');
         } else {
             $message->setBody($textBody);
