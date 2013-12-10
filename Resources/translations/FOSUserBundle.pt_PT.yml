@@ -7,9 +7,9 @@ group:
     new:
         submit: Criar Grupo
 #    flash:
-#        updated: The group has been updated
-#        created: The group has been created
-#        deleted: The group has been deleted
+#        updated: O grupo foi atualizado
+#        created: O grupo foi criado
+#        deleted: O grupo foi apagado
 
 "Bad credentials": Utilizador e/ou password inválidos
 
@@ -29,22 +29,22 @@ profile:
     edit:
         submit: Atualizar conta
 #   flash:
-#       updated: The profile has been updated
+#       updated: O perfil foi atualizado
 
 # Password change
 change_password:
     submit: Mudar a password
 #    flash:
-#        success: The password has been changed
+#        success: A password foi alterada
 
 # Registration
 registration:
     check_email: Foi enviado um email para %email%. Este contém um link de ativação que terá de visitar para ativar a sua conta.
     confirmed: Parabéns %username%, a sua conta foi confirmada.
-    #back: Back to the originating page.
+    #back: Voltar para a página original.
     submit: Registar
     #flash:
-    #    user_created: The user has been created successfully
+    #    user_created: O utilizador foi criado com sucesso
     email:
         subject: Bem-vindo(a) %username%!
         message: |
@@ -59,15 +59,14 @@ registration:
 resetting:
     password_already_requested: Uma password para este utilizador já foi requisitada nas últimas 24 horas.
     check_email: Foi enviado um email para %email%. Este contém um link que terá de visitar para puder recuperar a sua password.
-resetting:
     request:
-        #invalid_username: The username or email address "%username%" does not exist.
+        invalid_username: O username ou email "%username%" não existe.
         username: "Utilizador:"
         submit: Recuperar password
     reset:
         submit: Alterar password
-    #flash:
-    #    success: The password has been reset successfully
+    flash:
+        success: A password foi recuperada com sucesso
     email:
         subject: Bem-vindo(a) %username%!
         message: |
