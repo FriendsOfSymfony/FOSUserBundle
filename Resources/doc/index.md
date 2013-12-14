@@ -47,7 +47,7 @@ Add FOSUserBundle in your composer.json:
 ```js
 {
     "require": {
-        "friendsofsymfony/user-bundle": "*"
+        "friendsofsymfony/user-bundle": "~1.3"
     }
 }
 ```
