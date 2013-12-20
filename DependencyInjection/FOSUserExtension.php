@@ -207,4 +207,9 @@ class FOSUserExtension extends Extension
             }
         }
     }
+
+    public function getNamespace()
+    {
+        return 'http://friendsofsymfony.github.io/schema/dic/user';
+    }
 }
