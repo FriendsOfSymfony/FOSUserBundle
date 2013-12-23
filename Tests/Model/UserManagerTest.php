@@ -11,6 +11,8 @@
 
 namespace FOS\UserBundle\Tests\Model;
 
+use FOS\UserBundle\Model\UserInterface;
+
 class UserManagerTest extends \PHPUnit_Framework_TestCase
 {
     private $manager;
@@ -141,13 +143,56 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+            ->with(array('emailCanonical' => 'jack@email.org'))
+        	->will($this->returnValue($this->getUser()));
+
         $this->emailCanonicalizer->expects($this->once())
             ->method('canonicalize')
             ->with('JaCk@EmAiL.oRg')
             ->will($this->returnValue('jack@email.org'));
 
+        $this->usernameCanonicalizer
+	        ->expects($this->never())
+	        ->method('canonicalize');
+
         $this->manager->findUserByUsernameOrEmail('JaCk@EmAiL.oRg');
+    }
+
+    /**
+     * Test if a user that has one email-address as 'username', and a different
+     * email-address as 'email' will be found correctly.
+     */
+    public function testFindUserByUsernameOrEmailWithEmailAsUsername(){
+    	$usernameCanonical = 'jack@email.org';
+    	$username = 'JaCk@EmAiL.oRg';
+
+    	$user = $this->getUser();
+
+    	$this->manager
+    			->expects($this->exactly(2))
+		    	->method('findUserBy')
+    			->will($this->returnValueMap(array(
+    											array(array('emailCanonical' => $usernameCanonical), null),
+    											array(array('usernameCanonical' => $usernameCanonical), $user),
+    											)));
+
+    	$this->emailCanonicalizer
+    			->expects($this->once())
+		    	->method('canonicalize')
+		    	->with($username)
+		    	->will($this->returnValue($usernameCanonical));
+
+    	$this->usernameCanonicalizer
+		    	->expects($this->once())
+		    	->method('canonicalize')
+		    	->with($username)
+		    	->will($this->returnValue($usernameCanonical));
+
+
+    	$foundUser = $this->manager->findUserByUsernameOrEmail($username);
+    	$this->assertEquals($user, $foundUser);
+    	$this->assertInstanceOf("FOS\UserBundle\Model\UserInterface", $foundUser);
+
     }
 
     private function getMockCanonicalizer()
