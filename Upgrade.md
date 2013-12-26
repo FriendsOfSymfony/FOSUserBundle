@@ -19,6 +19,11 @@ security:
             id: fos_user.user_provider.username
 ```
 
+### Configuration
+
+The XML namespace is changed from `http://example.org/schema/dic/fos_user` to
+`http://friendsofsymfony.github.io/schema/dic/user`.
+
 ### User and Group class
 
 This bundle now [registers mappings](http://symfony.com/doc/master/cookbook/doctrine/mapping_model_classes.html)
