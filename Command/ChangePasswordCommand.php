@@ -83,8 +83,8 @@ EOT
         }
 
         if (!$input->getArgument('password')) {
-            $asking_method = method_exists($this->getHelper('dialog'), 'askHiddenResponseAndValidate') ? 'askHiddenResponseAndValidate' : 'askAndValidate';
-            $password = $this->getHelper('dialog')->$asking_method(
+            $askingMethod = method_exists($this->getHelper('dialog'), 'askHiddenResponseAndValidate') ? 'askHiddenResponseAndValidate' : 'askAndValidate';
+            $password = $this->getHelper('dialog')->$askingMethod(
                 $output,
                 'Please enter the new password:',
                 function($password) {
