@@ -130,7 +130,7 @@ start:
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -168,7 +168,7 @@ If you use yml to configure Doctrine you must add two files. The Entity and the 
 
 namespace Acme\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * User
@@ -206,7 +206,7 @@ this to start:
 
 namespace Acme\UserBundle\Document;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Document\User as BaseUser;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
@@ -239,7 +239,7 @@ this to start:
 
 namespace Acme\UserBundle\CouchDocument;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Document\User as BaseUser;
 use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
 
 /**
