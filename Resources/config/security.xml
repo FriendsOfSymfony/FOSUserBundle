@@ -20,6 +20,7 @@
         	<argument type="service" id="security.user_checker" />
         	<argument type="service" id="security.authentication.session_strategy" />
         	<argument type="service" id="service_container" />
+            <argument type="collection" />
         </service>
 
         <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
