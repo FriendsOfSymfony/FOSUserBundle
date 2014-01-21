@@ -29,7 +29,7 @@ class InjectRememberMeServicesPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
 
-        $rememberMeServices = [];
+        $rememberMeServices = array();
         foreach ($container->getDefinitions() as $id => $definition) {
             if (0 !== strpos($id, 'security.authentication.rememberme.services.')) {
                 continue;
