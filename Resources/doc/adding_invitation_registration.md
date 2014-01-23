@@ -100,7 +100,6 @@ class User extends \FOS\UserBundle\Entity\User
     /**
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="code")
-     * @Assert\NotNull(message="Your invitation is wrong")
      */
     protected $invitation;
 
@@ -127,6 +126,7 @@ namespace Acme\UserBundle\Form\Type;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class RegistrationFormType extends BaseRegistrationFormType
 {
@@ -134,7 +134,9 @@ class RegistrationFormType extends BaseRegistrationFormType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('invitation', 'acme_invitation_type');
+        $builder->add('invitation', 'acme_invitation_type', array(
+            'validation_groups' => new NotNull(array('message' => 'Your invitation is wrong')),
+        ));
     }
 
     public function getName()
