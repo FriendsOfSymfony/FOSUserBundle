@@ -100,7 +100,7 @@ class User extends \FOS\UserBundle\Entity\User
     /**
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="code")
-     * @Assert\NotNull(groups={"Registration"})
+     * @Assert\NotNull(message="Your invitation is wrong", groups={"Registration"})
      */
     protected $invitation;
 
