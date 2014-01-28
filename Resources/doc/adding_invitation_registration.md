@@ -127,7 +127,6 @@ namespace Acme\UserBundle\Form\Type;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class RegistrationFormType extends BaseRegistrationFormType
 {
