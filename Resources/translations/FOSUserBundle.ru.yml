@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Неправильное имя пользователя или пароль
+"User account is disabled.": Учетная запись отключена.
 
 security:
     login:

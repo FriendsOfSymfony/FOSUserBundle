@@ -39,7 +39,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Benutzerkonto zu bestätigen.
+    check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Sie anklicken müssen, um Ihr Benutzerkonto zu bestätigen.
     confirmed: Glückwunsch %username%, Dein Benutzerkonto ist jetzt bestätigt.
     back: Zurück zur ursprünglichen Seite.
     submit: Registrieren
@@ -50,7 +50,7 @@ registration:
         message: |
             Hallo %username%!
 
-            Besuche bitte folgende Seite, um Dein Benutzerkonto zu bestätigen: %confirmationUrl%
+            Besuchen Sie bitte folgende Seite, um Ihr Benutzerkonto zu bestätigen: %confirmationUrl%
 
             Mit besten Grüßen,
             das Team.
@@ -58,7 +58,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Für diesen Benutzer wurde in den vergangenen 24 Stunden bereits ein neues Passwort beantragt.
-    check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Du anklicken musst, um Dein Passwort zurückzusetzen.
+    check_email: Eine E-Mail wurde an %email% gesendet. Sie enthält einen Link, den Sie anklicken müssen, um Ihr Passwort zurückzusetzen.
     request:
         invalid_username: Der Benutzername oder die E-Mail-Adresse "%username%" existiert nicht.
         username: "Benutzername oder E-Mail-Adresse:"
@@ -72,7 +72,7 @@ resetting:
         message: |
             Hallo %username%!
 
-            Besuche bitte folgende Seite, um Dein Passwort zurückzusetzen: %confirmationUrl%
+            Besuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%
 
             Mit besten Grüßen,
             das Team.

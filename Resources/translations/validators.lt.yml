@@ -2,24 +2,24 @@ fos_user:
     username:
         already_used: Naudotojo vardas jau užimtas
         blank: Prašome įvesti naudotojo vardą
-        short: "[-Inf,Inf]Naudotojo vardas pertrumpas"
-        long: "[-Inf,Inf]Naudotojo vardas perilgas"
+        short: "[-Inf,Inf]Naudotojo vardas per trumpas"
+        long: "[-Inf,Inf]Naudotojo vardas per ilgas"
     email:
         already_used: El. paštas jau užimtas
-        blank: Prašome įvesti el. pašta
-        short: "[-Inf,Inf]El. paštas pertrumpas"
-        long: "[-Inf,Inf]El. paštas perilgas"
+        blank: Prašome įvesti el. paštą
+        short: "[-Inf,Inf]El. paštas pert rumpas"
+        long: "[-Inf,Inf]El. paštas per ilgas"
         invalid: El. paštas neteisingas
     password:
         blank: Prašome įvesti slaptažodį
-        short: "[-Inf,Inf]Slaptažodis pertrumpas"
+        short: "[-Inf,Inf]Slaptažodis per trumpas"
         mismatch: Įvesti skirtingi slaptažodžiai
     new_password:
         blank: Prašome įvesti naują slaptažodį
-        short: "[-Inf,Inf]Naujasis slaptažodis pertrumpas"
+        short: "[-Inf,Inf]Naujas slaptažodis per trumpas"
     current_password:
         invalid: Neteisingai įvestas slaptažodis
     group:
-        blank: Prašome įvesti vardą
-        short: "[-Inf,Inf]Vardas pertrumpas"
-        long: "[-Inf,Inf]Vardas pertrumpas"
+        blank: Prašome įvesti pavadinimą
+        short: "[-Inf,Inf]Pavadinimas per trumpas"
+        long: "[-Inf,Inf]Pavadinimas per trumpas"

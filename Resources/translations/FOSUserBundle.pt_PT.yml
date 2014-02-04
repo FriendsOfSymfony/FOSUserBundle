@@ -68,7 +68,7 @@ resetting:
     flash:
         success: A password foi recuperada com sucesso
     email:
-        subject: Bem-vindo(a) %username%!
+        subject: Recuperar password
         message: |
             Olá %username%!
 
