@@ -178,25 +178,30 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                         ->end()
-                        ->arrayNode('request')
-                            ->children()
-                                ->arrayNode('form')
-                                    ->addDefaultsIfNotSet()
-                                    ->children()
-                                        ->scalarNode('type')->defaultValue('fos_user_resetting_request')->end()
-                                        ->scalarNode('name')->defaultValue('fos_user_resetting_request_form')->end()
-                                        ->arrayNode('validation_groups')
-                                            ->prototype('scalar')->end()
-                                            ->defaultValue(array())
-                                        ->end()
-                                    ->end()
-                                ->end()
-                            ->end()
-                        ->end()
+
                     ->end()
+                    ->append($this->addResettingRequestSection())
                 ->end()
             ->end();
+    }
 
+    private function addResettingRequestSection()
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root('request');
+
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('form')
+                ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('type')->defaultValue('')->end()
+                        ->scalarNode('name')->defaultValue('')->end()
+                    ->end()
+                ->end()
+            ;
+        return $node;
     }
 
     private function addChangePasswordSection(ArrayNodeDefinition $node)
