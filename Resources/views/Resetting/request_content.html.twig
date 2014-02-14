@@ -2,5 +2,8 @@
 
 <form action="{{ path('fos_user_resetting_request') }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_request">
     {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+    </div>
 </form>
 

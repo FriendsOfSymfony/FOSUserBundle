@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ResettingRequestFormType extends AbstractType
 {
@@ -26,14 +25,6 @@ class ResettingRequestFormType extends AbstractType
             array(
                 'translation_domain' => 'FOSUserBundle',
                 'label' => 'resetting.request.username'
-            )
-        )
-        ->add(
-            'submit',
-            'submit',
-            array(
-                'translation_domain' => 'FOSUserBundle',
-                'label' => 'resetting.request.submit'
             )
         );
     }
