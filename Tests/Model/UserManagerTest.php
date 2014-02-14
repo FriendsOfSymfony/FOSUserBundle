@@ -11,8 +11,6 @@
 
 namespace FOS\UserBundle\Tests\Model;
 
-use FOS\UserBundle\Model\UserInterface;
-
 class UserManagerTest extends \PHPUnit_Framework_TestCase
 {
     private $manager;
