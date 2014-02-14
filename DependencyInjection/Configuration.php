@@ -181,6 +181,29 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
+        $this->addResettingRequestSection($node);
+
+    }
+
+    private function addResettingRequestSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('request')
+                    ->children()
+                        ->arrayNode('form')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('type')->defaultValue('fos_user_resetting_request')->end()
+                                ->scalarNode('name')->defaultValue('fos_user_resetting_request_form')->end()
+                                ->arrayNode('validation_groups')
+                                    ->prototype('scalar')->end()
+                                    ->defaultValue(array())
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end();
     }
 
     private function addChangePasswordSection(ArrayNodeDefinition $node)
