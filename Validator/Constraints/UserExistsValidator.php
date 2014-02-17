@@ -21,17 +21,17 @@ class UserExistsValidator extends ConstraintValidator
     /**
      * Checks if the passed value is valid.
      *
-     * @param ResettingRequest $user The value that should be validated
+     * @param ResettingRequest $identifier The value that should be validated
      * @param UserExists $constraint The constraint for the validation
      *
      * @api
      */
-    public function validate($user, Constraint $constraint)
+    public function validate($identifier, Constraint $constraint)
     {
         try {
-            $this->userProvider->loadUserByUsername($user->identifier);
+            $this->userProvider->loadUserByUsername($identifier);
         } catch (UsernameNotFoundException $e) {
-            $this->context->addViolation($constraint->message, array('%username%' => $user->identifier));
+            $this->context->addViolation($constraint->message, array('%username%' => $identifier));
         }
 
     }

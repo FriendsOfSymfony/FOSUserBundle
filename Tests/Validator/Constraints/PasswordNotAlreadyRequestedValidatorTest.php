@@ -33,11 +33,8 @@ class PasswordNotAlreadyRequestedValidatorTest extends \PHPUnit_Framework_TestCa
             ->method('addViolation')
         ;
 
-        $resettingRequest = new ResettingRequest();
-        $resettingRequest->identifier = $identifier;
-
         $userExistValidator = new PasswordNotAlreadyRequestedValidator($userProviderMock, $ttl);
         $userExistValidator->initialize($contextMock);
-        $userExistValidator->validate($resettingRequest, new PasswordNotAlreadyRequested());
+        $userExistValidator->validate($identifier, new PasswordNotAlreadyRequested());
     }
 }

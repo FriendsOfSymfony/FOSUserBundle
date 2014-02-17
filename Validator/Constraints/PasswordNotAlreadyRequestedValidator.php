@@ -28,10 +28,10 @@ class PasswordNotAlreadyRequestedValidator extends ConstraintValidator
      *
      * @api
      */
-    public function validate($user, Constraint $constraint)
+    public function validate($identifier, Constraint $constraint)
     {
         /** @var UserInterface $userEntity */
-        $userEntity = $this->userProvider->loadUserByUsername($user->identifier);
+        $userEntity = $this->userProvider->loadUserByUsername($identifier);
 
         if ($userEntity->isPasswordRequestNonExpired($this->ttl)) {
             $this->context->addViolation($constraint->message);

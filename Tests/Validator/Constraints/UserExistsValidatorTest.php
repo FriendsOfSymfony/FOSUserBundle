@@ -25,11 +25,8 @@ class UserExistsValidatorTest extends \PHPUnit_Framework_TestCase
             ->method('addViolation')
         ;
 
-        $resettingRequest = new ResettingRequest();
-        $resettingRequest->identifier = $invalidIdentifier;
-
         $userExistValidator = new UserExistsValidator($userProviderMock);
         $userExistValidator->initialize($contextMock);
-        $userExistValidator->validate($resettingRequest, new UserExists());
+        $userExistValidator->validate($invalidIdentifier, new UserExists());
     }
 }
