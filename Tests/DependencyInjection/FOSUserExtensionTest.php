@@ -314,6 +314,20 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertAlias('acme_my.username_canonicalizer', 'fos_user.util.username_canonicalizer');
     }
 
+    public function testUserLoadValidatorWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertHasDefinition('fos_user.validator.user_exists');
+    }
+
+    public function testUserLoadValidator()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertHasDefinition('fos_user.validator.user_exists');
+    }
+
     public function testUserLoadFlashesByDefault()
     {
         $this->createEmptyConfiguration();

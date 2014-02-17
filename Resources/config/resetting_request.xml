@@ -18,6 +18,11 @@
             <argument>%fos_user.model.resetting_request.class%</argument>
         </service>
 
+        <service id="fos_user.validator.user_exists" class="FOS\UserBundle\Validator\Constraints\UserExistsValidator">
+            <argument type="service" id="fos_user.user_provider.username_email" />
+            <tag name="validator.constraint_validator" alias="fos_user_exists_validator" />
+        </service>
+
     </services>
 
 </container>

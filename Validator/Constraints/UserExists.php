@@ -10,6 +10,6 @@ class UserExists extends Constraint
 
     public function validatedBy()
     {
-        return get_class($this) . 'Validator';
+        return 'fos_user_exists_validator';
     }
 }
