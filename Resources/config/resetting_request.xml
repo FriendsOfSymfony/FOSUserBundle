@@ -23,6 +23,12 @@
             <tag name="validator.constraint_validator" alias="fos_user_exists_validator" />
         </service>
 
+        <service id="fos_user.validator.password_not_already_requested" class="FOS\UserBundle\Validator\Constraints\PasswordNotAlreadyRequestedValidator">
+            <argument type="service" id="fos_user.user_provider.username_email" />
+            <argument>%fos_user.resetting.token_ttl%</argument>
+            <tag name="validator.constraint_validator" alias="fos_password_not_already_requested_validator" />
+        </service>
+
     </services>
 
 </container>

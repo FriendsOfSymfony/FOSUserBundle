@@ -43,19 +43,14 @@ class ResettingController extends ContainerAware
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
 
-            $usernameField = $form->get('username');
-            $username = $usernameField->getData();
-
-            /** @var $user UserInterface */
-            $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail(
-                $username
-            );
-
-            if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-                $form->addError('', 'resetting.password_already_requested');
-            }
-
             if ($form->isValid()) {
+                $username = $form->get('identifier')->getData();
+
+                /** @var $user UserInterface */
+                $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail(
+                    $username
+                );
+
                 if (null === $user->getConfirmationToken()) {
                     /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
                     $tokenGenerator = $this->container->get('fos_user.util.token_generator');

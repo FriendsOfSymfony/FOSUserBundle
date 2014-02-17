@@ -185,6 +185,7 @@
     <class name="FOS\UserBundle\Form\Model\ResettingRequest">
         <property name="identifier">
             <constraint name="FOS\UserBundle\Validator\Constraints\UserExists" />
+            <constraint name="FOS\UserBundle\Validator\Constraints\PasswordNotAlreadyRequested" />
         </property>
     </class>
 

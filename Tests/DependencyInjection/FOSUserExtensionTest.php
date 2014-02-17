@@ -319,6 +319,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createEmptyConfiguration();
 
         $this->assertHasDefinition('fos_user.validator.user_exists');
+        $this->assertHasDefinition('fos_user.validator.password_not_already_requested');
     }
 
     public function testUserLoadValidator()
@@ -326,6 +327,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createFullConfiguration();
 
         $this->assertHasDefinition('fos_user.validator.user_exists');
+        $this->assertHasDefinition('fos_user.validator.password_not_already_requested');
     }
 
     public function testUserLoadFlashesByDefault()
