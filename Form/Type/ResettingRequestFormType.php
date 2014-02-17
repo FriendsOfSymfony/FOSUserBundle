@@ -27,7 +27,7 @@ class ResettingRequestFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'username',
+            'identifier',
             null,
             array(
                 'translation_domain' => 'FOSUserBundle',
