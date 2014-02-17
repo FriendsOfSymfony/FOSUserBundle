@@ -51,12 +51,6 @@ class ResettingController extends ContainerAware
                 $username
             );
 
-            if (null === $user) {
-                $usernameField->addError(
-                    new FormError('', 'resetting.request.invalid_username', array('%username%' => $username))
-                );
-            }
-
             if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
                 $form->addError('', 'resetting.password_already_requested');
             }
