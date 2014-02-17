@@ -48,6 +48,10 @@ fos_user:
             handler:            fos_user.resetting.form.handler.default
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
+        request:
+            form:
+                type: fos_user_resetting_request
+                name: fos_user_resetting_request_form
     service:
         mailer:                 fos_user.mailer.default
         email_canonicalizer:    fos_user.util.canonicalizer.default
