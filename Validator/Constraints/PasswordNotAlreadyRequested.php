@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint;
 
 class PasswordNotAlreadyRequested extends Constraint
 {
-    public $message = 'resetting.password_already_requested';
+    public $message = 'fos_user.resetting.request.password_already_requested';
 
     public function validatedBy()
     {

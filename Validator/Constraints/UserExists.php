@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint;
 
 class UserExists extends Constraint
 {
-    public $message = 'resetting.request.invalid_username';
+    public $message = 'fos_user.resetting.request.invalid_username';
 
     public function validatedBy()
     {

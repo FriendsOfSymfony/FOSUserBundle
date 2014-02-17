@@ -23,3 +23,7 @@ fos_user:
         blank: Please enter a name
         short: "[-Inf,Inf]The name is too short"
         long: "[-Inf,Inf]The name is too long"
+    resetting:
+        request:
+            invalid_username: The username or email address "%username%" does not exist.
+            password_already_requested: The password for this user has already been requested within the last 24 hours.
