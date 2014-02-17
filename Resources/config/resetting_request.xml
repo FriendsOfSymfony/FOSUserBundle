@@ -10,7 +10,6 @@
             <argument type="service" id="form.factory" />
             <argument>%fos_user.resetting.request.form.name%</argument>
             <argument>%fos_user.resetting.request.form.type%</argument>
-            <argument>%fos_user.resetting.request.form.validation_groups%</argument>
         </service>
 
         <service id="fos_user.resetting.request.form.type" class="FOS\UserBundle\Form\Type\ResettingRequestFormType">
