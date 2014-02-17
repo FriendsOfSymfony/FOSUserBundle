@@ -3,6 +3,7 @@
 namespace FOS\UserBundle\Validator\Constraints;
 
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -30,8 +31,12 @@ class PasswordNotAlreadyRequestedValidator extends ConstraintValidator
      */
     public function validate($identifier, Constraint $constraint)
     {
-        /** @var UserInterface $userEntity */
-        $userEntity = $this->userProvider->loadUserByUsername($identifier);
+        try {
+            /** @var UserInterface $userEntity */
+            $userEntity = $this->userProvider->loadUserByUsername($identifier);
+        } catch (UsernameNotFoundException $e) {
+            return;
+        }
 
         if ($userEntity->isPasswordRequestNonExpired($this->ttl)) {
             $this->context->addViolation($constraint->message);
