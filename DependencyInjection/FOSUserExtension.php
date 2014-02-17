@@ -172,6 +172,9 @@ class FOSUserExtension extends Extension
         XmlFileLoader $loader
     ) {
         $loader->load('resetting_request.xml');
+        $this->remapParametersNamespaces($config, $container, array(
+            'form' => 'fos_user.resetting.request.form.%s',
+        ));
     }
 
     private function loadGroups(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)

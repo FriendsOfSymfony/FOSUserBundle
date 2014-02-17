@@ -178,9 +178,8 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                         ->end()
-
+                        ->append($this->addResettingRequestSection())
                     ->end()
-                    ->append($this->addResettingRequestSection())
                 ->end()
             ->end();
     }
@@ -196,8 +195,8 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('form')
                 ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('type')->defaultValue('')->end()
-                        ->scalarNode('name')->defaultValue('')->end()
+                        ->scalarNode('type')->defaultValue('fos_user_resetting_request')->end()
+                        ->scalarNode('name')->defaultValue('fos_user_resetting_request_form')->end()
                     ->end()
                 ->end()
             ;
