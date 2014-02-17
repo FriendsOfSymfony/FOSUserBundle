@@ -4,7 +4,6 @@ namespace FOS\UserBundle\Validator\Constraints;
 
 use FOS\UserBundle\Form\Model\ResettingRequest;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
