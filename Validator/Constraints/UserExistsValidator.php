@@ -32,7 +32,7 @@ class UserExistsValidator extends ConstraintValidator
         try {
             $this->userProvider->loadUserByUsername($user->identifier);
         } catch (UsernameNotFoundException $e) {
-            $this->context->addViolation($constraint->message);
+            $this->context->addViolation($constraint->message, array('%username%' => $user->identifier));
         }
 
     }
