@@ -154,6 +154,20 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('Acme\MyBundle\Entity\User', 'fos_user.model.user.class');
     }
 
+    public function testResettingRequestLoadModelClassWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertParameter('FOS\UserBundle\Form\Model\ResettingRequest', 'fos_user.model.resetting_request.class');
+    }
+
+    public function testResettingRequestLoadModelClass()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('Acme\MyBundle\Form\Model\ResettingRequest', 'fos_user.model.resetting_request.class');
+    }
+
     public function testUserLoadManagerClassWithDefaults()
     {
         $this->createEmptyConfiguration();
@@ -397,6 +411,7 @@ resetting:
         form:
             type: acme_my_resetting_request
             name: acme_resetting_request_form
+        form_model: Acme\MyBundle\Form\Model\ResettingRequest
 service:
     mailer: acme_my.mailer
     email_canonicalizer: acme_my.email_canonicalizer

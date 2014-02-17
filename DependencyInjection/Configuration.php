@@ -199,7 +199,8 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('name')->defaultValue('fos_user_resetting_request_form')->end()
                     ->end()
                 ->end()
-            ;
+            ->scalarNode('form_model')->defaultValue('FOS\UserBundle\Form\Model\ResettingRequest')->end()
+        ;
         return $node;
     }
 

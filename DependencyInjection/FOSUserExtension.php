@@ -173,6 +173,9 @@ class FOSUserExtension extends Extension
     ) {
         $loader->load('resetting_request.xml');
         $this->remapParametersNamespaces($config, $container, array(
+            '' => array (
+                'form_model' => 'fos_user.model.resetting_request.class',
+            ),
             'form' => 'fos_user.resetting.request.form.%s',
         ));
     }

@@ -15,6 +15,7 @@
 
         <service id="fos_user.resetting.request.form.type" class="FOS\UserBundle\Form\Type\ResettingRequestFormType">
             <tag name="form.type" alias="fos_user_resetting_request" />
+            <argument>%fos_user.model.resetting_request.class%</argument>
         </service>
 
     </services>

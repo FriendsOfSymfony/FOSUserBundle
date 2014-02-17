@@ -13,9 +13,16 @@ namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ResettingRequestFormType extends AbstractType
 {
+    private $class;
+
+    public function __construct($class)
+    {
+        $this->class = $class;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -27,6 +34,13 @@ class ResettingRequestFormType extends AbstractType
                 'label' => 'resetting.request.username'
             )
         );
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => $this->class
+        ));
     }
 
     public function getName()
