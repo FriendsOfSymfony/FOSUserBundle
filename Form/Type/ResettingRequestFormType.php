@@ -31,7 +31,8 @@ class ResettingRequestFormType extends AbstractType
             null,
             array(
                 'translation_domain' => 'FOSUserBundle',
-                'label' => 'resetting.request.username'
+                'label' => 'resetting.request.username',
+                'required' => true,
             )
         );
     }
