@@ -492,7 +492,7 @@ The following documents are available:
 - [Overriding Forms](overriding_forms.md)
 - [Using the UserManager](user_manager.md)
 - [Command Line Tools](command_line_tools.md)
-- [Logging by username or email](logging_by_username_or_email.md)
+- [Logging in by email or username and email](logging_in_by_email_or_username_and_email.md)
 - [Transforming a username to a user in forms](form_type.md)
 - [Emails](emails.md)
 - [Using the groups](groups.md)
