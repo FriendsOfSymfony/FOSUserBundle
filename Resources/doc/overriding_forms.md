@@ -139,6 +139,14 @@ services:
 > constructor in your form type class, you must include this argument as it is a
 > requirement of the FOSUserBundle form type that you extended.
 
+Once this is done, you will need to import your service configuration into your main app config file. If this isn't done, you may encounter "could not load type" errors, which indicate your service configuration wasn't recognised.
+
+``` yaml
+# app/config/config.yml
+imports:
+    - { resource: "@AcmeUserBundle/Resources/config/services.xml" }
+```
+
 Finally, you must update the configuration of the FOSUserBundle so that it will
 use your form type instead of the default one. Below is the configuration for
 changing the registration form type in YAML.
