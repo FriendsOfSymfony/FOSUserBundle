@@ -153,6 +153,11 @@ class ResettingController extends ContainerAware
     protected function getObfuscatedEmail(UserInterface $user)
     {
         $email = $user->getEmail();
+
+        if (false === $this->container->getParameter('fos_user.resetting.ofuscate_email')) {
+            return $email;
+        }
+
         if (false !== $pos = strpos($email, '@')) {
             $email = '...' . substr($email, $pos);
         }
@@ -164,4 +169,5 @@ class ResettingController extends ContainerAware
     {
         return $this->container->getParameter('fos_user.template.engine');
     }
+
 }
