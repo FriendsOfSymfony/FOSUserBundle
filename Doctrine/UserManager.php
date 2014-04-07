@@ -63,6 +63,14 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritDoc}
      */
+    public function getRepository()
+    {
+       return $this->repository;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findUserBy(array $criteria)
     {
         return $this->repository->findOneBy($criteria);
