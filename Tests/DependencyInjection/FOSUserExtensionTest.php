@@ -380,7 +380,7 @@ registration:
         validation_groups: [acme_registration]
 resetting:
     token_ttl: 1800
-    ofuscate_email: false
+    obfuscate_email: false
     email:
         from_email:
             address: reset@acme.org
