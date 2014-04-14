@@ -153,6 +153,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->booleanNode('obfuscate_email')->defaultTrue()->end()
                         ->scalarNode('token_ttl')->defaultValue(86400)->end()
                         ->arrayNode('email')
                             ->addDefaultsIfNotSet()

@@ -64,9 +64,14 @@ class ResettingController extends ContainerAware
         $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
         $this->container->get('fos_user.user_manager')->updateUser($user);
+        $email = $user->getEmail();
+
+        if (true === $this->container->getParameter('fos_user.resetting.obfuscate_email')) {
+           $email = $this->getObfuscatedEmail($user);
+        }
 
         return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
+            array('email' => $email)
         ));
     }
 
@@ -153,6 +158,7 @@ class ResettingController extends ContainerAware
     protected function getObfuscatedEmail(UserInterface $user)
     {
         $email = $user->getEmail();
+
         if (false !== $pos = strpos($email, '@')) {
             $email = '...' . substr($email, $pos);
         }
@@ -164,4 +170,5 @@ class ResettingController extends ContainerAware
     {
         return $this->container->getParameter('fos_user.template.engine');
     }
+
 }

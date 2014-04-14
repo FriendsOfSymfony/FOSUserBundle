@@ -248,6 +248,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('FOSUserBundle:Resetting:email.txt.twig', 'fos_user.resetting.email.template');
         $this->assertParameter(array('webmaster@example.com' => 'webmaster'), 'fos_user.resetting.email.from_email');
         $this->assertParameter(86400, 'fos_user.resetting.token_ttl');
+        $this->assertParameter(true, 'fos_user.resetting.obfuscate_email');
     }
 
     public function testUserLoadConfirmationEmail()
@@ -260,6 +261,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('AcmeMyBundle:Resetting:mail.txt.twig', 'fos_user.resetting.email.template');
         $this->assertParameter(array('reset@acme.org' => 'Acme Corp'), 'fos_user.resetting.email.from_email');
         $this->assertParameter(1800, 'fos_user.resetting.token_ttl');
+        $this->assertParameter(false, 'fos_user.resetting.obfuscate_email');
     }
 
     public function testUserLoadTemplateConfigWithDefaults()
@@ -378,6 +380,7 @@ registration:
         validation_groups: [acme_registration]
 resetting:
     token_ttl: 1800
+    obfuscate_email: false
     email:
         from_email:
             address: reset@acme.org
