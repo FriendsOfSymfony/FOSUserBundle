@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Nom d'utilisateur ou mot de passe incorrect
+"User account is disabled.": Le compte utilisateur est désactivé.
 
 security:
     login:

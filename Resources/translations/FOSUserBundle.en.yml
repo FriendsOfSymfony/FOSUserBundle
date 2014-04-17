@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Invalid username or password
+"User account is disabled.": User account is disabled.
 
 security:
     login:
