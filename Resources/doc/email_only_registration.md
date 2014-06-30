@@ -60,7 +60,7 @@ fos_user:
 
 ```
 
-If you are using Symfony 2.5, there is currently a bug (symfony/symfony#11227)with the validation framework.
+If you are using Symfony 2.5, there is currently a bug [symfony/symfony#11227](https://github.com/symfony/symfony/issues/11227) with the validation framework.
 You need to add the following configuration to downgrade validator to 2.4 version:
 ```yaml
 framework:
