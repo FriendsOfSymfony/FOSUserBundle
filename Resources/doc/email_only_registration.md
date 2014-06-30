@@ -21,7 +21,7 @@ security:
 
 ## Override login form
 To build a minimalist authentication form (Email & Password), you must create a
-specific Form (cfr [Overriding Controllers](overriding_controllers.md)).
+specific Form (cfr [Overriding Forms](overriding_forms.md)).
 
 ### Create RegistrationFormType
 ```php
@@ -42,20 +42,32 @@ class RegistrationFormType extends BaseType {
 
 ### Define the form as a service
 ```xml
-<service id="acme_user.registration.form.type" class="Data\UserBundle\Form\Type\RegistrationFormType">
+<service id="acme_user.registration.form.type" class="AcmeBundle\Form\Type\RegistrationFormType">
     <tag name="form.type" alias="acme_user_registration"/>
     <argument>%fos_user.model.user.class%</argument>
 </service>
 ```
 
 ### Update fos_user configuration
-``` yaml
+```yaml
 # app/config/config.yml
 fos_user:
     # ...
     registration:
         form:
             type: acme_user_registration
+            validation_groups: [AcmeRegistration]
+
+```
+
+If you are using Symfony 2.5, there is currently a bug (symfony/symfony#11227)with the validation framework.
+You need to add the following configuration to downgrade validator to 2.4 version:
+```yaml
+framework:
+    validation:
+        enabled: true
+        api: 2.4
+        enable_annotations: true
 ```
 
 ### Add validation
@@ -67,24 +79,13 @@ Configure validation in 'AcmeBundle/Resources/config/validation.xml'
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="Data\ModelBundle\Entity\User">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">usernameCanonical</option>
-            <option name="errorPath">username</option>
-            <option name="message">fos_user.username.already_used</option>
-            <option name="groups">
-                <value>Registration</value>
-                <value>Profile</value>
-            </option>
-        </constraint>
-
+    <class name="FOS\UserBundle\Model\User">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">emailCanonical</option>
             <option name="errorPath">email</option>
             <option name="message">fos_user.email.already_used</option>
             <option name="groups">
-                <value>Registration</value>
-                <value>Profile</value>
+                <value>AcmeRegistration</value>
             </option>
         </constraint>
     </class>
