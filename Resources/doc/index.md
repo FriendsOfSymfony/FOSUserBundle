@@ -443,7 +443,7 @@ $ php app/console doctrine:schema:update --force
 For MongoDB users you can run the following command to create the indexes.
 
 ``` bash
-$ php app/console doctrine:mongodb:schema:create --index
+$ php bin/console doctrine:mongodb:schema:create --index
 ```
 
 For Propel users you have to install the [TypehintableBehavior](https://github.com/willdurand/TypehintableBehavior) before to
@@ -460,7 +460,7 @@ build your model. First, install it:
 You now can run the following command to create the model:
 
 ``` bash
-$ php app/console propel:build
+$ php bin/console propel:build
 ```
 
 > To create SQL, run the command `propel:build --insert-sql` or use migration
