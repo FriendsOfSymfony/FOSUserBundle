@@ -4,9 +4,6 @@ Email only registration
 Email - Password authentication is a typical use case for web application.
 Here is how you can configure FOSUserBundle to build a simple authentication form.
 
-## FOSUserBundle installation
-Follow the instructions as described in [FOSUserBundle documentation](index.md)
-
 ## Enable login by Username or Email
 As described in [Logging by username or email](logging_by_username_or_email.md)
 you must enable FOSUserBundle to use Email as security provider:
@@ -58,16 +55,6 @@ fos_user:
             type: acme_user_registration
             validation_groups: [AcmeRegistration]
 
-```
-
-If you are using Symfony 2.5, there is currently a bug [symfony/symfony#11227](https://github.com/symfony/symfony/issues/11227) with the validation framework.
-You need to add the following configuration to downgrade validator to 2.4 version:
-```yaml
-framework:
-    validation:
-        enabled: true
-        api: 2.4
-        enable_annotations: true
 ```
 
 ### Add validation
