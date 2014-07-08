@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by stof at 2014-07-08T15:14:44Z
+
+does these fixes also apply to 1.3.x or no ? This is to know whether I should merge the PR into 1.3.x instead (no need to send another PR to change the target, I can handle it)
+
+---------------------------------------------------------------------------
+
+by peric at 2014-07-08T15:56:56Z
+
+Yes, sure. I just made a pull request to default option - didn't think about it. Thanks.
