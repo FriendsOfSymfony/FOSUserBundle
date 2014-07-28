@@ -32,16 +32,27 @@ class ValidationPass implements CompilerPassInterface
         }
 
         $storage = $container->getParameter('fos_user.storage');
+
         if ('custom' === $storage) {
             return;
         }
 
+        $validationFile = __DIR__ . '/../../Resources/config/validation/' . $storage . '.xml';
+
+        if ($container->hasDefinition('validator.builder')) {
+            // Symfony 2.5+
+            $container->getDefinition('validator.builder')
+                ->addMethodCall('addXmlMapping', array($validationFile));
+
+            return;
+        }
+
+        // Old method of loading validation
         if (!$container->hasParameter('validator.mapping.loader.xml_files_loader.mapping_files')) {
             return;
         }
 
         $files = $container->getParameter('validator.mapping.loader.xml_files_loader.mapping_files');
-        $validationFile = __DIR__ . '/../../Resources/config/validation/' . $storage . '.xml';
 
         if (is_file($validationFile)) {
             $files[] = realpath($validationFile);

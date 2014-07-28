@@ -9,6 +9,12 @@ Changelog
 * [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
 * [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
 
+### 1.3.4 (2014-06-13)
+
+* Fixed the compatibility with FrameworkBundle 2.5
+* Fixed a few issues in translations
+* Enforce the POST method for the login_check route
+
 ### 1.3.3 (2013-09-23)
 
 This releases prevents a potential DOS attack. You are encouraged to update

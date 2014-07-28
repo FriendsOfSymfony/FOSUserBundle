@@ -558,6 +558,11 @@ abstract class User implements UserInterface, GroupableInterface
         return $names;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return boolean
+     */
     public function hasGroup($name)
     {
         return in_array($name, $this->getGroupNames());

@@ -41,7 +41,7 @@ change_password:
 registration:
     check_email: Na %email% smo vam poslali poruku s poveznicom za aktivaciju. Korisnički račun aktivirate klikom na tu poveznicu.
     confirmed: Pozdrav %username%, vaš korisnički račun je sada aktiviran.
-    back: Natrag na polaznu strnicu.
+    back: Natrag na polaznu stranicu.
     submit: Registracija
     flash:
         user_created: Korisnički račun je uspješno kreiran
@@ -57,7 +57,7 @@ registration:
 
 # Password resetting
 resetting:
-    password_already_requested: U posljednja 24 sata ste već poslali zahtijev za resetiranjem lozinke.
+    password_already_requested: U posljednja 24 sata ste već poslali zahtjev za resetiranjem lozinke.
     check_email: Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.
     request:
         invalid_username: Korisničko ime "%username%" ne postoji.

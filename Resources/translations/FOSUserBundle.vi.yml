@@ -3,7 +3,7 @@ group:
     edit:
         submit: 'Nhóm cập nhật'
     flash:
-        created: 'Nhóm đã được tạo ra'
+        created: 'Nhóm đã được khởi tạo'
         deleted: 'Nhóm này đã bị xóa'
         updated: 'Nhóm đã được cập nhật'
     new:
@@ -12,7 +12,7 @@ group:
         name: 'Tên nhóm'
 
 # Security
-"Bad credentials": 'Tên người dùng hoặc mật khẩu'
+"Bad credentials": 'Tên người dùng hoặc mật khẩu không chính xác'
 
 security:
     login:
@@ -29,32 +29,32 @@ profile:
         updated: 'Hồ sơ cá nhân đã được cập nhật'
     show:
         email: Email
-        username: 'Tên truy nhập'
+        username: 'Tên đăng nhập'
 
 # Password change
 change_password:
     flash:
-        success: 'Các mật khẩu đã được thay đổi'
+        success: 'Mật khẩu đã được thay đổi'
     submit: 'Thay đổi mật khẩu'
 
 # Registration
 registration:
-    back: 'Sao trang có nguồn gốc.'
+    back: 'Quay lại'
     check_email: 'Một email đã được gửi đến %email%. Nó có chứa một liên kết kích hoạt bạn phải bấm vào để kích hoạt tài khoản của bạn.'
-    confirmed: 'Chúc mừng %username%, tài khoản của bạn đang kích hoạt.'
+    confirmed: 'Chúc mừng %username%, tài khoản của bạn đã được kích hoạt.'
     email:
-        message: 'Xin chào %username%! Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập %confirmationUrl% Kính trọng, mỗi thành viên.'
+        message: 'Xin chào %username%! Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập %confirmationUrl%. Cám ơn.'
         subject: 'Chào mừng %username%!'
     flash:
-        user_created: 'Người sử dụng đã được tạo thành công'
+        user_created: 'Người sử dụng đã được khởi tạo'
     submit: 'Đăng ký'
 
 # Password resetting
 resetting:
-    check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để đặt lại mật khẩu của bạn.'
+    check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để thiết lập lại mật khẩu của bạn.'
     email:
         message: 'Xin chào %username%! Để thiết lập lại mật khẩu của bạn - vui lòng truy cập %confirmationUrl% Kính trọng, mỗi thành viên.'
-        subject: 'Reset Password'
+        subject: 'Thiết lập lại mật khẩu'
     flash:
         success: 'Các mật khẩu đã được thiết lập lại thành công'
     password_already_requested: 'Mật khẩu cho người dùng này đã được yêu cầu trong vòng 24 giờ qua.'

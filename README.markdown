@@ -35,7 +35,7 @@ file in this bundle:
 Installation
 ------------
 
-All the installation instructions are located in  the documentation.
+All the installation instructions are located in the documentation.
 
 License
 -------
