@@ -12,7 +12,7 @@ group:
         deleted: Grupė ištrinta
 
 # Security
-"Bad credentials": Neteisingas naudotojo vardas arba slaptažodis
+"Bad credentials.": Neteisingas naudotojo vardas arba slaptažodis
 
 security:
     login:

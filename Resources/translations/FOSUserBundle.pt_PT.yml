@@ -11,7 +11,7 @@ group:
         created: O grupo foi criado
         deleted: O grupo foi apagado
 
-"Bad credentials": Utilizador e/ou password inválidos
+"Bad credentials.": Utilizador e/ou password inválidos
 
 # Security
 security:
