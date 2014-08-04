@@ -12,7 +12,7 @@ group:
         deleted: S'ha eliminat el grup
 
 # Security
-"Bad credentials": Nom d'usuari o Contrasenya incorrectes
+"Bad credentials.": Nom d'usuari o Contrasenya incorrectes
 "User account is disabled.": Compte d'usuari desactivat
 
 security:

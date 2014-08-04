@@ -12,7 +12,7 @@ group:
         deleted: Grup Silindi
 
 # Security
-"Bad credentials": Geçersiz kullanıcı adı ya da parola
+"Bad credentials.": Geçersiz kullanıcı adı ya da parola
 
 security:
     login:

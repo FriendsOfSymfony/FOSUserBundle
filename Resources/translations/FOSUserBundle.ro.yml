@@ -12,7 +12,7 @@ group:
         deleted: Grupul a fost șters
 
 # Security
-"Bad credentials": Nume de utilizator sau parolă greșită
+"Bad credentials.": Nume de utilizator sau parolă greșită
 
 security:
     login:

@@ -12,7 +12,7 @@ group:
         deleted: Ryhmä on poistettu
 
 # Security
-"Bad credentials": Epäkelpo käyttäjätunnus tai salasana
+"Bad credentials.": Epäkelpo käyttäjätunnus tai salasana
 
 security:
     login:
