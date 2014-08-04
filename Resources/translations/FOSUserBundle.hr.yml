@@ -12,7 +12,7 @@ group:
         deleted: Grupa je uspješno spremljena
 
 # Security
-"Bad credentials": Krivo korisničko ime ili lozinka
+"Bad credentials.": Krivo korisničko ime ili lozinka
 
 security:
     login:

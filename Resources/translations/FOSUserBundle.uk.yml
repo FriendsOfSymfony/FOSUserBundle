@@ -12,7 +12,7 @@ group:
         deleted: Група видалена
 
 # Security
-"Bad credentials": "Невірне ім'я користувача або пароль"
+"Bad credentials.": "Невірне ім'я користувача або пароль"
 
 security:
     login:

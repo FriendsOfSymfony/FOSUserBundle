@@ -12,7 +12,7 @@ group:
         deleted: Grupa je obrisana
 
 # Security
-"Bad credentials": Nevalidno korisničko ime ili lozinka
+"Bad credentials.": Nevalidno korisničko ime ili lozinka
 
 security:
     login:
