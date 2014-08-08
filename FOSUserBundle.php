@@ -12,6 +12,7 @@
 namespace FOS\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use FOS\UserBundle\DependencyInjection\Compiler\ValidationPass;
 use FOS\UserBundle\DependencyInjection\Compiler\RegisterMappingsPass;
@@ -38,29 +39,33 @@ class FOSUserBundle extends Bundle
      */
     private function addRegisterMappingsPass(ContainerBuilder $container)
     {
-        // the base class is only available since symfony 2.3
-        $symfonyVersion = class_exists('Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\RegisterMappingsPass');
+        // alias support was added later
+        $symfonyVersion = version_compare(Kernel::VERSION, '2.6.0', '>=');
 
-        $mappings = array(
+        $namespaces = array(
             realpath(__DIR__ . '/Resources/config/doctrine/model') => 'FOS\UserBundle\Model',
         );
 
+        $aliasMap = array(
+            'FOS\UserBundle\Model' => 'FOSUserBundle',
+        );
+
         if ($symfonyVersion && class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
-            $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, array('fos_user.model_manager_name'), 'fos_user.backend_type_orm'));
+            $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($namespaces, array('fos_user.model_manager_name'), 'fos_user.backend_type_orm', $aliasMap));
         } else {
-            $container->addCompilerPass(RegisterMappingsPass::createOrmMappingDriver($mappings));
+            $container->addCompilerPass(RegisterMappingsPass::createOrmMappingDriver($namespaces, $aliasMap));
         }
 
         if ($symfonyVersion && class_exists('Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass')) {
-            $container->addCompilerPass(DoctrineMongoDBMappingsPass::createXmlMappingDriver($mappings, array('fos_user.model_manager_name'), 'fos_user.backend_type_mongodb'));
+            $container->addCompilerPass(DoctrineMongoDBMappingsPass::createXmlMappingDriver($namespaces, array('fos_user.model_manager_name'), 'fos_user.backend_type_mongodb', $aliasMap));
         } else {
-            $container->addCompilerPass(RegisterMappingsPass::createMongoDBMappingDriver($mappings));
+            $container->addCompilerPass(RegisterMappingsPass::createMongoDBMappingDriver($namespaces, $aliasMap));
         }
 
         if ($symfonyVersion && class_exists('Doctrine\Bundle\CouchDBBundle\DependencyInjection\Compiler\DoctrineCouchDBMappingsPass')) {
-            $container->addCompilerPass(DoctrineCouchDBMappingsPass::createXmlMappingDriver($mappings, array('fos_user.model_manager_name'), 'fos_user.backend_type_couchdb'));
+            $container->addCompilerPass(DoctrineCouchDBMappingsPass::createXmlMappingDriver($namespaces, array('fos_user.model_manager_name'), 'fos_user.backend_type_couchdb', $aliasMap));
         } else {
-            $container->addCompilerPass(RegisterMappingsPass::createCouchDBMappingDriver($mappings));
+            $container->addCompilerPass(RegisterMappingsPass::createCouchDBMappingDriver($namespaces, $aliasMap));
         }
     }
 }
