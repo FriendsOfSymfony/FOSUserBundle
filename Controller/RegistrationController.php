@@ -71,11 +71,16 @@ class RegistrationController extends ContainerAware
 
                 return $response;
             }
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILED, $event);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
-            'form' => $form->createView(),
-        ));
+        if (null === $response = $event->getResponse()) {
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
+                'form' => $form->createView(),
+            ));
+        }
+        return $response;
     }
 
     /**

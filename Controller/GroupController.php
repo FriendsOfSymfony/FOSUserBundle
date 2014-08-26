@@ -93,12 +93,17 @@ class GroupController extends ContainerAware
 
                 return $response;
             }
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::GROUP_EDIT_FAILED, $event);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
-            'form'      => $form->createview(),
-            'group_name'  => $group->getName(),
-        ));
+        if (null === $response = $event->getResponse()) {
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:edit.html.'.$this->getEngine(), array(
+                'form'      => $form->createview(),
+                'group_name'  => $group->getName(),
+            ));
+        }
+        return $response;
     }
 
     /**
@@ -138,11 +143,16 @@ class GroupController extends ContainerAware
 
                 return $response;
             }
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::GROUP_CREATE_FAILED, $event);
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
-            'form' => $form->createview(),
-        ));
+        if (null === $response = $event->getResponse()) {
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Group:new.html.'.$this->getEngine(), array(
+                'form' => $form->createview(),
+            ));
+        }
+        return $response;
     }
 
     /**
