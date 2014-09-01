@@ -13,10 +13,13 @@ group:
 
 # Security
 "Bad credentials": Usuário ou senha inválida
+"User account is disabled.": A conta de usuário está desativada
 
 security:
     login:
         username: "Usuário:"
+        username_email: "Nome de usuário ou e-mail:"
+        email: "E-mail:"
         password: "Senha:"
         remember_me: Permanecer conectado
         submit: Entrar
