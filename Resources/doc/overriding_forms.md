@@ -255,6 +255,7 @@ configuring your form handler as a service in XML:
             <argument type="service" id="request" />
             <argument type="service" id="fos_user.user_manager" />
             <argument type="service" id="fos_user.mailer" />
+            <argument type="service" id="fos_user.util.token_generator" />
         </service>
 
     </services>
@@ -269,7 +270,12 @@ Or if you prefer YAML:
 services:
     acme_user.form.handler.registration:
         class: Acme\UserBundle\Form\Handler\RegistrationFormHandler
-        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer"]
+        arguments:
+            - "@fos_user.registration.form"
+            - "@request"
+            - "@fos_user.user_manager"
+            - "@fos_user.mailer"
+            - "@fos_user.util.token_generator"
         scope: request
         public: false
 ```
