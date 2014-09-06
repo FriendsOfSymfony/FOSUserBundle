@@ -18,7 +18,7 @@ group:
 security:
     login:
         username: "Usuário:"
-        username_email: "Nome de usuário ou e-mail:"
+        username_email: "Usuário ou e-mail:"
         email: "E-mail:"
         password: "Senha:"
         remember_me: Permanecer conectado
