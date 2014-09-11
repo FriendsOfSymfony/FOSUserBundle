@@ -14,6 +14,9 @@ group:
 # Security
 "Bad credentials": Неправильное имя пользователя или пароль
 "User account is disabled.": Учетная запись отключена.
+"User account is locked.": Учетная запись заблокирована.
+"User account has expired.": Срок действия учетной записи пользователя истек.
+"User credentials have expired.": Срок действия данных пользователя истек.
 
 security:
     login:
