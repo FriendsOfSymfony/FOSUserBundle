@@ -99,7 +99,7 @@ class User extends \FOS\UserBundle\Entity\User
 
     /**
      * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
-     * @ORM\JoinColumn(referencedColumnName="code")
+     * @ORM\JoinColumn(name="invitation_id", referencedColumnName="code")
      * @Assert\NotNull(message="Your invitation is wrong")
      */
     protected $invitation;
@@ -239,11 +239,10 @@ class InvitationToCodeTransformer implements DataTransformerInterface
         }
 
         return $this->entityManager
-            ->getRepository('Acme\UserBundle\Entity\Invitation')
-            ->findOneBy(array(
-                'code' => $value,
-                'user' => null,
-            ));
+            ->getRepository('Deo\SecureBundle\Entity\Invitation')
+            ->findOneBy(
+                array('code' => $value)
+            );
     }
 }
 ```
