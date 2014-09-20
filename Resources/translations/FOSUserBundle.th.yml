@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+"User account is disabled.": บัญชีผู้ใช้ถูกระงับ
 
 security:
     login:
