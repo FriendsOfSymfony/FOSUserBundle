@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------
+
+by stof at 2014-01-23T13:55:05Z
+
+This is not the right fix. There is no need to move the constraint to the form. As I said in the other PR, it should simply be moved to the ``Registration`` validation group so that it is applied only on registration
+
+---------------------------------------------------------------------------
+
+by nnscr at 2014-01-23T14:29:34Z
+
+Oh, im sorry, I didn't know about these validator groups, always just moved the validation to the form in those cases (which was not the best way apparently). But I'm confused and I know this doesn't belong here, but where does the string "Registration" come from? It does work when I do something like this, but I don't know exactly how and the symfony docs (http://symfony.com/doc/current/book/validation.html) don't show this:
+```@Assert\NotNull(message="registration.invalid_invitation_code", groups={"Registration"})```
+
+---------------------------------------------------------------------------
+
+by nnscr at 2014-01-28T15:46:08Z
+
+I have updated the pull request to use the validation groups as you have suggested.
