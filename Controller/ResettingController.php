@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -32,42 +33,47 @@ class ResettingController extends ContainerAware
     /**
      * Request reset user password: show form
      */
-    public function requestAction()
+    public function requestAction(Request $request)
     {
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine());
-    }
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->container->get('fos_user.resetting.request.form.factory');
 
-    /**
-     * Request reset user password: submit form and send email
-     */
-    public function sendEmailAction(Request $request)
-    {
-        $username = $request->request->get('username');
+        $form = $formFactory->createForm();
 
-        /** @var $user UserInterface */
-        $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
+        if ('POST' === $request->getMethod()) {
+            $form->bind($request);
 
-        if (null === $user) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
+            if ($form->isValid()) {
+                $username = $form->get('identifier')->getData();
+
+                /** @var $user UserInterface */
+                $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail(
+                    $username
+                );
+
+                if (null === $user->getConfirmationToken()) {
+                    /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
+                    $tokenGenerator = $this->container->get('fos_user.util.token_generator');
+                    $user->setConfirmationToken($tokenGenerator->generateToken());
+                }
+
+                $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
+                $user->setPasswordRequestedAt(new \DateTime());
+                $this->container->get('fos_user.user_manager')->updateUser($user);
+
+                return new RedirectResponse($this->container->get('router')->generate(
+                    'fos_user_resetting_check_email',
+                    array('email' => $this->getObfuscatedEmail($user))
+                ));
+            }
         }
 
-        if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
-        }
-
-        if (null === $user->getConfirmationToken()) {
-            /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
-            $tokenGenerator = $this->container->get('fos_user.util.token_generator');
-            $user->setConfirmationToken($tokenGenerator->generateToken());
-        }
-
-        $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
-        $user->setPasswordRequestedAt(new \DateTime());
-        $this->container->get('fos_user.user_manager')->updateUser($user);
-
-        return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'FOSUserBundle:Resetting:request.html.' . $this->getEngine(),
+            array(
+                'form' => $form->createView()
+            )
+        );
     }
 
     /**
@@ -82,9 +88,12 @@ class ResettingController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.'.$this->getEngine(), array(
-            'email' => $email,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'FOSUserBundle:Resetting:checkEmail.html.' . $this->getEngine(),
+            array(
+                'email' => $email,
+            )
+        );
     }
 
     /**
@@ -102,7 +111,10 @@ class ResettingController extends ContainerAware
         $user = $userManager->findUserByConfirmationToken($token);
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
+            throw new NotFoundHttpException(sprintf(
+                'The user with "confirmation token" does not exist for value "%s"',
+                $token
+            ));
         }
 
         $event = new GetResponseUserEvent($user, $request);
@@ -129,16 +141,22 @@ class ResettingController extends ContainerAware
                     $response = new RedirectResponse($url);
                 }
 
-                $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $dispatcher->dispatch(
+                    FOSUserEvents::RESETTING_RESET_COMPLETED,
+                    new FilterUserResponseEvent($user, $request, $response)
+                );
 
                 return $response;
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
-            'token' => $token,
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'FOSUserBundle:Resetting:reset.html.' . $this->getEngine(),
+            array(
+                'token' => $token,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**

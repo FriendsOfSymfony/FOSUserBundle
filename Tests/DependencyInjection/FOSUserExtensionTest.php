@@ -154,6 +154,20 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('Acme\MyBundle\Entity\User', 'fos_user.model.user.class');
     }
 
+    public function testResettingRequestLoadModelClassWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertParameter('FOS\UserBundle\Form\Model\ResettingRequest', 'fos_user.model.resetting_request.class');
+    }
+
+    public function testResettingRequestLoadModelClass()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('Acme\MyBundle\Form\Model\ResettingRequest', 'fos_user.model.resetting_request.class');
+    }
+
     public function testUserLoadManagerClassWithDefaults()
     {
         $this->createEmptyConfiguration();
@@ -182,6 +196,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('fos_user_registration', 'fos_user.registration.form.type');
         $this->assertParameter('fos_user_change_password', 'fos_user.change_password.form.type');
         $this->assertParameter('fos_user_resetting', 'fos_user.resetting.form.type');
+        $this->assertParameter('fos_user_resetting_request', 'fos_user.resetting.request.form.type');
     }
 
     public function testUserLoadFormClass()
@@ -193,6 +208,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('acme_my_group', 'fos_user.group.form.type');
         $this->assertParameter('acme_my_change_password', 'fos_user.change_password.form.type');
         $this->assertParameter('acme_my_resetting', 'fos_user.resetting.form.type');
+        $this->assertParameter('acme_my_resetting_request', 'fos_user.resetting.request.form.type');
     }
 
     public function testUserLoadFormNameWithDefaults()
@@ -203,6 +219,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('fos_user_registration_form', 'fos_user.registration.form.name');
         $this->assertParameter('fos_user_change_password_form', 'fos_user.change_password.form.name');
         $this->assertParameter('fos_user_resetting_form', 'fos_user.resetting.form.name');
+        $this->assertParameter('fos_user_resetting_request_form', 'fos_user.resetting.request.form.name');
     }
 
     public function testUserLoadFormName()
@@ -214,6 +231,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter('acme_group_form', 'fos_user.group.form.name');
         $this->assertParameter('acme_change_password_form', 'fos_user.change_password.form.name');
         $this->assertParameter('acme_resetting_form', 'fos_user.resetting.form.name');
+        $this->assertParameter('acme_resetting_request_form', 'fos_user.resetting.request.form.name');
     }
 
     public function testUserLoadFormServiceWithDefaults()
@@ -225,6 +243,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertNotHasDefinition('fos_user.group.form.factory');
         $this->assertHasDefinition('fos_user.change_password.form.factory');
         $this->assertHasDefinition('fos_user.resetting.form.factory');
+        $this->assertHasDefinition('fos_user.resetting.request.form.factory');
     }
 
     public function testUserLoadFormService()
@@ -236,6 +255,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertHasDefinition('fos_user.group.form.factory');
         $this->assertHasDefinition('fos_user.change_password.form.factory');
         $this->assertHasDefinition('fos_user.resetting.form.factory');
+        $this->assertHasDefinition('fos_user.resetting.request.form.factory');
     }
 
     public function testUserLoadConfirmationEmailWithDefaults()
@@ -292,6 +312,22 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertAlias('acme_my.mailer', 'fos_user.mailer');
         $this->assertAlias('acme_my.email_canonicalizer', 'fos_user.util.email_canonicalizer');
         $this->assertAlias('acme_my.username_canonicalizer', 'fos_user.util.username_canonicalizer');
+    }
+
+    public function testUserLoadValidatorWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertHasDefinition('fos_user.validator.user_exists');
+        $this->assertHasDefinition('fos_user.validator.password_not_already_requested');
+    }
+
+    public function testUserLoadValidator()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertHasDefinition('fos_user.validator.user_exists');
+        $this->assertHasDefinition('fos_user.validator.password_not_already_requested');
     }
 
     public function testUserLoadFlashesByDefault()
@@ -387,6 +423,11 @@ resetting:
         type: acme_my_resetting
         name: acme_resetting_form
         validation_groups: [acme_resetting]
+    request:
+        form:
+            type: acme_my_resetting_request
+            name: acme_resetting_request_form
+        form_model: Acme\MyBundle\Form\Model\ResettingRequest
 service:
     mailer: acme_my.mailer
     email_canonicalizer: acme_my.email_canonicalizer

@@ -178,9 +178,30 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                         ->end()
+                        ->append($this->addResettingRequestSection())
                     ->end()
                 ->end()
             ->end();
+    }
+
+    private function addResettingRequestSection()
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root('request');
+
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('form')
+                ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('type')->defaultValue('fos_user_resetting_request')->end()
+                        ->scalarNode('name')->defaultValue('fos_user_resetting_request_form')->end()
+                    ->end()
+                ->end()
+            ->scalarNode('form_model')->defaultValue('FOS\UserBundle\Form\Model\ResettingRequest')->end()
+        ;
+        return $node;
     }
 
     private function addChangePasswordSection(ArrayNodeDefinition $node)

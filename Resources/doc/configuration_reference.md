@@ -47,6 +47,10 @@ fos_user:
             type:               fos_user_resetting
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
+        request:
+            form:
+                type: fos_user_resetting_request
+                name: fos_user_resetting_request_form
     service:
         mailer:                 fos_user.mailer.default
         email_canonicalizer:    fos_user.util.canonicalizer.default

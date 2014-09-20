@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="fos_user.resetting.request.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
+            <argument>%fos_user.resetting.request.form.name%</argument>
+            <argument>%fos_user.resetting.request.form.type%</argument>
+        </service>
+
+        <service id="fos_user.resetting.request.form.type" class="FOS\UserBundle\Form\Type\ResettingRequestFormType">
+            <tag name="form.type" alias="fos_user_resetting_request" />
+            <argument>%fos_user.model.resetting_request.class%</argument>
+        </service>
+
+        <service id="fos_user.validator.user_exists" class="FOS\UserBundle\Validator\Constraints\UserExistsValidator">
+            <argument type="service" id="fos_user.user_provider.username_email" />
+            <tag name="validator.constraint_validator" alias="fos_user_exists_validator" />
+        </service>
+
+        <service id="fos_user.validator.password_not_already_requested" class="FOS\UserBundle\Validator\Constraints\PasswordNotAlreadyRequestedValidator">
+            <argument type="service" id="fos_user.user_provider.username_email" />
+            <argument>%fos_user.resetting.token_ttl%</argument>
+            <tag name="validator.constraint_validator" alias="fos_password_not_already_requested_validator" />
+        </service>
+
+    </services>
+
+</container>

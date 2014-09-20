@@ -98,6 +98,10 @@ class FOSUserExtension extends Extension
             $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
         }
 
+        if (!empty($config['resetting']['request'])) {
+            $this->loadResettingRequest($config['resetting']['request'], $container, $loader);
+        }
+
         if (!empty($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
         }
@@ -159,6 +163,20 @@ class FOSUserExtension extends Extension
             ),
             'email' => 'fos_user.resetting.email.%s',
             'form' => 'fos_user.resetting.form.%s',
+        ));
+    }
+
+    private function loadResettingRequest(
+        array $config,
+        ContainerBuilder $container,
+        XmlFileLoader $loader
+    ) {
+        $loader->load('resetting_request.xml');
+        $this->remapParametersNamespaces($config, $container, array(
+            '' => array (
+                'form_model' => 'fos_user.model.resetting_request.class',
+            ),
+            'form' => 'fos_user.resetting.request.form.%s',
         ));
     }
 
