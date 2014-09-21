@@ -72,9 +72,24 @@ class RegistrationController extends ContainerAware
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
-            'form' => $form->createView(),
+        return $this->renderRegistration(array(
+            'form' => $form->createView()
         ));
+    }
+
+    /**
+     * Renders the registration template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the login template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function renderRegistration(array $data)
+    {
+        $template = sprintf('FOSUserBundle:Registration:register.html.%s', $this->container->getParameter('fos_user.template.engine'));
+
+        return $this->container->get('templating')->renderResponse($template, $data);
     }
 
     /**
