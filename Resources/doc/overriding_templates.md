@@ -138,6 +138,36 @@ to take effect, even in a development environment.
 Overriding all of the other templates provided by the FOSUserBundle can be done
 in a similar fashion using either of the two methods shown in this document.
 
+**c) Create new route with template parameter**
+
+In case that you want to place your login tempaltes in bundle, but you don't want to
+set parent bundle for your own bundle you can define route with template parameter.
+
+It's easy to do just add following route to your `routing.yml`:
+
+``` yaml
+admin.login:
+    pattern: /login
+    defaults: { _controller: FOSUserBundle:Security:login, template: AcmeBundle:Security:login.html.twig }
+```
+
+Template you use depends only on you, but you can extend already existing
+`FOSUserBundle:Security:login` template. To do so just create following template:
+
+``` html+jinja
+{% extends FOSUserBundle:Security:login.html.twig  %}
+
+{% block fos_user_content %}
+    {{ <h1>My own login template header...</h1> }}
+    {{ parent() }}
+{% endblock}
+```
+
+This method can be also used to define differnt templates for different login pages without
+any need to extend any controller or reimplementing the login process. All you have to do
+is to add more routes with different templates and then use this as login pages
+in security settings.
+
 ### Configuring A Templating Engine Other Than Twig
 
 You can configure a templating engine other than Twig using the bundle's configuration.

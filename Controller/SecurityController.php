@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction(Request $request)
+    public function loginAction(Request $request, $template = 'FOSUserBundle:Security:login.html.%s')
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
@@ -43,11 +43,13 @@ class SecurityController extends ContainerAware
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
 
-        return $this->renderLogin(array(
+        $parameters = array(
             'last_username' => $lastUsername,
             'error'         => $error,
-            'csrf_token' => $csrfToken,
-        ));
+            'csrf_token'    => $csrfToken,
+        );
+
+        return $this->renderLogin($parameters, $template);
     }
 
     /**
@@ -55,12 +57,13 @@ class SecurityController extends ContainerAware
      * an extended controller to provide additional data for the login template.
      *
      * @param array $data
+     * @param string $template
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function renderLogin(array $data)
+    protected function renderLogin(array $data, $template)
     {
-        $template = sprintf('FOSUserBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = sprintf($template, $this->container->getParameter('fos_user.template.engine'));
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }
