@@ -88,6 +88,8 @@ class ProfileController extends ContainerAware
 
                 return $response;
             }
+            
+            $this->container->get('fos_user.user_manager')->reloadUser($user);
         }
 
         return $this->container->get('templating')->renderResponse(
