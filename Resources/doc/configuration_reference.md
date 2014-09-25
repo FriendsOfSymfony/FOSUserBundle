@@ -55,6 +55,7 @@ fos_user:
         user_manager:           fos_user.user_manager.default
     template:
         engine: twig
+        login:  FOSUserBundle:Security:login.html.%s
     group:
         group_class:    ~ # Required when using groups
         group_manager:  fos_user.group_manager.default
