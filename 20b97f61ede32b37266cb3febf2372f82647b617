@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------
+
+by tgalopin at 2014-08-24T09:11:17Z
+
+Let's merge it for the Hackday, as the Best practices documentation has been updated and does not include the part about Controller base class.
+
+---------------------------------------------------------------------------
+
+by merk at 2014-08-24T09:15:48Z
+
+If we are going to merge this change I think it makes more sense that any container access that can be moved back to the convenience methods should also be moved (templating, router, etc)
+
+---------------------------------------------------------------------------
+
+by tgalopin at 2014-09-02T16:00:05Z
+
+Okay, I'll do that (my computer just broke 9 days ago, sorry for the delayed answer).
