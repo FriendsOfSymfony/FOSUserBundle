@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------
+
+by Arkni at 2014-08-02T12:49:30Z
+
+Oh my bad, ok i will update it, sorry for this error :(
+##### Edit:
+Done
+
+---------------------------------------------------------------------------
+
+by stof at 2014-09-26T21:13:07Z
+
+The security translations have been removed in db749b3c71afebe86d88aa7b4c5ab50ae95428a4 because of the merge of #1149. Can you rebase your branch, keeping only the relevant translations ?
+
+---------------------------------------------------------------------------
+
+by Arkni at 2014-09-26T21:48:16Z
+
+@stof
+Done.
