@@ -80,7 +80,11 @@ class RegistrationController extends Controller
      */
     public function checkEmailAction()
     {
-        $email = $this->container->get('session')->get('fos_user_send_confirmation_email/email');
+        $email = $this->container->get('session')->get('fos_user_send_confirmation_email/email') ? 
+            $this->container->get('session')->get('fos_user_send_confirmation_email/email') :
+            current($this->container->get('session')->getFlashBag()->peek('email'));
+
+        $this->container->get('session')->getFlashBag()->set('email',$email);
         $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
 
