@@ -20,6 +20,7 @@ Changelog
 * Removed all form handlers
 * [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
 * [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
+* [BC Break] Translation domain for login error changed to `security`
 
 ### 1.3.5 (2014-09-04)
 
