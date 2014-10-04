@@ -1,0 +1,5 @@
+---------------------------------------------------------------------------
+
+by stof at 2014-09-26T21:11:25Z
+
+The security error translations have been removed in db749b3c71afebe86d88aa7b4c5ab50ae95428a4 because of the merge of #1149. Can you rebase your branch to include only the relevant translations ?
