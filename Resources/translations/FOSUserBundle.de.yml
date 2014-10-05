@@ -92,3 +92,33 @@ form:
     password_confirmation: "Passwort bestätigen:"
     new_password: "Neues Passwort:"
     new_password_confirmation: "Neues Passwort bestätigen:"
+
+# Admin dashboard labels
+dashboard:
+    fos_user: Benutzerverwaltung
+    label_users: Benutzer
+    label_groups: Gruppen
+
+# Admin list labels
+list:
+    label_username: Benutzername
+    label_email: Email
+    label_groups: Gruppen
+    label_enabled: Aktiviert
+    label_locked: Gesperrt
+
+# Admin form labels
+form:
+    label_username: Benutzername
+    label_email: Email
+    label_plain_password: Passwort (sichtbar)
+    label_roles: Rollen
+    label_groups: Gruppen
+    label_locked: Gesperrt
+    label_expired: Abgelaufen
+    label_enabled: Aktiviert
+    label_credentials_expired: Zugangsdaten abgelaufen
+
+# Admin breadcrumb
+breadcrumb:
+    link_user_list: Benutzer

@@ -61,6 +61,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('sender_name')->defaultValue('webmaster')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
+                ->scalarNode('use_sonata_admin')->defaultValue('auto')->end()
             ->end()
             // Using the custom driver requires changing the manager services
             ->validate()

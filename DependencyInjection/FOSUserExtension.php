@@ -100,6 +100,9 @@ class FOSUserExtension extends Extension
         if (!empty($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
         }
+        if ($config['use_sonata_admin']) {
+            $this->loadSonata($config, $container, $loader, $config['db_driver'], !empty($config['group']));
+        }
     }
 
     private function loadProfile(array $config, ContainerBuilder $container, XmlFileLoader $loader)
@@ -176,6 +179,33 @@ class FOSUserExtension extends Extension
             ),
             'form' => 'fos_user.group.form.%s',
         ));
+    }
+
+    private function loadSonata (array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver, $useGroups)
+    {
+
+        $bundles = $container->getParameter('kernel.bundles');
+
+        if (!in_array($dbDriver, array('mongodb', 'orm'))) {
+            return;
+        }
+
+        if ($dbDriver == 'auto') {
+            if (isset($bundles['SonataUserBundle'])) {
+                return;
+            }
+            if ($dbDriver == 'mongodb' and !isset($bundles['SonataDoctrineMongoDBAdminBundle'])) {
+                return;
+            }
+            if ($dbDriver == 'orm' and !isset($bundles['SonataDoctrineORMAdminBundle'])) {
+                return;
+            }
+        }
+
+        $loader->load(sprintf('admin/%s.user.xml', $config['db_driver']));
+        if ($useGroups) {
+            $loader->load(sprintf('admin/%s.group.xml', $config['db_driver']));
+        }
     }
 
     protected function remapParameters(array $config, ContainerBuilder $container, array $map)

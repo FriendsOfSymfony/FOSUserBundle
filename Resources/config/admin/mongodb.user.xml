@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="fos_user.admin.user.class">FOS\UserBundle\Admin\UserAdmin</parameter>
+    </parameters>
+
+    <services>
+        <service id="crunch_user.admin.user" class="%fos_user.admin.user.class%">
+            <tag name="sonata.admin" manager_type="doctrine_mongodb" group="dashboard.fos_user" label_catalogue="FOSUserBundle" label="dashboard.label_users" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
+            <argument />
+            <argument>%fos_user.model.user.class%</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+            <call method="setUserManager">
+                <argument type="service" id="fos_user.user_manager" />
+            </call>
+            <call method="setTranslationDomain">
+                <argument>FOSUserBundle</argument>
+            </call>
+        </service>
+    </services>
+
+</container>

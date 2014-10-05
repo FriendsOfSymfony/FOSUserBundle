@@ -35,7 +35,8 @@
         "symfony/validator": "~2.3"
     },
     "suggest": {
-        "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+        "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation",
+        "sonata-project/admin-bundle": "Administration platform for orm and mongodb driver"
     },
     "autoload": {
         "psr-4": { "FOS\\UserBundle\\": "" }
