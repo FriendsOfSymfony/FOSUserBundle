@@ -32,6 +32,7 @@ class LoginManager implements LoginManagerInterface
     private $userChecker;
     private $sessionStrategy;
     private $container;
+
     /**
      * @var AbstractRememberMeServices[]
      */
