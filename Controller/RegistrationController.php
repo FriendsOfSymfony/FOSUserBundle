@@ -87,7 +87,7 @@ class RegistrationController extends ContainerAware
      */
     protected function renderRegistration(array $data)
     {
-        $template = sprintf('FOSUserBundle:Registration:register.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = 'FOSUserBundle:Registration:register.html.twig';
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }
