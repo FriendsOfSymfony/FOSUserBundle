@@ -42,7 +42,6 @@ class SecurityController extends ContainerAware
 
         $csrfToken = $this->container->has('form.csrf_provider') ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate') : null;
 
-
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error'         => $error,
