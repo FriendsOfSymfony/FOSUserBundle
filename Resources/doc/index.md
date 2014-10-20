@@ -45,7 +45,7 @@ Installation is a quick (I promise!) 7 step process:
 Add FOSUserBundle by running the command:
 
 ``` bash
-$ php composer.phar require friendsofsymfony/user-bundle ~2.0@dev
+$ php composer.phar require friendsofsymfony/user-bundle "~2.0@dev"
 ```
 
 Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
