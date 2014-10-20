@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by xabbuh at 2014-10-20T07:52:00Z
+
+@sekjun9878 Can you enclose it with double quotes? This should work on all platforms, but wouldn't confuse shells that evaluate ``~`` first.
+
+---------------------------------------------------------------------------
+
+by sekjun9878 at 2014-10-20T07:54:23Z
+
+There you go :)
