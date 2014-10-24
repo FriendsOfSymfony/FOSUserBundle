@@ -402,6 +402,8 @@ Or if you prefer XML:
 <!-- app/config/routing.xml -->
 <import resource="@FOSUserBundle/Resources/config/routing/all.xml"/>
 ```
+all.xml is of course a file in specified path. So we will have a route for each file.
+
 
 **Note:**
 
