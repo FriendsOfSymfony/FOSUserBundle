@@ -1,8 +1,46 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal col-md-12', 'role': 'form'}}) }}
+<div class="form-group col-md-12">
+    <div class="col-md-3"></div>
+    <div class="checkbox col-md-9">
+        <h3>
+            Kostenlos registrieren<br />
+            <small>Bitte füllen Sie folgendes Formular aus, um sich kostenlos auf <strong>web-engineering-jobs.com</strong> zu registrieren.</small>
+        </h3>
     </div>
-</form>
+</div>
+{{ form_errors(form) }}
+
+<div class="form-group col-md-12">
+    <label for="email" class="col-md-3 control-label">{{ form_label(form.email) }}</label>
+    <div class="col-md-9">{{ form_widget(form.email, {'attr': {'class': 'col-md-12 form-control'}}) }}</div>
+</div>
+
+<div class="form-group col-md-12">
+    <label for="username" class="col-md-3 control-label">{{ form_label(form.username) }}</label>
+    <div class="col-md-9">{{ form_widget(form.username, {'attr': {'class': 'col-md-12 form-control'}}) }}</div>
+</div>
+
+<div class="form-group col-md-12">
+    <label for="plainPassword" class="col-md-3 control-label">{{ form_label(form.plainPassword.first) }}</label>
+    <div class="col-md-9">{{ form_widget(form.plainPassword.first, {'attr': {'class': 'col-md-12 form-control'}}) }}</div>
+</div>
+
+<div class="form-group col-md-12">
+    <label for="plainPassword" class="col-md-3 control-label">{{ form_label(form.plainPassword.second) }}</label>
+    <div class="col-md-9">{{ form_widget(form.plainPassword.second, {'attr': {'class': 'col-md-12 form-control'}}) }}</div>
+</div>
+
+<div class="form-group col-md-12">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <button type="submit" id="_submit" name="_submit" class="btn btn-success">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button><br><br />
+
+        <a href="{{ url("fos_user_security_login") }}">Anmelden</a> |
+        <a href="{{ url("fos_user_resetting_request") }}">Passwort vergessen?</a>
+    </div>
+</div>
+
+{{ form_end(form) }}

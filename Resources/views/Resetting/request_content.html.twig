@@ -1,14 +1,33 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        {% if invalid_username is defined %}
-            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
-        {% endif %}
-        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-        <input type="text" id="username" name="username" required="required" />
+<div class="form-group col-md-12">
+    <div class="col-md-5"></div>
+    <div class="checkbox col-md-7">
+        <h3>
+            Passwort zurücksetzen<br />
+            <small>Bitte geben Sie hier Ihren Benutzernamen oder Ihre E-Mail-Adresse ein, damit Ihr Passwort zurückgesetzt werden kann.</small>
+        </h3>
     </div>
-    <div>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+</div>
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal col-md-12" role="form">
+    {% if invalid_username is defined %}
+        <div class="alert alert-warning">
+            {{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}
+        </div>
+    {% endif %}
+    <div class="form-group col-md-12">
+        <label for="username" class="col-md-5 control-label">{{ 'resetting.request.username'|trans }}</label>
+        <div class="col-md-7"><input type="text" id="username" name="username" required="required" class="col-md-12 form-control" /></div>
     </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-5"></div>
+        <div class="col-md-7">
+            <button type="submit" id="_submit" name="_submit" class="btn btn-success">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</button><br><br />
+
+            <a href="{{ url("fos_user_security_login") }}">Anmelden</a> |
+            <a href="{{ path('fos_user_registration_register') }}">Kostenlos Registrieren</a>
+        </div>
+    </div>
+
 </form>

@@ -1,24 +1,47 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "WebworksFrontendBundle:app:all.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% block content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal col-md-8 col-md-offset-2">
+        <div class="form-group col-md-12">
+            <div class="col-md-3"></div>
+            <div class="checkbox col-md-9">
+                <h3>Anmelden</h3>
+            </div>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <div class="form-group col-md-12">
+            <label for="username" class="col-md-3 control-label">{{ 'security.login.username'|trans }}</label>
+            <div class="col-md-9"><input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="col-md-12 form-control" /></div>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="password" class="col-md-3 control-label">{{ 'security.login.password'|trans }}</label>
+            <div class="col-md-9"><input type="password" id="password" name="_password" value="" required="required" class="col-md-12 form-control" /></div>
+        </div>
+        <div class="form-group col-md-12">
+            <div class="col-md-3"></div>
+            <div class="checkbox col-md-9">
+                <label for="remember_me">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    {{ 'security.login.remember_me'|trans }}
+                </label>
+            </div>
+        </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+        <div class="form-group col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <button type="submit" id="_submit" name="_submit" class="btn btn-success">{{ 'security.login.submit'|trans }}</button><br><br />
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
-{% endblock fos_user_content %}
+                <a href="{{ path('fos_user_registration_register') }}">Kostenlos Registrieren</a> |
+                <a href="{{ url("fos_user_resetting_request") }}">Passwort vergessen?</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
