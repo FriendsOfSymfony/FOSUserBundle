@@ -36,8 +36,11 @@
 
         <div class="form-group col-md-12">
             <div class="col-md-3"></div>
-            <div class="checkbox col-md-9">
-                <input type="submit" id="_submit" name="_submit" class="btn btn-success" value="{{ 'security.login.submit'|trans }}" />
+            <div class="col-md-9">
+                <button type="submit" id="_submit" name="_submit" class="btn btn-success">{{ 'security.login.submit'|trans }}</button><br><br />
+
+                <a href="{{ path('fos_user_registration_register') }}">Kostenlos Registrieren</a> |
+                <a href="{{ url("fos_user_resetting_request") }}">Passwort vergessen?</a>
             </div>
         </div>
     </form>
