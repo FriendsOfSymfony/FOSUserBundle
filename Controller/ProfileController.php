@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\FormUserErrorEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -90,8 +91,17 @@ class ProfileController extends Controller
             return $response;
         }
 
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new FormUserErrorEvent($user, $request, $form);
+            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+        }
+
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 }

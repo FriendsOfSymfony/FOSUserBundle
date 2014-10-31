@@ -8,7 +8,9 @@ group:
         submit: Create group
     flash:
         updated: The group has been updated
+        update_error: The group has not been updated
         created: The group has been created
+        create_error: The group has not been created
         deleted: The group has been deleted
 
 # Security
@@ -28,12 +30,14 @@ profile:
         submit: Update
     flash:
         updated: The profile has been updated
+        update_error: The profile has not been updated
 
 # Password change
 change_password:
     submit: Change password
     flash:
         success: The password has been changed
+        error: The password has not been changed
 
 # Registration
 registration:
@@ -43,6 +47,7 @@ registration:
     submit: Register
     flash:
         user_created: The user has been created successfully
+        user_create_error: The user has not been created
     email:
         subject: Welcome %username%!
         message: |
@@ -65,6 +70,7 @@ resetting:
         submit: Change password
     flash:
         success: The password has been reset successfully
+        error: The password has not been reset
     email:
         subject: Reset Password
         message: |

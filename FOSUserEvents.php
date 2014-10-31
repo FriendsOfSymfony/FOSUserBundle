@@ -41,6 +41,14 @@ final class FOSUserEvents
     const CHANGE_PASSWORD_COMPLETED = 'fos_user.change_password.edit.completed';
 
     /**
+     * The CHANGE_PASSWORD_ERROR event occurs when there are errors in the user form change password process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FormUserErrorEvent instance.
+     */
+    const CHANGE_PASSWORD_ERROR = 'fos_user.change_password.edit.error';
+
+    /**
      * The GROUP_CREATE_INITIALIZE event occurs when the group creation process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
@@ -63,6 +71,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
      */
     const GROUP_CREATE_COMPLETED = 'fos_user.group.create.completed';
+
+    /**
+     * The GROUP_CREATE_ERROR event occurs when there are errors in the group form creation process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FormGroupErrorEvent instance.
+     */
+    const GROUP_CREATE_ERROR = 'fos_user.group.create.error';
 
     /**
      * The GROUP_DELETE_COMPLETED event occurs after deleting the group.
@@ -97,6 +113,14 @@ final class FOSUserEvents
     const GROUP_EDIT_COMPLETED = 'fos_user.group.edit.completed';
 
     /**
+     * The GROUP_EDIT_ERROR event occurs when there are errors in the group form edit process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FormGroupErrorEvent instance.
+     */
+    const GROUP_EDIT_ERROR = 'fos_user.group.edit.error';
+
+    /**
      * The PROFILE_EDIT_INITIALIZE event occurs when the profile editing process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
@@ -121,6 +145,14 @@ final class FOSUserEvents
     const PROFILE_EDIT_COMPLETED = 'fos_user.profile.edit.completed';
 
     /**
+     * The PROFILE_EDIT_ERROR event occurs when there are errors in the user form profile edit process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FormUserErrorEvent instance.
+     */
+    const PROFILE_EDIT_ERROR = 'fos_user.profile.edit.error';
+
+    /**
      * The REGISTRATION_INITIALIZE event occurs when the registration process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
@@ -143,6 +175,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const REGISTRATION_COMPLETED = 'fos_user.registration.completed';
+
+    /**
+     * The REGISTRATION_ERROR event occurs when there are errors in the user form registration process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\FormUserErrorEvent instance.
+     */
+    const REGISTRATION_ERROR = 'fos_user.registration.error';
 
     /**
      * The REGISTRATION_CONFIRM event occurs just before confirming the account.
@@ -183,6 +223,14 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const RESETTING_RESET_COMPLETED = 'fos_user.resetting.reset.completed';
+
+    /**
+     * The RESETTING_RESET_ERROR event occurs when there are errors in the user form resetting process.
+     *
+     * This event allows you to access the response which will be sent.
+     * The event listener method receives a FOS\UserBundle\Event\ResettingErrorEvent instance.
+     */
+    const RESETTING_RESET_ERROR = 'fos_user.resetting.reset.error';
 
     /**
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.
