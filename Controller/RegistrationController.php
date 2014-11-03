@@ -12,15 +12,16 @@
 namespace FOS\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Controller managing the registration
@@ -53,7 +54,7 @@ class RegistrationController extends Controller
         $form->setData($user);
 
         $form->handleRequest($request);
-
+        $response = new Response();
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
@@ -68,11 +69,15 @@ class RegistrationController extends Controller
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
+        } else {
+            $response->setStatusCode(Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+        $response->setContent($this->renderView('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
-        ));
+        )));
+
+        return $response;
     }
 
     /**
