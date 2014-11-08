@@ -102,7 +102,10 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
     public function findUserByUsernameOrEmail($usernameOrEmail)
     {
         if (filter_var($usernameOrEmail, FILTER_VALIDATE_EMAIL)) {
-            return $this->findUserByEmail($usernameOrEmail);
+        	$user = $this->findUserByEmail($usernameOrEmail);
+        	if($user instanceof SecurityUserInterface){
+	            return $user;
+        	}
         }
 
         return $this->findUserByUsername($usernameOrEmail);
