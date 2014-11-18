@@ -39,7 +39,7 @@ change_password:
 registration:
     check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link, na który należy kliknąć, aby aktywować konto.
     confirmed: Gratulacje %username%, potwierdziłeś konto.
-    #back: Back to the originating page.
+    back: Powrót do poprzeniej strony.
     submit: Zarejestruj
     flash:
         user_created: Stworzono użytkownika
