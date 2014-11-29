@@ -40,15 +40,13 @@ Installation is a quick (I promise!) 7 step process:
 6. Import FOSUserBundle routing
 7. Update your database schema
 
-### Step 1: Download FOSUserBundle using composer
+### Step 1: Download the bundle using Composer
 
-Add FOSUserBundle by running the command:
+Open your command console, browse to your project and execute the following:
 
-``` bash
-$ php composer.phar require friendsofsymfony/user-bundle "~2.0@dev"
+```bash
+$ composer require friendsofsymfony/user-bundle
 ```
-
-Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
 
 ### Step 2: Enable the bundle
 
