@@ -26,7 +26,7 @@ class EmailUserProviderTest extends \PHPUnit_Framework_TestCase
     {
         $user = $this->getMock('FOS\UserBundle\Model\UserInterface');
         $this->userManager->expects($this->once())
-            ->method('findUserByUsernameOrEmail')
+            ->method('findUserByEmail')
             ->with('foobar')
             ->will($this->returnValue($user));
 
@@ -39,7 +39,7 @@ class EmailUserProviderTest extends \PHPUnit_Framework_TestCase
     public function testLoadUserByInvalidUsername()
     {
         $this->userManager->expects($this->once())
-            ->method('findUserByUsernameOrEmail')
+            ->method('findUserByEmail')
             ->with('foobar')
             ->will($this->returnValue(null));
 
