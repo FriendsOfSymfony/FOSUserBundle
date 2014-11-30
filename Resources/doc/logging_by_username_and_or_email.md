@@ -13,3 +13,15 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username_email
 ```
+
+
+Logging by Email only
+=====================
+
+```yaml
+# app/config/security.yml
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.email
+```
