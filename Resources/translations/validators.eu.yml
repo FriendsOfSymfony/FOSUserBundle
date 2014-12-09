@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Erabiltzaile izena hori erabiltzen da dagoeneko
+        blank: Sartu erabiltzaile izena mesedez
+        short: "[-Inf,Inf]Erabiltzaile izena motzegia da"
+        long: "[-Inf,Inf]Erabiltzaile izena luzeegia da"
+    email:
+        already_used: E-posta helbide hori erabiltzen da dagoeneko
+        blank: Sarty E-posta helbidea mesedez
+        short: "[-Inf,Inf]E-posta helbidea motzegia da"
+        long: "[-Inf,Inf]E-posta helbidea luzeegia da"
+        invalid: E-posta helbidea ez da zuzena
+    password:
+        blank: Sartu pasahitza mesedez
+        short: "[-Inf,Inf]Pasahitza motzegia da"
+        mismatch: Bi pasahitzek ez dute bat egiten
+    new_password:
+        blank: Sartu pasahitz berria mesedez
+        short: "[-Inf,Inf]Pasahitz berria motzegia da"
+    current_password:
+        invalid: Sartutako pasahitza ez da baliagarria
+    group:
+        blank: Sartu izena mesedez
+        short: "[-Inf,Inf]Izena motzegia da"
+        long: "[-Inf,Inf]Izena luzeegia da"
