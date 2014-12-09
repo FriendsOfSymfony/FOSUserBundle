@@ -93,8 +93,3 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
         return new $userClass();
     }
 }
-
-class DummyUser extends User
-{
-
-}
