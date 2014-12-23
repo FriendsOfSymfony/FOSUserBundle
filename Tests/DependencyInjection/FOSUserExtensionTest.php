@@ -336,6 +336,7 @@ db_driver: orm
 firewall_name: fos_user
 use_listener: true
 use_flash_notifications: false
+force_login_on_password_change: true
 user_class: Acme\MyBundle\Entity\User
 model_manager_name: custom
 from_email:

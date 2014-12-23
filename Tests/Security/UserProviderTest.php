@@ -113,4 +113,16 @@ class UserProviderTest extends \PHPUnit_Framework_TestCase
 
         $this->userProvider->refreshUser($providedUser);
     }
+
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\AuthenticationException
+     */
+    public function testRefreshPasswordChangedThrowsAuthenticationException()
+    {
+        $this->userProvider->setForceLoginOnPasswordChange(true);
+        $user = $this->getMockBuilder('FOS\UserBundle\Model\User')
+                    ->setMethods(array('getPassword'))
+                    ->getMock();
+        $this->userProvider->refreshUser($user);
+    }
 }

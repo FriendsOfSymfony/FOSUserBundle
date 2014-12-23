@@ -11,6 +11,7 @@ fos_user:
     user_class:             ~ # Required
     use_listener:           true
     use_username_form_type: true
+    force_login_on_password_change: false # change to true to force logins on other sessions if user password changes
     model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
     from_email:
         address:        webmaster@example.com

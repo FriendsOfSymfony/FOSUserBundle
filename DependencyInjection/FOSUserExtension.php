@@ -72,6 +72,10 @@ class FOSUserExtension extends Extension
             $loader->load('username_form_type.xml');
         }
 
+        if ($config['force_login_on_password_change']) {
+            $this->setForceLoginOnPasswordChange($container);
+        }
+
         $this->remapParametersNamespaces($config, $container, array(
             ''          => array(
                 'db_driver' => 'fos_user.storage',
@@ -205,6 +209,14 @@ class FOSUserExtension extends Extension
                     $container->setParameter(sprintf($map, $name), $value);
                 }
             }
+        }
+    }
+
+    protected function setForceLoginOnPasswordChange(ContainerBuilder $container)
+    {
+        foreach ($container->findTaggedServiceIds('fos_user.user_provider') as $id => $tags) {
+            $userProvider = $container->getDefinition($id);
+            $userProvider->addMethodCall('setForceLoginOnPasswordChange', array('true'));
         }
     }
 }

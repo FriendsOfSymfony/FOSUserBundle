@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
@@ -26,6 +27,23 @@ class UserProvider implements UserProviderInterface
      * @var UserManagerInterface
      */
     protected $userManager;
+
+    /**
+     * @var boolean
+     */
+    protected $forceLoginOnPasswordChange;
+
+    /**
+     * If set, and password has changed in the db, then force login again.
+     * Note that this doesn't affect the session that changed the password, rather any other sessions that might
+     * exist for the user.
+     *
+     * @param boolean $forceLoginOnPasswordChange
+     */
+    public function setForceLoginOnPasswordChange($forceLoginOnPasswordChange)
+    {
+        $this->forceLoginOnPasswordChange = $forceLoginOnPasswordChange;
+    }
 
     /**
      * Constructor.
@@ -66,6 +84,10 @@ class UserProvider implements UserProviderInterface
 
         if (null === $reloadedUser = $this->userManager->findUserBy(array('id' => $user->getId()))) {
             throw new UsernameNotFoundException(sprintf('User with ID "%d" could not be reloaded.', $user->getId()));
+        }
+
+        if ($this->forceLoginOnPasswordChange && $user->getPassword() !== $reloadedUser->getPassword()) {
+            throw new AuthenticationException(sprintf('Forcing Re-Login as password changed in different session for user ID %d', $user->getId()));
         }
 
         return $reloadedUser;
