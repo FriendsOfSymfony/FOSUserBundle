@@ -56,7 +56,7 @@ class ChangePasswordController extends ContainerAware
         $form->setData($user);
 
         if ($request->isMethod('POST')) {
-            $form->bind($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

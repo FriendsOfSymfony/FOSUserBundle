@@ -73,7 +73,7 @@ class GroupController extends ContainerAware
         $form->setData($group);
 
         if ($request->isMethod('POST')) {
-            $form->bind($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 /** @var $groupManager \FOS\UserBundle\Model\GroupManagerInterface */

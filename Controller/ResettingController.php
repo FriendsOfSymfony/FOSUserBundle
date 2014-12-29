@@ -119,7 +119,7 @@ class ResettingController extends ContainerAware
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
