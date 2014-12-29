@@ -24,10 +24,12 @@
 
         <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
             <argument type="service" id="fos_user.user_manager" />
+	    <tag name="fos_user.user_provider" />
         </service>
 
         <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
             <argument type="service" id="fos_user.user_manager" />
+	    <tag name="fos_user.user_provider" />
         </service>
     </services>
 
