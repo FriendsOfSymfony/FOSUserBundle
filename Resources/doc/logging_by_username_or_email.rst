@@ -6,10 +6,10 @@ using both the username and email fields. To use it, simply change the id
 of your user provider to use this implementation instead of the base one
 using only the username:
 
-```yaml
-# app/config/security.yml
-security:
-    providers:
-        fos_userbundle:
-            id: fos_user.user_provider.username_email
-```
+.. code-block:: yaml
+
+    # app/config/security.yml
+    security:
+        providers:
+            fos_userbundle:
+                id: fos_user.user_provider.username_email

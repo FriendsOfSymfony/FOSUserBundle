@@ -1,7 +1,7 @@
 FOSUserBundle
 =============
 
-The FOSUserBundle adds support for a database-backed user system in Symfony2.
+The FOSUserBundle adds support for a database-backed user system in Symfony.
 It provides a flexible framework for user management that aims to handle
 common tasks such as user registration and password retrieval.
 
@@ -23,7 +23,7 @@ For Symfony 2.0.x, you need to use the 1.2.0 release of the bundle (or lower)
 Documentation
 -------------
 
-The bulk of the documentation is stored in the `Resources/doc/index.md`
+The bulk of the documentation is stored in the `Resources/doc/index.rst`
 file in this bundle:
 
 [Read the Documentation for master](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md)
