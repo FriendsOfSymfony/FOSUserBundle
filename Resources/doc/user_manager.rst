@@ -82,26 +82,24 @@ then persist the changes.
     If you always save the user through the user manager, you may want to disable
     it to improve performance.
 
-In YAML:
+.. configuration-block::
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-    # app/config/config.yml
-    fos_user:
-        # ...
-        use_listener: false
+        # app/config/config.yml
+        fos_user:
+            # ...
+            use_listener: false
 
-Or if you prefer XML:
+    .. code-block:: xml
 
-.. code-block:: xml
-
-    <!-- app/config/config.xml -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        use-listener="false"
-        user-class="MyProject\MyBundle\Entity\User"
-    />
+        <!-- app/config/config.xml -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            use-listener="false"
+            user-class="MyProject\MyBundle\Entity\User"
+        />
 
 .. caution::
 
@@ -149,6 +147,7 @@ In YAML:
 
 .. code-block:: yaml
 
+    # app/config/config.yml
     fos_user:
         # ...
         service:

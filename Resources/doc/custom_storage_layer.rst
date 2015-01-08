@@ -16,7 +16,7 @@ implement these interfaces.
 
 .. note::
 
-    You need to take care to always call ``updateCanonicalFields`` and `updatePassword``
+    You need to take care to always call ``updateCanonicalFields`` and ``updatePassword``
     before saving a user. This is done when calling ``updateUser`` so you will
     be safe if you always use the user manager to save the users.
     If your storage layer gives you a hook in its saving process, you can use

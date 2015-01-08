@@ -331,26 +331,26 @@ the specific needs of your application.
 Add the following configuration to your ``config.yml`` file according to which type
 of datastore you are using.
 
-.. code-block:: yaml
+.. configuration-block::
 
-    # app/config/config.yml
-    fos_user:
-        db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-        firewall_name: main
-        user_class: Acme\UserBundle\Entity\User
+    .. code-block:: yaml
 
-Or if you prefer XML:
+        # app/config/config.yml
+        fos_user:
+            db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+            firewall_name: main
+            user_class: Acme\UserBundle\Entity\User
 
-.. code-block:: xml
+    .. code-block:: xml
 
-    <!-- app/config/config.xml -->
+        <!-- app/config/config.xml -->
 
-    <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        user-class="Acme\UserBundle\Entity\User"
-    />
+        <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            user-class="Acme\UserBundle\Entity\User"
+        />
 
 Only three configuration values are required to use the bundle:
 
@@ -375,40 +375,38 @@ import the FOSUserBundle routing files.
 By importing the routing files you will have ready made pages for things such as
 logging in, creating users, etc.
 
-In YAML:
+.. configuration-block::
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-    # app/config/routing.yml
-    fos_user_security:
-        resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+        # app/config/routing.yml
+        fos_user_security:
+            resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-    fos_user_profile:
-        resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-        prefix: /profile
+        fos_user_profile:
+            resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+            prefix: /profile
 
-    fos_user_register:
-        resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-        prefix: /register
+        fos_user_register:
+            resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+            prefix: /register
 
-    fos_user_resetting:
-        resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-        prefix: /resetting
+        fos_user_resetting:
+            resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+            prefix: /resetting
 
-    fos_user_change_password:
-        resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-        prefix: /profile
+        fos_user_change_password:
+            resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+            prefix: /profile
 
-Or if you prefer XML:
+    .. code-block:: xml
 
-.. code-block:: xml
-
-    <!-- app/config/routing.xml -->
-    <import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
-    <import resource="@FOSUserBundle/Resources/config/routing/profile.xml" prefix="/profile" />
-    <import resource="@FOSUserBundle/Resources/config/routing/registration.xml" prefix="/register" />
-    <import resource="@FOSUserBundle/Resources/config/routing/resetting.xml" prefix="/resetting" />
-    <import resource="@FOSUserBundle/Resources/config/routing/change_password.xml" prefix="/profile" />
+        <!-- app/config/routing.xml -->
+        <import resource="@FOSUserBundle/Resources/config/routing/security.xml"/>
+        <import resource="@FOSUserBundle/Resources/config/routing/profile.xml" prefix="/profile" />
+        <import resource="@FOSUserBundle/Resources/config/routing/registration.xml" prefix="/register" />
+        <import resource="@FOSUserBundle/Resources/config/routing/resetting.xml" prefix="/resetting" />
+        <import resource="@FOSUserBundle/Resources/config/routing/change_password.xml" prefix="/profile" />
 
 .. note::
 

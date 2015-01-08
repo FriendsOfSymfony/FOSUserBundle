@@ -147,6 +147,7 @@ Below is an example configuration for using the PHP templating engine.
 
 .. code-block:: yaml
 
+    # app/config/config.yml
     fos_user:
         # ...
         template:

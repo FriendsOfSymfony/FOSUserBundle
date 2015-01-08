@@ -254,62 +254,58 @@ Create the custom data transformer:
 
 Register your custom form type in the container:
 
-.. code-block:: xml
+.. configuration-block::
 
-    <!-- src/Acme/UserBundle/Resources/config/services.xml -->
+    .. code-block:: yaml
 
-    <?xml version="1.0" ?>
+        services:
+            acme.registration.form.type:
+                class: Acme\UserBundle\Form\Type\RegistrationFormType
+                arguments: [%fos_user.model.user.class%]
+                tags: [{ name: "form.type", alias: "acme_user_registration" }]
 
-    <container xmlns="http://symfony.com/schema/dic/services"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+            acme.invitation.form.type:
+                class: Acme\UserBundle\Form\Type\InvitationFormType
+                arguments: [@acme.invitation.form.data_transformer]
+                tags: [{ name: "form.type", alias: "acme_invitation_type" }]
 
-        <services>
+            acme.invitation.form.data_transformer:
+                class: Acme\UserBundle\Form\DataTransformer\InvitationToCodeTransformer
+                arguments: [@doctrine.orm.entity_manager]
 
-            <service id="acme.registration.form.type" class="Acme\UserBundle\Form\Type\RegistrationFormType">
-                <argument>%fos_user.model.user.class%</argument>
-                <tag name="form.type" alias="acme_user_registration" />
-            </service>
+    .. code-block:: xml
 
-            <service id="acme.invitation.form.type" class="Acme\UserBundle\Form\Type\InvitationFormType">
-                <argument type="service" id="acme.invitation.form.data_transformer"/>
-                <tag name="form.type" alias="acme_invitation_type" />
-            </service>
+        <!-- src/Acme/UserBundle/Resources/config/services.xml -->
+        <?xml version="1.0" ?>
 
-            <service id="acme.invitation.form.data_transformer" class="Acme\UserBundle\Form\DataTransformer\InvitationToCodeTransformer">
-                <argument type="service" id="doctrine.orm.entity_manager"/>
-            </service>
+        <container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+            <services>
 
-        </services>
-    </container>
+                <service id="acme.registration.form.type" class="Acme\UserBundle\Form\Type\RegistrationFormType">
+                    <argument>%fos_user.model.user.class%</argument>
+                    <tag name="form.type" alias="acme_user_registration" />
+                </service>
 
-Or if you prefer the Yaml version:
+                <service id="acme.invitation.form.type" class="Acme\UserBundle\Form\Type\InvitationFormType">
+                    <argument type="service" id="acme.invitation.form.data_transformer"/>
+                    <tag name="form.type" alias="acme_invitation_type" />
+                </service>
 
-.. code-block:: yaml
+                <service id="acme.invitation.form.data_transformer" class="Acme\UserBundle\Form\DataTransformer\InvitationToCodeTransformer">
+                    <argument type="service" id="doctrine.orm.entity_manager"/>
+                </service>
 
-    services:
-
-        acme.registration.form.type:
-            class: Acme\UserBundle\Form\Type\RegistrationFormType
-            arguments: [%fos_user.model.user.class%]
-            tags: [{ name: "form.type", alias: "acme_user_registration" }]
-
-        acme.invitation.form.type:
-            class: Acme\UserBundle\Form\Type\InvitationFormType
-            arguments: [@acme.invitation.form.data_transformer]
-            tags: [{ name: "form.type", alias: "acme_invitation_type" }]
-
-        acme.invitation.form.data_transformer:
-            class: Acme\UserBundle\Form\DataTransformer\InvitationToCodeTransformer
-            arguments: [@doctrine.orm.entity_manager]
+            </services>
+        </container>
 
 Next overwrite the default ``RegistrationFormType`` with the one just created:
 
-
 .. code-block:: yaml
 
-    # config.yml
+    # app/config/config.yml
     fos_user:
         registration:
             form:

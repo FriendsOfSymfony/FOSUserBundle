@@ -95,39 +95,39 @@ and an ``alias`` value that is the equal to the string returned from the
 what you will use in the FOSUserBundle configuration to let the bundle know that
 you want to use your custom form.
 
-Below is an example of configuring your form type as a service in XML:
+Below is an example of configuring your form type as a service:
 
-.. code-block:: xml
+.. configuration-block::
 
-    <!-- src/Acme/UserBundle/Resources/config/services.xml -->
-    <?xml version="1.0" encoding="UTF-8" ?>
+    .. code-block:: yaml
 
-    <container xmlns="http://symfony.com/schema/dic/services"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+        # src/Acme/UserBundle/Resources/config/services.yml
+        services:
+            acme_user.registration.form.type:
+                class: Acme\UserBundle\Form\Type\RegistrationFormType
+                arguments: [%fos_user.model.user.class%]
+                tags:
+                    - { name: form.type, alias: acme_user_registration }
 
-        <services>
+    .. code-block:: xml
 
-            <service id="acme_user.registration.form.type" class="Acme\UserBundle\Form\Type\RegistrationFormType">
-                <tag name="form.type" alias="acme_user_registration" />
-                <argument>%fos_user.model.user.class%</argument>
-            </service>
+        <!-- src/Acme/UserBundle/Resources/config/services.xml -->
+        <?xml version="1.0" encoding="UTF-8" ?>
 
-        </services>
+        <container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    </container>
+            <services>
 
-Or if you prefer YAML:
+                <service id="acme_user.registration.form.type" class="Acme\UserBundle\Form\Type\RegistrationFormType">
+                    <tag name="form.type" alias="acme_user_registration" />
+                    <argument>%fos_user.model.user.class%</argument>
+                </service>
 
-.. code-block:: yaml
+            </services>
 
-    # src/Acme/UserBundle/Resources/config/services.yml
-    services:
-        acme_user.registration.form.type:
-            class: Acme\UserBundle\Form\Type\RegistrationFormType
-            arguments: [%fos_user.model.user.class%]
-            tags:
-                - { name: form.type, alias: acme_user_registration }
+        </container>
 
 .. note::
 
@@ -241,42 +241,42 @@ successful submission.
 
 Now that you have created and implemented your custom form handler class, you
 must configure it as a service in the container. Below is an example of
-configuring your form handler as a service in XML:
+configuring your form handler as a service:
 
-.. code-block:: xml
+.. configuration-block::
 
-    <!-- src/Acme/UserBundle/Resources/config/services.xml -->
-    <?xml version="1.0" encoding="UTF-8" ?>
+    .. code-block:: yaml
 
-    <container xmlns="http://symfony.com/schema/dic/services"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+        # src/Acme/UserBundle/Resources/config/services.yml
+        services:
+            acme_user.form.handler.registration:
+                class: Acme\UserBundle\Form\Handler\RegistrationFormHandler
+                arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
+                scope: request
+                public: false
 
-        <services>
+    .. code-block:: xml
 
-            <service id="acme_user.form.handler.registration" class="Acme\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="false">
-                <argument type="service" id="fos_user.registration.form" />
-                <argument type="service" id="request" />
-                <argument type="service" id="fos_user.user_manager" />
-                <argument type="service" id="fos_user.mailer" />
-                <argument type="service" id="fos_user.util.token_generator" />
-            </service>
+        <!-- src/Acme/UserBundle/Resources/config/services.xml -->
+        <?xml version="1.0" encoding="UTF-8" ?>
 
-        </services>
+        <container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    </container>
+            <services>
 
-Or if you prefer YAML:
+                <service id="acme_user.form.handler.registration" class="Acme\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="false">
+                    <argument type="service" id="fos_user.registration.form" />
+                    <argument type="service" id="request" />
+                    <argument type="service" id="fos_user.user_manager" />
+                    <argument type="service" id="fos_user.mailer" />
+                    <argument type="service" id="fos_user.util.token_generator" />
+                </service>
 
-.. code-block:: yaml
+            </services>
 
-    # src/Acme/UserBundle/Resources/config/services.yml
-    services:
-        acme_user.form.handler.registration:
-            class: Acme\UserBundle\Form\Handler\RegistrationFormHandler
-            arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
-            scope: request
-            public: false
+        </container>
 
 Here you have injected other services as arguments to the constructor of our class
 because these arguments are required by the base FOSUserBundle form handler class

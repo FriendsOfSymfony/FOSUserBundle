@@ -18,30 +18,28 @@ name (FQCN) of your ``Group`` class which must implement ``FOS\UserBundle\Model\
 
 Below is an example configuration for enabling groups support.
 
-In YAML:
+.. configuration-block::
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-    # app/config/config.yml
-    fos_user:
-        db_driver: orm
-        firewall_name: main
-        user_class: Acme\UserBundle\Entity\User
-        group:
-            group_class: Acme\UserBundle\Entity\Group
+        # app/config/config.yml
+        fos_user:
+            db_driver: orm
+            firewall_name: main
+            user_class: Acme\UserBundle\Entity\User
+            group:
+                group_class: Acme\UserBundle\Entity\Group
 
-Or if you prefer XML:
+    .. code-block:: xml
 
-.. code-block:: xml
-
-    <!-- app/config/config.xml -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        user-class="Acme\UserBundle\Entity\User"
-    >
-        <fos_user:group group-class="Acme\UserBundle\Entity\Group" />
-    </fos_user:config>
+        <!-- app/config/config.xml -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            user-class="Acme\UserBundle\Entity\User"
+        >
+            <fos_user:group group-class="Acme\UserBundle\Entity\Group" />
+        </fos_user:config>
 
 The Group class
 ---------------
