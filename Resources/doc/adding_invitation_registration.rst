@@ -5,15 +5,13 @@ Require an invitation to create a new user is a pattern mostly used for
 early stage of a project. User enter their invitation code in order to
 register.
 
-Invitation model
+Invitation Model
 ----------------
 
-First we need to add the invitation entity. An invitation is represented
+First, we need to add the ``Invitation`` entity. An invitation is represented
 by a unique code/identifier generated in the constructor:
 
 .. code-block:: php
-
-    <?php
 
     namespace Acme\UserBundle\Entity;
 
@@ -87,8 +85,6 @@ Next we map our ``Invitation`` entity to our ``User`` with a one-to-one relation
 
 .. code-block:: php
 
-    <?php
-
     namespace Acme\UserBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
@@ -118,14 +114,12 @@ Next we map our ``Invitation`` entity to our ``User`` with a one-to-one relation
         }
     }
 
-Add invitation to RegistrationFormType
+Add Invitation to RegistrationFormType
 --------------------------------------
 
 Override the default registration form with your own:
 
 .. code-block:: php
-
-    <?php
 
     namespace Acme\UserBundle\Form\Type;
 
@@ -151,8 +145,6 @@ Override the default registration form with your own:
 Create the invitation field:
 
 .. code-block:: php
-
-    <?php
 
     namespace Acme\UserBundle\Form\Type;
 
@@ -198,8 +190,6 @@ Create the invitation field:
 Create the custom data transformer:
 
 .. code-block:: php
-
-    <?php
 
     namespace Acme\UserBundle\Form\DataTransformer;
 

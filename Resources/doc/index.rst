@@ -1,7 +1,7 @@
 Getting Started With FOSUserBundle
 ==================================
 
-The Symfony2 security component provides a flexible security framework that
+The Symfony security component provides a flexible security framework that
 allows you to load users from configuration, a database, or anywhere else
 you can imagine. The FOSUserBundle builds on top of this to make it quick
 and easy to store users in a database.
@@ -94,8 +94,8 @@ properties or methods you find useful. This is *your* ``User`` class.
 The bundle provides base classes which are already mapped for most fields
 to make it easier to create your entity. Here is how you use it:
 
-1. Extend the base ``User`` class (the class to use depends of your storage)
-2. Map the ``id`` field. It must be protected as it is inherited from the parent class.
+#. Extend the base ``User`` class (the class to use depends of your storage)
+#. Map the ``id`` field. It must be protected as it is inherited from the parent class.
 
 .. caution::
 
@@ -299,7 +299,7 @@ provider for the firewall to use as part of the authentication process.
 
     Although we have used the form login mechanism in this example, the
     FOSUserBundle user provider is compatible with many other authentication
-    methods as well. Please read the Symfony2 Security component documention for
+    methods as well. Please read the Symfony Security component documention for
     more information on the other types of authentication methods.
 
 The ``access_control`` section is where you specify the credentials necessary for
@@ -484,22 +484,22 @@ of the bundle.
 
 The following documents are available:
 
-- :doc:`Overriding Templates <overriding_templates>`
-- :doc:`Overriding Controllers <overriding_controllers>`
-- :doc:`Overriding Forms <overriding_forms>`
-- :doc:`Using the UserManager <user_manager>`
-- :doc:`Command Line Tools <command_line_tools>`
-- :doc:`Logging by username or email <logging_by_username_or_email>`
-- :doc:`Transforming a username to a user in forms <form_type>`
-- :doc:`Emails <emails>`
-- :doc:`Using the groups <groups>`
-- :doc:`More about the Doctrine implementations <doctrine>`
-- :doc:`Supplemental Documentation <supplemental>`
-- :doc:`Replacing the canonicalizer <canonicalizer>`
-- :doc:`Using a custom storage layer <custom_storage_layer>`
-- :doc:`Configuration Reference <configuration_reference>`
-- :doc:`Adding invitations to registration <adding_invitation_registration>`
+* :doc:`Overriding Templates <overriding_templates>`
+* :doc:`Overriding Controllers <overriding_controllers>`
+* :doc:`Overriding Forms <overriding_forms>`
+* :doc:`Using the UserManager <user_manager>`
+* :doc:`Command Line Tools <command_line_tools>`
+* :doc:`Logging by username or email <logging_by_username_or_email>`
+* :doc:`Transforming a username to a user in forms <form_type>`
+* :doc:`Emails <emails>`
+* :doc:`Using the groups <groups>`
+* :doc:`More about the Doctrine implementations <doctrine>`
+* :doc:`Supplemental Documentation <supplemental>`
+* :doc:`Replacing the canonicalizer <canonicalizer>`
+* :doc:`Using a custom storage layer <custom_storage_layer>`
+* :doc:`Configuration Reference <configuration_reference>`
+* :doc:`Adding invitations to registration <adding_invitation_registration>`
 
-.. _``Symfony documentation``: http://symfony.com/doc/current/book/translation.html
+.. _`Symfony documentation`: http://symfony.com/doc/current/book/translation.html
 .. _`Security Component documentation`: http://symfony.com/doc/current/book/security.html
 .. _`TypehintableBehavior`: https://github.com/willdurand/TypehintableBehavior

@@ -1,4 +1,4 @@
-Using a custom storage layer
+Using a Custom Storage Layer
 ============================
 
 FOSUserBundle has been designed to allow you to easily change the storage
@@ -23,7 +23,7 @@ implement these interfaces.
     it to make your implementation more flexible (this is done for Doctrine
     using listeners for instance)
 
-Configuring FOSUserBundle to use your implementation
+Configuring FOSUserBundle to use your Implementation
 ----------------------------------------------------
 
 To use your own implementation, create a service for your user manager. The

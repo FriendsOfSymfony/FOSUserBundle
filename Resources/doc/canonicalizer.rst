@@ -12,7 +12,7 @@ to achieve this result.
     If you do not have the mbstring extension installed you will need to define
     your own ``canonicalizer``.
 
-Replacing the canonicalizers
+Replacing the Canonicalizers
 ----------------------------
 
 If you want to change the way the caconical fields are populated, simply

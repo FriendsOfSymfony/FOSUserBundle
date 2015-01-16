@@ -7,7 +7,7 @@ to all users belonging to it.
 
 .. note::
 
-    Symfony2 supports role inheritance so inheriting roles from groups is not
+    Symfony supports role inheritance so inheriting roles from groups is not
     always needed. If the role inheritance is enough for your use case, it
     is better to use it instead of groups as it is more efficient (loading
     the groups triggers the database).
@@ -74,7 +74,7 @@ a) ORM Group class implementation
          protected $id;
     }
 
-.. note:
+.. note::
 
     ``Group`` is a reserved keyword in SQL so it cannot be used as the table name.
 

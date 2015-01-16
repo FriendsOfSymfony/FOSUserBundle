@@ -41,11 +41,11 @@ Default Mailer Implementations
 The bundle comes with three mailer implementations. They are listed below
 by service id:
 
-- ``fos_user.mailer.default`` is the default implementation, and uses Swiftmailer
+* ``fos_user.mailer.default`` is the default implementation, and uses Swiftmailer
   to send emails.
-- ``fos_user.mailer.twig_swift`` uses Swiftmailer to send emails and Twig blocks
+* ``fos_user.mailer.twig_swift`` uses Swiftmailer to send emails and Twig blocks
   to render the message.
-- ``fos_user.mailer.noop`` is a mailer implementation which performs no operation,
+* ``fos_user.mailer.noop`` is a mailer implementation which performs no operation,
   so no emails are sent.
 
 .. note::
@@ -113,9 +113,9 @@ The default mailer only supports sending plain text messages. If you want
 to send multipart messages, the easiest solution is to use the TwigSwiftMailer
 implementation instead. It expects your twig template to define 3 blocks:
 
-- ``subject`` containing the email subject
-- ``body_text`` rendering the plain text version of the message
-- ``body_html`` rendering the html mail
+* ``subject`` containing the email subject
+* ``body_text`` rendering the plain text version of the message
+* ``body_html`` rendering the html mail
 
 Here is how you can use it:
 

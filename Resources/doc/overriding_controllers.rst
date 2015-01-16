@@ -13,8 +13,6 @@ bundle named ``AcmeUserBundle`` that declares itself a child of FOSUserBundle.
 .. code-block:: php
 
     // src/Acme/UserBundle/AcmeUserBundle.php
-    <?php
-
     namespace Acme\UserBundle;
 
     use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -29,9 +27,8 @@ bundle named ``AcmeUserBundle`` that declares itself a child of FOSUserBundle.
 
 .. note::
 
-    The Symfony2 framework only allows a bundle to have one child. You cannot create
+    The Symfony framework only allows a bundle to have one child. You cannot create
     another bundle that is also a child of FOSUserBundle.
-
 
 Now that you have created the new child bundle you can simply create a controller class
 with the same name and in the same location as the one you want to override. This
@@ -45,8 +42,6 @@ the base controller and adds logging a new user registration to it.
 .. code-block:: php
 
     // src/Acme/UserBundle/Controller/RegistrationController.php
-    <?php
-
     namespace Acme\UserBundle\Controller;
 
     use Symfony\Component\HttpFoundation\RedirectResponse;

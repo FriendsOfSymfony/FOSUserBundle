@@ -19,7 +19,7 @@ instance of ``FOS\UserBundle\CouchDocument\UserManager``.
 If you configure the ``db_driver`` option to ``propel``, this service is an instance
 of ``FOS\UserBundle\Propel\UserManager``.
 
-Accessing the User Manager service
+Accessing the User Manager Service
 ----------------------------------
 
 The user manager is available in the container as the ``fos_user.user_manager``

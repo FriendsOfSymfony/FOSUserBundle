@@ -1,10 +1,10 @@
-More about Doctrine implementations
+More about Doctrine Implementations
 ===================================
 
 FOSUserBundle was first written for Doctrine-based storage layers. This chapter
 describes some things specific to these implementations.
 
-Using a different object manager than the default one
+Using a Different Object Manager than the Default One
 -----------------------------------------------------
 
 Using the default configuration, FOSUserBundle will use the default Doctrine
@@ -24,7 +24,7 @@ by giving its name to FOSUserBundle.
     Using the default object manager is done by setting the configuration option
     to ``null`` which is the default value.
 
-Replacing the mapping of the bundle
+Replacing the Mapping of the bundle
 -----------------------------------
 
 None of the Doctrine projects currently allow overwriting part of the mapping
