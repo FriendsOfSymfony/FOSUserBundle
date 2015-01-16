@@ -459,8 +459,13 @@ You now can login at ``http://app.com/app_dev.php/login``!
 Next Steps
 ----------
 
+Now that you have completed the basic installation and configuration of the
+FOSUserBundle, you are ready to learn about more advanced features and usages
+of the bundle.
+
+The following documents are available:
+
 .. toctree::
-    :hidden:
 
     overriding_templates
     overriding_controllers
@@ -477,28 +482,6 @@ Next Steps
     custom_storage_layer
     configuration_reference
     adding_invitation_registration
-
-Now that you have completed the basic installation and configuration of the
-FOSUserBundle, you are ready to learn about more advanced features and usages
-of the bundle.
-
-The following documents are available:
-
-* :doc:`Overriding Templates <overriding_templates>`
-* :doc:`Overriding Controllers <overriding_controllers>`
-* :doc:`Overriding Forms <overriding_forms>`
-* :doc:`Using the UserManager <user_manager>`
-* :doc:`Command Line Tools <command_line_tools>`
-* :doc:`Logging by username or email <logging_by_username_or_email>`
-* :doc:`Transforming a username to a user in forms <form_type>`
-* :doc:`Emails <emails>`
-* :doc:`Using the groups <groups>`
-* :doc:`More about the Doctrine implementations <doctrine>`
-* :doc:`Supplemental Documentation <supplemental>`
-* :doc:`Replacing the canonicalizer <canonicalizer>`
-* :doc:`Using a custom storage layer <custom_storage_layer>`
-* :doc:`Configuration Reference <configuration_reference>`
-* :doc:`Adding invitations to registration <adding_invitation_registration>`
 
 .. _`Symfony documentation`: http://symfony.com/doc/current/book/translation.html
 .. _`Security Component documentation`: http://symfony.com/doc/current/book/security.html
