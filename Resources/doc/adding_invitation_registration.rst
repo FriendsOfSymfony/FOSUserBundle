@@ -83,7 +83,7 @@ by a unique code/identifier generated in the constructor:
     }
 
 
-Next we map our ``Invitation` entity to our `User`` with a one-to-one
+Next we map our ``Invitation`` entity to our ``User`` with a one-to-one relationship:
 
 .. code-block:: php
 
