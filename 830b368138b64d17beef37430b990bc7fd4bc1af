@@ -1,0 +1,29 @@
+---------------------------------------------------------------------------
+
+by WouterJ at 2014-12-07T19:25:15Z
+
+ping?
+
+---------------------------------------------------------------------------
+
+by WouterJ at 2015-01-11T16:26:18Z
+
+One year later, is there any reason not to merge this?
+
+---------------------------------------------------------------------------
+
+by merk at 2015-01-11T22:05:43Z
+
+:+1:
+
+---------------------------------------------------------------------------
+
+by stof at 2015-01-19T02:19:11Z
+
+@WouterJ can you rebase it to put the changelog in the right place (if we merge it now, it would end up in the changelog of the 2.0-alpha1 release, which will be wrong)
+
+---------------------------------------------------------------------------
+
+by WouterJ at 2015-01-19T09:44:10Z
+
+@stof done
