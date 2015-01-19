@@ -57,7 +57,7 @@ provided by the bundle.
 
 namespace MyProject\MyBundle\Entity;
 
-use FOS\UserBundle\Model\Group as BaseGroup;
+use FOS\UserBundle\Entity\Group as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
