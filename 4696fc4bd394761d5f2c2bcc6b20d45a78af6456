@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-01-20T09:18:46Z
+
+should the quotes be removed, or should the string be wrapped in single quotes ? It looks to me that these quotes are meant to be part of the message
+
+---------------------------------------------------------------------------
+
+by vaziuok at 2015-01-20T09:22:01Z
+
+You have to remove the quotes. In other languages (e.g. [turkish](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/translations/FOSUserBundle.tr.yml#L62)) there are also no double quotes at the beginning.
