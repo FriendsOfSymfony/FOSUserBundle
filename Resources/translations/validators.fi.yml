@@ -13,6 +13,7 @@ fos_user:
     password:
         blank: Syötä salasana
         short: "[-Inf,Inf]Salasana on liian lyhyt"
+        mismatch: Salasanat eivät täsmää
     new_password:
         blank: Syötä uusi salasana
         short: "[-Inf,Inf]Uusi salasana on liian lyhyt"

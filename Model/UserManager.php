@@ -26,8 +26,19 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 abstract class UserManager implements UserManagerInterface, UserProviderInterface
 {
+    /**
+     * @var EncoderFactoryInterface 
+     */
     protected $encoderFactory;
+    
+    /**
+     * @var CanonicalizerInterface 
+     */
     protected $usernameCanonicalizer;
+    
+    /**
+     * @var CanonicalizerInterface
+     */
     protected $emailCanonicalizer;
 
     /**
@@ -118,12 +129,16 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      * It is strongly discouraged to use this method manually as it bypasses
      * all ACL checks.
      *
+     * @deprecated Use FOS\UserBundle\Security\UserProvider instead
+     *
      * @param SecurityUserInterface $user
      *
      * @return UserInterface
      */
     public function refreshUser(SecurityUserInterface $user)
     {
+        trigger_error('Using the UserManager as user provider is deprecated. Use FOS\UserBundle\Security\UserProvider instead.', E_USER_DEPRECATED);
+
         $class = $this->getClass();
         if (!$user instanceof $class) {
             throw new UnsupportedUserException('Account is not supported.');
@@ -146,12 +161,16 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
      * It is strongly discouraged to call this method manually as it bypasses
      * all ACL checks.
      *
+     * @deprecated Use FOS\UserBundle\Security\UserProvider instead
+     *
      * @param string $username
      *
      * @return UserInterface
      */
     public function loadUserByUsername($username)
     {
+        trigger_error('Using the UserManager as user provider is deprecated. Use FOS\UserBundle\Security\UserProvider instead.', E_USER_DEPRECATED);
+
         $user = $this->findUserByUsername($username);
 
         if (!$user) {
@@ -213,9 +232,12 @@ abstract class UserManager implements UserManagerInterface, UserProviderInterfac
 
     /**
      * {@inheritDoc}
+     * @deprecated Use FOS\UserBundle\Security\UserProvider instead
      */
     public function supportsClass($class)
     {
+        trigger_error('Using the UserManager as user provider is deprecated. Use FOS\UserBundle\Security\UserProvider instead.', E_USER_DEPRECATED);
+
         return $class === $this->getClass();
     }
 }

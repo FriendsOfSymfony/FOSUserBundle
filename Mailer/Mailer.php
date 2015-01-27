@@ -12,7 +12,7 @@
 namespace FOS\UserBundle\Mailer;
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
 
@@ -26,7 +26,7 @@ class Mailer implements MailerInterface
     protected $templating;
     protected $parameters;
 
-    public function __construct($mailer, RouterInterface $router, EngineInterface $templating, array $parameters)
+    public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
     {
         $this->mailer = $mailer;
         $this->router = $router;
@@ -34,6 +34,9 @@ class Mailer implements MailerInterface
         $this->parameters = $parameters;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['confirmation.template'];
@@ -45,6 +48,9 @@ class Mailer implements MailerInterface
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function sendResettingEmailMessage(UserInterface $user)
     {
         $template = $this->parameters['resetting.template'];
@@ -58,6 +64,7 @@ class Mailer implements MailerInterface
 
     /**
      * @param string $renderedTemplate
+     * @param string $fromEmail
      * @param string $toEmail
      */
     protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail)

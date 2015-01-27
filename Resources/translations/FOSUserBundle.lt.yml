@@ -7,18 +7,16 @@ group:
     new:
         submit: Sukurti grupę
     flash:
-        updated: Grupė buvo atnaujinta
-        created: Grupė buvo sukurta
-        deleted: Grupė buvo ištrinta
+        updated: Grupė atnaujinta
+        created: Grupė sukurta
+        deleted: Grupė ištrinta
 
 # Security
-"Bad credentials": Neteisingas naudotojas arba slaptažodis
-
 security:
     login:
-        username: "Naudotojas:"
+        username: "Naudotojo vardas:"
         password: "Slaptažodis:"
-        remember_me: Atsiminti mane
+        remember_me: Atsiminti
         submit: Prisijungti
 
 # Profile
@@ -29,50 +27,50 @@ profile:
     edit:
         submit: Atnaujinti
     flash:
-        updated: Profilis buvo atnaujintas
+        updated: Profilis atnaujintas
 
 # Password change
 change_password:
-    submit: Pakeisti slaptažodi
+    submit: Keisti slaptažodį
     flash:
-        success: slaptažodis buvo pakeistas
+        success: Slaptažodis pakeistas
 
 # Registration
 registration:
-    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią aplankę aktyvuosite savo paskyrą.
-    confirmed: Sveikiname %username%, jusu paskyra buvo aktyvuota.
-    back: Gryžti i praeitą puslapi.
+    check_email: El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią aplankę, aktyvuosite savo paskyrą.
+    confirmed: Sveikiname, jūsų paskyra aktyvuota.
+    back: Grįžti atgal
     submit: Registruotis
     flash:
-        user_created: Naudotojas buvo sukurtas sėkmingai
+        user_created: Naudotojas sukurtas
     email:
-        subject: Sveiki %username%!
+        subject: Registracijos patvirtinimas
         message: |
             Sveiki %username%!
 
-            Kad pabaigtumėte savo paskyros aktyvavymą - prašome apsilankyti %confirmationUrl%
+            Norėdami aktyvuoti savo paskyrą, apsilankykite adresu %confirmationUrl%
 
             Pagarbiai,
             Komanda.
 
 # Password resetting
 resetting:
-    password_already_requested: Slaptažodis šitam naudotojui jau buvo prašytas pakeisti per pastarąsias 24 valandas.
-    check_email: Buvo išsiūstas el. paštas adresu %email%. Jame rasite nuorodą kurią paspaudus galėsite pakeisti savo slaptažodi.
+    password_already_requested: Slaptažodžio keitimas šiam naudotojui jau buvo prašytas per paskutinias 24 valandas.
+    check_email: El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią paspaudę, galėsite pakeisti savo slaptažodį.
     request:
-        invalid_username: Naudotojas arba el. paštas "%username%" neegzistuoja.
+        invalid_username: Naudotojo vardas arba el. paštas "%username%" neegzistuoja.
         username: "Naudotojo vardas arba el. paštas:"
-        submit: Nustatyti slaptažodi
+        submit: Tęsti
     reset:
-        submit: Pakeisti slaptažodi
+        submit: Pakeisti slaptažodį
     flash:
-        success: Slaptažodis pakeistas sėkmingai
+        success: Slaptažodis pakeistas
     email:
-        subject: Nustatyti slaptažodi
+        subject: Slaptažodžio keitimas
         message: |
             Sveiki %username%!
 
-            Kad pakeistumėte savo slaptažodį - prašome apsilankyti %confirmationUrl%
+            Norėdami pakeisti savo slaptažodį, apsilankykite adresu %confirmationUrl%
 
             Pagarbiai,
             Komanda.
@@ -87,10 +85,10 @@ layout:
 # Form field labels
 form:
     group_name: "Grupės vardas:"
-    username: "Naudotojas:"
+    username: "Naudotojo vardas:"
     email: "El. paštas:"
     current_password: "Dabartinis slaptažodis:"
     password: "Slaptažodis:"
-    password_confirmation: "Patvirtinti:"
+    password_confirmation: "Pakartoti slaptažodį:"
     new_password: "Naujas slaptažodis:"
-    new_password_confirmation: "Patvirtinti:"
+    new_password_confirmation: "Naujas slaptažodis (pakartoti):"

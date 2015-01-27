@@ -1,0 +1,92 @@
+# Group
+group:
+    edit:
+        submit: Ενημέρωση ομάδας
+    show:
+        name: Όνομα ομάδας
+    new:
+        submit: Δημιουργία ομάδας
+    flash:
+        updated: Η ομάδα ενημερώθηκε επιτυχώς
+        created: Η ομάδα δημιουργήθηκε επιτυχώς
+        deleted: Η ομάδα διαγράφηκε επιτυχώς
+
+# Security
+security:
+    login:
+        username: "Όνομα Χρήστη:"
+        password: "Κωσικός Πρόσβασης:"
+        remember_me: Να με θυμάσε
+        submit: Είσοδος
+
+# Profile
+profile:
+    show:
+        username: Όνομα Χρήστη
+        email: Email
+    edit:
+        submit: Ενημέρωσε
+    flash:
+        updated: Το προφίλ ενημρώθηκε επιτυχώς
+
+# Password change
+change_password:
+    submit: Αλλαγή κωδικού
+    flash:
+        success: Ο κωδικός άλλαξε επιτυχώς
+
+# Registration
+registration:
+    check_email: Ένα email στάλθηκε στο %email%. Περιέχει μία διεύθυνση ενεργοποίησης του λογαριαμσόυ σας που πρέπει να κάνετε κλικ για να ενεργοποιηθεί.
+    confirmed: Συνχαρηστήρια %username%, ο λογαριασμό μόλις ενεργοποιήθηκε.
+    back: Επιστροφή στην αρχικλή σελίδα.
+    submit: Εγγραφή
+    flash:
+        user_created: Ο χρήστης δημιουργήθηκε επιτυχώς.
+    email:
+        subject: Καλώς ήρθες %username%!
+        message: |
+            Αγαπητέ %username%!
+
+              Για να ολοκληρώσετε την ενεργοποίηση του λογαριασμού σας - επισκεφθείτε %confirmationUrl%
+
+            Ευχαριστούμε πολυ.
+
+# Password resetting
+resetting:
+    password_already_requested: Ο κωδικός για αυτόν το χρήστη έχει ήδη ζητηθεί μέσα στις τελευταίες 24 ώρες.
+    check_email: Ένα email στάλθηκε στο %email%. Περιέχει ένα σύνδεμσο για να επαναφέρετε τον κωδικό πρόσβασής σας.
+    request:
+        invalid_username: Το όνομα χρήστη ή η διεύθυνση ηλεκτρονικού ταχυδρομείου "% username%" δεν υπάρχει.
+        username: "Όνομα χρήστη ή διεύθυνση e-mail:"
+        submit: Επαναφορά του κωδικού πρόσβασης
+    reset:
+        submit: Αλλαγή κωδικού πρόσβασης
+    flash:
+        success: Η επαναφορά του κωδικού πρόσβασης έγινε με επιτυχία
+    email:
+        subject: Επαναφορά του κωδικού πρόσβασης
+        message: |
+            Αγαπητέ %username%!
+
+              Για να επαναφέρετε τον κωδικό πρόσβασής σας - επισκεφθείτε %confirmationUrl%
+
+            Ευχαριστούμε πολυ.
+
+# Global strings
+layout:
+    logout: Αποσύνδεση
+    login: Σύνδεση
+    register: Εγγραφή
+    logged_in_as: Έχετε συνδεθεί ως %username%
+
+# Form field labels
+form:
+    group_name: "Όνομα ομάδας:"
+    username: "Όνομα Χρήστη:"
+    email: "Email:"
+    current_password: "Τρέχον κωδικός πρόσβασης:"
+    password: "Κωδικός πρόσβασης:"
+    password_confirmation: "Επαλήθευση:"
+    new_password: "Νέος Κωδικός πρόσβασης:"
+    new_password_confirmation: "Επαλήθευση:"

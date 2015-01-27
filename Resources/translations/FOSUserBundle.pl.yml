@@ -12,8 +12,6 @@ group:
         deleted: Grupa została usunięta
 
 # Security
-"Bad credentials": Nieprawidłowa nazwa użytkownika lub hasło
-
 security:
     login:
         username: "Nazwa użytkownika:"
@@ -39,7 +37,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link w którego należy kliknąć aby aktywować konto.
+    check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link, na który należy kliknąć, aby aktywować konto.
     confirmed: Gratulacje %username%, potwierdziłeś konto.
     back: Powrót do poprzedniej strony.
     submit: Zarejestruj

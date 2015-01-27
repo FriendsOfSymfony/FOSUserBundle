@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * CreateUserCommand
+ * ChangePasswordCommand
  */
 class ChangePasswordCommand extends ContainerAwareCommand
 {
@@ -83,7 +83,7 @@ EOT
         }
 
         if (!$input->getArgument('password')) {
-            $password = $this->getHelper('dialog')->askAndValidate(
+            $password = $this->getHelper('dialog')->askHiddenResponseAndValidate(
                 $output,
                 'Please enter the new password:',
                 function($password) {

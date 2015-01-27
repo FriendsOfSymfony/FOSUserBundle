@@ -1,6 +1,27 @@
 Changelog
 =========
 
+### 2.0.0 (2014-XX-XX)
+
+* [BC break] The deprecated entity classes have been removed.
+* The minimum requirement for Symfony has been bumped to 2.3 (older versions are already EOLed).
+* [BC break] ``UserInterface::isUser`` has been removed as it was used only by the old validation logic removed a long time ago.
+* [BC break] The ``FOSUserBundle:Security:login.html.twig`` template now receives an AuthenticationException in the ``error``
+  variable rather than an error message.
+* [BC break] The templating engine configuration has been removed, as well as the related code.
+* [BC break] Changed the XML namespace to `http://friendsofsymfony.github.io/schema/dic/user`
+
+### 2.0.0-alpha1 (2014-09-26)
+
+* Updated many translations
+* Changed the way to pass the email to the page asking to check the email to avoid issues with non-blocking sessions
+* Changed the fos_user_security_check route to enforce POST
+* Removed the deprecated UserManager and GroupManager classes for the different Doctrine implementations
+* [BC break] Refactored the structure of controller to dispatch events instead of using form handlers
+* Removed all form handlers
+* [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
+* [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
+
 ### 1.3.5 (2014-09-04)
 
 This release fixes a security issue. You are encouraged to update

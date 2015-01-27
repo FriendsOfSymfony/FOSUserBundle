@@ -12,8 +12,6 @@ group:
         deleted: Групата беше изтрита успешно
 
 # Security
-"Bad credentials": Невалидно потребителско име или парола
-
 security:
     login:
         username: "Потребителско име:"

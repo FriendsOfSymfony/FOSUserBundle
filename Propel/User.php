@@ -221,14 +221,6 @@ class User extends BaseUser implements UserInterface, GroupableInterface
     /**
      * {@inheritDoc}
      */
-    public function isUser(UserInterface $user = null)
-    {
-        return null !== $user && $this->getId() === $user->getId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setSuperAdmin($boolean)
     {
         if ($boolean) {

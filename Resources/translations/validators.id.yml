@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Nama pengguna telah digunakan
+        blank: Masukkan nama pengguna
+        short: "[-Inf,Inf]Nama pengguna terlalu pendek"
+        long: "[-Inf,Inf]Nama pengguna terlalu panjang"
+    email:
+        already_used: Email telah digunakan
+        blank: Masukkan alamat email anda
+        short: "[-Inf,Inf]Alamat email terlalu pendek"
+        long: "[-Inf,Inf]Alamat email terlalu panjang"
+        invalid: Alamat email salah
+    password:
+        blank: Masukkan password yang ingin digunakan
+        short: "[-Inf,Inf]Password terlalu pendek"
+        mismatch: Password yang anda masukkan tidak sama
+    new_password:
+        blank: Masukkan password baru anda
+        short: "[-Inf,Inf]Password baru anda terlalu pendek"
+    current_password:
+        invalid: Password yang anda masukkan salah
+    group:
+        blank: Masukkan nama
+        short: "[-Inf,Inf]Nama terlalu pendek"
+        long: "[-Inf,Inf]Nama terlalu panjang"

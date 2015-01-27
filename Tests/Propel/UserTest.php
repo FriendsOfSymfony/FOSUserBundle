@@ -9,7 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Propel;
+namespace FOS\UserBundle\Tests\Propel;
+
+use FOS\UserBundle\Propel\Group;
+use FOS\UserBundle\Propel\User;
+use FOS\UserBundle\Propel\UserPeer;
+use FOS\UserBundle\Propel\UserQuery;
 
 class UserTest extends \PHPUnit_Framework_TestCase
 {

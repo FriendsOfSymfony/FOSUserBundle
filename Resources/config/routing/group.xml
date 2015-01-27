@@ -13,16 +13,16 @@
         <default key="_controller">FOSUserBundle:Group:new</default>
     </route>
 
-    <route id="fos_user_group_show" pattern="/{groupname}">
+    <route id="fos_user_group_show" pattern="/{groupName}">
         <default key="_controller">FOSUserBundle:Group:show</default>
         <requirement key="_method">GET</requirement>
     </route>
 
-    <route id="fos_user_group_edit" pattern="/{groupname}/edit">
+    <route id="fos_user_group_edit" pattern="/{groupName}/edit">
         <default key="_controller">FOSUserBundle:Group:edit</default>
     </route>
 
-    <route id="fos_user_group_delete" pattern="/{groupname}/delete">
+    <route id="fos_user_group_delete" pattern="/{groupName}/delete">
         <default key="_controller">FOSUserBundle:Group:delete</default>
         <requirement key="_method">GET</requirement>
     </route>

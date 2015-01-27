@@ -1,0 +1,25 @@
+fos_user:
+    current_password:
+        invalid: 'Mật khẩu nhập không hợp lệ'
+    email:
+        already_used: 'Thư điện tử đã được sử dụng'
+        blank: 'Vui lòng nhập email'
+        invalid: 'Các email không hợp lệ'
+        long: '[-Inf, Inf] Email quá dài'
+        short: '[-Inf, Inf] Thư điện tử là quá ngắn'
+    group:
+        blank: 'Hãy nhập tên'
+        long: '[-Inf, Inf] Tên quá dài'
+        short: '[-Inf, Inf] Tên quá ngắn'
+    new_password:
+        blank: 'Hãy nhập mật khẩu mới'
+        short: '[-Inf, Inf] Mật khẩu mới là quá ngắn'
+    password:
+        blank: 'Vui lòng nhập mật khẩu'
+        mismatch: 'Các mật khẩu nhập không khớp'
+        short: '[-Inf, Inf] Mật khẩu quá ngắn'
+    username:
+        already_used: 'Tên người dùng đã được sử dụng'
+        blank: 'Xin vui lòng nhập tên người dùng'
+        long: '[-Inf, Inf] Tên người dùng quá dài'
+        short: '[-Inf, Inf] Các tên tài khoản quá ngắn'

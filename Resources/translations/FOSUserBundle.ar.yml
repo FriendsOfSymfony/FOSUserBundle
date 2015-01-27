@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: تحديث المجموعة
+    show:
+        name: إسم المجموعة
+    new:
+        submit: إنشاء مجموعة
+    flash:
+        updated: تم تحديث المجموعة
+        created: تم إنشاء المجموعة
+        deleted: تم حـذف المجموعة
+
+# Security
+security:
+    login:
+        username: "إسم المستخدم:"
+        password: "كلمة المرور:"
+        remember_me: حفظ البيانات
+        submit: تسجيل دخول
+
+# Profile
+profile:
+    show:
+        username: إسم المستخدم
+        email: بريد إلكتروني
+    edit:
+        submit: تحديث
+    flash:
+        updated: تم تحديث الملف الشخصي
+
+# Password change
+change_password:
+    submit: تغيير كلمة المرور
+    flash:
+        success: تم تغيير كلمة المرور
+
+# Registration
+registration:
+    check_email: لقد تم إرسال رسالة إلكترونية إلى %email% تحتوي على رابط يجب إتباعه لتفعيل حسابك الشخصي.
+
+    confirmed: تهانينا %username%، لقد تم تفعيل حسابك.
+    back: عودة إلى الصفحة الرئيسية
+    submit: تسجيل
+    flash:
+        user_created: تم إنشاء حسابك بنجاح
+    email:
+        subject:  %username%! مرحبا
+        message: |
+            مرحبا %username%!
+
+
+             لتفعيل حسابك يرجى إتباع الرابط التالي %confirmationUrl%
+
+            شكرا،
+            فريق العمل.
+
+# Password resetting
+resetting:
+    password_already_requested: لقد تم طلب كلمة المرور لهذا المستخدم خلال ال ٢٤ ساعة الماضية
+    check_email: لقد تم إرسال رسالة إلكترونية إلى %email%  يحتوي على رابط يجب إتباعه لإعادة تعيين كلمة المرور الخاصة بك.
+    request:
+        invalid_username: إسم المستخدم او  البريد الالكتروني "%username%" غير موجود
+        username: "إسم المستخدم او البريد الالكتروني:"
+        submit: إعادة ضبط كلمة المرور
+    reset:
+        submit: تغيير كلمة المرور
+    flash:
+        success: تم إعادة ضبط كلمة المرور بنجاح
+    email:
+        subject: إعادة ضبط كلمة المرور
+        message: |
+            مرحبا %username%!
+
+            لإعادة ضبط كلمة المرور يرجى إتباع الرابط التالي %confirmationUrl%
+
+            شكرا،
+            فريق العمل.
+
+# Global strings
+layout:
+    logout: خروج
+    login: دخول
+    register: تسجيل
+    logged_in_as: تم الدخول بإسم %username%
+
+# Form field labels
+form:
+    group_name: "إسم المجموعة :"
+    username: "إسم المستخدم :"
+    email: "البريد الإلكتروني :"
+    current_password: "كلمة المرور الحالية :"
+    password: "كلمة المرور :"
+    password_confirmation: "تأكيد :"
+    new_password: "كلمة المرور الجديدة :"
+    new_password_confirmation: "تأكيد كلمة المرور :"

@@ -9,8 +9,11 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 {
     const USER_CLASS = 'FOS\UserBundle\Tests\Doctrine\DummyUser';
 
+    /** @var UserManager */
     protected $userManager;
+    /** @var \PHPUnit_Framework_MockObject_MockObject */
     protected $om;
+    /** @var \PHPUnit_Framework_MockObject_MockObject */
     protected $repository;
 
     public function setUp()

@@ -1,0 +1,97 @@
+# Group
+group:
+    edit:
+        submit: Memperbaharui Grup
+    show:
+        name: Nama Grup
+    new:
+        submit: Buat Grup
+    flash:
+        updated: Grup telah berhasil diperbaharui
+        created: Grup telah berhasil ditambahkan
+        deleted: Grup telah berhasil dihapus
+
+# Security
+security:
+    login:
+        username: "Nama Pengguna:"
+        password: "Password:"
+        remember_me: Selalu Ingat Saya
+        submit: Login
+
+# Profile
+profile:
+    show:
+        username: Nama Pengguna
+        email: Email
+    edit:
+        submit: Perbaharui
+    flash:
+        updated: Profil telah berhasil diperbaharui
+
+# Password change
+change_password:
+    submit: Ubah Password
+    flash:
+        success: Password telah berhasil diubah
+
+# Registration
+registration:
+    check_email: Email telah berhasil dikirimkan ke %email%. Anda harus mengklik link aktivasi di dalam email tersebut untuk mengaktifkan account anda.
+    confirmed: Selamat %username%, akun anda telah berhasil diaktifkan.
+    back: Kembali ke halaman sebelumnya.
+    submit: Daftarkan
+    flash:
+        user_created: Pengguna telah berhasil ditambahkan.
+    email:
+        subject: Selamat datang %username%!
+        message: |
+            Hallo %username%!
+
+            Untuk menyelesaikan aktifasi akun anda,
+            mohon kunjungi halaman berikut:
+            %confirmationUrl%
+
+            Hormat Kami,
+            the Team.
+
+# Password resetting
+resetting:
+    password_already_requested: Password untuk pengguna ini telah di request dalam waktu 24 jam.
+    check_email: Email telah dikirim ke %email%. Anda harus mengklik link di dalam email tersebut agar dapat mereset password anda.
+    request:
+        invalid_username: Nama pengguna atau email "%username%" tidak terdaftar.
+        username: "Nama Pengguna Atau Alamat Email anda:"
+        submit: Reset password
+    reset:
+        submit: Ubah password
+    flash:
+        success: Password telah berhasil direset
+    email:
+        subject: Reset Password
+        message: |
+            Halo %username%!
+
+            Untuk mereset password anda mohon kunjungi link berikut:
+            %confirmationUrl%
+
+            Homrat Kami,
+            the Team.
+
+# Global strings
+layout:
+    logout: Logout
+    login: Login
+    register: Pendaftaran
+    logged_in_as: Masuk sebagai %username%
+
+# Form field labels
+form:
+    group_name: "Nama Grup:"
+    username: "Nama Pengguna:"
+    email: "Email:"
+    current_password: "Password saat ini:"
+    password: "Password:"
+    password_confirmation: "Verifikasi Password:"
+    new_password: "Password Baru:"
+    new_password_confirmation: "Masukkan Ulang Password Baru Anda:"

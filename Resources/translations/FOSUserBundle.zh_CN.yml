@@ -12,8 +12,6 @@ group:
         deleted: 小组已被删除
 
 # Security
-"Bad credentials": 用户名或密码不正确
-
 security:
     login:
         username: 用户名：

@@ -1,0 +1,94 @@
+# Group
+group:
+    edit:
+        submit: עדכן קבוצה
+    show:
+        name: שם קבוצה
+    new:
+        submit: צור קבומה
+    flash:
+        updated: הקבוצה עודכנה בהצלחה
+        created: הקבוצה נוצרה בהצלחה
+        deleted: הקבוצה נמחקה בהצלחה
+
+# Security
+security:
+    login:
+        username: "שם משתמש:"
+        password: "סיסמה:"
+        remember_me: זכור אותי
+        submit: התחבר
+
+# Profile
+profile:
+    show:
+        username: שם משתמש
+        email: דוא"ל
+    edit:
+        submit: עדכון
+    flash:
+        updated: הפרופיל עודכן בהצלחה
+
+# Password change
+change_password:
+    submit: שינוי סיסמה
+    flash:
+        success: הסיסמה שונתה בהצלחה.
+
+# Registration
+registration:
+    check_email: הודעה בדוא"ל נשלחה ל-%email%. ההודעה מכילה קישור להפעלת חשבון משתמש שלך. יש ללחוץ על הקישור כדי להפעיל את החשבון.
+    confirmed: ברוכים הבאים %username%, חשבון שלך הופעל.
+    back: השב לדף הקודם.
+    submit: הרשם
+    flash:
+        user_created: המשתמש נוצר בהצלחה
+    email:
+        subject: שלום %username%!
+        message: |
+            %username% שלום רב,
+
+            כדי לסיים הרשמתך יש ללחוץ על קישור זה:  %confirmationUrl%
+
+            בברכה,
+               הצוות.
+
+# Password resetting
+resetting:
+    password_already_requested: ב24 שעות האחרונות נרשם ניסיון לשחזר סיסמה למשתמש זה.
+    check_email: הודעת דוא"ל נשלחה ל-%email%. ההודעה מכילה קישור לאיפוס סיסמה שלך.
+    request:
+        invalid_username: שם משתמש או דוא"ל "%username%" לא קיים.
+        username: "שם משתמש או דואר אלקטרוני:"
+        submit: איפוס סיסמה
+    reset:
+        submit: שינוי סיסמה
+    flash:
+        success: הסיסמה אופסה בהצלחה
+    email:
+        subject: איפוס סיסמה
+        message: |
+            %username% שלום רב,
+
+            כדי לאפס סיסמה שלך יש ללחוץ %confirmationUrl%
+
+            בברכה,
+               הצוות.
+
+# Global strings
+layout:
+    logout: יציאה
+    login: כניסה
+    register: רישום
+    logged_in_as: Logged in as %username%
+
+# Form field labels
+form:
+    group_name: "שם קבוצה:"
+    username: "שם משתמש:"
+    email: "דוא\"ל:"
+    current_password: "Current password:"
+    password: "סיסמה:"
+    password_confirmation: "Verification:"
+    new_password: "סיסמה חדשה:"
+    new_password_confirmation: "Verification:"

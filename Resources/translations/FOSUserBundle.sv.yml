@@ -22,7 +22,7 @@ security:
 # Profile
 profile:
     show:
-        username: Username
+        username: Användarnamn
         email: Epost
     edit:
         submit: Uppdatera

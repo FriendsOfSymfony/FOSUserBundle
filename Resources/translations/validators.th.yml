@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว
+        blank: กรุณาระบุชื่อผู้ใช้
+        short: "[-Inf,Inf]ชื่อผู้ใช้สั้นเกินไป"
+        long: "[-Inf,Inf]ชื่อผู้ใช้ยาวเกินไป"
+    email:
+        already_used: อีเมล์นี้มีอยู่ในระบบแล้ว
+        blank: กรุณาระบุอีเมล์
+        short: "[-Inf,Inf]ที่อยู่อีเมล์สั้นเกินไป"
+        long: "[-Inf,Inf]ที่อยู่อีเมล์ยาวเกินไป"
+        invalid: ที่อยู่อีเมล์ไม่ถูกต้อง
+    password:
+        blank: กรุณาระบุรหัสผ่าน
+        short: "[-Inf,Inf]รหัสผ่านสั้นเกินไป"
+        mismatch: รหัสผ่านที่ระบุไม่ตรงกัน
+    new_password:
+        blank: กรุณาระบุระหัสผ่านใหม่
+        short: "[-Inf,Inf]รหัสผ่านใหม่สั้นเกินไป"
+    current_password:
+        invalid: รหัสผ่านปัจจุบันไม่ถูกต้อง
+    group:
+        blank: ระบุชื่อกลุ่ม
+        short: "[-Inf,Inf]ชื่อกลุ่มสั้นเกินไป"
+        long: "[-Inf,Inf]ชื่อกลุ่มยาวเกินไป"

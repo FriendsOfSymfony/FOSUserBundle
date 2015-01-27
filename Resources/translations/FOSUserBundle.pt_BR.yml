@@ -12,11 +12,11 @@ group:
         deleted: O grupo foi removido
 
 # Security
-"Bad credentials": Usuário ou senha inválida
-
 security:
     login:
         username: "Usuário:"
+        username_email: "Usuário ou e-mail:"
+        email: "E-mail:"
         password: "Senha:"
         remember_me: Permanecer conectado
         submit: Entrar
@@ -81,7 +81,7 @@ resetting:
 layout:
     logout: Sair
     login: Entrar
-    register: Registar
+    register: Registrar
     logged_in_as: Conectado como %username%
 
 # Form field labels

@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: El nom d'usuari ja està sent utilitzat
+        blank: Si us plau, introdueixi un nom d'usuari
+        short: "[-Inf,Inf]El nom d'usuari és massa curt"
+        long: "[-Inf,Inf]El nom d'usuari és massa llarg"
+    email:
+        already_used: L'adreça de correu ja està sent utilitzada
+        blank: Si us plau, introdueixi una adreça de correu
+        short: "[-Inf,Inf]L'adreça de correu és massa curta"
+        long: "[-Inf,Inf]L'adreça de correu és massa llarga"
+        invalid: L'adreça de correu no és vàlida
+    password:
+        blank: Si us plau, introdueixi una contrasenya
+        short: "[-Inf,Inf]La contrasenya és massa curta"
+        mismatch: Les dues contrasenyes no coincideixen
+    new_password:
+        blank: Si us plau, introdueixi una nova contrasenya
+        short: "[-Inf,Inf]La nova contrasenya és massa curta"
+    current_password:
+        invalid: La contrasenya no és vàlida
+    group:
+        blank: Si us plau, introdueix un nom de grup
+        short: "[-Inf,Inf]El nom de grup és massa curt"
+        long: "[-Inf,Inf]El nom de grup és massa llarg"

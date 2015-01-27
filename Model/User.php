@@ -358,11 +358,6 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->hasRole(static::ROLE_SUPER_ADMIN);
     }
 
-    public function isUser(UserInterface $user = null)
-    {
-        return null !== $user && $this->getId() === $user->getId();
-    }
-
     public function removeRole($role)
     {
         if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
@@ -392,7 +387,7 @@ abstract class User implements UserInterface, GroupableInterface
      *
      * @return User
      */
-    public function setCredentialsExpireAt(\DateTime $date)
+    public function setCredentialsExpireAt(\DateTime $date = null)
     {
         $this->credentialsExpireAt = $date;
 
@@ -451,7 +446,7 @@ abstract class User implements UserInterface, GroupableInterface
      *
      * @return User
      */
-    public function setExpiresAt(\DateTime $date)
+    public function setExpiresAt(\DateTime $date = null)
     {
         $this->expiresAt = $date;
 
@@ -483,7 +478,7 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
-    public function setLastLogin(\DateTime $time)
+    public function setLastLogin(\DateTime $time = null)
     {
         $this->lastLogin = $time;
 
@@ -558,6 +553,11 @@ abstract class User implements UserInterface, GroupableInterface
         return $names;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return boolean
+     */
     public function hasGroup($name)
     {
         return in_array($name, $this->getGroupNames());

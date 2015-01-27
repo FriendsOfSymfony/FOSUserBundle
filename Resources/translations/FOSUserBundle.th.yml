@@ -1,0 +1,94 @@
+# Group
+group:
+    edit:
+        submit: บันทึกการแก้ไข
+    show:
+        name: ชื่อกลุ่ม
+    new:
+        submit: สร้างกลุ่ม
+    flash:
+        updated: กลุ่มถูกแก้ไขแล้ว
+        created: กลุ่มถูกแก้ไขแล้ว
+        deleted: กลุ่มถูกแก้ไขแล้ว
+
+# Security
+security:
+    login:
+        username: "ชื่อผู้ใช้:"
+        password: "รหัสผ่าน:"
+        remember_me: จำการเข้าระบบ
+        submit: เข้าระบบ
+
+# Profile
+profile:
+    show:
+        username: ชื่อผู้ใช้
+        email: อีเมล์
+    edit:
+        submit: บันทึกการแก้ไข
+    flash:
+        updated: ข้อมูลส่วนตัวถูกแก้ไขแล้ว
+
+# Password change
+change_password:
+    submit: เปลี่ยนรหัสผ่าน
+    flash:
+        success: รหัสผ่านถูกแก้ไขแล้ว
+
+# Registration
+registration:
+    check_email: ระบบได้ส่งอีเมลยืนยันการสมัครสมาชิกไปที่ %email% คุณต้องคลิกลิงค์ที่ส่งไปเพื่อยืนยันการสมัคร
+    confirmed: ยินดีด้วย %username%, บัญชีของคุณถูกยืนยันแล้ว
+    back: กลับไปหน้าเดิม
+    submit: สมัครสมาชิก
+    flash:
+        user_created: สร้างผู้ใช้เรียบร้อยแล้ว
+    email:
+        subject: ยินดีต้อนรับ %username%!
+        message: |
+            สวัสดี %username%!
+
+            เพื่อยืนยันการสมัครสมาชิกให้เสร็จสมบูรณ์ กรุณาไปที่ %confirmationUrl%
+
+            ด้วยความนับถือ,
+            ทีมงาน
+
+# Password resetting
+resetting:
+    password_already_requested: รหัสผ่านที่ถูกร้องขอจะใช้ได้ภายใน 24 ชม.
+    check_email: ระบบได้ส่งอีเมล์การขอเปลี่ยนรหัสผ่านไปที่ %email% คุณต้องคลิกลิงค์ที่ส่งไปเพื่อทำการเปลี่ยนระหัสผ่าน
+    request:
+        invalid_username: ชื่อผู้ใช้หรืออีเมล "%username%" ไม่มีอยู่ในระบบ
+        username: "ชื่อผู้ใช้หรืออีเมล์:"
+        submit: เปลี่ยนรหัสผ่าน
+    reset:
+        submit: บันทึกการเปลี่ยนแปลงรหัส
+    flash:
+        success: เปลี่ยนรหัสผ่านเรียบร้อยแล้ว
+    email:
+        subject: การเปลี่ยนรหัสผ่าน
+        message: |
+            สวัสดี %username%!
+
+            เพื่อดำเนินการเปลี่ยนรหัสผ่านของคุณ กรุณาไปที่ %confirmationUrl%
+
+            ด้วยความนับถือ,
+            ทีมงาน
+
+# Global strings
+layout:
+    logout: ออกจากระบบ
+    login: เข้าระบบ
+    register: สมัครสมาชิก
+    logged_in_as: เข้าระบบด้วย %username%
+
+# Form field labels
+form:
+    group_name: "ชื่อกลุ่ม:"
+    username: "ชื่อเข้าระบบ:"
+    email: "อีเมล์:"
+    current_password: "รหัสผ่านปัจจุบัน:"
+    password: "รหัสผ่าน:"
+    password_confirmation: "ยืนยันรหัสผ่าน:"
+    new_password: "รหัสผ่านใหม่:"
+    new_password_confirmation: "ยืนยันรหัสผ่านใหม่:"

@@ -12,8 +12,6 @@ group:
         deleted: De groep is verwijderd
 
 # Security
-"Bad credentials": Gebruikersnaam of wachtwoord ongeldig
-
 security:
     login:
         username: "Gebruikersnaam:"
@@ -39,7 +37,7 @@ change_password:
 
 # Registration
 registration:
-    check_email: Er is een e-mail verstuurd naar %email%. Met een activatielink om uw account te activeren.
+    check_email: Er is een e-mail verstuurd naar %email%, met een link om uw account te activeren.
     confirmed: Gefeliciteerd %username%, uw account is nu geactiveerd.
     back: Terug naar de oorspronkelijke pagina.
     submit: Registreer
@@ -58,7 +56,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.
-    check_email: Er is een e-mail verstuurd naar %email%. Met een link om uw wachtwoord te resetten.
+    check_email: Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.
     request:
         invalid_username: De gebruiker "%username%" bestaat niet.
         username: "Gebruikersnaam of e-mailadres:"
@@ -72,7 +70,7 @@ resetting:
         message: |
             Hallo %username%!
 
-            Om uw wachtwoord te resetten gaat u naar de volgende link %confirmationUrl%
+            Om uw wachtwoord te resetten, klikt u op de volgende link %confirmationUrl%
 
             Met vriendelijke groet,
             het Team.

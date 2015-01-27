@@ -1,7 +1,7 @@
 FOSUserBundle
 =============
 
-The FOSUserBundle adds support for a database-backed user system in Symfony2.
+The FOSUserBundle adds support for a database-backed user system in Symfony.
 It provides a flexible framework for user management that aims to handle
 common tasks such as user registration and password retrieval.
 
@@ -18,22 +18,24 @@ provide the user provider for the core [SecurityBundle](http://symfony.com/doc/c
 **Caution:** This bundle is developed in sync with [symfony's repository](https://github.com/symfony/symfony).
 For Symfony 2.0.x, you need to use the 1.2.0 release of the bundle (or lower)
 
-[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=1.3.x)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle)
+[![Build Status](https://secure.travis-ci.org/FriendsOfSymfony/FOSUserBundle.png?branch=master)](http://travis-ci.org/FriendsOfSymfony/FOSUserBundle) [![Total Downloads](https://poser.pugx.org/friendsofsymfony/user-bundle/downloads.png)](https://packagist.org/packages/friendsofsymfony/user-bundle) [![Latest Stable Version](https://poser.pugx.org/friendsofsymfony/user-bundle/v/stable.png)](https://packagist.org/packages/friendsofsymfony/user-bundle)
 
 Documentation
 -------------
 
-The bulk of the documentation is stored in the `Resources/doc/index.md`
+The bulk of the documentation is stored in the `Resources/doc/index.rst`
 file in this bundle:
 
-[Read the Documentation for master](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md)
+[Read the Documentation for master](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.rst)
+
+[Read the Documentation for 1.3.x](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/1.3.x/Resources/doc/index.md)
 
 [Read the Documentation for 1.2.0 (for Symfony 2.0.x)](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/1.2.0/Resources/doc/index.md)
 
 Installation
 ------------
 
-All the installation instructions are located in [documentation](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md).
+All the installation instructions are located in the documentation.
 
 License
 -------

@@ -52,6 +52,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
+                ->booleanNode('use_flash_notifications')->defaultTrue()->end()
                 ->booleanNode('use_username_form_type')->defaultTrue()->end()
                 ->arrayNode('from_email')
                     ->addDefaultsIfNotSet()
@@ -76,7 +77,6 @@ class Configuration implements ConfigurationInterface
         $this->addRegistrationSection($rootNode);
         $this->addResettingSection($rootNode);
         $this->addServiceSection($rootNode);
-        $this->addTemplateSection($rootNode);
         $this->addGroupSection($rootNode);
 
         return $treeBuilder;
@@ -92,9 +92,9 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
+                            ->fixXmlConfig('validation_group')
                             ->children()
                                 ->scalarNode('type')->defaultValue('fos_user_profile')->end()
-                                ->scalarNode('handler')->defaultValue('fos_user.profile.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_profile_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -133,7 +133,6 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('type')->defaultValue('fos_user_registration')->end()
-                                ->scalarNode('handler')->defaultValue('fos_user.registration.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_registration_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -172,7 +171,6 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('type')->defaultValue('fos_user_resetting')->end()
-                                ->scalarNode('handler')->defaultValue('fos_user.resetting.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_resetting_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -197,7 +195,6 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('type')->defaultValue('fos_user_change_password')->end()
-                                ->scalarNode('handler')->defaultValue('fos_user.change_password.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_change_password_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -229,19 +226,6 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function addTemplateSection(ArrayNodeDefinition $node)
-    {
-        $node
-            ->children()
-                ->arrayNode('template')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('engine')->defaultValue('twig')->end()
-                    ->end()
-                ->end()
-            ->end();
-    }
-
     private function addGroupSection(ArrayNodeDefinition $node)
     {
         $node
@@ -253,9 +237,9 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('group_manager')->defaultValue('fos_user.group_manager.default')->end()
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
+                            ->fixXmlConfig('validation_group')
                             ->children()
                                 ->scalarNode('type')->defaultValue('fos_user_group')->end()
-                                ->scalarNode('handler')->defaultValue('fos_user.group.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_group_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()

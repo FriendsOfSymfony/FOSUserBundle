@@ -12,8 +12,6 @@ group:
         deleted: Grupa tika dzēsta
 
 # Security
-"Bad credentials": Nederīgs lietotājvārds vai parole
-
 security:
     login:
         username: "Lietotājvārds:"

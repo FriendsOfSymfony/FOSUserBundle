@@ -17,6 +17,7 @@ use Symfony\Component\Yaml\Parser;
 
 class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var ContainerBuilder */
     protected $configuration;
 
     /**
@@ -106,7 +107,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $config = $this->getEmptyConfig();
         $config['registration'] = false;
         $loader->load(array($config), $this->configuration);
-        $this->assertNotHasDefinition('fos_user.registration.form');
+        $this->assertNotHasDefinition('fos_user.registration.form.factory');
     }
 
     public function testDisableResetting()
@@ -116,7 +117,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $config = $this->getEmptyConfig();
         $config['resetting'] = false;
         $loader->load(array($config), $this->configuration);
-        $this->assertNotHasDefinition('fos_user.resetting.form');
+        $this->assertNotHasDefinition('fos_user.resetting.form.factory');
     }
 
     public function testDisableProfile()
@@ -126,7 +127,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $config = $this->getEmptyConfig();
         $config['profile'] = false;
         $loader->load(array($config), $this->configuration);
-        $this->assertNotHasDefinition('fos_user.profile.form');
+        $this->assertNotHasDefinition('fos_user.profile.form.factory');
     }
 
     public function testDisableChangePassword()
@@ -136,7 +137,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $config = $this->getEmptyConfig();
         $config['change_password'] = false;
         $loader->load(array($config), $this->configuration);
-        $this->assertNotHasDefinition('fos_user.change_password.form');
+        $this->assertNotHasDefinition('fos_user.change_password.form.factory');
     }
 
     public function testUserLoadModelClassWithDefaults()
@@ -219,22 +220,22 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createEmptyConfiguration();
 
-        $this->assertHasDefinition('fos_user.profile.form');
-        $this->assertHasDefinition('fos_user.registration.form');
-        $this->assertNotHasDefinition('fos_user.group.form');
-        $this->assertHasDefinition('fos_user.change_password.form');
-        $this->assertHasDefinition('fos_user.resetting.form');
+        $this->assertHasDefinition('fos_user.profile.form.factory');
+        $this->assertHasDefinition('fos_user.registration.form.factory');
+        $this->assertNotHasDefinition('fos_user.group.form.factory');
+        $this->assertHasDefinition('fos_user.change_password.form.factory');
+        $this->assertHasDefinition('fos_user.resetting.form.factory');
     }
 
     public function testUserLoadFormService()
     {
         $this->createFullConfiguration();
 
-        $this->assertHasDefinition('fos_user.profile.form');
-        $this->assertHasDefinition('fos_user.registration.form');
-        $this->assertHasDefinition('fos_user.group.form');
-        $this->assertHasDefinition('fos_user.change_password.form');
-        $this->assertHasDefinition('fos_user.resetting.form');
+        $this->assertHasDefinition('fos_user.profile.form.factory');
+        $this->assertHasDefinition('fos_user.registration.form.factory');
+        $this->assertHasDefinition('fos_user.group.form.factory');
+        $this->assertHasDefinition('fos_user.change_password.form.factory');
+        $this->assertHasDefinition('fos_user.resetting.form.factory');
     }
 
     public function testUserLoadConfirmationEmailWithDefaults()
@@ -261,20 +262,6 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertParameter(1800, 'fos_user.resetting.token_ttl');
     }
 
-    public function testUserLoadTemplateConfigWithDefaults()
-    {
-        $this->createEmptyConfiguration();
-
-        $this->assertParameter('twig', 'fos_user.template.engine');
-    }
-
-    public function testUserLoadTemplateConfig()
-    {
-        $this->createFullConfiguration();
-
-        $this->assertParameter('php', 'fos_user.template.engine');
-    }
-
     public function testUserLoadUtilServiceWithDefaults()
     {
         $this->createEmptyConfiguration();
@@ -291,6 +278,20 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertAlias('acme_my.mailer', 'fos_user.mailer');
         $this->assertAlias('acme_my.email_canonicalizer', 'fos_user.util.email_canonicalizer');
         $this->assertAlias('acme_my.username_canonicalizer', 'fos_user.util.username_canonicalizer');
+    }
+
+    public function testUserLoadFlashesByDefault()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertHasDefinition('fos_user.listener.flash');
+    }
+
+    public function testUserLoadFlashesCanBeDisabled()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertNotHasDefinition('fos_user.listener.flash');
     }
 
     protected function createEmptyConfiguration()
@@ -334,6 +335,7 @@ EOF;
 db_driver: orm
 firewall_name: fos_user
 use_listener: true
+use_flash_notifications: false
 user_class: Acme\MyBundle\Entity\User
 model_manager_name: custom
 from_email:
@@ -342,13 +344,11 @@ from_email:
 profile:
     form:
         type: acme_my_profile
-        handler: acme_my.form.handler.profile
         name: acme_profile_form
         validation_groups: [acme_profile]
 change_password:
     form:
         type: acme_my_change_password
-        handler: acme_my.form.handler.change_password
         name: acme_change_password_form
         validation_groups: [acme_change_password]
 registration:
@@ -360,7 +360,6 @@ registration:
         template: AcmeMyBundle:Registration:mail.txt.twig
     form:
         type: acme_my_registration
-        handler: acme_my.form.handler.registration
         name: acme_registration_form
         validation_groups: [acme_registration]
 resetting:
@@ -372,7 +371,6 @@ resetting:
         template: AcmeMyBundle:Resetting:mail.txt.twig
     form:
         type: acme_my_resetting
-        handler: acme_my.form.handler.resetting
         name: acme_resetting_form
         validation_groups: [acme_resetting]
 service:
@@ -380,19 +378,16 @@ service:
     email_canonicalizer: acme_my.email_canonicalizer
     username_canonicalizer: acme_my.username_canonicalizer
     user_manager: acme_my.user_manager
-template:
-    engine: php
 group:
     group_class: Acme\MyBundle\Entity\Group
     form:
         type: acme_my_group
-        handler: acme_my.form.handler.group
         name: acme_group_form
         validation_groups: [acme_group]
 EOF;
         $parser = new Parser();
 
-        return  $parser->parse($yaml);
+        return $parser->parse($yaml);
     }
 
     /**

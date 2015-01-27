@@ -52,6 +52,8 @@ abstract class Group implements GroupInterface
 
     /**
      * @param string $role
+     * 
+     * @return boolean
      */
     public function hasRole($role)
     {

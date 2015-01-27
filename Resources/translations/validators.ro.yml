@@ -1,0 +1,25 @@
+fos_user:
+    username:
+        already_used: Numele de utilizator este deja folosit
+        blank: Introduceți un nume de utilizator
+        short: "[-Inf,Inf]Numele de utilizator este prea scurt"
+        long: "[-Inf,Inf]Numele de utilizator este prea lung"
+    email:
+        already_used: E-mailul este deja folosit
+        blank: Introduceți e-mailul
+        short: "[-Inf,Inf]E-mailul este prea scurt"
+        long: "[-Inf,Inf]E-mailul este prea lung"
+        invalid: E-mailul nu este corect
+    password:
+        blank: Introduceți parola
+        short: "[-Inf,Inf]Parola este prea scurtă"
+        mismatch: Parolele introduse nu coincid
+    new_password:
+        blank: Introduceți o parolă nouă
+        short: "[-Inf,Inf]Parola nouă este prea scurtă"
+    current_password:
+        invalid: Parola introdusă nu este corectă
+    group:
+        blank: Introduceți un nume
+        short: "[-Inf,Inf]Numele este prea scurt"
+        long: "[-Inf,Inf]Numele este prea lung"

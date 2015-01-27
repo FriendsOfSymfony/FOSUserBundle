@@ -1,0 +1,82 @@
+# Group
+group:
+    edit:
+        submit: 'Nhóm cập nhật'
+    flash:
+        created: 'Nhóm đã được khởi tạo'
+        deleted: 'Nhóm này đã bị xóa'
+        updated: 'Nhóm đã được cập nhật'
+    new:
+        submit: 'Tạo nhóm'
+    show:
+        name: 'Tên nhóm'
+
+# Security
+security:
+    login:
+        password: 'Mật khẩu:'
+        remember_me: 'Ghi nhớ thông tin của tôi'
+        submit: 'Đăng nhập'
+        username: 'Tên đăng nhập:'
+
+# Profile
+profile:
+    edit:
+        submit: 'Cập nhật'
+    flash:
+        updated: 'Hồ sơ cá nhân đã được cập nhật'
+    show:
+        email: Email
+        username: 'Tên đăng nhập'
+
+# Password change
+change_password:
+    flash:
+        success: 'Mật khẩu đã được thay đổi'
+    submit: 'Thay đổi mật khẩu'
+
+# Registration
+registration:
+    back: 'Quay lại'
+    check_email: 'Một email đã được gửi đến %email%. Nó có chứa một liên kết kích hoạt bạn phải bấm vào để kích hoạt tài khoản của bạn.'
+    confirmed: 'Chúc mừng %username%, tài khoản của bạn đã được kích hoạt.'
+    email:
+        message: 'Xin chào %username%! Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập %confirmationUrl%. Cám ơn.'
+        subject: 'Chào mừng %username%!'
+    flash:
+        user_created: 'Người sử dụng đã được khởi tạo'
+    submit: 'Đăng ký'
+
+# Password resetting
+resetting:
+    check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để thiết lập lại mật khẩu của bạn.'
+    email:
+        message: 'Xin chào %username%! Để thiết lập lại mật khẩu của bạn - vui lòng truy cập %confirmationUrl% Kính trọng, mỗi thành viên.'
+        subject: 'Thiết lập lại mật khẩu'
+    flash:
+        success: 'Các mật khẩu đã được thiết lập lại thành công'
+    password_already_requested: 'Mật khẩu cho người dùng này đã được yêu cầu trong vòng 24 giờ qua.'
+    request:
+        invalid_username: 'Tên người dùng hoặc địa chỉ email "%username%" không tồn tại.'
+        submit: 'Thiết lập lại mật khẩu'
+        username: 'Tên đăng nhập hoặc địa chỉ email:'
+    reset:
+        submit: 'Thay đổi mật khẩu'
+
+# Global strings
+layout:
+    logged_in_as: 'Đăng nhập như %username%'
+    login: 'Đăng nhập'
+    logout: 'Đăng xuất'
+    register: 'Đăng ký'
+
+# Form field labels
+form:
+    current_password: 'Mật khẩu hiện tại:'
+    email: 'Email:'
+    group_name: 'Tên nhóm:'
+    new_password: 'Mật khẩu mới:'
+    new_password_confirmation: 'Xác minh:'
+    password: 'Mật khẩu:'
+    password_confirmation: 'Xác minh:'
+    username: 'Tên đăng nhập:'

@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Util;
 
-use Symfony\Component\HttpKernel\Log\LoggerInterface;
+use Psr\Log\LoggerInterface;
 
 class TokenGenerator implements TokenGeneratorInterface
 {
