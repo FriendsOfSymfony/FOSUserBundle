@@ -3,7 +3,7 @@ Overriding Default FOSUserBundle Templates
 
 As you start to incorporate FOSUserBundle into your application, you will probably
 find that you need to override the default templates that are provided by
-the bundle. Although the template names are not configurable, the Symfony2
+the bundle. Although the template names are not configurable, the Symfony
 framework provides two ways to override the templates of a bundle.
 
 #. Define a new template of the same name in the ``app/Resources`` directory
@@ -110,8 +110,6 @@ class.
 .. code-block:: php
 
     // src/Acme/UserBundle/AcmeUserBundle.php
-    <?php
-
     namespace Acme\UserBundle;
 
     use Symfony\Component\HttpKernel\Bundle\Bundle;
