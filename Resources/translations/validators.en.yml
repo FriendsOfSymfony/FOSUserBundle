@@ -20,6 +20,7 @@ fos_user:
     current_password:
         invalid: The entered password is invalid
     group:
+        already_used: The groupname is already used
         blank: Please enter a name
         short: "[-Inf,Inf]The name is too short"
         long: "[-Inf,Inf]The name is too long"

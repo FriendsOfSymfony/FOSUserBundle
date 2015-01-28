@@ -20,6 +20,7 @@ fos_user:
     current_password:
         invalid: La contraseña ingresada no es válida
     group:
+        already_used: El nombre de grupo ya está en uso
         blank: Por favor, ingrese un nombre
         short: "[-Inf,Inf]El nombre es demasiado corto"
         long: "[-Inf,Inf]El nombre es demasiado largo"
