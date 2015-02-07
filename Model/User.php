@@ -275,8 +275,11 @@ abstract class User implements UserInterface, GroupableInterface
     {
         $roles = $this->roles;
 
-        foreach ($this->getGroups() as $group) {
-            $roles = array_merge($roles, $group->getRoles());
+        $groups = $this->getGroups();
+        if (null !== $groups) {
+            foreach ($groups as $group) {
+                $roles = array_merge($roles, $group->getRoles());
+            }
         }
 
         // we need to make sure to have at least one role
