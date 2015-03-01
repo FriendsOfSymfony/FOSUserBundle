@@ -44,15 +44,14 @@ class User extends BaseUser
     protected $name;
     
     // Make sure you create a getter and setter methods for each new field
-     public function getName()
+    public function getName()
     {
         return $this->name;
     }
 
-   public function setName($name)
+    public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
     // ...
