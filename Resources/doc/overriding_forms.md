@@ -38,11 +38,23 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
-     * @Assert\MinLength(limit="3", message="The name is too short.", groups={"Registration", "Profile"})
-     * @Assert\MaxLength(limit="255", message="The name is too long.", groups={"Registration", "Profile"})
+     * @Assert\Length(min="3", groups={"Registration", "Profile"})
+     * @Assert\Length(max="255", groups={"Registration", "Profile"})
      */
     protected $name;
+    
+    // Make sure you create a getter and setter methods for each new field
+     public function getName()
+    {
+        return $this->name;
+    }
 
+   public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
     // ...
 }
 ```
