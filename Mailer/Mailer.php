@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Mailer;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\FullNameInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
 
 /**
@@ -45,7 +46,8 @@ class Mailer implements MailerInterface
             'user' => $user,
             'confirmationUrl' =>  $url
         ));
-        $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail());
+        $name = $user instanceof FullNameInterface ? $user->getFullName() : null;
+        $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $user->getEmail(), $name);
     }
 
     /**
@@ -59,15 +61,17 @@ class Mailer implements MailerInterface
             'user' => $user,
             'confirmationUrl' => $url
         ));
-        $this->sendEmailMessage($rendered, $this->parameters['from_email']['resetting'], $user->getEmail());
+        $name = $user instanceof FullNameInterface ? $user->getFullName() : null;
+        $this->sendEmailMessage($rendered, $this->parameters['from_email']['resetting'], $user->getEmail(), $name);
     }
 
     /**
      * @param string $renderedTemplate
      * @param string $fromEmail
      * @param string $toEmail
+     * @param string $name
      */
-    protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail)
+    protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail, $name = null)
     {
         // Render the email, use the first line as the subject, and the rest as the body
         $renderedLines = explode("\n", trim($renderedTemplate));
@@ -77,7 +81,7 @@ class Mailer implements MailerInterface
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($fromEmail)
-            ->setTo($toEmail)
+            ->setTo($toEmail, $name)
             ->setBody($body);
 
         $this->mailer->send($message);
