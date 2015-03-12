@@ -37,7 +37,7 @@ class ValidationPass implements CompilerPassInterface
             return;
         }
 
-        $validationFile = __DIR__ . '/../../Resources/config/validation/' . $storage . '.xml';
+        $validationFile = __DIR__ . '/../../Resources/config/storage-validation/' . $storage . '.xml';
 
         if ($container->hasDefinition('validator.builder')) {
             // Symfony 2.5+
