@@ -10,6 +10,9 @@ Changelog
   variable rather than an error message.
 * [BC break] The templating engine configuration has been removed, as well as the related code.
 * [BC break] Changed the XML namespace to `http://friendsofsymfony.github.io/schema/dic/user`
+* [BC break] Removed unused properties `expired` and `credentialsExpired` including corresponding methods. This may break code,
+  makes use of this methods, extending classes, and/or existing installations because of missing mappings for required db fields
+  [#1751]
 
 ### 2.0.0-alpha1 (2014-09-26)
 

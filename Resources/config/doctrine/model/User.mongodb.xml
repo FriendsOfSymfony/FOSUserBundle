@@ -24,8 +24,6 @@
 
         <field name="locked" fieldName="locked" type="boolean" />
 
-        <field name="expired" fieldName="expired" type="boolean" />
-
         <field name="expiresAt" fieldName="expiresAt" type="date" />
 
         <field name="confirmationToken" fieldName="confirmationToken" type="string" />
@@ -33,8 +31,6 @@
         <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="date" />
 
         <field name="roles" fieldName="roles" type="collection" />
-        
-        <field name="credentialsExpired" column="credentialsExpired" type="boolean" />
 
         <field name="credentialsExpireAt" column="credentialsExpireAt" type="date" />
         <indexes>
