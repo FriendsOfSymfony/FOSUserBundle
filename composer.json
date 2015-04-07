@@ -1,7 +1,7 @@
 {
-    "name": "friendsofsymfony/user-bundle",
+    "name": "nmalo/fos-user-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony FOSUserBundle",
+    "description": "Modified version of Symfony FOSUserBundle (http://friendsofsymfony.github.com)",
     "keywords": ["User management"],
     "homepage": "http://friendsofsymfony.github.com",
     "license": "MIT",
