@@ -42,7 +42,7 @@ class FOSUserBundle extends Bundle
         $symfonyVersion = class_exists('Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\RegisterMappingsPass');
 
         $mappings = array(
-            realpath(__DIR__ . '/Resources/config/doctrine/model') => 'FOS\UserBundle\Model',
+            realpath(__DIR__ . '/Resources/config/mappings') => 'FOS\UserBundle\Model',
         );
 
         if ($symfonyVersion && class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
