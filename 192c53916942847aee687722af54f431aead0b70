@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-04-16T11:51:10Z
+
+I would just use the exception from the SPL instead of the special one from the DI component
+
+---------------------------------------------------------------------------
+
+by craue at 2015-04-16T11:55:22Z
+
+Done.
