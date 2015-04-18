@@ -34,9 +34,9 @@ Installation is a quick (I promise!) 7 step process:
 
 1. Download FOSUserBundle using composer
 2. Enable the Bundle
-3. Create your User class
-4. Configure your application's security.yml
-5. Configure the FOSUserBundle
+3. Configure your application's security.yml
+4. Configure the FOSUserBundle
+5. Create your User class
 6. Import FOSUserBundle routing
 7. Update your database schema
 
@@ -67,7 +67,127 @@ public function registerBundles()
 }
 ```
 
-### Step 3: Create your User class
+### Step 3: Configure your application's security.yml
+
+In order for Symfony's security component to use the FOSUserBundle, you must
+tell it to do so in the `security.yml` file. The `security.yml` file is where the
+basic security configuration for your application is contained.
+
+Below is a minimal example of the configuration necessary to use the FOSUserBundle
+in your application:
+
+``` yaml
+# app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+```
+
+Under the `providers` section, you are making the bundle's packaged user provider
+service available via the alias `fos_userbundle`. The id of the bundle's user
+provider service is `fos_user.user_provider.username`.
+
+Next, take a look at and examine the `firewalls` section. Here we have declared a
+firewall named `main`. By specifying `form_login`, you have told the Symfony2
+framework that any time a request is made to this firewall that leads to the
+user needing to authenticate himself, the user will be redirected to a form
+where he will be able to enter his credentials. It should come as no surprise
+then that you have specified the user provider service we declared earlier as the
+provider for the firewall to use as part of the authentication process.
+
+**Note:**
+
+> Although we have used the form login mechanism in this example, the FOSUserBundle
+> user provider service is compatible with many other authentication methods as well.
+> Please read the Symfony2 Security component documentation for more information on the
+> other types of authentication methods.
+
+The `access_control` section is where you specify the credentials necessary for
+users trying to access specific parts of your application. The bundle requires
+that the login form and all the routes used to create a user and reset the password
+be available to unauthenticated users but use the same firewall as
+the pages you want to secure with the bundle. This is why you have specified that
+any request matching the `/login` pattern or starting with `/register` or
+`/resetting` have been made available to anonymous users. You have also specified
+that any request beginning with `/admin` will require a user to have the
+`ROLE_ADMIN` role.
+
+For more information on configuring the `security.yml` file please read the Symfony2
+security component [documentation](http://symfony.com/doc/current/book/security.html).
+
+**Note:**
+
+> Pay close attention to the name, `main`, that we have given to the firewall which
+> the FOSUserBundle is configured in. You will use this in the next step when you
+> configure the FOSUserBundle.
+
+### Step 4: Configure the FOSUserBundle
+
+Now that you have properly configured your application's `security.yml` to work
+with the FOSUserBundle, the next step is to configure the bundle to work with
+the specific needs of your application.
+
+Add the following configuration to your `config.yml` file according to which type
+of datastore you are using.
+
+``` yaml
+# app/config/config.yml
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Acme\UserBundle\Entity\User
+```
+
+Or if you prefer XML:
+
+``` xml
+<!-- app/config/config.xml -->
+
+<!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
+<fos_user:config
+    db-driver="orm"
+    firewall-name="main"
+    user-class="Acme\UserBundle\Entity\User"
+/>
+```
+
+Only three configuration values are required to use the bundle:
+
+* The type of datastore you are using (`orm`, `mongodb`, `couchdb` or `propel`).
+* The firewall name which you configured in Step 4.
+* The fully qualified class name (FQCN) of the `User` class which you created in Step 3.
+
+**Note:**
+
+> FOSUserBundle uses a compiler pass to register mappings for the base
+> User and Group model classes with the object manager that you configured
+> it to use. (Unless specified explicitly, this is the default manager
+> of your doctrine configuration.)
+
+### Step 5: Create your User class
 
 The goal of this bundle is to persist some `User` class to a database (MySql,
 MongoDB, CouchDB, etc). Your first job, then, is to create the `User` class
@@ -299,126 +419,6 @@ If you want to add your own fields, you can extend the model class by overriding
 Just copy the `Resources/config/propel/schema.xml` file to `app/Resources/FOSUserBundle/config/propel/schema.xml`,
 and customize it to fit your needs.
 
-### Step 4: Configure your application's security.yml
-
-In order for Symfony's security component to use the FOSUserBundle, you must
-tell it to do so in the `security.yml` file. The `security.yml` file is where the
-basic security configuration for your application is contained.
-
-Below is a minimal example of the configuration necessary to use the FOSUserBundle
-in your application:
-
-``` yaml
-# app/config/security.yml
-security:
-    encoders:
-        FOS\UserBundle\Model\UserInterface: sha512
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
-
-    providers:
-        fos_userbundle:
-            id: fos_user.user_provider.username
-
-    firewalls:
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-            logout:       true
-            anonymous:    true
-
-    access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
-```
-
-Under the `providers` section, you are making the bundle's packaged user provider
-service available via the alias `fos_userbundle`. The id of the bundle's user
-provider service is `fos_user.user_provider.username`.
-
-Next, take a look at and examine the `firewalls` section. Here we have declared a
-firewall named `main`. By specifying `form_login`, you have told the Symfony2
-framework that any time a request is made to this firewall that leads to the
-user needing to authenticate himself, the user will be redirected to a form
-where he will be able to enter his credentials. It should come as no surprise
-then that you have specified the user provider service we declared earlier as the
-provider for the firewall to use as part of the authentication process.
-
-**Note:**
-
-> Although we have used the form login mechanism in this example, the FOSUserBundle
-> user provider service is compatible with many other authentication methods as well.
-> Please read the Symfony2 Security component documentation for more information on the
-> other types of authentication methods.
-
-The `access_control` section is where you specify the credentials necessary for
-users trying to access specific parts of your application. The bundle requires
-that the login form and all the routes used to create a user and reset the password
-be available to unauthenticated users but use the same firewall as
-the pages you want to secure with the bundle. This is why you have specified that
-any request matching the `/login` pattern or starting with `/register` or
-`/resetting` have been made available to anonymous users. You have also specified
-that any request beginning with `/admin` will require a user to have the
-`ROLE_ADMIN` role.
-
-For more information on configuring the `security.yml` file please read the Symfony2
-security component [documentation](http://symfony.com/doc/current/book/security.html).
-
-**Note:**
-
-> Pay close attention to the name, `main`, that we have given to the firewall which
-> the FOSUserBundle is configured in. You will use this in the next step when you
-> configure the FOSUserBundle.
-
-### Step 5: Configure the FOSUserBundle
-
-Now that you have properly configured your application's `security.yml` to work
-with the FOSUserBundle, the next step is to configure the bundle to work with
-the specific needs of your application.
-
-Add the following configuration to your `config.yml` file according to which type
-of datastore you are using.
-
-``` yaml
-# app/config/config.yml
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Acme\UserBundle\Entity\User
-```
-
-Or if you prefer XML:
-
-``` xml
-<!-- app/config/config.xml -->
-
-<!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
-<fos_user:config
-    db-driver="orm"
-    firewall-name="main"
-    user-class="Acme\UserBundle\Entity\User"
-/>
-```
-
-Only three configuration values are required to use the bundle:
-
-* The type of datastore you are using (`orm`, `mongodb`, `couchdb` or `propel`).
-* The firewall name which you configured in Step 4.
-* The fully qualified class name (FQCN) of the `User` class which you created in Step 3.
-
-**Note:**
-
-> FOSUserBundle uses a compiler pass to register mappings for the base
-> User and Group model classes with the object manager that you configured
-> it to use. (Unless specified explicitly, this is the default manager
-> of your doctrine configuration.)
-
 ### Step 6: Import FOSUserBundle routing files
 
 Now that you have activated and configured the bundle, all that is left to do is
@@ -441,6 +441,8 @@ Or if you prefer XML:
 <!-- app/config/routing.xml -->
 <import resource="@FOSUserBundle/Resources/config/routing/all.xml"/>
 ```
+all.xml is of course a file in specified path. So we will have a route for each file.
+
 
 **Note:**
 
