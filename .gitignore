@@ -5,5 +5,5 @@ nbproject
 catalog.xml
 Propel/om/*
 Propel/map/*
-
+build
 vendor/*

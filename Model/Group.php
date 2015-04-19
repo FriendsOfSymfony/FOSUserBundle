@@ -40,11 +40,19 @@ abstract class Group implements GroupInterface
         return $this;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * 
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
@@ -60,6 +68,10 @@ abstract class Group implements GroupInterface
         return in_array(strtoupper($role), $this->roles, true);
     }
 
+    /**
+     * 
+     * @return string[]
+     */
     public function getRoles()
     {
         return $this->roles;

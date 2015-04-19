@@ -16,6 +16,15 @@ use FOS\UserBundle\Tests\TestUser;
 
 class UserManipulatorTest extends \PHPUnit_Framework_TestCase
 {
+    
+    public static function rolesProvider()
+    {
+        return array(
+            array('ROLE_ADMIN'),
+            array('ROLE_SOME_NEW_ROLE'),
+        );
+    }
+    
     public function testCreate()
     {
         $userManagerMock = $this->getMock('FOS\UserBundle\Model\UserManagerInterface');
@@ -279,5 +288,66 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
 
         $manipulator = new UserManipulator($userManagerMock);
         $manipulator->changePassword($invalidusername, $password);
+    }
+    
+    /**
+     * 
+     * @dataProvider rolesProvider
+     */
+    public function testAddRole($role)
+    {
+        $username = 'test_username';
+
+        $user = new TestUser();
+        $user->setUsername($username);
+        $user->setEnabled(false);
+        
+        $userManagerMock = $this->getMock('FOS\UserBundle\Model\UserManagerInterface');
+
+        $userManagerMock->expects($this->atMost(3))
+            ->method('findUserByUsername')
+            ->will($this->returnValue($user))
+            ->with($this->equalTo($username));
+        
+        $maniputlator = new UserManipulator($userManagerMock);
+        
+        $this->assertTrue($maniputlator->addRole($username, $role));
+        $this->assertTrue($user->hasRole($role));
+        
+        $this->assertFalse($maniputlator->addRole($username, $role));
+        
+    }
+    
+    /**
+     * 
+     * @dataProvider rolesProvider
+     */
+    public function testRemoveRole()
+    {
+        $username = 'test_username';
+
+        $user = new TestUser();
+        $user->setUsername($username);
+        $user->setEnabled(false);
+        $user->addRole('ROLE_TEST');
+        $user->addRole('ROLE_ADMIN');
+        
+        $userManagerMock = $this->getMock('FOS\UserBundle\Model\UserManagerInterface');
+
+        $userManagerMock->expects($this->atMost(3))
+            ->method('findUserByUsername')
+            ->will($this->returnValue($user))
+            ->with($this->equalTo($username));
+        
+        $maniputlator = new UserManipulator($userManagerMock);
+        
+        $this->assertTrue($user->hasRole('ROLE_TEST'));
+        $this->assertTrue($maniputlator->removeRole($username, 'ROLE_TEST'));
+        $this->assertFalse($user->hasRole('ROLE_TEST'));
+        
+        $this->assertTrue($user->hasRole('ROLE_ADMIN'));
+        $this->assertTrue($maniputlator->removeRole($username, 'ROLE_ADMIN'));
+        $this->assertFalse($maniputlator->removeRole($username, 'ROLE_ADMIN'));
+        $this->assertFalse($user->hasRole('ROLE_ADMIN'));
     }
 }

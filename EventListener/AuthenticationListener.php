@@ -23,12 +23,21 @@ class AuthenticationListener implements EventSubscriberInterface
     private $loginManager;
     private $firewallName;
 
+    /**
+     * 
+     * @param LoginManagerInterface $loginManager
+     * @param type $firewallName
+     */
     public function __construct(LoginManagerInterface $loginManager, $firewallName)
     {
         $this->loginManager = $loginManager;
         $this->firewallName = $firewallName;
     }
 
+    /**
+     * 
+     * @return string[]
+     */
     public static function getSubscribedEvents()
     {
         return array(
@@ -38,6 +47,10 @@ class AuthenticationListener implements EventSubscriberInterface
         );
     }
 
+    /**
+     * 
+     * @param FilterUserResponseEvent $event
+     */
     public function authenticate(FilterUserResponseEvent $event)
     {
         if (!$event->getUser()->isEnabled()) {

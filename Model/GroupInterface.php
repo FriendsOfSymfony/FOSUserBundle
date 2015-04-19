@@ -42,7 +42,7 @@ interface GroupInterface
     public function hasRole($role);
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getRoles();
 

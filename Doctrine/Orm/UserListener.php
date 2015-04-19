@@ -24,6 +24,10 @@ use FOS\UserBundle\Doctrine\AbstractUserListener;
  */
 class UserListener extends AbstractUserListener
 {
+    /**
+     * 
+     * @return string[]
+     */
     public function getSubscribedEvents()
     {
         return array(
@@ -38,9 +42,10 @@ class UserListener extends AbstractUserListener
     public function prePersist($args)
     {
         $object = $args->getEntity();
-        if ($object instanceof UserInterface) {
-            $this->updateUserFields($object);
+        if (!$object instanceof UserInterface) {
+            return;
         }
+        $this->updateUserFields($object);
     }
 
     /**
@@ -49,14 +54,16 @@ class UserListener extends AbstractUserListener
     public function preUpdate($args)
     {
         $object = $args->getEntity();
-        if ($object instanceof UserInterface) {
-            $this->updateUserFields($object);
-            // We are doing a update, so we must force Doctrine to update the
-            // changeset in case we changed something above
-            $em   = $args->getEntityManager();
-            $uow  = $em->getUnitOfWork();
-            $meta = $em->getClassMetadata(get_class($object));
-            $uow->recomputeSingleEntityChangeSet($meta, $object);
+        if (!$object instanceof UserInterface) {
+            return;
         }
+
+        $this->updateUserFields($object);
+        // We are doing a update, so we must force Doctrine to update the
+        // changeset in case we changed something above
+        $em   = $args->getEntityManager();
+        $uow  = $em->getUnitOfWork();
+        $meta = $em->getClassMetadata(get_class($object));
+        $uow->recomputeSingleEntityChangeSet($meta, $object);
     }
 }

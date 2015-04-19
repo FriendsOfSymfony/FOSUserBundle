@@ -27,21 +27,55 @@ use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterfa
  */
 class LoginManager implements LoginManagerInterface
 {
+    /**
+     *
+     * @var SecurityContextInterface
+     */
     private $securityContext;
+    
+    /**
+     *
+     * @var UserCheckerInterface
+     */
     private $userChecker;
+    
+    /**
+     *
+     * @var SessionAuthenticationStrategyInterface
+     */
     private $sessionStrategy;
+    
+    /**
+     *
+     * @var ContainerInterface
+     */
     private $container;
 
-    public function __construct(SecurityContextInterface $context, UserCheckerInterface $userChecker,
-                                SessionAuthenticationStrategyInterface $sessionStrategy,
-                                ContainerInterface $container)
-    {
+    /**
+     * 
+     * @param SecurityContextInterface $context
+     * @param UserCheckerInterface $userChecker
+     * @param SessionAuthenticationStrategyInterface $sessionStrategy
+     * @param ContainerInterface $container
+     */
+    public function __construct(
+            SecurityContextInterface $context, 
+            UserCheckerInterface $userChecker,
+            SessionAuthenticationStrategyInterface $sessionStrategy,
+            ContainerInterface $container
+    ) {
         $this->securityContext = $context;
         $this->userChecker = $userChecker;
         $this->sessionStrategy = $sessionStrategy;
         $this->container = $container;
     }
 
+    /**
+     * 
+     * @param string $firewallName
+     * @param UserInterface $user
+     * @param Response $response
+     */
     final public function loginUser($firewallName, UserInterface $user, Response $response = null)
     {
         $this->userChecker->checkPostAuth($user);
@@ -68,6 +102,13 @@ class LoginManager implements LoginManagerInterface
         $this->securityContext->setToken($token);
     }
 
+    /**
+     * 
+     * @param string $firewall
+     * @param UserInterface $user
+     * 
+     * @return UsernamePasswordToken
+     */
     protected function createToken($firewall, UserInterface $user)
     {
         return new UsernamePasswordToken($user, null, $firewall, $user->getRoles());

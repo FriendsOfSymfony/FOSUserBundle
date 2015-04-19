@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 class TokenGenerator implements TokenGeneratorInterface
 {
     private $logger;
-    private $useOpenSsl;
+    private $useOpenSsl = true;
 
     public function __construct(LoggerInterface $logger = null)
     {
@@ -24,15 +24,25 @@ class TokenGenerator implements TokenGeneratorInterface
 
         // determine whether to use OpenSSL
         if (defined('PHP_WINDOWS_VERSION_BUILD') && version_compare(PHP_VERSION, '5.3.4', '<')) {
-            $this->useOpenSsl = false;
-        } elseif (!function_exists('openssl_random_pseudo_bytes')) {
-            if (null !== $this->logger) {
-                $this->logger->notice('It is recommended that you enable the "openssl" extension for random number generation.');
-            }
-            $this->useOpenSsl = false;
-        } else {
-            $this->useOpenSsl = true;
+            return $this->useOpenSsl = false;
         }
+
+        if (function_exists('openssl_random_pseudo_bytes')) {
+            return;
+        }
+        
+        if (null !== $this->logger) {
+            $this->logger->notice('It is recommended that you enable the "openssl" extension for random number generation.');
+        }
+        $this->useOpenSsl = false;
+    }
+    
+    /**
+     * Allows manaul disabling of OpenSSL (primarily for testing)
+     */
+    public function disableOpenSsl()
+    {
+        $this->useOpenSsl = false;
     }
 
     public function generateToken()
