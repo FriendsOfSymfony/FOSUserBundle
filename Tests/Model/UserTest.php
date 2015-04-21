@@ -78,6 +78,15 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($user->hasRole($newrole));
     }
 
+    public function testExpiresAtIsNullable()
+    {
+        $user = $this->getUser();
+        $user->setExpiresAt(new \DateTime());
+        $user->setCredentialsExpireAt(new \DateTime());
+        $user->setExpiresAt(null);
+        $user->setCredentialsExpireAt(null);
+    }
+
     /**
      * @return User
      */
