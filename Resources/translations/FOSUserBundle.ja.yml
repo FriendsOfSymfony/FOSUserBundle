@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": ユーザ名またはパスワードが間違っています
+"Bad credentials.": ユーザ名またはパスワードが間違っています
 
 security:
     login:

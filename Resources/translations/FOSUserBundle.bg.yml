@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Невалидно потребителско име или парола
+"Bad credentials.": Невалидно потребителско име или парола
 
 security:
     login:

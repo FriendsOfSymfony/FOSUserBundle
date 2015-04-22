@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Nederīgs lietotājvārds vai parole
+"Bad credentials.": Nederīgs lietotājvārds vai parole
 
 security:
     login:

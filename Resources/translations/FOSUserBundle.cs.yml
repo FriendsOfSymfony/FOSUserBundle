@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Neplatné přihlašovací údaje
+"Bad credentials.": Neplatné přihlašovací údaje
 
 security:
     login:

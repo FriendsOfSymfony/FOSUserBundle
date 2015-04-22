@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Napačno uporabniško ime ali geslo
+"Bad credentials.": Napačno uporabniško ime ali geslo
 
 security:
     login:

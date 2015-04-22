@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Gebruikersnaam of wachtwoord ongeldig
+"Bad credentials.": Gebruikersnaam of wachtwoord ongeldig
 
 security:
     login:

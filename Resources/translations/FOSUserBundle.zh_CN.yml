@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": 用户名或密码不正确
+"Bad credentials.": 用户名或密码不正确
 
 security:
     login:
