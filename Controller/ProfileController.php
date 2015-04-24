@@ -38,9 +38,22 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+        return $this->renderShow(array(
             'user' => $user
         ));
+    }
+
+    /**
+     * Renders the profile show template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the profile show template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderShow(array $data)
+    {
+        return $this->render('FOSUserBundle:Profile:show.html.twig', $data);
     }
 
     /**
@@ -90,8 +103,21 @@ class ProfileController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
+        return $this->renderEdit(array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * Renders the profile edit template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the profile edit template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderEdit(array $data)
+    {
+        return $this->render('FOSUserBundle:Profile:edit.html.twig', $data);
     }
 }
