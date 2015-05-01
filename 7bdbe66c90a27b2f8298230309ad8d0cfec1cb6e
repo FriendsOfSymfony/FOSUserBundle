@@ -1,0 +1,51 @@
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-27T22:38:40Z
+
+Oops, didn't see #1815.
+
+@xelaris: Maybe you can pick my test suites to add it on your's?
+
+https://github.com/FriendsOfSymfony/FOSUserBundle/pull/1823/files#diff-b71a7d176c7fe9370c1daaa9cd59de4aR332
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T07:23:05Z
+
+@stloyd
+
+> `methods` is missing.
+
+Methods were not defined on the config before this PR. What methods should I add? Can you please precise it on each comment?
+
+Thanks.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T07:55:38Z
+
+I think the following failed Travis job is not related to my PR: https://travis-ci.org/FriendsOfSymfony/FOSUserBundle/jobs/60293836
+
+Can you restart it?
+
+---------------------------------------------------------------------------
+
+by xelaris at 2015-04-28T19:42:47Z
+
+@Soullivaneuh I'm ok with closing my PR in favor of this one, since it's the easiest way to get the tests you made and the config changes both of us made.
+
+I think the appropriate methods for the four routes mentioned by @stloyd are GET and POST as each of them is rendering a form on GET and handling the submission on POST.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T22:13:10Z
+
+@stloyd routes definition updated following @xelaris suggestions.
+
+It's OK for you?
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-29T08:11:08Z
+
+@stloyd missing methods on security routes are fixed.
