@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-29T17:23:54Z
+
+:+1:
+
+---------------------------------------------------------------------------
+
+by xelaris at 2015-04-30T19:29:29Z
+
+Thanks @stof. I added the `getValue()` call. I didn't notice it, as the `CsrfToken` provides a `__toString()` method, so passing a `CsrfToken` object to the template works as expected.
