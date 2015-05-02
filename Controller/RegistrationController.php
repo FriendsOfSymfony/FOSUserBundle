@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\FormUserErrorEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -68,6 +69,15 @@ class RegistrationController extends Controller
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
+        }
+
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new FormUserErrorEvent($user, $request, $form);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
         }
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(

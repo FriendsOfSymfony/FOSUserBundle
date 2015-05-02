@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\ResettingErrorEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -133,6 +134,15 @@ class ResettingController extends Controller
             $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
+        }
+
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new ResettingErrorEvent($user, $request, $form, $token);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
         }
 
         return $this->render('FOSUserBundle:Resetting:reset.html.twig', array(

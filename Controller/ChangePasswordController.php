@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\FormUserErrorEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -76,8 +77,17 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new FormUserErrorEvent($user, $request, $form);
+            $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+        }
+
         return $this->render('FOSUserBundle:ChangePassword:changePassword.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 }

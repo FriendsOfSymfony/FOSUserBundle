@@ -8,7 +8,9 @@ group:
         submit: Créer le groupe
     flash:
         updated: Le groupe a été mis à jour
+        update_error: Le group n'a pas été mis à jour
         created: Le groupe a été créé
+        create_error: Le groupe n'a pas été créé
         deleted: Le groupe a été supprimé
 
 # Security
@@ -28,12 +30,14 @@ profile:
         submit: Mettre à jour
     flash:
         updated: Le profil a été mis à jour
+        update_error: Le profil n'a pas été mis à jour
 
 # Password change
 change_password:
     submit: Modifier le mot de passe
     flash:
         success: Le mot de passe a été modifié
+        error: Le mot de passe n'a pas été modifié
 
 # Registration
 registration:
@@ -43,6 +47,7 @@ registration:
     submit: Enregistrer
     flash:
         user_created: L'utilisateur a été créé avec succès
+        user_create_error: L'utilisateur n'a pas été créé
     email:
         subject: Bienvenue %username% !
         message: |
@@ -65,6 +70,7 @@ resetting:
         submit: Modifier le mot de passe
     flash:
         success: Le mot de passe a été réinitialisé avec succès
+        error: Le mot de passe n'a pas été réinitialisé
     email:
         subject: Réinitialisation de votre mot de passe
         message: |

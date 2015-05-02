@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\FormGroupErrorEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FilterGroupResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
@@ -97,6 +98,15 @@ class GroupController extends Controller
             return $response;
         }
 
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new FormGroupErrorEvent($group, $request, $form);
+            $dispatcher->dispatch(FOSUserEvents::GROUP_EDIT_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+        }
+
         return $this->render('FOSUserBundle:Group:edit.html.twig', array(
             'form'      => $form->createview(),
             'group_name'  => $group->getName(),
@@ -138,6 +148,15 @@ class GroupController extends Controller
             $dispatcher->dispatch(FOSUserEvents::GROUP_CREATE_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
 
             return $response;
+        }
+
+        if (!$form->isValid() && $form->isSubmitted()) {
+            $event = new FormGroupErrorEvent($group, $request, $form);
+            $dispatcher->dispatch(FOSUserEvents::GROUP_CREATE_ERROR, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
         }
 
         return $this->render('FOSUserBundle:Group:new.html.twig', array(
