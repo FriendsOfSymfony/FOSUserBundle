@@ -1,0 +1,53 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-05-01T08:30:30Z
+
+@jmikola is this change right ?
+
+---------------------------------------------------------------------------
+
+by jmikola at 2015-05-01T16:01:35Z
+
+Per [Basic Mapping: Fields](http://doctrine-mongodb-odm.readthedocs.org/en/latest/reference/basic-mapping.html#fields) documentation:
+
+ * `name` denotes the name of the database field (i.e. BSON document)
+ * `fieldName` denotes the model class property name
+
+If either one is missing, it defaults to the other's value. It's an error if both are undefined. The annotation driver naturally picks up `fieldName` during parsing.
+
+Since the values are the same, I'd simply omit `name` here and stick to using `fieldName`.
+
+On a side note, it would be wise to consider removing the `dropDups` index option (in its own commit or PR, of course). Historically, it could result in unexpected data loss when creating the indexes, and the option has actually be removed entirely in MongoDB 3.0.
+
+---------------------------------------------------------------------------
+
+by peshi at 2015-05-01T16:39:03Z
+
+Currently it is using 'column' instead of 'fieldName' - I suppose it's a paste & copy error from it's ORM equivalent.
+
+I'll create a PR to remove the index dropDups if merged.
+
+---------------------------------------------------------------------------
+
+by jmikola at 2015-05-01T17:20:35Z
+
+> Currently it is using 'column' instead of 'fieldName' - I suppose it's a paste & copy error from it's ORM equivalent.
+
+Sorry if my last comment was TMI. For the record, this PR is functionally correct as-is. I was just clarifying that it was redundant to specify both `name` and `fieldName`, and was advocating removing `name` altogether. As for ORM itself, I'm not sure if it actually required `column`, or if it applies some camelCase to snake_case conversion on `fieldName` (if `column` is omitted) and the bundle just wanted to be explicit.
+
+> I'll create a PR to remove the index dropDups if merged.
+
+Thanks. That would be a great idea.
+
+---------------------------------------------------------------------------
+
+by peshi at 2015-05-01T17:45:31Z
+
+I appreciate TMI, learned two things :)
+
+---------------------------------------------------------------------------
+
+by stof at 2015-05-04T18:20:16Z
+
+@jmikola the default ORM naming strategy is to keep the name as-is. Given that uppercase letters in field names are causing issues with some platforms, we decided to force using snake case for FOSUserBundle tables.
+There is a strategy in the ORM converting to snake case, but it is unfortunately not the default one (it would solve a bunch of issues, but this is a BC break)
