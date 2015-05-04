@@ -1,0 +1,27 @@
+---------------------------------------------------------------------------
+
+by xelaris at 2015-05-02T08:21:09Z
+
+Thanks @xabbuh. The PR has been updated.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-05-02T15:03:11Z
+
+:+1:
+
+@xelaris Are the all concerned listeners updated on this PR?
+
+Thanks.
+
+---------------------------------------------------------------------------
+
+by xelaris at 2015-05-02T15:28:58Z
+
+@Soullivaneuh Yes, the other ones use neither the event name nor the dispatcher.
+
+---------------------------------------------------------------------------
+
+by xelaris at 2015-05-04T14:50:15Z
+
+@stof Done.
