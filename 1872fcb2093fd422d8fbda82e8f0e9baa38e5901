@@ -1,0 +1,73 @@
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T07:32:54Z
+
+Can you please restart Travis jobs?
+
+```
+  [Composer\Downloader\TransportException]
+  Could not authenticate against github.com
+```
+
+I don't understand, I specified `--no-interaction ` option.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T20:41:05Z
+
+@stof I made the needed modifications.
+
+On job [#60436789](https://travis-ci.org/FriendsOfSymfony/FOSUserBundle/jobs/60436789), I got the following error:
+
+```
+ [RuntimeException]
+  Could not scan for classes inside "/home/travis/build/FriendsOfSymfony/FOSU
+  serBundle/vendor/propel/propel1/runtime/lib" which does not appear to be a
+  file nor a folder
+```
+
+Don't know why, any idea?
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-28T22:35:48Z
+
+@stof done. Ready for merge. :+1:
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-30T13:48:41Z
+
+Another error:
+
+```
+[Composer\Downloader\TransportException]
+  Could not authenticate against github.com
+```
+
+But `--no-interaction` option is specified.
+
+---------------------------------------------------------------------------
+
+by stof at 2015-04-30T13:57:43Z
+
+Composer should fallback to the source install before failing when it cannot authenticate against github.com to avoid the rate limiting.
+I think the issue here is that you also cache the ``vendor`` folder, and so there is already an installed package from dist and so it only accepts another dist when updating. I suggest to cache only the composer cache, not the vendor folder.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-30T14:03:25Z
+
+Yes I agree. Having this kind of issue on my projects too.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-04-30T14:04:36Z
+
+@stof Done.
+
+---------------------------------------------------------------------------
+
+by Soullivaneuh at 2015-05-01T09:56:41Z
+
+@stof Configuration updated and working.
