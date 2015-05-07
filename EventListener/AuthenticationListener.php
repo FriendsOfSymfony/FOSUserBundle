@@ -41,10 +41,6 @@ class AuthenticationListener implements EventSubscriberInterface
 
     public function authenticate(FilterUserResponseEvent $event, $eventName = null, EventDispatcherInterface $eventDispatcher = null)
     {
-        if (!$event->getUser()->isEnabled()) {
-            //return;
-        }
- 
         // BC for SF < 2.4
         if (null === $eventDispatcher) {
             $eventDispatcher = $event->getDispatcher();
