@@ -133,7 +133,7 @@ fos_user:
 {% autoescape false %}
 Hello {{ user.username }} !
 
-You can reset your email by accessing {{ confirmationUrl }}
+You can reset your password by accessing {{ confirmationUrl }}
 
 Greetings,
 the Acme team

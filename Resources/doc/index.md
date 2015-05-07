@@ -184,6 +184,45 @@ Acme\UserBundle\Entity\User:
                 strategy: AUTO
 ```
 
+##### xml
+
+If you use xml to configure Doctrine you must add two files. The Entity and the orm.xml:
+
+```php
+<?php
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Acme\UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+
+/**
+ * User
+ */
+class User extends BaseUser
+{
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- src/Acme/UserBundle/Resources/config/doctrine/User.orm.xml -->
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Acme\UserBundle\Entity\User" table="fos_user">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+    </entity>
+</doctrine-mapping>
+```
+
 #### b) MongoDB User class
 
 If you're persisting your users via the Doctrine MongoDB ODM, then your `User`
@@ -288,7 +327,7 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
+                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
             logout:       true
             anonymous:    true
 

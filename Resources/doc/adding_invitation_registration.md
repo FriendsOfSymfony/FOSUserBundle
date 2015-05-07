@@ -315,4 +315,4 @@ fos_user:
             type: acme_user_registration
 ```
 
-Your done, go to your registration form to see the result.
+You are done, go to your registration form to see the result.

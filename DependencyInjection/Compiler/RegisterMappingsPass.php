@@ -14,7 +14,6 @@ namespace FOS\UserBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
  * Forward compatibility class in case FOSUserBundle is used with older
@@ -72,7 +71,7 @@ class RegisterMappingsPass implements CompilerPassInterface
             }
         }
 
-        throw new ParameterNotFoundException('None of the managerParameters resulted in a valid name');
+        throw new \InvalidArgumentException('None of the managerParameters resulted in a valid name.');
     }
 
     public static function createOrmMappingDriver(array $mappings)

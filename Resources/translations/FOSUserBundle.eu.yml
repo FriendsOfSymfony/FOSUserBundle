@@ -1,0 +1,96 @@
+# Group
+group:
+    edit:
+        submit: Talde eguneratu
+    show:
+        name: Taldearen izena
+    new:
+        submit: Taldea sortu
+    flash:
+        updated: Taldea eguneratua izan da
+        created: Taldea sortua izan da
+        deleted: Taldea ezabatua izan da
+
+# Security
+security:
+    login:
+        username: "Erabiltzaile izena:"
+        username_email: "Erabiltzaile izena edo e-posta:"
+        email: "E-posta:"
+        password: "Pasahitza:"
+        remember_me: Oroitu
+        submit: Sartu
+
+# Profile
+profile:
+    show:
+        username: Erabiltzaile izena
+        email: E-posta
+    edit:
+        submit: Erabiltzailea eguneratu
+    flash:
+        updated: Perfila eguneratua izan da
+
+# Password change
+change_password:
+    submit: Pasahitza aldatu
+    flash:
+        success: Pasahitz ongi eguneratu da
+
+# Registration
+registration:
+    check_email: E-posta bat bidali da %email% helbidera. Kontua aktibatzeko klik egin beharreko esteka zehazten da.
+    confirmed: Zorionak %username%, zure kontua aktibatua dago.
+    back: Itzuli.
+    submit: Izena eman
+    flash:
+        user_created: Erabiltzailea ongi sortu da
+    email:
+        subject: Ongi etorri %username%!
+        message: |
+            Kaixo %username%!
+
+            Kontuaren balidazioazioarekin jarraitzeko - ireki ondoko orria: %confirmationUrl%
+
+            Adeitasunez,
+            Taldea.
+
+# Password resetting
+resetting:
+    password_already_requested: 24 orduen barruan erabiltzaile honen pasahitza eskatua izan da.
+    check_email: Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.
+    request:
+        invalid_username: %username% erabiltzailea edo E-posta ez da existitzen.
+        username: "Erabiltzaile izena:"
+        submit: Pasahitza berreskuratu
+    reset:
+        submit: Pasahitza aldatu
+    flash:
+        success: Pasahitza ongi aldatu da
+    email:
+        subject: Pasahitza berrezarri
+        message : |
+            Kaixo %username%!
+
+            Pasahitza berrezartzeko egin klik esteka honetan: %confirmationUrl%
+
+            Adeitasunez,
+            Taldea.
+
+# Global strings
+layout:
+    logout: Irten
+    login: Sartu
+    register: Izena eman
+    logged_in_as: %username% bezala konektatua
+
+# Form field labels
+form:
+    group_name: "Taldearen izena:"
+    username: "Erabiltzaile izena:"
+    email: "E-posta:"
+    current_password: "Oraingo pasahitza:"
+    password: "Pasahitza:"
+    password_confirmation: "Errepikatu pasahitza:"
+    new_password: "Pasahitz berria:"
+    new_password_confirmation: "Errepikatu pasahitza:"

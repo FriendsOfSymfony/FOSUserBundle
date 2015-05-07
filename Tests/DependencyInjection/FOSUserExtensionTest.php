@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 use Symfony\Component\Yaml\Parser;
 
@@ -292,6 +293,37 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createFullConfiguration();
 
         $this->assertNotHasDefinition('fos_user.listener.flash');
+    }
+
+    /**
+     * @dataProvider userManagerSetFactoryProvider
+     */
+    public function testUserManagerSetFactory($dbDriver, $managerService, $doctrineService)
+    {
+        $this->configuration = new ContainerBuilder();
+        $loader = new FOSUserExtension();
+        $config = $this->getEmptyConfig();
+        $config['db_driver'] = $dbDriver;
+        $loader->load(array($config), $this->configuration);
+
+        $definition = $this->configuration->getDefinition($managerService);
+
+        if (method_exists($definition, 'getFactory')) {
+            $factory = array(new Reference($doctrineService), 'getManager');
+            $this->assertEquals($factory, $definition->getFactory());
+        } else {
+            $this->assertEquals($doctrineService, $definition->getFactoryService());
+            $this->assertEquals('getManager', $definition->getFactoryMethod());
+        }
+    }
+
+    public function userManagerSetFactoryProvider()
+    {
+        return array(
+            array('orm', 'fos_user.entity_manager', 'doctrine'),
+            array('couchdb', 'fos_user.document_manager', 'doctrine_couchdb'),
+            array('mongodb', 'fos_user.document_manager', 'doctrine_mongodb'),
+        );
     }
 
     protected function createEmptyConfiguration()

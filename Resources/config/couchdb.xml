@@ -17,7 +17,7 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.document_manager" factory-service="doctrine_couchdb" factory-method="getManager" class="Doctrine\ODM\CouchDB\DocumentManager" public="false">
+        <service id="fos_user.document_manager" class="Doctrine\ODM\CouchDB\DocumentManager" public="false">
             <argument>%fos_user.model_manager_name%</argument>
         </service>
 

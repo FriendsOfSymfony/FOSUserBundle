@@ -89,6 +89,6 @@ form:
     email: "Email:"
     current_password: "Current password:"
     password: "Password:"
-    password_confirmation: "Verification:"
+    password_confirmation: "Repeat password:"
     new_password: "New password:"
-    new_password_confirmation: "Verification:"
+    new_password_confirmation: "Repeat new password:"

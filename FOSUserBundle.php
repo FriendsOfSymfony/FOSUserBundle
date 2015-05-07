@@ -11,13 +11,13 @@
 
 namespace FOS\UserBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use FOS\UserBundle\DependencyInjection\Compiler\ValidationPass;
-use FOS\UserBundle\DependencyInjection\Compiler\RegisterMappingsPass;
+use Doctrine\Bundle\CouchDBBundle\DependencyInjection\Compiler\DoctrineCouchDBMappingsPass;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
-use Doctrine\Bundle\CouchDBBundle\DependencyInjection\Compiler\DoctrineCouchDBMappingsPass;
+use FOS\UserBundle\DependencyInjection\Compiler\RegisterMappingsPass;
+use FOS\UserBundle\DependencyInjection\Compiler\ValidationPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author Matthieu Bontemps <matthieu@knplabs.com>
@@ -42,7 +42,7 @@ class FOSUserBundle extends Bundle
         $symfonyVersion = class_exists('Symfony\Bridge\Doctrine\DependencyInjection\CompilerPass\RegisterMappingsPass');
 
         $mappings = array(
-            realpath(__DIR__ . '/Resources/config/doctrine/model') => 'FOS\UserBundle\Model',
+            realpath(__DIR__ . '/Resources/config/doctrine-mapping') => 'FOS\UserBundle\Model',
         );
 
         if ($symfonyVersion && class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {

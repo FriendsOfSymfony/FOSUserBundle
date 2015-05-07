@@ -13,7 +13,7 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+        <service id="fos_user.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
             <argument>%fos_user.model_manager_name%</argument>
         </service>
 

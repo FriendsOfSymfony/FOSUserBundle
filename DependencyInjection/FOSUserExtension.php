@@ -15,6 +15,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Config\FileLocator;
 
 class FOSUserExtension extends Extension
@@ -33,9 +34,38 @@ class FOSUserExtension extends Extension
             $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
         }
 
+        if ('custom' !== $config['db_driver'] && 'propel' !== $config['db_driver']) {
+            if ('orm' === $config['db_driver']) {
+                $managerService = 'fos_user.entity_manager';
+                $doctrineService = 'doctrine';
+            } else {
+                $managerService = 'fos_user.document_manager';
+                $doctrineService = sprintf('doctrine_%s', $config['db_driver']);
+            }
+            $definition = $container->getDefinition($managerService);
+            if (method_exists($definition, 'setFactory')) {
+                $definition->setFactory(array(new Reference($doctrineService), 'getManager'));
+            } else {
+                $definition->setFactoryService($doctrineService);
+                $definition->setFactoryMethod('getManager');
+            }
+        }
+
         foreach (array('validator', 'security', 'util', 'mailer', 'listeners') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
         }
+
+        // Set the SecurityContext for Symfony <2.6
+        // Should go back to simple xml configuration after <2.6 support
+        if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
+            $tokenStorageReference = new Reference('security.token_storage');
+        } else {
+            $tokenStorageReference = new Reference('security.context');
+        }
+        $container
+            ->getDefinition('fos_user.security.login_manager')
+            ->replaceArgument(0, $tokenStorageReference)
+        ;
 
         if ($config['use_flash_notifications']) {
             $loader->load('flash_notifications.xml');
@@ -206,5 +236,10 @@ class FOSUserExtension extends Extension
                 }
             }
         }
+    }
+
+    public function getNamespace()
+    {
+        return 'http://friendsofsymfony.github.io/schema/dic/user';
     }
 }

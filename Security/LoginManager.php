@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Security;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -27,16 +28,23 @@ use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterfa
  */
 class LoginManager implements LoginManagerInterface
 {
-    private $securityContext;
+    /**
+     * @var SecurityContextInterface|TokenStorageInterface
+     */
+    private $tokenStorage;
     private $userChecker;
     private $sessionStrategy;
     private $container;
 
-    public function __construct(SecurityContextInterface $context, UserCheckerInterface $userChecker,
+    public function __construct($tokenStorage, UserCheckerInterface $userChecker,
                                 SessionAuthenticationStrategyInterface $sessionStrategy,
                                 ContainerInterface $container)
     {
-        $this->securityContext = $context;
+        if (!$tokenStorage instanceof TokenStorageInterface && !$tokenStorage instanceof SecurityContextInterface) {
+            throw new \InvalidArgumentException('Argument 1 should be an instance of Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface or Symfony\Component\Security\Core\SecurityContextInterface');
+        }
+
+        $this->tokenStorage = $tokenStorage;
         $this->userChecker = $userChecker;
         $this->sessionStrategy = $sessionStrategy;
         $this->container = $container;
@@ -65,7 +73,7 @@ class LoginManager implements LoginManagerInterface
             }
         }
 
-        $this->securityContext->setToken($token);
+        $this->tokenStorage->setToken($token);
     }
 
     protected function createToken($firewall, UserInterface $user)

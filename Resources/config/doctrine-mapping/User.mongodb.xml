@@ -33,18 +33,20 @@
         <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="date" />
 
         <field name="roles" fieldName="roles" type="collection" />
-        
-        <field name="credentialsExpired" column="credentialsExpired" type="boolean" />
 
-        <field name="credentialsExpireAt" column="credentialsExpireAt" type="date" />
+        <field name="credentialsExpired" fieldName="credentialsExpired" type="boolean" />
+
+        <field name="credentialsExpireAt" fieldName="credentialsExpireAt" type="date" />
         <indexes>
-            <index unique="true" dropDups="true">
+            <index>
                 <key name="usernameCanonical" order="asc" />
                 <option name="safe" value="true" />
+                <option name="unique" value="true" />
             </index>
-            <index unique="true" dropDups="true">
+            <index>
                 <key name="emailCanonical" order="asc" />
                 <option name="safe" value="true" />
+                <option name="unique" value="true" />
             </index>
         </indexes>
 

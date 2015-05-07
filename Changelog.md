@@ -9,6 +9,7 @@ Changelog
 * [BC break] The ``FOSUserBundle:Security:login.html.twig`` template now receives an AuthenticationException in the ``error``
   variable rather than an error message.
 * [BC break] The templating engine configuration has been removed, as well as the related code.
+* [BC break] Changed the XML namespace to `http://friendsofsymfony.github.io/schema/dic/user`
 
 ### 2.0.0-alpha1 (2014-09-26)
 
