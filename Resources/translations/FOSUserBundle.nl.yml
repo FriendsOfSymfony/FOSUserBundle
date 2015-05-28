@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Gebruikersnaam:"
-        password: "Wachtwoord:"
+        username: Gebruikersnaam
+        password: Wachtwoord
         remember_me: Onthoud mijn gegevens
         submit: Inloggen
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.
     request:
         invalid_username: De gebruiker "%username%" bestaat niet.
-        username: "Gebruikersnaam of e-mailadres:"
+        username: Gebruikersnaam of e-mailadres
         submit: Reset wachtwoord
     reset:
         submit: Wijzig wachtwoord
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Groep naam:"
-    username: "Gebruikersnaam:"
-    email: "E-mail:"
-    current_password: "Huidig wachtwoord:"
-    password: "Wachtwoord:"
-    password_confirmation: "Wachtwoord controle:"
-    new_password: "Nieuw wachtwoord:"
-    new_password_confirmation: "Wachtwoord controle:"
+    group_name: Groep naam
+    username: Gebruikersnaam
+    email: E-mail
+    current_password: Huidig wachtwoord
+    password: Wachtwoord
+    password_confirmation: Wachtwoord controle
+    new_password: Nieuw wachtwoord
+    new_password_confirmation: Wachtwoord controle

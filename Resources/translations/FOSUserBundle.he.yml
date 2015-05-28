@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "שם משתמש:"
-        password: "סיסמה:"
+        username: שם משתמש
+        password: סיסמה
         remember_me: זכור אותי
         submit: התחבר
 
@@ -59,7 +59,7 @@ resetting:
     check_email: הודעת דוא"ל נשלחה ל-%email%. ההודעה מכילה קישור לאיפוס סיסמה שלך.
     request:
         invalid_username: שם משתמש או דוא"ל "%username%" לא קיים.
-        username: "שם משתמש או דואר אלקטרוני:"
+        username: שם משתמש או דואר אלקטרוני
         submit: איפוס סיסמה
     reset:
         submit: שינוי סיסמה
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "שם קבוצה:"
-    username: "שם משתמש:"
-    email: "דוא\"ל:"
-    current_password: "Current password:"
-    password: "סיסמה:"
-    password_confirmation: "Verification:"
-    new_password: "סיסמה חדשה:"
-    new_password_confirmation: "Verification:"
+    group_name: שם קבוצה
+    username: שם משתמש
+    email: דוא\"ל
+    current_password: Current password
+    password: סיסמה
+    password_confirmation: Verification
+    new_password: סיסמה חדשה
+    new_password_confirmation: Verification

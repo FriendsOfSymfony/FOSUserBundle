@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Имя пользователя:"
-        password: "Пароль:"
+        username: Имя пользователя
+        password: Пароль
         remember_me: Запомнить меня
         submit: Войти
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Письмо на адрес %email% уже отправлено. Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
     request:
         invalid_username: Пользователь "%username%" не существует.
-        username: "Имя пользователя:"
+        username: Имя пользователя
         submit: Сбросить пароль
     reset:
         submit: Изменить пароль
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Название группы:"
-    username: "Имя пользователя:"
-    email: "Электронная почта:"
-    current_password: "Текущий пароль:"
-    password: "Пароль:"
-    password_confirmation: "Подтвердите пароль:"
-    new_password: "Новый пароль:"
-    new_password_confirmation: "Подтвердите пароль:"
+    group_name: Название группы
+    username: Имя пользователя
+    email: Электронная почта
+    current_password: Текущий пароль
+    password: Пароль
+    password_confirmation: Подтвердите пароль
+    new_password: Новый пароль
+    new_password_confirmation: Подтвердите пароль

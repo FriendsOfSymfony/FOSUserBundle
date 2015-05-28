@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Käyttäjätunnus:"
-        password: "Salasana:"
+        username: Käyttäjätunnus
+        password: Salasana
         remember_me: Muista minut
         submit: Kirjaudu
 
@@ -58,7 +58,7 @@ resetting:
     check_email: Sähköposti on lähetetty osoitteeseen %email%. Se sisältää linkin, jota klikkaamalla salasana alustetaan.
     request:
         invalid_username: Käyttäjätunnusta tai sähköpostiosoitetta "%username%" ei löydy järjestelmästä.
-        username: "Käyttäjätunnus tai sähköpostiosoite:"
+        username: Käyttäjätunnus tai sähköpostiosoite
         submit: Alusta salasana
     reset:
         submit: Vaihda salasana
@@ -82,11 +82,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Ryhmän nimi:"
-    username: "Käyttäjätunnus:"
-    email: "Sähköpostiosoite:"
-    current_password: "Nykyinen salasana:"
-    password: "Salasana:"
-    password_confirmation: "Salasana uudestaan:"
-    new_password: "Uusi salasana:"
-    new_password_confirmation: "Salasana uudestaan:"
+    group_name: Ryhmän nimi
+    username: Käyttäjätunnus
+    email: Sähköpostiosoite
+    current_password: Nykyinen salasana
+    password: Salasana
+    password_confirmation: Salasana uudestaan
+    new_password: Uusi salasana
+    new_password_confirmation: Salasana uudestaan

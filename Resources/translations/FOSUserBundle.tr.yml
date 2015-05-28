@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Kullanıcı adı:"
-        password: "Parola:"
+        username: Kullanıcı adı
+        password: Parola
         remember_me: Beni hatırla
         submit: Giriş
 
@@ -60,7 +60,7 @@ resetting:
     check_email: %email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.
     request:
         invalid_username: %username% şeklinde bir kullanıcı adı ya da e-posta adresi bulunamadı.
-        username: "Kullanıcı adı ya da e-posta adresi:"
+        username: Kullanıcı adı ya da e-posta adresi
         submit: Parolayı Sıfırla
     reset:
         submit: Parolayı değiştir
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Gurup Adı:"
-    username: "Kullanıcı adı:"
-    email: "E-posta adresi:"
-    current_password: "Geçerli Parola:"
-    password: "Parola:"
-    password_confirmation: "Onay:"
-    new_password: "Yeni Parola:"
-    new_password_confirmation: "Onay:"
+    group_name: Gurup Adı
+    username: Kullanıcı adı
+    email: E-posta adresi
+    current_password: Geçerli Parola
+    password: Parola
+    password_confirmation: Onay
+    new_password: Yeni Parola
+    new_password_confirmation: Onay

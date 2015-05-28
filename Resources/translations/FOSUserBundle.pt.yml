@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Utilizador:"
-        password: "Password:"
+        username: Utilizador
+        password: Password
         remember_me: Lembrar-me
         submit: Entrar
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Foi enviado um email para %email% com a informação necessária para recuperar a sua password.
     request:
         invalid_username: O username ou email "%username%" não existe.
-        username: "Utilizador:"
+        username: Utilizador
         submit: Recuperar password
     reset:
         submit: Alterar password
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nome do Grupo:"
-    username: "Utilizador:"
-    email: "Email:"
-    current_password: "Password atual:"
-    password: "Password:"
-    password_confirmation: "Verificar:"
-    new_password: "Nova password:"
-    new_password_confirmation: "Verificar:"
+    group_name: Nome do Grupo
+    username: Utilizador
+    email: Email
+    current_password: Password atual
+    password: Password
+    password_confirmation: Verificar
+    new_password: Nova password
+    new_password_confirmation: Verificar

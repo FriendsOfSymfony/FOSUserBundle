@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Brukernavn:"
-        password: "Passord:"
+        username: Brukernavn
+        password: Passord
         remember_me: Husk meg
         submit: Logg inn
 
@@ -59,7 +59,7 @@ resetting:
     check_email: En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.
     request:
         invalid_username: Brukernavnet eller epostadressen "%username%" eksisterer ikke.
-        username: "Brukernavn eller epostadresse:"
+        username: Brukernavn eller epostadresse
         submit: Tilbakestill passord
     reset:
         submit: Endre passord
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Gruppenavn:"
-    username: "Brukernavn:"
-    email: "Epost:"
-    current_password: "Nåværende passord:"
-    password: "Passord:"
-    password_confirmation: "Verifisering:"
-    new_password: "Nytt passord:"
-    new_password_confirmation: "Verifisering:"
+    group_name: Gruppenavn
+    username: Brukernavn
+    email: Epost
+    current_password: Nåværende passord
+    password: Passord
+    password_confirmation: Verifisering
+    new_password: Nytt passord
+    new_password_confirmation: Verifisering

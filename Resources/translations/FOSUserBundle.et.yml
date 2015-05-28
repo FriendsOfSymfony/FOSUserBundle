@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Kasutajanimi:"
-        password: "Salasõna:"
+        username: Kasutajanimi
+        password: Salasõna
         remember_me: Jäta mind meelde
         submit: Sisene
 
@@ -59,7 +59,7 @@ resetting:
     check_email: E-mail on saadetud aadressile %email%. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.
     request:
         #invalid_username: The username or email address "%username%" does not exist.
-        username: "Kasutajanimi:"
+        username: Kasutajanimi
         submit: Saada salasõna
     reset:
         submit: Muuda salasõna
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Grupi nimi:"
-    username: "Kasutajanimi:"
-    email: "E-mail:"
-    current_password: "Vana salasõna:"
-    password: "Salasõna:"
-    password_confirmation: "Salasõna uuesti:"
-    new_password: "Uus salasõna:"
-    new_password_confirmation: "Salasõna uuesti:"
+    group_name: Grupi nimi
+    username: Kasutajanimi
+    email: E-mail
+    current_password: Vana salasõna
+    password: Salasõna
+    password_confirmation: Salasõna uuesti
+    new_password: Uus salasõna
+    new_password_confirmation: Salasõna uuesti

@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "ชื่อผู้ใช้:"
-        password: "รหัสผ่าน:"
+        username: ชื่อผู้ใช้
+        password: รหัสผ่าน
         remember_me: จำการเข้าระบบ
         submit: เข้าระบบ
 
@@ -59,7 +59,7 @@ resetting:
     check_email: ระบบได้ส่งอีเมล์การขอเปลี่ยนรหัสผ่านไปที่ %email% คุณต้องคลิกลิงค์ที่ส่งไปเพื่อทำการเปลี่ยนระหัสผ่าน
     request:
         invalid_username: ชื่อผู้ใช้หรืออีเมล "%username%" ไม่มีอยู่ในระบบ
-        username: "ชื่อผู้ใช้หรืออีเมล์:"
+        username: ชื่อผู้ใช้หรืออีเมล์
         submit: เปลี่ยนรหัสผ่าน
     reset:
         submit: บันทึกการเปลี่ยนแปลงรหัส
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "ชื่อกลุ่ม:"
-    username: "ชื่อเข้าระบบ:"
-    email: "อีเมล์:"
-    current_password: "รหัสผ่านปัจจุบัน:"
-    password: "รหัสผ่าน:"
-    password_confirmation: "ยืนยันรหัสผ่าน:"
-    new_password: "รหัสผ่านใหม่:"
-    new_password_confirmation: "ยืนยันรหัสผ่านใหม่:"
+    group_name: ชื่อกลุ่ม
+    username: ชื่อเข้าระบบ
+    email: อีเมล์
+    current_password: รหัสผ่านปัจจุบัน
+    password: รหัสผ่าน
+    password_confirmation: ยืนยันรหัสผ่าน
+    new_password: รหัสผ่านใหม่
+    new_password_confirmation: ยืนยันรหัสผ่านใหม่

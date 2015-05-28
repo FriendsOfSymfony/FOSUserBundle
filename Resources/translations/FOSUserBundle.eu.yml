@@ -14,10 +14,10 @@ group:
 # Security
 security:
     login:
-        username: "Erabiltzaile izena:"
-        username_email: "Erabiltzaile izena edo e-posta:"
-        email: "E-posta:"
-        password: "Pasahitza:"
+        username: Erabiltzaile izena
+        username_email: Erabiltzaile izena edo e-posta
+        email: E-posta
+        password: Pasahitza
         remember_me: Oroitu
         submit: Sartu
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.
     request:
         invalid_username: %username% erabiltzailea edo E-posta ez da existitzen.
-        username: "Erabiltzaile izena:"
+        username: Erabiltzaile izena
         submit: Pasahitza berreskuratu
     reset:
         submit: Pasahitza aldatu
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Taldearen izena:"
-    username: "Erabiltzaile izena:"
-    email: "E-posta:"
-    current_password: "Oraingo pasahitza:"
-    password: "Pasahitza:"
-    password_confirmation: "Errepikatu pasahitza:"
-    new_password: "Pasahitz berria:"
-    new_password_confirmation: "Errepikatu pasahitza:"
+    group_name: Taldearen izena
+    username: Erabiltzaile izena
+    email: E-posta
+    current_password: Oraingo pasahitza
+    password: Pasahitza
+    password_confirmation: Errepikatu pasahitza
+    new_password: Pasahitz berria
+    new_password_confirmation: Errepikatu pasahitza

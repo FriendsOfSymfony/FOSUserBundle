@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Lietotājvārds:"
-        password: "Parole:"
+        username: Lietotājvārds
+        password: Parole
         remember_me: Atcerēties mani
         submit: Ienākt
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Uz %email% tika nosūtīts e-pasts ar saiti, kurai jāseko, lai atiestatītu paroli.
     request:
         invalid_username: Lietotājs vai e-pasta adrese "%username%" neeksistē.
-        username: "Lietotājvārds vai e-pasta adrese:"
+        username: Lietotājvārds vai e-pasta adrese
         submit: Atiestatīt paroli
     reset:
         submit: Nomainīt paroli
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Grupas nosaukums:"
-    username: "Lietotājvārds:"
-    email: "E-pasts:"
-    current_password: "Esošā parole:"
-    password: "Parole:"
-    password_confirmation: "Atkārtoti:"
-    new_password: "Jaunā parole:"
-    new_password_confirmation: "Atkārtoti:"
+    group_name: Grupas nosaukums
+    username: Lietotājvārds
+    email: E-pasts
+    current_password: Esošā parole
+    password: Parole
+    password_confirmation: Atkārtoti
+    new_password: Jaunā parole
+    new_password_confirmation: Atkārtoti

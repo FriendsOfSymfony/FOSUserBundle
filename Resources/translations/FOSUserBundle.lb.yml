@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Benotzernumm:"
-        password: "Passwuert:"
+        username: Benotzernumm
+        password: Passwuert
         remember_me: U mech erënneren
         submit: Umellen
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.
     request:
         invalid_username: De Benotzer "%username%" existéiert net.
-        username: "Benotzernumm:"
+        username: Benotzernumm
         submit: Passwuert zerécksetzen
     reset:
         submit: Passwuert ännern
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Gruppennumm:"
-    username: "Benotzernumm:"
-    email: "E-Mail-Adress:"
-    current_password: "Aktuellt Passwuert:"
-    password: "Passwuert:"
-    password_confirmation: "Bestätegung:"
-    new_password: "Neit Passwuert:"
-    new_password_confirmation: "Bestätegung:"
+    group_name: Gruppennumm
+    username: Benotzernumm
+    email: E-Mail-Adress
+    current_password: Aktuellt Passwuert
+    password: Passwuert
+    password_confirmation: Bestätegung
+    new_password: Neit Passwuert
+    new_password_confirmation: Bestätegung

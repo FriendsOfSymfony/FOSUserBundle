@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "نام کاربری:"
-        password: "کلمه عبور:"
+        username: نام کاربری
+        password: کلمه عبور
         remember_me: مرا به یاد سپار
         submit: ورود
 
@@ -59,7 +59,7 @@ resetting:
     check_email: ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای بازنشانی کلمه عبور باید روی آن کلیک کنید.
     request:
         invalid_username: نام کاربری یا ایمیل "%username%" موجود نیست.
-        username: "نام کاربری یا ایمیل:"
+        username: نام کاربری یا ایمیل
         submit: بازنشانی کلمه عبور
     reset:
         submit: تغییر کلمه عبور
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "نام گروه:"
-    username: "نام کاربری:"
-    email: "ایمیل:"
-    current_password: "کلمه عبور کنونی:"
-    password: "کلمه عبور:"
-    password_confirmation: "تایید کلمه عبور:"
-    new_password: "کلمه عبور جدید:"
-    new_password_confirmation: "تایید کلمه عبور جدید:"
+    group_name: نام گروه
+    username: نام کاربری
+    email: ایمیل
+    current_password: کلمه عبور کنونی
+    password: کلمه عبور
+    password_confirmation: تایید کلمه عبور
+    new_password: کلمه عبور جدید
+    new_password_confirmation: تایید کلمه عبور جدید

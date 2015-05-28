@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Nama Pengguna:"
-        password: "Password:"
+        username: Nama Pengguna
+        password: Password
         remember_me: Selalu Ingat Saya
         submit: Login
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Email telah dikirim ke %email%. Anda harus mengklik link di dalam email tersebut agar dapat mereset password anda.
     request:
         invalid_username: Nama pengguna atau email "%username%" tidak terdaftar.
-        username: "Nama Pengguna Atau Alamat Email anda:"
+        username: Nama Pengguna Atau Alamat Email anda
         submit: Reset password
     reset:
         submit: Ubah password
@@ -87,11 +87,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nama Grup:"
-    username: "Nama Pengguna:"
-    email: "Email:"
-    current_password: "Password saat ini:"
-    password: "Password:"
-    password_confirmation: "Verifikasi Password:"
-    new_password: "Password Baru:"
-    new_password_confirmation: "Masukkan Ulang Password Baru Anda:"
+    group_name: Nama Grup
+    username: Nama Pengguna
+    email: Email
+    current_password: Password saat ini
+    password: Password
+    password_confirmation: Verifikasi Password
+    new_password: Password Baru
+    new_password_confirmation: Masukkan Ulang Password Baru Anda

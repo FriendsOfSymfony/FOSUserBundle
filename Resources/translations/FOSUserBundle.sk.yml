@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Používateľské meno:"
-        password: "Heslo:"
+        username: Používateľské meno
+        password: Heslo
         remember_me: Zapamätať si
         submit: Prihlásenie
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.
     request:
         invalid_username: Používateľské meno alebo emailová adresa "%username%" neexistuje. Skontrolujte si prosím Vami zadané údaje a skúste znovu.
-        username: "Používateľské meno alebo emailová adresa:"
+        username: Používateľské meno alebo emailová adresa
         submit: Obnova hesla
     reset:
         submit: Zmeniť heslo
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Názov skupiny:"
-    username: "Používateľské meno:"
-    email: "Email:"
-    current_password: "Súčasné heslo:"
-    password: "Heslo:"
-    password_confirmation: "Potvrdenie hesla:"
-    new_password: "Nové heslo:"
-    new_password_confirmation: "Potvrdenie hesla:"
+    group_name: Názov skupiny
+    username: Používateľské meno
+    email: Email
+    current_password: Súčasné heslo
+    password: Heslo
+    password_confirmation: Potvrdenie hesla
+    new_password: Nové heslo
+    new_password_confirmation: Potvrdenie hesla
