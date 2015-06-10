@@ -60,6 +60,7 @@ class SecurityController extends Controller
         }
 
         return $this->renderLogin(array(
+            'request' => $request,
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
