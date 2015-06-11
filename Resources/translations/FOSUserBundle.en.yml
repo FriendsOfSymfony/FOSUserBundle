@@ -56,6 +56,7 @@ registration:
 # Password resetting
 resetting:
     password_already_requested: The password for this user has already been requested within the last 24 hours.
+    user_status_error: Cannot reset the password for this user, because this account is disabled or expired.
     check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
     request:
         invalid_username: The username or email address "%username%" does not exist.

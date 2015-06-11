@@ -51,6 +51,5 @@ class ResettingListener implements EventSubscriberInterface
 
         $user->setConfirmationToken(null);
         $user->setPasswordRequestedAt(null);
-        $user->setEnabled(true);
     }
 }
