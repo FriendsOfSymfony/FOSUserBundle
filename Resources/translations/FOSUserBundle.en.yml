@@ -80,6 +80,7 @@ layout:
     logout: Logout
     login: Login
     register: Register
+    forgot_password: Forgot Password
     logged_in_as: Logged in as %username%
 
 # Form field labels
