@@ -101,6 +101,9 @@ class FOSUserExtension extends Extension
         if ($config['use_username_form_type']) {
             $loader->load('username_form_type.xml');
         }
+        if ($config['use_email_form_type']) {
+            $loader->load('email_form_type.xml');
+        }
 
         $this->remapParametersNamespaces($config, $container, array(
             ''          => array(

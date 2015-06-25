@@ -12,6 +12,7 @@ fos_user:
     use_listener:           true
     use_flash_notifications: true
     use_username_form_type: true
+    use_email_form_type:    true
     model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
     from_email:
         address:        webmaster@example.com
