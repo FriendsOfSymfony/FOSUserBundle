@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Son 24 saat içerisinde bu kullanıcı parola için istekte bulunmuş.'
     check_email: '%email% adresine parolanızı sıfırlama adresi bulunan bir e-posta gönderildi.'
     request:
-        invalid_username: '%username% şeklinde bir kullanıcı adı ya da e-posta adresi bulunamadı.'
         username: 'Kullanıcı adı ya da e-posta adresi'
         submit: 'Parolayı Sıfırla'
     reset:

@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Uma password para este utilizador já foi requisitada nas últimas 24 horas.'
     check_email: 'Foi enviado um email para %email% com a informação necessária para recuperar a sua password.'
     request:
-        invalid_username: 'O username ou email "%username%" não existe.'
         username: Utilizador
         submit: 'Recuperar password'
     reset:

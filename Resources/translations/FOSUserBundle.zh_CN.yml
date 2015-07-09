@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 该用户在过去的24小时内，已经请求过一次找回密码了。
     check_email: 系统向%email%发送了一封包含密码重置链接的邮件，请查收。
     request:
-        invalid_username: 用户名“%username%”不存在
         username: 用户名或邮箱
         submit: 重置密码
     reset:

@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Tälle käyttäjälle on jo pyydetty salasanaa viimeisen 24 tunnin aikana.'
     check_email: 'Sähköposti on lähetetty osoitteeseen %email%. Se sisältää linkin, jota klikkaamalla salasana alustetaan.'
     request:
-        invalid_username: 'Käyttäjätunnusta tai sähköpostiosoitetta "%username%" ei löydy järjestelmästä.'
         username: 'Käyttäjätunnus tai sähköpostiosoite'
         submit: 'Alusta salasana'
     reset:

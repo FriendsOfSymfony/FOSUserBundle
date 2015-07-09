@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Este usuário já solicitou uma senha nas últimas 24 horas.'
     check_email: 'Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.'
     request:
-        invalid_username: 'O usuário ou endereço de email "%username%" não está cadastrado.'
         username: 'Usuário ou email'
         submit: 'Recuperar senha'
     reset:

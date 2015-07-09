@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Parole šim lietotājam jau tikusi pieprasīta pēdējo 24 stundu laikā.'
     check_email: 'Uz %email% tika nosūtīts e-pasts ar saiti, kurai jāseko, lai atiestatītu paroli.'
     request:
-        invalid_username: 'Lietotājs vai e-pasta adrese "%username%" neeksistē.'
         username: 'Lietotājvārds vai e-pasta adrese'
         submit: 'Atiestatīt paroli'
     reset:

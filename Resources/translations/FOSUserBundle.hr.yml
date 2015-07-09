@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'U posljednja 24 sata ste već poslali zahtjev za resetiranjem lozinke.'
     check_email: 'Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.'
     request:
-        invalid_username: 'Korisničko ime "%username%" ne postoji.'
         username: 'Korisničko ime'
         submit: 'Izmijeni lozinku'
     reset:
