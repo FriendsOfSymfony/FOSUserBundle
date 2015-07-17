@@ -19,7 +19,7 @@ security:
         username: "Username:"
         password: "Password:"
         remember_me: Remember me
-        submit: Login
+        submit: Log in
 
 # Profile
 profile:
@@ -79,8 +79,8 @@ resetting:
 
 # Global strings
 layout:
-    logout: Logout
-    login: Login
+    logout: Log out
+    login: Log in
     register: Register
     logged_in_as: Logged in as %username%
 
