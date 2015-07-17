@@ -18,6 +18,7 @@ security:
         password: "Password:"
         remember_me: Remember me
         submit: Login
+        forgot_password: "Forgot your password?"
 
 # Profile
 profile:
@@ -28,6 +29,8 @@ profile:
         submit: Update
     flash:
         updated: The profile has been updated
+    nav:
+        change_password: Change my password
 
 # Password change
 change_password:
@@ -80,6 +83,7 @@ layout:
     logout: Logout
     login: Login
     register: Register
+    edit_profile: Edit my profile
     logged_in_as: Logged in as %username%
 
 # Form field labels

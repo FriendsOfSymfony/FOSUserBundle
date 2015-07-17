@@ -18,6 +18,7 @@ security:
         password: "Mot de passe :"
         remember_me: Se souvenir de moi
         submit: Connexion
+        forgot_password: "Mot de passe oublié ?"
 
 # Profile
 profile:
@@ -28,6 +29,8 @@ profile:
         submit: Mettre à jour
     flash:
         updated: Le profil a été mis à jour
+    nav:
+        change_password: Modifier mon mot de passe
 
 # Password change
 change_password:
@@ -80,6 +83,7 @@ layout:
     logout: Déconnexion
     login: Connexion
     register: Inscription
+    edit_profile: Modifier mon profil
     logged_in_as: Connecté en tant que %username%
 
 # Form field labels

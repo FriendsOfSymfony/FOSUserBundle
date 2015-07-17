@@ -21,4 +21,10 @@
 
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 </form>
+
+<div>
+    <a href="{{ path('fos_user_resetting_request') }}">
+        {{ 'security.login.forgot_password'|trans }}
+    </a>
+</div>
 {% endblock fos_user_content %}
