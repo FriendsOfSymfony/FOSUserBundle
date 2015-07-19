@@ -53,6 +53,7 @@ users.
 - findUserByEmail($email)
 - findUserByUsernameOrEmail($value)  (check if the value looks like an email to choose)
 - findUserByConfirmationToken($token)
+- findUserBy(array('id'=>$id))
 - findUsers()
 
 ## Updating a User object
