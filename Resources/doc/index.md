@@ -146,7 +146,8 @@ class User extends BaseUser
 
 **Note:**
 
-> `User` is a reserved keyword in SQL so you cannot use it as table name.
+> `User` is a reserved keyword in the SQL standard.  
+> If you need to use reserved words, surround them with backticks: ``@ORM\Table(name="`user`")``
 
 ##### yaml
 
