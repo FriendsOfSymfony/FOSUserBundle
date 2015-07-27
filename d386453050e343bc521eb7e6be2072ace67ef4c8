@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-06-25T08:53:22Z
+
+does it also apply for the 1.3.x branch or no ? This is to know whether I should merge this change in 1.3.x or master
+
+---------------------------------------------------------------------------
+
+by DarekTw at 2015-06-25T08:55:42Z
+
+It does apply for 1.3 and master branch.
