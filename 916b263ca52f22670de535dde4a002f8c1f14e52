@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------
+
+by weaverryan at 2015-07-23T12:56:56Z
+
+@xabbuh How do these people find the 2.x docs? My guess is that they just go to the GitHub page and click the first Documentation link that they see. At least now, that says "master", so some people may see that and move down to the second one. This fix would work if we thought most people were finding the 1.x branch on GitHub, and *then* clicking the "master" link accidentally. But that seems unlikely to me.
+
+---------------------------------------------------------------------------
+
+by xabbuh at 2015-07-24T06:46:13Z
+
+@weaverryan With the current solution, users of the 1.3 version would never be able to read the documentation for their version as in the 1.3 branch there is only a link to 1.2 and one to the master version.
