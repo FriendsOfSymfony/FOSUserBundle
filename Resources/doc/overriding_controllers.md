@@ -105,3 +105,11 @@ class RegistrationController extends BaseController
 > and instead extend ContainerAware or the Controller class provided by the FrameworkBundle
 > then you must implement all of the methods of the FOSUserBundle controller that
 > you are overriding.
+
+
+**Note:**
+
+> Method 2:
+> You can override the route definition simple defining your own one after FOSUserBundle
+> has been parsed (EG: define a new 'fos_user_security_login' after fos_user_* in routing.yml)
+> and point your controller which extends default one. Then override the methods you prefer.
