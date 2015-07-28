@@ -28,7 +28,7 @@ bundle named ``AcmeUserBundle`` that declares itself a child of FOSUserBundle.
 
 .. note::
 
-    The Symfony2 framework only allows a bundle to have one child. You cannot
+    The Symfony framework only allows a bundle to have one child. You cannot
     create another bundle that is also a child of FOSUserBundle.
 
 Now that you have created the new child bundle you can simply create a controller class
