@@ -22,25 +22,25 @@ Below is an example configuration for enabling groups support.
 
     .. code-block:: yaml
 
-    # app/config/config.yml
-    fos_user:
-        db_driver: orm
-        firewall_name: main
-        user_class: AppBundle\Entity\User
-        group:
-            group_class: AppBundle\Entity\Group
+        # app/config/config.yml
+        fos_user:
+            db_driver: orm
+            firewall_name: main
+            user_class: AppBundle\Entity\User
+            group:
+                group_class: AppBundle\Entity\Group
 
 
     .. code-block:: xml
 
-    <!-- app/config/config.xml -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        user-class="AppBundle\Entity\User"
-    >
-        <fos_user:group group-class="AppBundle\Entity\Group" />
-    </fos_user:config>
+        <!-- app/config/config.xml -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            user-class="AppBundle\Entity\User"
+        >
+            <fos_user:group group-class="AppBundle\Entity\Group" />
+        </fos_user:config>
 
 The Group class
 ---------------

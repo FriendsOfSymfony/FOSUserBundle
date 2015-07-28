@@ -57,21 +57,19 @@ Composer will install the bundle to your project's ``vendor/friendsofsymfony/use
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel:
+Enable the bundle in the kernel::
 
-``` php
-<?php
-// app/AppKernel.php
+    <?php
+    // app/AppKernel.php
 
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new FOS\UserBundle\FOSUserBundle(),
-        // ...
-    );
-}
-```
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new FOS\UserBundle\FOSUserBundle(),
+            // ...
+        );
+    }
 
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
