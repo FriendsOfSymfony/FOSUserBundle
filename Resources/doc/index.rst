@@ -1,7 +1,7 @@
 Getting Started With FOSUserBundle
 ==================================
 
-The Symfony2 security component provides a flexible security framework that
+The Symfony Security component provides a flexible security framework that
 allows you to load users from configuration, a database, or anywhere else
 you can imagine. The FOSUserBundle builds on top of this to make it quick
 and easy to store users in a database.
@@ -57,21 +57,19 @@ Composer will install the bundle to your project's ``vendor/friendsofsymfony/use
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel:
+Enable the bundle in the kernel::
 
-``` php
-<?php
-// app/AppKernel.php
+    <?php
+    // app/AppKernel.php
 
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new FOS\UserBundle\FOSUserBundle(),
-        // ...
-    );
-}
-```
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new FOS\UserBundle\FOSUserBundle(),
+            // ...
+        );
+    }
 
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,7 +298,7 @@ provider service is ``fos_user.user_provider.username``.
 
 Next, take a look at and examine the ``firewalls`` section. Here we have
 declared a firewall named ``main``. By specifying ``form_login``, you have
-told the Symfony2 framework that any time a request is made to this firewall
+told the Symfony framework that any time a request is made to this firewall
 that leads to the user needing to authenticate himself, the user will be
 redirected to a form where he will be able to enter his credentials. It should
 come as no surprise then that you have specified the user provider service
@@ -311,7 +309,7 @@ authentication process.
 
     Although we have used the form login mechanism in this example, the FOSUserBundle
     user provider service is compatible with many other authentication methods
-    as well. Please read the Symfony2 Security component documentation for
+    as well. Please read the Symfony Security component documentation for
     more information on the other types of authentication methods.
 
 The ``access_control`` section is where you specify the credentials necessary for
@@ -324,7 +322,7 @@ any request matching the ``/login`` pattern or starting with ``/register`` or
 that any request beginning with ``/admin`` will require a user to have the
 ``ROLE_ADMIN`` role.
 
-For more information on configuring the ``security.yml`` file please read the Symfony2
+For more information on configuring the ``security.yml`` file please read the Symfony
 `security component documentation`_.
 
 .. note::

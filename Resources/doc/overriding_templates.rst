@@ -3,7 +3,7 @@ Overriding Default FOSUserBundle Templates
 
 As you start to incorporate FOSUserBundle into your application, you will probably
 find that you need to override the default templates that are provided by
-the bundle. Although the template names are not configurable, the Symfony2
+the bundle. Although the template names are not configurable, the Symfony
 framework provides two ways to override the templates of a bundle.
 
 1. Define a new template of the same name in the ``app/Resources`` directory
@@ -122,7 +122,7 @@ class.
     }
 
 By returning the name of the bundle in the ``getParent`` method of your bundle class,
-you are telling the Symfony2 framework that your bundle is a child of the FOSUserBundle.
+you are telling the Symfony framework that your bundle is a child of the FOSUserBundle.
 
 Now that you have declared your bundle as a child of the FOSUserBundle, you can override
 the parent bundle's templates. To override the layout template, simply create a new file

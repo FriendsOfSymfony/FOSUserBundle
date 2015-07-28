@@ -7,7 +7,7 @@ to all users belonging to it.
 
 .. note::
 
-    Symfony2 supports role inheritance so inheriting roles from groups is
+    Symfony supports role inheritance so inheriting roles from groups is
     not always needed. If the role inheritance is enough for your use case,
     it is better to use it instead of groups as it is more efficient (loading
     the groups triggers the database).
@@ -22,25 +22,25 @@ Below is an example configuration for enabling groups support.
 
     .. code-block:: yaml
 
-    # app/config/config.yml
-    fos_user:
-        db_driver: orm
-        firewall_name: main
-        user_class: AppBundle\Entity\User
-        group:
-            group_class: AppBundle\Entity\Group
+        # app/config/config.yml
+        fos_user:
+            db_driver: orm
+            firewall_name: main
+            user_class: AppBundle\Entity\User
+            group:
+                group_class: AppBundle\Entity\Group
 
 
     .. code-block:: xml
 
-    <!-- app/config/config.xml -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        user-class="AppBundle\Entity\User"
-    >
-        <fos_user:group group-class="AppBundle\Entity\Group" />
-    </fos_user:config>
+        <!-- app/config/config.xml -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            user-class="AppBundle\Entity\User"
+        >
+            <fos_user:group group-class="AppBundle\Entity\Group" />
+        </fos_user:config>
 
 The Group class
 ---------------
