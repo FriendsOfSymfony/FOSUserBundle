@@ -7,7 +7,7 @@ to all users belonging to it.
 
 .. note::
 
-    Symfony2 supports role inheritance so inheriting roles from groups is
+    Symfony supports role inheritance so inheriting roles from groups is
     not always needed. If the role inheritance is enough for your use case,
     it is better to use it instead of groups as it is more efficient (loading
     the groups triggers the database).
