@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\GetResponseNullableUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -46,6 +47,16 @@ class ResettingController extends Controller
 
         /** @var $user UserInterface */
         $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        /* Dispatch init event */
+        $event = new GetResponseNullableUserEvent($request, $user);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
 
         if (null === $user) {
             return $this->render('FOSUserBundle:Resetting:request.html.twig', array(
@@ -63,10 +74,25 @@ class ResettingController extends Controller
             $user->setConfirmationToken($tokenGenerator->generateToken());
         }
 
+        /* Dispatch confirm event */
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
         $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
         $this->get('fos_user.user_manager')->updateUser($user);
 
+
+        /* Dispatch completed event */
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
         return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
             array('email' => $this->getObfuscatedEmail($user))
         ));
