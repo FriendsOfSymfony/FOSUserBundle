@@ -57,9 +57,7 @@ Composer will install the bundle to your project's ``vendor/friendsofsymfony/use
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel:
- 
-.. code-block:: php
+Enable the bundle in the kernel::
    
     <?php
     // app/AppKernel.php
