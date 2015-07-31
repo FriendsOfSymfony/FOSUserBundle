@@ -58,20 +58,20 @@ Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable the bundle in the kernel:
+ 
+.. code-block:: php
+   
+    <?php
+    // app/AppKernel.php
 
-``` php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new FOS\UserBundle\FOSUserBundle(),
-        // ...
-    );
-}
-```
+    public function registerBundles() 
+    {
+        $bundles = array(
+            // ...
+            new FOS\UserBundle\FOSUserBundle(),
+            // ...
+        );
+    }
 
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
