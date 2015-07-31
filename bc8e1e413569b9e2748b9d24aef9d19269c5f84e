@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------
+
+by AkshayBz at 2015-07-31T10:30:57Z
+
+Just had a look at all the documentations, 'configuration-block' directive is used a lot but it isn't rendered on Github.
+That's why I was having a hard time today figuring out the documentation itself :stuck_out_tongue_winking_eye:
+
+---------------------------------------------------------------------------
+
+by sstok at 2015-07-31T11:14:42Z
+
+:+1:
+
+---------------------------------------------------------------------------
+
+by stof at 2015-07-31T13:17:04Z
+
+@AkshayBz this is because the goal of converting the doc to rST is to be able to have it rendered on symfony.com, which is in progress. See the discussion in https://github.com/FriendsOfSymfony/FOSUserBundle/issues/1901
