@@ -54,24 +54,8 @@ Require the bundle with composer:
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
 
-Step 2: Enable the bundle
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel::
-   
-    <?php
-    // app/AppKernel.php
-
-    public function registerBundles() 
-    {
-        $bundles = array(
-            // ...
-            new FOS\UserBundle\FOSUserBundle(),
-            // ...
-        );
-    }
-
-Step 3: Create your User class
+Step 2: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The goal of this bundle is to persist some ``User`` class to a database (MySql,
@@ -250,6 +234,23 @@ another class.
 If you want to add your own fields, you can extend the model class by overriding the database schema.
 Just copy the ``Resources/config/propel/schema.xml`` file to ``app/Resources/FOSUserBundle/config/propel/schema.xml``,
 and customize it to fit your needs.
+
+Step 3: Enable the bundle
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Enable the bundle in the kernel::
+   
+    <?php
+    // app/AppKernel.php
+
+    public function registerBundles() 
+    {
+        $bundles = array(
+            // ...
+            new FOS\UserBundle\FOSUserBundle(),
+            // ...
+        );
+    }
 
 Step 4: Configure your application's security.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
