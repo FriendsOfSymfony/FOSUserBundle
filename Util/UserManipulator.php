@@ -42,10 +42,11 @@ class UserManipulator
      * @param string  $email
      * @param Boolean $active
      * @param Boolean $superadmin
+     * @param array   $userproperties
      *
      * @return \FOS\UserBundle\Model\UserInterface
      */
-    public function create($username, $password, $email, $active, $superadmin)
+    public function create($username, $password, $email, $active, $superadmin, $userproperties = null)
     {
         $user = $this->userManager->createUser();
         $user->setUsername($username);
@@ -53,6 +54,13 @@ class UserManipulator
         $user->setPlainPassword($password);
         $user->setEnabled((Boolean) $active);
         $user->setSuperAdmin((Boolean) $superadmin);
+        if(!is_null($userproperties) && is_array($userproperties) && count($userproperties) > 0) {
+            foreach($userproperties as $method => $value) {
+                if (method_exists($user, $method)) {
+                    $user->{$method}($value);
+                }
+            }
+        }
         $this->userManager->updateUser($user);
 
         return $user;
