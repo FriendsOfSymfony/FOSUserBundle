@@ -143,7 +143,7 @@ The id of the default implementation is ``fos_user.user_manager.default``
     fos_user:
         # ...
         service:
-        user_manager: custom_user_manager_id
+            user_manager: custom_user_manager_id
 
 Your custom implementation can extend ``FOS\UserBundle\Model\UserManager``
 to reuse the common logic.
