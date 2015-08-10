@@ -122,7 +122,7 @@ class.
     }
 
 By returning the name of the bundle in the ``getParent`` method of your bundle class,
-you are telling the Symfony framework that your bundle is a child of the FOSUserBundle.
+you are telling the Symfony Framework that your bundle is a child of the FOSUserBundle.
 
 Now that you have declared your bundle as a child of the FOSUserBundle, you can override
 the parent bundle's templates. To override the layout template, simply create a new file

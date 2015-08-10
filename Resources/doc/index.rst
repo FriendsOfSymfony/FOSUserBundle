@@ -296,7 +296,7 @@ provider service is ``fos_user.user_provider.username``.
 
 Next, take a look at and examine the ``firewalls`` section. Here we have
 declared a firewall named ``main``. By specifying ``form_login``, you have
-told the Symfony framework that any time a request is made to this firewall
+told the Symfony Framework that any time a request is made to this firewall
 that leads to the user needing to authenticate himself, the user will be
 redirected to a form where he will be able to enter his credentials. It should
 come as no surprise then that you have specified the user provider service
