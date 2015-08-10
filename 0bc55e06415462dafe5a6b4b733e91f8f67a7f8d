@@ -1,0 +1,29 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-08-02T18:04:21Z
+
+@javiereguiluz cn you fix the conflicts ?
+
+---------------------------------------------------------------------------
+
+by stof at 2015-08-04T11:44:20Z
+
+@javiereguiluz ping
+
+---------------------------------------------------------------------------
+
+by stof at 2015-08-10T10:30:31Z
+
+@javiereguiluz ping again
+
+---------------------------------------------------------------------------
+
+by javiereguiluz at 2015-08-10T10:43:48Z
+
+Rebased and fixed some issues. There is still a pending comment from @xabbuh which I don't understand.
+
+---------------------------------------------------------------------------
+
+by stof at 2015-08-10T10:51:14Z
+
+I will merge it as is. Once @xabbuh gives more details, a separate PR could be done to fix this.
