@@ -214,7 +214,7 @@ Create the custom data transformer::
             $dql = <<<DQL
     SELECT i
     FROM AppBundle:Invitation i
-    WHERE code = :code
+    WHERE i.code = :code
     AND NOT EXISTS(SELECT 1 FROM AppBundle:User u WHERE u.invitation = i)
     DQL;
 
