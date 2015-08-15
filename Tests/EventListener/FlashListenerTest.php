@@ -32,6 +32,8 @@ class FlashListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddSuccessFlashLegacy()
     {
+        $this->iniSet('error_reporting', E_ALL & ~E_USER_DEPRECATED);
+
         $this->event->setName(FOSUserEvents::CHANGE_PASSWORD_COMPLETED);
 
         $this->listener->addSuccessFlash($this->event);

@@ -43,6 +43,8 @@ class AuthenticationListenerTest extends \PHPUnit_Framework_TestCase
 
     public function testAuthenticateLegacy()
     {
+        $this->iniSet('error_reporting', E_ALL & ~E_USER_DEPRECATED);
+
         $this->event->setDispatcher($this->eventDispatcher);
         $this->event->setName(FOSUserEvents::REGISTRATION_COMPLETED);
 
