@@ -28,7 +28,6 @@ matrix:
   allow_failures:
     - php: hhvm
     - php: nightly
-    - env: SYMFONY_VERSION=2.7.*@dev
     - env: SYMFONY_VERSION=2.8.*@dev
     - env: SYMFONY_VERSION="3.0.x-dev as 2.8"
 
