@@ -70,9 +70,22 @@ class RegistrationController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+        return $this->renderRegister(array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * Renders the register template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the register template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderRegister(array $data)
+    {
+        return $this->render('FOSUserBundle:Registration:register.html.twig', $data);
     }
 
     /**
@@ -88,9 +101,22 @@ class RegistrationController extends Controller
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
+        return $this->renderCheckEmail(array(
             'user' => $user,
         ));
+    }
+
+    /**
+     * Renders the register check email template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the register check email template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderCheckEmail(array $data)
+    {
+        return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', $data);
     }
 
     /**
@@ -138,8 +164,22 @@ class RegistrationController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
+        return $this->renderConfirmed(array(
             'user' => $user,
         ));
     }
+
+    /**
+     * Renders the register confirmed template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the register confirmed template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderConfirmed(array $data)
+    {
+        return $this->render('FOSUserBundle:Registration:confirmed.html.twig', $data);
+    }
+
 }

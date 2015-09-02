@@ -48,13 +48,13 @@ class ResettingController extends Controller
         $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
-            return $this->render('FOSUserBundle:Resetting:request.html.twig', array(
+            return $this->renderRequest(array(
                 'invalid_username' => $username
             ));
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->render('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
+            return $this->renderPasswordAlreadyRequested();
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -73,6 +73,30 @@ class ResettingController extends Controller
     }
 
     /**
+     * Renders the resetting request template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the resetting request template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderRequest(array $data)
+    {
+        return $this->render('FOSUserBundle:Resetting:request.html.twig', $data);
+    }
+
+    /**
+     * Renders the resetting password already requested template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the resetting password already requested  template.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderPasswordAlreadyRequested()
+    {
+        return $this->render('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
+    }
+
+    /**
      * Tell the user to check his email provider
      */
     public function checkEmailAction(Request $request)
@@ -84,9 +108,22 @@ class ResettingController extends Controller
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
-        return $this->render('FOSUserBundle:Resetting:checkEmail.html.twig', array(
+        return $this->renderCheckEmail(array(
             'email' => $email,
         ));
+    }
+
+    /**
+     * Renders the resetting check email template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the resetting check email template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderCheckEmail(array $data)
+    {
+        return $this->render('FOSUserBundle:Resetting:checkEmail.html.twig', $data);
     }
 
     /**
@@ -135,10 +172,23 @@ class ResettingController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Resetting:reset.html.twig', array(
+        return $this->renderRest(array(
             'token' => $token,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * Renders the resetting rest email template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the resetting rest email template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderRest(array $data)
+    {
+        return $this->render('FOSUserBundle:Resetting:reset.html.twig', $data);
     }
 
     /**

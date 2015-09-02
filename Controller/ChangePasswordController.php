@@ -76,8 +76,21 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:ChangePassword:changePassword.html.twig', array(
+        return $this->renderChangePassword(array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * Renders the change password template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the change password template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderChangePassword(array $data)
+    {
+        return $this->render('FOSUserBundle:ChangePassword:changePassword.html.twig', $data);
     }
 }

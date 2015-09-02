@@ -36,9 +36,22 @@ class GroupController extends Controller
     {
         $groups = $this->get('fos_user.group_manager')->findGroups();
 
-        return $this->render('FOSUserBundle:Group:list.html.twig', array(
+        return $this->renderList(array(
             'groups' => $groups
         ));
+    }
+
+    /**
+     * Renders the group list template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the group list template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderList(array $data)
+    {
+        return $this->render('FOSUserBundle:Group:list.html.twig', $data);
     }
 
     /**
@@ -48,9 +61,22 @@ class GroupController extends Controller
     {
         $group = $this->findGroupBy('name', $groupName);
 
-        return $this->render('FOSUserBundle:Group:show.html.twig', array(
+        return $this->renderShow(array(
             'group' => $group
         ));
+    }
+
+    /**
+     * Renders the group show template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the group show template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderShow(array $data)
+    {
+        return $this->render('FOSUserBundle:Group:show.html.twig', $data);
     }
 
     /**
@@ -97,10 +123,23 @@ class GroupController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Group:edit.html.twig', array(
+        return $this->renderEdit(array(
             'form'      => $form->createview(),
             'group_name'  => $group->getName(),
         ));
+    }
+
+    /**
+     * Renders the group edit template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the group edit template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderEdit(array $data)
+    {
+        return $this->render('FOSUserBundle:Group:edit.html.twig', $data);
     }
 
     /**
@@ -140,9 +179,22 @@ class GroupController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Group:new.html.twig', array(
+        return $this->renderNew(array(
             'form' => $form->createview(),
         ));
+    }
+
+    /**
+     * Renders the group new template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the group new template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function renderNew(array $data)
+    {
+        return $this->render('FOSUserBundle:Group:new.html.twig', $data);
     }
 
     /**
