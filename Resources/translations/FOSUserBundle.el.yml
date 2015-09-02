@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Όνομα Χρήστη:"
-        password: "Κωδικός Πρόσβασης:"
+        username: Όνομα Χρήστη
+        password: Κωδικός Πρόσβασης
         remember_me: Να με θυμάσαι
         submit: Είσοδος
 
@@ -58,7 +58,7 @@ resetting:
     check_email: Ένα email στάλθηκε στο %email%. Περιέχει ένα σύνδεσμο για να επαναφέρετε τον κωδικό πρόσβασής σας.
     request:
         invalid_username: Το όνομα χρήστη ή η διεύθυνση ηλεκτρονικού ταχυδρομείου "% username%" δεν υπάρχει.
-        username: "Όνομα χρήστη ή διεύθυνση e-mail:"
+        username: Όνομα χρήστη ή διεύθυνση e-mail
         submit: Επαναφορά του κωδικού πρόσβασης
     reset:
         submit: Αλλαγή κωδικού πρόσβασης
@@ -82,11 +82,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Όνομα ομάδας:"
-    username: "Όνομα Χρήστη:"
-    email: "Email:"
-    current_password: "Τρέχον κωδικός πρόσβασης:"
-    password: "Κωδικός πρόσβασης:"
-    password_confirmation: "Επαλήθευση:"
-    new_password: "Νέος Κωδικός πρόσβασης:"
-    new_password_confirmation: "Επαλήθευση:"
+    group_name: Όνομα ομάδας
+    username: Όνομα Χρήστη
+    email: Email
+    current_password: Τρέχον κωδικός πρόσβασης
+    password: Κωδικός πρόσβασης
+    password_confirmation: Επαλήθευση
+    new_password: Νέος Κωδικός πρόσβασης
+    new_password_confirmation: Επαλήθευση

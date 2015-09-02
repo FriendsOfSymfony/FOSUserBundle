@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Ім'я користувача:"
-        password: "Пароль:"
+        username: Ім'я користувача
+        password: Пароль
         remember_me: "Запам'ятати мене"
         submit: Увійти
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Листа на адресу %email% вже відправлено. Воно містить посилання, при переході за яким Ваш пароль буде скинуто.
     request:
         invalid_username: Користувач "%username%" не існує.
-        username: "Ім'я користувача:"
+        username: Ім'я користувача
         submit: Скинути пароль
     reset:
         submit: Змінити пароль
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Назва групи:"
-    username: "Ім'я користувача:"
-    email: "Електронна адреса:"
-    current_password: "Поточний пароль:"
-    password: "Пароль:"
-    password_confirmation: "Підтвердіть пароль:"
-    new_password: "Новий пароль:"
-    new_password_confirmation: "Підтвердіть пароль:"
+    group_name: Назва групи
+    username: Ім'я користувача
+    email: Електронна адреса
+    current_password: Поточний пароль
+    password: Пароль
+    password_confirmation: Підтвердіть пароль
+    new_password: Новий пароль
+    new_password_confirmation: Підтвердіть пароль

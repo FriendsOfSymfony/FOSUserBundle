@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Uživatelské jméno:"
-        password: "Heslo:"
+        username: Uživatelské jméno
+        password: Heslo
         remember_me: Zapamatovat si
         submit: Přihlásit
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Na adresu %email% byl zaslán e-mail s návodem na nastavení nového hesla. E-mail obsahuje odkaz, na který je nutné kliknout, bez tohoto úkonu není možné nové heslo nastavit.
     request:
         invalid_username: Uživatelské jméno nebo e-mail "%username%" neexistují.
-        username: "Uživatelské jméno nebo e-mail:"
+        username: Uživatelské jméno nebo e-mail
         submit: Nastavit nové heslo
     reset:
         submit: Nastavit nové heslo
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Název skupiny:"
-    username: "Uživatelské jméno:"
-    email: "E-mail:"
-    current_password: "Současné heslo:"
-    password: "Heslo:"
-    password_confirmation: "Potvrzení hesla:"
-    new_password: "Nové heslo:"
-    new_password_confirmation: "Potvrzení hesla:"
+    group_name: Název skupiny
+    username: Uživatelské jméno
+    email: E-mail
+    current_password: Současné heslo
+    password: Heslo
+    password_confirmation: Potvrzení hesla
+    new_password: Nové heslo
+    new_password_confirmation: Potvrzení hesla

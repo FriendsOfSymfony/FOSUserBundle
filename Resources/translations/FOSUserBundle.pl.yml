@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Nazwa użytkownika:"
-        password: "Hasło:"
+        username: Nazwa użytkownika
+        password: Hasło
         remember_me: Nie wylogowuj mnie
         submit: Zaloguj
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Na adres %email% wysłano wiadomość e-mail. Zawiera ona link, w którego należy kliknąć, aby zresetować hasło.
     request:
         invalid_username: Nazwa użytkownika lub e-mail "%username%" nie istnieje.
-        username: "Nazwa użytkownika lub e-mail:"
+        username: Nazwa użytkownika lub e-mail
         submit: Resetuj hasło
     reset:
         submit: Zmień hasło
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nazwa grupy:"
-    username: "Nazwa użytkownika:"
-    email: "E-mail:"
-    current_password: "Obecne hasło:"
-    password: "Hasło:"
-    password_confirmation: "Powtórz hasło:"
-    new_password: "Nowe hasło:"
-    new_password_confirmation: "Powtórz hasło:"
+    group_name: Nazwa grupy
+    username: Nazwa użytkownika
+    email: E-mail
+    current_password: Obecne hasło
+    password: Hasło
+    password_confirmation: Powtórz hasło
+    new_password: Nowe hasło
+    new_password_confirmation: Powtórz hasło

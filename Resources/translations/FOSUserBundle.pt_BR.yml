@@ -14,10 +14,10 @@ group:
 # Security
 security:
     login:
-        username: "Usuário:"
-        username_email: "Usuário ou e-mail:"
-        email: "E-mail:"
-        password: "Senha:"
+        username: Usuário
+        username_email: Usuário ou e-mail
+        email: E-mail
+        password: Senha
         remember_me: Permanecer conectado
         submit: Entrar
 
@@ -61,7 +61,7 @@ resetting:
     check_email: Foi enviado um email para %email%. Para recuperar a sua senha, clique no link da mensagem.
     request:
         invalid_username: O usuário ou endereço de email "%username%" não está cadastrado.
-        username: "Usuário ou email:"
+        username: Usuário ou email
         submit: Recuperar senha
     reset:
         submit: Alterar senha
@@ -86,11 +86,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nome do Grupo:"
-    username: "Usuário:"
-    email: "Email:"
-    current_password: "Senha atual:"
-    password: "Senha:"
-    password_confirmation: "Repita a senha:"
-    new_password: "Nova senha:"
-    new_password_confirmation: "Repita a senha:"
+    group_name: Nome do Grupo
+    username: Usuário
+    email: Email
+    current_password: Senha atual
+    password: Senha
+    password_confirmation: Repita a senha
+    new_password: Nova senha
+    new_password_confirmation: Repita a senha

@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Username:"
-        password: "Password:"
+        username: Username
+        password: Password
         remember_me: Remember me
         submit: Login
 
@@ -59,7 +59,7 @@ resetting:
     check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
     request:
         invalid_username: The username or email address "%username%" does not exist.
-        username: "Username or email address:"
+        username: Username or email address
         submit: Reset password
     reset:
         submit: Change password
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Group name:"
-    username: "Username:"
-    email: "Email:"
-    current_password: "Current password:"
-    password: "Password:"
-    password_confirmation: "Repeat password:"
-    new_password: "New password:"
-    new_password_confirmation: "Repeat new password:"
+    group_name: Group name
+    username: Username
+    email: Email
+    current_password: Current password
+    password: Password
+    password_confirmation: Repeat password
+    new_password: New password
+    new_password_confirmation: Repeat new password

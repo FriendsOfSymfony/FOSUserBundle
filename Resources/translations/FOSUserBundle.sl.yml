@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Uporabniško ime:"
-        password: "Geslo:"
+        username: Uporabniško ime
+        password: Geslo
         remember_me: Zapomni si me
         submit: Prijava
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Na %email% smo vam poslali sporočilo s kodo za spremembo gesla. Geslo boste spremenili po kliku na to povezavo.
     request:
         invalid_username: Uporabnik "%username%" ne obstaja.
-        username: "Uporabniško ime:"
+        username: Uporabniško ime
         submit: Spremeni geslo
     reset:
         submit: Spremeni geslo
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Ime skupine:"
-    username: "Uporabniško ime:"
-    email: "Email:"
-    current_password: "Trenutno geslo:"
-    password: "Geslo:"
-    password_confirmation: "Preverjanje gesla:"
-    new_password: "Novo geslo:"
-    new_password_confirmation: "Preverjanje gesla:"
+    group_name: Ime skupine
+    username: Uporabniško ime
+    email: Email
+    current_password: Trenutno geslo
+    password: Geslo
+    password_confirmation: Preverjanje gesla
+    new_password: Novo geslo
+    new_password_confirmation: Preverjanje gesla

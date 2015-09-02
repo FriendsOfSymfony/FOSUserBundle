@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Nume de utilizator:"
-        password: "Parola:"
+        username: Nume de utilizator
+        password: Parola
         remember_me: Ține-mă minte
         submit: Autentificare
 
@@ -59,7 +59,7 @@ resetting:
     check_email: A fost trimis un email către %email%. Conține un link pe care trebuie să îl accesezi pentru a-ți reseta parola.
     request:
         invalid_username: Numele de utilizator sau adresa de email "%username%" nu există.
-        username: "Numele de utilizator sau adresa de email:"
+        username: Numele de utilizator sau adresa de email
         submit: Resetează parola
     reset:
         submit: Schimbă parola
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Numele grupului:"
-    username: "Nume de utilizator:"
-    email: "Email:"
-    current_password: "Parola curentă:"
-    password: "Parolă:"
-    password_confirmation: "Verificare parolă:"
-    new_password: "Parola nouă:"
-    new_password_confirmation: "Verificare parolă:"
+    group_name: Numele grupului
+    username: Nume de utilizator
+    email: Email
+    current_password: Parola curentă
+    password: Parolă
+    password_confirmation: Verificare parolă
+    new_password: Parola nouă
+    new_password_confirmation: Verificare parolă

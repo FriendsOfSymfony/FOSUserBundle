@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Användarnamn:"
-        password: "Lösenord:"
+        username: Användarnamn
+        password: Lösenord
         remember_me: Kom ihåg mig
         submit: Logga in
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att återställa ditt lösenord.
     request:
         invalid_username: Användarnamnet eller epost-adressen "%username%" finns inte.
-        username: "Användarnamn eller epost-adress:"
+        username: Användarnamn eller epost-adress
         submit: Återställ lösenord
     reset:
         submit: Ändra lösenord
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Gruppnamn:"
-    username: "Användarnamn:"
-    email: "Epost:"
-    current_password: "Nuvarande lösenord:"
-    password: "Lösenord:"
-    password_confirmation: "Verifiering:"
-    new_password: "Nytt lösenord:"
-    new_password_confirmation: "Verifiering:"
+    group_name: Gruppnamn
+    username: Användarnamn
+    email: Epost
+    current_password: Nuvarande lösenord
+    password: Lösenord
+    password_confirmation: Verifiering
+    new_password: Nytt lösenord
+    new_password_confirmation: Verifiering

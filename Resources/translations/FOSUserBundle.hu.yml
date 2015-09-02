@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Felhasználónév:"
-        password: "Jelszó:"
+        username: Felhasználónév
+        password: Jelszó
         remember_me: Megjegyzés
         submit: Belépés
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Egy e-mail lett küldve a(z) %email% címre. Egy linket tartalmaz, amire rá kell kattintani a jeszó lecseréléséhez.
     request:
         invalid_username: A(z) %username% felhasználónév vagy e-mail cím nem létezik.
-        username: "Felhasználónév vagy e-mail cím:"
+        username: Felhasználónév vagy e-mail cím
         submit: Jelszó lecserélése
     reset:
         submit: Jelszó megváltoztatása
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Csoport név:"
-    username: "Felhasználónév:"
-    email: "E-mail:"
-    current_password: "Jelenlegi jelszó:"
-    password: "Jelszó:"
-    password_confirmation: "Megerősítés:"
-    new_password: "Új jelszó:"
-    new_password_confirmation: "Megerősítés:"
+    group_name: Csoport név
+    username: Felhasználónév
+    email: E-mail
+    current_password: Jelenlegi jelszó
+    password: Jelszó
+    password_confirmation: Megerősítés
+    new_password: Új jelszó
+    new_password_confirmation: Megerősítés

@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Nom d'usuari:"
-        password: "Contrasenya:"
+        username: Nom d'usuari
+        password: Contrasenya
         remember_me: Recorda'm
         submit: Entra
 
@@ -59,7 +59,7 @@ resetting:
     check_email: S'ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.
     request:
         invalid_username: El nom d'usuari o correu electrònic "%username%" no existeix.
-        username: "Nom d'usuari o correu electrònic:"
+        username: Nom d'usuari o correu electrònic
         submit: Restableix la contrasenya
     reset:
         submit: Canvia la contrasenya
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Nom del grup:"
-    username: "Nom d'usuari:"
-    email: "Correu electrònic:"
-    current_password: "Contrasenya actual:"
-    password: "Contrasenya:"
-    password_confirmation: "Verificació:"
-    new_password: "Nova contrasenya:"
-    new_password_confirmation: "Verificació:"
+    group_name: Nom del grup
+    username: Nom d'usuari
+    email: Correu electrònic
+    current_password: Contrasenya actual
+    password: Contrasenya
+    password_confirmation: Verificació
+    new_password: Nova contrasenya
+    new_password_confirmation: Verificació

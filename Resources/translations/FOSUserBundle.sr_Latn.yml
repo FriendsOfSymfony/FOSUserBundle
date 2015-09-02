@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "Korisničko ime:"
-        password: "Lozinka:"
+        username: Korisničko ime
+        password: Lozinka
         remember_me: Zapamti me
         submit: Prijavi se
 
@@ -59,7 +59,7 @@ resetting:
     check_email: Poruka je poslata na adresu %email%. Ona sadrži link koji morate kliknuti da bi resetovali Vašu lozinku.
     request:
         invalid_username: Korisničko ime ili adresa e-pošte "%username%" ne postoji.
-        username: "Korisničko ime ili adresa e-pošte:"
+        username: Korisničko ime ili adresa e-pošte
         submit: Resetuj lozinku
     reset:
         submit: Izmeni lozinku
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "Naziv grupe:"
-    username: "Korisničko ime:"
-    email: "Adresa e-pošte:"
-    current_password: "Trenutna lozinka:"
-    password: "Lozinka:"
-    password_confirmation: "Potvrda lozinke:"
-    new_password: "Nova lozinka:"
-    new_password_confirmation: "Potvrda lozinke:"
+    group_name: Naziv grupe
+    username: Korisničko ime
+    email: Adresa e-pošte
+    current_password: Trenutna lozinka
+    password: Lozinka
+    password_confirmation: Potvrda lozinke
+    new_password: Nova lozinka
+    new_password_confirmation: Potvrda lozinke

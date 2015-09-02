@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: "ユーザー名:"
-        password: "パスワード:"
+        username: ユーザー名
+        password: パスワード
         remember_me: ログイン状態を記憶する
         submit: ログイン
 
@@ -59,7 +59,7 @@ resetting:
     check_email: %email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。
     request:
         invalid_username: '"%username%" というユーザー名またはメールアドレスは存在しません。'
-        username: "ユーザー名かメールアドレス:"
+        username: ユーザー名かメールアドレス
         submit: パスワードのリセット
     reset:
         submit: パスワードの変更
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: "グループ名:"
-    username: "ユーザー名:"
-    email: "メールアドレス:"
-    current_password: "現在のパスワード:"
-    password: "パスワード:"
-    password_confirmation: "確認:"
-    new_password: "新しいパスワード:"
-    new_password_confirmation: "確認:"
+    group_name: グループ名
+    username: ユーザー名
+    email: メールアドレス
+    current_password: 現在のパスワード
+    password: パスワード
+    password_confirmation: 確認
+    new_password: 新しいパスワード
+    new_password_confirmation: 確認
