@@ -18,7 +18,6 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
-use FOS\UserBundle\Propel\User as PropelUser;
 
 class UserProvider implements UserProviderInterface
 {
@@ -28,13 +27,19 @@ class UserProvider implements UserProviderInterface
     protected $userManager;
 
     /**
+     * @var Class of propelUser
+     */
+    protected $classPropelUser;
+
+    /**
      * Constructor.
      *
      * @param UserManagerInterface $userManager
      */
-    public function __construct(UserManagerInterface $userManager)
+    public function __construct(UserManagerInterface $userManager, $classPropelUser = 'FOS\UserBundle\Propel\User')
     {
         $this->userManager = $userManager;
+        $this->classPropelUser = $classPropelUser;
     }
 
     /**
@@ -56,7 +61,7 @@ class UserProvider implements UserProviderInterface
      */
     public function refreshUser(SecurityUserInterface $user)
     {
-        if (!$user instanceof User && !$user instanceof PropelUser) {
+        if (!$user instanceof User && !$user instanceof $this->classPropelUser) {
             throw new UnsupportedUserException(sprintf('Expected an instance of FOS\UserBundle\Model\User, but got "%s".', get_class($user)));
         }
 
