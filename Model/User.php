@@ -149,7 +149,11 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Serializes the user.
      *
-     * The serialized data have to contain the fields used by the equals method and the username.
+     * The serialized data have to contain the fields used during check for
+     * changes and the id.
+     *
+     * The check for changes is implemented in
+     * Symfony\Component\Security\Core\Authentication\Token\AbstractToken#hasUserChanged
      *
      * @return string
      */
@@ -165,6 +169,8 @@ abstract class User implements UserInterface, GroupableInterface
             $this->credentialsExpired,
             $this->enabled,
             $this->id,
+            $this->expiresAt,
+            $this->credentialsExpireAt,
         ));
     }
 
@@ -189,7 +195,9 @@ abstract class User implements UserInterface, GroupableInterface
             $this->locked,
             $this->credentialsExpired,
             $this->enabled,
-            $this->id
+            $this->id,
+            $this->expiresAt,
+            $this->credentialsExpireAt
         ) = $data;
     }
 
