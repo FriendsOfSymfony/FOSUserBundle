@@ -14,8 +14,8 @@ group:
 # Security
 security:
     login:
-        username: 用户名：
-        password: 密码：
+        username: 用户名
+        password: 密码
         remember_me: 自动登录
         submit: 登录
 
@@ -84,11 +84,11 @@ layout:
 
 # Form field labels
 form:
-    group_name: 小组名称：
-    username: 用户名：
-    email: 电子邮箱：
-    current_password: 当前密码：
-    password: 密码：
-    password_confirmation: 确认密码：
-    new_password: 新密码：
-    new_password_confirmation: 确认新密码：
+    group_name: 小组名称
+    username: 用户名
+    email: 电子邮箱
+    current_password: 当前密码
+    password: 密码
+    password_confirmation: 确认密码
+    new_password: 新密码
+    new_password_confirmation: 确认新密码
