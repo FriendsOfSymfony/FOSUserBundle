@@ -41,7 +41,9 @@ class AuthenticationListener implements EventSubscriberInterface
 
     public function authenticate(FilterUserResponseEvent $event, $eventName = null, EventDispatcherInterface $eventDispatcher = null)
     {
-        if (!$event->getUser()->isEnabled()) {
+        $user = $event->getUser();
+
+        if (!$user->isEnabled() && !$user->isAccountNonLocked() && !$user->isAccountNonExpired()) {
             return;
         }
 
@@ -51,9 +53,9 @@ class AuthenticationListener implements EventSubscriberInterface
         }
 
         try {
-            $this->loginManager->loginUser($this->firewallName, $event->getUser(), $event->getResponse());
+            $this->loginManager->loginUser($this->firewallName, $user, $event->getResponse());
 
-            $eventDispatcher->dispatch(FOSUserEvents::SECURITY_IMPLICIT_LOGIN, new UserEvent($event->getUser(), $event->getRequest()));
+            $eventDispatcher->dispatch(FOSUserEvents::SECURITY_IMPLICIT_LOGIN, new UserEvent($user, $event->getRequest()));
         } catch (AccountStatusException $ex) {
             // We simply do not authenticate users which do not pass the user
             // checker (not enabled, expired, etc.).
