@@ -70,9 +70,18 @@ class RegistrationController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        if($form->isSubmitted()) {
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
+        }
+
+        if (null === $event || null === $response = $event->getResponse()) {
+            $response = $this->render('FOSUserBundle:Registration:register.html.twig', array(
+                'form' => $form->createView(),
+            ));
+        }
+
+        return $response;
     }
 
     /**

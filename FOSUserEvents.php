@@ -137,6 +137,14 @@ final class FOSUserEvents
     const REGISTRATION_SUCCESS = 'fos_user.registration.success';
 
     /**
+     * The REGISTRATION_FAILURE event occurs when the registration form is not valid
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     */
+    const REGISTRATION_FAILURE = 'fos_user.registration.failure';
+
+    /**
      * The REGISTRATION_COMPLETED event occurs after saving the user in the registration process.
      *
      * This event allows you to access the response which will be sent.
