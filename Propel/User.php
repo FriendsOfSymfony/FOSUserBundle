@@ -47,9 +47,7 @@ class User extends BaseUser implements UserInterface, GroupableInterface
                 $this->username,
                 $this->salt,
                 $this->password,
-                $this->expired,
                 $this->locked,
-                $this->credentials_expired,
                 $this->enabled,
                 $this->_new,
             )
@@ -72,9 +70,7 @@ class User extends BaseUser implements UserInterface, GroupableInterface
             $this->username,
             $this->salt,
             $this->password,
-            $this->expired,
             $this->locked,
-            $this->credentials_expired,
             $this->enabled,
             $this->_new
         ) = $data;
@@ -171,10 +167,6 @@ class User extends BaseUser implements UserInterface, GroupableInterface
      */
     public function isAccountNonExpired()
     {
-        if (true === $this->getExpired()) {
-            return false;
-        }
-
         if (null !== $this->getExpiresAt() && $this->getExpiresAt()->getTimestamp() < time()) {
             return false;
         }
@@ -195,10 +187,6 @@ class User extends BaseUser implements UserInterface, GroupableInterface
      */
     public function isCredentialsNonExpired()
     {
-        if (true === $this->getCredentialsExpired()) {
-            return false;
-        }
-
         if (null !== $this->getCredentialsExpireAt() && $this->getCredentialsExpireAt()->getTimestamp() < time()) {
             return false;
         }

@@ -18,6 +18,7 @@ Changelog
 * [BC break] Removed `UserManager::refreshUser`.
 * [BC break] Removed `UserManager::loadUserByUsername`.
 * [BC break] Removed `UserManager::supportsClass`.
+* [BC break] Removed unused properties `expired` and `credentialsExpired` including corresponding methods.
 * [BC break] The signature of the `Initializer` constructor has changed.
 * [BC break] The signature of the `LoginManager` constructor has changed.
 * [BC break] The signature of the `UserListener` constructor has changed.

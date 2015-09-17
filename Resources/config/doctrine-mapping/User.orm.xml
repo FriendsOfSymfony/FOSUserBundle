@@ -24,8 +24,6 @@
 
         <field name="locked" column="locked" type="boolean" />
 
-        <field name="expired" column="expired" type="boolean" />
-
         <field name="expiresAt" column="expires_at" type="datetime" nullable="true" />
 
         <field name="confirmationToken" column="confirmation_token" type="string" length="180" unique="true" nullable="true" />
@@ -33,8 +31,6 @@
         <field name="passwordRequestedAt" column="password_requested_at" type="datetime" nullable="true" />
 
         <field name="roles" column="roles" type="array" />
-
-        <field name="credentialsExpired" column="credentials_expired" type="boolean" />
 
         <field name="credentialsExpireAt" column="credentials_expire_at" type="datetime" nullable="true" />
 

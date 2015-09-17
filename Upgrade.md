@@ -6,6 +6,16 @@ break. For the full list of changes, please look at the Changelog file.
 
 ## 2.0.0-alpha3 to 2.0.0-alpha4
 
+Methods and properties removed from `FOS\UserBundle\Model\User`
+
+- `$expired`
+- `$credentialsExpired`
+- `setExpired()` (use `setExpireAt(\DateTime::now()` instead)
+- `setCredentialsExpired()` (use `setCredentialsExpireAt(\DateTime::now()` instead)
+
+You need to drop the fields `expired` and `credentials_expired` from your database
+schema, because they aren't mapped anymore.
+
 ### LoginManager
 
 The signature of the LoginManager constructor has changed.
