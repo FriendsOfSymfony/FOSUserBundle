@@ -11,9 +11,6 @@
 
 namespace FOS\UserBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Storage agnostic user object
  *
@@ -88,7 +85,7 @@ abstract class User implements UserInterface, GroupableInterface
     protected $passwordRequestedAt;
 
     /**
-     * @var Collection
+     * @var Array
      */
     protected $groups;
 
@@ -543,11 +540,11 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Gets the groups granted to the user.
      *
-     * @return Collection
+     * @return Array
      */
     public function getGroups()
     {
-        return $this->groups ?: $this->groups = new ArrayCollection();
+        return $this->groups ?: $this->groups = [];
     }
 
     public function getGroupNames()
