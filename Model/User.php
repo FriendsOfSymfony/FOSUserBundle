@@ -11,9 +11,6 @@
 
 namespace FOS\UserBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Storage agnostic user object
  *
@@ -88,7 +85,7 @@ abstract class User implements UserInterface, GroupableInterface
     protected $passwordRequestedAt;
 
     /**
-     * @var Collection
+     * @var Array
      */
     protected $groups;
 
@@ -199,7 +196,7 @@ abstract class User implements UserInterface, GroupableInterface
             $this->credentialsExpireAt,
             $this->email,
             $this->emailCanonical
-        ) = $data;
+            ) = $data;
     }
 
     /**
@@ -429,7 +426,7 @@ abstract class User implements UserInterface, GroupableInterface
 
     public function setEnabled($boolean)
     {
-        $this->enabled = (Boolean) $boolean;
+        $this->enabled = (Boolean)$boolean;
 
         return $this;
     }
@@ -443,7 +440,7 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function setExpired($boolean)
     {
-        $this->expired = (Boolean) $boolean;
+        $this->expired = (Boolean)$boolean;
 
         return $this;
     }
@@ -526,7 +523,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function isPasswordRequestNonExpired($ttl)
     {
         return $this->getPasswordRequestedAt() instanceof \DateTime &&
-               $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+        $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
     public function setRoles(array $roles)
@@ -543,11 +540,11 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * Gets the groups granted to the user.
      *
-     * @return Collection
+     * @return Array
      */
     public function getGroups()
     {
-        return $this->groups ?: $this->groups = new ArrayCollection();
+	return $this->groups ?: $this->groups = array();
     }
 
     public function getGroupNames()
@@ -590,6 +587,6 @@ abstract class User implements UserInterface, GroupableInterface
 
     public function __toString()
     {
-        return (string) $this->getUsername();
+        return (string)$this->getUsername();
     }
 }
