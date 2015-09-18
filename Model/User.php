@@ -544,10 +544,7 @@ abstract class User implements UserInterface, GroupableInterface
      */
     public function getGroups()
     {
-        if (!$this->groups)
-            $this->groups = [];
-
-        return $this->groups;
+	return $this->groups ?: $this->groups = array();
     }
 
     public function getGroupNames()
