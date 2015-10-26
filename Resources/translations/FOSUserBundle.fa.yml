@@ -12,7 +12,7 @@ group:
         deleted: گروه حذف شده است
 
 # Security
-"Bad credentials": نام کاربری یا کلمه عبور غیر مجاز
+"Bad credentials.": نام کاربری یا کلمه عبور غیر مجاز
 
 security:
     login:

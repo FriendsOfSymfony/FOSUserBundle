@@ -12,7 +12,7 @@ group:
         deleted: A csoport törölve
 
 # Security
-"Bad credentials": "Helytelen felhasználónév vagy jelszó"
+"Bad credentials.": "Helytelen felhasználónév vagy jelszó"
 
 security:
     login:
