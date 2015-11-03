@@ -41,10 +41,6 @@ class AuthenticationListener implements EventSubscriberInterface
 
     public function authenticate(FilterUserResponseEvent $event, $eventName = null, EventDispatcherInterface $eventDispatcher = null)
     {
-        if (!$event->getUser()->isEnabled()) {
-            return;
-        }
-
         // BC for SF < 2.4
         if (null === $eventDispatcher) {
             $eventDispatcher = $event->getDispatcher();
@@ -56,7 +52,7 @@ class AuthenticationListener implements EventSubscriberInterface
             $eventDispatcher->dispatch(FOSUserEvents::SECURITY_IMPLICIT_LOGIN, new UserEvent($event->getUser(), $event->getRequest()));
         } catch (AccountStatusException $ex) {
             // We simply do not authenticate users which do not pass the user
-            // checker (not enabled, expired, etc.).
+            // checker checkPreAuth (not enabled, expired, etc.).
         }
     }
 }
