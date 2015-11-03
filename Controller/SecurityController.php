@@ -11,6 +11,8 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Event\LoginErrorEvent;
+use FOS\UserBundle\FOSUserEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
@@ -43,7 +45,15 @@ class SecurityController extends Controller
             $error = null;
         }
 
-        if (!$error instanceof AuthenticationException) {
+        if ($error instanceof AuthenticationException) {
+            $event = new LoginErrorEvent($error, $request);
+
+            $this->get('event_dispatcher')->dispatch(FOSUserEvents::SECURITY_FAILED_LOGIN, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+        } else {
             $error = null; // The value does not come from the security component.
         }
 

@@ -191,4 +191,12 @@ final class FOSUserEvents
      * The event listener method receives a FOS\UserBundle\Event\UserEvent instance.
      */
     const SECURITY_IMPLICIT_LOGIN = 'fos_user.security.implicit_login';
+
+    /**
+     * The SECURITY_FAILED_LOGIN event occurs whenever a login attempt fails.
+     *
+     * The event allows you to access the exception and set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\LoginErrorEvent instance.
+     */
+    const SECURITY_FAILED_LOGIN = 'fos_user.security.failed_login';
 }
