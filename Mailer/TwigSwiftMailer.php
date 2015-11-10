@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\FullNameInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -43,7 +44,8 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url
         );
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
+        $name = $user instanceof FullNameInterface ? $user->getFullName() : null;
+        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail(), $name);
     }
 
     public function sendResettingEmailMessage(UserInterface $user)
@@ -56,7 +58,8 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url
         );
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail());
+        $name = $user instanceof FullNameInterface ? $user->getFullName() : null;
+        $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail(), $name);
     }
 
     /**
@@ -64,8 +67,9 @@ class TwigSwiftMailer implements MailerInterface
      * @param array  $context
      * @param string $fromEmail
      * @param string $toEmail
+     * @param string $name
      */
-    protected function sendMessage($templateName, $context, $fromEmail, $toEmail)
+    protected function sendMessage($templateName, $context, $fromEmail, $toEmail, $name = null)
     {
         $context = $this->twig->mergeGlobals($context);
         $template = $this->twig->loadTemplate($templateName);
@@ -76,7 +80,7 @@ class TwigSwiftMailer implements MailerInterface
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($fromEmail)
-            ->setTo($toEmail);
+            ->setTo($toEmail, $name);
 
         if (!empty($htmlBody)) {
             $message->setBody($htmlBody, 'text/html')
