@@ -57,7 +57,8 @@ class FOSUserExtension extends Extension
 
         // Set the SecurityContext for Symfony <2.6
         // Should go back to simple xml configuration after <2.6 support
-        if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
+        if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')
+            && $container->hasDefinition('security.token_storage')) {
             $tokenStorageReference = new Reference('security.token_storage');
         } else {
             $tokenStorageReference = new Reference('security.context');
