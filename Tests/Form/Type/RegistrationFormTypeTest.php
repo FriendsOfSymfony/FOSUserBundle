@@ -11,7 +11,7 @@ class RegistrationFormTypeTest extends ValidatorExtensionTypeTestCase
     {
         $user = new TestUser();
 
-        $form = $this->factory->create(new RegistrationFormType('FOS\UserBundle\Tests\TestUser'), $user);
+        $form = $this->factory->create(RegistrationFormType::class, $user);
         $formData = array(
             'username'      => 'bar',
             'email'         => 'john@doe.com',

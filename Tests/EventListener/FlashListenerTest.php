@@ -30,13 +30,6 @@ class FlashListenerTest extends \PHPUnit_Framework_TestCase
         $this->listener = new FlashListener($session, $translator);
     }
 
-    public function testAddSuccessFlashLegacy()
-    {
-        $this->event->setName(FOSUserEvents::CHANGE_PASSWORD_COMPLETED);
-
-        $this->listener->addSuccessFlash($this->event);
-    }
-
     public function testAddSuccessFlash()
     {
         $this->listener->addSuccessFlash($this->event, FOSUserEvents::CHANGE_PASSWORD_COMPLETED);

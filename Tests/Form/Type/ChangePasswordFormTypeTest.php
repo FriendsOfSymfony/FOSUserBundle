@@ -12,7 +12,7 @@ class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
         $user = new TestUser();
         $user->setPassword('foo');
 
-        $form = $this->factory->create(new ChangePasswordFormType('FOS\UserBundle\Tests\TestUser'), $user);
+        $form = $this->factory->create(ChangePasswordFormType::class, $user);
         $formData = array(
             'current_password'      => 'foo',
             'plainPassword'         => array(

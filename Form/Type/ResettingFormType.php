@@ -11,10 +11,11 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ResettingFormType extends AbstractType
 {
@@ -23,15 +24,15 @@ class ResettingFormType extends AbstractType
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
+    public function __construct($class = null)
     {
-        $this->class = $class;
+        $this->class = $class ?: UserInterface::class;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('plainPassword', 'repeated', array(
-            'type' => 'password',
+        $builder->add('plainPassword', Type\RepeatedType::class, array(
+            'type' => Type\PasswordType::class,
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => 'form.new_password'),
             'second_options' => array('label' => 'form.new_password_confirmation'),

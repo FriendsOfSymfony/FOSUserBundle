@@ -11,7 +11,7 @@ class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
     {
         $user = new TestUser();
 
-        $form = $this->factory->create(new ResettingFormType('FOS\UserBundle\Tests\TestUser'), $user);
+        $form = $this->factory->create(ResettingFormType::class, $user);
         $formData = array(
             'plainPassword' => array(
                 'first'         => 'test',

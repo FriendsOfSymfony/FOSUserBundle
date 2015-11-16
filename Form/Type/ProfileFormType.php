@@ -11,10 +11,11 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ProfileFormType extends AbstractType
@@ -22,18 +23,18 @@ class ProfileFormType extends AbstractType
     private $class;
 
     /**
-     * @param string $class The User class name
+     * @param string|null $class The User class name
      */
-    public function __construct($class)
+    public function __construct($class = null)
     {
-        $this->class = $class;
+        $this->class = $class ?: UserInterface::class;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->buildUserForm($builder, $options);
 
-        $builder->add('current_password', 'password', array(
+        $builder->add('current_password', Type\PasswordType::class, array(
             'label' => 'form.current_password',
             'translation_domain' => 'FOSUserBundle',
             'mapped' => false,
@@ -47,12 +48,6 @@ class ProfileFormType extends AbstractType
             'data_class' => $this->class,
             'intention'  => 'profile',
         ));
-    }
-
-    // BC for SF < 2.7
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 
     public function getName()
@@ -70,7 +65,7 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', Type\EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
 }
