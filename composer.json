@@ -21,17 +21,17 @@
     ],
     "require": {
         "php": ">=5.3.9",
-        "symfony/framework-bundle": "~2.3",
-        "symfony/twig-bundle": "~2.3",
-        "symfony/form": "~2.3",
-        "symfony/security-bundle": "~2.3"
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/twig-bundle": "~2.3|~3.0",
+        "symfony/form": "~2.3|~3.0",
+        "symfony/security-bundle": "~2.3|~3.0"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "~1.3",
         "swiftmailer/swiftmailer": "~4.3|~5",
         "willdurand/propel-typehintable-behavior": "~1.0",
-        "symfony/yaml": "~2.3",
-        "symfony/validator": "~2.3"
+        "symfony/yaml": "~2.3|~3.0",
+        "symfony/validator": "~2.3|~3.0"
     },
     "suggest": {
         "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
@@ -44,6 +44,8 @@
             "dev-master": "2.0.x-dev"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "support": {
         "docs": "https://symfony.com/doc/master/bundles/FOSUserBundle/index.html"
     }

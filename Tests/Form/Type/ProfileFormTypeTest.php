@@ -11,7 +11,7 @@ class ProfileFormTypeTest extends ValidatorExtensionTypeTestCase
     {
         $user = new TestUser();
 
-        $form = $this->factory->create(new ProfileFormType('FOS\UserBundle\Tests\TestUser'), $user);
+        $form = $this->factory->create(ProfileFormType::class, $user);
         $formData = array(
             'username'      => 'bar',
             'email'         => 'john@doe.com',

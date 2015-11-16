@@ -11,21 +11,21 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Model\GroupInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GroupFormType extends AbstractType
 {
     private $class;
 
     /**
-     * @param string $class The Group class name
+     * @param string|null $class The Group class name
      */
-    public function __construct($class)
+    public function __construct($class = null)
     {
-        $this->class = $class;
+        $this->class = $class ?: GroupInterface::class;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -39,12 +39,6 @@ class GroupFormType extends AbstractType
             'data_class' => $this->class,
             'intention'  => 'group',
         ));
-    }
-
-    // BC for SF < 2.7
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 
     public function getName()

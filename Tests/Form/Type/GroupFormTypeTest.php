@@ -11,7 +11,7 @@ class GroupFormTypeTest extends TypeTestCase
     {
         $group = new TestGroup('foo');
 
-        $form = $this->factory->create(new GroupFormType('FOS\UserBundle\Tests\TestGroup'), $group);
+        $form = $this->factory->create(GroupFormType::class, $group);
         $formData = array(
             'name'      => 'bar',
         );

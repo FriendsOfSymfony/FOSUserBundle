@@ -11,10 +11,11 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ChangePasswordFormType extends AbstractType
@@ -22,23 +23,23 @@ class ChangePasswordFormType extends AbstractType
     private $class;
 
     /**
-     * @param string $class The User class name
+     * @param string|null $class The User class name
      */
-    public function __construct($class)
+    public function __construct($class = null)
     {
-        $this->class = $class;
+        $this->class = $class ?: UserInterface::class;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('current_password', 'password', array(
+        $builder->add('current_password', Type\PasswordType::class, array(
             'label' => 'form.current_password',
             'translation_domain' => 'FOSUserBundle',
             'mapped' => false,
             'constraints' => new UserPassword(),
         ));
-        $builder->add('plainPassword', 'repeated', array(
-            'type' => 'password',
+        $builder->add('plainPassword', Type\RepeatedType::class, array(
+            'type' => Type\PasswordType::class,
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => 'form.new_password'),
             'second_options' => array('label' => 'form.new_password_confirmation'),
@@ -52,12 +53,6 @@ class ChangePasswordFormType extends AbstractType
             'data_class' => $this->class,
             'intention'  => 'change_password',
         ));
-    }
-
-    // BC for SF < 2.7
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
     }
 
     public function getName()
