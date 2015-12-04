@@ -1,0 +1,109 @@
+---------------------------------------------------------------------------
+
+by stof at 2015-11-10T11:09:02Z
+
+See https://github.com/willdurand/BazingaJsTranslationBundle/pull/157 to fix the mistake which made the build pass even though dependencies are missing.
+
+---------------------------------------------------------------------------
+
+by 1ed at 2015-11-22T10:50:22Z
+
+I think it's ready now and it can be reviewed. I'm not sure about how the documentation update was handled, I just wanted to point out the differences. And maybe the tests I added a little too complex (especially the for the LoginManager), but I was not sure how to create functional tests and configure the test environment for them, maybe they can be added later if required. Any comments are welcome! Thanks!
+
+---------------------------------------------------------------------------
+
+by aequasi at 2015-11-30T21:39:23Z
+
+Thanks for your work on this @1ed! Hope it gets merged in soon.
+
+---------------------------------------------------------------------------
+
+by greg606 at 2015-11-30T23:39:40Z
+
+Great work! Thanks from me as well!
+
+---------------------------------------------------------------------------
+
+by iagomelanias at 2015-12-01T00:06:24Z
+
+Could you check this PR? cc @stof @XWB
+
+---------------------------------------------------------------------------
+
+by stof at 2015-12-01T09:03:50Z
+
+@iagomelanias this is on my TODO list, with a high priority. But I'm quite busy this week. I will do my best (if I cannot review it earlier, I will at least do it during the weekend)
+
+---------------------------------------------------------------------------
+
+by 1ed at 2015-12-01T09:35:15Z
+
+Unfortunately there were some last minute changes and deprecations what needs more work
+
+> Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+    Unrecognized option "csrf_provider" under "security.firewalls.main.form_login"
+
+I can look into that later... and maybe writing some functional test would be great too, but I don't really know how to start.
+
+---------------------------------------------------------------------------
+
+by xabbuh at 2015-12-01T11:49:32Z
+
+@1ed The options have been renamed:
+
+> The options "csrf_provider" and "intention" were renamed to "csrf_token_generator" and "csrf_token_id".
+
+see https://github.com/symfony/symfony/blob/2.8/UPGRADE-3.0.md#form
+
+---------------------------------------------------------------------------
+
+by Raistlfiren at 2015-12-01T14:48:54Z
+
+Great job 1ed, keep it up! :)
+
+---------------------------------------------------------------------------
+
+by Raistlfiren at 2015-12-01T21:43:29Z
+
+It does seem as though the Bulgarian translation is also causing problems when clearing cache or using the translation. I received the following error: "A colon cannot be used in an unquoted mapping value."
+
+I corrected the problem by putting the check_email in double quotes:
+
+```yml
+# Registration
+registration:
+    check_email: "Изпратихме писмо с линк за активация на посочения E-mail адрес: %email%. Ако не откривате писмото проверете и в папка СПАМ."
+
+    # Password resetting
+resetting:
+    password_already_requested: Този потребител вече е поискал смяна на парола в последните 24 часа.
+    check_email: "Изпратихме писмо с линк за активация на посочения E-mail адрес: %email%. Ако не откривате писмото проверете и в папка СПАМ."
+    request:
+
+```
+
+Documentation also needs to be changed in the config.yml to use csrf_token_generator instead of csrf_provider in the security.yml under form_login as you already well know.
+
+---------------------------------------------------------------------------
+
+by xabbuh at 2015-12-01T21:55:06Z
+
+@Raistlfiren see symfony/symfony#16784 and symfony/symfony#16788 for the YAML bug
+
+---------------------------------------------------------------------------
+
+by iagomelanias at 2015-12-02T02:15:53Z
+
+Thank you so much @stof :smile:
+
+---------------------------------------------------------------------------
+
+by 1ed at 2015-12-02T23:43:14Z
+
+Thanks for the pointers guys. I've made the changes.
+
+---------------------------------------------------------------------------
+
+by vschoener at 2015-12-03T10:38:55Z
+
+Well done ! @1ed
