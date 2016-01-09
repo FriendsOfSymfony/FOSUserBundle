@@ -12,55 +12,55 @@ group:
 security:
     login:
         username: Brugernavn
-        password: Kodeord
+        password: Adgangskode
         remember_me: 'Husk mig'
         submit: 'Log ind'
 profile:
     show:
         username: Brugernavn
-        email: Email
+        email: E-mail
     edit:
         submit: Opdater
     flash:
         updated: 'Profilen er blevet opdateret'
 change_password:
-    submit: 'Skift kodeord'
+    submit: 'Skift adgangskode'
     flash:
-        success: 'Kodeordet er blevet opdateret'
+        success: 'Adgangskoden er blevet opdateret'
 registration:
-    check_email: 'En email er blevet sendt til %email%. Den indeholder et aktiveringslink du skal bruge for at aktivere din konto.'
+    check_email: 'En e-mail er blevet sendt til %email%. Den indeholder et aktiveringslink, du skal følge for at aktivere din konto.'
     confirmed: 'Tillykke %username%, din konto er nu aktiveret'
     submit: Registrer
     flash:
         user_created: 'Bruger er blevet oprettet'
     email:
         subject: 'Velkommen %username%!'
-        message: "Hej %username%!\n\nFor at færdiggøre valideringen af din konto, besøg venligst %confirmationUrl%\n\nVenlig hilsen,\nHoldet bag siden.\n"
+        message: "Hej %username%!\n\nFor at færdiggøre aktiveringen af din konto, besøg venligst %confirmationUrl%\n\nVenlig hilsen,\nHoldet bag siden.\n"
 resetting:
-    password_already_requested: 'Denne brugers kodeord er allerede blevet nulstillet inden for de sidste 24 timer.'
-    check_email: 'En email er blevet sendt til %email%. Den indeholder et link til at nulstille dit kodeord.'
+    password_already_requested: 'Denne brugers adgangskode er allerede blevet nulstillet inden for de sidste 24 timer.'
+    check_email: 'En e-mail er blevet sendt til %email%. Den indeholder et link, du skal følge for at nulstille din adgangskode.'
     request:
-        invalid_username: 'Brugeren "%username" findes ikke'
-        username: Brugernavn
-        submit: 'Nulstil kodeord'
+        invalid_username: 'Brugernavnet eller e-mailadressen "%username" findes ikke.'
+        username: 'Brugernavn eller e-mailadresse'
+        submit: 'Nulstil adgangskode'
     reset:
-        submit: 'Skift kodeord'
+        submit: 'Skift adgangskode'
     flash:
-        success: 'Kodeordet er blevet nulstillet'
+        success: 'Adgangskoden er blevet nulstillet'
     email:
         subject: 'Velkommen %username%!'
-        message: "Hej %username%!\n\nFor at nulstille dit kodeord, besøg venligst %confirmationUrl%\n\nVenlig hilsen,\nHoldet bag siden.\n"
+        message: "Hej %username%!\n\nFor at nulstille din adgangskode, besøg venligst %confirmationUrl%\n\nVenlig hilsen,\nHoldet bag siden.\n"
 layout:
     logout: 'Log ud'
     login: 'Log ind'
     register: Registrer
     logged_in_as: 'Logget ind som %username%'
 form:
-    group_name: 'Gruppe navn'
+    group_name: Gruppenavn
     username: Brugernavn
-    email: Email
-    current_password: 'Nuværende kodeord'
-    password: Kodeord
-    password_confirmation: 'Gentag kodeord'
-    new_password: 'Nyt kodeord'
-    new_password_confirmation: 'Gentag kodeord'
+    email: E-mail
+    current_password: 'Nuværende adgangskode'
+    password: Adgangskode
+    password_confirmation: 'Gentag adgangskode'
+    new_password: 'Ny adgangskode'
+    new_password_confirmation: 'Gentag adgangskode'
