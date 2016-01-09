@@ -106,7 +106,7 @@ b) MongoDB Group class implementation
 
     namespace MyProject\MyBundle\Document;
 
-    use FOS\UserBundle\Model\Group as BaseGroup;
+    use FOS\UserBundle\Entity\Group as BaseGroup;
     use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
     /**
@@ -129,7 +129,7 @@ c) CouchDB Group class implementation
 
     namespace MyProject\MyBundle\CouchDocument;
 
-    use FOS\UserBundle\Model\Group as BaseGroup;
+    use FOS\UserBundle\Entity\Group as BaseGroup;
     use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
 
     /**
