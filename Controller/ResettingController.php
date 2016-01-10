@@ -79,7 +79,7 @@ class ResettingController extends Controller
         return $this->render(
             'FOSUserBundle:Resetting:checkEmail.html.twig',
             array(
-                'username' => $username,
+                'tokenLifetime' => floor($this->container->getParameter('fos_user.resetting.token_ttl') / 3600),
             )
         );
     }
