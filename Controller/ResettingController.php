@@ -47,10 +47,7 @@ class ResettingController extends Controller
         /** @var $user UserInterface */
         $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
-        if (null !== $user) {
-            if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-                return $this->render('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
-            }
+        if (null !== $user && !$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
 
             if (null === $user->getConfirmationToken()) {
                 /** @var $tokenGenerator \FOS\UserBundle\Util\TokenGeneratorInterface */
@@ -63,8 +60,7 @@ class ResettingController extends Controller
             $this->get('fos_user.user_manager')->updateUser($user);
         }
 
-        return new RedirectResponse(
-            $this->generateUrl('fos_user_resetting_check_email', array('username' => $username))
+        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username))
         );
     }
 
