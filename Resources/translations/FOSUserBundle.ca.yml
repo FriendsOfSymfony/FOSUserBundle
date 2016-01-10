@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'La contrasenya per l''usuari ja ha estat sol·licitada en les últimes 24 hores.'
     check_email: 'S''ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.'
     request:
-        invalid_username: 'El nom d''usuari o correu electrònic "%username%" no existeix.'
         username: 'Nom d''usuari o correu electrònic'
         submit: 'Restableix la contrasenya'
     reset:

@@ -50,9 +50,12 @@ registration:
 
 resetting:
     password_already_requested: 'The password for this user has already been requested within the last 24 hours.'
-    check_email: 'An email has been sent to %email%. It contains a link you must click to reset your password.'
+    check_email: |
+        An email has been sent. It contains a link you must click to reset your password.
+        Note: You can only request a new password within %tokenLifetime% hours.
+
+        If you don't get an email check your spam folder or try again.
     request:
-        invalid_username: 'The username or email address "%username%" does not exist.'
         username: 'Username or email address'
         submit: 'Reset password'
     reset:

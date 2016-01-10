@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'La password per questo utente è già stata richiesta nelle ultime 24 ore.'
     check_email: 'Una email è stata inviata a %email%. Contiene il link d''attivazione che devi utilizzare per il reset della password.'
     request:
-        invalid_username: 'Username o indirizzo email "%username%" non esistente.'
         username: 'Username o indirizzo email'
         submit: 'Password reset'
     reset:

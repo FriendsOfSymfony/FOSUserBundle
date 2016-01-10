@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Az elmúlt 24 órában ehhez a felhasználóhoz már kértek új jelszót.'
     check_email: 'Egy e-mail lett küldve a(z) %email% címre. Egy linket tartalmaz, amire rá kell kattintani a jeszó lecseréléséhez.'
     request:
-        invalid_username: 'A(z) %username% felhasználónév vagy e-mail cím nem létezik.'
         username: 'Felhasználónév vagy e-mail cím'
         submit: 'Jelszó lecserélése'
     reset:

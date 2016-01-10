@@ -46,7 +46,6 @@ resetting:
         success: 'Các mật khẩu đã được thiết lập lại thành công'
     password_already_requested: 'Mật khẩu cho người dùng này đã được yêu cầu trong vòng 24 giờ qua.'
     request:
-        invalid_username: 'Tên người dùng hoặc địa chỉ email "%username%" không tồn tại.'
         submit: 'Thiết lập lại mật khẩu'
         username: 'Tên đăng nhập hoặc địa chỉ email:'
     reset:

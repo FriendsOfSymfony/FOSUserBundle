@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Tento uživatel již zažádal o nastavení nového hesla (během posledních 24 hodin).'
     check_email: 'Na adresu %email% byl zaslán e-mail s návodem na nastavení nového hesla. E-mail obsahuje odkaz, na který je nutné kliknout, bez tohoto úkonu není možné nové heslo nastavit.'
     request:
-        invalid_username: 'Uživatelské jméno nebo e-mail "%username%" neexistují.'
         username: 'Uživatelské jméno nebo e-mail'
         submit: 'Nastavit nové heslo'
     reset:

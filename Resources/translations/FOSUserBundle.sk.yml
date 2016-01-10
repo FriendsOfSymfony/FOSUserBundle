@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Požiadavka na heslo už bola vykonaná za posledných 24 hodín.'
     check_email: 'Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.'
     request:
-        invalid_username: 'Používateľské meno alebo emailová adresa "%username%" neexistuje. Skontrolujte si prosím Vami zadané údaje a skúste znovu.'
         username: 'Používateľské meno alebo emailová adresa'
         submit: 'Obnova hesla'
     reset:
