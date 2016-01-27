@@ -274,6 +274,22 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
+
+    /**
      * Returns the user roles
      *
      * @return array The roles
