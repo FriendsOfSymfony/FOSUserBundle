@@ -108,13 +108,13 @@ class UserListener implements EventSubscriber
         $meta = $om->getClassMetadata(get_class($user));
 
         if ($om instanceof EntityManager) {
-            $om->getUnifOfWork()->recomputeSingleEntityChangeSet($meta, $user);
+            $om->getUnitOfWork()->recomputeSingleEntityChangeSet($meta, $user);
 
             return;
         }
 
         if ($om instanceof DocumentManager) {
-            $om->getUnifOfWork()->recomputeSingleDocumentChangeSet($meta, $user);
+            $om->getUnitOfWork()->recomputeSingleDocumentChangeSet($meta, $user);
         }
     }
 }
