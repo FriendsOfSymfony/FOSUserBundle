@@ -49,7 +49,7 @@ class FOSUserExtension extends Extension
         if ('custom' !== $config['db_driver']) {
             if (isset(self::$doctrineDrivers[$config['db_driver']])) {
                 $loader->load('doctrine.xml');
-                $container->setAlias('fos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry'], false));
+                $container->setAlias('fos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry']));
             } else {
                 $loader->load(sprintf('%s.xml', $config['db_driver']));
             }
