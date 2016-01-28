@@ -35,22 +35,4 @@ interface MailerInterface
      * @return void
      */
     public function sendResettingEmailMessage(UserInterface $user);
-
-    /**
-     * Define the email address used to send confirmation emails from.
-     *
-     * @param string|null $email
-     *
-     * @return void
-     */
-    public function setFromEmailConfirmation($email);
-
-    /**
-     * Define the email address used to send resetting emails from.
-     *
-     * @param string|null $email
-     *
-     * @return void
-     */
-    public function setFromEmailResetting($email);
 }

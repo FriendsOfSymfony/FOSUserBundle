@@ -137,16 +137,21 @@ class FOSUserExtension extends Extension
             $mailer = $config['service']['mailer'];
             $container->setAlias('fos_user.mailer', $mailer);
             $mailerDefinition = $container->getDefinition($mailer);
+            $mailerParams = $mailerDefinition->getArgument(3);
 
             if ($container->hasParameter('fos_user.registration.confirmation.from_email')) {
-                $mailerDefinition->addMethodCall('setFromEmailConfirmation', array($container->getParameter('fos_user.registration.confirmation.from_email')));
+                $mailerParams['from_email']['confirmation'] = $container->getParameter('fos_user.registration.confirmation.from_email');
             }
 
             if ($container->hasParameter('fos_user.resetting.email.from_email')) {
-                $mailerDefinition->addMethodCall('setFromEmailResetting', array($container->getParameter('fos_user.resetting.email.from_email')));
+                $mailerParams['from_email']['resetting'] = $container->getParameter('fos_user.resetting.email.from_email');
             }
-        } else {
+
+            $mailerDefinition->replaceArgument(3, $mailerParams);
+        } elseif ($config['service']['mailer'] == 'fos_user.mailer.default') {
             $container->setAlias('fos_user.mailer', 'fos_user.mailer.noop');
+        } else {
+            $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         }
     }
 

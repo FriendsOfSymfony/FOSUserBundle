@@ -25,16 +25,6 @@ class Mailer implements MailerInterface
     protected $templating;
     protected $parameters;
 
-    /**
-     * @var string|null
-     */
-    protected $fromEmailConfirmation;
-
-    /**
-     * @var string|null
-     */
-    protected $fromEmailResetting;
-
     public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
     {
         $this->mailer = $mailer;
@@ -44,26 +34,14 @@ class Mailer implements MailerInterface
     }
 
     /**
-     * @inheritDoc
-     */
-    public function setFromEmailConfirmation($email)
-    {
-        $this->fromEmailConfirmation = $email;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function setFromEmailResetting($email)
-    {
-        $this->fromEmailResetting = $email;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
+        if (!isset($this->parameters['from_email']['confirmation'])) {
+            return;
+        }
+
         $template = $this->parameters['confirmation.template'];
         $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
         $rendered = $this->templating->render($template, array(
@@ -78,6 +56,10 @@ class Mailer implements MailerInterface
      */
     public function sendResettingEmailMessage(UserInterface $user)
     {
+        if (!isset($this->parameters['from_email']['resetting'])) {
+            return;
+        }
+
         $template = $this->parameters['resetting.template'];
         $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
         $rendered = $this->templating->render($template, array(
