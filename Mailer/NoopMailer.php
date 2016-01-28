@@ -31,4 +31,20 @@ class NoopMailer implements MailerInterface
     {
         // nothing happens.
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailConfirmation($email)
+    {
+        // nothing happens.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailResetting($email)
+    {
+        // nothing happens.
+    }
 }

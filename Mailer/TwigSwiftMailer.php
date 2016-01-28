@@ -24,6 +24,16 @@ class TwigSwiftMailer implements MailerInterface
     protected $twig;
     protected $parameters;
 
+    /**
+     * @var string|null
+     */
+    protected $fromEmailConfirmation;
+
+    /**
+     * @var string|null
+     */
+    protected $fromEmailResetting;
+
     public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, \Twig_Environment $twig, array $parameters)
     {
         $this->mailer = $mailer;
@@ -32,8 +42,28 @@ class TwigSwiftMailer implements MailerInterface
         $this->parameters = $parameters;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailConfirmation($email)
+    {
+        $this->fromEmailConfirmation = $email;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailResetting($email)
+    {
+        $this->fromEmailResetting = $email;
+    }
+
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
+        if (!$this->fromEmailConfirmation) {
+            return;
+        }
+
         $template = $this->parameters['template']['confirmation'];
         $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
 
@@ -42,11 +72,15 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url
         );
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
+        $this->sendMessage($template, $context, $this->fromEmailConfirmation, $user->getEmail());
     }
 
     public function sendResettingEmailMessage(UserInterface $user)
     {
+        if (!$this->fromEmailResetting) {
+            return;
+        }
+
         $template = $this->parameters['template']['resetting'];
         $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
 
@@ -55,7 +89,7 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url
         );
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail());
+        $this->sendMessage($template, $context, $this->fromEmailResetting, $user->getEmail());
     }
 
     /**

@@ -25,12 +25,38 @@ class Mailer implements MailerInterface
     protected $templating;
     protected $parameters;
 
+    /**
+     * @var string|null
+     */
+    protected $fromEmailConfirmation;
+
+    /**
+     * @var string|null
+     */
+    protected $fromEmailResetting;
+
     public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
     {
         $this->mailer = $mailer;
         $this->router = $router;
         $this->templating = $templating;
         $this->parameters = $parameters;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailConfirmation($email)
+    {
+        $this->fromEmailConfirmation = $email;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setFromEmailResetting($email)
+    {
+        $this->fromEmailResetting = $email;
     }
 
     /**
