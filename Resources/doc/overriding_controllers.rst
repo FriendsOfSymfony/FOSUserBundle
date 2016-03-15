@@ -107,7 +107,6 @@ the base controller and adds logging a new user registration to it.
         }
     }
 
-
 .. note::
 
     If you do not extend the FOSUserBundle controller class that you want
