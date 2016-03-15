@@ -87,6 +87,28 @@ the base controller and adds logging a new user registration to it.
             ));
         }
     }
+    
+    
+And finally you need to add your newly created bundle in AppKernel.php
+
+
+.. code-block:: php
+
+    // app/AppKernel.php
+
+    use Symfony\Component\HttpKernel\Kernel;
+    use Symfony\Component\Config\Loader\LoaderInterface;
+
+    class AppKernel extends Kernel
+    {
+        public function registerBundles()
+        {
+            $bundles = array(
+                //..
+                new FOS\UserBundle\FOSUserBundle(),
+                new Acme\UserBundle\AcmeUserBundle(),
+                //..
+
 
 .. note::
 
