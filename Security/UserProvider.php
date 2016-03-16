@@ -76,7 +76,7 @@ class UserProvider implements UserProviderInterface
     {
         $userClass = $this->userManager->getClass();
 
-        return $userClass === $class || is_subclass_of($class, $userClass);
+        return $userClass === $class || is_subclass_of($userClass, $class);
     }
 
     /**
