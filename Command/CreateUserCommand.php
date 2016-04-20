@@ -43,21 +43,21 @@ class CreateUserCommand extends ContainerAwareCommand
             ->setHelp(<<<EOT
 The <info>fos:user:create</info> command creates a user:
 
-  <info>php app/console fos:user:create matthieu</info>
+  <info>php bin/console fos:user:create matthieu</info>
 
 This interactive shell will ask you for an email and then a password.
 
 You can alternatively specify the email and password as the second and third arguments:
 
-  <info>php app/console fos:user:create matthieu matthieu@example.com mypassword</info>
+  <info>php bin/console fos:user:create matthieu matthieu@example.com mypassword</info>
 
 You can create a super admin via the super-admin flag:
 
-  <info>php app/console fos:user:create admin --super-admin</info>
+  <info>php bin/console fos:user:create admin --super-admin</info>
 
 You can create an inactive user (will not be able to log in):
 
-  <info>php app/console fos:user:create thibault --inactive</info>
+  <info>php bin/console fos:user:create thibault --inactive</info>
 
 EOT
             );

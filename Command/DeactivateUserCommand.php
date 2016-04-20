@@ -36,7 +36,7 @@ class DeactivateUserCommand extends ContainerAwareCommand
             ->setHelp(<<<EOT
 The <info>fos:user:deactivate</info> command deactivates a user (will not be able to log in)
 
-  <info>php app/console fos:user:deactivate matthieu</info>
+  <info>php bin/console fos:user:deactivate matthieu</info>
 EOT
             );
     }

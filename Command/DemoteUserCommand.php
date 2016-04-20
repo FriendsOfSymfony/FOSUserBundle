@@ -33,8 +33,8 @@ class DemoteUserCommand extends RoleCommand
             ->setHelp(<<<EOT
 The <info>fos:user:demote</info> command demotes a user by removing a role
 
-  <info>php app/console fos:user:demote matthieu ROLE_CUSTOM</info>
-  <info>php app/console fos:user:demote --super matthieu</info>
+  <info>php bin/console fos:user:demote matthieu ROLE_CUSTOM</info>
+  <info>php bin/console fos:user:demote --super matthieu</info>
 EOT
             );
     }

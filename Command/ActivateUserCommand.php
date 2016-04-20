@@ -36,7 +36,7 @@ class ActivateUserCommand extends ContainerAwareCommand
             ->setHelp(<<<EOT
 The <info>fos:user:activate</info> command activates a user (so they will be able to log in):
 
-  <info>php app/console fos:user:activate matthieu</info>
+  <info>php bin/console fos:user:activate matthieu</info>
 EOT
             );
     }
