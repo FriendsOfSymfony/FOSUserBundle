@@ -29,6 +29,10 @@
         <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
             <argument type="service" id="fos_user.user_manager" />
         </service>
+
+        <service id="fos_user.user_provider.email" class="FOS\UserBundle\Security\EmailProvider" public="false">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
     </services>
 
 </container>
