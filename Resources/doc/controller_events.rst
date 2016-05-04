@@ -19,12 +19,12 @@ to the response before it is returned.
 Controllers with a form also dispatch an ``INITIALIZE`` event after the entity is
 fetched, but before the form is created.
 
-For instance, this listener will change the redirection after the password
+For instance, this subscriber will change the redirection after the password
 resetting to go to the homepage instead of the profile::
 
-    // src/Acme/UserBundle/EventListener/PasswordResettingListener.php
+    // src/Acme/UserBundle/EventListener/PasswordResettingSubscriber.php
 
-    namespace Acme\UserBundle\EventListener;
+    namespace Acme\UserBundle\EventSubscriber;
 
     use FOS\UserBundle\FOSUserEvents;
     use FOS\UserBundle\Event\FormEvent;
@@ -33,9 +33,9 @@ resetting to go to the homepage instead of the profile::
     use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
     /**
-     * Listener responsible to change the redirection at the end of the password resetting
+     * Subscriber responsible to change the redirection at the end of the password resetting
      */
-    class PasswordResettingListener implements EventSubscriberInterface
+    class PasswordResettingSubscriber implements EventSubscriberInterface
     {
         private $router;
 
@@ -62,7 +62,7 @@ resetting to go to the homepage instead of the profile::
         }
     }
 
-You can then register this listener:
+You can then register this subscriber:
 
 .. configuration-block::
 
@@ -71,7 +71,7 @@ You can then register this listener:
         # src/Acme/UserBundle/Resources/config/services.yml
         services:
             acme_user.password_resetting:
-                class: Acme\UserBundle\EventListener\PasswordResettingListener
+                class: Acme\UserBundle\EventSubscriber\PasswordResettingSubscriber
                 arguments: [@router]
                 tags:
                     - { name: kernel.event_subscriber }
@@ -79,7 +79,7 @@ You can then register this listener:
     .. code-block:: xml
 
         <!-- src/Acme/UserBundle/Resources/config/services.xml -->
-        <service id="acme_user.password_resetting" class="Acme\UserBundle\EventListener\PasswordResettingListener">
+        <service id="acme_user.password_resetting" class="Acme\UserBundle\EventSubscriber\PasswordResettingSubscriber">
             <tag name="kernel.event_subscriber"/>
             <argument type="service" id="router"/>
         </service>
