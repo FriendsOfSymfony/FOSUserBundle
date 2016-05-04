@@ -22,7 +22,7 @@ fetched, but before the form is created.
 For instance, this subscriber will change the redirection after the password
 resetting to go to the homepage instead of the profile::
 
-    // src/Acme/UserBundle/EventListener/PasswordResettingSubscriber.php
+    // src/Acme/UserBundle/EventSubscriber/PasswordResettingSubscriber.php
 
     namespace Acme\UserBundle\EventSubscriber;
 
