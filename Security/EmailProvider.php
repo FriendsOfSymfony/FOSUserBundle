@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Security;
 
-class EmailUserProvider extends UserProvider
+class EmailProvider extends UserProvider
 {
     /**
      * {@inheritDoc}
