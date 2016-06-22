@@ -16,6 +16,10 @@
             <argument type="service" id="logger" on-invalid="ignore" />
         </service>
 
+        <service id="fos_user.util.roles_helper" class="FOS\UserBundle\Util\RolesHelper" public="false">
+            <argument>%security.role_hierarchy.roles%</argument>
+        </service>
+
     </services>
 
 </container>

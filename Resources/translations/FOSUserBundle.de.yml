@@ -3,6 +3,7 @@ group:
         submit: 'Gruppe aktualisieren'
     show:
         name: Gruppenname
+        roles: Gruppenrollen
     new:
         submit: 'Gruppe erstellen'
     flash:
@@ -58,6 +59,7 @@ layout:
     logged_in_as: 'Angemeldet als %username%'
 form:
     group_name: Gruppenname
+    group_roles: 'Gruppelrollen'
     username: Benutzername
     email: E-Mail-Adresse
     current_password: 'Derzeitiges Passwort'

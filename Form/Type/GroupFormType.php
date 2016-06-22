@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +31,16 @@ class GroupFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', null, array('label' => 'form.group_name', 'translation_domain' => 'FOSUserBundle'));
+        $builder
+            ->add('name', null, array(
+                'label' => 'form.group_name',
+                'translation_domain' => 'FOSUserBundle',
+            ))
+            ->add('roles', LegacyFormHelper::getType('FOS\UserBundle\Form\Type\RolesFormType'), array(
+                'label' => 'form.group_roles',
+                'translation_domain' => 'FOSUserBundle',
+            ))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
