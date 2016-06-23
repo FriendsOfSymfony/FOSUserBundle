@@ -61,6 +61,16 @@ class UserManager extends BaseUserManager
     }
 
     /**
+     * Get the class repository from the object manager
+     * 
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
+    public function getRepository()
+    {
+        return $this->repository;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function findUserBy(array $criteria)
