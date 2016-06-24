@@ -20,7 +20,7 @@ class GroupFormTypeTest extends TypeTestCase
         parent::setUp();
     }
 
-    protected function getTypeExtensions()
+    protected function getExtensions()
     {
         $extensions = parent::getTypeExtensions();
 
@@ -45,7 +45,7 @@ class GroupFormTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals($group, $form->getData());
         $this->assertEquals('bar', $group->getName());
-        $this->assertEquals('roles', array());
+        $this->assertEquals(array(), $group->getRoles());
     }
 
     protected function getTypes()
