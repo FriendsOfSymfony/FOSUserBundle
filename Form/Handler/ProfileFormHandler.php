@@ -14,18 +14,15 @@ namespace FOS\UserBundle\Form\Handler;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 
-class ProfileFormHandler
+class ProfileFormHandler extends RequestFormHandler
 {
-    protected $request;
     protected $userManager;
     protected $form;
 
-    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager)
+    public function __construct(FormInterface $form, UserManagerInterface $userManager)
     {
         $this->form = $form;
-        $this->request = $request;
         $this->userManager = $userManager;
     }
 
@@ -33,8 +30,9 @@ class ProfileFormHandler
     {
         $this->form->setData($user);
 
-        if ('POST' === $this->request->getMethod()) {
-            $this->form->bind($this->request);
+        $request = $this->getRequest();
+        if ('POST' === $request->getMethod()) {
+            $this->form->handleRequest($request);
 
             if ($this->form->isValid()) {
                 $this->onSuccess($user);

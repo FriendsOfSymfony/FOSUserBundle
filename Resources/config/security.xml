@@ -16,10 +16,15 @@
         </service>
 
         <service id="fos_user.security.login_manager" class="%fos_user.security.login_manager.class%">
-            <argument type="service" id="security.context" />
             <argument type="service" id="security.user_checker" />
             <argument type="service" id="security.authentication.session_strategy" />
             <argument type="service" id="service_container" />
+            <call method="setTokenStorage">
+                <argument type="service" id="security.token_storage" on-invalid="ignore" />
+            </call>
+            <call method="setSecurityContext">
+                <argument type="service" id="security.context" on-invalid="ignore" />
+            </call>
         </service>
 
         <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">

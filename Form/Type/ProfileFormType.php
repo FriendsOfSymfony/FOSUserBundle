@@ -13,8 +13,8 @@ namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Security\Core\Validator\Constraint\UserPassword as OldUserPassword;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ProfileFormType extends AbstractType
@@ -31,12 +31,7 @@ class ProfileFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if (class_exists('Symfony\Component\Security\Core\Validator\Constraints\UserPassword')) {
-            $constraint = new UserPassword();
-        } else {
-            // Symfony 2.1 support with the old constraint class
-            $constraint = new OldUserPassword();
-        }
+        $constraint = new UserPassword();
 
         $this->buildUserForm($builder, $options);
 
@@ -48,7 +43,7 @@ class ProfileFormType extends AbstractType
         ));
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
@@ -56,9 +51,24 @@ class ProfileFormType extends AbstractType
         ));
     }
 
-    public function getName()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
+    }
+    
+    public function getBlockPrefix()
     {
         return 'fos_user_profile';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName() {
+        return
+            method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions') ?
+                $this->getBlockPrefix() :
+                get_class($this);
     }
 
     /**

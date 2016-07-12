@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * CreateUserCommand
  */
-class ChangePasswordCommand extends ContainerAwareCommand
+class ChangePasswordCommand extends HelperAwareCommand
 {
     /**
      * @see Command
@@ -68,32 +67,12 @@ EOT
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getArgument('username')) {
-            $username = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Please give the username:',
-                function($username) {
-                    if (empty($username)) {
-                        throw new \Exception('Username can not be empty');
-                    }
-
-                    return $username;
-                }
-            );
+            $username = $this->ask($input, $output, 'Please choose a username:', 'Username can not be empty');
             $input->setArgument('username', $username);
         }
 
         if (!$input->getArgument('password')) {
-            $password = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Please enter the new password:',
-                function($password) {
-                    if (empty($password)) {
-                        throw new \Exception('Password can not be empty');
-                    }
-
-                    return $password;
-                }
-            );
+            $password = $this->ask($input, $output, 'Please choose a password:', 'Password can not be empty');
             $input->setArgument('password', $password);
         }
     }

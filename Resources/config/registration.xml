@@ -6,7 +6,8 @@
 
     <services>
 
-        <service id="fos_user.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.registration.form" class="Symfony\Component\Form\Form">
+            <!-- factory service="form.factory" method="createNamed" /-->
             <argument>%fos_user.registration.form.name%</argument>
             <argument>%fos_user.registration.form.type%</argument>
             <argument>null</argument>
@@ -20,12 +21,17 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.registration.form.handler.default" class="FOS\UserBundle\Form\Handler\RegistrationFormHandler" scope="request" public="false">
+        <service id="fos_user.registration.form.handler.default" class="FOS\UserBundle\Form\Handler\RegistrationFormHandler" public="false">
             <argument type="service" id="fos_user.registration.form" />
-            <argument type="service" id="request" />
             <argument type="service" id="fos_user.user_manager" />
             <argument type="service" id="fos_user.mailer" />
             <argument type="service" id="fos_user.util.token_generator" />
+            <call method="setRequestStack">
+                <argument type="service" id="request_stack" on-invalid="ignore" />
+            </call>
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="ignore" />
+            </call>
         </service>
 
     </services>

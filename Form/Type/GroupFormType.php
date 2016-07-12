@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GroupFormType extends AbstractType
@@ -32,7 +33,7 @@ class GroupFormType extends AbstractType
         $builder->add('name', null, array('label' => 'form.group_name', 'translation_domain' => 'FOSUserBundle'));
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
@@ -40,8 +41,23 @@ class GroupFormType extends AbstractType
         ));
     }
 
-    public function getName()
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
+    }
+
+    public function getBlockPrefix()
     {
         return 'fos_user_group';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName() {
+        return
+            method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions') ?
+                $this->getBlockPrefix() :
+                get_class($this);
     }
 }

@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -24,7 +23,7 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ResettingController extends ContainerAware
+class ResettingController extends ContainerAwareController
 {
     const SESSION_EMAIL = 'fos_user_send_resetting_email/email';
 
@@ -41,8 +40,7 @@ class ResettingController extends ContainerAware
      */
     public function sendEmailAction()
     {
-        $username = $this->container->get('request')->request->get('username');
-
+        $username = $this->getRequest()->request->get('username');
         /** @var $user UserInterface */
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 

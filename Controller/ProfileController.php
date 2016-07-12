@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
@@ -21,14 +20,14 @@ use FOS\UserBundle\Model\UserInterface;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ProfileController extends ContainerAware
+class ProfileController extends ContainerAwareController
 {
     /**
      * Show the user
      */
     public function showAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -41,7 +40,7 @@ class ProfileController extends ContainerAware
      */
     public function editAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }

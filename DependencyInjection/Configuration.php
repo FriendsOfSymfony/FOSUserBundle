@@ -84,6 +84,11 @@ class Configuration implements ConfigurationInterface
 
     private function addProfileSection(ArrayNodeDefinition $node)
     {
+        if (method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions')) {
+            $formType = "fos_user_profile";
+        } else {
+            $formType = 'FOS\UserBundle\Form\Type\ProfileFormType';
+        }
         $node
             ->children()
                 ->arrayNode('profile')
@@ -93,7 +98,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_profile')->end()
+                                ->scalarNode('type')->defaultValue($formType)->end()
                                 ->scalarNode('handler')->defaultValue('fos_user.profile.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_profile_form')->end()
                                 ->arrayNode('validation_groups')
@@ -109,6 +114,11 @@ class Configuration implements ConfigurationInterface
 
     private function addRegistrationSection(ArrayNodeDefinition $node)
     {
+        if (method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions')) {
+            $formType = 'fos_user_registration';
+        } else {
+            $formType = 'FOS\UserBundle\Form\Type\RegistrationFormType';
+        }
         $node
             ->children()
                 ->arrayNode('registration')
@@ -132,7 +142,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_registration')->end()
+                                ->scalarNode('type')->defaultValue($formType)->end()
                                 ->scalarNode('handler')->defaultValue('fos_user.registration.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_registration_form')->end()
                                 ->arrayNode('validation_groups')
@@ -148,6 +158,11 @@ class Configuration implements ConfigurationInterface
 
     private function addResettingSection(ArrayNodeDefinition $node)
     {
+        if (method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions')) {
+            $formType = 'fos_user_resetting';
+        } else {
+            $formType = 'FOS\UserBundle\Form\Type\ResettingFormType';
+        }
         $node
             ->children()
                 ->arrayNode('resetting')
@@ -171,7 +186,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_resetting')->end()
+                                ->scalarNode('type')->defaultValue($formType)->end()
                                 ->scalarNode('handler')->defaultValue('fos_user.resetting.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_resetting_form')->end()
                                 ->arrayNode('validation_groups')
@@ -187,6 +202,11 @@ class Configuration implements ConfigurationInterface
 
     private function addChangePasswordSection(ArrayNodeDefinition $node)
     {
+        if (method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions')) {
+            $formType = 'fos_user_change_password';
+        } else {
+            $formType = 'FOS\UserBundle\Form\Type\ChangePasswordFormType';
+        }
         $node
             ->children()
                 ->arrayNode('change_password')
@@ -196,7 +216,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_change_password')->end()
+                                ->scalarNode('type')->defaultValue($formType)->end()
                                 ->scalarNode('handler')->defaultValue('fos_user.change_password.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_change_password_form')->end()
                                 ->arrayNode('validation_groups')
@@ -244,6 +264,11 @@ class Configuration implements ConfigurationInterface
 
     private function addGroupSection(ArrayNodeDefinition $node)
     {
+        if (method_exists('Symfony\Component\Form\FormTypeInterface', 'setDefaultOptions')) {
+            $formType = 'fos_user_group';
+        } else {
+            $formType = 'FOS\UserBundle\Form\Type\GroupFormType';
+        }
         $node
             ->children()
                 ->arrayNode('group')
@@ -254,7 +279,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_group')->end()
+                                ->scalarNode('type')->defaultValue($formType)->end()
                                 ->scalarNode('handler')->defaultValue('fos_user.group.form.handler.default')->end()
                                 ->scalarNode('name')->defaultValue('fos_user_group_form')->end()
                                 ->arrayNode('validation_groups')

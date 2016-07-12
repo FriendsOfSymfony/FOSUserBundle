@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle;
 
+use FOS\UserBundle\DependencyInjection\Compiler\BackwardCompatibilityPass;
 use FOS\UserBundle\DependencyInjection\Compiler\ValidationPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -24,6 +25,7 @@ class FOSUserBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+        $container->addCompilerPass(new BackwardCompatibilityPass());
         $container->addCompilerPass(new ValidationPass());
     }
 }

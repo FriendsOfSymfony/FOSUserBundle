@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
@@ -22,14 +21,14 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ChangePasswordController extends ContainerAware
+class ChangePasswordController extends ContainerAwareController
 {
     /**
      * Change user password
      */
     public function changePasswordAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }

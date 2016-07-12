@@ -6,7 +6,8 @@
 
     <services>
 
-        <service id="fos_user.group.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="fos_user.group.form" class="Symfony\Component\Form\Form">
+            <!-- factory service="form.factory" method="createNamed" /-->
             <argument>%fos_user.group.form.name%</argument>
             <argument>%fos_user.group.form.type%</argument>
             <argument>null</argument>
@@ -20,10 +21,15 @@
             <argument>%fos_user.model.group.class%</argument>
         </service>
 
-        <service id="fos_user.group.form.handler.default" class="FOS\UserBundle\Form\Handler\GroupFormHandler" scope="request" public="false">
+        <service id="fos_user.group.form.handler.default" class="FOS\UserBundle\Form\Handler\GroupFormHandler" public="false">
             <argument type="service" id="fos_user.group.form" />
-            <argument type="service" id="request" />
             <argument type="service" id="fos_user.group_manager" />
+            <call method="setRequestStack">
+                <argument type="service" id="request_stack" on-invalid="ignore" />
+            </call>
+            <call method="setRequest">
+                <argument type="service" id="request" on-invalid="ignore" />
+            </call>
         </service>
 
     </services>

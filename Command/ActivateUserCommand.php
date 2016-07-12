@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class ActivateUserCommand extends ContainerAwareCommand
+class ActivateUserCommand extends HelperAwareCommand
 {
     /**
      * @see Command
@@ -59,17 +58,7 @@ EOT
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getArgument('username')) {
-            $username = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Please choose a username:',
-                function($username) {
-                    if (empty($username)) {
-                        throw new \Exception('Username can not be empty');
-                    }
-
-                    return $username;
-                }
-            );
+            $username = $this->ask($input, $output, 'Please choose a username:', 'Username can not be empty');
             $input->setArgument('username', $username);
         }
     }

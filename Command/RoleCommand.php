@@ -11,7 +11,6 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,7 +20,7 @@ use FOS\UserBundle\Util\UserManipulator;
 /**
  * @author Lenar Lõhmus <lenar@city.ee>
  */
-abstract class RoleCommand extends ContainerAwareCommand
+abstract class RoleCommand extends HelperAwareCommand
 {
     /**
      * @see Command
@@ -76,31 +75,11 @@ abstract class RoleCommand extends ContainerAwareCommand
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getArgument('username')) {
-            $username = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Please choose a username:',
-                function($username) {
-                    if (empty($username)) {
-                        throw new \Exception('Username can not be empty');
-                    }
-
-                    return $username;
-                }
-            );
+            $username = $this->ask($input, $output, 'Please choose a username:', 'Username can not be empty');
             $input->setArgument('username', $username);
         }
         if ((true !== $input->getOption('super')) && !$input->getArgument('role')) {
-            $role = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Please choose a role:',
-                function($role) {
-                    if (empty($role)) {
-                        throw new \Exception('Role can not be empty');
-                    }
-
-                    return $role;
-                }
-            );
+            $role = $this->ask($input, $output, 'Please choose a role:', 'Role can not be empty');
             $input->setArgument('role', $role);
         }
     }

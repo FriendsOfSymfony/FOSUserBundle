@@ -16,20 +16,17 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 
-class RegistrationFormHandler
+class RegistrationFormHandler extends RequestFormHandler
 {
-    protected $request;
     protected $userManager;
     protected $form;
     protected $mailer;
     protected $tokenGenerator;
 
-    public function __construct(FormInterface $form, Request $request, UserManagerInterface $userManager, MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator)
+    public function __construct(FormInterface $form, UserManagerInterface $userManager, MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator)
     {
         $this->form = $form;
-        $this->request = $request;
         $this->userManager = $userManager;
         $this->mailer = $mailer;
         $this->tokenGenerator = $tokenGenerator;
@@ -43,8 +40,9 @@ class RegistrationFormHandler
         $user = $this->createUser();
         $this->form->setData($user);
 
-        if ('POST' === $this->request->getMethod()) {
-            $this->form->bind($this->request);
+        $request = $this->getRequest();
+        if ('POST' === $request->getMethod()) {
+            $this->form->handleRequest($request);
 
             if ($this->form->isValid()) {
                 $this->onSuccess($user, $confirmation);

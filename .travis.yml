@@ -6,10 +6,50 @@ php:
   - 5.5
   - 5.6
   - hhvm
+  - 7.0
 
 sudo: false
 
-install: composer install
+matrix:
+  fast_finish: true
+  include:
+    - php: '5.3'
+      env: SYMFONY_VERSION=2.3.*
+    - php: '5.4'
+      env: SYMFONY_VERSION=2.3.*
+    - php: '5.5'
+      env: SYMFONY_VERSION=2.3.*
+    - php: '5.5'
+      env: SYMFONY_VERSION=2.8.*
+    - php: '5.5'
+      env: SYMFONY_VERSION=3.0.*
+    - php: '5.6'
+      env: SYMFONY_VERSION=2.3.*
+    - php: '5.6'
+      env: SYMFONY_VERSION=2.8.*
+    - php: '5.6'
+      env: SYMFONY_VERSION=3.0.*
+    - php: 'hhvm'
+      env: SYMFONY_VERSION=2.3.*
+    - php: 'hhvm'
+      env: SYMFONY_VERSION=2.8.*
+    - php: 'hhvm'
+      env: SYMFONY_VERSION=3.0.*
+    - php: '7.0'
+      env: SYMFONY_VERSION=2.3.*
+    - php: '7.0'
+      env: SYMFONY_VERSION=2.8.*
+    - php: '7.0'
+      env: SYMFONY_VERSION=3.0.*
+
+before_install:
+  - find . -name '*.php' -exec php -d display_errors=1 -l {} \;
+
+install:
+  - if [ -z ${SYMFONY_VERSION+x} ]; then composer install; else composer require symfony/framework-bundle:${SYMFONY_VERSION} symfony/http-kernel:${SYMFONY_VERSION} symfony/security-bundle:${SYMFONY_VERSION} symfony/form:${SYMFONY_VERSION}; fi
 
 notifications:
   email: friendsofsymfony-dev@googlegroups.com
+
+script:
+  - phpunit
