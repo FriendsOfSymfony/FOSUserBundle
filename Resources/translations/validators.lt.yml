@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Naudotojo vardas jau užimtas
-        blank: Prašome įvesti naudotojo vardą
-        short: "[-Inf,Inf]Naudotojo vardas per trumpas"
-        long: "[-Inf,Inf]Naudotojo vardas per ilgas"
+        already_used: 'Naudotojo vardas jau užimtas'
+        blank: 'Prašome įvesti naudotojo vardą'
+        short: '[-Inf,Inf]Naudotojo vardas per trumpas'
+        long: '[-Inf,Inf]Naudotojo vardas per ilgas'
     email:
-        already_used: El. paštas jau užimtas
-        blank: Prašome įvesti el. paštą
-        short: "[-Inf,Inf]El. paštas pert rumpas"
-        long: "[-Inf,Inf]El. paštas per ilgas"
-        invalid: El. paštas neteisingas
+        already_used: 'El. paštas jau užimtas'
+        blank: 'Prašome įvesti el. paštą'
+        short: '[-Inf,Inf]El. paštas pert rumpas'
+        long: '[-Inf,Inf]El. paštas per ilgas'
+        invalid: 'El. paštas neteisingas'
     password:
-        blank: Prašome įvesti slaptažodį
-        short: "[-Inf,Inf]Slaptažodis per trumpas"
-        mismatch: Įvesti skirtingi slaptažodžiai
+        blank: 'Prašome įvesti slaptažodį'
+        short: '[-Inf,Inf]Slaptažodis per trumpas'
+        mismatch: 'Įvesti skirtingi slaptažodžiai'
     new_password:
-        blank: Prašome įvesti naują slaptažodį
-        short: "[-Inf,Inf]Naujas slaptažodis per trumpas"
+        blank: 'Prašome įvesti naują slaptažodį'
+        short: '[-Inf,Inf]Naujas slaptažodis per trumpas'
     current_password:
-        invalid: Neteisingai įvestas slaptažodis
+        invalid: 'Neteisingai įvestas slaptažodis'
     group:
-        blank: Prašome įvesti pavadinimą
-        short: "[-Inf,Inf]Pavadinimas per trumpas"
-        long: "[-Inf,Inf]Pavadinimas per trumpas"
+        blank: 'Prašome įvesti pavadinimą'
+        short: '[-Inf,Inf]Pavadinimas per trumpas'
+        long: '[-Inf,Inf]Pavadinimas per trumpas'

@@ -9,7 +9,7 @@ specific needs of your application.
 .. caution::
 
     Overriding the controller requires to duplicate all the logic of the
-    action. Most of the time, it is easier to use the :doc:`events </controller_events>``
+    action. Most of the time, it is easier to use the :doc:`events </controller_events>`
     to implement the functionality. Replacing the whole controller should
     be considered as the last solution when nothing else is possible.
 
@@ -19,9 +19,9 @@ bundle named ``AcmeUserBundle`` that declares itself a child of FOSUserBundle.
 
 .. code-block:: php
 
-    // src/AppBundle/AcmeUserBundle.php
+    // src/Acme/UserBundle/AcmeUserBundle.php
 
-    namespace AppBundle;
+    namespace Acme\UserBundle;
 
     use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -49,9 +49,9 @@ the base controller and adds logging a new user registration to it.
 
 .. code-block:: php
 
-    // src/AppBundle/Controller/RegistrationController.php
+    // src/Acme/UserBundle/Controller/RegistrationController.php
 
-    namespace AppBundle\Controller;
+    namespace Acme\UserBundle\Controller;
 
     use Symfony\Component\HttpFoundation\RedirectResponse;
     use FOS\UserBundle\Controller\RegistrationController as BaseController;

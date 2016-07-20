@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Le nom d'utilisateur est déjà utilisé
-        blank: Entrez un nom d'utilisateur s'il vous plait
-        short: "[-Inf,Inf]Le nom d'utilisateur est trop court"
-        long: "[-Inf,Inf]Le nom d'utilisateur est trop long"
+        already_used: 'Le nom d''utilisateur est déjà utilisé'
+        blank: 'Entrez un nom d''utilisateur s''il vous plait'
+        short: '[-Inf,Inf]Le nom d''utilisateur est trop court'
+        long: '[-Inf,Inf]Le nom d''utilisateur est trop long'
     email:
-        already_used: L'adresse e-mail est déjà utilisée
-        blank: Entrez une adresse e-mail s'il vous plait
-        short: "[-Inf,Inf]L'adresse e-mail est trop courte"
-        long: "[-Inf,Inf]L'adresse e-mail est trop longue"
-        invalid: L'adresse e-mail est invalide
+        already_used: 'L''adresse e-mail est déjà utilisée'
+        blank: 'Entrez une adresse e-mail s''il vous plait'
+        short: '[-Inf,Inf]L''adresse e-mail est trop courte'
+        long: '[-Inf,Inf]L''adresse e-mail est trop longue'
+        invalid: 'L''adresse e-mail est invalide'
     password:
-        blank: Entrez un mot de passe s'il vous plait
-        short: "[-Inf,Inf]Le mot de passe est trop court"
-        mismatch: Les deux mots de passe ne sont pas identiques
+        blank: 'Entrez un mot de passe s''il vous plait'
+        short: '[-Inf,Inf]Le mot de passe est trop court'
+        mismatch: 'Les deux mots de passe ne sont pas identiques'
     new_password:
-        blank: Entrez un nouveau mot de passe s'il vous plait
-        short: "[-Inf,Inf]Le nouveau mot de passe est trop court"
+        blank: 'Entrez un nouveau mot de passe s''il vous plait'
+        short: '[-Inf,Inf]Le nouveau mot de passe est trop court'
     current_password:
-        invalid: Le mot de passe est invalide
+        invalid: 'Le mot de passe est invalide'
     group:
-        blank: Entrez un nom s'il vous plait
-        short: "[-Inf,Inf]Le nom est trop court"
-        long: "[-Inf,Inf]Le nom est trop long"
+        blank: 'Entrez un nom s''il vous plait'
+        short: '[-Inf,Inf]Le nom est trop court'
+        long: '[-Inf,Inf]Le nom est trop long'

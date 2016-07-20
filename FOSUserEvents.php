@@ -20,7 +20,8 @@ final class FOSUserEvents
      * The CHANGE_PASSWORD_INITIALIZE event occurs when the change password process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const CHANGE_PASSWORD_INITIALIZE = 'fos_user.change_password.edit.initialize';
 
@@ -28,7 +29,8 @@ final class FOSUserEvents
      * The CHANGE_PASSWORD_SUCCESS event occurs when the change password form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const CHANGE_PASSWORD_SUCCESS = 'fos_user.change_password.edit.success';
 
@@ -36,7 +38,8 @@ final class FOSUserEvents
      * The CHANGE_PASSWORD_COMPLETED event occurs after saving the user in the change password process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const CHANGE_PASSWORD_COMPLETED = 'fos_user.change_password.edit.completed';
 
@@ -44,7 +47,8 @@ final class FOSUserEvents
      * The GROUP_CREATE_INITIALIZE event occurs when the group creation process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\GroupEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GroupEvent")
      */
     const GROUP_CREATE_INITIALIZE = 'fos_user.group.create.initialize';
 
@@ -52,7 +56,8 @@ final class FOSUserEvents
      * The GROUP_CREATE_SUCCESS event occurs when the group creation form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const GROUP_CREATE_SUCCESS = 'fos_user.group.create.success';
 
@@ -60,7 +65,8 @@ final class FOSUserEvents
      * The GROUP_CREATE_COMPLETED event occurs after saving the group in the group creation process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterGroupResponseEvent")
      */
     const GROUP_CREATE_COMPLETED = 'fos_user.group.create.completed';
 
@@ -68,7 +74,8 @@ final class FOSUserEvents
      * The GROUP_DELETE_COMPLETED event occurs after deleting the group.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterGroupResponseEvent")
      */
     const GROUP_DELETE_COMPLETED = 'fos_user.group.delete.completed';
 
@@ -76,7 +83,8 @@ final class FOSUserEvents
      * The GROUP_EDIT_INITIALIZE event occurs when the group editing process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseGroupEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseGroupEvent")
      */
     const GROUP_EDIT_INITIALIZE = 'fos_user.group.edit.initialize';
 
@@ -84,7 +92,8 @@ final class FOSUserEvents
      * The GROUP_EDIT_SUCCESS event occurs when the group edit form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const GROUP_EDIT_SUCCESS = 'fos_user.group.edit.success';
 
@@ -92,7 +101,8 @@ final class FOSUserEvents
      * The GROUP_EDIT_COMPLETED event occurs after saving the group in the group edit process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterGroupResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterGroupResponseEvent")
      */
     const GROUP_EDIT_COMPLETED = 'fos_user.group.edit.completed';
 
@@ -100,7 +110,8 @@ final class FOSUserEvents
      * The PROFILE_EDIT_INITIALIZE event occurs when the profile editing process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const PROFILE_EDIT_INITIALIZE = 'fos_user.profile.edit.initialize';
 
@@ -108,7 +119,8 @@ final class FOSUserEvents
      * The PROFILE_EDIT_SUCCESS event occurs when the profile edit form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const PROFILE_EDIT_SUCCESS = 'fos_user.profile.edit.success';
 
@@ -116,7 +128,8 @@ final class FOSUserEvents
      * The PROFILE_EDIT_COMPLETED event occurs after saving the user in the profile edit process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const PROFILE_EDIT_COMPLETED = 'fos_user.profile.edit.completed';
 
@@ -124,7 +137,8 @@ final class FOSUserEvents
      * The REGISTRATION_INITIALIZE event occurs when the registration process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
-     * The event listener method receives a FOS\UserBundle\Event\UserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\UserEvent")
      */
     const REGISTRATION_INITIALIZE = 'fos_user.registration.initialize';
 
@@ -132,7 +146,8 @@ final class FOSUserEvents
      * The REGISTRATION_SUCCESS event occurs when the registration form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const REGISTRATION_SUCCESS = 'fos_user.registration.success';
 
@@ -140,7 +155,8 @@ final class FOSUserEvents
      * The REGISTRATION_COMPLETED event occurs after saving the user in the registration process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const REGISTRATION_COMPLETED = 'fos_user.registration.completed';
 
@@ -148,7 +164,8 @@ final class FOSUserEvents
      * The REGISTRATION_CONFIRM event occurs just before confirming the account.
      *
      * This event allows you to access the user which will be confirmed.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const REGISTRATION_CONFIRM = 'fos_user.registration.confirm';
 
@@ -156,7 +173,8 @@ final class FOSUserEvents
      * The REGISTRATION_CONFIRMED event occurs after confirming the account.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
@@ -164,7 +182,8 @@ final class FOSUserEvents
      * The RESETTING_RESET_INITIALIZE event occurs when the resetting process is initialized.
      *
      * This event allows you to set the response to bypass the processing.
-     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const RESETTING_RESET_INITIALIZE = 'fos_user.resetting.reset.initialize';
 
@@ -172,7 +191,8 @@ final class FOSUserEvents
      * The RESETTING_RESET_SUCCESS event occurs when the resetting form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
-     * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent ")
      */
     const RESETTING_RESET_SUCCESS = 'fos_user.resetting.reset.success';
 
@@ -180,7 +200,8 @@ final class FOSUserEvents
      * The RESETTING_RESET_COMPLETED event occurs after saving the user in the resetting process.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const RESETTING_RESET_COMPLETED = 'fos_user.resetting.reset.completed';
 
@@ -188,7 +209,8 @@ final class FOSUserEvents
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.
      *
      * This event allows you to access the response which will be sent.
-     * The event listener method receives a FOS\UserBundle\Event\UserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\UserEvent")
      */
     const SECURITY_IMPLICIT_LOGIN = 'fos_user.security.implicit_login';
 }

@@ -1,0 +1,87 @@
+group:
+    edit:
+        submit: 'Opdateer Groep'
+    show:
+        name: 'Groep Naam'
+    new:
+        submit: 'Nuwe groep'
+    flash:
+        updated: 'Die groep was opgedateer'
+        created: 'Die groep was gemaak'
+        deleted: 'Die groep was verwyder'
+
+security:
+    login:
+        username: 'Gebruiker Naam'
+        password: 'Wagwoord'
+        remember_me: 'Onthou my'
+        submit: 'Teken in'
+
+profile:
+    show:
+        username: 'Gebruiker Naam'
+        email: 'E-pos'
+    edit:
+        submit: 'Opdateer'
+    flash:
+        updated: 'Die profiel was opgedateer'
+
+change_password:
+    submit: 'Verander wagwoord'
+    flash:
+        success: 'Die wagwoord was verander'
+
+registration:
+    check_emai: "'n e-pos was gestuur na %email%. Dit behels 'n aktiveerings \"link\", waarop jy moet klik om jou rekening te aktiveer"
+    confirmed: 'Geluk %username%, jou rekening is nou geaktiveer'
+    back: 'Terug na die oorsprongblad'
+    submit: Registreer
+    flash:
+        user_created: 'Die verbruiker was suksesvol gemaak'
+    email:
+        subject: 'Welkom %username%!'
+        message: |
+            Hello %username%!
+
+            Om die registrasieproses te finaliseer, besoek asseblief %confirmationUrl%
+
+            Groete,
+            die Span.
+
+resetting:
+    password_already_requested: 'Die wagwoord vir hierdie gebruiker was reeds in die afgelope 24 uur aangevra'
+    check_email: "'n E-pos was gestuur na %email%. Die bevat 'n \"link\" waarop jy moet klik om jou wagwoord te herstel"
+    request:
+        invalid_username: 'Die verbruikernaam of e-pos adres %username% bestaan nie.'
+        username: 'Verbruikernaam of e-pos adres'
+        submit: 'Herstel wagwoord'
+    reset:
+        submit: 'Verander wagwoord'
+    flash:
+        success: 'Die wagwoord was suksesvol herstel'
+    email:
+        subjet: 'Herstel Wagwoord'
+        message: |
+            Hello %username%!
+
+            Om jou wagwoord te herstel, besoek asseblief %confirmationUrl%
+
+            Groete,
+            die Span.
+
+# Global strings
+layout:
+    logout: 'Sluit af'
+    login: 'Teken in'
+    register: Registreer
+    logged_in_as: 'Ingeteken as %username%'
+
+form:
+    group_name: 'Groep naam'
+    username: 'Verbruiker Naam'
+    email: 'E-pos'
+    current_password: 'Huidige wagwoord'
+    password: Wagwoord
+    password_confirmation: 'Herhaal wagwoord'
+    new_password: 'Nuwe wagwoord'
+    new_password_confirmation: 'Herhaal nuwe wagwoord'

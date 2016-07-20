@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,8 +31,8 @@ class ResettingFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('plainPassword', 'repeated', array(
-            'type' => 'password',
+        $builder->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+            'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
             'options' => array('translation_domain' => 'FOSUserBundle'),
             'first_options' => array('label' => 'form.new_password'),
             'second_options' => array('label' => 'form.new_password_confirmation'),
@@ -43,6 +44,8 @@ class ResettingFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
+            'csrf_token_id' => 'resetting',
+            // BC for SF < 2.8
             'intention'  => 'resetting',
         ));
     }
@@ -53,7 +56,13 @@ class ResettingFormType extends AbstractType
         $this->configureOptions($resolver);
     }
 
+    // BC for SF < 3.0
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    public function getBlockPrefix()
     {
         return 'fos_user_resetting';
     }

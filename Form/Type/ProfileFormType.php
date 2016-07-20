@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Form\Type;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,7 +34,7 @@ class ProfileFormType extends AbstractType
     {
         $this->buildUserForm($builder, $options);
 
-        $builder->add('current_password', 'password', array(
+        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
             'label' => 'form.current_password',
             'translation_domain' => 'FOSUserBundle',
             'mapped' => false,
@@ -45,6 +46,8 @@ class ProfileFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
+            'csrf_token_id' => 'profile',
+            // BC for SF < 2.8
             'intention'  => 'profile',
         ));
     }
@@ -55,7 +58,13 @@ class ProfileFormType extends AbstractType
         $this->configureOptions($resolver);
     }
 
+    // BC for SF < 3.0
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    public function getBlockPrefix()
     {
         return 'fos_user_profile';
     }
@@ -70,7 +79,7 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
 }

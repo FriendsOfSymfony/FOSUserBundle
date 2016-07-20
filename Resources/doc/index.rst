@@ -282,7 +282,9 @@ in your application:
                 pattern: ^/
                 form_login:
                     provider: fos_userbundle
-                    csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                    csrf_token_generator: security.csrf.token_manager
+                    # if you are using Symfony < 2.8, use the following config instead:
+                    # csrf_provider: form.csrf_provider
 
                 logout:       true
                 anonymous:    true
@@ -414,26 +416,31 @@ For ORM run the following command.
 
 .. code-block:: bash
 
-    $ php app/console doctrine:schema:update --force
+    $ php bin/console doctrine:schema:update --force
 
 For MongoDB users you can run the following command to create the indexes.
 
 .. code-block:: bash
 
-    $ php app/console doctrine:mongodb:schema:create --index
+    $ php bin/console doctrine:mongodb:schema:create --index
+
+.. note::
+
+    If you use the Symfony 2.x structure in your project, use ``app/console``
+    instead of ``bin/console`` in the commands.
 
 For Propel 1 users you have to install the `TypehintableBehavior`_
 before to build your model. First, install it:
 
 .. code-block:: bash
 
-    composer require willdurand/propel-typehintable-behavior
+    $ composer require willdurand/propel-typehintable-behavior
 
 You now can run the following command to create the model:
 
 .. code-block:: bash
 
-    $ php app/console propel:build
+    $ php bin/console propel:build
 
 .. note::
 
@@ -451,23 +458,26 @@ of the bundle.
 
 The following documents are available:
 
-- :doc:`/overriding_templates`
-- :doc:`/controller_events`
-- :doc:`/overriding_controllers`
-- :doc:`/overriding_forms`
-- :doc:`/user_manager`
-- :doc:`/command_line_tools`
-- :doc:`/logging_by_username_or_email`
-- :doc:`/form_type`
-- :doc:`/emails`
-- :doc:`/groups`
-- :doc:`/doctrine`
-- :doc:`/overriding_validation`
-- :doc:`/canonicalizer`
-- :doc:`/custom_storage_layer`
-- :doc:`/routing`
-- :doc:`/configuration_reference`
-- :doc:`/adding_invitation_registration`
+.. toctree::
+    :maxdepth: 1
+
+    overriding_templates
+    controller_events
+    overriding_controllers
+    overriding_forms
+    user_manager
+    command_line_tools
+    logging_by_username_or_email
+    form_type
+    emails
+    groups
+    doctrine
+    overriding_validation
+    canonicalizer
+    custom_storage_layer
+    routing
+    configuration_reference
+    adding_invitation_registration
 
 .. _security component documentation: https://symfony.com/doc/current/book/security.html
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html

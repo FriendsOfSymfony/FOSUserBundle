@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Mettre à jour le groupe
+        submit: 'Mettre à jour le groupe'
     show:
-        name: Nom du groupe
+        name: 'Nom du groupe'
     new:
-        submit: Créer le groupe
+        submit: 'Créer le groupe'
     flash:
-        updated: Le groupe a été mis à jour
-        created: Le groupe a été créé
-        deleted: Le groupe a été supprimé
-
-# Security
+        updated: 'Le groupe a été mis à jour'
+        created: 'Le groupe a été créé'
+        deleted: 'Le groupe a été supprimé'
 security:
     login:
-        username: Nom d'utilisateur
-        password: Mot de passe
-        remember_me: Se souvenir de moi
+        username: 'Nom d''utilisateur'
+        password: 'Mot de passe'
+        remember_me: 'Se souvenir de moi'
         submit: Connexion
-
-# Profile
 profile:
     show:
-        username: Nom d'utilisateur
-        email: Adresse e-mail
+        username: 'Nom d''utilisateur'
+        email: 'Adresse e-mail'
     edit:
-        submit: Mettre à jour
+        submit: 'Mettre à jour'
     flash:
-        updated: Le profil a été mis à jour
-
-# Password change
+        updated: 'Le profil a été mis à jour'
 change_password:
-    submit: Modifier le mot de passe
+    submit: 'Modifier le mot de passe'
     flash:
-        success: Le mot de passe a été modifié
-
-# Registration
+        success: 'Le mot de passe a été modifié'
 registration:
-    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
-    confirmed: Félicitations %username%, votre compte est maintenant activé.
-    back: Retour à la page d'origine.
-    submit: Enregistrer
+    check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien d''activation sur lequel il vous faudra cliquer afin d''activer votre compte.'
+    confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
+    back: 'Retour à la page d''origine.'
+    submit: 'Créer un compte'
     flash:
-        user_created: L'utilisateur a été créé avec succès
+        user_created: 'L''utilisateur a été créé avec succès'
     email:
-        subject: Bienvenue %username% !
-        message: |
-            Bonjour %username% !
-
-            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
-
-            Cordialement,
-            L'équipe.
-
-# Password resetting
+        subject: 'Bienvenue %username% !'
+        message: "Bonjour %username% !\n\nPour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe.\n"
 resetting:
-    password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
-    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
+    password_already_requested: 'Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.'
+    check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.'
     request:
-        invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
-        username: Nom d'utilisateur ou adresse e-mail
-        submit: Réinitialiser le mot de passe
+        invalid_username: 'Le nom d''utilisateur ou l''adresse e-mail "%username%" n''existe pas.'
+        username: 'Nom d''utilisateur ou adresse e-mail'
+        submit: 'Réinitialiser le mot de passe'
     reset:
-        submit: Modifier le mot de passe
+        submit: 'Modifier le mot de passe'
     flash:
-        success: Le mot de passe a été réinitialisé avec succès
+        success: 'Le mot de passe a été réinitialisé avec succès'
     email:
-        subject: Réinitialisation de votre mot de passe
-        message: |
-            Bonjour %username% !
-
-            Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
-
-            Cordialement,
-            L'équipe.
-
-# Global strings
+        subject: 'Réinitialisation de votre mot de passe'
+        message: "Bonjour %username% !\n\nPour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe.\n"
 layout:
     logout: Déconnexion
     login: Connexion
     register: Inscription
-    logged_in_as: Connecté en tant que %username%
-
-# Form field labels
+    logged_in_as: 'Connecté en tant que %username%'
 form:
-    group_name: Nom du groupe
-    username: Nom d'utilisateur
-    email: Adresse e-mail
-    current_password: Mot de passe actuel
-    password: Mot de passe
+    group_name: 'Nom du groupe'
+    username: 'Nom d''utilisateur'
+    email: 'Adresse e-mail'
+    current_password: 'Mot de passe actuel'
+    password: 'Mot de passe'
     password_confirmation: Vérification
-    new_password: Nouveau mot de passe
+    new_password: 'Nouveau mot de passe'
     new_password_confirmation: Vérification

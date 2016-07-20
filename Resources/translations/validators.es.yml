@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: El nombre de usuario ya está en uso
-        blank: Por favor, ingrese un nombre de usuario
-        short: "[-Inf,Inf]El nombre de usuario es demasiado corto"
-        long: "[-Inf,Inf]El nombre de usuario es demasiado largo"
+        already_used: 'El nombre de usuario ya está en uso'
+        blank: 'Por favor, ingrese un nombre de usuario'
+        short: '[-Inf,Inf]El nombre de usuario es demasiado corto'
+        long: '[-Inf,Inf]El nombre de usuario es demasiado largo'
     email:
-        already_used: La dirección de correo ya está en uso
-        blank: Por favor, ingrese una dirección de correo
-        short: "[-Inf,Inf]La dirección de correo es demasiado corta"
-        long: "[-Inf,Inf]La dirección de correo es demasiado larga"
-        invalid: La dirección de correo no es válida
+        already_used: 'La dirección de correo ya está en uso'
+        blank: 'Por favor, ingrese una dirección de correo'
+        short: '[-Inf,Inf]La dirección de correo es demasiado corta'
+        long: '[-Inf,Inf]La dirección de correo es demasiado larga'
+        invalid: 'La dirección de correo no es válida'
     password:
-        blank: Por favor, ingrese una contraseña
-        short: "[-Inf,Inf]La contraseña es demasiado corta"
-        mismatch: Las dos contraseñas no coinciden
+        blank: 'Por favor, ingrese una contraseña'
+        short: '[-Inf,Inf]La contraseña es demasiado corta'
+        mismatch: 'Las dos contraseñas no coinciden'
     new_password:
-        blank: Por favor, ingrese una nueva contraseña
-        short: "[-Inf,Inf]La nueva contraseña es demasiado corta"
+        blank: 'Por favor, ingrese una nueva contraseña'
+        short: '[-Inf,Inf]La nueva contraseña es demasiado corta'
     current_password:
-        invalid: La contraseña ingresada no es válida
+        invalid: 'La contraseña ingresada no es válida'
     group:
-        blank: Por favor, ingrese un nombre
-        short: "[-Inf,Inf]El nombre es demasiado corto"
-        long: "[-Inf,Inf]El nombre es demasiado largo"
+        blank: 'Por favor, ingrese un nombre'
+        short: '[-Inf,Inf]El nombre es demasiado corto'
+        long: '[-Inf,Inf]El nombre es demasiado largo'

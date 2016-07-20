@@ -13,19 +13,19 @@ namespace FOS\UserBundle\Doctrine;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ODM\MongoDB\DocumentManager;
+use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Base Doctrine listener updating the canonical username and password fields.
- *
- * Overwritten by database specific listeners to register the right events and
- * to let the UoW recalculate the change set if needed.
+ * Doctrine listener updating the canonical username and password fields.
  *
  * @author Christophe Coevoet <stof@notk.org>
  * @author David Buchmann <mail@davidbu.ch>
  */
-abstract class AbstractUserListener implements EventSubscriber
+class UserListener implements EventSubscriber
 {
     /**
      * @var \FOS\UserBundle\Model\UserManagerInterface
@@ -47,13 +47,20 @@ abstract class AbstractUserListener implements EventSubscriber
         $this->container = $container;
     }
 
+    public function getSubscribedEvents()
+    {
+        return array(
+            'prePersist',
+            'preUpdate',
+        );
+    }
+
     /**
-     * Pre persist listener based on doctrine commons, overwrite for drivers
-     * that are not compatible with the commons events.
+     * Pre persist listener based on doctrine common
      *
-     * @param LifecycleEventArgs $args weak typed to allow overwriting
+     * @param LifecycleEventArgs $args
      */
-    public function prePersist($args)
+    public function prePersist(LifecycleEventArgs $args)
     {
         $object = $args->getObject();
         if ($object instanceof UserInterface) {
@@ -62,27 +69,25 @@ abstract class AbstractUserListener implements EventSubscriber
     }
 
     /**
-     * Pre update listener based on doctrine commons, overwrite to update
-     * the changeset in the UoW and to handle non-common event argument
-     * class.
+     * Pre update listener based on doctrine common
      *
-     * @param LifecycleEventArgs $args weak typed to allow overwriting
+     * @param LifecycleEventArgs $args
      */
-    public function preUpdate($args)
+    public function preUpdate(LifecycleEventArgs $args)
     {
         $object = $args->getObject();
         if ($object instanceof UserInterface) {
             $this->updateUserFields($object);
+            $this->recomputeChangeSet($args->getObjectManager(), $object);
         }
     }
 
     /**
-     * This must be called on prePersist and preUpdate if the event is about a
-     * user.
+     * Updates the user properties.
      *
      * @param UserInterface $user
      */
-    protected function updateUserFields(UserInterface $user)
+    private function updateUserFields(UserInterface $user)
     {
         if (null === $this->userManager) {
             $this->userManager = $this->container->get('fos_user.user_manager');
@@ -90,5 +95,26 @@ abstract class AbstractUserListener implements EventSubscriber
 
         $this->userManager->updateCanonicalFields($user);
         $this->userManager->updatePassword($user);
+    }
+
+    /**
+     * Recomputes change set for Doctrine implementations not doing it automatically after the event.
+     *
+     * @param ObjectManager $om
+     * @param UserInterface $user
+     */
+    private function recomputeChangeSet(ObjectManager $om, UserInterface $user)
+    {
+        $meta = $om->getClassMetadata(get_class($user));
+
+        if ($om instanceof EntityManager) {
+            $om->getUnitOfWork()->recomputeSingleEntityChangeSet($meta, $user);
+
+            return;
+        }
+
+        if ($om instanceof DocumentManager) {
+            $om->getUnitOfWork()->recomputeSingleDocumentChangeSet($meta, $user);
+        }
     }
 }

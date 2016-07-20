@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Dieser Benutzername wird bereits verwendet
-        blank: Bitte geben Sie einen Benutzernamen an
-        short: "[-Inf,Inf]Dieser Benutzername ist zu kurz"
-        long: "[-Inf,Inf]Dieser Benutzername ist zu lang"
+        already_used: 'Dieser Benutzername wird bereits verwendet'
+        blank: 'Bitte geben Sie einen Benutzernamen an'
+        short: '[-Inf,Inf]Dieser Benutzername ist zu kurz'
+        long: '[-Inf,Inf]Dieser Benutzername ist zu lang'
     email:
-        already_used: Diese E-Mail-Adresse wird bereits verwendet
-        blank: Bitte geben Sie eine E-Mail-Adresse an
-        short: "[-Inf,Inf]Diese E-Mail-Adresse ist zu kurz"
-        long: "[-Inf,Inf]Diese E-Mail-Adresse ist zu lang"
-        invalid: Diese E-Mail-Adresse ist ungültig
+        already_used: 'Diese E-Mail-Adresse wird bereits verwendet'
+        blank: 'Bitte geben Sie eine E-Mail-Adresse an'
+        short: '[-Inf,Inf]Diese E-Mail-Adresse ist zu kurz'
+        long: '[-Inf,Inf]Diese E-Mail-Adresse ist zu lang'
+        invalid: 'Diese E-Mail-Adresse ist ungültig'
     password:
-        blank: Bitte geben Sie ein Passwort an
-        short: "[-Inf,Inf]Das Passwort ist zu kurz"
-        mismatch: Die Passwörter stimmen nicht überein
+        blank: 'Bitte geben Sie ein Passwort an'
+        short: '[-Inf,Inf]Das Passwort ist zu kurz'
+        mismatch: 'Die Passwörter stimmen nicht überein'
     new_password:
-        blank: Bitte geben Sie ein neues Passwort an
-        short: "[-Inf,Inf]Das neue Passwort ist zu kurz"
+        blank: 'Bitte geben Sie ein neues Passwort an'
+        short: '[-Inf,Inf]Das neue Passwort ist zu kurz'
     current_password:
-        invalid: Das angegebene Passwort ist ungültig
+        invalid: 'Das angegebene Passwort ist ungültig'
     group:
-        blank: Bitte geben Sie einen Namen an
-        short: "[-Inf,Inf]Dieser Name ist zu kurz"
-        long: "[-Inf,Inf]Dieser Name ist zu lang"
+        blank: 'Bitte geben Sie einen Namen an'
+        short: '[-Inf,Inf]Dieser Name ist zu kurz'
+        long: '[-Inf,Inf]Dieser Name ist zu lang'

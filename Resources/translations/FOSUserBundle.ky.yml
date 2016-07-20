@@ -1,0 +1,67 @@
+group:
+    edit:
+        submit: 'Группаны жаңылоо'
+    show:
+        name: 'Группанын аталышы'
+    new:
+        submit: 'Группаны түзүү'
+    flash:
+        updated: 'Группа жаңыланды'
+        created: 'Группа түзүлдү'
+        deleted: 'Группа өчүрүлдү'
+security:
+    login:
+        username: 'Колдонуучунун аты'
+        password: Сырдык сөз
+        remember_me: 'Эске тутуу'
+        submit: Кирүү
+profile:
+    show:
+        username: 'Колдонуучунун аты'
+        email: 'Электрондук почтасы'
+    edit:
+        submit: Жаңылоо
+    flash:
+        updated: 'Колдонуучунун профили жаңыланды'
+change_password:
+    submit: 'Сырдык сөздү өзгөртүү'
+    flash:
+        success: 'Сырдык сөз өзгөрүлдү'
+registration:
+    check_email: 'Кат %email% почтасына жөнөтүлдү. Анын ичинде каттону аныктоочу шилтеме бар.'
+    confirmed: 'Куттуктайбыз %username%, сиздин аккаунтуңуз ийгиликтүү катталды.'
+    back: 'Мурунку баракчага кайтуу.'
+    submit: Катталуу
+    flash:
+        user_created: 'Колдонуучу ийгиликтүү түзүлдү.'
+    email:
+        subject: 'Кош келдиңиз, %username%!'
+        message: "Саламатсызбы, %username%!\n\n Регистрацияны анныктоо үчүн %confirmationUrl%\n\n шилтемеси кириңиз."
+resetting:
+    password_already_requested: 'Сырдык сөздү сиз үчүн буга чейин 24 саат ичинде суралды.'
+    check_email: 'Кат %email% почтасына жөнөтүлдү. Ал жакта шилтеме бар жана ал шилтемеге кирүү менен сиздин сырдык сөзүңүз өзгөрөт.'
+    request:
+        invalid_username: '"%username%" аттуу колдонуучу жок.'
+        username: 'Колдонуучунун аты'
+        submit: 'Сырдык сөздү өзгөртүү'
+    reset:
+        submit: 'Сырдык сөздү өзгөртүү'
+    flash:
+        success: 'Сырдык сөз ийгиликтүү өзгөрдү'
+    email:
+        subject: 'Сырдык сөздү өзгөртүү'
+        message: "Саламатсызбы, %username%!\n\n Сырдык сөздү өзгөртүү үчүн, сураныч боюнча кириңиз\n\nИйгилик каалоо менен, \nсайттын командасы.\n"
+layout:
+    logout: Чыгуу
+    login: Кирүү
+    register: Регистрация
+    logged_in_as: 'Сиз %username% аты менен кирдиңиз'
+form:
+    group_name: 'Группанын аты'
+    username: 'Колдонуучунун аты'
+    email: 'Электрондук почтасы'
+    current_password: 'Азыркы сырдык сөз'
+    password: Сырдык сөз
+    password_confirmation: 'Сырдык сөздү аныктоо'
+    new_password: 'Жаңы сырдык сөз'
+    new_password_confirmation: 'Сырдык сөздү аныктоо'

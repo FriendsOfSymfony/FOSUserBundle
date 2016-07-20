@@ -22,7 +22,7 @@ property and its validators.
 
     // src/AppBundle/Entity/User.php
 
-    use FOS\UserBundle\Entity\User as BaseUser;
+    use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Component\Validator\Constraints as Assert;
 
@@ -84,12 +84,21 @@ the form type hierarchy and then adds the custom ``name`` field.
 
         public function getParent()
         {
-            return 'fos_user_registration';
+            return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+
+            // Or for Symfony < 2.8
+            // return 'fos_user_registration';
         }
 
-        public function getName()
+        public function getBlockPrefix()
         {
             return 'app_user_registration';
+        }
+
+        // For Symfony 2.x
+        public function getName()
+        {
+            return $this->getBlockPrefix();
         }
     }
 
@@ -148,7 +157,9 @@ changing the registration form type in YAML.
         # ...
         registration:
             form:
-                type: app_user_registration
+                type: AppBundle\Form\RegistrationType
+                # if you are using Symfony < 2.8 you should use the type name instead
+                # type: app_user_registration
 
 Note how the ``alias`` value used in your form type's service configuration tag
 is used in the bundle configuration to tell the FOSUserBundle to use your custom

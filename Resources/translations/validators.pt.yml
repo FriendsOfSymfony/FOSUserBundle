@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Este utilizador já existe
-        blank: Por favor introduza o nome de utilizador
-        short: "[-Inf,Inf]O nome de utilizador é muito curto"
-        long: "[-Inf,Inf]O nome de utilizador é muito longo"
+        already_used: 'Este utilizador já existe'
+        blank: 'Por favor introduza o nome de utilizador'
+        short: '[-Inf,Inf]O nome de utilizador é muito curto'
+        long: '[-Inf,Inf]O nome de utilizador é muito longo'
     email:
-        already_used: Este email já está a ser usado
-        blank: Por favor introduza o email
-        short: "[-Inf,Inf]Este email é muito curto"
-        long: "[-Inf,Inf]Este email é muito longo"
-        invalid: Este email é inválido
+        already_used: 'Este email já está a ser usado'
+        blank: 'Por favor introduza o email'
+        short: '[-Inf,Inf]Este email é muito curto'
+        long: '[-Inf,Inf]Este email é muito longo'
+        invalid: 'Este email é inválido'
     password:
-        blank: Por favor introduza a senha
-        short: "[-Inf,Inf]Esta senha é muito curta"
-        mismatch: As senhas não correspondem
+        blank: 'Por favor introduza a senha'
+        short: '[-Inf,Inf]Esta senha é muito curta'
+        mismatch: 'As senhas não correspondem'
     new_password:
-        blank: Por favor introduza a nova senha
-        short: "[-Inf,Inf]A nova senha é muito curta"
+        blank: 'Por favor introduza a nova senha'
+        short: '[-Inf,Inf]A nova senha é muito curta'
     current_password:
-        invalid: A senha está incorreta
+        invalid: 'A senha está incorreta'
     group:
-        blank: Por favor introduza o nome
-        short: "[-Inf,Inf]O nome é muito curto"
-        long: "[-Inf,Inf]O nome é muito longo"
+        blank: 'Por favor introduza o nome'
+        short: '[-Inf,Inf]O nome é muito curto'
+        long: '[-Inf,Inf]O nome é muito longo'

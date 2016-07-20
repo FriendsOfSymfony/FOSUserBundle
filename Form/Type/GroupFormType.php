@@ -37,6 +37,8 @@ class GroupFormType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
+            'csrf_token_id' => 'group',
+            // BC for SF < 2.8
             'intention'  => 'group',
         ));
     }
@@ -47,7 +49,13 @@ class GroupFormType extends AbstractType
         $this->configureOptions($resolver);
     }
 
+    // BC for SF < 3.0
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    public function getBlockPrefix()
     {
         return 'fos_user_group';
     }

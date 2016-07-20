@@ -110,14 +110,26 @@ Override the default registration form with your own::
     {
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
-            $builder->add('invitation', 'app_invitation_type');
+            $builder->add('invitation', 'AppBundle\Form\InvitationFormType');
+
+            // Or for Symfony < 2.8
+            // $builder->add('invitation', 'app_invitation_type');
         }
 
         public function getParent()
         {
-            return 'fos_user_registration';
+            return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+
+            // Or for Symfony < 2.8
+            // return 'fos_user_registration';
         }
 
+        public function getBlockPrefix()
+        {
+            return 'app_user_registration';
+        }
+
+        // Not necessary on Symfony 3+
         public function getName()
         {
             return 'app_user_registration';
@@ -148,7 +160,8 @@ Create the invitation field::
             $builder->addModelTransformer($this->invitationTransformer);
         }
 
-        public function setDefaultOptions(OptionsResolverInterface $resolver)
+        // Or setDefaultOptions for Symfony 2.6 and older
+        public function configureOptions(OptionsResolver $resolver)
         {
             $resolver->setDefaults(array(
                 'class' => 'AppBundle\Entity\Invitation',
@@ -158,9 +171,18 @@ Create the invitation field::
 
         public function getParent()
         {
-            return 'text';
+            return 'Symfony\Component\Form\Extension\Core\Type\TextType';
+
+            // Or for Symfony < 2.8
+            // return 'text';
         }
 
+        public function getBlockPrefix()
+        {
+            return 'app_invitation_type';
+        }
+
+        // Not necessary on Symfony 3+
         public function getName()
         {
             return 'app_invitation_type';
@@ -226,7 +248,6 @@ Create the custom data transformer::
         }
     }
 
-
 Register your custom form type in the container:
 
 .. configuration-block::
@@ -291,6 +312,8 @@ Next overwrite the default ``RegistrationFormType`` with the one just created :
     fos_user:
         registration:
             form:
-                type: app_user_registration
+                type: AppBundle\Form\RegistrationFormType
+                # Or for Symfony < 2.8
+                # type: app_user_registration
 
 You are done, go to your registration form to see the result.

@@ -41,8 +41,15 @@ class AuthenticationListenerTest extends \PHPUnit_Framework_TestCase
         $this->listener = new AuthenticationListener($loginManager, self::FIREWALL_NAME);
     }
 
+    /**
+     * @group legacy
+     */
     public function testAuthenticateLegacy()
     {
+        if (!method_exists($this->event, 'setDispatcher')) {
+            $this->markTestSkipped('Legacy test which requires Symfony <3.0.');
+        }
+
         $this->event->setDispatcher($this->eventDispatcher);
         $this->event->setName(FOSUserEvents::REGISTRATION_COMPLETED);
 

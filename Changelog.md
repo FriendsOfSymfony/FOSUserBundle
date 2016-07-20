@@ -7,6 +7,7 @@ Changelog
 
 ### 2.0.0-alpha2 (2015-09-15)
 
+* The minimum requirement for Doctrine is now ORM 2.4 and MongoDB ODM 1.0-alpha10.
 * [BC break] The deprecated entity classes have been removed.
 * The minimum requirement for Symfony has been bumped to 2.3 (older versions are already EOLed).
 * [BC break] ``UserInterface::isUser`` has been removed as it was used only by the old validation logic removed a long time ago.

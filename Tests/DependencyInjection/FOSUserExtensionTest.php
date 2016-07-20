@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Tests\DependencyInjection;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use FOS\UserBundle\DependencyInjection\FOSUserExtension;
@@ -179,10 +180,10 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createEmptyConfiguration();
 
-        $this->assertParameter('fos_user_profile', 'fos_user.profile.form.type');
-        $this->assertParameter('fos_user_registration', 'fos_user.registration.form.type');
-        $this->assertParameter('fos_user_change_password', 'fos_user.change_password.form.type');
-        $this->assertParameter('fos_user_resetting', 'fos_user.resetting.form.type');
+        $this->assertParameter(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ProfileFormType'), 'fos_user.profile.form.type');
+        $this->assertParameter(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\RegistrationFormType'), 'fos_user.registration.form.type');
+        $this->assertParameter(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ChangePasswordFormType'), 'fos_user.change_password.form.type');
+        $this->assertParameter(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ResettingFormType'), 'fos_user.resetting.form.type');
     }
 
     public function testUserLoadFormClass()
@@ -298,7 +299,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider userManagerSetFactoryProvider
      */
-    public function testUserManagerSetFactory($dbDriver, $managerService, $doctrineService)
+    public function testUserManagerSetFactory($dbDriver, $doctrineService)
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
@@ -306,13 +307,15 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $config['db_driver'] = $dbDriver;
         $loader->load(array($config), $this->configuration);
 
-        $definition = $this->configuration->getDefinition($managerService);
+        $definition = $this->configuration->getDefinition('fos_user.object_manager');
+
+        $this->assertAlias($doctrineService, 'fos_user.doctrine_registry');
 
         if (method_exists($definition, 'getFactory')) {
-            $factory = array(new Reference($doctrineService), 'getManager');
+            $factory = array(new Reference('fos_user.doctrine_registry'), 'getManager');
             $this->assertEquals($factory, $definition->getFactory());
         } else {
-            $this->assertEquals($doctrineService, $definition->getFactoryService());
+            $this->assertEquals('fos_user.doctrine_registry', $definition->getFactoryService());
             $this->assertEquals('getManager', $definition->getFactoryMethod());
         }
     }
@@ -320,9 +323,9 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     public function userManagerSetFactoryProvider()
     {
         return array(
-            array('orm', 'fos_user.entity_manager', 'doctrine'),
-            array('couchdb', 'fos_user.document_manager', 'doctrine_couchdb'),
-            array('mongodb', 'fos_user.document_manager', 'doctrine_mongodb'),
+            array('orm', 'doctrine'),
+            array('couchdb', 'doctrine_couchdb'),
+            array('mongodb', 'doctrine_mongodb'),
         );
     }
 

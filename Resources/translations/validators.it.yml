@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Username già in uso
-        blank: Si prega di inserire uno username
-        short: "[-Inf,Inf]Username troppo breve"
-        long: "[-Inf,Inf]Username troppo lungo"
+        already_used: 'Username già in uso'
+        blank: 'Si prega di inserire uno username'
+        short: '[-Inf,Inf]Username troppo breve'
+        long: '[-Inf,Inf]Username troppo lungo'
     email:
-        already_used: Email già in uso
-        blank: Si prega di inserire una email
-        short: "[-Inf,Inf]Email troppo breve"
-        long: "[-Inf,Inf]Email troppo lunga"
-        invalid: Email non valida
+        already_used: 'Email già in uso'
+        blank: 'Si prega di inserire una email'
+        short: '[-Inf,Inf]Email troppo breve'
+        long: '[-Inf,Inf]Email troppo lunga'
+        invalid: 'Email non valida'
     password:
-        blank: Si prega di inserire una password
-        short: "[-Inf,Inf]Password troppo breve"
-        mismatch: Le due password non coincidono
+        blank: 'Si prega di inserire una password'
+        short: '[-Inf,Inf]Password troppo breve'
+        mismatch: 'Le due password non coincidono'
     new_password:
-        blank: Si prega di inserire nuovamente la password
-        short: "[-Inf,Inf]Nuova password troppo breve"
+        blank: 'Si prega di inserire nuovamente la password'
+        short: '[-Inf,Inf]Nuova password troppo breve'
     current_password:
-        invalid: Password non valida
+        invalid: 'Password non valida'
     group:
-        blank: Si prega di inserire un nome
-        short: "[-Inf,Inf]Nome troppo breve"
-        long: "[-Inf,Inf]Nome troppo lungo"
+        blank: 'Si prega di inserire un nome'
+        short: '[-Inf,Inf]Nome troppo breve'
+        long: '[-Inf,Inf]Nome troppo lungo'
