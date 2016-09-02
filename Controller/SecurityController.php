@@ -76,7 +76,7 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
-        return $this->render('FOSUserBundle:Security:login.html.twig', $data);
+        return $this->render('FOSUserBundle:security:login.html.twig', $data);
     }
 
     public function checkAction()
