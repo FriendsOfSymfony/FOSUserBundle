@@ -43,9 +43,12 @@ class ResettingController extends Controller
     public function sendEmailAction(Request $request)
     {
         $username = $request->request->get('username');
-
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
         /** @var $user UserInterface */
-        $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
+        $user = $userManager->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
             return $this->render('FOSUserBundle:Resetting:request.html.twig', array(
@@ -65,11 +68,20 @@ class ResettingController extends Controller
 
         $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
-        $this->get('fos_user.user_manager')->updateUser($user);
 
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
-        ));
+        $event = new GetResponseUserEvent($user, $request);
+
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_REQUEST_SUCCESS, $event);
+
+        $userManager->updateUser($user);
+
+        if (null === $response = $event->getResponse()) {
+            $response = new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
+                array('email' => $this->getObfuscatedEmail($user))
+            ));
+        }
+
+        return $response;
     }
 
     /**

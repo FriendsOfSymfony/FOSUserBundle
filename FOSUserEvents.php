@@ -179,6 +179,14 @@ final class FOSUserEvents
     const REGISTRATION_CONFIRMED = 'fos_user.registration.confirmed';
 
     /**
+     * The RESETTING_REQUEST_SUCCESS event occurs when the resetting request form is submitted successfully.
+     *
+     * This event allows you to set the response instead of using the default one.
+     * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
+     */
+    const RESETTING_REQUEST_SUCCESS = 'fos_user.resetting.request.success';
+
+    /**
      * The RESETTING_RESET_INITIALIZE event occurs when the resetting process is initialized.
      *
      * This event allows you to set the response to bypass the processing.
