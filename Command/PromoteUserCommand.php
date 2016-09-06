@@ -35,8 +35,8 @@ class PromoteUserCommand extends RoleCommand
             ->setHelp(<<<EOT
 The <info>fos:user:promote</info> command promotes a user by adding a role
 
-  <info>php bin/console fos:user:promote matthieu ROLE_CUSTOM</info>
-  <info>php bin/console fos:user:promote --super matthieu</info>
+  <info>php %command.full_name% matthieu ROLE_CUSTOM</info>
+  <info>php %command.full_name% --super matthieu</info>
 EOT
             );
     }

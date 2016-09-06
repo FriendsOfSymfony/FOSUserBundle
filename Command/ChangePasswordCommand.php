@@ -37,13 +37,13 @@ class ChangePasswordCommand extends ContainerAwareCommand
             ->setHelp(<<<EOT
 The <info>fos:user:change-password</info> command changes the password of a user:
 
-  <info>php bin/console fos:user:change-password matthieu</info>
+  <info>php %command.full_name% matthieu</info>
 
 This interactive shell will first ask you for a password.
 
 You can alternatively specify the password as a second argument:
 
-  <info>php bin/console fos:user:change-password matthieu mypassword</info>
+  <info>php %command.full_name% matthieu mypassword</info>
 
 EOT
             );
