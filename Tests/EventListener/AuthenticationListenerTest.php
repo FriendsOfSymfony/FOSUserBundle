@@ -22,10 +22,6 @@ class AuthenticationListenerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $user = $this->getMock('FOS\UserBundle\Model\UserInterface');
-        $user
-            ->expects($this->once())
-            ->method('isEnabled')
-            ->willReturn(true);
 
         $response = $this->getMock('Symfony\Component\HttpFoundation\Response');
         $request = $this->getMock('Symfony\Component\HttpFoundation\Request');
