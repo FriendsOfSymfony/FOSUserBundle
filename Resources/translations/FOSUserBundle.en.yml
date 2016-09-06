@@ -3,6 +3,7 @@ group:
         submit: 'Update group'
     show:
         name: 'Group name'
+        roles: 'Group roles'
     new:
         submit: 'Create group'
     flash:
@@ -78,6 +79,7 @@ layout:
 
 form:
     group_name: 'Group name'
+    group_roles: 'Group roles'
     username: Username
     email: Email
     current_password: 'Current password'
