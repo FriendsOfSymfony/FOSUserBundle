@@ -107,8 +107,6 @@ class UserManipulator
      * Activates the given user.
      *
      * @param string $username
-     *
-     * @return \FOS\UserBundle\Model\UserInterface
      */
     public function activate($username)
     {
@@ -118,16 +116,12 @@ class UserManipulator
 
         $event = new UserEvent($user, $this->getRequest());
         $this->dispatcher->dispatch(FOSUserEvents::USER_ACTIVATED, $event);
-
-        return $user;
     }
 
     /**
      * Deactivates the given user.
      *
      * @param string $username
-     *
-     * @return \FOS\UserBundle\Model\UserInterface
      */
     public function deactivate($username)
     {
@@ -137,8 +131,6 @@ class UserManipulator
 
         $event = new UserEvent($user, $this->getRequest());
         $this->dispatcher->dispatch(FOSUserEvents::USER_DEACTIVATED, $event);
-
-        return $user;
     }
 
     /**
@@ -146,8 +138,6 @@ class UserManipulator
      *
      * @param string $username
      * @param string $password
-     *
-     * @return \FOS\UserBundle\Model\UserInterface
      */
     public function changePassword($username, $password)
     {
@@ -157,16 +147,12 @@ class UserManipulator
 
         $event = new UserEvent($user, $this->getRequest());
         $this->dispatcher->dispatch(FOSUserEvents::USER_PASSWORD_CHANGED, $event);
-
-        return $user;
     }
 
     /**
      * Promotes the given user.
      *
      * @param string $username
-     *
-     * @return \FOS\UserBundle\Model\UserInterface
      */
     public function promote($username)
     {
@@ -176,16 +162,12 @@ class UserManipulator
 
         $event = new UserEvent($user, $this->getRequest());
         $this->dispatcher->dispatch(FOSUserEvents::USER_PROMOTED, $event);
-
-        return $user;
     }
 
     /**
      * Demotes the given user.
      *
      * @param string $username
-     *
-     * @return \FOS\UserBundle\Model\UserInterface
      */
     public function demote($username)
     {
@@ -195,8 +177,6 @@ class UserManipulator
 
         $event = new UserEvent($user, $this->getRequest());
         $this->dispatcher->dispatch(FOSUserEvents::USER_DEMOTED, $event);
-
-        return $user;
     }
 
     /**
