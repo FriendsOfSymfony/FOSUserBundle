@@ -59,24 +59,6 @@ class UserManipulator
     }
 
     /**
-     * This method provides compatibility with 2.x and 3.x Symfony versions
-     *
-     * @return null|Request
-     */
-    private function getRequest()
-    {
-        $request = null;
-        if ($this->container->has('request_stack')) {
-            $request = $this->container->get('request_stack')->getCurrentRequest();
-        } elseif (method_exists($this->container, 'isScopeActive') && $this->container->isScopeActive('request')) {
-            // BC for SF <2.4
-            $request = $this->container->get('request');
-        }
-
-        return $request;
-    }
-
-    /**
      * Creates a user and returns it.
      *
      * @param string  $username
@@ -237,5 +219,23 @@ class UserManipulator
         }
 
         return $user;
+    }
+
+    /**
+     * This method provides compatibility with 2.x and 3.x Symfony versions
+     *
+     * @return null|Request
+     */
+    private function getRequest()
+    {
+        $request = null;
+        if ($this->container->has('request_stack')) {
+            $request = $this->container->get('request_stack')->getCurrentRequest();
+        } elseif (method_exists($this->container, 'isScopeActive') && $this->container->isScopeActive('request')) {
+            // BC for SF <2.4
+            $request = $this->container->get('request');
+        }
+
+        return $request;
     }
 }
