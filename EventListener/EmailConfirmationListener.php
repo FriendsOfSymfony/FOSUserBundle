@@ -13,6 +13,7 @@ namespace FOS\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -39,6 +40,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
         );
     }
 
@@ -52,11 +54,14 @@ class EmailConfirmationListener implements EventSubscriberInterface
             $user->setConfirmationToken($this->tokenGenerator->generateToken());
         }
 
-        $this->mailer->sendConfirmationEmailMessage($user);
-
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
 
         $url = $this->router->generate('fos_user_registration_check_email');
         $event->setResponse(new RedirectResponse($url));
+    }
+
+    public function onRegistrationCompleted(FilterUserResponseEvent $event)
+    {
+        $this->mailer->sendConfirmationEmailMessage($event->getUser());
     }
 }
