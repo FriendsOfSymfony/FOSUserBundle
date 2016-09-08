@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
         submit: Shrani
     show:
-        name: Ime skupine
+        name: 'Ime skupine'
     new:
         submit: Shrani
     flash:
-        updated: Skupina je bila uspešno shranjena
-        created: Skupina je bila uspešno ustvarjena
-        deleted: Skupina je bila uspešno izbrisana
-
-# Security
+        updated: 'Skupina je bila uspešno shranjena'
+        created: 'Skupina je bila uspešno ustvarjena'
+        deleted: 'Skupina je bila uspešno izbrisana'
 security:
     login:
-        username: "Uporabniško ime:"
-        password: "Geslo:"
-        remember_me: Zapomni si me
+        username: 'Uporabniško ime'
+        password: Geslo
+        remember_me: 'Zapomni si me'
         submit: Prijava
-
-# Profile
 profile:
     show:
-        username: Uporabniško ime
+        username: 'Uporabniško ime'
         email: Email
     edit:
         submit: Shrani
     flash:
-        updated: Profil je bil uspešno shranjen
-
-# Password change
+        updated: 'Profil je bil uspešno shranjen'
 change_password:
-    submit: Spremeni geslo
+    submit: 'Spremeni geslo'
     flash:
-        success: Geslo je bilo uspešno spremenjeno
-
-# Registration
+        success: 'Geslo je bilo uspešno spremenjeno'
 registration:
-    check_email: Na %email% smo vam poslali sporočilo s kodo za aktivacijo. Račun aktivirate s klikom na to povezavo.
-    confirmed: Pozdravljeni %username%, vaš račun je sedaj aktiviran.
-    back: Nazaj na prvotno stran.
+    check_email: 'Na %email% smo vam poslali sporočilo s kodo za aktivacijo. Račun aktivirate s klikom na to povezavo.'
+    confirmed: 'Pozdravljeni %username%, vaš račun je sedaj aktiviran.'
+    back: 'Nazaj na prvotno stran.'
     submit: Registracija
     flash:
-        user_created: Uporabnik je bil uspešno ustvarjen
+        user_created: 'Uporabnik je bil uspešno ustvarjen'
     email:
-        subject: Dobrodošli %username%!
-        message: |
-            Pozdravljeni %username%!
-
-            Za aktivacijo računa prosimo, obiščite %confirmationUrl%
-
-            Lep pozdrav,
-            ekipa.
-
-# Password resetting
+        subject: 'Dobrodošli %username%!'
+        message: "Pozdravljeni %username%!\n\nZa aktivacijo računa prosimo, obiščite %confirmationUrl%\n\nLep pozdrav,\nekipa.\n"
 resetting:
-    password_already_requested: V zadnjih 24h ste že zahtevali spremembo gesla.
-    check_email: Na %email% smo vam poslali sporočilo s kodo za spremembo gesla. Geslo boste spremenili po kliku na to povezavo.
+    password_already_requested: 'V zadnjih 24h ste že zahtevali spremembo gesla.'
+    check_email: 'Na %email% smo vam poslali sporočilo s kodo za spremembo gesla. Geslo boste spremenili po kliku na to povezavo.'
     request:
-        invalid_username: Uporabnik "%username%" ne obstaja.
-        username: "Uporabniško ime:"
-        submit: Spremeni geslo
+        invalid_username: 'Uporabnik "%username%" ne obstaja.'
+        username: 'Uporabniško ime'
+        submit: 'Spremeni geslo'
     reset:
-        submit: Spremeni geslo
+        submit: 'Spremeni geslo'
     flash:
-        success: Geslo je bilo uspešno spremenjeno
+        success: 'Geslo je bilo uspešno spremenjeno'
     email:
-        subject: Sprememba gesla
-        message: |
-            Pozdravljeni %username%!
-
-            Za spremembo gesla prosimo, obiščite %confirmationUrl%
-
-            Lep pozdrav,
-            ekipa.
-
-# Global strings
+        subject: 'Sprememba gesla'
+        message: "Pozdravljeni %username%!\n\nZa spremembo gesla prosimo, obiščite %confirmationUrl%\n\nLep pozdrav,\nekipa.\n"
 layout:
     logout: Odjava
     login: Prijava
     register: Registracija
-    logged_in_as: Prijavljen kot %username%
-
-# Form field labels
+    logged_in_as: 'Prijavljen kot %username%'
 form:
-    group_name: "Ime skupine:"
-    username: "Uporabniško ime:"
-    email: "Email:"
-    current_password: "Trenutno geslo:"
-    password: "Geslo:"
-    password_confirmation: "Preverjanje gesla:"
-    new_password: "Novo geslo:"
-    new_password_confirmation: "Preverjanje gesla:"
+    group_name: 'Ime skupine'
+    username: 'Uporabniško ime'
+    email: Email
+    current_password: 'Trenutno geslo'
+    password: Geslo
+    password_confirmation: 'Preverjanje gesla'
+    new_password: 'Novo geslo'
+    new_password_confirmation: 'Preverjanje gesla'

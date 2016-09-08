@@ -1,25 +1,22 @@
-# Group
 group:
     edit:
-        submit: Update group
+        submit: 'Update group'
     show:
-        name: Group name
+        name: 'Group name'
     new:
-        submit: Create group
+        submit: 'Create group'
     flash:
-        updated: The group has been updated
-        created: The group has been created
-        deleted: The group has been deleted
+        updated: 'The group has been updated'
+        created: 'The group has been created'
+        deleted: 'The group has been deleted'
 
-# Security
 security:
     login:
-        username: "Username:"
-        password: "Password:"
-        remember_me: Remember me
-        submit: Login
+        username: Username
+        password: Password
+        remember_me: 'Remember me'
+        submit: 'Log in'
 
-# Profile
 profile:
     show:
         username: Username
@@ -27,24 +24,22 @@ profile:
     edit:
         submit: Update
     flash:
-        updated: The profile has been updated
+        updated: 'The profile has been updated'
 
-# Password change
 change_password:
-    submit: Change password
+    submit: 'Change password'
     flash:
-        success: The password has been changed
+        success: 'The password has been changed'
 
-# Registration
 registration:
-    check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
-    confirmed: Congrats %username%, your account is now activated.
-    back: Back to the originating page.
+    check_email: 'An email has been sent to %email%. It contains an activation link you must click to activate your account.'
+    confirmed: 'Congrats %username%, your account is now activated.'
+    back: 'Back to the originating page.'
     submit: Register
     flash:
-        user_created: The user has been created successfully
+        user_created: 'The user has been created successfully'
     email:
-        subject: Welcome %username%!
+        subject: 'Welcome %username%!'
         message: |
             Hello %username%!
 
@@ -53,20 +48,19 @@ registration:
             Regards,
             the Team.
 
-# Password resetting
 resetting:
-    password_already_requested: The password for this user has already been requested within the last 24 hours.
-    check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
+    password_already_requested: 'The password for this user has already been requested within the last 24 hours.'
+    check_email: 'An email has been sent to %email%. It contains a link you must click to reset your password.'
     request:
-        invalid_username: The username or email address "%username%" does not exist.
-        username: "Username or email address:"
-        submit: Reset password
+        invalid_username: 'The username or email address "%username%" does not exist.'
+        username: 'Username or email address'
+        submit: 'Reset password'
     reset:
-        submit: Change password
+        submit: 'Change password'
     flash:
-        success: The password has been reset successfully
+        success: 'The password has been reset successfully'
     email:
-        subject: Reset Password
+        subject: 'Reset Password'
         message: |
             Hello %username%!
 
@@ -77,18 +71,17 @@ resetting:
 
 # Global strings
 layout:
-    logout: Logout
-    login: Login
+    logout: 'Log out'
+    login: 'Log in'
     register: Register
-    logged_in_as: Logged in as %username%
+    logged_in_as: 'Logged in as %username%'
 
-# Form field labels
 form:
-    group_name: "Group name:"
-    username: "Username:"
-    email: "Email:"
-    current_password: "Current password:"
-    password: "Password:"
-    password_confirmation: "Repeat password:"
-    new_password: "New password:"
-    new_password_confirmation: "Repeat new password:"
+    group_name: 'Group name'
+    username: Username
+    email: Email
+    current_password: 'Current password'
+    password: Password
+    password_confirmation: 'Repeat password'
+    new_password: 'New password'
+    new_password_confirmation: 'Repeat new password'

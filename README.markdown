@@ -23,12 +23,12 @@ For Symfony 2.0.x, you need to use the 1.2.0 release of the bundle (or lower)
 Documentation
 -------------
 
-The bulk of the documentation is stored in the `Resources/doc/index.rst`
-file in this bundle:
+The source of the documentation is stored in the `Resources/doc/` folder
+in this bundle, and available on symfony.com:
 
-[Read the Documentation for master](Resources/doc/index.rst)
+[Read the Documentation for master](https://symfony.com/doc/master/bundles/FOSUserBundle/index.html)
 
-[Read the Documentation for 1.3.x](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/1.3.x/Resources/doc/index.rst)
+[Read the Documentation for 1.3.x](https://symfony.com/doc/1.3.x/bundles/FOSUserBundle/index.html)
 
 Installation
 ------------

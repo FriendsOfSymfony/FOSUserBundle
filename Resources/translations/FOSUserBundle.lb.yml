@@ -1,94 +1,66 @@
-# Group
 group:
     edit:
-        submit: Grupp aktualiséieren
+        submit: 'Grupp aktualiséieren'
     show:
         name: Gruppennumm
     new:
-        submit: Grupp creéieren
+        submit: 'Grupp creéieren'
     flash:
-        updated: D'Grupp gouf aktualiséiert
-        created: D'Grupp gouf creéiert
-        deleted: D'Grupp gouf geläscht
-
-# Security
+        updated: 'D''Grupp gouf aktualiséiert'
+        created: 'D''Grupp gouf creéiert'
+        deleted: 'D''Grupp gouf geläscht'
 security:
     login:
-        username: "Benotzernumm:"
-        password: "Passwuert:"
-        remember_me: U mech erënneren
+        username: Benotzernumm
+        password: Passwuert
+        remember_me: 'U mech erënneren'
         submit: Umellen
-
-# Profile
 profile:
     show:
         username: Benotzernumm
         email: E-Mail
     edit:
-        submit: Benotzer aktualiséieren
+        submit: 'Benotzer aktualiséieren'
     flash:
-        updated: De Benotzerprofil gouf aktualiséiert
-
-# Password change
+        updated: 'De Benotzerprofil gouf aktualiséiert'
 change_password:
-    submit: Passwuert ännern
+    submit: 'Passwuert ännern'
     flash:
-        success: D'Passwuert gouf geännert
-
-# Registration
+        success: 'D''Passwuert gouf geännert'
 registration:
-    check_email: Eng E-Mail gouf un %email% geschéckt. Se enthält e Link deen s Du uklicke muss, fir Däi Benotzerkonto ze bestätegen.
-    confirmed: Gléckwonsch %username%, Däi Benutzerkonto ass elo bestätegt.
-    #back: Back to the originating page.
+    check_email: 'Eng E-Mail gouf un %email% geschéckt. Se enthält e Link deen s Du uklicke muss, fir Däi Benotzerkonto ze bestätegen.'
+    confirmed: 'Gléckwonsch %username%, Däi Benutzerkonto ass elo bestätegt.'
     submit: Registréieren
     flash:
-        user_created: De Benotzer gouf erfollegräich creéiert
+        user_created: 'De Benotzer gouf erfollegräich creéiert'
     email:
-        subject: Wëllkomm %username%!
-        message: |
-            Hallo %username%!
-
-            Fir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%
-
-            Mat beschte Gréiss,
-            d'Equipe.
-
-# Password resetting
+        subject: 'Wëllkomm %username%!'
+        message: "Hallo %username%!\n\nFir Däi Benotzerkonto ze bestätegen, besich wann ech gelift d'Säit %confirmationUrl%\n\nMat beschte Gréiss,\nd'Equipe.\n"
 resetting:
-    password_already_requested: Een neit Passwuert gouf an de vergaangene 24 Stunden fir dëse Benotzer schon emol ugefrot.
-    check_email: Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.
+    password_already_requested: 'Een neit Passwuert gouf an de vergaangene 24 Stunden fir dëse Benotzer schon emol ugefrot.'
+    check_email: 'Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.'
     request:
-        invalid_username: De Benotzer "%username%" existéiert net.
-        username: "Benotzernumm:"
-        submit: Passwuert zerécksetzen
+        invalid_username: 'De Benotzer "%username%" existéiert net.'
+        username: Benotzernumm
+        submit: 'Passwuert zerécksetzen'
     reset:
-        submit: Passwuert ännern
+        submit: 'Passwuert ännern'
     flash:
-        success: D'Passwuert gouf erfollegräich zeréckgesat
+        success: 'D''Passwuert gouf erfollegräich zeréckgesat'
     email:
-        subject: Wëllkomm %username%!
-        message: |
-            Hallo %username%!
-
-            Fir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%
-
-            Mat beschte Gréiss,
-            d'Equipe.
-
-# Global strings
+        subject: 'Wëllkomm %username%!'
+        message: "Hallo %username%!\n\nFir Däi Passwuert zeréckzesetzen, besich wann ech gelift d'Säit %confirmationUrl%\n\nMat beschte Gréiss,\nd'Equipe.\n"
 layout:
     logout: Ofmellen
     login: Umellen
     register: Registréieren
-    logged_in_as: Ugemellt als %username%
-
-# Form field labels
+    logged_in_as: 'Ugemellt als %username%'
 form:
-    group_name: "Gruppennumm:"
-    username: "Benotzernumm:"
-    email: "E-Mail-Adress:"
-    current_password: "Aktuellt Passwuert:"
-    password: "Passwuert:"
-    password_confirmation: "Bestätegung:"
-    new_password: "Neit Passwuert:"
-    new_password_confirmation: "Bestätegung:"
+    group_name: Gruppennumm
+    username: Benotzernumm
+    email: E-Mail-Adress
+    current_password: 'Aktuellt Passwuert'
+    password: Passwuert
+    password_confirmation: Bestätegung
+    new_password: 'Neit Passwuert'
+    new_password_confirmation: Bestätegung

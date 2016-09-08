@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\DependencyInjection;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -94,7 +95,7 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->fixXmlConfig('validation_group')
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_profile')->end()
+                                ->scalarNode('type')->defaultValue(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ProfileFormType'))->end()
                                 ->scalarNode('name')->defaultValue('fos_user_profile_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -132,7 +133,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_registration')->end()
+                                ->scalarNode('type')->defaultValue(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\RegistrationFormType'))->end()
                                 ->scalarNode('name')->defaultValue('fos_user_registration_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -170,7 +171,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_resetting')->end()
+                                ->scalarNode('type')->defaultValue(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ResettingFormType'))->end()
                                 ->scalarNode('name')->defaultValue('fos_user_resetting_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -194,7 +195,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('form')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_change_password')->end()
+                                ->scalarNode('type')->defaultValue(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\ChangePasswordFormType'))->end()
                                 ->scalarNode('name')->defaultValue('fos_user_change_password_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()
@@ -239,7 +240,7 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->fixXmlConfig('validation_group')
                             ->children()
-                                ->scalarNode('type')->defaultValue('fos_user_group')->end()
+                                ->scalarNode('type')->defaultValue(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\GroupFormType'))->end()
                                 ->scalarNode('name')->defaultValue('fos_user_group_form')->end()
                                 ->arrayNode('validation_groups')
                                     ->prototype('scalar')->end()

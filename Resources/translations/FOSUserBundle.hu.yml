@@ -1,25 +1,20 @@
-# Group
 group:
     edit:
-        submit: Csoport frissítése
+        submit: 'Csoport frissítése'
     show:
-        name: Csoport név
+        name: 'Csoport név'
     new:
-        submit: Csoport létrehozása
+        submit: 'Csoport létrehozása'
     flash:
-        updated: A csoport frissítve
-        created: A csoport létrehozva
-        deleted: A csoport törölve
-
-# Security
+        updated: 'A csoport frissítve'
+        created: 'A csoport létrehozva'
+        deleted: 'A csoport törölve'
 security:
     login:
-        username: "Felhasználónév:"
-        password: "Jelszó:"
+        username: Felhasználónév
+        password: Jelszó
         remember_me: Megjegyzés
         submit: Belépés
-
-# Profile
 profile:
     show:
         username: Felhasználónév
@@ -27,68 +22,46 @@ profile:
     edit:
         submit: Frissítés
     flash:
-        updated: A profil frissítve
-
-# Password change
+        updated: 'A profil frissítve'
 change_password:
-    submit: Jelszó megváltoztazása
+    submit: 'Jelszó megváltoztazása'
     flash:
-        success: A jelszó megváltoztatva
-
-# Registration
+        success: 'A jelszó megváltoztatva'
 registration:
-    check_email: Egy e-mail lett küldve a(z) %email% címre. Egy aktivációs linket tartalmaz, amire rá kell kattintani a fiók aktiválásához.
-    confirmed: Gratulálunk %username%, a fiók visszaigazolva.
-    back: Vissza az előző oldalra.
+    check_email: 'Egy e-mail lett küldve a(z) %email% címre. Egy aktivációs linket tartalmaz, amire rá kell kattintani a fiók aktiválásához.'
+    confirmed: 'Gratulálunk %username%, a fiók visszaigazolva.'
+    back: 'Vissza az előző oldalra.'
     submit: Regisztráció
     flash:
-        user_created: A felhasználó sikeresen létrehozva
+        user_created: 'A felhasználó sikeresen létrehozva'
     email:
-        subject: Üdvözöljük %username%!
-        message: |
-            Hello %username%!
-
-            A fiókja visszaigazolásához kérjük látogasson el a következő linkre: %confirmationUrl%
-
-            Üdvözlettel,
-            the Team.
-
-# Password resetting
+        subject: 'Üdvözöljük %username%!'
+        message: "Hello %username%!\n\nA fiókja visszaigazolásához kérjük látogasson el a következő linkre: %confirmationUrl%\n\nÜdvözlettel,\nthe Team.\n"
 resetting:
-    password_already_requested: Az elmúlt 24 órában ehhez a felhasználóhoz már kértek új jelszót.
-    check_email: Egy e-mail lett küldve a(z) %email% címre. Egy linket tartalmaz, amire rá kell kattintani a jeszó lecseréléséhez.
+    password_already_requested: 'Az elmúlt 24 órában ehhez a felhasználóhoz már kértek új jelszót.'
+    check_email: 'Egy e-mail lett küldve a(z) %email% címre. Egy linket tartalmaz, amire rá kell kattintani a jeszó lecseréléséhez.'
     request:
-        invalid_username: A(z) %username% felhasználónév vagy e-mail cím nem létezik.
-        username: "Felhasználónév vagy e-mail cím:"
-        submit: Jelszó lecserélése
+        invalid_username: 'A(z) %username% felhasználónév vagy e-mail cím nem létezik.'
+        username: 'Felhasználónév vagy e-mail cím'
+        submit: 'Jelszó lecserélése'
     reset:
-        submit: Jelszó megváltoztatása
+        submit: 'Jelszó megváltoztatása'
     flash:
-        success: A jelszó sikeresen lecserélve
+        success: 'A jelszó sikeresen lecserélve'
     email:
-        subject: Jelszó lecserélése
-        message: |
-            Hello %username%!
-
-            A jelszó lecseréléséhez kérjük látogasson el a következő linkre: %confirmationUrl%
-
-            Üdvözlettel,
-            the Team.
-
-# Global strings
+        subject: 'Jelszó lecserélése'
+        message: "Hello %username%!\n\nA jelszó lecseréléséhez kérjük látogasson el a következő linkre: %confirmationUrl%\n\nÜdvözlettel,\nthe Team.\n"
 layout:
     logout: Kijelentkezés
     login: Bejelentkezés
     register: Regisztráció
-    logged_in_as: Belépve mint %username%
-
-# Form field labels
+    logged_in_as: 'Belépve mint %username%'
 form:
-    group_name: "Csoport név:"
-    username: "Felhasználónév:"
-    email: "E-mail:"
-    current_password: "Jelenlegi jelszó:"
-    password: "Jelszó:"
-    password_confirmation: "Megerősítés:"
-    new_password: "Új jelszó:"
-    new_password_confirmation: "Megerősítés:"
+    group_name: 'Csoport név'
+    username: Felhasználónév
+    email: E-mail
+    current_password: 'Jelenlegi jelszó'
+    password: Jelszó
+    password_confirmation: Megerősítés
+    new_password: 'Új jelszó'
+    new_password_confirmation: Megerősítés

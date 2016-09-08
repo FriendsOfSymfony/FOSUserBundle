@@ -10,6 +10,8 @@
 
         <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
             <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="service_container" />
         </service>
 
         <service id="fos_user.util.token_generator.default" class="FOS\UserBundle\Util\TokenGenerator" public="false">

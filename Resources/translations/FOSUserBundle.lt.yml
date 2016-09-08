@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Atnaujinti grupę
+        submit: 'Atnaujinti grupę'
     show:
-        name: Grupės vardas
+        name: 'Grupės vardas'
     new:
-        submit: Sukurti grupę
+        submit: 'Sukurti grupę'
     flash:
-        updated: Grupė atnaujinta
-        created: Grupė sukurta
-        deleted: Grupė ištrinta
-
-# Security
+        updated: 'Grupė atnaujinta'
+        created: 'Grupė sukurta'
+        deleted: 'Grupė ištrinta'
 security:
     login:
-        username: "Naudotojo vardas:"
-        password: "Slaptažodis:"
+        username: 'Naudotojo vardas'
+        password: Slaptažodis
         remember_me: Atsiminti
         submit: Prisijungti
-
-# Profile
 profile:
     show:
-        username: Naudotojo vardas
-        email: El. paštas
+        username: 'Naudotojo vardas'
+        email: 'El. paštas'
     edit:
         submit: Atnaujinti
     flash:
-        updated: Profilis atnaujintas
-
-# Password change
+        updated: 'Profilis atnaujintas'
 change_password:
-    submit: Keisti slaptažodį
+    submit: 'Keisti slaptažodį'
     flash:
-        success: Slaptažodis pakeistas
-
-# Registration
+        success: 'Slaptažodis pakeistas'
 registration:
-    check_email: El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią aplankę, aktyvuosite savo paskyrą.
-    confirmed: Sveikiname, jūsų paskyra aktyvuota.
-    back: Grįžti atgal
+    check_email: 'El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią aplankę, aktyvuosite savo paskyrą.'
+    confirmed: 'Sveikiname, jūsų paskyra aktyvuota.'
+    back: 'Grįžti atgal'
     submit: Registruotis
     flash:
-        user_created: Naudotojas sukurtas
+        user_created: 'Naudotojas sukurtas'
     email:
-        subject: Registracijos patvirtinimas
-        message: |
-            Sveiki %username%!
-
-            Norėdami aktyvuoti savo paskyrą, apsilankykite adresu %confirmationUrl%
-
-            Pagarbiai,
-            Komanda.
-
-# Password resetting
+        subject: 'Registracijos patvirtinimas'
+        message: "Sveiki %username%!\n\nNorėdami aktyvuoti savo paskyrą, apsilankykite adresu %confirmationUrl%\n\nPagarbiai,\nKomanda.\n"
 resetting:
-    password_already_requested: Slaptažodžio keitimas šiam naudotojui jau buvo prašytas per paskutinias 24 valandas.
-    check_email: El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią paspaudę, galėsite pakeisti savo slaptažodį.
+    password_already_requested: 'Slaptažodžio keitimas šiam naudotojui jau buvo prašytas per paskutinias 24 valandas.'
+    check_email: 'El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią paspaudę, galėsite pakeisti savo slaptažodį.'
     request:
-        invalid_username: Naudotojo vardas arba el. paštas "%username%" neegzistuoja.
-        username: "Naudotojo vardas arba el. paštas:"
+        invalid_username: 'Naudotojo vardas arba el. paštas "%username%" neegzistuoja.'
+        username: 'Naudotojo vardas arba el. paštas'
         submit: Tęsti
     reset:
-        submit: Pakeisti slaptažodį
+        submit: 'Pakeisti slaptažodį'
     flash:
-        success: Slaptažodis pakeistas
+        success: 'Slaptažodis pakeistas'
     email:
-        subject: Slaptažodžio keitimas
-        message: |
-            Sveiki %username%!
-
-            Norėdami pakeisti savo slaptažodį, apsilankykite adresu %confirmationUrl%
-
-            Pagarbiai,
-            Komanda.
-
-# Global strings
+        subject: 'Slaptažodžio keitimas'
+        message: "Sveiki %username%!\n\nNorėdami pakeisti savo slaptažodį, apsilankykite adresu %confirmationUrl%\n\nPagarbiai,\nKomanda.\n"
 layout:
     logout: Atsijungti
     login: Prisijungti
     register: Registruotis
-    logged_in_as: Prisijungęs kaip %username%
-
-# Form field labels
+    logged_in_as: 'Prisijungęs kaip %username%'
 form:
-    group_name: "Grupės vardas:"
-    username: "Naudotojo vardas:"
-    email: "El. paštas:"
-    current_password: "Dabartinis slaptažodis:"
-    password: "Slaptažodis:"
-    password_confirmation: "Pakartoti slaptažodį:"
-    new_password: "Naujas slaptažodis:"
-    new_password_confirmation: "Naujas slaptažodis (pakartoti):"
+    group_name: 'Grupės vardas'
+    username: 'Naudotojo vardas'
+    email: 'El. paštas'
+    current_password: 'Dabartinis slaptažodis'
+    password: Slaptažodis
+    password_confirmation: 'Pakartoti slaptažodį'
+    new_password: 'Naujas slaptažodis'
+    new_password_confirmation: 'Naujas slaptažodis (pakartoti)'

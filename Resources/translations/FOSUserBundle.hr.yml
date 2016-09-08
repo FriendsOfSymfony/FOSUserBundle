@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Ažuriraj grupu
+        submit: 'Ažuriraj grupu'
     show:
-        name: Ime grupe
+        name: 'Ime grupe'
     new:
-        submit: Spremi grupu
+        submit: 'Spremi grupu'
     flash:
-        updated: Grupa je uspješno ažurirana
-        created: Grupa je uspješno kreirana
-        deleted: Grupa je uspješno spremljena
-
-# Security
+        updated: 'Grupa je uspješno ažurirana'
+        created: 'Grupa je uspješno kreirana'
+        deleted: 'Grupa je uspješno spremljena'
 security:
     login:
-        username: "Korisničko ime:"
-        password: "Lozinka:"
-        remember_me: Zapamti me
+        username: 'Korisničko ime'
+        password: Lozinka
+        remember_me: 'Zapamti me'
         submit: Prijava
-
-# Profile
 profile:
     show:
-        username: Korisničko ime
+        username: 'Korisničko ime'
         email: Email
     edit:
         submit: Ažuriraj
     flash:
-        updated: Profil je uspješno ažuriran
-
-# Password change
+        updated: 'Profil je uspješno ažuriran'
 change_password:
-    submit: Izmijeni lozinku
+    submit: 'Izmijeni lozinku'
     flash:
-        success: Lozinka je uspješno spremljena
-
-# Registration
+        success: 'Lozinka je uspješno spremljena'
 registration:
-    check_email: Na %email% smo vam poslali poruku s poveznicom za aktivaciju. Korisnički račun aktivirate klikom na tu poveznicu.
-    confirmed: Pozdrav %username%, vaš korisnički račun je sada aktiviran.
-    back: Natrag na polaznu stranicu.
+    check_email: 'Na %email% smo vam poslali poruku s poveznicom za aktivaciju. Korisnički račun aktivirate klikom na tu poveznicu.'
+    confirmed: 'Pozdrav %username%, vaš korisnički račun je sada aktiviran.'
+    back: 'Natrag na polaznu stranicu.'
     submit: Registracija
     flash:
-        user_created: Korisnički račun je uspješno kreiran
+        user_created: 'Korisnički račun je uspješno kreiran'
     email:
-        subject: Aktivacija korisničkog računa
-        message: |
-            Pozdrav %username%!
-
-            Za aktivaciju korisničkog računa molimo kliknite na %confirmationUrl%
-
-            Pozdrav,
-            Autori stranice
-
-# Password resetting
+        subject: 'Aktivacija korisničkog računa'
+        message: "Pozdrav %username%!\n\nZa aktivaciju korisničkog računa molimo kliknite na %confirmationUrl%\n\nPozdrav,\nAutori stranice\n"
 resetting:
-    password_already_requested: U posljednja 24 sata ste već poslali zahtjev za resetiranjem lozinke.
-    check_email: Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.
+    password_already_requested: 'U posljednja 24 sata ste već poslali zahtjev za resetiranjem lozinke.'
+    check_email: 'Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.'
     request:
-        invalid_username: Korisničko ime "%username%" ne postoji.
-        username: "Korisničko ime:"
-        submit: Izmijeni lozinku
+        invalid_username: 'Korisničko ime "%username%" ne postoji.'
+        username: 'Korisničko ime'
+        submit: 'Izmijeni lozinku'
     reset:
-        submit: Spremi lozinku
+        submit: 'Spremi lozinku'
     flash:
-        success: Lozinka je uspješno spremljena
+        success: 'Lozinka je uspješno spremljena'
     email:
-        subject: Promjena lozinke
-        message: |
-            Pozdrav %username%!
-
-            Za promjenu lozinke molimo kliknite na %confirmationUrl%
-
-            Pozdrav,
-            Autori stranice
-
-# Global strings
+        subject: 'Promjena lozinke'
+        message: "Pozdrav %username%!\n\nZa promjenu lozinke molimo kliknite na %confirmationUrl%\n\nPozdrav,\nAutori stranice\n"
 layout:
     logout: Odjava
     login: Prijava
     register: Registracija
-    logged_in_as: Prijavljen kao %username%
-
-# Form field labels
+    logged_in_as: 'Prijavljen kao %username%'
 form:
-    group_name: "Ime grupe"
-    username: "Korisničko ime:"
-    email: "Email:"
-    current_password: "Trenutna lozinka:"
-    password: "Lozinka"
-    password_confirmation: "Potvrda lozinke:"
-    new_password: "Nova lozinka:"
-    new_password_confirmation: "Potvrda lozinke:"
+    group_name: 'Ime grupe'
+    username: 'Korisničko ime'
+    email: Email
+    current_password: 'Trenutna lozinka'
+    password: Lozinka
+    password_confirmation: 'Potvrda lozinke'
+    new_password: 'Nova lozinka'
+    new_password_confirmation: 'Potvrda lozinke'

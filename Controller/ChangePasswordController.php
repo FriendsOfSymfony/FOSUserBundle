@@ -76,7 +76,7 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:ChangePassword:changePassword.html.twig', array(
+        return $this->render('FOSUserBundle:ChangePassword:change_password.html.twig', array(
             'form' => $form->createView()
         ));
     }

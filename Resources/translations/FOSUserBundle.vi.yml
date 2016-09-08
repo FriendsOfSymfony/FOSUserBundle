@@ -1,4 +1,3 @@
-# Group
 group:
     edit:
         submit: 'Nhóm cập nhật'
@@ -10,16 +9,12 @@ group:
         submit: 'Tạo nhóm'
     show:
         name: 'Tên nhóm'
-
-# Security
 security:
     login:
         password: 'Mật khẩu:'
         remember_me: 'Ghi nhớ thông tin của tôi'
         submit: 'Đăng nhập'
         username: 'Tên đăng nhập:'
-
-# Profile
 profile:
     edit:
         submit: 'Cập nhật'
@@ -28,14 +23,10 @@ profile:
     show:
         email: Email
         username: 'Tên đăng nhập'
-
-# Password change
 change_password:
     flash:
         success: 'Mật khẩu đã được thay đổi'
     submit: 'Thay đổi mật khẩu'
-
-# Registration
 registration:
     back: 'Quay lại'
     check_email: 'Một email đã được gửi đến %email%. Nó có chứa một liên kết kích hoạt bạn phải bấm vào để kích hoạt tài khoản của bạn.'
@@ -46,8 +37,6 @@ registration:
     flash:
         user_created: 'Người sử dụng đã được khởi tạo'
     submit: 'Đăng ký'
-
-# Password resetting
 resetting:
     check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để thiết lập lại mật khẩu của bạn.'
     email:
@@ -62,15 +51,11 @@ resetting:
         username: 'Tên đăng nhập hoặc địa chỉ email:'
     reset:
         submit: 'Thay đổi mật khẩu'
-
-# Global strings
 layout:
     logged_in_as: 'Đăng nhập như %username%'
     login: 'Đăng nhập'
     logout: 'Đăng xuất'
     register: 'Đăng ký'
-
-# Form field labels
 form:
     current_password: 'Mật khẩu hiện tại:'
     email: 'Email:'

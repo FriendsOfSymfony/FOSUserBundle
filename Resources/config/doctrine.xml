@@ -9,15 +9,16 @@
             <argument type="service" id="security.encoder_factory" />
             <argument type="service" id="fos_user.util.username_canonicalizer" />
             <argument type="service" id="fos_user.util.email_canonicalizer" />
-            <argument type="service" id="fos_user.entity_manager" />
+            <argument type="service" id="fos_user.object_manager" />
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
+        <!-- The factory is configured in the DI extension class to support more Symfony versions -->
+        <service id="fos_user.object_manager" class="Doctrine\Common\Persistence\ObjectManager" public="false">
             <argument>%fos_user.model_manager_name%</argument>
         </service>
 
-        <service id="fos_user.user_listener" class="FOS\UserBundle\Doctrine\Orm\UserListener" public="false">
+        <service id="fos_user.user_listener" class="FOS\UserBundle\Doctrine\UserListener" public="false">
             <argument type="service" id="service_container" />
         </service>
     </services>

@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Upravit skupinu
+        submit: 'Upravit skupinu'
     show:
-        name: Název skupiny
+        name: 'Název skupiny'
     new:
-        submit: Vytvořit skupinu
+        submit: 'Vytvořit skupinu'
     flash:
-        updated: Skupina byla úspěšně aktualizována
-        created: Skupina byla úspěšně vytvořena
-        deleted: Skupina byla úspěšně vymazána
-
-# Security
+        updated: 'Skupina byla úspěšně aktualizována'
+        created: 'Skupina byla úspěšně vytvořena'
+        deleted: 'Skupina byla úspěšně vymazána'
 security:
     login:
-        username: "Uživatelské jméno:"
-        password: "Heslo:"
-        remember_me: Zapamatovat si
+        username: 'Uživatelské jméno'
+        password: Heslo
+        remember_me: 'Zapamatovat si'
         submit: Přihlásit
-
-# Profile
 profile:
     show:
-        username: Uživatelské jméno
+        username: 'Uživatelské jméno'
         email: E-mail
     edit:
         submit: Upravit
     flash:
-        updated: Profil byl úspěšně aktualizován
-
-# Password change
+        updated: 'Profil byl úspěšně aktualizován'
 change_password:
-    submit: Nastavit nové heslo
+    submit: 'Nastavit nové heslo'
     flash:
-        success: Nové heslo bylo úspěšně nastaveno
-
-# Registration
+        success: 'Nové heslo bylo úspěšně nastaveno'
 registration:
-    check_email: Na adresu %email% byl zaslán aktivační e-mail. Obsahuje aktivační odkaz, na který je nutné kliknout pro aktivaci Vašeho účtu.
-    confirmed: Gratulujeme, %username%, Váš účet je nyní aktivní.
-    back: Návrat na předchozí stránku.
-    submit: Registrovat se
+    check_email: 'Na adresu %email% byl zaslán aktivační e-mail. Obsahuje aktivační odkaz, na který je nutné kliknout pro aktivaci Vašeho účtu.'
+    confirmed: 'Gratulujeme, %username%, Váš účet je nyní aktivní.'
+    back: 'Návrat na předchozí stránku.'
+    submit: 'Registrovat se'
     flash:
-        user_created: Váš účet byl úspěšně vytvořen
+        user_created: 'Váš účet byl úspěšně vytvořen'
     email:
-        subject: Vítejte, %username%!
-        message: |
-            Dobrý den, %username%!
-
-            Pro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%
-
-            S pozdravem,
-            realizační tým.
-
-# Password resetting
+        subject: 'Vítejte, %username%!'
+        message: "Dobrý den, %username%!\n\nPro dokončení Vaší registrace klikněte na tento odkaz: %confirmationUrl%\n\nS pozdravem,\nrealizační tým.\n"
 resetting:
-    password_already_requested: Tento uživatel již zažádal o nastavení nového hesla (během posledních 24 hodin).
-    check_email: Na adresu %email% byl zaslán e-mail s návodem na nastavení nového hesla. E-mail obsahuje odkaz, na který je nutné kliknout, bez tohoto úkonu není možné nové heslo nastavit.
+    password_already_requested: 'Tento uživatel již zažádal o nastavení nového hesla (během posledních 24 hodin).'
+    check_email: 'Na adresu %email% byl zaslán e-mail s návodem na nastavení nového hesla. E-mail obsahuje odkaz, na který je nutné kliknout, bez tohoto úkonu není možné nové heslo nastavit.'
     request:
-        invalid_username: Uživatelské jméno nebo e-mail "%username%" neexistují.
-        username: "Uživatelské jméno nebo e-mail:"
-        submit: Nastavit nové heslo
+        invalid_username: 'Uživatelské jméno nebo e-mail "%username%" neexistují.'
+        username: 'Uživatelské jméno nebo e-mail'
+        submit: 'Nastavit nové heslo'
     reset:
-        submit: Nastavit nové heslo
+        submit: 'Nastavit nové heslo'
     flash:
-        success: Heslo bylo úspěšně změněno
+        success: 'Heslo bylo úspěšně změněno'
     email:
-        subject: Zaslání zapomenutého hesla
-        message: |
-            Dobrý den, %username%!
-
-            Pro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%
-
-            S pozdravem,
-            realizační tým.
-
-# Global strings
+        subject: 'Zaslání zapomenutého hesla'
+        message: "Dobrý den, %username%!\n\nPro nastavení nového hesla klikněte na tento odkaz: %confirmationUrl%\n\nS pozdravem,\nrealizační tým.\n"
 layout:
-    logout: Odhlásit se
+    logout: 'Odhlásit se'
     login: Přihlášení
     register: Registrace
-    logged_in_as: "Přihlášený uživatel: %username%"
-
-# Form field labels
+    logged_in_as: 'Přihlášený uživatel: %username%'
 form:
-    group_name: "Název skupiny:"
-    username: "Uživatelské jméno:"
-    email: "E-mail:"
-    current_password: "Současné heslo:"
-    password: "Heslo:"
-    password_confirmation: "Potvrzení hesla:"
-    new_password: "Nové heslo:"
-    new_password_confirmation: "Potvrzení hesla:"
+    group_name: 'Název skupiny'
+    username: 'Uživatelské jméno'
+    email: E-mail
+    current_password: 'Současné heslo'
+    password: Heslo
+    password_confirmation: 'Potvrzení hesla'
+    new_password: 'Nové heslo'
+    new_password_confirmation: 'Potvrzení hesla'

@@ -30,8 +30,15 @@ class FlashListenerTest extends \PHPUnit_Framework_TestCase
         $this->listener = new FlashListener($session, $translator);
     }
 
+    /**
+     * @group legacy
+     */
     public function testAddSuccessFlashLegacy()
     {
+        if (!method_exists($this->event, 'setDispatcher')) {
+            $this->markTestSkipped('Legacy test which requires Symfony <3.0.');
+        }
+
         $this->event->setName(FOSUserEvents::CHANGE_PASSWORD_COMPLETED);
 
         $this->listener->addSuccessFlash($this->event);

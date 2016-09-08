@@ -6,13 +6,13 @@
 
     <mapped-superclass name="FOS\UserBundle\Model\User">
 
-        <field name="username" column="username" type="string" length="255" />
+        <field name="username" column="username" type="string" length="180" />
 
-        <field name="usernameCanonical" column="username_canonical" type="string" length="255" unique="true" />
+        <field name="usernameCanonical" column="username_canonical" type="string" length="180" unique="true" />
 
-        <field name="email" column="email" type="string" length="255" />
+        <field name="email" column="email" type="string" length="180" />
 
-        <field name="emailCanonical" column="email_canonical" type="string" length="255" unique="true" />
+        <field name="emailCanonical" column="email_canonical" type="string" length="180" unique="true" />
 
         <field name="enabled" column="enabled" type="boolean" />
 
@@ -28,7 +28,7 @@
 
         <field name="expiresAt" column="expires_at" type="datetime" nullable="true" />
 
-        <field name="confirmationToken" column="confirmation_token" type="string" nullable="true" />
+        <field name="confirmationToken" column="confirmation_token" type="string" unique="true" nullable="true" />
 
         <field name="passwordRequestedAt" column="password_requested_at" type="datetime" nullable="true" />
 

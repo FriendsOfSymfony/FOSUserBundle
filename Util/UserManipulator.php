@@ -11,8 +11,13 @@
 
 namespace FOS\UserBundle\Util;
 
+use FOS\UserBundle\Event\UserEvent;
+use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Executes some manipulations on the users
@@ -29,9 +34,28 @@ class UserManipulator
      */
     private $userManager;
 
-    public function __construct(UserManagerInterface $userManager)
+    /**
+     * @var EventDispatcherInterface
+     */
+    private $dispatcher;
+
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
+     * UserManipulator constructor.
+     *
+     * @param UserManagerInterface     $userManager
+     * @param EventDispatcherInterface $dispatcher
+     * @param ContainerInterface       $container
+     */
+    public function __construct(UserManagerInterface $userManager, EventDispatcherInterface $dispatcher, ContainerInterface $container)
     {
         $this->userManager = $userManager;
+        $this->dispatcher = $dispatcher;
+        $this->container = $container;
     }
 
     /**
@@ -55,6 +79,9 @@ class UserManipulator
         $user->setSuperAdmin((Boolean) $superadmin);
         $this->userManager->updateUser($user);
 
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_CREATED, $event);
+
         return $user;
     }
 
@@ -68,6 +95,9 @@ class UserManipulator
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(true);
         $this->userManager->updateUser($user);
+
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_ACTIVATED, $event);
     }
 
     /**
@@ -80,6 +110,9 @@ class UserManipulator
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setEnabled(false);
         $this->userManager->updateUser($user);
+
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_DEACTIVATED, $event);
     }
 
     /**
@@ -93,6 +126,9 @@ class UserManipulator
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setPlainPassword($password);
         $this->userManager->updateUser($user);
+
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_PASSWORD_CHANGED, $event);
     }
 
     /**
@@ -105,6 +141,9 @@ class UserManipulator
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(true);
         $this->userManager->updateUser($user);
+
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_PROMOTED, $event);
     }
 
     /**
@@ -117,6 +156,9 @@ class UserManipulator
         $user = $this->findUserByUsernameOrThrowException($username);
         $user->setSuperAdmin(false);
         $this->userManager->updateUser($user);
+
+        $event = new UserEvent($user, $this->getRequest());
+        $this->dispatcher->dispatch(FOSUserEvents::USER_DEMOTED, $event);
     }
 
     /**
@@ -177,5 +219,23 @@ class UserManipulator
         }
 
         return $user;
+    }
+
+    /**
+     * This method provides compatibility with 2.x and 3.x Symfony versions
+     *
+     * @return null|Request
+     */
+    private function getRequest()
+    {
+        $request = null;
+        if ($this->container->has('request_stack')) {
+            $request = $this->container->get('request_stack')->getCurrentRequest();
+        } elseif (method_exists($this->container, 'isScopeActive') && $this->container->isScopeActive('request')) {
+            // BC for SF <2.4
+            $request = $this->container->get('request');
+        }
+
+        return $request;
     }
 }

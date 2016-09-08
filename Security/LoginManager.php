@@ -50,14 +50,22 @@ class LoginManager implements LoginManagerInterface
         $this->container = $container;
     }
 
-    final public function loginUser($firewallName, UserInterface $user, Response $response = null)
+    final public function logInUser($firewallName, UserInterface $user, Response $response = null)
     {
-        $this->userChecker->checkPostAuth($user);
+        $this->userChecker->checkPreAuth($user);
 
         $token = $this->createToken($firewallName, $user);
 
-        if ($this->container->isScopeActive('request')) {
-            $this->sessionStrategy->onAuthentication($this->container->get('request'), $token);
+        $request = null;
+        if ($this->container->has('request_stack')) {
+            $request = $this->container->get('request_stack')->getCurrentRequest();
+        } elseif (method_exists($this->container, 'isScopeActive') && $this->container->isScopeActive('request')) {
+            // BC for SF <2.4
+            $request = $this->container->get('request');
+        }
+
+        if (null !== $request) {
+            $this->sessionStrategy->onAuthentication($request, $token);
 
             if (null !== $response) {
                 $rememberMeServices = null;
@@ -68,7 +76,7 @@ class LoginManager implements LoginManagerInterface
                 }
 
                 if ($rememberMeServices instanceof RememberMeServicesInterface) {
-                    $rememberMeServices->loginSuccess($this->container->get('request'), $response, $token);
+                    $rememberMeServices->loginSuccess($request, $response, $token);
                 }
             }
         }

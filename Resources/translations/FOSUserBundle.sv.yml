@@ -1,25 +1,20 @@
-# Group
 group:
     edit:
-        submit: Uppdatera gruppen
+        submit: 'Uppdatera gruppen'
     show:
         name: Gruppnamn
     new:
-        submit: Skapa grupp
+        submit: 'Skapa grupp'
     flash:
-        updated: Gruppen har uppdaterats
-        created: Gruppen har skapats
-        deleted: Gruppen har tagits bort
-
-# Security
+        updated: 'Gruppen har uppdaterats'
+        created: 'Gruppen har skapats'
+        deleted: 'Gruppen har tagits bort'
 security:
     login:
-        username: "Användarnamn:"
-        password: "Lösenord:"
-        remember_me: Kom ihåg mig
-        submit: Logga in
-
-# Profile
+        username: Användarnamn
+        password: Lösenord
+        remember_me: 'Kom ihåg mig'
+        submit: 'Logga in'
 profile:
     show:
         username: Användarnamn
@@ -27,68 +22,46 @@ profile:
     edit:
         submit: Uppdatera
     flash:
-        updated: Profilen har uppdaterats
-
-# Password change
+        updated: 'Profilen har uppdaterats'
 change_password:
-    submit: Ändra lösenord
+    submit: 'Ändra lösenord'
     flash:
-        success: Lösenordet har ändrats
-
-# Registration
+        success: 'Lösenordet har ändrats'
 registration:
-    check_email: Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att aktivera ditt konto.
-    confirmed: Grattis %username%, ditt konto är nu aktiverat.
-    back: Tillbaka till den ursprungliga sidan.
+    check_email: 'Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att aktivera ditt konto.'
+    confirmed: 'Grattis %username%, ditt konto är nu aktiverat.'
+    back: 'Tillbaka till den ursprungliga sidan.'
     submit: Registrera
     flash:
-        user_created: Användaren har skapats.
+        user_created: 'Användaren har skapats.'
     email:
-        subject: Välkommen %username%!
-        message: |
-            Hej %username%!
-
-            För att aktivera ditt konto - vänligen besök %confirmationUrl%
-
-            Hälsningar,
-            Teamet.
-
-# Password resetting
+        subject: 'Välkommen %username%!'
+        message: "Hej %username%!\n\nFör att aktivera ditt konto - vänligen besök %confirmationUrl%\n\nHälsningar,\nTeamet.\n"
 resetting:
-    password_already_requested: Lösenordet för användaren har redan begärts inom de senaste 24 timmarna.
-    check_email: Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att återställa ditt lösenord.
+    password_already_requested: 'Lösenordet för användaren har redan begärts inom de senaste 24 timmarna.'
+    check_email: 'Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att återställa ditt lösenord.'
     request:
-        invalid_username: Användarnamnet eller epost-adressen "%username%" finns inte.
-        username: "Användarnamn eller epost-adress:"
-        submit: Återställ lösenord
+        invalid_username: 'Användarnamnet eller epost-adressen "%username%" finns inte.'
+        username: 'Användarnamn eller epost-adress'
+        submit: 'Återställ lösenord'
     reset:
-        submit: Ändra lösenord
+        submit: 'Ändra lösenord'
     flash:
-        success: Lösenordet har återställts
+        success: 'Lösenordet har återställts'
     email:
-        subject: Återställ lösenord
-        message: |
-            Hej %username%!
-
-            För att återställa ditt lösenord - vänligen besök %confirmationUrl%
-
-            Hälsningar,
-            Teamet.
-
-# Global strings
+        subject: 'Återställ lösenord'
+        message: "Hej %username%!\n\nFör att återställa ditt lösenord - vänligen besök %confirmationUrl%\n\nHälsningar,\nTeamet.\n"
 layout:
-    logout: Logga ut
-    login: Logga in
+    logout: 'Logga ut'
+    login: 'Logga in'
     register: Registrera
-    logged_in_as: Inloggad som %username%
-
-# Form field labels
+    logged_in_as: 'Inloggad som %username%'
 form:
-    group_name: "Gruppnamn:"
-    username: "Användarnamn:"
-    email: "Epost:"
-    current_password: "Nuvarande lösenord:"
-    password: "Lösenord:"
-    password_confirmation: "Verifiering:"
-    new_password: "Nytt lösenord:"
-    new_password_confirmation: "Verifiering:"
+    group_name: Gruppnamn
+    username: Användarnamn
+    email: Epost
+    current_password: 'Nuvarande lösenord'
+    password: Lösenord
+    password_confirmation: Verifiering
+    new_password: 'Nytt lösenord'
+    new_password_confirmation: Verifiering

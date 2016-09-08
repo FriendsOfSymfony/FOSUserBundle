@@ -56,6 +56,7 @@ users.
 - ``findUserByEmail($email)``
 - ``findUserByUsernameOrEmail($value)``  (check if the value looks like an email to choose)
 - ``findUserByConfirmationToken($token)``
+- ``findUserBy(array('id'=>$id))``
 - ``findUsers()``
 
 To save a user object, you can use the ``updateUser`` method of the user manager.
@@ -143,7 +144,7 @@ The id of the default implementation is ``fos_user.user_manager.default``
     fos_user:
         # ...
         service:
-        user_manager: custom_user_manager_id
+            user_manager: custom_user_manager_id
 
 Your custom implementation can extend ``FOS\UserBundle\Model\UserManager``
 to reuse the common logic.

@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Upraviť skupinu
+        submit: 'Upraviť skupinu'
     show:
-        name: Názov skupiny
+        name: 'Názov skupiny'
     new:
-        submit: Vytvoriť skupinu
+        submit: 'Vytvoriť skupinu'
     flash:
-        updated: Skupina bola úspešne zmenená.
-        created: Skupina bola úspešne vytvorená.
-        deleted: Skupina bola úspešne vymazaná.
-
-# Security
+        updated: 'Skupina bola úspešne zmenená.'
+        created: 'Skupina bola úspešne vytvorená.'
+        deleted: 'Skupina bola úspešne vymazaná.'
 security:
     login:
-        username: "Používateľské meno:"
-        password: "Heslo:"
-        remember_me: Zapamätať si
+        username: 'Používateľské meno'
+        password: Heslo
+        remember_me: 'Zapamätať si'
         submit: Prihlásenie
-
-# Profile
 profile:
     show:
-        username: Používateľské meno
+        username: 'Používateľské meno'
         email: Email
     edit:
         submit: Upraviť
     flash:
-        updated: Profil bol úspešne zmenený.
-
-# Password change
+        updated: 'Profil bol úspešne zmenený.'
 change_password:
-    submit: Zmena hesla
+    submit: 'Zmena hesla'
     flash:
-        success: Heslo bolo úspešne zmenené
-
-# Registration
+        success: 'Heslo bolo úspešne zmenené'
 registration:
-    check_email: Aktivačný email bol zaslaný na adresu %email%. V tele správy je aktivačný link, na ktorý treba kliknúť pre úspešné dokončenie registrácie.
-    confirmed: Gratulujeme %username%, Vaše konto bolo aktivované.
-    back: Návrat na predchádzajúcu stránku.
+    check_email: 'Aktivačný email bol zaslaný na adresu %email%. V tele správy je aktivačný link, na ktorý treba kliknúť pre úspešné dokončenie registrácie.'
+    confirmed: 'Gratulujeme %username%, Vaše konto bolo aktivované.'
+    back: 'Návrat na predchádzajúcu stránku.'
     submit: Registrácia
     flash:
-        user_created: Vaše konto bolo úspešne vytvorené.
+        user_created: 'Vaše konto bolo úspešne vytvorené.'
     email:
-        subject: Vitaj %username%!
-        message: |
-            Ahoj %username%!
-
-            Pre ukončenie registrácie, prosím klikni na nasledovný link: %confirmationUrl%
-
-            S pozdravom,
-            Realizačný tím
-
-# Password resetting
+        subject: 'Vitaj %username%!'
+        message: "Ahoj %username%!\n\nPre ukončenie registrácie, prosím klikni na nasledovný link: %confirmationUrl%\n\nS pozdravom,\nRealizačný tím\n"
 resetting:
-    password_already_requested: Požiadavka na heslo už bola vykonaná za posledných 24 hodín.
-    check_email: Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.
+    password_already_requested: 'Požiadavka na heslo už bola vykonaná za posledných 24 hodín.'
+    check_email: 'Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.'
     request:
-        invalid_username: Používateľské meno alebo emailová adresa "%username%" neexistuje. Skontrolujte si prosím Vami zadané údaje a skúste znovu.
-        username: "Používateľské meno alebo emailová adresa:"
-        submit: Obnova hesla
+        invalid_username: 'Používateľské meno alebo emailová adresa "%username%" neexistuje. Skontrolujte si prosím Vami zadané údaje a skúste znovu.'
+        username: 'Používateľské meno alebo emailová adresa'
+        submit: 'Obnova hesla'
     reset:
-        submit: Zmeniť heslo
+        submit: 'Zmeniť heslo'
     flash:
-        success: Heslo bolo úspešne zmenené.
-    email: 
-        subject: Vynulovanie hesla
-        message: |
-            Ahoj %username%!
-
-            Pre zmenu hesla, klikni prosím na nasledovný link: %confirmationUrl%
-
-            S pozdravom,
-            Realizačný tím
-
-# Global strings
+        success: 'Heslo bolo úspešne zmenené.'
+    email:
+        subject: 'Vynulovanie hesla'
+        message: "Ahoj %username%!\n\nPre zmenu hesla, klikni prosím na nasledovný link: %confirmationUrl%\n\nS pozdravom,\nRealizačný tím\n"
 layout:
     logout: Odhlásenie
     login: Prihlásenie
     register: Registrácia
-    logged_in_as: Ste prihlásený ako %username%
-
-# Form field labels
+    logged_in_as: 'Ste prihlásený ako %username%'
 form:
-    group_name: "Názov skupiny:"
-    username: "Používateľské meno:"
-    email: "Email:"
-    current_password: "Súčasné heslo:"
-    password: "Heslo:"
-    password_confirmation: "Potvrdenie hesla:"
-    new_password: "Nové heslo:"
-    new_password_confirmation: "Potvrdenie hesla:"
+    group_name: 'Názov skupiny'
+    username: 'Používateľské meno'
+    email: Email
+    current_password: 'Súčasné heslo'
+    password: Heslo
+    password_confirmation: 'Potvrdenie hesla'
+    new_password: 'Nové heslo'
+    new_password_confirmation: 'Potvrdenie hesla'

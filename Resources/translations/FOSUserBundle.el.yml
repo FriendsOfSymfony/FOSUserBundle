@@ -1,92 +1,67 @@
-# Group
 group:
     edit:
-        submit: Ενημέρωση ομάδας
+        submit: 'Ενημέρωση ομάδας'
     show:
-        name: Όνομα ομάδας
+        name: 'Όνομα ομάδας'
     new:
-        submit: Δημιουργία ομάδας
+        submit: 'Δημιουργία ομάδας'
     flash:
-        updated: Η ομάδα ενημερώθηκε επιτυχώς
-        created: Η ομάδα δημιουργήθηκε επιτυχώς
-        deleted: Η ομάδα διαγράφηκε επιτυχώς
-
-# Security
+        updated: 'Η ομάδα ενημερώθηκε επιτυχώς'
+        created: 'Η ομάδα δημιουργήθηκε επιτυχώς'
+        deleted: 'Η ομάδα διαγράφηκε επιτυχώς'
 security:
     login:
-        username: "Όνομα Χρήστη:"
-        password: "Κωδικός Πρόσβασης:"
-        remember_me: Να με θυμάσαι
+        username: 'Όνομα Χρήστη'
+        password: 'Κωδικός Πρόσβασης'
+        remember_me: 'Να με θυμάσαι'
         submit: Είσοδος
-
-# Profile
 profile:
     show:
-        username: Όνομα Χρήστη
+        username: 'Όνομα Χρήστη'
         email: Email
     edit:
         submit: Ενημέρωσε
     flash:
-        updated: Το προφίλ ενημερώθηκε επιτυχώς
-
-# Password change
+        updated: 'Το προφίλ ενημερώθηκε επιτυχώς'
 change_password:
-    submit: Αλλαγή κωδικού
+    submit: 'Αλλαγή κωδικού'
     flash:
-        success: Ο κωδικός άλλαξε επιτυχώς
-
-# Registration
+        success: 'Ο κωδικός άλλαξε επιτυχώς'
 registration:
-    check_email: Ένα email στάλθηκε στο %email%. Περιέχει μία διεύθυνση ενεργοποίησης του λογαριασμού σας που πρέπει να κάνετε κλικ για να ενεργοποιηθεί.
-    confirmed: Συγχαρητήρια %username%, ο λογαριασμός μόλις ενεργοποιήθηκε.
-    back: Επιστροφή στην αρχική σελίδα.
+    check_email: 'Ένα email στάλθηκε στο %email%. Περιέχει μία διεύθυνση ενεργοποίησης του λογαριασμού σας που πρέπει να κάνετε κλικ για να ενεργοποιηθεί.'
+    confirmed: 'Συγχαρητήρια %username%, ο λογαριασμός μόλις ενεργοποιήθηκε.'
+    back: 'Επιστροφή στην αρχική σελίδα.'
     submit: Εγγραφή
     flash:
-        user_created: Ο χρήστης δημιουργήθηκε επιτυχώς.
+        user_created: 'Ο χρήστης δημιουργήθηκε επιτυχώς.'
     email:
-        subject: Καλώς ήρθες %username%!
-        message: |
-            Αγαπητέ %username%!
-
-              Για να ολοκληρώσετε την ενεργοποίηση του λογαριασμού σας - επισκεφθείτε %confirmationUrl%
-
-            Ευχαριστούμε πολύ.
-
-# Password resetting
+        subject: 'Καλώς ήρθες %username%!'
+        message: "Αγαπητέ %username%!\n\n  Για να ολοκληρώσετε την ενεργοποίηση του λογαριασμού σας - επισκεφθείτε %confirmationUrl%\n\nΕυχαριστούμε πολύ.\n"
 resetting:
-    password_already_requested: Ο κωδικός για αυτόν το χρήστη έχει ήδη ζητηθεί μέσα στις τελευταίες 24 ώρες.
-    check_email: Ένα email στάλθηκε στο %email%. Περιέχει ένα σύνδεσμο για να επαναφέρετε τον κωδικό πρόσβασής σας.
+    password_already_requested: 'Ο κωδικός για αυτόν το χρήστη έχει ήδη ζητηθεί μέσα στις τελευταίες 24 ώρες.'
+    check_email: 'Ένα email στάλθηκε στο %email%. Περιέχει ένα σύνδεσμο για να επαναφέρετε τον κωδικό πρόσβασής σας.'
     request:
-        invalid_username: Το όνομα χρήστη ή η διεύθυνση ηλεκτρονικού ταχυδρομείου "% username%" δεν υπάρχει.
-        username: "Όνομα χρήστη ή διεύθυνση e-mail:"
-        submit: Επαναφορά του κωδικού πρόσβασης
+        invalid_username: 'Το όνομα χρήστη ή η διεύθυνση ηλεκτρονικού ταχυδρομείου "%username%" δεν υπάρχει.'
+        username: 'Όνομα χρήστη ή διεύθυνση e-mail'
+        submit: 'Επαναφορά του κωδικού πρόσβασης'
     reset:
-        submit: Αλλαγή κωδικού πρόσβασης
+        submit: 'Αλλαγή κωδικού πρόσβασης'
     flash:
-        success: Η επαναφορά του κωδικού πρόσβασης έγινε με επιτυχία
+        success: 'Η επαναφορά του κωδικού πρόσβασης έγινε με επιτυχία'
     email:
-        subject: Επαναφορά του κωδικού πρόσβασης
-        message: |
-            Αγαπητέ %username%!
-
-              Για να επαναφέρετε τον κωδικό πρόσβασής σας - επισκεφθείτε %confirmationUrl%
-
-            Ευχαριστούμε πολυ.
-
-# Global strings
+        subject: 'Επαναφορά του κωδικού πρόσβασης'
+        message: "Αγαπητέ %username%!\n\n  Για να επαναφέρετε τον κωδικό πρόσβασής σας - επισκεφθείτε %confirmationUrl%\n\nΕυχαριστούμε πολυ.\n"
 layout:
     logout: Αποσύνδεση
     login: Σύνδεση
     register: Εγγραφή
-    logged_in_as: Έχετε συνδεθεί ως %username%
-
-# Form field labels
+    logged_in_as: 'Έχετε συνδεθεί ως %username%'
 form:
-    group_name: "Όνομα ομάδας:"
-    username: "Όνομα Χρήστη:"
-    email: "Email:"
-    current_password: "Τρέχον κωδικός πρόσβασης:"
-    password: "Κωδικός πρόσβασης:"
-    password_confirmation: "Επαλήθευση:"
-    new_password: "Νέος Κωδικός πρόσβασης:"
-    new_password_confirmation: "Επαλήθευση:"
+    group_name: 'Όνομα ομάδας'
+    username: 'Όνομα Χρήστη'
+    email: Email
+    current_password: 'Τρέχον κωδικός πρόσβασης'
+    password: 'Κωδικός πρόσβασης'
+    password_confirmation: Επαλήθευση
+    new_password: 'Νέος Κωδικός πρόσβασης'
+    new_password_confirmation: Επαλήθευση

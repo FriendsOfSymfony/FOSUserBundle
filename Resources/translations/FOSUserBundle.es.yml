@@ -1,96 +1,67 @@
-# Group
 group:
     edit:
-        submit: Actualizar grupo
+        submit: 'Actualizar grupo'
     show:
-        name: Nombre de grupo
+        name: 'Nombre de grupo'
     new:
-        submit: Crear grupo
+        submit: 'Crear grupo'
     flash:
-        updated: El grupo ha sido actualizado
-        created: El grupo ha sido creado
-        deleted: El grupo ha sido borrado
-
-# Security
+        updated: 'El grupo ha sido actualizado'
+        created: 'El grupo ha sido creado'
+        deleted: 'El grupo ha sido borrado'
 security:
     login:
-        username: "Nombre de usuario:"
-        username_email: "Nombre de usuario o email:"
-        email: "Email:"
-        password: "Contraseña:"
+        username: 'Nombre de usuario'
+        password: Contraseña
         remember_me: Recordar
         submit: Entrar
-
-# Profile
 profile:
     show:
-        username: Nombre de usuario
+        username: 'Nombre de usuario'
         email: Email
     edit:
-        submit: Actualizar usuario
+        submit: 'Actualizar usuario'
     flash:
-        updated: El perfil ha sido actualizado
-
-# Password change
+        updated: 'El perfil ha sido actualizado'
 change_password:
-    submit: Cambiar contraseña
+    submit: 'Cambiar contraseña'
     flash:
-        success: La contraseña se ha cambiado con éxito
-
-# Registration
+        success: 'La contraseña se ha cambiado con éxito'
 registration:
-    check_email: Se ha enviado un email a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
-    confirmed: Felicidades %username%, tu cuenta está ahora confirmada.
-    back: Volver a la página original.
+    check_email: 'Se ha enviado un email a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.'
+    confirmed: 'Felicidades %username%, tu cuenta está ahora confirmada.'
+    back: 'Volver a la página original.'
     submit: Registrar
     flash:
-        user_created: El usuario se ha creado satisfactoriamente
+        user_created: 'El usuario se ha creado satisfactoriamente'
     email:
-        subject: Bienvenido %username%!
-        message: |
-            Hola %username%!
-
-            Para completar la validación de tu cuenta - por favor visita %confirmationUrl%
-
-            Atentamente,
-            el Equipo.
-
-# Password resetting
+        subject: 'Bienvenido %username%!'
+        message: "Hola %username%!\n\nPara completar la validación de tu cuenta - por favor visita %confirmationUrl%\n\nAtentamente,\nel Equipo.\n"
 resetting:
-    password_already_requested: La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.
-    check_email: Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.
+    password_already_requested: 'La contraseña para este usuario ya ha sido solicitada dentro de las 24 horas.'
+    check_email: 'Un email ha sido enviado a %email%. Contiene un enlace de activación que debes presionar para restablecer tu contraseña.'
     request:
-        invalid_username: El usuario o dirección de correo "%username%" no existe.
-        username: "Nombre de usuario:"
-        submit: Restablecer contraseña
+        invalid_username: 'El usuario o dirección de correo "%username%" no existe.'
+        username: 'Nombre de usuario'
+        submit: 'Restablecer contraseña'
     reset:
-        submit: Cambiar contraseña
+        submit: 'Cambiar contraseña'
     flash:
-        success: La contraseña se ha cambiado con éxito
+        success: 'La contraseña se ha cambiado con éxito'
     email:
-        subject: Restablecer Contraseña
-        message : |
-            Hola %username%!
-
-            Para restablecer tu contraseña - por favor visita %confirmationUrl%
-
-            Atentamente,
-            el Equipo.
-
-# Global strings
+        subject: 'Restablecer Contraseña'
+        message: "Hola %username%!\n\nPara restablecer tu contraseña - por favor visita %confirmationUrl%\n\nAtentamente,\nel Equipo.\n"
 layout:
     logout: Salir
     login: Entrar
     register: Registrar
-    logged_in_as: Identificado como %username%
-
-# Form field labels
+    logged_in_as: 'Identificado como %username%'
 form:
-    group_name: "Nombre de grupo:"
-    username: "Nombre de usuario:"
-    email: "Email:"
-    current_password: "Contraseña actual:"
-    password: "Contraseña:"
-    password_confirmation: "Repita la contraseña:"
-    new_password: "Nueva contraseña:"
-    new_password_confirmation: "Repita la contraseña:"
+    group_name: 'Nombre de grupo'
+    username: 'Nombre de usuario'
+    email: Email
+    current_password: 'Contraseña actual'
+    password: Contraseña
+    password_confirmation: 'Repita la contraseña'
+    new_password: 'Nueva contraseña'
+    new_password_confirmation: 'Repita la contraseña'

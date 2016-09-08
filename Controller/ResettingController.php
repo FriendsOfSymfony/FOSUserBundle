@@ -44,6 +44,9 @@ class ResettingController extends Controller
      */
     public function sendEmailAction(Request $request)
     {
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
         $username = $request->request->get('username');
 
         /** @var $user UserInterface */
@@ -65,8 +68,15 @@ class ResettingController extends Controller
             ));
         }
 
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->render('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
+            return $this->render('FOSUserBundle:Resetting:password_already_requested.html.twig');
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -111,7 +121,7 @@ class ResettingController extends Controller
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
-        return $this->render('FOSUserBundle:Resetting:checkEmail.html.twig', array(
+        return $this->render('FOSUserBundle:Resetting:check_email.html.twig', array(
             'email' => $email,
         ));
     }

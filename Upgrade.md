@@ -4,7 +4,7 @@ Upgrade instruction
 This document describes the changes needed when upgrading because of a BC
 break. For the full list of changes, please look at the Changelog file.
 
-## 1.3 to 2.0-alpha1
+## 1.3 to 2.0.0-alpha1
 
 ### User Provider
 

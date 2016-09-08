@@ -1,26 +1,20 @@
-# Group
 group:
     edit:
-        submit: Aggiorna gruppo
+        submit: 'Aggiorna gruppo'
     show:
-        name: Nome gruppo
+        name: 'Nome gruppo'
     new:
-        submit: Crea gruppo
+        submit: 'Crea gruppo'
     flash:
-        updated: Il gruppo è stato aggiornato
-        created: Il gruppo è stato creato
-        deleted: Il gruppo è stato cancellato
-
-# Security
-# Security
+        updated: 'Il gruppo è stato aggiornato'
+        created: 'Il gruppo è stato creato'
+        deleted: 'Il gruppo è stato cancellato'
 security:
     login:
-        username: "Username:"
-        password: "Password:"
+        username: Username
+        password: Password
         remember_me: Ricordami
         submit: Login
-
-# Profile
 profile:
     show:
         username: Username
@@ -28,68 +22,46 @@ profile:
     edit:
         submit: Aggiorna
     flash:
-        updated: Il profilo è stato aggiornato
-
-# Password change
+        updated: 'Il profilo è stato aggiornato'
 change_password:
-    submit: Cambia password
+    submit: 'Cambia password'
     flash:
-        success: La password è stata cambiata
-
-# Registration
+        success: 'La password è stata cambiata'
 registration:
-    check_email: Una mail è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per attivare il tuo account.
-    confirmed: Congratulazioni %username%, il tuo account è confermato.
-    back: Torna alla pagina d'origine.
+    check_email: 'Una mail è stata inviata a %email%. Contiene il link d''attivazione che devi utilizzare per attivare il tuo account.'
+    confirmed: 'Congratulazioni %username%, il tuo account è confermato.'
+    back: 'Torna alla pagina d''origine.'
     submit: Registra
     flash:
-        user_created: Utente creato con successo
+        user_created: 'Utente creato con successo'
     email:
-        subject: Benvenuto %username%!
-        message: |
-            Ciao %username%!
-
-            Per terminare la validazione del tuo account visita %confirmationUrl%
-
-            Saluti,
-            il Team.
-
-# Password resetting
+        subject: 'Benvenuto %username%!'
+        message: "Ciao %username%!\n\nPer terminare la validazione del tuo account visita %confirmationUrl%\n\nSaluti,\nil Team.\n"
 resetting:
-    password_already_requested: La password per questo utente è già stata richiesta nelle ultime 24 ore.
-    check_email: Una email è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per il reset della password.
+    password_already_requested: 'La password per questo utente è già stata richiesta nelle ultime 24 ore.'
+    check_email: 'Una email è stata inviata a %email%. Contiene il link d''attivazione che devi utilizzare per il reset della password.'
     request:
-        invalid_username: Username o indirizzo email "%username%" non esistente.
-        username: "Username o indirizzo email:"
-        submit: Password reset
+        invalid_username: 'Username o indirizzo email "%username%" non esistente.'
+        username: 'Username o indirizzo email'
+        submit: 'Password reset'
     reset:
-        submit: Cambia password
+        submit: 'Cambia password'
     flash:
-        success: La password è stata resettata
+        success: 'La password è stata resettata'
     email:
-        subject: Password reset
-        message: |
-            Ciao %username%!
-
-            Per resettare la password visita %confirmationUrl%
-
-            Saluti,
-            il Team.
-
-# Global strings
+        subject: 'Password reset'
+        message: "Ciao %username%!\n\nPer resettare la password visita %confirmationUrl%\n\nSaluti,\nil Team.\n"
 layout:
     logout: Logout
     login: Login
     register: Registra
-    logged_in_as: Collegato come %username%
-
-# Form field labels
+    logged_in_as: 'Collegato come %username%'
 form:
-    group_name: "Nome gruppo:"
-    username: "Username:"
-    email: "Email:"
-    current_password: "Password corrente:"
-    password: "Password:"
-    password_confirmation: "Ripeti password:"
-    new_password: "Nuova password:"
-    new_password_confirmation: "Ripeti password:"
+    group_name: 'Nome gruppo'
+    username: Username
+    email: Email
+    current_password: 'Password corrente'
+    password: Password
+    password_confirmation: 'Ripeti password'
+    new_password: 'Nuova password'
+    new_password_confirmation: 'Ripeti password'

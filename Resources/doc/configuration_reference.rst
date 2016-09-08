@@ -18,12 +18,12 @@ All available configuration options are listed below with their default values.
             sender_name:    webmaster
         profile:
             form:
-                type:               fos_user_profile
+                type:               FOS\UserBundle\Form\Type\ProfileFormType # or 'fos_user_profile' on Symfony < 2.8
                 name:               fos_user_profile_form
                 validation_groups:  [Profile, Default]
         change_password:
             form:
-                type:               fos_user_change_password
+                type:               FOS\UserBundle\Form\Type\ChangePasswordFormType # or 'fos_user_change_password' on Symfony < 2.8
                 name:               fos_user_change_password_form
                 validation_groups:  [ChangePassword, Default]
         registration:
@@ -34,7 +34,7 @@ All available configuration options are listed below with their default values.
                 enabled:    false # change to true for required email confirmation
                 template:   FOSUserBundle:Registration:email.txt.twig
             form:
-                type:               fos_user_registration
+                type:               FOS\UserBundle\Form\Type\RegistrationFormType # or 'fos_user_registration' on Symfony < 2.8
                 name:               fos_user_registration_form
                 validation_groups:  [Registration, Default]
         resetting:
@@ -45,7 +45,7 @@ All available configuration options are listed below with their default values.
                     sender_name:    ...
                 template:   FOSUserBundle:Resetting:email.txt.twig
             form:
-                type:               fos_user_resetting
+                type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
                 name:               fos_user_resetting_form
                 validation_groups:  [ResetPassword, Default]
         service:
@@ -58,6 +58,6 @@ All available configuration options are listed below with their default values.
             group_class:    ~ # Required when using groups
             group_manager:  fos_user.group_manager.default
             form:
-                type:               fos_user_group
+                type:               FOS\UserBundle\Form\Type\GroupFormType # or 'fos_user_group' on Symfony < 2.8
                 name:               fos_user_group_form
                 validation_groups:  [Registration, Default]

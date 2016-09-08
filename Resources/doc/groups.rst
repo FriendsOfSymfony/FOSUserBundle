@@ -7,7 +7,7 @@ to all users belonging to it.
 
 .. note::
 
-    Symfony2 supports role inheritance so inheriting roles from groups is
+    Symfony supports role inheritance so inheriting roles from groups is
     not always needed. If the role inheritance is enough for your use case,
     it is better to use it instead of groups as it is more efficient (loading
     the groups triggers the database).
@@ -22,25 +22,30 @@ Below is an example configuration for enabling groups support.
 
     .. code-block:: yaml
 
-    # app/config/config.yml
-    fos_user:
-        db_driver: orm
-        firewall_name: main
-        user_class: AppBundle\Entity\User
-        group:
-            group_class: AppBundle\Entity\Group
+        # app/config/config.yml
+        fos_user:
+            db_driver: orm
+            firewall_name: main
+            user_class: AppBundle\Entity\User
+            group:
+                group_class: AppBundle\Entity\Group
 
 
     .. code-block:: xml
 
-    <!-- app/config/config.xml -->
-    <fos_user:config
-        db-driver="orm"
-        firewall-name="main"
-        user-class="AppBundle\Entity\User"
-    >
-        <fos_user:group group-class="AppBundle\Entity\Group" />
-    </fos_user:config>
+        <!-- app/config/config.xml -->
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:fos-user="http://friendsofsymfony.github.io/schema/dic/user"
+        >
+            <fos_user:config
+                db-driver="orm"
+                firewall-name="main"
+                user-class="AppBundle\Entity\User"
+            >
+                <fos_user:group group-class="AppBundle\Entity\Group" />
+            </fos_user:config>
+        </container>
 
 The Group class
 ---------------
@@ -55,9 +60,10 @@ a) ORM Group class implementation
 
     .. code-block:: php-annotations
 
-        // src/MyProject/MyBundle/Entity/Group.php
+        <?php
+        // src/AppBundle/Entity/Group.php
 
-        namespace MyProject\MyBundle\Entity;
+        namespace AppBundle\Entity;
 
         use FOS\UserBundle\Model\Group as BaseGroup;
         use Doctrine\ORM\Mapping as ORM;
@@ -97,9 +103,10 @@ b) MongoDB Group class implementation
 
 .. code-block:: php
 
-    // src/MyProject/MyBundle/Document/Group.php
+    <?php
+    // src/AppBundle/Document/Group.php
 
-    namespace MyProject\MyBundle\Document;
+    namespace AppBundle\Document;
 
     use FOS\UserBundle\Model\Group as BaseGroup;
     use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
@@ -120,9 +127,10 @@ c) CouchDB Group class implementation
 
 .. code-block:: php
 
-    // src/MyProject/MyBundle/CouchDocument/Group.php
+    <?php
+    // src/AppBundle/CouchDocument/Group.php
 
-    namespace MyProject\MyBundle\CouchDocument;
+    namespace AppBundle\CouchDocument;
 
     use FOS\UserBundle\Model\Group as BaseGroup;
     use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
@@ -150,9 +158,10 @@ a) ORM User-Group mapping
 
     .. code-block:: php-annotations
 
-        // src/MyProject/MyBundle/Entity/User.php
+        <?php
+        // src/AppBundle/Entity/User.php
 
-        namespace MyProject\MyBundle\Entity;
+        namespace AppBundle\Entity;
 
         use FOS\UserBundle\Model\User as BaseUser;
 
@@ -170,7 +179,7 @@ a) ORM User-Group mapping
             protected $id;
 
             /**
-             * @ORM\ManyToMany(targetEntity="MyProject\MyBundle\Entity\Group")
+             * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group")
              * @ORM\JoinTable(name="fos_user_user_group",
              *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
              *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -231,9 +240,10 @@ b) MongoDB User-Group mapping
 
 .. code-block:: php
 
-    // src/MyProject/MyBundle/Document/User.php
+    <?php
+    // src/AppBundle/Document/User.php
 
-    namespace MyProject\MyBundle\Document;
+    namespace AppBundle\Document;
 
     use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
@@ -247,7 +257,7 @@ b) MongoDB User-Group mapping
         protected $id;
 
         /**
-         * @MongoDB\ReferenceMany(targetDocument="MyProject\MyBundle\Document\Group")
+         * @MongoDB\ReferenceMany(targetDocument="AppBundle\Document\Group")
          */
         protected $groups;
     }
@@ -257,9 +267,10 @@ c) CouchDB User-Group mapping
 
 .. code-block:: php
 
-    // src/MyProject/MyBundle/CouchDocument/User.php
+    <?php
+    // src/AppBundle/CouchDocument/User.php
 
-    namespace MyProject\MyBundle\CouchDocument;
+    namespace AppBundle\CouchDocument;
 
     use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
@@ -275,7 +286,7 @@ c) CouchDB User-Group mapping
         protected $id;
 
         /**
-         * @CouchDB\ReferenceMany(targetDocument="MyProject\MyBundle\CouchDocument\Group")
+         * @CouchDB\ReferenceMany(targetDocument="AppBundle\CouchDocument\Group")
          */
         protected $groups;
     }

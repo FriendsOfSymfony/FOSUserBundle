@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: بهنگام سازی
+        submit: 'بهنگام سازی'
     show:
-        name: نام گروه
+        name: 'نام گروه'
     new:
-        submit: ایجاد گروه
+        submit: 'ایجاد گروه'
     flash:
-        updated: گروه بهنگام شده است
-        created: گروه ساخته شده است
-        deleted: گروه حذف شده است
-
-# Security
+        updated: 'گروه بهنگام شده است'
+        created: 'گروه ساخته شده است'
+        deleted: 'گروه حذف شده است'
 security:
     login:
-        username: "نام کاربری:"
-        password: "کلمه عبور:"
-        remember_me: مرا به یاد سپار
+        username: 'نام کاربری'
+        password: 'کلمه عبور'
+        remember_me: 'مرا به یاد سپار'
         submit: ورود
-
-# Profile
 profile:
     show:
-        username: نام کاربری
+        username: 'نام کاربری'
         email: ایمیل
     edit:
-        submit: بهنگام سازی
+        submit: 'بهنگام سازی'
     flash:
-        updated: نمایه بهنگام شده است
-
-# Password change
+        updated: 'نمایه بهنگام شده است'
 change_password:
-    submit: تغییر کلمه عبور
+    submit: 'تغییر کلمه عبور'
     flash:
-        success: کلمه عبور تغییر کرده است
-
-# Registration
+        success: 'کلمه عبور تغییر کرده است'
 registration:
-    check_email: ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای فعال سازی باید روی آن کلیک کنید.
-    confirmed: %username% تبریک, کاربری شما اکنون فعال شده است.
-    back: برگشت به صفحه اصلی.
-    submit: ثبت نام
+    check_email: 'ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای فعال سازی باید روی آن کلیک کنید.'
+    confirmed: '%username% تبریک, کاربری شما اکنون فعال شده است.'
+    back: 'برگشت به صفحه اصلی.'
+    submit: 'ثبت نام'
     flash:
-        user_created: کاربر با موفقیت ساخته شده است
+        user_created: 'کاربر با موفقیت ساخته شده است'
     email:
-        subject: %username% خوش آمدید!
-        message: |
-            %username% سلام!
-
-            برای تکمیل فعال سازی کاربری خود - لطفا %confirmationUrl% را مشاهده کنید
-
-            با احترام،
-            تیم.
-
-# Password resetting
+        subject: '%username% خوش آمدید!'
+        message: "%username% سلام!\n\nبرای تکمیل فعال سازی کاربری خود - لطفا %confirmationUrl% را مشاهده کنید\n\nبا احترام،\nتیم.\n"
 resetting:
-    password_already_requested: کلمه عبور برای این کاربر هم اکنون طی ۲۴ ساعت گذشته درخواست شده است.
-    check_email: ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای بازنشانی کلمه عبور باید روی آن کلیک کنید.
+    password_already_requested: 'کلمه عبور برای این کاربر هم اکنون طی ۲۴ ساعت گذشته درخواست شده است.'
+    check_email: 'ایمیلی به %email% فرستاده شده است. این ایمیل دارای پیوندی است که برای بازنشانی کلمه عبور باید روی آن کلیک کنید.'
     request:
-        invalid_username: نام کاربری یا ایمیل "%username%" موجود نیست.
-        username: "نام کاربری یا ایمیل:"
-        submit: بازنشانی کلمه عبور
+        invalid_username: 'نام کاربری یا ایمیل "%username%" موجود نیست.'
+        username: 'نام کاربری یا ایمیل'
+        submit: 'بازنشانی کلمه عبور'
     reset:
-        submit: تغییر کلمه عبور
+        submit: 'تغییر کلمه عبور'
     flash:
-        success: کلمه عبور با موفقیت بازنشانی شده است
+        success: 'کلمه عبور با موفقیت بازنشانی شده است'
     email:
-        subject: بازنشانی کلمه عبور
-        message: |
-            %username% سلام!
-
-            برای بازنشانی کلمه عبور خود - لطفا %confirmationUrl% را مشاهده کنید
-
-            با احترام،
-            تیم.
-
-# Global strings
+        subject: 'بازنشانی کلمه عبور'
+        message: "%username% سلام!\n\nبرای بازنشانی کلمه عبور خود - لطفا %confirmationUrl% را مشاهده کنید\n\nبا احترام،\nتیم.\n"
 layout:
     logout: خروج
     login: ورود
-    register: ثبت نام
-    logged_in_as: وارد شده با %username%
-
-# Form field labels
+    register: 'ثبت نام'
+    logged_in_as: 'وارد شده با %username%'
 form:
-    group_name: "نام گروه:"
-    username: "نام کاربری:"
-    email: "ایمیل:"
-    current_password: "کلمه عبور کنونی:"
-    password: "کلمه عبور:"
-    password_confirmation: "تایید کلمه عبور:"
-    new_password: "کلمه عبور جدید:"
-    new_password_confirmation: "تایید کلمه عبور جدید:"
+    group_name: 'نام گروه'
+    username: 'نام کاربری'
+    email: ایمیل
+    current_password: 'کلمه عبور کنونی'
+    password: 'کلمه عبور'
+    password_confirmation: 'تایید کلمه عبور'
+    new_password: 'کلمه عبور جدید'
+    new_password_confirmation: 'تایید کلمه عبور جدید'

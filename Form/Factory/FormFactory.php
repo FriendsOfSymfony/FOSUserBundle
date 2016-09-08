@@ -28,8 +28,10 @@ class FormFactory implements FactoryInterface
         $this->validationGroups = $validationGroups;
     }
 
-    public function createForm()
+    public function createForm(array $options = array())
     {
-        return $this->formFactory->createNamed($this->name, $this->type, null, array('validation_groups' => $this->validationGroups));
+        $options = array_merge(array('validation_groups' => $this->validationGroups), $options);
+
+        return $this->formFactory->createNamed($this->name, $this->type, null, $options);
     }
 }

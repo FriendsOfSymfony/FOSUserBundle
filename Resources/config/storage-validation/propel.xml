@@ -24,4 +24,15 @@
         </constraint>
     </class>
 
+    <class name="FOS\UserBundle\Propel\Group">
+        <constraint name="Propel\PropelBundle\Validator\Constraints\UniqueObject">
+            <option name="fields">name</option>
+            <option name="errorPath">name</option>
+            <option name="message">fos_group.name.already_used</option>
+            <option name="groups">
+                <value>Registration</value>
+            </option>
+        </constraint>
+    </class>
+
 </constraint-mapping>

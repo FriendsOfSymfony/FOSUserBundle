@@ -72,7 +72,7 @@ You can then register this listener:
         services:
             acme_user.password_resetting:
                 class: Acme\UserBundle\EventListener\PasswordResettingListener
-                arguments: [@router]
+                arguments: ['@router']
                 tags:
                     - { name: kernel.event_subscriber }
 

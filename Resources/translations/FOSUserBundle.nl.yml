@@ -1,25 +1,20 @@
-# Group
 group:
     edit:
-        submit: Groep bijwerken
+        submit: 'Groep bijwerken'
     show:
-        name: Groep naam
+        name: 'Groep naam'
     new:
-        submit: Groep aanmaken
+        submit: 'Groep aanmaken'
     flash:
-        updated: De groep is bijgewerkt
-        created: De groep is aangemaakt
-        deleted: De groep is verwijderd
-
-# Security
+        updated: 'De groep is bijgewerkt'
+        created: 'De groep is aangemaakt'
+        deleted: 'De groep is verwijderd'
 security:
     login:
-        username: "Gebruikersnaam:"
-        password: "Wachtwoord:"
-        remember_me: Onthoud mijn gegevens
+        username: Gebruikersnaam
+        password: Wachtwoord
+        remember_me: 'Onthoud mijn gegevens'
         submit: Inloggen
-
-# Profile
 profile:
     show:
         username: Gebruikersnaam
@@ -27,68 +22,46 @@ profile:
     edit:
         submit: Bijwerken
     flash:
-        updated: Het profiel is bijgewerkt
-
-# Password change
+        updated: 'Het profiel is bijgewerkt'
 change_password:
-    submit: Wachtwoord wijzigen
+    submit: 'Wachtwoord wijzigen'
     flash:
-        success: Het wachtwoord is gewijzigd
-
-# Registration
+        success: 'Het wachtwoord is gewijzigd'
 registration:
-    check_email: Er is een e-mail verstuurd naar %email%, met een link om uw account te activeren.
-    confirmed: Gefeliciteerd %username%, uw account is nu geactiveerd.
-    back: Terug naar de oorspronkelijke pagina.
+    check_email: 'Er is een e-mail verstuurd naar %email%, met een link om uw account te activeren.'
+    confirmed: 'Gefeliciteerd %username%, uw account is nu geactiveerd.'
+    back: 'Terug naar de oorspronkelijke pagina.'
     submit: Registreer
     flash:
-        user_created: De gebruiker is succesvol aangemaakt
+        user_created: 'De gebruiker is succesvol aangemaakt'
     email:
-        subject: Welkom %username%!
-        message: |
-            Hallo %username%!
-
-            U moet uw account nog valideren, ga naar %confirmationUrl%
-
-            Vriendelijke groeten,
-            het Team.
-
-# Password resetting
+        subject: 'Welkom %username%!'
+        message: "Hallo %username%!\n\nU moet uw account nog valideren, ga naar %confirmationUrl%\n\nVriendelijke groeten,\nhet Team.\n"
 resetting:
-    password_already_requested: Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.
-    check_email: Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.
+    password_already_requested: 'Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.'
+    check_email: 'Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.'
     request:
-        invalid_username: De gebruiker "%username%" bestaat niet.
-        username: "Gebruikersnaam of e-mailadres:"
-        submit: Reset wachtwoord
+        invalid_username: 'De gebruiker "%username%" bestaat niet.'
+        username: 'Gebruikersnaam of e-mailadres'
+        submit: 'Reset wachtwoord'
     reset:
-        submit: Wijzig wachtwoord
+        submit: 'Wijzig wachtwoord'
     flash:
-        success: Het wachtwoord is succesvol gereset
+        success: 'Het wachtwoord is succesvol gereset'
     email:
-        subject: Welkom %username%!
-        message: |
-            Hallo %username%!
-
-            Om uw wachtwoord te resetten, klikt u op de volgende link %confirmationUrl%
-
-            Met vriendelijke groet,
-            het Team.
-
-# Global strings
+        subject: 'Reset wachtwoord'
+        message: "Hallo %username%!\n\nOm uw wachtwoord te resetten, klikt u op de volgende link %confirmationUrl%\n\nMet vriendelijke groet,\nhet Team.\n"
 layout:
     logout: Uitloggen
     login: Inloggen
     register: Registreer
-    logged_in_as: Ingelogd als %username%
-
-# Form field labels
+    logged_in_as: 'Ingelogd als %username%'
 form:
-    group_name: "Groep naam:"
-    username: "Gebruikersnaam:"
-    email: "E-mail:"
-    current_password: "Huidig wachtwoord:"
-    password: "Wachtwoord:"
-    password_confirmation: "Wachtwoord controle:"
-    new_password: "Nieuw wachtwoord:"
-    new_password_confirmation: "Wachtwoord controle:"
+    group_name: 'Groep naam'
+    username: Gebruikersnaam
+    email: E-mail
+    current_password: 'Huidig wachtwoord'
+    password: Wachtwoord
+    password_confirmation: 'Wachtwoord controle'
+    new_password: 'Nieuw wachtwoord'
+    new_password_confirmation: 'Wachtwoord controle'

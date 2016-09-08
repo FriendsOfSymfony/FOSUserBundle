@@ -1,25 +1,20 @@
-# Group
 group:
     edit:
-        submit: Oppdater gruppe
+        submit: 'Oppdater gruppe'
     show:
         name: Gruppenavn
     new:
-        submit: Opprett gruppe
+        submit: 'Opprett gruppe'
     flash:
-        updated: Gruppen har blitt oppdatert
-        created: Gruppen har blitt opprettet
-        deleted: Gruppen har blitt slettet
-
-# Security
+        updated: 'Gruppen har blitt oppdatert'
+        created: 'Gruppen har blitt opprettet'
+        deleted: 'Gruppen har blitt slettet'
 security:
     login:
-        username: "Brukernavn:"
-        password: "Passord:"
-        remember_me: Husk meg
-        submit: Logg inn
-
-# Profile
+        username: Brukernavn
+        password: Passord
+        remember_me: 'Husk meg'
+        submit: 'Logg inn'
 profile:
     show:
         username: Brukernavn
@@ -27,68 +22,46 @@ profile:
     edit:
         submit: Oppdater
     flash:
-        updated: Profilen har blitt oppdatert
-
-# Password change
+        updated: 'Profilen har blitt oppdatert'
 change_password:
-    submit: Endre passord
+    submit: 'Endre passord'
     flash:
-        success: Passordet har blitt endret
-
-# Registration
+        success: 'Passordet har blitt endret'
 registration:
-    check_email: En epost har blitt sendt til %email%. Den inneholder en aktiveringslenke du må klikke på for å aktivere kontoen din.
-    confirmed: Gratulerer %username%, din konto er nå aktivert.
-    back: Tilbake til den opprinnelige siden.
+    check_email: 'En epost har blitt sendt til %email%. Den inneholder en aktiveringslenke du må klikke på for å aktivere kontoen din.'
+    confirmed: 'Gratulerer %username%, din konto er nå aktivert.'
+    back: 'Tilbake til den opprinnelige siden.'
     submit: Registrer
     flash:
-        user_created: Brukeren har blitt opprettet
+        user_created: 'Brukeren har blitt opprettet'
     email:
-        subject: Velkommen %username%!
-        message: |
-            Hallo %username%!
-
-            For å fullføre aktiveringen av din konto - vennligst besøk %confirmationUrl%
-
-            Med vennlig hilsen,
-            Teamet.
-
-# Password resetting
+        subject: 'Velkommen %username%!'
+        message: "Hallo %username%!\n\nFor å fullføre aktiveringen av din konto - vennligst besøk %confirmationUrl%\n\nMed vennlig hilsen,\nTeamet.\n"
 resetting:
-    password_already_requested: Passordet for denne brukeren har allerede blitt forespurt innenfor de siste 24 timene.
-    check_email: En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.
+    password_already_requested: 'Passordet for denne brukeren har allerede blitt forespurt innenfor de siste 24 timene.'
+    check_email: 'En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.'
     request:
-        invalid_username: Brukernavnet eller epostadressen "%username%" eksisterer ikke.
-        username: "Brukernavn eller epostadresse:"
-        submit: Tilbakestill passord
+        invalid_username: 'Brukernavnet eller epostadressen "%username%" eksisterer ikke.'
+        username: 'Brukernavn eller epostadresse'
+        submit: 'Tilbakestill passord'
     reset:
-        submit: Endre passord
+        submit: 'Endre passord'
     flash:
-        success: Passordet har blitt tilbakestilt
+        success: 'Passordet har blitt tilbakestilt'
     email:
-        subject: Tilbakestill Passord
-        message: |
-            Hallo %username%!
-
-            For å tilbakestille ditt passord - vennligst besøk %confirmationUrl%
-
-            Med vennlig hilsen,
-            Teamet.
-
-# Global strings
+        subject: 'Tilbakestill Passord'
+        message: "Hallo %username%!\n\nFor å tilbakestille ditt passord - vennligst besøk %confirmationUrl%\n\nMed vennlig hilsen,\nTeamet.\n"
 layout:
-    logout: Logg ut
-    login: Logg inn
+    logout: 'Logg ut'
+    login: 'Logg inn'
     register: Registrer
-    logged_in_as: Logget inn som %username%
-
-# Form field labels
+    logged_in_as: 'Logget inn som %username%'
 form:
-    group_name: "Gruppenavn:"
-    username: "Brukernavn:"
-    email: "Epost:"
-    current_password: "Nåværende passord:"
-    password: "Passord:"
-    password_confirmation: "Verifisering:"
-    new_password: "Nytt passord:"
-    new_password_confirmation: "Verifisering:"
+    group_name: Gruppenavn
+    username: Brukernavn
+    email: Epost
+    current_password: 'Nåværende passord'
+    password: Passord
+    password_confirmation: Verifisering
+    new_password: 'Nytt passord'
+    new_password_confirmation: Verifisering

@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: Ta nazwa użytkownika jest już zajęta
-        blank: Proszę podać nazwę użytkownika
-        short: "[-Inf,Inf]Nazwa użytkownika jest za krótka"
-        long: "[-Inf,Inf]Nazwa użytkownika jest za długa"
+        already_used: 'Ta nazwa użytkownika jest już zajęta'
+        blank: 'Proszę podać nazwę użytkownika'
+        short: '[-Inf,Inf]Nazwa użytkownika jest za krótka'
+        long: '[-Inf,Inf]Nazwa użytkownika jest za długa'
     email:
-        already_used: Podany email jest zajęty
-        blank: Proszę podać adres email
-        short: "[-Inf,Inf]Podany email jest za krótki"
-        long: "[-Inf,Inf]Podany email jest za długi"
-        invalid: Podany adres email jest nieprawidłowy
+        already_used: 'Podany email jest zajęty'
+        blank: 'Proszę podać adres email'
+        short: '[-Inf,Inf]Podany email jest za krótki'
+        long: '[-Inf,Inf]Podany email jest za długi'
+        invalid: 'Podany adres email jest nieprawidłowy'
     password:
-        blank: Proszę podać hasło
-        short: "[-Inf,Inf]Podane hasło jest za krótkie"
-        mismatch: Hasła nie pasują do siebie
+        blank: 'Proszę podać hasło'
+        short: '[-Inf,Inf]Podane hasło jest za krótkie'
+        mismatch: 'Hasła nie pasują do siebie'
     new_password:
-        blank: Proszę podać nowe hasło
-        short: "[-Inf,Inf]Podane nowe hasło jest za krótkie"
+        blank: 'Proszę podać nowe hasło'
+        short: '[-Inf,Inf]Podane nowe hasło jest za krótkie'
     current_password:
-        invalid: Podane hasło jest nieprawidłowe
+        invalid: 'Podane hasło jest nieprawidłowe'
     group:
-        blank: Proszę podać nazwę
-        short: "[-Inf,Inf]Podana nazwa jest za krótka"
-        long: "[-Inf,Inf]Podana nazwa jest za długa"
+        blank: 'Proszę podać nazwę'
+        short: '[-Inf,Inf]Podana nazwa jest za krótka'
+        long: '[-Inf,Inf]Podana nazwa jest za długa'

@@ -114,7 +114,8 @@ implementation instead. It expects your twig template to define 3 blocks:
 - ``body_text`` rendering the plain text version of the message
 - ``body_html`` rendering the html mail
 
-Here is how you can use it:
+Here is how you can use it, you can use either of the two methods
+of referencing the email template below.
 
 .. code-block:: yaml
 
@@ -125,7 +126,10 @@ Here is how you can use it:
             mailer: fos_user.mailer.twig_swift
         resetting:
             email:
-                template: email/password_resetting.email.twig
+                template:   email/password_resetting.email.twig
+        registration:
+            confirmation:
+                template:   FOSUserBundle:Registration:email.txt.twig
 
 .. code-block:: html+jinja
 
@@ -157,6 +161,10 @@ Here is how you can use it:
 
     The HTML part is set in the message only when the ``body_html`` block is
     not empty.
+
+You can view the default email templates at
+`FOSUserBundle:Registration:email.txt.twig` and
+`FOSUserBundle:Resetting:email.txt.twig`
 
 Using A Custom Mailer
 ---------------------

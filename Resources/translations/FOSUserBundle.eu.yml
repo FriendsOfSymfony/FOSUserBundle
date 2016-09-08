@@ -1,96 +1,67 @@
-# Group
 group:
     edit:
-        submit: Talde eguneratu
+        submit: 'Talde eguneratu'
     show:
-        name: Taldearen izena
+        name: 'Taldearen izena'
     new:
-        submit: Taldea sortu
+        submit: 'Taldea sortu'
     flash:
-        updated: Taldea eguneratua izan da
-        created: Taldea sortua izan da
-        deleted: Taldea ezabatua izan da
-
-# Security
+        updated: 'Taldea eguneratua izan da'
+        created: 'Taldea sortua izan da'
+        deleted: 'Taldea ezabatua izan da'
 security:
     login:
-        username: "Erabiltzaile izena:"
-        username_email: "Erabiltzaile izena edo e-posta:"
-        email: "E-posta:"
-        password: "Pasahitza:"
+        username: 'Erabiltzaile izena'
+        password: Pasahitza
         remember_me: Oroitu
         submit: Sartu
-
-# Profile
 profile:
     show:
-        username: Erabiltzaile izena
+        username: 'Erabiltzaile izena'
         email: E-posta
     edit:
-        submit: Erabiltzailea eguneratu
+        submit: 'Erabiltzailea eguneratu'
     flash:
-        updated: Perfila eguneratua izan da
-
-# Password change
+        updated: 'Perfila eguneratua izan da'
 change_password:
-    submit: Pasahitza aldatu
+    submit: 'Pasahitza aldatu'
     flash:
-        success: Pasahitz ongi eguneratu da
-
-# Registration
+        success: 'Pasahitz ongi eguneratu da'
 registration:
-    check_email: E-posta bat bidali da %email% helbidera. Kontua aktibatzeko klik egin beharreko esteka zehazten da.
-    confirmed: Zorionak %username%, zure kontua aktibatua dago.
+    check_email: 'E-posta bat bidali da %email% helbidera. Kontua aktibatzeko klik egin beharreko esteka zehazten da.'
+    confirmed: 'Zorionak %username%, zure kontua aktibatua dago.'
     back: Itzuli.
-    submit: Izena eman
+    submit: 'Izena eman'
     flash:
-        user_created: Erabiltzailea ongi sortu da
+        user_created: 'Erabiltzailea ongi sortu da'
     email:
-        subject: Ongi etorri %username%!
-        message: |
-            Kaixo %username%!
-
-            Kontuaren balidazioazioarekin jarraitzeko - ireki ondoko orria: %confirmationUrl%
-
-            Adeitasunez,
-            Taldea.
-
-# Password resetting
+        subject: 'Ongi etorri %username%!'
+        message: "Kaixo %username%!\n\nKontuaren balidazioazioarekin jarraitzeko - ireki ondoko orria: %confirmationUrl%\n\nAdeitasunez,\nTaldea.\n"
 resetting:
-    password_already_requested: 24 orduen barruan erabiltzaile honen pasahitza eskatua izan da.
-    check_email: Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.
+    password_already_requested: '24 orduen barruan erabiltzaile honen pasahitza eskatua izan da.'
+    check_email: 'Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.'
     request:
-        invalid_username: %username% erabiltzailea edo E-posta ez da existitzen.
-        username: "Erabiltzaile izena:"
-        submit: Pasahitza berreskuratu
+        invalid_username: '%username% erabiltzailea edo E-posta ez da existitzen.'
+        username: 'Erabiltzaile izena'
+        submit: 'Pasahitza berreskuratu'
     reset:
-        submit: Pasahitza aldatu
+        submit: 'Pasahitza aldatu'
     flash:
-        success: Pasahitza ongi aldatu da
+        success: 'Pasahitza ongi aldatu da'
     email:
-        subject: Pasahitza berrezarri
-        message : |
-            Kaixo %username%!
-
-            Pasahitza berrezartzeko egin klik esteka honetan: %confirmationUrl%
-
-            Adeitasunez,
-            Taldea.
-
-# Global strings
+        subject: 'Pasahitza berrezarri'
+        message: "Kaixo %username%!\n\nPasahitza berrezartzeko egin klik esteka honetan: %confirmationUrl%\n\nAdeitasunez,\nTaldea.\n"
 layout:
     logout: Irten
     login: Sartu
-    register: Izena eman
-    logged_in_as: %username% bezala konektatua
-
-# Form field labels
+    register: 'Izena eman'
+    logged_in_as: '%username% bezala konektatua'
 form:
-    group_name: "Taldearen izena:"
-    username: "Erabiltzaile izena:"
-    email: "E-posta:"
-    current_password: "Oraingo pasahitza:"
-    password: "Pasahitza:"
-    password_confirmation: "Errepikatu pasahitza:"
-    new_password: "Pasahitz berria:"
-    new_password_confirmation: "Errepikatu pasahitza:"
+    group_name: 'Taldearen izena'
+    username: 'Erabiltzaile izena'
+    email: E-posta
+    current_password: 'Oraingo pasahitza'
+    password: Pasahitza
+    password_confirmation: 'Errepikatu pasahitza'
+    new_password: 'Pasahitz berria'
+    new_password_confirmation: 'Errepikatu pasahitza'

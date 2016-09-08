@@ -1,25 +1,25 @@
 fos_user:
     username:
-        already_used: De gebruikersnaam is al in gebruik
-        blank: Voer een gebruikersnaam in
-        short: "[-Inf,Inf]De gebruikersnaam is te kort"
-        long: "[-Inf,Inf]De gebruikersnaam is te lang"
+        already_used: 'De gebruikersnaam is al in gebruik'
+        blank: 'Voer een gebruikersnaam in'
+        short: '[-Inf,Inf]De gebruikersnaam is te kort'
+        long: '[-Inf,Inf]De gebruikersnaam is te lang'
     email:
-        already_used: Het e-mailadres is al in gebruik
-        blank: Voer een e-mailadres in
-        short: "[-Inf,Inf]Het e-mailadres is te kort"
-        long: "[-Inf,Inf]Het e-mailadres is te lang"
-        invalid: Het e-mailadres is ongeldig
+        already_used: 'Het e-mailadres is al in gebruik'
+        blank: 'Voer een e-mailadres in'
+        short: '[-Inf,Inf]Het e-mailadres is te kort'
+        long: '[-Inf,Inf]Het e-mailadres is te lang'
+        invalid: 'Het e-mailadres is ongeldig'
     password:
-        blank: Voer een wachtwoord in
-        short: "[-Inf,Inf]Het wachtwoord is te kort"
-        mismatch: Het ingevoerde wachtwoord komt niet overeen
+        blank: 'Voer een wachtwoord in'
+        short: '[-Inf,Inf]Het wachtwoord is te kort'
+        mismatch: 'Het ingevoerde wachtwoord komt niet overeen'
     new_password:
-        blank: Voer een nieuw wachtwoord in
-        short: "[-Inf,Inf]Het nieuwe wachtwoord is te kort"
+        blank: 'Voer een nieuw wachtwoord in'
+        short: '[-Inf,Inf]Het nieuwe wachtwoord is te kort'
     current_password:
-        invalid: Het ingevulde wachtwoord is ongeldig
+        invalid: 'Het ingevulde wachtwoord is ongeldig'
     group:
-        blank: Voer een naam in
-        short: "[-Inf,Inf]De naam is te kort"
-        long: "[-Inf,Inf]De naam is te lang"
+        blank: 'Voer een naam in'
+        short: '[-Inf,Inf]De naam is te kort'
+        long: '[-Inf,Inf]De naam is te lang'

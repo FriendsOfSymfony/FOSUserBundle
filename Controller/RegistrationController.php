@@ -54,20 +54,29 @@ class RegistrationController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
-            $userManager->updateUser($user);
+                $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->generateUrl('fos_user_registration_confirmed');
+                    $response = new RedirectResponse($url);
+                }
+
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+                return $response;
             }
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
 
-            return $response;
+            if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
         }
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
@@ -88,7 +97,7 @@ class RegistrationController extends Controller
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
+        return $this->render('FOSUserBundle:Registration:check_email.html.twig', array(
             'user' => $user,
         ));
     }
@@ -140,6 +149,23 @@ class RegistrationController extends Controller
 
         return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
             'user' => $user,
+            'targetUrl' => $this->getTargetUrlFromSession(),
         ));
+    }
+
+    private function getTargetUrlFromSession()
+    {
+        // Set the SecurityContext for Symfony <2.6
+        if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
+            $tokenStorage = $this->get('security.token_storage');
+        } else {
+            $tokenStorage = $this->get('security.context');
+        }
+
+        $key = sprintf('_security.%s.target_path', $tokenStorage->getToken()->getProviderKey());
+
+        if ($this->get('session')->has($key)) {
+            return $this->get('session')->get($key);
+        }
     }
 }

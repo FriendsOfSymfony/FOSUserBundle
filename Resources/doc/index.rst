@@ -1,7 +1,7 @@
 Getting Started With FOSUserBundle
 ==================================
 
-The Symfony2 security component provides a flexible security framework that
+The Symfony Security component provides a flexible security framework that
 allows you to load users from configuration, a database, or anywhere else
 you can imagine. The FOSUserBundle builds on top of this to make it quick
 and easy to store users in a database.
@@ -53,25 +53,24 @@ Require the bundle with composer:
     $ composer require friendsofsymfony/user-bundle "~2.0@dev"
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
+If you encounter installation errors pointing at a lack of configuration parameters, such as ``The child node "db_driver" at path "fos_user" must be configured``, you should complete the configuration in Step 5 first and then re-run this step.
 
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel:
+Enable the bundle in the kernel::
 
-``` php
-<?php
-// app/AppKernel.php
+    <?php
+    // app/AppKernel.php
 
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new FOS\UserBundle\FOSUserBundle(),
-        // ...
-    );
-}
-```
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new FOS\UserBundle\FOSUserBundle(),
+            // ...
+        );
+    }
 
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,6 +119,7 @@ start:
 
     .. code-block:: php-annotations
 
+        <?php
         // src/AppBundle/Entity/User.php
 
         namespace AppBundle\Entity;
@@ -176,7 +176,7 @@ start:
 
 .. caution::
 
-    ``user`` is a reserved keyword in SQL so you cannot use it as table name.
+    ``user`` is a reserved keyword in the SQL standard. If you need to use reserved words, surround them with backticks, *e.g.* ``@ORM\Table(name="`user`")``
 
 b) MongoDB User class
 .....................
@@ -283,7 +283,9 @@ in your application:
                 pattern: ^/
                 form_login:
                     provider: fos_userbundle
-                    csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                    csrf_token_generator: security.csrf.token_manager
+                    # if you are using Symfony < 2.8, use the following config instead:
+                    # csrf_provider: form.csrf_provider
 
                 logout:       true
                 anonymous:    true
@@ -300,7 +302,7 @@ provider service is ``fos_user.user_provider.username``.
 
 Next, take a look at and examine the ``firewalls`` section. Here we have
 declared a firewall named ``main``. By specifying ``form_login``, you have
-told the Symfony2 framework that any time a request is made to this firewall
+told the Symfony Framework that any time a request is made to this firewall
 that leads to the user needing to authenticate himself, the user will be
 redirected to a form where he will be able to enter his credentials. It should
 come as no surprise then that you have specified the user provider service
@@ -311,7 +313,7 @@ authentication process.
 
     Although we have used the form login mechanism in this example, the FOSUserBundle
     user provider service is compatible with many other authentication methods
-    as well. Please read the Symfony2 Security component documentation for
+    as well. Please read the Symfony Security component documentation for
     more information on the other types of authentication methods.
 
 The ``access_control`` section is where you specify the credentials necessary for
@@ -324,7 +326,7 @@ any request matching the ``/login`` pattern or starting with ``/register`` or
 that any request beginning with ``/admin`` will require a user to have the
 ``ROLE_ADMIN`` role.
 
-For more information on configuring the ``security.yml`` file please read the Symfony2
+For more information on configuring the ``security.yml`` file please read the Symfony
 `security component documentation`_.
 
 .. note::
@@ -415,33 +417,38 @@ For ORM run the following command.
 
 .. code-block:: bash
 
-    $ php app/console doctrine:schema:update --force
+    $ php bin/console doctrine:schema:update --force
 
 For MongoDB users you can run the following command to create the indexes.
 
 .. code-block:: bash
 
-    $ php app/console doctrine:mongodb:schema:create --index
+    $ php bin/console doctrine:mongodb:schema:create --index
+
+.. note::
+
+    If you use the Symfony 2.x structure in your project, use ``app/console``
+    instead of ``bin/console`` in the commands.
 
 For Propel 1 users you have to install the `TypehintableBehavior`_
 before to build your model. First, install it:
 
 .. code-block:: bash
 
-    composer require willdurand/propel-typehintable-behavior
+    $ composer require willdurand/propel-typehintable-behavior
 
 You now can run the following command to create the model:
 
 .. code-block:: bash
 
-    $ php app/console propel:build
+    $ php bin/console propel:build
 
 .. note::
 
     To create SQL, run the command ``propel:build --insert-sql`` or use migration
     commands if you have an existing schema in your database.
 
-You now can login at ``http://app.com/app_dev.php/login``!
+You now can log in at ``http://app.com/app_dev.php/login``!
 
 Next Steps
 ~~~~~~~~~~
@@ -452,23 +459,26 @@ of the bundle.
 
 The following documents are available:
 
-- :doc:`/overriding_templates`
-- :doc:`/controller_events`
-- :doc:`/overriding_controllers`
-- :doc:`/overriding_forms`
-- :doc:`/user_manager`
-- :doc:`/command_line_tools`
-- :doc:`/logging_by_username_or_email`
-- :doc:`/form_type`
-- :doc:`/emails`
-- :doc:`/groups`
-- :doc:`/doctrine`
-- :doc:`/overriding_validation`
-- :doc:`/canonicalizer`
-- :doc:`/custom_storage_layer`
-- :doc:`/routing`
-- :doc:`/configuration_reference`
-- :doc:`/adding_invitation_registration`
+.. toctree::
+    :maxdepth: 1
+
+    overriding_templates
+    controller_events
+    overriding_controllers
+    overriding_forms
+    user_manager
+    command_line_tools
+    logging_by_username_or_email
+    form_type
+    emails
+    groups
+    doctrine
+    overriding_validation
+    canonicalizer
+    custom_storage_layer
+    routing
+    configuration_reference
+    adding_invitation_registration
 
 .. _security component documentation: https://symfony.com/doc/current/book/security.html
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html

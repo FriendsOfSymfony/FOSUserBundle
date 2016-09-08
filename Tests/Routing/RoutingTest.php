@@ -64,7 +64,7 @@ class RoutingTest extends \PHPUnit_Framework_TestCase
 
             array('fos_user_security_login', '/login', array('GET', 'POST')),
             array('fos_user_security_check', '/login_check', array('POST')),
-            array('fos_user_security_logout', '/logout', array('GET')),
+            array('fos_user_security_logout', '/logout', array('GET', 'POST')),
         );
     }
 }

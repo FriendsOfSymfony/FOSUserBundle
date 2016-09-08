@@ -23,6 +23,10 @@
         <column name="expired" type="boolean" defaultValue="false" />
         <column name="expires_at" type="timestamp" required="false" />
         <column name="confirmation_token" type="varchar" size="255" required="false" />
+        <unique>
+            <unique-column name="confirmation_token" />
+        </unique>
+        
         <column name="password_requested_at" type="timestamp" required="false" />
         <column name="credentials_expired" type="boolean" defaultValue="false" />
         <column name="credentials_expire_at" type="timestamp" required="false" />
@@ -41,6 +45,10 @@
     <table name="fos_group" phpName="Group">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
         <column name="name" type="varchar" size="255" required="true" primaryString="true" />
+        <unique>
+            <unique-column name="name" />
+        </unique>
+
         <column name="roles" type="array" />
 
         <behavior name="typehintable">

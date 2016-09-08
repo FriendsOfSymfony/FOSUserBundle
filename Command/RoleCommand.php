@@ -17,6 +17,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use FOS\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * @author Lenar Lõhmus <lenar@city.ee>
@@ -74,6 +75,47 @@ abstract class RoleCommand extends ContainerAwareCommand
      * @see Command
      */
     protected function interact(InputInterface $input, OutputInterface $output)
+    {
+        if (!$this->getHelperSet()->has('question')) {
+            $this->legacyInteract($input, $output);
+
+            return;
+        }
+
+        $questions = array();
+
+        if (!$input->getArgument('username')) {
+            $question = new Question('Please choose a username:');
+            $question->setValidator(function($username) {
+                if (empty($username)) {
+                    throw new \Exception('Username can not be empty');
+                }
+
+                return $username;
+            });
+            $questions['username'] = $question;
+        }
+
+        if ((true !== $input->getOption('super')) && !$input->getArgument('role')) {
+            $question = new Question('Please choose a role:');
+            $question->setValidator(function($role) {
+                if (empty($role)) {
+                    throw new \Exception('Role can not be empty');
+                }
+
+                return $role;
+            });
+            $questions['role'] = $question;
+        }
+
+        foreach ($questions as $name => $question) {
+            $answer = $this->getHelper('question')->ask($input, $output, $question);
+            $input->setArgument($name, $answer);
+        }
+    }
+
+    // BC for SF <2.5
+    private function legacyInteract(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getArgument('username')) {
             $username = $this->getHelper('dialog')->askAndValidate(

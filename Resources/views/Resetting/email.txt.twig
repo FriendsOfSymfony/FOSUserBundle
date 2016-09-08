@@ -1,7 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
 {% autoescape false %}
-{{ 'resetting.email.subject'|trans }}
+{{ 'resetting.email.subject'|trans({'%username%': user.username}) }}
 {% endautoescape %}
 {% endblock %}
 {% block body_text %}

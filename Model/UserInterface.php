@@ -23,6 +23,13 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     /**
+     * Returns the user unique id.
+     *
+     * @return mixed
+     */
+    public function getId();
+
+    /**
      * Sets the username.
      *
      * @param string $username

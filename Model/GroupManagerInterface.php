@@ -58,7 +58,7 @@ interface GroupManagerInterface
     public function findGroupByName($name);
 
     /**
-     * Returns a collection with all user instances.
+     * Returns a collection with all group instances.
      *
      * @return \Traversable
      */

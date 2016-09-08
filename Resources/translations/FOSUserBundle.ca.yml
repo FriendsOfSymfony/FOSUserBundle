@@ -1,94 +1,67 @@
-# Group
 group:
     edit:
-        submit: Actualitza el grup
+        submit: 'Actualitza el grup'
     show:
-        name: Nom del grup
+        name: 'Nom del grup'
     new:
-        submit: Crea el grup
+        submit: 'Crea el grup'
     flash:
-        updated: S'ha actualitzat el grup
-        created: S'ha creat el grup
-        deleted: S'ha eliminat el grup
-
-# Security
+        updated: 'S''ha actualitzat el grup'
+        created: 'S''ha creat el grup'
+        deleted: 'S''ha eliminat el grup'
 security:
     login:
-        username: "Nom d'usuari:"
-        password: "Contrasenya:"
-        remember_me: Recorda'm
+        username: 'Nom d''usuari'
+        password: Contrasenya
+        remember_me: 'Recorda''m'
         submit: Entra
-
-# Profile
 profile:
     show:
-        username: Nom d'usuari
-        email: Correu electrònic
+        username: 'Nom d''usuari'
+        email: 'Correu electrònic'
     edit:
         submit: Actualitza
     flash:
-        updated: S'ha actualitzat el perfil
-
-# Password change
+        updated: 'S''ha actualitzat el perfil'
 change_password:
-    submit: Canvia la contrasenya
+    submit: 'Canvia la contrasenya'
     flash:
-        success: S'ha canviat la contrasenya
-
-# Registration
+        success: 'S''ha canviat la contrasenya'
 registration:
-    check_email: S'ha enviat un correu electrònic a %email%. Conté un enllaç d'activació que heu de clicar per activar el compte.
-    confirmed: Enhorabona %username%, el vostre compte s'ha activat.
-    back: Torna a la pàgina original.
+    check_email: 'S''ha enviat un correu electrònic a %email%. Conté un enllaç d''activació que heu de clicar per activar el compte.'
+    confirmed: 'Enhorabona %username%, el vostre compte s''ha activat.'
+    back: 'Torna a la pàgina original.'
     submit: Registra
     flash:
-        user_created: S'ha creat l'usuari correctament
+        user_created: 'S''ha creat l''usuari correctament'
     email:
-        subject: Benvingut %username%!
-        message: |
-            Hola %username%!
-
-            Per finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%
-
-            Atentament,
-            L'equip.
-
-# Password resetting
+        subject: 'Benvingut %username%!'
+        message: "Hola %username%!\n\nPer finalitzar l'activació del seu compte - si us plau visiteu %confirmationUrl%\n\nAtentament,\nL'equip.\n"
 resetting:
-    password_already_requested: La contrasenya per l'usuari ja ha estat sol·licitada en les últimes 24 hores.
-    check_email: S'ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.
+    password_already_requested: 'La contrasenya per l''usuari ja ha estat sol·licitada en les últimes 24 hores.'
+    check_email: 'S''ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.'
     request:
-        invalid_username: El nom d'usuari o correu electrònic "%username%" no existeix.
-        username: "Nom d'usuari o correu electrònic:"
-        submit: Restableix la contrasenya
+        invalid_username: 'El nom d''usuari o correu electrònic "%username%" no existeix.'
+        username: 'Nom d''usuari o correu electrònic'
+        submit: 'Restableix la contrasenya'
     reset:
-        submit: Canvia la contrasenya
+        submit: 'Canvia la contrasenya'
     flash:
-        success: S'ha restablert la contrasenya correctament
+        success: 'S''ha restablert la contrasenya correctament'
     email:
-        subject: Restablir la contrasenya
-        message: |
-            Hola %username%!
-
-            Per restablir la contrasenya - si us plau visiteu %confirmationUrl%
-
-            Atentament,
-            L'equip.
-
-# Global strings
+        subject: 'Restablir la contrasenya'
+        message: "Hola %username%!\n\nPer restablir la contrasenya - si us plau visiteu %confirmationUrl%\n\nAtentament,\nL'equip.\n"
 layout:
-    logout: Tanca la sessió
+    logout: 'Tanca la sessió'
     login: Entra
     register: Registrar-se
-    logged_in_as: Heu iniciat sessió com a %username%
-
-# Form field labels
+    logged_in_as: 'Heu iniciat sessió com a %username%'
 form:
-    group_name: "Nom del grup:"
-    username: "Nom d'usuari:"
-    email: "Correu electrònic:"
-    current_password: "Contrasenya actual:"
-    password: "Contrasenya:"
-    password_confirmation: "Verificació:"
-    new_password: "Nova contrasenya:"
-    new_password_confirmation: "Verificació:"
+    group_name: 'Nom del grup'
+    username: 'Nom d''usuari'
+    email: 'Correu electrònic'
+    current_password: 'Contrasenya actual'
+    password: Contrasenya
+    password_confirmation: Verificació
+    new_password: 'Nova contrasenya'
+    new_password_confirmation: Verificació
