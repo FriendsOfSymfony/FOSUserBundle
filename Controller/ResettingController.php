@@ -44,9 +44,6 @@ class ResettingController extends Controller
      */
     public function sendEmailAction(Request $request)
     {
-        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
-        $dispatcher = $this->get('event_dispatcher');
-
         $username = $request->request->get('username');
 
         /** @var $user UserInterface */
