@@ -190,6 +190,8 @@ final class FOSUserEvents
 
     /**
      * The RESEND_CONFIRM event occurs after requesting a new confirmation email
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const RESEND_CONFIRM = 'fos_user.registration.resend_confirm';
 
