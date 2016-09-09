@@ -20,9 +20,8 @@
         <default key="_controller">FOSUserBundle:Registration:confirmed</default>
     </route>
 
-    <route id="fos_user_registration_resend_confirm" pattern="/resend-confirm">
+    <route id="fos_user_registration_resend_confirm" pattern="/resend-confirm" methods="GET POST">
         <default key="_controller">FOSUserBundle:Registration:resendConfirm</default>
-        <requirement key="_method">GET|POST</requirement>
     </route>
 
 </routes>
