@@ -101,9 +101,9 @@ class RegistrationController extends Controller
         $form = $formFactory->createForm();
         $form->setData($user);
 
-        if ('POST' === $request->getMethod()) {
-            $form->bind($request);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $email = $user->getEmail();
                 $user = $userManager->findUserByEmail($email);
@@ -124,10 +124,9 @@ class RegistrationController extends Controller
 
                 return $response;
             }
-
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:resend_confirm.html.'.$this->getEngine(), array(
+        return $this->render('FOSUserBundle:Registration:resend_confirm.html.twig', array(
             'form' => $form->createView(),
         ));
     }
