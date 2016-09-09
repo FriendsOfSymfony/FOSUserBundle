@@ -156,6 +156,8 @@ final class FOSUserEvents
      *
      * This event allows you to set the response instead of using the default one.
      * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\FormEvent")
      */
     const REGISTRATION_FAILURE = 'fos_user.registration.failure';
 
