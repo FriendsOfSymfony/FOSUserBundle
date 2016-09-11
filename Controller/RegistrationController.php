@@ -85,6 +85,53 @@ class RegistrationController extends Controller
     }
 
     /**
+     * Resend the confirmation email to the User
+     */
+    public function resendConfirmAction(Request $request)
+    {
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->container->get('fos_user.resend_confirm.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->container->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->container->get('event_dispatcher');
+
+        $user = $userManager->createUser();
+
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $email = $user->getEmail();
+                $user = $userManager->findUserByEmail($email);
+
+                if (null === $user) {
+                    throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
+                }
+
+                $event = new GetResponseUserEvent($user, $request);
+                $dispatcher->dispatch(FOSUserEvents::RESEND_CONFIRM, $event);
+
+                $userManager->updateUser($user);
+
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
+                    $response = new RedirectResponse($url);
+                }
+
+                return $response;
+            }
+        }
+
+        return $this->render('FOSUserBundle:Registration:resend_confirm.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Tell the user to check his email provider
      */
     public function checkEmailAction()

@@ -13,6 +13,7 @@ namespace FOS\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -39,6 +40,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::RESEND_CONFIRM => 'onResendConfirm',
         );
     }
 
@@ -46,6 +48,24 @@ class EmailConfirmationListener implements EventSubscriberInterface
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
+
+        $user->setEnabled(false);
+        if (null === $user->getConfirmationToken()) {
+            $user->setConfirmationToken($this->tokenGenerator->generateToken());
+        }
+
+        $this->mailer->sendConfirmationEmailMessage($user);
+
+        $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
+
+        $url = $this->router->generate('fos_user_registration_check_email');
+        $event->setResponse(new RedirectResponse($url));
+    }
+
+    public function onResendConfirm(GetResponseUserEvent $event)
+    {
+        /** @var $user \FOS\UserBundle\Model\UserInterface */
+        $user = $event->getUser();
 
         $user->setEnabled(false);
         if (null === $user->getConfirmationToken()) {
