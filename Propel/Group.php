@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Propel;
 
-use FOS\UserBundle\Propel\om\BaseGroup;
+use FOS\UserBundle\Model\Group as BaseGroup;
 use FOS\UserBundle\Model\GroupInterface;
 
 class Group extends BaseGroup implements GroupInterface
