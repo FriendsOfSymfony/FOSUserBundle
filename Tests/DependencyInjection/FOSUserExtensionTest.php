@@ -322,8 +322,11 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertAlias($doctrineService, 'fos_user.doctrine_registry');
 
         if (method_exists($definition, 'getFactory')) {
-            $factory = array(new Reference('fos_user.doctrine_registry'), 'getManager');
-            $this->assertEquals($factory, $definition->getFactory());
+            $factory = $definition->getFactory();
+
+            $this->assertInstanceOf('Symfony\Component\DependencyInjection\Reference', $factory[0]);
+            $this->assertEquals('fos_user.doctrine_registry', (string) $factory[0]);
+            $this->assertEquals('getManager', $factory[1]);
         } else {
             $this->assertEquals('fos_user.doctrine_registry', $definition->getFactoryService());
             $this->assertEquals('getManager', $definition->getFactoryMethod());
