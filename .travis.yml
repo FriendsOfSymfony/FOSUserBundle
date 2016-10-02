@@ -8,9 +8,15 @@ php:
   - 7.0
   - hhvm
 
+env:
+  global:
+    - TARGET=test
+
 matrix:
   fast_finish: true
   include:
+    - php: 7.0
+      env: TARGET=cs_dry_run
     - php: 5.3
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 5.6
@@ -36,7 +42,7 @@ before_install:
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - phpunit --coverage-text
+ - make $TARGET
 
 notifications:
   email: friendsofsymfony-dev@googlegroups.com
