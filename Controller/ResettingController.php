@@ -106,11 +106,9 @@ class ResettingController extends Controller
             if (null !== $event->getResponse()) {
                 return $event->getResponse();
             }
-
-            return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
         }
 
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
+        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
     }
 
     /**
