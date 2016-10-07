@@ -40,7 +40,6 @@ resetting:
     password_already_requested: 'Denne brugers adgangskode er allerede blevet nulstillet inden for de sidste 24 timer.'
     check_email: 'En e-mail er blevet sendt til %email%. Den indeholder et link, du skal følge for at nulstille din adgangskode.'
     request:
-        invalid_username: 'Brugernavnet eller e-mailadressen "%username%" findes ikke.'
         username: 'Brugernavn eller e-mailadresse'
         submit: 'Nulstil adgangskode'
     reset:

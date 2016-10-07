@@ -73,51 +73,45 @@ class ResettingController extends Controller
             return $event->getResponse();
         }
 
-        if (null === $user) {
-            return $this->render('FOSUserBundle:Resetting:request.html.twig', array(
-                'invalid_username' => $username
+        if (null !== $user && !$user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
+            $event = new GetResponseUserEvent($user, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+
+            if (null === $user->getConfirmationToken()) {
+                /** @var $tokenGenerator TokenGeneratorInterface */
+                $tokenGenerator = $this->get('fos_user.util.token_generator');
+                $user->setConfirmationToken($tokenGenerator->generateToken());
+            }
+
+            /* Dispatch confirm event */
+            $event = new GetResponseUserEvent($user, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+
+            $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
+            $user->setPasswordRequestedAt(new \DateTime());
+            $this->get('fos_user.user_manager')->updateUser($user);
+
+            /* Dispatch completed event */
+            $event = new GetResponseUserEvent($user, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+
+            return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
+                array('email' => $this->getObfuscatedEmail($user))
             ));
+            return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
         }
-
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->render('FOSUserBundle:Resetting:password_already_requested.html.twig');
-        }
-
-        if (null === $user->getConfirmationToken()) {
-            /** @var $tokenGenerator TokenGeneratorInterface */
-            $tokenGenerator = $this->get('fos_user.util.token_generator');
-            $user->setConfirmationToken($tokenGenerator->generateToken());
-        }
-
-        /* Dispatch confirm event */
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-        $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
-        $user->setPasswordRequestedAt(new \DateTime());
-        $this->get('fos_user.user_manager')->updateUser($user);
-
-
-        /* Dispatch completed event */
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
-        ));
     }
 
     /**
@@ -133,15 +127,15 @@ class ResettingController extends Controller
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
 
-        $email = $request->query->get('email');
+        $username = $request->query->get('username');
 
-        if (empty($email)) {
+        if (empty($username)) {
             // the user does not come from the sendEmail action
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
         return $this->render('FOSUserBundle:Resetting:check_email.html.twig', array(
-            'email' => $email,
+            'tokenLifetime' => floor($this->container->getParameter('fos_user.resetting.token_ttl') / 3600),
         ));
     }
 
@@ -195,7 +189,10 @@ class ResettingController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $dispatcher->dispatch(
+                FOSUserEvents::RESETTING_RESET_COMPLETED,
+                new FilterUserResponseEvent($user, $request, $response)
+            );
 
             return $response;
         }

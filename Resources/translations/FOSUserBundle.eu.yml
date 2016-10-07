@@ -41,7 +41,6 @@ resetting:
     password_already_requested: '24 orduen barruan erabiltzaile honen pasahitza eskatua izan da.'
     check_email: 'Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.'
     request:
-        invalid_username: '%username% erabiltzailea edo E-posta ez da existitzen.'
         username: 'Erabiltzaile izena'
         submit: 'Pasahitza berreskuratu'
     reset:

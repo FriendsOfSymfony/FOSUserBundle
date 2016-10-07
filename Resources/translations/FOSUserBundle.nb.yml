@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Passordet for denne brukeren har allerede blitt forespurt innenfor de siste 24 timene.'
     check_email: 'En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.'
     request:
-        invalid_username: 'Brukernavnet eller epostadressen "%username%" eksisterer ikke.'
         username: 'Brukernavn eller epostadresse'
         submit: 'Tilbakestill passord'
     reset:

@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Lösenordet för användaren har redan begärts inom de senaste 24 timmarna.'
     check_email: 'Ett meddelande har skickats till %email%. Det innehåller en länk som du måste klicka på för att återställa ditt lösenord.'
     request:
-        invalid_username: 'Användarnamnet eller epost-adressen "%username%" finns inte.'
         username: 'Användarnamn eller epost-adress'
         submit: 'Återställ lösenord'
     reset:

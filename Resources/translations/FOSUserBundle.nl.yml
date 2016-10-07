@@ -41,7 +41,6 @@ resetting:
     password_already_requested: 'Het wachtwoord voor deze gebruiker is al aangevraagd binnen de laatste 24 uur.'
     check_email: 'Er is een e-mail verstuurd naar %email%, met een link om uw wachtwoord te resetten.'
     request:
-        invalid_username: 'De gebruiker "%username%" bestaat niet.'
         username: 'Gebruikersnaam of e-mailadres'
         submit: 'Reset wachtwoord'
     reset:
