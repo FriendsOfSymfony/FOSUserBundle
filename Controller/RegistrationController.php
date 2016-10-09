@@ -92,9 +92,24 @@ class RegistrationController extends Controller
             }
         }
 
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+        return $this->renderRegistration(array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * Renders the registration template with the given parameters. Overwrite this function in
+     * an extended controller to provide additional data for the login template.
+     *
+     * @param array $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function renderRegistration(array $data)
+    {
+        $template = 'FOSUserBundle:Registration:register.html.twig';
+
+        return $this->container->get('templating')->renderResponse($template, $data);
     }
 
     /**
