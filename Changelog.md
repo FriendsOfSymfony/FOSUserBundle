@@ -1,6 +1,20 @@
 Changelog
 =========
 
+### 2.0.0-alpha4 (2016-xx-xx)
+
+* Redirect logged in user on public pages.
+* Exclude tests from autoloader.
+* Allow to use POST for logout.
+* Fix UserPassword constraint validation groups.
+* Harmonized email detection in `UserManager`.
+* Added unique index for `confirmation_token` field.
+* Added Kyrgyz translation files.
+* Added user manipulator events.
+* Replaced `checkPostAuth` by `checkPreAuth` in `AuthenticationListener`.
+* [BC break] Method `ResettingController::getObfuscatedEmail` has been removed.
+* [BC break] Renamed templates to underscore case.
+
 ### 2.0.0-alpha3 (2015-09-15)
 
 * Reverted the removed of the `expired` and `credentialsExpired` properties as the BC break could lead to corrupted objects being created if server sessions are not cleared when upgrading the bundle.
