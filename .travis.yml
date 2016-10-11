@@ -8,6 +8,9 @@ php:
   - 7.0
   - hhvm
 
+services:
+  - mongodb
+
 matrix:
   fast_finish: true
   include:
