@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Tests\Command;
 
 use FOS\UserBundle\Command\ActivateUserCommand;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,7 +28,7 @@ class ActivateUserCommandTest extends \PHPUnit_Framework_TestCase
             'interactive' => false,
         ));
 
-        $this->assertEquals(0, $exitCode, 'Returns 0 in case of success');
+        $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
@@ -53,7 +52,7 @@ class ActivateUserCommandTest extends \PHPUnit_Framework_TestCase
             'interactive' => true,
         ));
 
-        $this->assertEquals(0, $exitCode, 'Returns 0 in case of success');
+        $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
     }
 

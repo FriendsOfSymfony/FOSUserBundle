@@ -37,7 +37,7 @@ interface GroupableInterface
      *
      * @param string $name Name of the group
      *
-     * @return Boolean
+     * @return bool
      */
     public function hasGroup($name);
 

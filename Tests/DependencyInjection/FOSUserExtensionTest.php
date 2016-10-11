@@ -11,10 +11,9 @@
 
 namespace FOS\UserBundle\Tests\DependencyInjection;
 
+use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
-use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 use Symfony\Component\Yaml\Parser;
 
 class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
@@ -325,11 +324,11 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
             $factory = $definition->getFactory();
 
             $this->assertInstanceOf('Symfony\Component\DependencyInjection\Reference', $factory[0]);
-            $this->assertEquals('fos_user.doctrine_registry', (string) $factory[0]);
-            $this->assertEquals('getManager', $factory[1]);
+            $this->assertSame('fos_user.doctrine_registry', (string) $factory[0]);
+            $this->assertSame('getManager', $factory[1]);
         } else {
-            $this->assertEquals('fos_user.doctrine_registry', $definition->getFactoryService());
-            $this->assertEquals('getManager', $definition->getFactoryMethod());
+            $this->assertSame('fos_user.doctrine_registry', $definition->getFactoryService());
+            $this->assertSame('getManager', $definition->getFactoryMethod());
         }
     }
 
@@ -364,7 +363,7 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * getEmptyConfig
+     * getEmptyConfig.
      *
      * @return array
      */
@@ -451,7 +450,7 @@ EOF;
      */
     private function assertAlias($value, $key)
     {
-        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
+        $this->assertSame($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
     }
 
     /**
@@ -460,7 +459,7 @@ EOF;
      */
     private function assertParameter($value, $key)
     {
-        $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
+        $this->assertSame($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
     }
 
     /**

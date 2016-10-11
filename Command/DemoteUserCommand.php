@@ -11,8 +11,8 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Component\Console\Output\OutputInterface;
 use FOS\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @author Antoine Hérault <antoine.herault@gmail.com>
@@ -30,7 +30,7 @@ class DemoteUserCommand extends RoleCommand
         $this
             ->setName('fos:user:demote')
             ->setDescription('Demote a user by removing a role')
-            ->setHelp(<<<EOT
+            ->setHelp(<<<'EOT'
 The <info>fos:user:demote</info> command demotes a user by removing a role
 
   <info>php %command.full_name% matthieu ROLE_CUSTOM</info>

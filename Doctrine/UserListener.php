@@ -39,7 +39,7 @@ class UserListener implements EventSubscriber
     private $container;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ContainerInterface $container
      */
@@ -60,7 +60,7 @@ class UserListener implements EventSubscriber
     }
 
     /**
-     * Pre persist listener based on doctrine common
+     * Pre persist listener based on doctrine common.
      *
      * @param LifecycleEventArgs $args
      */
@@ -73,7 +73,7 @@ class UserListener implements EventSubscriber
     }
 
     /**
-     * Pre update listener based on doctrine common
+     * Pre update listener based on doctrine common.
      *
      * @param LifecycleEventArgs $args
      */

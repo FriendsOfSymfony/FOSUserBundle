@@ -20,9 +20,9 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->encoderFactory        = $this->getMockEncoderFactory();
+        $this->encoderFactory = $this->getMockEncoderFactory();
         $this->usernameCanonicalizer = $this->getMockCanonicalizer();
-        $this->emailCanonicalizer    = $this->getMockCanonicalizer();
+        $this->emailCanonicalizer = $this->getMockCanonicalizer();
 
         $this->manager = $this->getUserManager(array(
             $this->encoderFactory,
@@ -48,8 +48,8 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnCallback('strtolower'));
 
         $this->manager->updateCanonicalFields($user);
-        $this->assertEquals('username', $user->getUsernameCanonical());
-        $this->assertEquals('user@example.com', $user->getEmailCanonical());
+        $this->assertSame('username', $user->getUsernameCanonical());
+        $this->assertSame('user@example.com', $user->getEmailCanonical());
     }
 
     public function testUpdatePassword()
@@ -68,7 +68,7 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue('encodedPassword'));
 
         $this->manager->updatePassword($user);
-        $this->assertEquals('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
+        $this->assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
         $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
 

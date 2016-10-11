@@ -33,7 +33,7 @@ class DeactivateUserCommand extends ContainerAwareCommand
             ->setDefinition(array(
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
             ))
-            ->setHelp(<<<EOT
+            ->setHelp(<<<'EOT'
 The <info>fos:user:deactivate</info> command deactivates a user (will not be able to log in)
 
   <info>php %command.full_name% matthieu</info>
@@ -61,7 +61,7 @@ EOT
     {
         if (!$input->getArgument('username')) {
             $question = new Question('Please choose a username:');
-            $question->setValidator(function($username) {
+            $question->setValidator(function ($username) {
                 if (empty($username)) {
                     throw new \Exception('Username can not be empty');
                 }

@@ -54,7 +54,7 @@ class ResettingFormType extends AbstractType
             'data_class' => $this->class,
             'csrf_token_id' => 'resetting',
             // BC for SF < 2.8
-            'intention'  => 'resetting',
+            'intention' => 'resetting',
         ));
     }
 

@@ -11,12 +11,11 @@
 
 namespace FOS\UserBundle\DependencyInjection\Compiler;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Registers the additional validators according to the storage
+ * Registers the additional validators according to the storage.
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
@@ -37,7 +36,7 @@ class ValidationPass implements CompilerPassInterface
             return;
         }
 
-        $validationFile = __DIR__ . '/../../Resources/config/storage-validation/' . $storage . '.xml';
+        $validationFile = __DIR__.'/../../Resources/config/storage-validation/'.$storage.'.xml';
 
         $container->getDefinition('validator.builder')
             ->addMethodCall('addXmlMapping', array($validationFile));

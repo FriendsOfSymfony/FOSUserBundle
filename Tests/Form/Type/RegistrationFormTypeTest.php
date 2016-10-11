@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\Tests\Form\Type;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType;
@@ -14,20 +23,20 @@ class RegistrationFormTypeTest extends ValidatorExtensionTypeTestCase
 
         $form = $this->factory->create(LegacyFormHelper::getType('FOS\UserBundle\Form\Type\RegistrationFormType'), $user);
         $formData = array(
-            'username'      => 'bar',
-            'email'         => 'john@doe.com',
+            'username' => 'bar',
+            'email' => 'john@doe.com',
             'plainPassword' => array(
-                'first'         => 'test',
-                'second'        => 'test',
-            )
+                'first' => 'test',
+                'second' => 'test',
+            ),
         );
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
-        $this->assertEquals($user, $form->getData());
-        $this->assertEquals('bar', $user->getUsername());
-        $this->assertEquals('john@doe.com', $user->getEmail());
-        $this->assertEquals('test', $user->getPlainPassword());
+        $this->assertSame($user, $form->getData());
+        $this->assertSame('bar', $user->getUsername());
+        $this->assertSame('john@doe.com', $user->getEmail());
+        $this->assertSame('test', $user->getPlainPassword());
     }
 
     /**

@@ -12,9 +12,9 @@
 namespace FOS\UserBundle\Form\Type;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ChangePasswordFormType extends AbstractType
@@ -61,7 +61,7 @@ class ChangePasswordFormType extends AbstractType
             'data_class' => $this->class,
             'csrf_token_id' => 'change_password',
             // BC for SF < 2.8
-            'intention'  => 'change_password',
+            'intention' => 'change_password',
         ));
     }
 

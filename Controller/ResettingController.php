@@ -11,22 +11,22 @@
 
 namespace FOS\UserBundle\Controller;
 
-use FOS\UserBundle\Event\GetResponseNullableUserEvent;
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseNullableUserEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Controller managing the resetting of the password
+ * Controller managing the resetting of the password.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
@@ -34,7 +34,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class ResettingController extends Controller
 {
     /**
-     * Request reset user password: show form
+     * Request reset user password: show form.
      */
     public function requestAction()
     {
@@ -46,7 +46,7 @@ class ResettingController extends Controller
     }
 
     /**
-     * Request reset user password: submit form and send email
+     * Request reset user password: submit form and send email.
      *
      * @param Request $request
      *
@@ -114,7 +114,7 @@ class ResettingController extends Controller
     }
 
     /**
-     * Tell the user to check his email provider
+     * Tell the user to check his email provider.
      *
      * @param Request $request
      *
@@ -139,7 +139,7 @@ class ResettingController extends Controller
     }
 
     /**
-     * Reset user password
+     * Reset user password.
      *
      * @param Request $request
      * @param string  $token

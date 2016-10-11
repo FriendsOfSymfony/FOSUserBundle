@@ -12,12 +12,12 @@
 namespace FOS\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\DependencyInjection\Alias;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Alias;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class FOSUserExtension extends Extension
 {
@@ -59,7 +59,7 @@ class FOSUserExtension extends Extension
             } else {
                 $loader->load(sprintf('%s.xml', $config['db_driver']));
             }
-            $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
+            $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
         }
 
         if (isset(self::$doctrineDrivers[$config['db_driver']])) {
@@ -96,7 +96,7 @@ class FOSUserExtension extends Extension
         $container->setParameter('fos_user.user.default_route', $config['user_default_route']);
 
         $this->remapParametersNamespaces($config, $container, array(
-            ''          => array(
+            '' => array(
                 'db_driver' => 'fos_user.storage',
                 'firewall_name' => 'fos_user.firewall_name',
                 'model_manager_name' => 'fos_user.model_manager_name',
@@ -198,7 +198,7 @@ class FOSUserExtension extends Extension
         $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
 
         $this->remapParametersNamespaces($config, $container, array(
-            '' => array (
+            '' => array(
                 'token_ttl' => 'fos_user.resetting.token_ttl',
             ),
             'email' => 'fos_user.resetting.email.%s',

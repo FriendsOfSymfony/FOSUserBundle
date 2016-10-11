@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Response user event that allows null user
+ * Response user event that allows null user.
  *
  * @author Konstantinos Christofilos <kostas.christofilos@gmail.com>
  */

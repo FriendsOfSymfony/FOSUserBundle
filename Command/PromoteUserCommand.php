@@ -11,8 +11,8 @@
 
 namespace FOS\UserBundle\Command;
 
-use Symfony\Component\Console\Output\OutputInterface;
 use FOS\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @author Matthieu Bontemps <matthieu@knplabs.com>
@@ -32,7 +32,7 @@ class PromoteUserCommand extends RoleCommand
         $this
             ->setName('fos:user:promote')
             ->setDescription('Promotes a user by adding a role')
-            ->setHelp(<<<EOT
+            ->setHelp(<<<'EOT'
 The <info>fos:user:promote</info> command promotes a user by adding a role
 
   <info>php %command.full_name% matthieu ROLE_CUSTOM</info>

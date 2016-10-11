@@ -12,8 +12,8 @@
 namespace FOS\UserBundle\Tests\Util;
 
 use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Util\UserManipulator;
 use FOS\UserBundle\Tests\TestUser;
+use FOS\UserBundle\Util\UserManipulator;
 
 class UserManipulatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,11 +44,11 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->create($username, $password, $email, $active, $superadmin);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals($password, $user->getPlainPassword());
-        $this->assertEquals($email, $user->getEmail());
-        $this->assertEquals($active, $user->isEnabled());
-        $this->assertEquals($superadmin, $user->isSuperAdmin());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame($password, $user->getPlainPassword());
+        $this->assertSame($email, $user->getEmail());
+        $this->assertSame($active, $user->isEnabled());
+        $this->assertSame($superadmin, $user->isSuperAdmin());
     }
 
     public function testActivateWithValidUsername()
@@ -77,8 +77,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->activate($username);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals(true, $user->isEnabled());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame(true, $user->isEnabled());
     }
 
     /**
@@ -131,8 +131,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->deactivate($username);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals(false, $user->isEnabled());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame(false, $user->isEnabled());
     }
 
     /**
@@ -185,8 +185,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->promote($username);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals(true, $user->isSuperAdmin());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame(true, $user->isSuperAdmin());
     }
 
     /**
@@ -239,8 +239,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->demote($username);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals(false, $user->isSuperAdmin());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame(false, $user->isSuperAdmin());
     }
 
     /**
@@ -272,8 +272,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
 
         $user = new TestUser();
-        $username    = 'test_username';
-        $password    = 'test_password';
+        $username = 'test_username';
+        $password = 'test_password';
         $oldpassword = 'old_password';
 
         $user->setUsername($username);
@@ -296,8 +296,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
         $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->changePassword($username, $password);
 
-        $this->assertEquals($username, $user->getUsername());
-        $this->assertEquals($password, $user->getPlainPassword());
+        $this->assertSame($username, $user->getUsername());
+        $this->assertSame($password, $user->getPlainPassword());
     }
 
     /**
@@ -307,8 +307,8 @@ class UserManipulatorTest extends \PHPUnit_Framework_TestCase
     {
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
 
-        $invalidusername  = 'invalid_username';
-        $password         = 'test_password';
+        $invalidusername = 'invalid_username';
+        $password = 'test_password';
 
         $userManagerMock->expects($this->once())
             ->method('findUserByUsername')

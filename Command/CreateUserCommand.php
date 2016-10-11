@@ -13,8 +13,8 @@ namespace FOS\UserBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
@@ -40,7 +40,7 @@ class CreateUserCommand extends ContainerAwareCommand
                 new InputOption('super-admin', null, InputOption::VALUE_NONE, 'Set the user as super admin'),
                 new InputOption('inactive', null, InputOption::VALUE_NONE, 'Set the user as inactive'),
             ))
-            ->setHelp(<<<EOT
+            ->setHelp(<<<'EOT'
 The <info>fos:user:create</info> command creates a user:
 
   <info>php %command.full_name% matthieu</info>
@@ -68,10 +68,10 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $username   = $input->getArgument('username');
-        $email      = $input->getArgument('email');
-        $password   = $input->getArgument('password');
-        $inactive   = $input->getOption('inactive');
+        $username = $input->getArgument('username');
+        $email = $input->getArgument('email');
+        $password = $input->getArgument('password');
+        $inactive = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
 
         $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
@@ -89,7 +89,7 @@ EOT
 
         if (!$input->getArgument('username')) {
             $question = new Question('Please choose a username:');
-            $question->setValidator(function($username) {
+            $question->setValidator(function ($username) {
                 if (empty($username)) {
                     throw new \Exception('Username can not be empty');
                 }
@@ -101,7 +101,7 @@ EOT
 
         if (!$input->getArgument('email')) {
             $question = new Question('Please choose an email:');
-            $question->setValidator(function($email) {
+            $question->setValidator(function ($email) {
                 if (empty($email)) {
                     throw new \Exception('Email can not be empty');
                 }
@@ -113,7 +113,7 @@ EOT
 
         if (!$input->getArgument('password')) {
             $question = new Question('Please choose a password:');
-            $question->setValidator(function($password) {
+            $question->setValidator(function ($password) {
                 if (empty($password)) {
                     throw new \Exception('Password can not be empty');
                 }

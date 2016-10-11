@@ -65,7 +65,7 @@ class TwigSwiftMailer implements MailerInterface
 
         $context = array(
             'user' => $user,
-            'confirmationUrl' => $url
+            'confirmationUrl' => $url,
         );
 
         $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
@@ -81,7 +81,7 @@ class TwigSwiftMailer implements MailerInterface
 
         $context = array(
             'user' => $user,
-            'confirmationUrl' => $url
+            'confirmationUrl' => $url,
         );
 
         $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail());

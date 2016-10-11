@@ -56,7 +56,7 @@ class ProfileFormType extends AbstractType
             'data_class' => $this->class,
             'csrf_token_id' => 'profile',
             // BC for SF < 2.8
-            'intention'  => 'profile',
+            'intention' => 'profile',
         ));
     }
 

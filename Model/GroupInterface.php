@@ -25,7 +25,7 @@ interface GroupInterface
     public function addRole($role);
 
     /**
-     * @return integer
+     * @return int
      */
     public function getId();
 
@@ -37,7 +37,7 @@ interface GroupInterface
     /**
      * @param string $role
      *
-     * @return boolean
+     * @return bool
      */
     public function hasRole($role);
 

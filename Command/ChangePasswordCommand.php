@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
 /**
- * ChangePasswordCommand
+ * ChangePasswordCommand.
  */
 class ChangePasswordCommand extends ContainerAwareCommand
 {
@@ -34,7 +34,7 @@ class ChangePasswordCommand extends ContainerAwareCommand
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
                 new InputArgument('password', InputArgument::REQUIRED, 'The password'),
             ))
-            ->setHelp(<<<EOT
+            ->setHelp(<<<'EOT'
 The <info>fos:user:change-password</info> command changes the password of a user:
 
   <info>php %command.full_name% matthieu</info>
@@ -72,7 +72,7 @@ EOT
 
         if (!$input->getArgument('username')) {
             $question = new Question('Please give the username:');
-            $question->setValidator(function($username) {
+            $question->setValidator(function ($username) {
                 if (empty($username)) {
                     throw new \Exception('Username can not be empty');
                 }
@@ -84,7 +84,7 @@ EOT
 
         if (!$input->getArgument('password')) {
             $question = new Question('Please enter the new password:');
-            $question->setValidator(function($password) {
+            $question->setValidator(function ($password) {
                 if (empty($password)) {
                     throw new \Exception('Password can not be empty');
                 }

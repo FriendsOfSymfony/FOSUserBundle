@@ -99,10 +99,10 @@ class GroupManager extends BaseGroupManager
     }
 
     /**
-    * Create the propel query class corresponding to your queryclass
-    *
-    * @return \ModelCriteria the queryClass
-    */
+     * Create the propel query class corresponding to your queryclass.
+     *
+     * @return \ModelCriteria the queryClass
+     */
     protected function createQuery()
     {
         return \PropelQuery::from($this->class);

@@ -12,7 +12,7 @@
 namespace FOS\UserBundle;
 
 /**
- * Contains all events thrown in the FOSUserBundle
+ * Contains all events thrown in the FOSUserBundle.
  */
 final class FOSUserEvents
 {
@@ -152,7 +152,7 @@ final class FOSUserEvents
     const REGISTRATION_SUCCESS = 'fos_user.registration.success';
 
     /**
-     * The REGISTRATION_FAILURE event occurs when the registration form is not valid
+     * The REGISTRATION_FAILURE event occurs when the registration form is not valid.
      *
      * This event allows you to set the response instead of using the default one.
      * The event listener method receives a FOS\UserBundle\Event\FormEvent instance.

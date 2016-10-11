@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace FOS\UserBundle\Tests\Doctrine;
 
 use FOS\UserBundle\Doctrine\UserManager;
@@ -54,12 +63,12 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetClass()
     {
-        $this->assertEquals(static::USER_CLASS, $this->userManager->getClass());
+        $this->assertSame(static::USER_CLASS, $this->userManager->getClass());
     }
 
     public function testFindUserBy()
     {
-        $crit = array("foo" => "bar");
+        $crit = array('foo' => 'bar');
         $this->repository->expects($this->once())->method('findOneBy')->with($this->equalTo($crit))->will($this->returnValue(array()));
 
         $this->userManager->findUserBy($crit);
@@ -107,5 +116,4 @@ class UserManagerTest extends \PHPUnit_Framework_TestCase
 
 class DummyUser extends User
 {
-
 }

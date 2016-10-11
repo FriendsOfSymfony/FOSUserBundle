@@ -58,7 +58,7 @@ class RegistrationFormType extends AbstractType
             'data_class' => $this->class,
             'csrf_token_id' => 'registration',
             // BC for SF < 2.8
-            'intention'  => 'registration',
+            'intention' => 'registration',
         ));
     }
 

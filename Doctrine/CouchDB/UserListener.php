@@ -31,7 +31,7 @@ class UserListener implements EventSubscriber
     private $container;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ContainerInterface $container
      */

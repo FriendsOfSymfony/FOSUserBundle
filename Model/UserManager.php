@@ -58,7 +58,7 @@ abstract class UserManager implements UserManagerInterface
     public function createUser()
     {
         $class = $this->getClass();
-        $user = new $class;
+        $user = new $class();
 
         return $user;
     }
@@ -121,7 +121,7 @@ abstract class UserManager implements UserManagerInterface
     }
 
     /**
-     * Canonicalizes an email
+     * Canonicalizes an email.
      *
      * @param string $email
      *
@@ -133,7 +133,7 @@ abstract class UserManager implements UserManagerInterface
     }
 
     /**
-     * Canonicalizes a username
+     * Canonicalizes a username.
      *
      * @param string $username
      *

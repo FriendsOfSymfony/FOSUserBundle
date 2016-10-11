@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Tests\Command;
 
 use FOS\UserBundle\Command\ChangePasswordCommand;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -30,7 +29,7 @@ class ChangePasswordCommandTest extends \PHPUnit_Framework_TestCase
             'interactive' => false,
         ));
 
-        $this->assertEquals(0, $exitCode, 'Returns 0 in case of success');
+        $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
     }
 
@@ -57,7 +56,7 @@ class ChangePasswordCommandTest extends \PHPUnit_Framework_TestCase
             'interactive' => true,
         ));
 
-        $this->assertEquals(0, $exitCode, 'Returns 0 in case of success');
+        $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
     }
 

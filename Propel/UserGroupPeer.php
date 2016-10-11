@@ -15,5 +15,4 @@ use FOS\UserBundle\Propel\om\BaseUserGroupPeer;
 
 class UserGroupPeer extends BaseUserGroupPeer
 {
-
 }
