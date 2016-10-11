@@ -39,6 +39,7 @@ class CreateUserCommand extends ContainerAwareCommand
                 new InputArgument('password', InputArgument::REQUIRED, 'The password'),
                 new InputOption('super-admin', null, InputOption::VALUE_NONE, 'Set the user as super admin'),
                 new InputOption('inactive', null, InputOption::VALUE_NONE, 'Set the user as inactive'),
+                new InputOption('property', null, InputOption::VALUE_OPTIONAL|InputOption::VALUE_IS_ARRAY, 'Set user property value'),
             ))
             ->setHelp(<<<EOT
 The <info>fos:user:create</info> command creates a user:
@@ -73,9 +74,12 @@ EOT
         $password   = $input->getArgument('password');
         $inactive   = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
+        $properties = $input->getOption('property');
+
+        $userproperties = $this->extractUserProperties($properties);
 
         $manipulator = $this->getContainer()->get('fos_user.util.user_manipulator');
-        $manipulator->create($username, $password, $email, !$inactive, $superadmin);
+        $manipulator->create($username, $password, $email, !$inactive, $superadmin, $userproperties);
 
         $output->writeln(sprintf('Created user <comment>%s</comment>', $username));
     }
@@ -128,5 +132,58 @@ EOT
             $answer = $this->getHelper('question')->ask($input, $output, $question);
             $input->setArgument($name, $answer);
         }
+    }
+
+    /**
+     * Extracts the name, type and value from an array containing string with "name(type)=value" format. Type is string
+     * if no type supplied.
+     *
+     * @param $properties
+     *
+     * @return array
+     */
+    private function extractUserProperties($properties)
+    {
+        $userproperties = array();
+        foreach($properties as $property) {
+            $parts = explode('=', $property, 2);
+            if(!empty($parts)) {
+                // Get the property type
+                $type = 'string';
+                $matches = array();
+                preg_match('~\((.*?)\)~', $parts[0], $matches);
+                if (!empty($matches) && 2 === count($matches)) {
+                    $validTypes = array(
+                        'null',
+                        'bool',
+                        'boolean',
+                        'int',
+                        'integer',
+                        'float',
+                    );
+                    if (in_array($matches[1], $validTypes)) {
+                        $type = $matches[1];
+                    }
+                }
+
+                // Get the property name and translate it to a setter
+                $method = null;
+                $nameParts = explode('(', $parts[0], 2);
+                if (!empty($nameParts)) {
+                    $method = $nameParts[0];
+                } else {
+                    $method = $parts[0];
+                }
+                $method = 'set' . ucwords($method);
+
+                // Get the property value
+                $value = $parts[1];
+                settype($value, $type);
+
+                $userproperties[$method] = $value;
+            }
+        }
+
+        return $userproperties;
     }
 }
