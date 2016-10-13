@@ -13,7 +13,7 @@ namespace FOS\UserBundle\Controller;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseNullableUserEvent;
+use FOS\UserBundle\Event\GetResponseSessionUserEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
@@ -35,9 +35,24 @@ class ResettingController extends Controller
 {
     /**
      * Request reset user password: show form.
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
-    public function requestAction()
+    public function requestAction(Request $request)
     {
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        /* Dispatch init event */
+        $event = new GetResponseSessionUserEvent(null, $this->getUser(), $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
         return $this->render('FOSUserBundle:Resetting:request.html.twig');
     }
 
@@ -58,7 +73,7 @@ class ResettingController extends Controller
         $dispatcher = $this->get('event_dispatcher');
 
         /* Dispatch init event */
-        $event = new GetResponseNullableUserEvent($user, $request);
+        $event = new GetResponseSessionUserEvent($user, $this->getUser(), $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
@@ -68,7 +83,7 @@ class ResettingController extends Controller
         $ttl = $this->container->getParameter('fos_user.resetting.token_ttl');
 
         if (null !== $user && !$user->isPasswordRequestNonExpired($ttl)) {
-            $event = new GetResponseUserEvent($user, $request);
+            $event = new GetResponseUserEvent($user, $this->getUser(), $request);
             $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
 
             if (null !== $event->getResponse()) {
@@ -149,7 +164,7 @@ class ResettingController extends Controller
             throw new NotFoundHttpException(sprintf('The user with "confirmation token" does not exist for value "%s"', $token));
         }
 
-        $event = new GetResponseUserEvent($user, $request);
+        $event = new GetResponseSessionUserEvent($user, $this->getUser(), $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
