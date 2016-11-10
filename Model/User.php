@@ -169,9 +169,15 @@ abstract class User implements UserInterface, GroupableInterface
     public function unserialize($serialized)
     {
         $data = unserialize($serialized);
-        // add a few extra elements in the array to ensure that we have enough keys when unserializing
-        // older data which does not include all properties.
-        $data = array_merge($data, array_fill(0, 2, null));
+
+        if (9 === count($data)) {
+            unset($data[4]);
+            unset($data[6]);
+
+            // add a few extra elements in the array to ensure that we have enough keys when unserializing
+            // older data which does not include all properties.
+            $data = array_merge($data, array_fill(0, 4, null));
+        }
 
         list(
             $this->password,
