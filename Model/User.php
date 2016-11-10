@@ -171,8 +171,7 @@ abstract class User implements UserInterface, GroupableInterface
         $data = unserialize($serialized);
 
         if (9 === count($data)) {
-            unset($data[4]);
-            unset($data[6]);
+            unset($data[4], $data[6]);
 
             // add a few extra elements in the array to ensure that we have enough keys when unserializing
             // older data which does not include all properties.
