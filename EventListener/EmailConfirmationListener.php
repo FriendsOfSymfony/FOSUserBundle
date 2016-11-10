@@ -26,6 +26,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
     private $tokenGenerator;
     private $router;
     private $session;
+    private $confirmationEnabled;
 
     /**
      * EmailConfirmationListener constructor.
@@ -34,13 +35,15 @@ class EmailConfirmationListener implements EventSubscriberInterface
      * @param TokenGeneratorInterface $tokenGenerator
      * @param UrlGeneratorInterface   $router
      * @param SessionInterface        $session
+     * @param bool                    $confirmationEnabled
      */
-    public function __construct(MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator, UrlGeneratorInterface $router, SessionInterface $session)
+    public function __construct(MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator, UrlGeneratorInterface $router, SessionInterface $session, $confirmationEnabled)
     {
         $this->mailer = $mailer;
         $this->tokenGenerator = $tokenGenerator;
         $this->router = $router;
         $this->session = $session;
+        $this->confirmationEnabled = $confirmationEnabled;
     }
 
     /**
@@ -58,6 +61,10 @@ class EmailConfirmationListener implements EventSubscriberInterface
      */
     public function onRegistrationSuccess(FormEvent $event)
     {
+        if (!$this->confirmationEnabled) {
+            return;
+        }
+
         /** @var $user \FOS\UserBundle\Model\UserInterface */
         $user = $event->getForm()->getData();
 
