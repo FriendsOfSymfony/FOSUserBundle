@@ -1,6 +1,22 @@
 Changelog
 =========
 
+### 1.3.8 (2016-11-22)
+
+* Add missing changelog entries
+
+### 1.3.7 (2016-11-22)
+
+* Fixed some yaml errors in translation files
+* Fixed bad credentials translations
+* Fixed canonicalizer with illegal chars
+* Fixed deprecated routing configuration
+* Fixed class name check in `UserProvider::refreshUser()`
+* Updated several translation files
+* Removed colons from translation files
+* Updated several documentation examples
+* Converted documentation to rst format
+
 ### 1.3.6 (2015-06-01)
 
 * Fix compatibility with Symfony 2.7 #1777
