@@ -1,8 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block subject %}
+{% spaceless %}
 {% autoescape false %}
 {{ 'resetting.email.subject'|trans({'%username%': user.username}) }}
 {% endautoescape %}
+{% endspaceless %}
 {% endblock %}
 {% block body_text %}
 {% autoescape false %}
