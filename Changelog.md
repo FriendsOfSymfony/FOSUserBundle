@@ -1,10 +1,6 @@
 Changelog
 =========
 
-### 1.3.8 (2016-11-22)
-
-* Add missing changelog entries
-
 ### 1.3.7 (2016-11-22)
 
 * Fixed some yaml errors in translation files
