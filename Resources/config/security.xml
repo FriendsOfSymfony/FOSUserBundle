@@ -4,12 +4,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
+  <parameters>
+        <parameter key="fos_user.security.user_provider.class">FOS\UserBundle\Security\UserProvider</parameter>
         <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
         <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
     </parameters>
 
     <services>
+        <service id="fos_user.security.user_provider" class="%fos_user.security.user_provider.class%">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
         <service id="fos_user.security.interactive_login_listener" class="%fos_user.security.interactive_login_listener.class%">
             <tag name="kernel.event_subscriber" />
             <argument type="service" id="fos_user.user_manager" />
