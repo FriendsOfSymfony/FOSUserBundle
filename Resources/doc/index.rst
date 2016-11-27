@@ -12,8 +12,8 @@ a database, then you're in the right place.
 Prerequisites
 -------------
 
-This version of the bundle requires Symfony 2.1+. If you are using Symfony
-2.0.x, please use the 1.2.x releases of the bundle.
+This version of the bundle requires Symfony 3+. If you are using Symfony
+2.0.x, please use older releases of the bundle.
 
 Translations
 ~~~~~~~~~~~~
@@ -50,7 +50,7 @@ Require the bundle with composer:
 
 .. code-block:: bash
 
-    $ composer require friendsofsymfony/user-bundle "~2.0@dev"
+    $ composer require friendsofsymfony/user-bundle "dev-master"
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
 If you encounter installation errors pointing at a lack of configuration parameters, such as ``The child node "db_driver" at path "fos_user" must be configured``, you should complete the configuration in Step 5 first and then re-run this step.
