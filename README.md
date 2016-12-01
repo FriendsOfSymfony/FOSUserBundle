@@ -16,7 +16,7 @@ Features include:
 provide the user provider for the core [SecurityBundle](https://symfony.com/doc/current/book/security.html).
 
 **Caution:** This bundle is developed in sync with [symfony's repository](https://github.com/symfony/symfony).
-For Symfony 2.0.x, you need to use the 1.2.0 release of the bundle (or lower)
+For Symfony <2.7, you need to use the 1.3.0 release of the bundle.
 
 [![Build Status](https://travis-ci.org/FriendsOfSymfony/FOSUserBundle.svg?branch=master)](https://travis-ci.org/FriendsOfSymfony/FOSUserBundle) [![Total Downloads](https://poser.pugx.org/friendsofsymfony/user-bundle/downloads.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle) [![Latest Stable Version](https://poser.pugx.org/friendsofsymfony/user-bundle/v/stable.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle)
 
