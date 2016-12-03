@@ -84,3 +84,21 @@ You can then register this listener:
             <argument type="service" id="router"/>
         </service>
 
+Registration success listener with enabled confirmation at the same time
+------------------------------------------------------------------------
+
+When you have registration confirmation and you want to hook up to
+``FOSUserEvents::REGISTRATION_SUCCESS`` event you will have to prioritize this listener to be called
+before ``FOS\UserBundle\EventListener\EmailConfirmationListener::onRegistrationSuccess``::
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            FOSUserEvents::REGISTRATION_SUCCESS => [
+                ['onRegistrationSuccess', -10],
+            ],
+        ];
+    }
+
+If you don't do it, ``EmailConfirmationListener`` will be called earlier and you will be redirected
+``fos_user_registration_check_email`` route.
