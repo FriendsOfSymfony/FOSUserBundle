@@ -100,5 +100,5 @@ before ``FOS\UserBundle\EventListener\EmailConfirmationListener::onRegistrationS
         ];
     }
 
-If you don't do it, ``EmailConfirmationListener`` will be called earlier and you will be redirected
+If you don't do it, ``EmailConfirmationListener`` will be called earlier and you will be redirected to
 ``fos_user_registration_check_email`` route.
