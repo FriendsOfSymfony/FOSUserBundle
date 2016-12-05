@@ -106,12 +106,14 @@ class FOSUserExtension extends Extension
             ),
         ));
 
+        $fromEmail = isset($config['from_email']) ? $config['from_email'] : array();
+
         if (!empty($config['profile'])) {
             $this->loadProfile($config['profile'], $container, $loader);
         }
 
         if (!empty($config['registration'])) {
-            $this->loadRegistration($config['registration'], $container, $loader, $config['from_email']);
+            $this->loadRegistration($config['registration'], $container, $loader, $fromEmail);
         }
 
         if (!empty($config['change_password'])) {
@@ -119,7 +121,7 @@ class FOSUserExtension extends Extension
         }
 
         if (!empty($config['resetting'])) {
-            $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
+            $this->loadResetting($config['resetting'], $container, $loader, $fromEmail);
         }
 
         if (!empty($config['group'])) {
@@ -155,12 +157,19 @@ class FOSUserExtension extends Extension
             $loader->load('email_confirmation.xml');
         }
 
+        $param = null;
+
         if (isset($config['confirmation']['from_email'])) {
             // overwrite the global one
             $fromEmail = $config['confirmation']['from_email'];
             unset($config['confirmation']['from_email']);
         }
-        $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+
+        if (isset($fromEmail['address'])) {
+            $param = array($fromEmail['address'] => $fromEmail['sender_name']);
+        }
+
+        $container->setParameter('fos_user.registration.confirmation.from_email', $param);
 
         $this->remapParametersNamespaces($config, $container, array(
             'confirmation' => 'fos_user.registration.confirmation.%s',
@@ -192,12 +201,19 @@ class FOSUserExtension extends Extension
     {
         $loader->load('resetting.xml');
 
+        $param = null;
+
         if (isset($config['email']['from_email'])) {
             // overwrite the global one
             $fromEmail = $config['email']['from_email'];
             unset($config['email']['from_email']);
         }
-        $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+
+        if (isset($fromEmail['address'])) {
+            $param = array($fromEmail['address'] => $fromEmail['sender_name']);
+        }
+
+        $container->setParameter('fos_user.resetting.email.from_email', $param);
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
