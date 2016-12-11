@@ -78,7 +78,8 @@ class ResettingController extends Controller
             if (null === $user->getConfirmationToken()) {
                 /** @var $tokenGenerator TokenGeneratorInterface */
                 $tokenGenerator = $this->get('fos_user.util.token_generator');
-                $user->setConfirmationToken($tokenGenerator->generateToken());
+                $user->setPlainConfirmationToken($tokenGenerator->generateToken());
+                $user->setConfirmationToken(hash('sha256', $user->getPlainConfirmationToken()));
             }
 
             /* Dispatch confirm event */

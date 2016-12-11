@@ -75,7 +75,7 @@ abstract class UserManager implements UserManagerInterface
      */
     public function findUserByConfirmationToken($token)
     {
-        return $this->findUserBy(array('confirmationToken' => $token));
+        return $this->findUserBy(array('confirmationToken' => hash('sha256', $token)));
     }
 
     /**
@@ -92,6 +92,7 @@ abstract class UserManager implements UserManagerInterface
     public function updatePassword(UserInterface $user)
     {
         $this->passwordUpdater->hashPassword($user);
+        $user->eraseCredentials();
     }
 
     /**

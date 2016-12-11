@@ -63,7 +63,8 @@ class EmailConfirmationListener implements EventSubscriberInterface
 
         $user->setEnabled(false);
         if (null === $user->getConfirmationToken()) {
-            $user->setConfirmationToken($this->tokenGenerator->generateToken());
+            $user->setPlainConfirmationToken($this->tokenGenerator->generateToken());
+            $user->setConfirmationToken(hash('sha256', $user->getPlainConfirmationToken()));
         }
 
         $this->mailer->sendConfirmationEmailMessage($user);

@@ -157,6 +157,22 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
     public function setConfirmationToken($confirmationToken);
 
     /**
+     * Gets the plain confirmation token.
+     *
+     * @return string
+     */
+    public function getPlainConfirmationToken();
+
+    /**
+     * Sets the plain confirmation token.
+     *
+     * @param string $plainConfirmationToken
+     *
+     * @return self
+     */
+    public function setPlainConfirmationToken($plainConfirmationToken);
+
+    /**
      * Sets the timestamp that the user requested a password reset.
      *
      * @param null|\DateTime $date

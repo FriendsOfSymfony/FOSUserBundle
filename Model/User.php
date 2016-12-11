@@ -79,7 +79,14 @@ abstract class User implements UserInterface, GroupableInterface
     protected $lastLogin;
 
     /**
-     * Random string sent to the user email address in order to verify it.
+     * Confirmation token before hashing.
+     *
+     * @var string
+     */
+    protected $plainConfirmationToken;
+
+    /**
+     * Hashed token.
      *
      * @var string
      */
@@ -178,6 +185,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function eraseCredentials()
     {
         $this->plainPassword = null;
+        $this->plainConfirmationToken = null;
     }
 
     /**
@@ -442,6 +450,24 @@ abstract class User implements UserInterface, GroupableInterface
     public function setConfirmationToken($confirmationToken)
     {
         $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPlainConfirmationToken()
+    {
+        return $this->plainConfirmationToken;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPlainConfirmationToken($plainConfirmationToken)
+    {
+        $this->plainConfirmationToken = $plainConfirmationToken;
 
         return $this;
     }
