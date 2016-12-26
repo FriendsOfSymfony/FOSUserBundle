@@ -93,6 +93,8 @@ class FOSUserExtension extends Extension
             $loader->load('username_form_type.xml');
         }
 
+        $container->setParameter('fos_user.user.default_route', $config['user_default_route']);
+
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
                 'db_driver' => 'fos_user.storage',

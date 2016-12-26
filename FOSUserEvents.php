@@ -171,6 +171,15 @@ final class FOSUserEvents
     const REGISTRATION_COMPLETED = 'fos_user.registration.completed';
 
     /**
+     * The REGISTRATION_CHECK event occurs just before checking the users email provider.
+     *
+     * This event allows you to access the user which will be confirmed.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
+     */
+    const REGISTRATION_CHECK = 'fos_user.registration.check';
+
+    /**
      * The REGISTRATION_CONFIRM event occurs just before confirming the account.
      *
      * This event allows you to access the user which will be confirmed.
@@ -224,6 +233,15 @@ final class FOSUserEvents
      * @Event("FOS\UserBundle\Event\FilterUserResponseEvent")
      */
     const RESETTING_RESET_COMPLETED = 'fos_user.resetting.reset.completed';
+
+    /**
+     * The SECURITY_LOGIN_INITIALIZE event occurs when the login process is initialized.
+     *
+     * This event allows you to set the response to bypass the processing.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseSessionUserEvent")
+     */
+    const SECURITY_LOGIN_INITIALIZE = 'fos_user.security.login.initialize';
 
     /**
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.

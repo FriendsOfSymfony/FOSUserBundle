@@ -13,7 +13,7 @@ namespace FOS\UserBundle\Controller;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\GetResponseSessionUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
@@ -51,7 +51,7 @@ class RegistrationController extends Controller
         $user = $userManager->createUser();
         $user->setEnabled(true);
 
-        $event = new GetResponseUserEvent($user, $request);
+        $event = new GetResponseSessionUserEvent($user, $this->getUser(), $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
@@ -95,8 +95,12 @@ class RegistrationController extends Controller
 
     /**
      * Tell the user to check his email provider.
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
-    public function checkEmailAction()
+    public function checkEmailAction(Request $request)
     {
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
 
@@ -106,6 +110,16 @@ class RegistrationController extends Controller
 
         $this->get('session')->remove('fos_user_send_confirmation_email/email');
         $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
+
+        $event = new GetResponseSessionUserEvent($user, $this->getUser(), $request);
+
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CHECK, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
 
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
@@ -141,7 +155,7 @@ class RegistrationController extends Controller
         $user->setConfirmationToken(null);
         $user->setEnabled(true);
 
-        $event = new GetResponseUserEvent($user, $request);
+        $event = new GetResponseSessionUserEvent($user, $this->getUser(), $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRM, $event);
 
         $userManager->updateUser($user);

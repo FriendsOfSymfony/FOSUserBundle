@@ -10,6 +10,12 @@
             <argument type="service" id="fos_user.security.login_manager" />
             <argument>%fos_user.firewall_name%</argument>
         </service>
+
+        <service id="fos_user.listener.user_session" class="FOS\UserBundle\EventListener\UserSessionListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="router" />
+            <argument>%fos_user.user.default_route%</argument>
+        </service>
     </services>
 
 </container>

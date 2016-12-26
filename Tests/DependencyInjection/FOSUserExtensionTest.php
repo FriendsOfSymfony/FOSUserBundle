@@ -175,6 +175,13 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertAlias('fos_user.group_manager.default', 'fos_user.group_manager');
     }
 
+    public function testUserDefaultRoute()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('fos_user_profile_show', 'fos_user.user.default_route');
+    }
+
     public function testUserLoadFormClassWithDefaults()
     {
         $this->createEmptyConfiguration();
@@ -381,6 +388,7 @@ EOF;
 db_driver: orm
 firewall_name: fos_user
 use_listener: true
+user_default_route: fos_user_profile_show 
 use_flash_notifications: false
 user_class: Acme\MyBundle\Entity\User
 model_manager_name: custom
