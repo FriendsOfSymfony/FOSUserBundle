@@ -363,8 +363,13 @@ abstract class User implements UserInterface, GroupableInterface
     public function setSalt($salt)
     {
         $this->salt = $salt;
+        
+        return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setEmail($email)
     {
         $this->email = $email;
