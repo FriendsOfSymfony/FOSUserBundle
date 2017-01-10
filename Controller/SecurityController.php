@@ -53,7 +53,16 @@ class SecurityController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
+        $form = $this->createFormBuilder()
+            ->add('_username', TextType::class, array('data' => $lastUsername))
+            ->add('_password', PasswordType::class)
+            ->add('_remember_me', CheckboxType::class, array('required' => false))
+            ->add('_submit', SubmitType::class)
+            ->getForm()
+            ->createView();
+
         return $this->renderLogin(array(
+            'form' => $form,
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
