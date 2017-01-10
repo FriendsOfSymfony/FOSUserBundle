@@ -38,7 +38,7 @@ class ResettingController extends Controller
      */
     public function requestAction()
     {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
         }
 
@@ -54,7 +54,7 @@ class ResettingController extends Controller
      */
     public function sendEmailAction(Request $request)
     {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
         }
 
