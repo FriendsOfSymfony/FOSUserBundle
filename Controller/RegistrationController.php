@@ -41,6 +41,10 @@ class RegistrationController extends Controller
      */
     public function registerAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
+        }
+
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
