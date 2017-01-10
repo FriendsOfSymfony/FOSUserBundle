@@ -27,7 +27,7 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
         }
 
