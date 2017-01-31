@@ -39,20 +39,27 @@ registration:
         message: |
             Ciao %username%!
 
-            Per terminare la validazione del tuo account visita %confirmationUrl%
+            Per terminare l'attivazione del tuo account visita %confirmationUrl%.
+
+            Questo link può essere usato una volta sola per validare il tuo account.
 
             Saluti,
             il Team.
 
 resetting:
-    check_email: 'Una email è stata inviata a %email%. Contiene il link d''attivazione che devi utilizzare per il reset della password.'
+    check_email: |
+        Una email è stata inviata. Contiene il link che devi cliccare per resettare la
+        tua password.
+        Nota bene: puoi richiedere una nuova password solo entro %tokenLifetime% ore.
+        
+        Se non hai ricevuto nessuna mail controlla la tua cartella spam o prova di nuovo.
     request:
         username: 'Username o indirizzo email'
         submit: 'Password reset'
     reset:
         submit: 'Cambia password'
     flash:
-        success: 'La password è stata resettata.'
+        success: 'La password è stata resettata con successo.'
     email:
         subject: 'Password reset'
         message: |
