@@ -244,11 +244,23 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->createEmptyConfiguration();
 
         $this->assertParameter(false, 'fos_user.registration.confirmation.enabled');
-        $this->assertParameter(array('webmaster@example.com' => 'webmaster'), 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter(null, 'fos_user.registration.confirmation.from_email');
         $this->assertParameter('@FOSUser/Registration/email.txt.twig', 'fos_user.registration.confirmation.template');
         $this->assertParameter('@FOSUser/Resetting/email.txt.twig', 'fos_user.resetting.email.template');
-        $this->assertParameter(array('webmaster@example.com' => 'webmaster'), 'fos_user.resetting.email.from_email');
+        $this->assertParameter(null, 'fos_user.resetting.email.from_email');
         $this->assertParameter(86400, 'fos_user.resetting.token_ttl');
+    }
+
+    public function testUserLoadConfirmationEmailWithGlobalEmails()
+    {
+        $this->createGlobalFromEmailConfiguration();
+
+        $this->assertParameter(true, 'fos_user.registration.confirmation.enabled');
+        $this->assertParameter(array('admin@acme.org' => 'Acme Corp'), 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter('AcmeMyBundle:Registration:mail.txt.twig', 'fos_user.registration.confirmation.template');
+        $this->assertParameter('AcmeMyBundle:Resetting:mail.txt.twig', 'fos_user.resetting.email.template');
+        $this->assertParameter(array('admin@acme.org' => 'Acme Corp'), 'fos_user.resetting.email.from_email');
+        $this->assertParameter(1800, 'fos_user.resetting.token_ttl');
     }
 
     public function testUserLoadConfirmationEmail()
@@ -346,6 +358,15 @@ class FOSUserExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
+    protected function createGlobalFromEmailConfiguration()
+    {
+        $this->configuration = new ContainerBuilder();
+        $loader = new FOSUserExtension();
+        $config = $this->getGlobalEmailConfig();
+        $loader->load(array($config), $this->configuration);
+        $this->assertTrue($this->configuration instanceof ContainerBuilder);
+    }
+
     protected function createFullConfiguration()
     {
         $this->configuration = new ContainerBuilder();
@@ -370,6 +391,18 @@ EOF;
         $parser = new Parser();
 
         return $parser->parse($yaml);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getGlobalEmailConfig()
+    {
+        $config = $this->getFullConfig();
+
+        unset($config['registration']['confirmation']['from_email'], $config['resetting']['email']['from_email']);
+
+        return $config;
     }
 
     /**
