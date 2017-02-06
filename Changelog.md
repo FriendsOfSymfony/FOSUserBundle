@@ -35,7 +35,7 @@ Changelog
 * [BC break] Removed `UserManager::refreshUser`.
 * [BC break] Removed `UserManager::loadUserByUsername`.
 * [BC break] Removed `UserManager::supportsClass`.
-* [BC break] Removed properties `$locked`, `$expired`, `$expiredAt`, `$credentialsExpired` and associated setter and getter (see: https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Upgrade.md#200-alpha3-to-200-beta1)
+* [BC break] Removed properties `$locked`, `$expired`, `$expiredAt`, `$credentialsExpired` and associated setter and getter ([see here](https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Upgrade.md#200-alpha3-to-200-beta1))
 * [BC break] The signature of the `Initializer` constructor has changed.
 * [BC break] The signature of the `LoginManager` constructor has changed.
 * [BC break] The signature of the `UserListener` constructor has changed.
