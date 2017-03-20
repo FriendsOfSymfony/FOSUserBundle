@@ -267,19 +267,19 @@ final class FOSUserEvents
 
     /**
      * The RESETTING_SEND_EMAIL_ALREADY_REQUESTED event occurs when the user has a non-expired resetting token.
-     * 
+     *
      * This event allows you to access the requesting user and to add some behaviour after the unsuccessful
      * resetting.
-     * 
+     *
      * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const RESETTING_SEND_EMAIL_ALREADY_REQUESTED = 'fos_user.send_email.already_requested';
 
     /**
      * The RESETTING_SEND_EMAIL_FINISHED event occurs just before the response is sent.
-     * 
+     *
      * This event allows yout to access the requesting user and add some behaviour just before sending out the response.
-     * 
+     *
      * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const RESETTING_SEND_EMAIL_FINISHED = 'fos_user.send_email.finished';
