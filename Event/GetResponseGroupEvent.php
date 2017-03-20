@@ -27,6 +27,14 @@ class GetResponseGroupEvent extends GroupEvent
     {
         $this->response = $response;
     }
+    
+    /**
+     * @return bool
+     */
+    public function hasResponse()
+    {
+        return null !== $this->response;
+    }
 
     /**
      * @return Response|null
