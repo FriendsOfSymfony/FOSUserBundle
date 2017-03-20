@@ -61,7 +61,7 @@ class ResettingController extends Controller
         $event = new GetResponseNullableUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 
@@ -71,7 +71,7 @@ class ResettingController extends Controller
             $event = new GetResponseUserEvent($user, $request);
             $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
 
-            if (null !== $event->getResponse()) {
+            if ($event->hasResponse()) {
                 return $event->getResponse();
             }
 
@@ -85,7 +85,7 @@ class ResettingController extends Controller
             $event = new GetResponseUserEvent($user, $request);
             $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
 
-            if (null !== $event->getResponse()) {
+            if ($event->hasResponse()) {
                 return $event->getResponse();
             }
 
@@ -97,7 +97,7 @@ class ResettingController extends Controller
             $event = new GetResponseUserEvent($user, $request);
             $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
 
-            if (null !== $event->getResponse()) {
+            if ($event->hasResponse()) {
                 return $event->getResponse();
             }
         }
@@ -152,7 +152,7 @@ class ResettingController extends Controller
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 

@@ -53,7 +53,7 @@ class ChangePasswordController extends Controller
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 

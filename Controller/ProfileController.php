@@ -67,7 +67,7 @@ class ProfileController extends Controller
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 

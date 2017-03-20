@@ -27,6 +27,14 @@ class GetResponseUserEvent extends UserEvent
     {
         $this->response = $response;
     }
+    
+    /**
+     * @return bool
+     */
+    public function hasResponse()
+    {
+        return null !== $this->response;
+    }
 
     /**
      * @return Response|null
