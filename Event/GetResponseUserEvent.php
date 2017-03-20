@@ -27,7 +27,7 @@ class GetResponseUserEvent extends UserEvent
     {
         $this->response = $response;
     }
-    
+
     /**
      * @return bool
      */
