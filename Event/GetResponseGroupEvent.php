@@ -27,7 +27,7 @@ class GetResponseGroupEvent extends GroupEvent
     {
         $this->response = $response;
     }
-    
+
     /**
      * @return bool
      */
