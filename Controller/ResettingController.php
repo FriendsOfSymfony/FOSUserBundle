@@ -100,10 +100,18 @@ class ResettingController extends Controller
             if (null !== $event->getResponse()) {
                 return $event->getResponse();
             }
-        } else {
+        } elseif ($user !== null) {
             /* Dispatch already requested event */
             $event = new GetResponseUserEvent($user, $request);
             $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_ALREADY_REQUESTED, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
+        } else {
+            /* Dispatch user not found event */
+            $event = new GetResponseNullableUserEvent();
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_USER_NOT_FOUND, $event);
 
             if (null !== $event->getResponse()) {
                 return $event->getResponse();

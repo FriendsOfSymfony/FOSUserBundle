@@ -276,6 +276,15 @@ final class FOSUserEvents
     const RESETTING_SEND_EMAIL_ALREADY_REQUESTED = 'fos_user.send_email.already_requested';
 
     /**
+     * The RESETTING_SEND_EMAIL_USER_NOT_FOUND event occurs when the user can not be found.
+     *
+     * This event allows you to add some behaviour when the resetting user can not be found.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseNullableUserEvent")
+     */
+    const RESETTING_SEND_EMAIL_USER_NOT_FOUND = 'fos_user.send_email.user_not_found';
+
+    /**
      * The RESETTING_SEND_EMAIL_FINISHED event occurs just before the response is sent.
      *
      * This event allows yout to access the requesting user and add some behaviour just before sending out the response.
