@@ -107,7 +107,7 @@ class ResettingController extends Controller
      * Send resetting email.
      *
      * @param UserInterface $user
-     * @param Request $request
+     * @param Request       $request
      *
      * @return Response|null
      */
