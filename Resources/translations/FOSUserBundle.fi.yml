@@ -44,7 +44,7 @@ registration:
             Terveisin ylläpito
 
 resetting:
-    check_email: 'Sähköposti on lähetetty osoitteeseen %email%. Se sisältää linkin, jota klikkaamalla salasana alustetaan.'
+#    check_email: 'Sähköposti on lähetetty osoitteeseen %email%. Se sisältää linkin, jota klikkaamalla salasana alustetaan.'
     request:
         username: 'Käyttäjätunnus tai sähköpostiosoite'
         submit: 'Alusta salasana'
