@@ -23,3 +23,6 @@ fos_user:
         blank: 'Si us plau, introdueix un nom de grup'
         short: 'El nom de grup és massa curt'
         long: 'El nom de grup és massa llarg'
+fos_group:
+    name:
+        already_used: 'El nom ja està en ús.'

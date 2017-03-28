@@ -45,7 +45,7 @@ registration:
             L'equip.
 
 resetting:
-    check_email: 'S''ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.'
+#    check_email: 'S''ha enviat un correu electrònic a %email%. Conté un enllaç que heu de clicar per restablir la contrasenya.'
     request:
         username: 'Nom d''usuari o correu electrònic'
         submit: 'Restableix la contrasenya'
