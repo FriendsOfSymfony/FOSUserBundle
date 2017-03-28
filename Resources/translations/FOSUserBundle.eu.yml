@@ -45,7 +45,7 @@ registration:
             Taldea.
 
 resetting:
-    check_email: 'Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.'
+#    check_email: 'Email bat bidali zaio %email% helbideari. Pasahitza berreskuratzeko esteka zehazten da bertan.'
     request:
         username: 'Erabiltzaile izena'
         submit: 'Pasahitza berreskuratu'
