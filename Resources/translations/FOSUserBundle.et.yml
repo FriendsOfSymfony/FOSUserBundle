@@ -33,7 +33,7 @@ registration:
             Tiim.
 
 resetting:
-    check_email: 'E-mail on saadetud aadressile %email%. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.'
+#    check_email: 'E-mail on saadetud aadressile %email%. Selles sisaldub viide, mis tuleb salasõna muutmiseks avada.'
     request:
         username: Kasutajanimi
         submit: 'Saada salasõna'
