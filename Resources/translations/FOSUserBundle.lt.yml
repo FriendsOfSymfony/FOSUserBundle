@@ -45,7 +45,7 @@ registration:
             Komanda.
 
 resetting:
-    check_email: 'El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią paspaudę, galėsite pakeisti savo slaptažodį.'
+#    check_email: 'El. pašto pranešimas išsiųstas adresu %email%. Jame rasite nuorodą, kurią paspaudę, galėsite pakeisti savo slaptažodį.'
     request:
         username: 'Naudotojo vardas arba el. paštas'
         submit: Tęsti

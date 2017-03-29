@@ -23,3 +23,6 @@ fos_user:
         blank: 'Prašome įvesti pavadinimą.'
         short: 'Pavadinimas per trumpas.'
         long: 'Pavadinimas per trumpas.'
+fos_group:
+    name:
+        already_used: 'Šis pavadinimas jau naudojamas.'
