@@ -45,7 +45,7 @@ registration:
             Autori stranice
 
 resetting:
-    check_email: 'Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.'
+#    check_email: 'Na %email%  smo vam poslali poruku s poveznicom za promjenu lozinke. Lozinku resetirajte klikom na tu poveznicu.'
     request:
         username: 'Korisničko ime'
         submit: 'Izmijeni lozinku'

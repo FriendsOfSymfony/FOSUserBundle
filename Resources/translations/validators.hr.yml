@@ -22,3 +22,6 @@ fos_user:
         blank: 'Molimo unesite naziv.'
         short: 'Naziv je prekratak.'
         long: 'Naziv je predug.'
+fos_group:
+    name:
+        already_used: 'To se ime već upotrebljava.'
