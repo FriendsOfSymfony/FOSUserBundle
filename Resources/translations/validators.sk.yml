@@ -23,3 +23,6 @@ fos_user:
         blank: 'Zadajte, prosím, názov.'
         short: 'Názov je príliš krátky.'
         long: 'Názov je príliš dlhý.'
+fos_group:
+    name:
+        already_used: 'Tento názov už existuje.'

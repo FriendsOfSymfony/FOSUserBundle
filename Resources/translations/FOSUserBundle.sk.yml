@@ -45,7 +45,7 @@ registration:
             Realizačný tím
 
 resetting:
-    check_email: 'Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.'
+#    check_email: 'Postup pre zmenu hesla bol zaslaný na adresu %email%. Správa obsahuje link, na ktorú treba kliknúť pre úspešné dokončenie zmeny hesla.'
     request:
         username: 'Používateľské meno alebo emailová adresa'
         submit: 'Obnova hesla'
