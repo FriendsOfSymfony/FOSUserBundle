@@ -45,7 +45,7 @@ registration:
             lapas kolektīvs.
 
 resetting:
-    check_email: 'Uz %email% tika nosūtīts e-pasts ar saiti, kurai jāseko, lai atiestatītu paroli.'
+#    check_email: 'Uz %email% tika nosūtīts e-pasts ar saiti, kurai jāseko, lai atiestatītu paroli.'
     request:
         username: 'Lietotājvārds vai e-pasta adrese'
         submit: 'Atiestatīt paroli'

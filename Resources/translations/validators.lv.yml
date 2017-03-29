@@ -22,3 +22,6 @@ fos_user:
         blank: 'Lūdzu ievadiet nosaukumu.'
         short: 'Nosaukums ir pārāk īss.'
         long: 'Nosaukums ir pārāk garš.'
+fos_group:
+    name:
+        already_used: 'Šis nosaukums tiek jau izmantots.'
