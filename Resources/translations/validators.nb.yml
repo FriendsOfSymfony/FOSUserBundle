@@ -23,3 +23,6 @@ fos_user:
         blank: 'Vennligst skriv inn et navn'
         short: 'Navnet er for kort'
         long: 'Navnet er for langt'
+fos_group:
+    name:
+        already_used: 'Dette navnet er opptatt.'

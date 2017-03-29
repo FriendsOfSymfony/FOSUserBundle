@@ -45,7 +45,7 @@ registration:
             Teamet.
 
 resetting:
-    check_email: 'En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.'
+#    check_email: 'En epost har blitt sendt til %email%. Den inneholder en lenke du må klikke på for å tilbakestille passordet.'
     request:
         username: 'Brukernavn eller epostadresse'
         submit: 'Tilbakestill passord'
