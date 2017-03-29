@@ -1,65 +1,73 @@
 group:
     edit:
         submit: 'Nhóm cập nhật'
-    flash:
-        created: 'Nhóm đã được khởi tạo'
-        deleted: 'Nhóm này đã bị xóa'
-        updated: 'Nhóm đã được cập nhật'
-    new:
-        submit: 'Tạo nhóm'
     show:
         name: 'Tên nhóm'
+    new:
+        submit: 'Tạo nhóm'
+    flash:
+        updated: 'Nhóm đã được cập nhật'
+        created: 'Nhóm đã được khởi tạo'
+        deleted: 'Nhóm này đã bị xóa'
+
 security:
     login:
+        username: 'Tên đăng nhập:'
         password: 'Mật khẩu:'
         remember_me: 'Ghi nhớ thông tin của tôi'
         submit: 'Đăng nhập'
-        username: 'Tên đăng nhập:'
+
 profile:
+    show:
+        username: 'Tên đăng nhập'
+        email: Email
     edit:
         submit: 'Cập nhật'
     flash:
         updated: 'Hồ sơ cá nhân đã được cập nhật'
-    show:
-        email: Email
-        username: 'Tên đăng nhập'
+
 change_password:
+    submit: 'Thay đổi mật khẩu'
     flash:
         success: 'Mật khẩu đã được thay đổi'
-    submit: 'Thay đổi mật khẩu'
+
 registration:
-    back: 'Quay lại'
     check_email: 'Một email đã được gửi đến %email%. Nó có chứa một liên kết kích hoạt bạn phải bấm vào để kích hoạt tài khoản của bạn.'
     confirmed: 'Chúc mừng %username%, tài khoản của bạn đã được kích hoạt.'
-    email:
-        message: 'Xin chào %username%! Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập %confirmationUrl% Cám ơn.'
-        subject: 'Chào mừng %username%!'
+    back: 'Quay lại'
+    submit: 'Đăng ký'
     flash:
         user_created: 'Người sử dụng đã được khởi tạo'
-    submit: 'Đăng ký'
-resetting:
-    check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để thiết lập lại mật khẩu của bạn.'
     email:
-        message: 'Xin chào %username%! Để thiết lập lại mật khẩu của bạn - vui lòng truy cập %confirmationUrl% Kính trọng, mỗi thành viên.'
-        subject: 'Thiết lập lại mật khẩu'
-    flash:
-        success: 'Các mật khẩu đã được thiết lập lại thành công'
+        subject: 'Chào mừng %username%!'
+        message: 'Xin chào %username%! Để hoàn tất kích hoạt tài khoản của bạn - vui lòng truy cập %confirmationUrl% Cám ơn.'
+
+resetting:
+#    check_email: 'Một email đã được gửi đến %email%. Có một liên kết bạn phải bấm vào để thiết lập lại mật khẩu của bạn.'
     request:
-        submit: 'Thiết lập lại mật khẩu'
         username: 'Tên đăng nhập hoặc địa chỉ email:'
+        submit: 'Thiết lập lại mật khẩu'
     reset:
         submit: 'Thay đổi mật khẩu'
+    flash:
+        success: 'Các mật khẩu đã được thiết lập lại thành công'
+    email:
+        subject: 'Thiết lập lại mật khẩu'
+        message: 'Xin chào %username%! Để thiết lập lại mật khẩu của bạn - vui lòng truy cập %confirmationUrl% Kính trọng, mỗi thành viên.'
+
+# Global strings
 layout:
-    logged_in_as: 'Đăng nhập như %username%'
-    login: 'Đăng nhập'
     logout: 'Đăng xuất'
+    login: 'Đăng nhập'
     register: 'Đăng ký'
+    logged_in_as: 'Đăng nhập như %username%'
+
 form:
-    current_password: 'Mật khẩu hiện tại:'
-    email: 'Email:'
     group_name: 'Tên nhóm:'
-    new_password: 'Mật khẩu mới:'
-    new_password_confirmation: 'Xác minh:'
+    username: 'Tên đăng nhập:'
+    email: 'Email:'
+    current_password: 'Mật khẩu hiện tại:'
     password: 'Mật khẩu:'
     password_confirmation: 'Xác minh:'
-    username: 'Tên đăng nhập:'
+    new_password: 'Mật khẩu mới:'
+    new_password_confirmation: 'Xác minh:'
