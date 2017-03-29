@@ -45,7 +45,7 @@ registration:
             開発チーム
 
 resetting:
-    check_email: '%email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。'
+#    check_email: '%email% 宛にメールを送信しました。メールに記載された確認 URL にアクセスして、アカウントを有効化してください。'
     request:
         username: ユーザー名かメールアドレス
         submit: パスワードのリセット
