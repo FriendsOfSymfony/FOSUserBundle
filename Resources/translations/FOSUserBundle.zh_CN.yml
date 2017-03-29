@@ -45,7 +45,7 @@ registration:
             网站团队
 
 resetting:
-    check_email: 系统向%email%发送了一封包含密码重置链接的邮件，请查收。
+#    check_email: 系统向%email%发送了一封包含密码重置链接的邮件，请查收。
     request:
         username: 用户名或邮箱
         submit: 重置密码

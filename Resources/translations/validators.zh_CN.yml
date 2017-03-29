@@ -23,3 +23,6 @@ fos_user:
         blank: 请输入小组名称
         short: 小组名称字数不够
         long: 小组名称字数超出限制
+fos_group:
+    name:
+        already_used: '此名称已在使用'
