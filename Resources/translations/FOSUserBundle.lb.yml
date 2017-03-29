@@ -44,7 +44,7 @@ registration:
             d'Equipe.
 
 resetting:
-    check_email: 'Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.'
+#    check_email: 'Eng E-Mail gouf un %email% geschéckt. Se enthält e Link, deen s Du uklicke muss, fir Däi Passwort zeréckzesetzen.'
     request:
         username: Benotzernumm
         submit: 'Passwuert zerécksetzen'
@@ -53,7 +53,7 @@ resetting:
     flash:
         success: 'D''Passwuert gouf erfollegräich zeréckgesat.'
     email:
-        subject: 'Wëllkomm %username%!'
+#        subject: 'Wëllkomm %username%!'
         message: |
             Hallo %username%!
 
