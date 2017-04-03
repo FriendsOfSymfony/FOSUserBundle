@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Command;
 
-use FOS\UserBundle\Util\UserManipulator;
+use FOS\UserBundle\Util\UserManipulatorInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -67,7 +67,7 @@ abstract class RoleCommand extends ContainerAwareCommand
      * @param bool            $super
      * @param string          $role
      */
-    abstract protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role);
+    abstract protected function executeRoleCommand(UserManipulatorInterface $manipulator, OutputInterface $output, $username, $super, $role);
 
     /**
      * {@inheritdoc}
