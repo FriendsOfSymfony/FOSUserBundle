@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Neplatné přihlašovací údaje
+"Bad credentials.": Neplatné přihlašovací údaje
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Neplatné přihlašovací údaje.

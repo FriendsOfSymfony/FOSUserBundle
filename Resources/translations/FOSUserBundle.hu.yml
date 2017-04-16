@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": "Helytelen felhasználónév vagy jelszó"
+"Bad credentials.": "Helytelen felhasználónév vagy jelszó"
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": "Helytelen felhasználónév vagy jelszó."

@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": ユーザ名またはパスワードが間違っています
+"Bad credentials.": ユーザ名またはパスワードが間違っています
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": ユーザ名またはパスワードが間違っています。

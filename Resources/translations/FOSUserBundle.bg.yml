@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Невалидно потребителско име или парола
+"Bad credentials.": Невалидно потребителско име или парола
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Невалидно потребителско име или парола.

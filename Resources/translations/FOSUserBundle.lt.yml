@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Neteisingas naudotojas arba slaptažodis
+"Bad credentials.": Neteisingas naudotojas arba slaptažodis
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Neteisingas naudotojas arba slaptažodis.

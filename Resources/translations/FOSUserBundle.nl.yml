@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Gebruikersnaam of wachtwoord ongeldig
+"Bad credentials.": Gebruikersnaam of wachtwoord ongeldig
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Gebruikersnaam of wachtwoord ongeldig.

@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Epäkelpo käyttäjätunnus tai salasana
+"Bad credentials.": Epäkelpo käyttäjätunnus tai salasana
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Epäkelpo käyttäjätunnus tai salasana.

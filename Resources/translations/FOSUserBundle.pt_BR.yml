@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Usuário ou senha inválida
+"Bad credentials.": Usuário ou senha inválida
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Usuário ou senha inválida.

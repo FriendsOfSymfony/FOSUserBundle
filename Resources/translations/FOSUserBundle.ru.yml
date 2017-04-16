@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Неправильное имя пользователя или пароль
+"Bad credentials.": Неправильное имя пользователя или пароль
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Неправильное имя пользователя или пароль.

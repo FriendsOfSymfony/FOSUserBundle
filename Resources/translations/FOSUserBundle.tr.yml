@@ -13,6 +13,7 @@ group:
 
 # Security
 "Bad credentials": Geçersiz kullanıcı adı ya da parola
+"Bad credentials.": Geçersiz kullanıcı adı ya da parola
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Geçersiz kullanıcı adı ya da parola.
