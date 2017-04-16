@@ -13,7 +13,8 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="fos_user.document_manager" factory-service="doctrine_mongodb" factory-method="getManager" class="Doctrine\ODM\MongoDB\DocumentManager" public="false">
+        <service id="fos_user.document_manager" class="Doctrine\ODM\MongoDB\DocumentManager" public="false">
+            <factory service="doctrine" method="getManager"/>
             <argument>%fos_user.model_manager_name%</argument>
         </service>
 
