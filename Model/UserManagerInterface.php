@@ -100,6 +100,13 @@ interface UserManagerInterface
     public function getClass();
 
     /**
+     * Returns the repository class.
+     *
+     * @return string
+     */
+    public function getRepository();
+
+    /**
      * Reloads a user.
      *
      * @param UserInterface $user
