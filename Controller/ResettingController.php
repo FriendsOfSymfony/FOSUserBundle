@@ -36,7 +36,7 @@ class ResettingController extends Controller
     /**
      * Request reset user password: show form.
      */
-    public function requestAction()
+    public function requestAction(Request $request)
     {
         return $this->render('@FOSUser/Resetting/request.html.twig');
     }
