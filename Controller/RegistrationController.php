@@ -25,7 +25,7 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends ContainerAware
+class RegistrationController extends BaseContainerAware
 {
     public function registerAction()
     {
@@ -46,7 +46,7 @@ class RegistrationController extends ContainerAware
                 $route = 'fos_user_registration_confirmed';
             }
 
-            $this->setFlash('fos_user_success', 'registration.flash.user_created');
+            $this->setFlash('success', 'registration.flash.user_created');
             $url = $this->container->get('router')->generate($route);
             $response = new RedirectResponse($url);
 
@@ -57,7 +57,7 @@ class RegistrationController extends ContainerAware
             return $response;
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templateBundle.':Registration:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
         ));
     }
@@ -75,7 +75,7 @@ class RegistrationController extends ContainerAware
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templateBundle.':Registration:checkEmail.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -112,7 +112,7 @@ class RegistrationController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse($this->templateBundle.':Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));
     }
@@ -136,17 +136,5 @@ class RegistrationController extends ContainerAware
         }
     }
 
-    /**
-     * @param string $action
-     * @param string $value
-     */
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->getFlashBag()->set($action, $value);
-    }
 
-    protected function getEngine()
-    {
-        return $this->container->getParameter('fos_user.template.engine');
-    }
 }

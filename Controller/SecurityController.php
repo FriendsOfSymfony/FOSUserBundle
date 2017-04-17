@@ -14,7 +14,7 @@ namespace FOS\UserBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class SecurityController extends ContainerAware
+class SecurityController extends BaseContainerAware
 {
     public function loginAction()
     {
@@ -34,14 +34,13 @@ class SecurityController extends ContainerAware
         }
 
         if ($error) {
-            // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
             $error = $error->getMessage();
+            $this->addFlash('danger', $error);
         }
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
 
         $csrfToken = $this->container->has('form.csrf_provider') ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate') : null;
-
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error'         => $error,
@@ -59,7 +58,7 @@ class SecurityController extends ContainerAware
      */
     protected function renderLogin(array $data)
     {
-        $template = sprintf('FOSUserBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        $template = sprintf($this->templateBundle.':Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }

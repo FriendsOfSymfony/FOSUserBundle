@@ -22,7 +22,7 @@ use FOS\UserBundle\Model\UserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ChangePasswordController extends ContainerAware
+class ChangePasswordController extends BaseContainerAware
 {
     /**
      * Change user password
@@ -45,7 +45,7 @@ class ChangePasswordController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
+            $this->templateBundle.':ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
             array('form' => $form->createView())
         );
     }
@@ -62,12 +62,4 @@ class ChangePasswordController extends ContainerAware
         return $this->container->get('router')->generate('fos_user_profile_show');
     }
 
-    /**
-     * @param string $action
-     * @param string $value
-     */
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->getFlashBag()->set($action, $value);
-    }
 }

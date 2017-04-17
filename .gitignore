@@ -7,3 +7,5 @@ Propel/om/*
 Propel/map/*
 
 vendor/*
+_.idea
+.idea
