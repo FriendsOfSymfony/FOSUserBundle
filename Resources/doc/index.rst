@@ -258,7 +258,9 @@ in your application:
     # app/config/security.yml
     security:
         encoders:
-            FOS\UserBundle\Model\UserInterface: bcrypt
+            FOS\UserBundle\Model\UserInterface:
+                algorithm: bcrypt
+                cost: 12
 
         role_hierarchy:
             ROLE_ADMIN:       ROLE_USER
