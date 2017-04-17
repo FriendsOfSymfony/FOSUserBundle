@@ -12,7 +12,7 @@ group:
         deleted: Skupina je bila uspešno izbrisana.
 
 # Security
-"Bad credentials": Napačno uporabniško ime ali geslo
+"Bad credentials.": Napačno uporabniško ime ali geslo
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Napačno uporabniško ime ali geslo.

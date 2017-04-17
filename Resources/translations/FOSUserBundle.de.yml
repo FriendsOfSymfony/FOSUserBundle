@@ -12,7 +12,7 @@ group:
         deleted: Die Gruppe wurde gelöscht.
 
 # Security
-"Bad credentials": Benutzername oder Passwort ungültig
+"Bad credentials.": Benutzername oder Passwort ungültig
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": Benutzername oder Passwort ungültig.

@@ -12,7 +12,7 @@ group:
         deleted: 小组已被删除
 
 # Security
-"Bad credentials": 用户名或密码不正确
+"Bad credentials.": 用户名或密码不正确
 
 # Since Symfony 2.6 the error message has changed
 "Bad credentials.": 用户名或密码不正确。
