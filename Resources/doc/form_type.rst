@@ -3,7 +3,9 @@ The username Form Type
 
 FOSUserBundle provides a convenient username form type, named ``fos_user_username``.
 It appears as a text input, accepts usernames and convert them to a User
-instance::
+instance.
+
+.. code-block:: php
 
     class MessageFormType extends AbstractType
     {
