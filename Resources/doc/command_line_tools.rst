@@ -10,6 +10,7 @@ application's users. Commands are available for the following tasks:
 4. Promote a User
 5. Demote a User
 6. Change a User's Password
+7. Delete a User
 
 .. note::
 
@@ -169,4 +170,16 @@ password you would like to change and the new ``password``.
     $ php bin/console fos:user:change-password testuser newp@ssword
 
 If you do not specify the ``password`` argument then an interactive prompt will
+ask you to enter one.
+
+Delete a User
+------------------------
+
+The ``app:delete-user`` command allowes you delete a user. The command takes one argument: the ``username`` of the user be deleted. 
+
+.. code-block:: bash
+
+    $ php bin/console app:user-delete testuser
+
+If you do not specify the ``username`` argument then an interactive prompt will
 ask you to enter one.
