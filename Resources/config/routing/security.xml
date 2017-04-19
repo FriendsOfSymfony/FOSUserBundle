@@ -12,7 +12,7 @@
         <default key="_controller">FOSUserBundle:Security:check</default>
     </route>
 
-    <route id="fos_user_security_logout" path="/logout" methods="GET">
+    <route id="fos_user_security_logout" path="/logout" methods="GET POST">
         <default key="_controller">FOSUserBundle:Security:logout</default>
     </route>
 
