@@ -50,7 +50,7 @@ Require the bundle with composer:
 
 .. code-block:: bash
 
-    $ composer require friendsofsymfony/user-bundle "~1.3"
+    $ composer require friendsofsymfony/user-bundle
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
 
