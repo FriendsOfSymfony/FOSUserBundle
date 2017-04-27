@@ -149,7 +149,7 @@ changing the registration form type in YAML.
         # ...
         registration:
             form:
-                name: app_user_registration
+                type: app_user_registration
 
 Note how the ``alias`` value used in your form type's service configuration tag
 is used in the bundle configuration to tell the FOSUserBundle to use your custom
