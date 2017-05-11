@@ -87,7 +87,7 @@ class Mailer implements MailerInterface
     /**
      * @param string $renderedTemplate
      * @param string $fromEmail
-     * @param string $toEmail
+     * @param string|array $toEmail
      */
     protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail)
     {
