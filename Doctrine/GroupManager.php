@@ -36,15 +36,15 @@ class GroupManager extends BaseGroupManager
     /**
      * GroupManager constructor.
      *
-     * @param ObjectManager $om
+     * @param ObjectManager $objectManager
      * @param string        $class
      */
-    public function __construct(ObjectManager $om, $class)
+    public function __construct(ObjectManager $objectManager, $class)
     {
-        $this->objectManager = $om;
-        $this->repository = $om->getRepository($class);
+        $this->objectManager = $objectManager;
+        $this->repository = $objectManager->getRepository($class);
 
-        $metadata = $om->getClassMetadata($class);
+        $metadata = $objectManager->getClassMetadata($class);
         $this->class = $metadata->getName();
     }
 
