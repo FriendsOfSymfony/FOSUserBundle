@@ -16,6 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SecurityController extends Controller
 {
@@ -53,7 +57,16 @@ class SecurityController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
+        $form = $this->createFormBuilder()
+            ->add('_username', TextType::class, array('data' => $lastUsername))
+            ->add('_password', PasswordType::class)
+            ->add('_remember_me', CheckboxType::class, array('required' => false))
+            ->add('_submit', SubmitType::class)
+            ->getForm()
+            ->createView();
+
         return $this->renderLogin(array(
+            'form' => $form,
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
