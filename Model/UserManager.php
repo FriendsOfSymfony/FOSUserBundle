@@ -22,8 +22,8 @@ use FOS\UserBundle\Util\PasswordUpdaterInterface;
  */
 abstract class UserManager implements UserManagerInterface
 {
-    private $passwordUpdater;
-    private $canonicalFieldsUpdater;
+    protected $passwordUpdater;
+    protected $canonicalFieldsUpdater;
 
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater)
     {
