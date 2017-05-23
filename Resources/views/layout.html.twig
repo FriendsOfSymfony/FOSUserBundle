@@ -15,7 +15,7 @@
             {% endif %}
         </div>
 
-        {% if app.request.hasPreviousSession %}
+        {% if app.request.hasPreviousSession is defined and app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
                     <div class="flash-{{ type }}">
