@@ -54,6 +54,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('use_listener')->defaultTrue()->end()
                 ->booleanNode('use_flash_notifications')->defaultTrue()->end()
                 ->booleanNode('use_username_form_type')->defaultTrue()->end()
+                ->booleanNode('use_user_choice_form_type')->defaultTrue()->end()
                 ->arrayNode('from_email')
                     ->isRequired()
                     ->children()
