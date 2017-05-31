@@ -11,7 +11,7 @@
 
 namespace FOS\UserBundle\Command;
 
-use FOS\UserBundle\Util\UserManipulator;
+use FOS\UserBundle\Util\UserManipulatorInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -42,7 +42,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role)
+    protected function executeRoleCommand(UserManipulatorInterface $manipulator, OutputInterface $output, $username, $super, $role)
     {
         if ($super) {
             $manipulator->demote($username);
