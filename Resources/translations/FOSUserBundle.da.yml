@@ -52,11 +52,11 @@ registration:
             Holdet bag siden.
 
 resetting:
-    check_email: |
-        En e-mail er blevet sendt til %email%. Den indeholder et link, du skal følge for at nulstille din adgangskode.
-        Note: Du kan først bede om en ny adgangskode om %tokenLifetime% timer.
+    check_email: '|
+        En e-mail er blevet sendt til %email%. Den indeholder et link, du skal følge for at nulstille din adgangskode.'
+    Note: 'Du kan først bede om en ny adgangskode om %tokenLifetime% timer.
 
-        Hvis ikke du modtager en enmail skal du tjekke dit spamfilter eller prøve igen.
+        Hvis ikke du modtager en enmail skal du tjekke dit spamfilter eller prøve igen.'
     request:
         username: 'Brugernavn eller e-mailadresse'
         submit: 'Nulstil adgangskode'
