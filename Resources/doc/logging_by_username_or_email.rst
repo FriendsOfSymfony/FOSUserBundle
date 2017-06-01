@@ -13,3 +13,13 @@ using only the username:
         providers:
             fos_userbundle:
                 id: fos_user.user_provider.username_email
+
+To restrict authentication to only use email address use the following implementation:
+
+.. code-block:: yaml
+
+    # app/config/security.yml
+    security:
+        providers:
+            fos_userbundle:
+                id: fos_user.user_provider.email
