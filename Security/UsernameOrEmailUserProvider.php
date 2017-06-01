@@ -9,13 +9,13 @@
  */
 namespace FOS\UserBundle\Security;
 
-class EmailUserProvider extends UserProvider
+class UsernameOrEmailUserProvider extends UserProvider
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    protected function findUser($email)
+    protected function findUser($usernameOrEmail)
     {
-        return $this->userManager->findUserByEmail($email);
+        return $this->userManager->findUserByUsernameOrEmail($usernameOrEmail);
     }
 }
