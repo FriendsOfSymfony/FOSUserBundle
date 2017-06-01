@@ -79,7 +79,7 @@ class GroupController extends Controller
         $event = new GetResponseGroupEvent($group, $request);
         $dispatcher->dispatch(FOSUserEvents::GROUP_EDIT_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 

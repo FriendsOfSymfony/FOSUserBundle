@@ -54,7 +54,7 @@ class RegistrationController extends Controller
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
-        if (null !== $event->getResponse()) {
+        if ($event->hasResponse()) {
             return $event->getResponse();
         }
 
