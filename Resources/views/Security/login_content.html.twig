@@ -9,14 +9,11 @@
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    {{ form_row(form._username, {'full_name': '_username', 'label': 'security.login.username'|trans}) }}
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+    {{ form_row(form._password, {'full_name': '_password', 'label': 'security.login.password'|trans}) }}
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    {{ form_row(form._remember_me, {'full_name': '_remember_me', value: "on", 'label': 'security.login.remember_me'|trans}) }}
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    {{ form_row(form._submit, {'label': 'security.login.submit'|trans}) }}
 </form>
