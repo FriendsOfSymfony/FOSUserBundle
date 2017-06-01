@@ -59,6 +59,7 @@ Changelog
 * [BC break] The translation key `resetting.request.invalid_username` has been removed.
 * [BC break] The propel dependency was dropped.
 * [BC break] The `salt` field of the `User` class is now nullable.
+* [BC break] Removed properties `$locked`, `$expired`, `$expiredAt`, `$credentialsExpired` and associated setter and getter (see: https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Upgrade.md#200-alpha3-to-200-beta1)
 
 ### 2.0.0-alpha3 (2015-09-15)
 
