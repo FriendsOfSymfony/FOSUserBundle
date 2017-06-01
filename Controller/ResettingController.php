@@ -38,6 +38,10 @@ class ResettingController extends Controller
      */
     public function requestAction()
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
+        }
+
         return $this->render('@FOSUser/Resetting/request.html.twig');
     }
 
@@ -50,6 +54,10 @@ class ResettingController extends Controller
      */
     public function sendEmailAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
+        }
+
         $username = $request->request->get('username');
 
         /** @var $user UserInterface */

@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SecurityController extends Controller
 {
@@ -26,6 +27,10 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return new RedirectResponse($this->generateUrl('fos_user_profile_show'));
+        }
+
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 
