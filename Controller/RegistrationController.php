@@ -96,7 +96,7 @@ class RegistrationController extends Controller
     /**
      * Tell the user to check their email provider.
      */
-    public function checkEmailAction()
+    public function checkEmailAction(Request $request)
     {
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
 
@@ -159,7 +159,7 @@ class RegistrationController extends Controller
     /**
      * Tell the user his account is now confirmed.
      */
-    public function confirmedAction()
+    public function confirmedAction(Request $request)
     {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -175,7 +175,7 @@ class RegistrationController extends Controller
     /**
      * @return mixed
      */
-    private function getTargetUrlFromSession()
+    protected function getTargetUrlFromSession()
     {
         $key = sprintf('_security.%s.target_path', $this->get('security.token_storage')->getToken()->getProviderKey());
 
