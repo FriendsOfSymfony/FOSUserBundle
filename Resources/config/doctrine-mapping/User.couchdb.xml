@@ -8,7 +8,7 @@
         <field name="email" fieldName="email" type="string" index="true" />
         <field name="emailCanonical" fieldName="emailCanonical" type="string" index="true" />
         <field name="enabled" fieldName="enabled" type="mixed" />
-        <field name="salt" fieldName="salt" type="string" />
+        <field name="salt" fieldName="salt" type="string" nullable="true" />
         <field name="password" fieldName="password" type="string" />
         <field name="lastLogin" fieldName="lastLogin" type="datetime" />
         <field name="confirmationToken" fieldName="confirmationToken" type="string" />
