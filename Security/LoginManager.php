@@ -44,6 +44,7 @@ class LoginManager implements LoginManagerInterface
 
     final public function loginUser($firewallName, UserInterface $user, Response $response = null)
     {
+        $this->userChecker->checkPreAuth($user);
         $this->userChecker->checkPostAuth($user);
 
         $token = $this->createToken($firewallName, $user);
