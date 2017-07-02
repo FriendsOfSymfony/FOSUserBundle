@@ -276,6 +276,16 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->confirmationToken;
     }
 
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
+
     /**
      * Returns the user roles
      *
