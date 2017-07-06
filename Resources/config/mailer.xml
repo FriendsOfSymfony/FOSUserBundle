@@ -17,10 +17,6 @@
             <argument type="collection">
                 <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
                 <argument key="resetting.template">%fos_user.resetting.email.template%</argument>
-                <argument key="from_email" type="collection">
-                    <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
-                    <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
-                </argument>
             </argument>
         </service>
 
@@ -32,10 +28,6 @@
                 <argument key="template" type="collection">
                     <argument key="confirmation">%fos_user.registration.confirmation.template%</argument>
                     <argument key="resetting">%fos_user.resetting.email.template%</argument>
-                </argument>
-                <argument key="from_email" type="collection">
-                    <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
-                    <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
                 </argument>
             </argument>
         </service>

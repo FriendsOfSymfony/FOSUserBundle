@@ -79,7 +79,6 @@ class FOSUserExtension extends Extension
             $loader->load('flash_notifications.xml');
         }
 
-        $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         $container->setAlias('fos_user.util.email_canonicalizer', $config['service']['email_canonicalizer']);
         $container->setAlias('fos_user.util.username_canonicalizer', $config['service']['username_canonicalizer']);
         $container->setAlias('fos_user.util.token_generator', $config['service']['token_generator']);
@@ -124,6 +123,27 @@ class FOSUserExtension extends Extension
 
         if (!empty($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
+        }
+
+        if ($container->hasParameter('fos_user.registration.confirmation.from_email') || $container->hasParameter('fos_user.resetting.email.from_email')) {
+            $mailer = $config['service']['mailer'];
+            $container->setAlias('fos_user.mailer', $mailer);
+            $mailerDefinition = $container->getDefinition($mailer);
+            $mailerParams = $mailerDefinition->getArgument(3);
+
+            if ($container->hasParameter('fos_user.registration.confirmation.from_email')) {
+                $mailerParams['from_email']['confirmation'] = $container->getParameter('fos_user.registration.confirmation.from_email');
+            }
+
+            if ($container->hasParameter('fos_user.resetting.email.from_email')) {
+                $mailerParams['from_email']['resetting'] = $container->getParameter('fos_user.resetting.email.from_email');
+            }
+
+            $mailerDefinition->replaceArgument(3, $mailerParams);
+        } elseif ($config['service']['mailer'] == 'fos_user.mailer.default') {
+            $container->setAlias('fos_user.mailer', 'fos_user.mailer.noop');
+        } else {
+            $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         }
     }
 
