@@ -31,7 +31,9 @@
         "swiftmailer/swiftmailer": "~4.3|~5",
         "willdurand/propel-typehintable-behavior": "~1.0",
         "symfony/yaml": "~2.3",
-        "symfony/validator": "~2.3"
+        "symfony/validator": "~2.3",
+        "symfony/phpunit-bridge": "~2.7",
+        "phpunit/phpunit": "~4.8|~5.0"
     },
     "suggest": {
         "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
