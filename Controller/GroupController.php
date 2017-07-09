@@ -42,6 +42,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/list.html.twig', array(
             'groups' => $groups,
+            'data' => $this->setUserDataList(),
         ));
     }
 
@@ -58,6 +59,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/show.html.twig', array(
             'group' => $group,
+            'data' => $this->setUserDataShow(),
         ));
     }
 
@@ -113,6 +115,7 @@ class GroupController extends Controller
         return $this->render('@FOSUser/Group/edit.html.twig', array(
             'form' => $form->createView(),
             'group_name' => $group->getName(),
+            'data' => $this->setUserDataEdit(),
         ));
     }
 
@@ -159,6 +162,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/new.html.twig', array(
             'form' => $form->createView(),
+            'data' => $this->setUserDataNew(),
         ));
     }
 
@@ -205,5 +209,37 @@ class GroupController extends Controller
         }
 
         return $group;
+    }
+
+    /*
+     * Function to override to send data to the template
+     */
+    public function setUserDataList()
+    {
+        return array();
+    }
+
+    /*
+     * Function to override to send data to the template
+     */
+    public function setUserDataShow()
+    {
+        return array();
+    }
+
+    /*
+     * Function to override to send data to the template
+     */
+    public function setUserDataEdit()
+    {
+        return array();
+    }
+
+    /*
+     * Function to override to send data to the template
+     */
+    public function setUserDataNew()
+    {
+        return array();
     }
 }
