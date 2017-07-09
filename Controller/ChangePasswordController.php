@@ -86,6 +86,15 @@ class ChangePasswordController extends Controller
 
         return $this->render('@FOSUser/ChangePassword/change_password.html.twig', array(
             'form' => $form->createView(),
+            'data' => $this->setUserData(),
         ));
+    }
+
+    /*
+     * Method to override to send data to the template
+     */
+    public function setUserData()
+    {
+        return array();
     }
 }

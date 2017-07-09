@@ -38,7 +38,9 @@ class ResettingController extends Controller
      */
     public function requestAction()
     {
-        return $this->render('@FOSUser/Resetting/request.html.twig');
+        return $this->render('@FOSUser/Resetting/request.html.twig', array(
+            'data' => $this->setUserData(),
+        ));
     }
 
     /**
@@ -123,6 +125,7 @@ class ResettingController extends Controller
 
         return $this->render('@FOSUser/Resetting/check_email.html.twig', array(
             'tokenLifetime' => ceil($this->container->getParameter('fos_user.resetting.retry_ttl') / 3600),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -183,6 +186,15 @@ class ResettingController extends Controller
         return $this->render('@FOSUser/Resetting/reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
+            'data' => $this->setUserData(),
         ));
+    }
+
+    /*
+     * Method to override to send data to the template
+     */
+    public function setUserData()
+    {
+        return array();
     }
 }
