@@ -42,7 +42,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/list.html.twig', array(
             'groups' => $groups,
-            'data' => $this->setUserDataList(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -59,7 +59,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/show.html.twig', array(
             'group' => $group,
-            'data' => $this->setUserDataShow(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -115,7 +115,7 @@ class GroupController extends Controller
         return $this->render('@FOSUser/Group/edit.html.twig', array(
             'form' => $form->createView(),
             'group_name' => $group->getName(),
-            'data' => $this->setUserDataEdit(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -162,7 +162,7 @@ class GroupController extends Controller
 
         return $this->render('@FOSUser/Group/new.html.twig', array(
             'form' => $form->createView(),
-            'data' => $this->setUserDataNew(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -212,33 +212,9 @@ class GroupController extends Controller
     }
 
     /*
-     * Function to override to send data to the template
+     * Method to override to send data to the template
      */
-    public function setUserDataList()
-    {
-        return array();
-    }
-
-    /*
-     * Function to override to send data to the template
-     */
-    public function setUserDataShow()
-    {
-        return array();
-    }
-
-    /*
-     * Function to override to send data to the template
-     */
-    public function setUserDataEdit()
-    {
-        return array();
-    }
-
-    /*
-     * Function to override to send data to the template
-     */
-    public function setUserDataNew()
+    public function setUserData()
     {
         return array();
     }

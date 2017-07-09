@@ -91,7 +91,7 @@ class ChangePasswordController extends Controller
     }
 
     /*
-     * Function to override to send data to the template
+     * Method to override to send data to the template
      */
     public function setUserData()
     {
