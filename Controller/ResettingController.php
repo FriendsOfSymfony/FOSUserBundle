@@ -102,7 +102,7 @@ class ResettingController extends Controller
             }
         }
 
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
+        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('email' => (string) $user->getEmail())));
     }
 
     /**
@@ -114,15 +114,16 @@ class ResettingController extends Controller
      */
     public function checkEmailAction(Request $request)
     {
-        $username = $request->query->get('username');
+        $email = $request->query->get('email');
 
-        if (empty($username)) {
+        if (empty($email)) {
             // the user does not come from the sendEmail action
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
         return $this->render('@FOSUser/Resetting/check_email.html.twig', array(
             'tokenLifetime' => ceil($this->container->getParameter('fos_user.resetting.retry_ttl') / 3600),
+            'email' => $email
         ));
     }
 
