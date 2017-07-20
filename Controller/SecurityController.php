@@ -71,6 +71,8 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
+        $data['data'] = $this->setUserData();
+
         return $this->render('@FOSUser/Security/login.html.twig', $data);
     }
 
@@ -82,5 +84,13 @@ class SecurityController extends Controller
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+    }
+
+    /*
+     * Method to override to send data to the template
+     */
+    public function setUserData()
+    {
+        return array();
     }
 }

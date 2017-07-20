@@ -132,3 +132,33 @@ the base controller and adds logging a new user registration to it.
     to override and instead extend ContainerAware or the Controller class
     provided by the FrameworkBundle then you must implement all of the methods
     of the FOSUserBundle controller that you are overriding.
+
+Send data to templates
+----------------------
+
+If you need to send specific data to the templates but don't want to override
+the main method, just proceed as above to override the Controller and then,
+override the method `setUserData()` by providing an array which will be available as
+`data` in the templates.
+
+.. code-block:: php
+
+    <?php
+    // src/AppBundle/Controller/RegistrationController.php
+
+    namespace AppBundle\Controller;
+
+    use Symfony\Component\HttpFoundation\RedirectResponse;
+    use FOS\UserBundle\Controller\RegistrationController as BaseController;
+    use Symfony\Component\HttpFoundation\Request;
+
+    class RegistrationController extends BaseController
+    {
+        public function setUserData()
+        {
+            return array(
+                //Accessible as data.value in Templates rendered by RegistrationController
+                'value' => 'my value',
+            );
+        }
+    }
