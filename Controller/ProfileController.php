@@ -44,6 +44,7 @@ class ProfileController extends Controller
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -100,6 +101,15 @@ class ProfileController extends Controller
 
         return $this->render('@FOSUser/Profile/edit.html.twig', array(
             'form' => $form->createView(),
+            'data' => $this->setUserData(),
         ));
+    }
+
+    /*
+     * Method to override to send data to the template
+     */
+    public function setUserData()
+    {
+        return array();
     }
 }

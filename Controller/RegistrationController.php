@@ -90,6 +90,7 @@ class RegistrationController extends Controller
 
         return $this->render('@FOSUser/Registration/register.html.twig', array(
             'form' => $form->createView(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -113,6 +114,7 @@ class RegistrationController extends Controller
 
         return $this->render('@FOSUser/Registration/check_email.html.twig', array(
             'user' => $user,
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -169,6 +171,7 @@ class RegistrationController extends Controller
         return $this->render('@FOSUser/Registration/confirmed.html.twig', array(
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession(),
+            'data' => $this->setUserData(),
         ));
     }
 
@@ -182,5 +185,13 @@ class RegistrationController extends Controller
         if ($this->get('session')->has($key)) {
             return $this->get('session')->get($key);
         }
+    }
+
+    /*
+     * Method to override to send data to the template
+     */
+    public function setUserData()
+    {
+        return array();
     }
 }
