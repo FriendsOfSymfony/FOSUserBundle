@@ -67,42 +67,89 @@ class ResettingController extends Controller
 
         $ttl = $this->container->getParameter('fos_user.resetting.retry_ttl');
 
-        if (null !== $user && !$user->isPasswordRequestNonExpired($ttl)) {
-            $event = new GetResponseUserEvent($user, $request);
-            $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
+        if (null === $user) {
+            /* Dispatch user not found event */
+            $event = new GetResponseNullableUserEvent($user, $request);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_USER_NOT_FOUND, $event);
 
             if (null !== $event->getResponse()) {
                 return $event->getResponse();
             }
-
-            if (null === $user->getConfirmationToken()) {
-                /** @var $tokenGenerator TokenGeneratorInterface */
-                $tokenGenerator = $this->get('fos_user.util.token_generator');
-                $user->setConfirmationToken($tokenGenerator->generateToken());
-            }
-
-            /* Dispatch confirm event */
+        } elseif ($user->isPasswordRequestNonExpired($ttl)) {
+            /* Dispatch already requested event */
             $event = new GetResponseUserEvent($user, $request);
-            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
+            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_ALREADY_REQUESTED, $event);
 
             if (null !== $event->getResponse()) {
                 return $event->getResponse();
             }
+        } else {
+            /* Send the resetting email to the user */
+            $response = $this->sendEmail($user, $request);
 
-            $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
-            $user->setPasswordRequestedAt(new \DateTime());
-            $this->get('fos_user.user_manager')->updateUser($user);
-
-            /* Dispatch completed event */
-            $event = new GetResponseUserEvent($user, $request);
-            $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
-
-            if (null !== $event->getResponse()) {
-                return $event->getResponse();
+            if (null !== $response) {
+                return $response;
             }
         }
 
+        /* Dispatch finished event */
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_FINISHED, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
         return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
+    }
+
+    /**
+     * Send resetting email.
+     *
+     * @param UserInterface $user
+     * @param Request       $request
+     *
+     * @return Response|null
+     */
+    private function sendEmail(UserInterface $user, Request $request)
+    {
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_RESET_REQUEST, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        if (null === $user->getConfirmationToken()) {
+            /** @var $tokenGenerator TokenGeneratorInterface */
+            $tokenGenerator = $this->get('fos_user.util.token_generator');
+            $user->setConfirmationToken($tokenGenerator->generateToken());
+        }
+
+        /* Dispatch confirm event */
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_CONFIRM, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        $this->get('fos_user.mailer')->sendResettingEmailMessage($user);
+        $user->setPasswordRequestedAt(new \DateTime());
+        $this->get('fos_user.user_manager')->updateUser($user);
+
+        /* Dispatch completed event */
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_COMPLETED, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        return null;
     }
 
     /**
