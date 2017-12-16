@@ -55,11 +55,19 @@ class ChangePasswordFormType extends AbstractType
                 new NotBlank(),
                 new UserPassword($constraintsOptions),
             ),
+            'attr' =>  array(
+                'autcomplete' => 'current-password',
+            ),
         ));
 
         $builder->add('plainPassword', RepeatedType::class, array(
             'type' => PasswordType::class,
-            'options' => array('translation_domain' => 'FOSUserBundle'),
+            'options' => array(
+                'translation_domain' => 'FOSUserBundle',
+                'attr' =>  array(
+                    'autcomplete' => 'new-password',
+                ),
+            ),
             'first_options' => array('label' => 'form.new_password'),
             'second_options' => array('label' => 'form.new_password_confirmation'),
             'invalid_message' => 'fos_user.password.mismatch',

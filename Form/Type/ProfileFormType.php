@@ -57,6 +57,9 @@ class ProfileFormType extends AbstractType
                 new NotBlank(),
                 new UserPassword($constraintsOptions),
             ),
+            'attr' => array(
+                'autocomplete' => 'current-password',
+            ),
         ));
     }
 
