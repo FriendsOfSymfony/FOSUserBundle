@@ -40,7 +40,7 @@ class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
 
         $form = $this->factory->create(ResettingFormType::class, $user);
         $formData = array(
-            'plainPassword' => ''
+            'plainPassword' => '',
         );
         $form->submit($formData);
 

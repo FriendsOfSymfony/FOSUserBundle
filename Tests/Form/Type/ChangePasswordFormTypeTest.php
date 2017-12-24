@@ -44,7 +44,7 @@ class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
         $form = $this->factory->create(ChangePasswordFormType::class, $user);
         $formData = array(
             'current_password' => 'foo',
-            'plainPassword' => ''
+            'plainPassword' => '',
         );
         $form->submit($formData);
 

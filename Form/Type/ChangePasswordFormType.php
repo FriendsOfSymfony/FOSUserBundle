@@ -78,7 +78,10 @@ class ChangePasswordFormType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function(FormEvent $event) {
             $data = $event->getData();
             if (!is_array($data['plainPassword'])) {
-                $data['plainPassword'] = ['first' => null, 'second' => null];
+                $data['plainPassword'] = array(
+                    'first' => null,
+                    'second' => null,
+                );
                 $event->setData($data);
             }
         });
