@@ -34,6 +34,21 @@ class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
         $this->assertSame('test', $user->getPlainPassword());
     }
 
+    public function testSubmitWithInvalidRepeatedType()
+    {
+        $user = new TestUser();
+
+        $form = $this->factory->create(ResettingFormType::class, $user);
+        $formData = array(
+            'plainPassword' => ''
+        );
+        $form->submit($formData);
+
+        $this->assertTrue($form->isSynchronized());
+        $this->assertSame($user, $form->getData());
+        $this->assertNull($user->getPlainPassword());
+    }
+
     /**
      * @return array
      */

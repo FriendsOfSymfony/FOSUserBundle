@@ -36,6 +36,22 @@ class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
         $this->assertSame('bar', $user->getPlainPassword());
     }
 
+    public function testSubmitWithInvalidRepeatedType()
+    {
+        $user = new TestUser();
+        $user->setPassword('foo');
+
+        $form = $this->factory->create(ChangePasswordFormType::class, $user);
+        $formData = array(
+            'current_password' => 'foo',
+            'plainPassword' => ''
+        );
+        $form->submit($formData);
+
+        $this->assertTrue($form->isSynchronized());
+        $this->assertNull($user->getPlainPassword());
+    }
+
     /**
      * @return array
      */
