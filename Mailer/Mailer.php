@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
+use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -45,15 +46,20 @@ class Mailer implements MailerInterface
      *
      * @param \Swift_Mailer         $mailer
      * @param UrlGeneratorInterface $router
-     * @param EngineInterface       $templating
+     * @param ContainerInterface    $container
      * @param array                 $parameters
      */
-    public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
+    public function __construct($mailer, UrlGeneratorInterface  $router, ContainerInterface $container, array $parameters)
     {
         $this->mailer = $mailer;
         $this->router = $router;
-        $this->templating = $templating;
         $this->parameters = $parameters;
+
+        if ($container->has('templating')) {
+            $this->templating = $container->get('templating');
+        } elseif ($container->has('twig')) {
+            $this->templating = $container->get('twig');
+        }
     }
 
     /**
