@@ -38,6 +38,25 @@ class RegistrationFormTypeTest extends ValidatorExtensionTypeTestCase
         $this->assertSame('test', $user->getPlainPassword());
     }
 
+    public function testSubmitWithInvalidRepeatedType()
+    {
+        $user = new TestUser();
+
+        $form = $this->factory->create(RegistrationFormType::class, $user);
+        $formData = array(
+            'username' => 'bar',
+            'email' => 'john@doe.com',
+            'plainPassword' => '',
+        );
+        $form->submit($formData);
+
+        $this->assertTrue($form->isSynchronized());
+        $this->assertSame($user, $form->getData());
+        $this->assertSame('bar', $user->getUsername());
+        $this->assertSame('john@doe.com', $user->getEmail());
+        $this->assertNull($user->getPlainPassword());
+    }
+
     /**
      * @return array
      */
