@@ -10,7 +10,9 @@
     </parameters>
 
     <services>
-        <service id="fos_user.mailer.default" class="FOS\UserBundle\Mailer\Mailer" public="false">
+        <service id="fos_user.mailer.default" alias="fos_user.mailer.twig_swift" public="false" />
+
+        <service id="fos_user.mailer.templating" class="FOS\UserBundle\Mailer\Mailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
             <argument type="service" id="templating" />
