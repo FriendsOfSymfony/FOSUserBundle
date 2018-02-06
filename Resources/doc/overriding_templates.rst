@@ -80,12 +80,12 @@ feel of the application.
 The easiest way to override a bundle's template is to simply place a new one in
 your ``app/Resources`` folder. To override the layout template located at
 ``Resources/views/layout.html.twig`` in the ``FOSUserBundle`` directory, you would place
-your new layout template at ``app/Resources/FOSUserBundle/views/layout.html.twig``.
+your new layout template at ``templates/bundles/FOSUserBundle/layout.html.twig``.
 
 As you can see the pattern for overriding templates in this way is to
-create a folder with the name of the bundle class in the ``app/Resources`` directory.
+create a folder with the name of the bundle class in the ``templates/bundles`` directory.
 Then add your new template to this folder, preserving the directory structure from the
-original bundle.
+original bundle from the ``views`` folder onwards..
 
 After overriding a template, you must clear the cache for the override to
 take effect, even in a development environment.
