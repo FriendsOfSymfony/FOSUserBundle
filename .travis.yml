@@ -21,6 +21,8 @@ matrix:
       env: DEPENDENCIES="symfony/lts:^2"
     - php: 7.1
       env: DEPENDENCIES="symfony/lts:^3"
+    - php: 7.2
+      env: DEPENDENCIES="symfony/lts:^3"
 
 sudo: false
 
