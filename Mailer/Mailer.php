@@ -11,12 +11,16 @@
 
 namespace FOS\UserBundle\Mailer;
 
+@trigger_error('The Mailer class is deprecated since FOSUserBundle 2.1 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ *
+ * @deprecated since version 2.1, to be removed in 3.0.
  */
 class Mailer implements MailerInterface
 {

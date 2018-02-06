@@ -55,7 +55,7 @@ All available configuration options are listed below with their default values.
                 name:               fos_user_resetting_form
                 validation_groups:  [ResetPassword, Default]
         service:
-            mailer:                 fos_user.mailer.default
+            mailer:                 fos_user.mailer.twig_swift
             email_canonicalizer:    fos_user.util.canonicalizer.default
             username_canonicalizer: fos_user.util.canonicalizer.default
             token_generator:        fos_user.util.token_generator.default

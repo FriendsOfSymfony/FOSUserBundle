@@ -243,7 +243,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('service')
                     ->addDefaultsIfNotSet()
                         ->children()
-                            ->scalarNode('mailer')->defaultValue('fos_user.mailer.default')->end()
+                            ->scalarNode('mailer')->defaultValue('fos_user.mailer.twig_swift')->end()
                             ->scalarNode('email_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
                             ->scalarNode('token_generator')->defaultValue('fos_user.util.token_generator.default')->end()
                             ->scalarNode('username_canonicalizer')->defaultValue('fos_user.util.canonicalizer.default')->end()
