@@ -1,13 +1,14 @@
 Changelog
 =========
 
-### 2.1.0 (2017-xx-xx)
+### 2.1.0 (2018-xx-xx)
 * Dropped Symfony < 2.8 support.
 * Add Symfony 4 compatibility.
 * Redirect to login when requesting resetting password with invalid token.
 * Added autocomplete hints for password inputs.
 * Added email update confirmation option.
 * Fixed several incorrect Turkish translations.
+* Deprecated the default mailer service. Use `TwigSwiftMailer` instead.
 
 ### 2.0.2 (2017-11-29)
 * Fix empty password in ChangePasswordFormType.
