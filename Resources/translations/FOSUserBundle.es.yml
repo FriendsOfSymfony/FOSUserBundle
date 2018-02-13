@@ -28,6 +28,8 @@ change_password:
     flash:
         success: 'La contraseña se ha cambiado con éxito.'
 registration:
+    confirm:
+        error_message: 'El usuario con token de confirmación "%token%" no existe'
     check_email: 'Se ha enviado un correo electrónico a %email%. Contiene un enlace de activación al que debes acceder para activar tu cuenta.'
     confirmed: 'Felicidades %username%, tu cuenta está ahora confirmada.'
     back: 'Volver a la página original.'
