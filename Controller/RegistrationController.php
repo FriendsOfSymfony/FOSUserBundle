@@ -163,7 +163,7 @@ class RegistrationController extends Controller
         $user = $userManager->findUserByConfirmationToken($token);
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
+            throw new NotFoundHttpException($this->translator->trans('registration.confirm.error_message', array('token' => $token), 'FOSUserBundle'));
         }
 
         $dispatcher = $this->eventDispatcher;

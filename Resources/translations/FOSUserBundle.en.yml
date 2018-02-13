@@ -48,6 +48,8 @@ email_update:
             the Team.
 
 registration:
+    confirm:
+        error_message: 'The user with confirmation token "%token%" does not exist'
     check_email: |
         An email has been sent to %email%. It contains an activation link you must click to activate your account.
     confirmed: 'Congrats %username%, your account is now activated.'
