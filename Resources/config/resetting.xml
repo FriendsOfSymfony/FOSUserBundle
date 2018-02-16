@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+        <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory" public="true">
             <argument type="service" id="form.factory" />
             <argument>%fos_user.resetting.form.name%</argument>
             <argument>%fos_user.resetting.form.type%</argument>
