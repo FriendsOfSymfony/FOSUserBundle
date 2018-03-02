@@ -67,6 +67,10 @@ class RegistrationController extends Controller
         }
 
         $form = $this->formFactory->createForm();
+        
+        $event = new FormEvent($form, $request);
+        $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_FORM_INITIALIZE, $event);
+        
         $form->setData($user);
 
         $form->handleRequest($request);
