@@ -141,7 +141,7 @@ final class FOSUserEvents
      * @Event("FOS\UserBundle\Event\UserEvent")
      */
     const REGISTRATION_INITIALIZE = 'fos_user.registration.initialize';
-    
+
     /**
      * The REGISTRATION_FORM_INITIALIZE event occurs when the registration form is initialized.
      *
