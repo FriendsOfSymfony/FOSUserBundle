@@ -72,6 +72,8 @@ class UserManipulator
     {
         $user = $this->userManager->createUser();
         $user->setUsername($username);
+        $user->setName($username);
+        $user->setSurname($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
         $user->setEnabled((bool) $active);
