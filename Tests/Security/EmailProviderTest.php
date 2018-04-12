@@ -12,8 +12,9 @@
 namespace FOS\UserBundle\Tests\Security;
 
 use FOS\UserBundle\Security\EmailProvider;
+use PHPUnit\Framework\TestCase;
 
-class EmailProviderTest extends \PHPUnit_Framework_TestCase
+class EmailProviderTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
