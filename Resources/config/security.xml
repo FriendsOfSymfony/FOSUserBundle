@@ -33,6 +33,10 @@
             <argument type="service" id="fos_user.user_manager" />
         </service>
 
+        <service id="fos_user.user_provider.email" class="FOS\UserBundle\Security\EmailProvider" public="false">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
         <service id="fos_user.security.controller" class="FOS\UserBundle\Controller\SecurityController" public="true">
             <argument type="service" id="security.csrf.token_manager" on-invalid="null" />
             <call method="setContainer">
