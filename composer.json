@@ -27,10 +27,10 @@
         "symfony/validator": "^2.8 || ^3.0 || ^4.0",
         "twig/twig": "^1.28 || ^2.0",
         "symfony/templating": "^2.8 || ^3.0 || ^4.0",
-        "paragonie/random_compat": "^1 || ^2"
+        "paragonie/random_compat": "^1 || ^2",
+        "doctrine/doctrine-bundle": "^1.3"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^1.3",
         "friendsofphp/php-cs-fixer": "^2.2",
         "swiftmailer/swiftmailer": "^4.3 || ^5.0 || ^6.0",
         "symfony/console": "^2.8 || ^3.0 || ^4.0",
