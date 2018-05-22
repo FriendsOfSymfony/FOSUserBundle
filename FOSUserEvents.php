@@ -143,6 +143,15 @@ final class FOSUserEvents
     const REGISTRATION_INITIALIZE = 'fos_user.registration.initialize';
 
     /**
+     * The REGISTRATION_FORM_INITIALIZE event occurs when the registration form is initialized.
+     *
+     * This event allows you to modify registration form after registration process is initialized.
+     *
+     * @Event("FOS\UserBundle\Event\UserEvent")
+     */
+    const REGISTRATION_FORM_INITIALIZE = 'fos_user.registration.form.initialize';
+
+    /**
      * The REGISTRATION_SUCCESS event occurs when the registration form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
