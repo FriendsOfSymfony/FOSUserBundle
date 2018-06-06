@@ -5,15 +5,15 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="fos_user_security_login" path="/login" methods="GET POST">
-        <default key="_controller">fos_user.security.controller:loginAction</default>
+        <default key="_controller">fos_user.security.controller::loginAction</default>
     </route>
 
     <route id="fos_user_security_check" path="/login_check" methods="POST">
-        <default key="_controller">fos_user.security.controller:checkAction</default>
+        <default key="_controller">fos_user.security.controller::checkAction</default>
     </route>
 
     <route id="fos_user_security_logout" path="/logout" methods="GET POST">
-        <default key="_controller">fos_user.security.controller:logoutAction</default>
+        <default key="_controller">fos_user.security.controller::logoutAction</default>
     </route>
 
 </routes>
