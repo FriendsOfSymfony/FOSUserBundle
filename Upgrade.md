@@ -6,9 +6,9 @@ break. For the full list of changes, please look at the Changelog file.
 
 ## 2.0 to 2.1
 
-Controllers and commands now use DI and are defined as services.
+Controllers and commands now use DI, and are defined as services.
 
-Projects overriding them will need to adapt their code to fit with these changes.
+Projects overriding them will need to adapt their code, to fit with these changes.
 Note that backward compatibility is not ensured for such usage. Relying on
 extension points of the bundle (mostly through events) is preferred.
 
@@ -28,7 +28,7 @@ from the Symfony component, but neither Symfony nor this bundle are providing
 ways to use these features fully (expired credentials would just prevent
 logging in for instance).
 Projects needing to use these advanced feature should add the fields they
-need in their User class and override the corresponding method to provide
+need in their User class, and override the corresponding method to provide
 an implementation fitting their requirement. Projects wanting to keep the
 previous behavior of the bundle can copy the condition used in 1.3.7.
 
@@ -37,7 +37,7 @@ aren't mapped anymore.
 
 ### Propel
 
-Propel integration has been moved to a separate bundle and can be installed using
+Propel integration has been moved to a separate bundle, and can be installed using
 composer:
 
 ```
@@ -106,7 +106,7 @@ public function checkEmailAction()
 
 ### UserListener
 
-The signature of the UserListener constructor has changed and now requires an
+The signature of the UserListener constructor has changed, and now requires an
 implementation of `PasswordUpdaterInterface` and `CanonicalFieldsUpdater`.
 
 Before:
@@ -133,7 +133,7 @@ class UserListener
 
 ### UserManager
 
-The public methods `refreshUser`, `loadUserByUsername` and `supportsClass` have been
+The public methods `refreshUser`, `loadUserByUsername`, and `supportsClass` have been
 removed. Please use the UserProvider instead.
 
 Before:
@@ -154,7 +154,7 @@ $userProvider->supportsClass($class);
 
 ```
 
-The signature of the UserManager constructor has changed and now requires an
+The signature of the UserManager constructor has changed, and now requires an
 implementation of `PasswordUpdaterInterface` and `CanonicalFieldsUpdater`.
 
 Before:
@@ -184,7 +184,7 @@ class UserManager
 
 ### Validator
 
-The signature of the Validator Initializer constructor has changed and now
+The signature of the Validator Initializer constructor has changed, and now
 requires an implementation of `CanonicalFieldsUpdater`.
 
 Before:
@@ -209,7 +209,7 @@ class Initializer
 
 ### User Provider
 
-Using the UserManager as a user provider is no longer supported and is
+Using the UserManager as a user provider is no longer supported, and is
 deprecated. Change your security.yml's provider section to look like:
 
 ```yml
@@ -229,16 +229,16 @@ The XML namespace is changed from `http://example.org/schema/dic/fos_user` to
 
 This bundle now [registers mappings](http://symfony.com/doc/master/cookbook/doctrine/mapping_model_classes.html)
 for the classes in the Model namespace directly, instead
-of having empty extending classes. The User and Group classes in the Entity and
+of having empty extending classes. The User and Group classes in the Entity, and
 Document namespaces are deprecated, you should update your User and Group
 classes to extend the classes found in `Model`.
-The old classes will are still available for now, but throw deprecated warnings. They will be removed
+The old classes will be still available for now, but throw deprecated warnings. They will be removed
 in the next alpha.
 
 ## 1.3.4 to 1.3.5
 
 The characters used in generated tokens have changed. They now include dashes
-and underscores as well. Any routing requirement matching them should be
+and underscores as well. Any routing requirement matching them, should be
 updated to ``[\w\-]+``.
 
 Before:
@@ -270,13 +270,13 @@ user object directly.
 ### Groups
 
 The `FOS\UserBundle\Model\GroupableInterface` interface now expects the `getGroups`
-method to return a Traversable instead of expecting a Doctrine Collection.
-Doctrine-based implementation are unchanged but the Propel implementation
-now returns the PropelCollection instead of wrapping it.
+method to return a Traversable, instead of expecting a Doctrine Collection.
+Doctrine-based implementation are unchanged, but the Propel implementation
+now returns the PropelCollection, instead of wrapping it.
 
 ### Manager classes
 
-The different Doctrine-based manager classes are deprecated and will be removed
+The different Doctrine-based manager classes are deprecated, and will be removed
 in 2.0 in favor of the common implementation. If you were extending the UserManager
 class for a Doctrine implementation, you need to change the parent class
 to `FOS\UserBundle\Doctrine\UserManager`.
@@ -318,9 +318,9 @@ If you are experiencing the exception
 `No encoder has been configured for account "Acme\DemoBundle\Entity\User"`
 after upgrading, please consider the following.
 
-The encoder now needs to be configured in the SecurityBundle configuration
+The encoder now needs to be configured in the SecurityBundle configuration,
 as described in the official documentation. If you were using the default
-value of the bundle, the config should look like this to reuse the same settings:
+value of the bundle, the config should look like this, to reuse the same settings:
 
 ```yaml
 #app/config/security.yml
