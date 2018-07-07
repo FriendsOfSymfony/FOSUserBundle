@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -13,39 +14,37 @@ namespace FOS\UserBundle\Tests\Security;
 use FOS\UserBundle\Security\UserChecker;
 use PHPUnit\Framework\TestCase;
 
-use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
-use Symfony\Component\Security\Core\Exception\LockedException;
-use Symfony\Component\Security\Core\Exception\DisabledException;
-use Symfony\Component\Security\Core\Exception\AccountExpiredException;
-
 class UserCheckerTest extends TestCase
 {
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\LockedException
+     * @expectedExceptionMessage User account is locked.
+     */
     public function testCheckPreAuthFailsLockedOut()
     {
         $userMock = $this->getUser(false, false, false, false);
-        $this->expectException(LockedException::class);
-        $this->expectExceptionMessage('User account is locked.');
-
         $checker = new UserChecker();
         $checker->checkPreAuth($userMock);
     }
 
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\DisabledException
+     * @expectedExceptionMessage User account is disabled.
+     */
     public function testCheckPreAuthFailsIsEnabled()
     {
         $userMock = $this->getUser(true, false, false, false);
-        $this->expectException(DisabledException::class);
-        $this->expectExceptionMessage('User account is disabled.');
-
         $checker = new UserChecker();
         $checker->checkPreAuth($userMock);
     }
 
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\AccountExpiredException
+     * @expectedExceptionMessage User account has expired.
+     */
     public function testCheckPreAuthFailsIsAccountNonExpired()
     {
         $userMock = $this->getUser(true, true, false, false);
-        $this->expectException(AccountExpiredException::class);
-        $this->expectExceptionMessage('User account has expired.');
-
         $checker = new UserChecker();
         $checker->checkPreAuth($userMock);
     }
@@ -54,6 +53,7 @@ class UserCheckerTest extends TestCase
     {
         $userMock = $this->getUser(true, true, true, false);
         $checker = new UserChecker();
+
         try {
             $this->assertNull($checker->checkPreAuth($userMock));
         } catch (\Exception $ex) {
@@ -61,12 +61,13 @@ class UserCheckerTest extends TestCase
         }
     }
 
+    /**
+     * @expectedException \Symfony\Component\Security\Core\Exception\CredentialsExpiredException
+     * @expectedExceptionMessage User credentials have expired.
+     */
     public function testCheckPostAuthFailsIsCredentialsNonExpired()
     {
         $userMock = $this->getUser(true, true, true, false);
-        $this->expectException(CredentialsExpiredException::class);
-        $this->expectExceptionMessage('User credentials have expired.');
-
         $checker = new UserChecker();
         $checker->checkPostAuth($userMock);
     }
@@ -75,6 +76,7 @@ class UserCheckerTest extends TestCase
     {
         $userMock = $this->getUser(true, true, true, true);
         $checker = new UserChecker();
+
         try {
             $this->assertNull($checker->checkPostAuth($userMock));
         } catch (\Exception $ex) {
@@ -85,7 +87,6 @@ class UserCheckerTest extends TestCase
     private function getUser($isAccountNonLocked, $isEnabled, $isAccountNonExpired, $isCredentialsNonExpired)
     {
         $userMock = $this->getMockBuilder('FOS\UserBundle\Model\User')->getMock();
-
         $userMock
             ->method('isAccountNonLocked')
             ->willReturn($isAccountNonLocked);

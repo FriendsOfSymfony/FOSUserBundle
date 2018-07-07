@@ -13,7 +13,6 @@ namespace FOS\UserBundle\Tests\Mailer;
 
 use FOS\UserBundle\Mailer\Mailer;
 use PHPUnit\Framework\TestCase;
-use Swift_Events_EventDispatcher;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
 
@@ -84,7 +83,7 @@ class MailerTest extends TestCase
         return new Mailer(
             new Swift_Mailer(
                 new Swift_Transport_NullTransport(
-                    $this->getMockBuilder('Swift_Events_EventDispatcher')->getMock()
+                    $this->getMockBuilder('\Swift_Events_EventDispatcher')->getMock()
                 )
             ),
             $this->getMockBuilder('Symfony\Component\Routing\Generator\UrlGeneratorInterface')->getMock(),
