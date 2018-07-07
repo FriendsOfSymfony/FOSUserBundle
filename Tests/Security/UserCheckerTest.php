@@ -84,7 +84,7 @@ class UserCheckerTest extends TestCase
 
     private function getUser($isAccountNonLocked, $isEnabled, $isAccountNonExpired, $isCredentialsNonExpired)
     {
-        $userMock = $this->createMock('FOS\UserBundle\Model\User');
+        $userMock = $this->getMockBuilder('FOS\UserBundle\Model\User')->getMock();
 
         $userMock
             ->method('isAccountNonLocked')
