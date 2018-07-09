@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface UserInterface extends AdvancedUserInterface, \Serializable
+interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterface, \Serializable
 {
     const ROLE_DEFAULT = 'ROLE_USER';
 
