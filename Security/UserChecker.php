@@ -26,7 +26,7 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 class UserChecker extends BaseUserChecker
 {
     /**
-     * {@inheritdoc}
+     *  {@inheritdoc}
      */
     public function checkPreAuth(BaseUserInterface $user)
     {
