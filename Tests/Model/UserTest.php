@@ -79,6 +79,25 @@ class UserTest extends TestCase
         $this->assertTrue($user->hasRole($newrole));
     }
 
+    public function testIsEqualTo()
+    {
+        $user = $this->getUser();
+        $this->assertTrue($user->isEqualTo($user));
+        $this->assertFalse($user->isEqualTo($this->getMockBuilder('FOS\UserBundle\Model\UserInterface')->getMock()));
+
+        $user2 = $this->getUser();
+        $user2->setPassword('secret');
+        $this->assertFalse($user->isEqualTo($user2));
+
+        $user3 = $this->getUser();
+        $user3->setSalt('pepper');
+        $this->assertFalse($user->isEqualTo($user3));
+
+        $user4 = $this->getUser();
+        $user4->setUsername('f00b4r');
+        $this->assertFalse($user->isEqualTo($user4));
+    }
+
     /**
      * @return User
      */

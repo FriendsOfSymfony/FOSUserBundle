@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Model;
 
+use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Julian Finkler <julian@developer-heaven.de>
  */
-interface UserInterface extends BaseUserInterface, \Serializable
+interface UserInterface extends BaseUserInterface, \Serializable, EquatableInterface
 {
     const ROLE_DEFAULT = 'ROLE_USER';
 

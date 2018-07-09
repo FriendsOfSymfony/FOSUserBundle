@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
  * Storage agnostic user object.
@@ -553,5 +554,29 @@ abstract class User implements UserInterface, GroupableInterface
         }
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEqualTo(BaseUserInterface $user)
+    {
+        if (!$user instanceof self) {
+            return false;
+        }
+
+        if ($this->password !== $user->getPassword()) {
+            return false;
+        }
+
+        if ($this->salt !== $user->getSalt()) {
+            return false;
+        }
+
+        if ($this->username !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
     }
 }
