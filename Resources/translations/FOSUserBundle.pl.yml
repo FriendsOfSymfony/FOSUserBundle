@@ -13,7 +13,7 @@ security:
     login:
         username: 'Nazwa użytkownika'
         password: Hasło
-        remember_me: 'Nie wylogowuj mnie'
+        remember_me: 'Zapamiętaj mnie'
         submit: Zaloguj
 profile:
     show:
@@ -28,18 +28,18 @@ change_password:
     flash:
         success: 'Hasło zostało zmienione.'
 registration:
-    check_email: 'Na adres %email% wysłano wiadomość e-mail. Zawiera ona link, na który należy kliknąć, aby aktywować konto.'
-    confirmed: 'Gratulacje %username%, potwierdziłeś konto.'
+    check_email: 'Na adres %email% wysłano wiadomość e-mail z linkiem. Kliknij go, aby aktywować Twoje konto.'
+    confirmed: 'Gratulacje %username%, Twoje konto zostało aktywowane.'
     back: 'Powrót do poprzedniej strony.'
     submit: Zarejestruj
     flash:
-        user_created: 'Stworzono użytkownika.'
+        user_created: 'Utworzono użytkownika.'
     email:
         subject: 'Witaj %username%!'
         message: |
             Cześć %username%!
 
-            Aby potwierdzić swoje konto - proszę przejść do %confirmationUrl%
+            Aby potwierdzić Twoje konto, przejdź pod adres %confirmationUrl%
 
             Pozdrawiamy,
             Zespół.
@@ -63,7 +63,7 @@ resetting:
         message: |
             Cześć %username%!
 
-            Aby zresetować hasło - proszę przejść do %confirmationUrl%
+            Aby zresetować hasło, przejdź pod adres %confirmationUrl%
 
             Pozdrawiamy,
             Zespół.
