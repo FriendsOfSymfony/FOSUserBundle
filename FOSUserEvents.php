@@ -258,12 +258,23 @@ final class FOSUserEvents
     /**
      * The RESETTING_SEND_EMAIL_COMPLETED event occurs after the email is sent.
      *
-     * This event allows you to set the response to bypass the the redirection after the email is sent.
+     * This event allows you to set the response to bypass the redirection after the email is sent.
      * The event listener method receives a FOS\UserBundle\Event\GetResponseUserEvent instance.
      *
      * @Event("FOS\UserBundle\Event\GetResponseUserEvent")
      */
     const RESETTING_SEND_EMAIL_COMPLETED = 'fos_user.resetting.send_email.completed';
+
+    /**
+     * The RESETTING_SEND_EMAIL_FAILURE event occurs whenever email is not send due to non-existing username
+     * or expired password request.
+     *
+     * This event allows you to set the response to bypass the redirection after the email is not sent.
+     * The event listener method receives a FOS\UserBundle\Event\GetResponseNullableUserEvent instance.
+     *
+     * @Event("FOS\UserBundle\Event\GetResponseNullableUserEvent")
+     */
+    const RESETTING_SEND_EMAIL_FAILURE = 'fos_user.resetting.send_email.failure';
 
     /**
      * The USER_CREATED event occurs when the user is created with UserManipulator.

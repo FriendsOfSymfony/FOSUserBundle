@@ -120,6 +120,13 @@ class ResettingController extends Controller
             if (null !== $event->getResponse()) {
                 return $event->getResponse();
             }
+        } else {
+            $event = new GetResponseNullableUserEvent($user, $request);
+            $this->eventDispatcher->dispatch(FOSUserEvents::RESETTING_SEND_EMAIL_FAILURE, $event);
+
+            if (null !== $event->getResponse()) {
+                return $event->getResponse();
+            }
         }
 
         return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
