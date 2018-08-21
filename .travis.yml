@@ -29,10 +29,10 @@ cache:
     - $HOME/.composer/cache
 
 before_install:
+  - echo "memory_limit=4G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
   - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
   - if [ "$DEPENDENCIES" != "" ]; then composer require --no-update $DEPENDENCIES; fi;
-  - echo "memory_limit=4G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
