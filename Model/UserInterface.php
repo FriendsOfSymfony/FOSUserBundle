@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -15,11 +14,11 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- * @author Johannes M. Schmitt <schmittjoh@gmail.com>
- * @author Julian Finkler <julian@developer-heaven.de>
+ * Only for back compatibility
+ * Remove / Merge with UserInterface in Nov 2023 (End of support for security fixes SF 4.4)
+ * @internal
  */
-interface UserInterface extends BaseUserInterface, \Serializable, EquatableInterface
+interface FosUserInterface extends \Serializable
 {
     const ROLE_DEFAULT = 'ROLE_USER';
 
@@ -277,4 +276,26 @@ interface UserInterface extends BaseUserInterface, \Serializable, EquatableInter
      * @see DisabledException
      */
     public function isEnabled();
+}
+
+// This is required to support apps that explicitly check if a user is an instance of AdvancedUserInterface
+if (interface_exists('\Symfony\Component\Security\Core\User\AdvancedUserInterface')) {
+    /**
+     * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+     * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+     *
+     * @deprecated since Symfony 4.1. Remove in Nov 2023 (End of support for security fixes SF 4.4)
+     */
+    interface UserInterface extends FosUserInterface, \Symfony\Component\Security\Core\User\AdvancedUserInterface
+    {
+    }
+} else {
+    /**
+     * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+     * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+     * @author Julian Finkler <julian@developer-heaven.de>
+     */
+    interface UserInterface extends FosUserInterface, BaseUserInterface, EquatableInterface
+    {
+    }
 }
