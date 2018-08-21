@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -14,9 +15,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
- * Only for back compatibility
- * Remove / Merge with UserInterface in Nov 2023 (End of support for security fixes SF 4.4)
- * @internal
+ * @internal Only for back compatibility Remove / Merge with UserInterface in Nov 2023 (End of support for security fixes SF 4.4)
  */
 interface FosUserInterface extends \Serializable
 {
