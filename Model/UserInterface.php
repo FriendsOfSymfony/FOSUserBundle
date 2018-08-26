@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
- * @internal Only for back compatibility Remove / Merge with UserInterface in Nov 2023 (End of support for security fixes SF 4.4)
+ * @internal Only for back compatibility. Remove / merge when dropping support for Symfony 4
  */
 interface FosUserInterface extends \Serializable
 {

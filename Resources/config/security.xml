@@ -46,7 +46,7 @@
 
         <service id="FOS\UserBundle\Controller\SecurityController" alias="fos_user.security.controller" public="true" />
 
-        <service id="fos_user.user_checker" class="FOS\UserBundle\Security\UserChecker" public="true" />
+        <service id="fos_user.user_checker" class="FOS\UserBundle\Security\UserChecker" public="false" />
     </services>
 
 </container>
