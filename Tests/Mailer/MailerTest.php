@@ -95,7 +95,7 @@ class MailerTest extends TestCase
                     'confirmation' => 'foo@example.com',
                     'resetting' => 'foo@example.com',
                 ),
-                'bcc_email' => null
+                'bcc_email' => null,
             )
         );
     }
