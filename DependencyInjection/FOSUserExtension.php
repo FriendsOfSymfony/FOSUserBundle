@@ -114,7 +114,7 @@ class FOSUserExtension extends Extension
         }
 
         if (!empty($config['registration'])) {
-            $this->loadRegistration($config['registration'], $container, $loader, $config['from_email']);
+            $this->loadRegistration($config['registration'], $container, $loader, $config['from_email'], $config['bcc_email']);
         }
 
         if (!empty($config['change_password'])) {
@@ -122,7 +122,7 @@ class FOSUserExtension extends Extension
         }
 
         if (!empty($config['resetting'])) {
-            $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
+            $this->loadResetting($config['resetting'], $container, $loader, $config['from_email'], $config['bcc_email']);
         }
 
         if (!empty($config['group'])) {
@@ -206,8 +206,9 @@ class FOSUserExtension extends Extension
      * @param ContainerBuilder $container
      * @param XmlFileLoader    $loader
      * @param array            $fromEmail
+     * @param string           $bccEmail
      */
-    private function loadRegistration(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
+    private function loadRegistration(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail, $bccEmail)
     {
         $loader->load('registration.xml');
         $this->sessionNeeded = true;
@@ -223,6 +224,7 @@ class FOSUserExtension extends Extension
             unset($config['confirmation']['from_email']);
         }
         $container->setParameter('fos_user.registration.confirmation.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+        $container->setParameter('fos_user.bcc_email', $bccEmail);
 
         $this->remapParametersNamespaces($config, $container, array(
             'confirmation' => 'fos_user.registration.confirmation.%s',
@@ -250,7 +252,7 @@ class FOSUserExtension extends Extension
      * @param XmlFileLoader    $loader
      * @param array            $fromEmail
      */
-    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail)
+    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail, $bccEmail)
     {
         $this->mailerNeeded = true;
         $loader->load('resetting.xml');
@@ -261,6 +263,7 @@ class FOSUserExtension extends Extension
             unset($config['email']['from_email']);
         }
         $container->setParameter('fos_user.resetting.email.from_email', array($fromEmail['address'] => $fromEmail['sender_name']));
+        $container->setParameter('fos_user.bcc_email', $bccEmail);
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
