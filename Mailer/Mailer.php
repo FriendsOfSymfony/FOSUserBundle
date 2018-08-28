@@ -95,15 +95,15 @@ class Mailer implements MailerInterface
         $renderedLines = explode("\n", trim($renderedTemplate));
         $subject = array_shift($renderedLines);
         $body = implode("\n", $renderedLines);
-        $bccEmail =  $this->parameters['bcc_email'];
-        
+        $bccEmail = $this->parameters['bcc_email'];
+
         $message = (new \Swift_Message())
             ->setSubject($subject)
             ->setFrom($fromEmail)
             ->setTo($toEmail)
             ->setBody($body);
-        
-        if(!empty($bccEmail)){
+
+        if (!empty($bccEmail)) {
             $message->setBcc($bccEmail);
         }
 
