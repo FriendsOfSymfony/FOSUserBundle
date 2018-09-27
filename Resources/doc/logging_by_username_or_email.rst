@@ -1,4 +1,4 @@
-Logging by Username or Email
+Logging in by Username or Email
 ============================
 
 As of the version 1.3.0, the bundle provides a built-in user provider implementation
