@@ -40,7 +40,7 @@ sure you have a mailer intalled in your project.
 
     $ composer require symfony/swiftmailer-bundle
 
-For more information about email, check `swiftmailer component documentation`_.
+For more information about email, check `swiftmailer documentation`_.
 
 Storage
 ~~~~~~~
@@ -54,8 +54,7 @@ or CouchDB ODM). You also may use a custom storage.
     $ composer require symfony/orm-pack
     $ composer require doctrine/mongodb-odm-bundle
     $ composer require doctrine/couchdb-odm-bundle
-
-For more information about custom storage, check `custom_storage_layer`_.
+    
 
 Installation
 ------------
