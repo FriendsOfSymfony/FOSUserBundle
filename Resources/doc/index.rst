@@ -15,36 +15,60 @@ For a video tutorial, check out `FOSUserBundle FTW`_ by KnpUniversity.
 Prerequisites
 -------------
 
-This version of the bundle requires Symfony 2.8+. If you are using an older
-Symfony version, please use the 1.3.x releases of the bundle.
+This version of the documentation requires Symfony flex. If you are using an older
+Symfony version, please use the 2.8+ or 1.3.x releases of the documentation.
 
 Translations
 ~~~~~~~~~~~~
 
 If you wish to use default texts provided in this bundle, you have to make
-sure you have translator enabled in your config.
+sure you have translator installed in your project.
 
-.. code-block:: yaml
+.. code-block:: bash
 
-    # app/config/config.yml
+    $ composer require symfony/translation
 
-    framework:
-        translator: ~
+For more information about translations, check `translator component documentation`_.
 
-For more information about translations, check `Symfony documentation`_.
+Mailer
+~~~~~~
+
+This bundle requires a mailer to send email provided in this bundle, you have to make
+sure you have a mailer intalled in your project.
+
+.. code-block:: bash
+
+    $ composer require symfony/swiftmailer-bundle
+
+For more information about email, check `swiftmailer component documentation`_.
+
+Storage
+~~~~~~~
+
+This bundle requires a storage to persist some ``User`` class to a database.
+If you wish to use one of the doctrine variants (Doctrine ORM, MongoDB ODM,
+or CouchDB ODM). You also may use a custom storage.
+
+.. code-block:: bash
+
+    $ composer require symfony/orm-pack
+    $ composer require doctrine/mongodb-odm-bundle
+    $ composer require doctrine/couchdb-odm-bundle
+
+For more information about custom storage, check `custom_storage_layer`_.
 
 Installation
 ------------
 
-Installation is a quick (I promise!) 7 step process:
+Installation is a quick (I promise!) 6 step process:
 
 1. Download FOSUserBundle using composer
-2. Enable the Bundle
+2. Configure the FOSUserBundle
 3. Create your User class
-4. Configure your application's security.yml
-5. Configure the FOSUserBundle
-6. Import FOSUserBundle routing
-7. Update your database schema
+4. Configure your application's security.yaml
+5. Import FOSUserBundle routing
+6. Update your database schema
+
 
 Step 1: Download FOSUserBundle using composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,27 +77,82 @@ Require the bundle with composer:
 
 .. code-block:: bash
 
-    $ composer require friendsofsymfony/user-bundle "~2.0"
+    $ composer require friendsofsymfony/user-bundle "~2.1"
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
-If you encounter installation errors pointing at a lack of configuration parameters, such as ``The child node "db_driver" at path "fos_user" must be configured``, you should complete the configuration in Step 5 first and then re-run this step.
+If you encounter installation errors pointing at a lack of configuration parameters, 
+such as ``The child node "db_driver" at path "fos_user" must be configured``, 
+you should complete the configuration in Step 2 first and then re-run this step.
 
-Step 2: Enable the bundle
-~~~~~~~~~~~~~~~~~~~~~~~~~
+The bundle enabling should be done automatically in the ``config/bundles.php`` by the auto generated recipe.
 
-Enable the bundle in the kernel::
 
-    <?php
-    // app/AppKernel.php
+Step 2: Configure the FOSUserBundle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new FOS\UserBundle\FOSUserBundle(),
-            // ...
-        );
-    }
+The next step is to configure the bundle to work with the specific needs of your application.
+
+Add the following configuration to your ``config/packages/fos_user.yaml`` file 
+according to which type of datastore you are using. You should create the file if needed.
+
+.. configuration-block::
+
+    .. code-block:: yaml
+
+        # config/packages/fos_user.yaml
+
+        framework:
+            csrf_protection: true
+            templating:
+                engines: ['twig']
+
+        fos_user:
+            db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+            firewall_name: main
+            user_class: App\Entity\User
+            from_email:
+                address: "%env(MAILER_SENDER_ADDRESS)%"
+                sender_name: "%env(MAILER_SENDER_NAME)%"
+
+    .. code-block:: xml
+
+        <!-- config/packages/fos_user.xml -->
+
+        <framework:config>
+            <framework:config csrf-protection />
+            <framework:templating>
+                <framework:engines>twig</framework:engines>
+            </framework:templating>
+        </framework:config>
+
+        <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
+        <fos_user:config
+            db-driver="orm"
+            firewall-name="main"
+            user-class="App\Entity\User"
+        />
+
+Only four configuration's nodes are required to use the bundle:
+
+* The type of datastore you are using (``orm``, ``mongodb`` or ``couchdb``).
+* The firewall name which you configured in 5.
+* The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
+* The default email address to use when the bundle send a registration confirmation to the user.
+
+You should add the following environnements variables to your ``.env`` file 
+
+.. code-block:: env
+
+    MAILER_SENDER_ADDRESS=johndoe@example.com
+    MAILER_SENDER_NAME="John Doe"
+
+.. note::
+
+    FOSUserBundle uses a compiler pass to register mappings for the base
+    User and Group model classes with the object manager that you configured
+    it to use. (Unless specified explicitly, this is the default manager
+    of your doctrine configuration.)
+
 
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -101,7 +180,7 @@ or CouchDB ODM).
 
 .. note::
 
-    The doc uses a bundle named ``AppBundle`` according to the Symfony best
+    The doc uses a bundle named ``App`` according to the Symfony best
     practices. However, you can of course place your user class in the bundle
     you want.
 
@@ -123,9 +202,9 @@ start:
     .. code-block:: php-annotations
 
         <?php
-        // src/AppBundle/Entity/User.php
+        // src/Entity/User.php
 
-        namespace AppBundle\Entity;
+        namespace App\Entity;
 
         use FOS\UserBundle\Model\User as BaseUser;
         use Doctrine\ORM\Mapping as ORM;
@@ -152,8 +231,8 @@ start:
 
     .. code-block:: yaml
 
-        # src/AppBundle/Resources/config/doctrine/User.orm.yml
-        AppBundle\Entity\User:
+        # src/Entity/User.orm.yaml
+        App\Entity\User:
             type:  entity
             table: fos_user
             id:
@@ -165,12 +244,12 @@ start:
     .. code-block:: xml
 
         <?xml version="1.0" encoding="utf-8"?>
-        <!-- src/AppBundle/Resources/config/doctrine/User.orm.xml -->
+        <!-- src/Entity/User.orm.xml -->
         <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-            <entity name="AppBundle\Entity\User" table="fos_user">
+            <entity name="App\Entity\User" table="fos_user">
                 <id name="id" type="integer" column="id">
                     <generator strategy="AUTO"/>
                 </id>
@@ -189,9 +268,9 @@ class should live in the ``Document`` namespace of your bundle and look like
 this to start::
 
     <?php
-    // src/AppBundle/Document/User.php
+    // src/Document/User.php
 
-    namespace AppBundle\Document;
+    namespace App\Document;
 
     use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
@@ -221,9 +300,9 @@ class should live in the ``CouchDocument`` namespace of your bundle and look
 like this to start::
 
     <?php
-    // src/AppBundle/CouchDocument/User.php
+    // src/CouchDocument/User.php
 
-    namespace AppBundle\CouchDocument;
+    namespace App\CouchDocument;
 
     use FOS\UserBundle\Model\User as BaseUser;
     use Doctrine\ODM\CouchDB\Mapping\Annotations as CouchDB;
@@ -246,19 +325,19 @@ like this to start::
     }
 
 
-Step 4: Configure your application's security.yml
+5: Configure your application's security.yaml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for Symfony's security component to use the FOSUserBundle, you must
-tell it to do so in the ``security.yml`` file. The ``security.yml`` file is where the
-basic security configuration for your application is contained.
+tell it to do so in the ``config/packages/security.yaml`` file. 
+The ``security.yaml`` file is where the basic security configuration for your application is contained.
 
 Below is a minimal example of the configuration necessary to use the FOSUserBundle
 in your application:
 
 .. code-block:: yaml
 
-    # app/config/security.yml
+    # config/packages/security.yaml
     security:
         encoders:
             FOS\UserBundle\Model\UserInterface: bcrypt
@@ -318,64 +397,17 @@ any request matching the ``/login`` pattern or starting with ``/register`` or
 that any request beginning with ``/admin`` will require a user to have the
 ``ROLE_ADMIN`` role.
 
-For more information on configuring the ``security.yml`` file please read the Symfony
+For more information on configuring the ``security.yaml`` file please read the Symfony
 `security component documentation`_.
 
 .. note::
 
     Pay close attention to the name, ``main``, that we have given to the
     firewall which the FOSUserBundle is configured in. You will use this
-    in the next step when you configure the FOSUserBundle.
+    in the ``fos_user.yaml`` configuration file.
 
-Step 5: Configure the FOSUserBundle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that you have properly configured your application's ``security.yml`` to work
-with the FOSUserBundle, the next step is to configure the bundle to work with
-the specific needs of your application.
-
-Add the following configuration to your ``config.yml`` file according to which type
-of datastore you are using.
-
-.. configuration-block::
-
-    .. code-block:: yaml
-
-        # app/config/config.yml
-        fos_user:
-            db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-            firewall_name: main
-            user_class: AppBundle\Entity\User
-            from_email:
-                address: "%mailer_user%"
-                sender_name: "%mailer_user%"
-
-    .. code-block:: xml
-
-        <!-- app/config/config.xml -->
-
-        <!-- other valid 'db-driver' values are 'mongodb' and 'couchdb' -->
-        <fos_user:config
-            db-driver="orm"
-            firewall-name="main"
-            user-class="AppBundle\Entity\User"
-        />
-
-Only four configuration's nodes are required to use the bundle:
-
-* The type of datastore you are using (``orm``, ``mongodb`` or ``couchdb``).
-* The firewall name which you configured in Step 4.
-* The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
-* The default email address to use when the bundle send a registration confirmation to the user.
-
-.. note::
-
-    FOSUserBundle uses a compiler pass to register mappings for the base
-    User and Group model classes with the object manager that you configured
-    it to use. (Unless specified explicitly, this is the default manager
-    of your doctrine configuration.)
-
-Step 6: Import FOSUserBundle routing files
+Step 5: Import FOSUserBundle routing files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have activated and configured the bundle, all that is left to do is
@@ -384,36 +416,40 @@ import the FOSUserBundle routing files.
 By importing the routing files you will have ready made pages for things such as
 logging in, creating users, etc.
 
+You should create the ``config/routes/fos_user.yaml`` if needed.
+
 .. configuration-block::
 
     .. code-block:: yaml
 
-        # app/config/routing.yml
+        # config/routes/fos_user.yaml
         fos_user:
             resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
     .. code-block:: xml
 
-            <!-- app/config/routing.xml -->
-            <import resource="@FOSUserBundle/Resources/config/routing/all.xml"/>
+        <!-- config/routes/fos_user.xml -->
+        <import resource="@FOSUserBundle/Resources/config/routing/all.xml"/>
 
 .. note::
 
     In order to use the built-in email functionality (confirmation of the account,
     resetting of the password), you must activate and configure the SwiftmailerBundle.
 
-Step 7: Update your database schema
+
+Step 6: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that the bundle is configured, the last thing you need to do is update your
 database schema because you have added a new entity, the ``User`` class which you
-created in Step 4.
+created in Step 3.
 
 For ORM run the following command.
 
 .. code-block:: bash
 
-    $ php bin/console doctrine:schema:update --force
+    $ php bin/console doctrine:migration:diff
+    $ php bin/console doctrine:migration:migrate --no-interaction
 
 For MongoDB users you can run the following command to create the indexes.
 
@@ -421,12 +457,7 @@ For MongoDB users you can run the following command to create the indexes.
 
     $ php bin/console doctrine:mongodb:schema:create --index
 
-.. note::
-
-    If you use the Symfony 2.x structure in your project, use ``app/console``
-    instead of ``bin/console`` in the commands.
-
-You now can log in at ``http://app.com/app_dev.php/login``!
+You now can log in at ``http://localhost:8000/login``!
 
 Next Steps
 ~~~~~~~~~~
@@ -457,7 +488,8 @@ The following documents are available:
     configuration_reference
     adding_invitation_registration
 
-.. _security component documentation: https://symfony.com/doc/current/book/security.html
-.. _Symfony documentation: https://symfony.com/doc/current/book/translation.html
+.. _security component documentation: https://symfony.com/doc/current/security.html
+.. _translator component documentation: https://symfony.com/doc/current/translation.html
+.. _swiftmailer documentation: https://symfony.com/doc/current/email.html
 .. _TypehintableBehavior: https://github.com/willdurand/TypehintableBehavior
 .. _FOSUserBundle FTW: https://knpuniversity.com/screencast/fosuserbundle
