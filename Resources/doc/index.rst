@@ -16,7 +16,7 @@ Prerequisites
 -------------
 
 This version of the documentation requires Symfony flex. If you are using an older
-Symfony version, please use the 2.8+ or 1.3.x releases of the documentation.
+Symfony version, please use the 2.0.x or 1.3.x releases of the documentation.
 
 Translations
 ~~~~~~~~~~~~
@@ -54,7 +54,7 @@ or CouchDB ODM). You also may use a custom storage.
     $ composer require symfony/orm-pack
     $ composer require doctrine/mongodb-odm-bundle
     $ composer require doctrine/couchdb-odm-bundle
-    
+
 
 Installation
 ------------
@@ -79,8 +79,8 @@ Require the bundle with composer:
     $ composer require friendsofsymfony/user-bundle "~2.1"
 
 Composer will install the bundle to your project's ``vendor/friendsofsymfony/user-bundle`` directory.
-If you encounter installation errors pointing at a lack of configuration parameters, 
-such as ``The child node "db_driver" at path "fos_user" must be configured``, 
+If you encounter installation errors pointing at a lack of configuration parameters,
+such as ``The child node "db_driver" at path "fos_user" must be configured``,
 you should complete the configuration in Step 2 first and then re-run this step.
 
 The bundle enabling should be done automatically in the ``config/bundles.php`` by the auto generated recipe.
@@ -91,7 +91,7 @@ Step 2: Configure the FOSUserBundle
 
 The next step is to configure the bundle to work with the specific needs of your application.
 
-Add the following configuration to your ``config/packages/fos_user.yaml`` file 
+Add the following configuration to your ``config/packages/fos_user.yaml`` file
 according to which type of datastore you are using. You should create the file if needed.
 
 .. configuration-block::
@@ -138,7 +138,7 @@ Only four configuration's nodes are required to use the bundle:
 * The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
 * The default email address to use when the bundle send a registration confirmation to the user.
 
-You should add the following environnements variables to your ``.env`` file 
+You should add the following environnements variables to your ``.env`` file
 
 .. code-block:: env
 
@@ -328,7 +328,7 @@ like this to start::
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for Symfony's security component to use the FOSUserBundle, you must
-tell it to do so in the ``config/packages/security.yaml`` file. 
+tell it to do so in the ``config/packages/security.yaml`` file.
 The ``security.yaml`` file is where the basic security configuration for your application is contained.
 
 Below is a minimal example of the configuration necessary to use the FOSUserBundle
