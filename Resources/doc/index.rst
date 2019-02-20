@@ -18,18 +18,6 @@ Prerequisites
 This version of the documentation requires Symfony flex. If you are using an older
 Symfony version, please use the 2.0.x or 1.3.x releases of the documentation.
 
-Translations
-~~~~~~~~~~~~
-
-If you wish to use default texts provided in this bundle, you have to make
-sure you have translator installed in your project.
-
-.. code-block:: bash
-
-    $ composer require symfony/translation
-
-For more information about translations, check `translator component documentation`_.
-
 Mailer
 ~~~~~~
 
