@@ -14,6 +14,7 @@ All available configuration options are listed below with their default values.
         use_authentication_listener: true
         use_username_form_type: true
         model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
+        bcc_email: null # change it to valid email to add bcc to all emails
         from_email:
             address:        webmaster@example.com
             sender_name:    webmaster
