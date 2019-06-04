@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -98,7 +99,7 @@ class Mailer implements MailerInterface
             );
         }
 
-        if (!in_array(get_class($this->mailer), ['Symfony\Component\Mailer\MailerInterface', '\Swift_Message'], true)) {
+        if (!in_array(get_class($this->mailer), ['Symfony\Component\Mailer\MailerInterface', 'Swift_Mailer'], true)) {
             throw new \RuntimeException(
                 'Sending email requires either symfony/mailer or symfony/swiftmailer-bundle'.
                 'Run "composer require symfony/mailer" or "composer require symfony/swiftmailer-bundle"'
@@ -118,7 +119,7 @@ class Mailer implements MailerInterface
                 ->html($body);
         }
 
-        if (class_exists('\Swift_Message')) {
+        if (class_exists('Swift_Mailer')) {
             $message = (new \Swift_Message())
                 ->setSubject($subject)
                 ->setFrom($fromEmail)
