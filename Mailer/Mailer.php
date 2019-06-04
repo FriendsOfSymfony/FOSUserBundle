@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class Mailer implements MailerInterface
 {
     /**
-     * @var \Swift_Mailer
+     * @var \Swift_Mailer|Symfony\Component\Mailer\MailerInterface
      */
     protected $mailer;
 
@@ -43,10 +43,10 @@ class Mailer implements MailerInterface
     /**
      * Mailer constructor.
      *
-     * @param \Swift_Mailer         $mailer
-     * @param UrlGeneratorInterface $router
-     * @param EngineInterface       $templating
-     * @param array                 $parameters
+     * @param \Swift_Mailer|Symfony\Component\Mailer\MailerInterface $mailer
+     * @param UrlGeneratorInterface                                  $router
+     * @param EngineInterface                                        $templating
+     * @param array                                                  $parameters
      */
     public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
     {
@@ -94,7 +94,14 @@ class Mailer implements MailerInterface
         if (null === $this->mailer) {
             throw new \RuntimeException(
                 'Sending email requires the "mailer" service to be available. '.
-                'Run "composer require symfony/swiftmailer-bundle" to install Swiftmailer.'
+                'Run "composer require symfony/mailer" or "composer require symfony/swiftmailer-bundle"'
+            );
+        }
+
+        if (!in_array(get_class($this->mailer), ['Symfony\Component\Mailer\MailerInterface', '\Swift_Message'], true)) {
+            throw new \RuntimeException(
+                'Sending email requires either symfony/mailer or symfony/swiftmailer-bundle'.
+                'Run "composer require symfony/mailer" or "composer require symfony/swiftmailer-bundle"'
             );
         }
 
@@ -103,11 +110,21 @@ class Mailer implements MailerInterface
         $subject = array_shift($renderedLines);
         $body = implode("\n", $renderedLines);
 
-        $message = (new \Swift_Message())
-            ->setSubject($subject)
-            ->setFrom($fromEmail)
-            ->setTo($toEmail)
-            ->setBody($body);
+        if (class_exists('Symfony\Component\Mailer\MailerInterface')) {
+            $message = (new Symfony\Component\Mime\Email())
+                ->subject($subject)
+                ->from($fromEmail)
+                ->to($toEmail)
+                ->html($body);
+        }
+
+        if (class_exists('\Swift_Message')) {
+            $message = (new \Swift_Message())
+                ->setSubject($subject)
+                ->setFrom($fromEmail)
+                ->setTo($toEmail)
+                ->setBody($body);
+        }
 
         $this->mailer->send($message);
     }
