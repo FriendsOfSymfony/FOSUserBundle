@@ -39,17 +39,17 @@ class Configuration implements ConfigurationInterface
             $rootNode = $treeBuilder->root('fos_user');
         }
 
-        $supportedDrivers = array('orm', 'mongodb', 'couchdb', 'custom');
+        $supportedDrivers = array('orm', 'mongodb', 'couchdb', 'custom', 'no_driver');
 
         $rootNode
             ->children()
                 ->scalarNode('db_driver')
+                    ->defaultValue('no_driver')
                     ->validate()
                         ->ifNotInArray($supportedDrivers)
                         ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
                     ->end()
                     ->cannotBeOverwritten()
-                    ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()

@@ -29,17 +29,6 @@ class FOSUserExtensionTest extends TestCase
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
-    public function testUserLoadThrowsExceptionUnlessDatabaseDriverSet()
-    {
-        $loader = new FOSUserExtension();
-        $config = $this->getEmptyConfig();
-        unset($config['db_driver']);
-        $loader->load(array($config), new ContainerBuilder());
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid()
     {
         $loader = new FOSUserExtension();
