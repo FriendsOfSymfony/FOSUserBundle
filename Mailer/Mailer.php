@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
+use Swift_Mailer;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -21,7 +22,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class Mailer implements MailerInterface
 {
     /**
-     * @var \Swift_Mailer
+     * @var \Swift_Mailer|Symfony\Component\Mailer\MailerInterface
      */
     protected $mailer;
 
@@ -43,10 +44,10 @@ class Mailer implements MailerInterface
     /**
      * Mailer constructor.
      *
-     * @param \Swift_Mailer         $mailer
-     * @param UrlGeneratorInterface $router
-     * @param EngineInterface       $templating
-     * @param array                 $parameters
+     * @param \Swift_Mailer|Symfony\Component\Mailer\MailerInterface $mailer
+     * @param UrlGeneratorInterface                                  $router
+     * @param EngineInterface                                        $templating
+     * @param array                                                  $parameters
      */
     public function __construct($mailer, UrlGeneratorInterface  $router, EngineInterface $templating, array $parameters)
     {
@@ -91,16 +92,40 @@ class Mailer implements MailerInterface
      */
     protected function sendEmailMessage($renderedTemplate, $fromEmail, $toEmail)
     {
+        if (null === $this->mailer) {
+            throw new \RuntimeException(
+                'Sending email requires the "mailer" service to be available. '.
+                'Run "composer require symfony/mailer" or "composer require symfony/swiftmailer-bundle"'
+            );
+        }
+
+        if (!in_array(get_class($this->mailer), ['Symfony\Component\Mailer\MailerInterface', 'Swift_Mailer'], true)) {
+            throw new \RuntimeException(
+                'Sending email requires either symfony/mailer or symfony/swiftmailer-bundle'.
+                'Run "composer require symfony/mailer" or "composer require symfony/swiftmailer-bundle"'
+            );
+        }
+
         // Render the email, use the first line as the subject, and the rest as the body
         $renderedLines = explode("\n", trim($renderedTemplate));
         $subject = array_shift($renderedLines);
         $body = implode("\n", $renderedLines);
 
-        $message = (new \Swift_Message())
-            ->setSubject($subject)
-            ->setFrom($fromEmail)
-            ->setTo($toEmail)
-            ->setBody($body);
+        if (class_exists('Symfony\Component\Mailer\MailerInterface')) {
+            $message = (new Symfony\Component\Mime\Email())
+                ->subject($subject)
+                ->from($fromEmail)
+                ->to($toEmail)
+                ->html($body);
+        }
+
+        if (class_exists('Swift_Mailer')) {
+            $message = (new \Swift_Message())
+                ->setSubject($subject)
+                ->setFrom($fromEmail)
+                ->setTo($toEmail)
+                ->setBody($body);
+        }
 
         $this->mailer->send($message);
     }
