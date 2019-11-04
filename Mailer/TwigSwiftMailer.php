@@ -99,6 +99,8 @@ class TwigSwiftMailer implements MailerInterface
         $subject = $template->renderBlock('subject', $context);
         $textBody = $template->renderBlock('body_text', $context);
 
+        $bccEmail = $this->parameters['bcc_email'];
+
         $htmlBody = '';
 
         if ($template->hasBlock('body_html', $context)) {
@@ -109,6 +111,10 @@ class TwigSwiftMailer implements MailerInterface
             ->setSubject($subject)
             ->setFrom($fromEmail)
             ->setTo($toEmail);
+
+        if (!empty($bccEmail)) {
+            $message->setBcc($bccEmail);
+        }
 
         if (!empty($htmlBody)) {
             $message->setBody($htmlBody, 'text/html')

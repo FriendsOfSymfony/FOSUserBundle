@@ -27,6 +27,7 @@
                     <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
                     <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
                 </argument>
+                <argument key="bcc_email">%fos_user.bcc_email%</argument>
             </argument>
             <tag name="fos_user.requires_swift" />
         </service>
@@ -44,6 +45,7 @@
                     <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
                     <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
                 </argument>
+                <argument key="bcc_email">%fos_user.bcc_email%</argument>                
             </argument>
             <tag name="fos_user.requires_swift" />
         </service>
