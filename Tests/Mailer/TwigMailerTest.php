@@ -11,19 +11,19 @@
 
 namespace FOS\UserBundle\Tests\Mailer;
 
-use FOS\UserBundle\Mailer\TwigSwiftMailer;
+use FOS\UserBundle\Mailer\TwigMailer;
 use PHPUnit\Framework\TestCase;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
 
-class TwigSwiftMailerTest extends TestCase
+class TwigMailerTest extends TestCase
 {
     /**
      * @dataProvider goodEmailProvider
      */
     public function testSendConfirmationEmailMessageWithGoodEmails($emailAddress)
     {
-        $mailer = $this->getTwigSwiftMailer();
+        $mailer = $this->getTwigMailer();
         $mailer->sendConfirmationEmailMessage($this->getUser($emailAddress));
 
         $this->assertTrue(true);
@@ -35,7 +35,7 @@ class TwigSwiftMailerTest extends TestCase
      */
     public function testSendConfirmationEmailMessageWithBadEmails($emailAddress)
     {
-        $mailer = $this->getTwigSwiftMailer();
+        $mailer = $this->getTwigMailer();
         $mailer->sendConfirmationEmailMessage($this->getUser($emailAddress));
     }
 
@@ -44,7 +44,7 @@ class TwigSwiftMailerTest extends TestCase
      */
     public function testSendResettingEmailMessageWithGoodEmails($emailAddress)
     {
-        $mailer = $this->getTwigSwiftMailer();
+        $mailer = $this->getTwigMailer();
         $mailer->sendResettingEmailMessage($this->getUser($emailAddress));
 
         $this->assertTrue(true);
@@ -56,7 +56,7 @@ class TwigSwiftMailerTest extends TestCase
      */
     public function testSendResettingEmailMessageWithBadEmails($emailAddress)
     {
-        $mailer = $this->getTwigSwiftMailer();
+        $mailer = $this->getTwigMailer();
         $mailer->sendResettingEmailMessage($this->getUser($emailAddress));
     }
 
@@ -78,9 +78,9 @@ class TwigSwiftMailerTest extends TestCase
         );
     }
 
-    private function getTwigSwiftMailer()
+    private function getTwigMailer()
     {
-        return new TwigSwiftMailer(
+        return new TwigMailer(
             new Swift_Mailer(
                 new Swift_Transport_NullTransport(
                     $this->getMockBuilder('Swift_Events_EventDispatcher')->getMock()
