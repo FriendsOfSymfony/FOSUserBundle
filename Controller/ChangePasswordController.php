@@ -37,8 +37,11 @@ class ChangePasswordController extends Controller
     private $formFactory;
     private $userManager;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        FactoryInterface $formFactory,
+        UserManagerInterface $userManager
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
@@ -81,7 +84,10 @@ class ChangePasswordController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $this->eventDispatcher->dispatch(
+                FOSUserEvents::CHANGE_PASSWORD_COMPLETED,
+                new FilterUserResponseEvent($user, $request, $response)
+            );
 
             return $response;
         }

@@ -38,8 +38,11 @@ class GroupController extends Controller
     private $formFactory;
     private $groupManager;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, GroupManagerInterface $groupManager)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        FactoryInterface $formFactory,
+        GroupManagerInterface $groupManager
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->groupManager = $groupManager;
@@ -104,7 +107,10 @@ class GroupController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_EDIT_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+            $this->eventDispatcher->dispatch(
+                FOSUserEvents::GROUP_EDIT_COMPLETED,
+                new FilterGroupResponseEvent($group, $request, $response)
+            );
 
             return $response;
         }
@@ -144,7 +150,10 @@ class GroupController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_CREATE_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+            $this->eventDispatcher->dispatch(
+                FOSUserEvents::GROUP_CREATE_COMPLETED,
+                new FilterGroupResponseEvent($group, $request, $response)
+            );
 
             return $response;
         }
@@ -169,7 +178,10 @@ class GroupController extends Controller
 
         $response = new RedirectResponse($this->generateUrl('fos_user_group_list'));
 
-        $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_DELETE_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+        $this->eventDispatcher->dispatch(
+            FOSUserEvents::GROUP_DELETE_COMPLETED,
+            new FilterGroupResponseEvent($group, $request, $response)
+        );
 
         return $response;
     }
@@ -191,7 +203,9 @@ class GroupController extends Controller
         }
 
         if (empty($group)) {
-            throw new NotFoundHttpException(sprintf('The group with "%s" does not exist for value "%s"', $key, $value));
+            throw new NotFoundHttpException(
+                sprintf('The group with "%s" does not exist for value "%s"', $key, $value)
+            );
         }
 
         return $group;

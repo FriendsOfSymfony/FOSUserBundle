@@ -53,8 +53,13 @@ class ResettingController extends Controller
      * @param MailerInterface          $mailer
      * @param int                      $retryTtl
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer, $retryTtl)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        FactoryInterface $formFactory,
+        UserManagerInterface $userManager,
+        TokenGeneratorInterface $tokenGenerator,
+        MailerInterface $mailer, $retryTtl
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
@@ -122,7 +127,12 @@ class ResettingController extends Controller
             }
         }
 
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('username' => $username)));
+        return new RedirectResponse(
+            $this->generateUrl(
+                'fos_user_resetting_check_email',
+                array('username' => $username)
+            )
+        );
     }
 
     /**

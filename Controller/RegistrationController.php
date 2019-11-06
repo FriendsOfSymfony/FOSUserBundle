@@ -40,8 +40,12 @@ class RegistrationController extends Controller
     private $userManager;
     private $tokenStorage;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenStorageInterface $tokenStorage)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        FactoryInterface $formFactory,
+        UserManagerInterface $userManager,
+        TokenStorageInterface $tokenStorage
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;
         $this->userManager = $userManager;
@@ -82,7 +86,10 @@ class RegistrationController extends Controller
                     $response = new RedirectResponse($url);
                 }
 
-                $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $this->eventDispatcher->dispatch(
+                    FOSUserEvents::REGISTRATION_COMPLETED,
+                    new FilterUserResponseEvent($user, $request, $response)
+                );
 
                 return $response;
             }
@@ -154,7 +161,10 @@ class RegistrationController extends Controller
             $response = new RedirectResponse($url);
         }
 
-        $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
+        $this->eventDispatcher->dispatch(
+            FOSUserEvents::REGISTRATION_CONFIRMED,
+            new FilterUserResponseEvent($user, $request, $response)
+        );
 
         return $response;
     }
