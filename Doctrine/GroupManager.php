@@ -36,8 +36,7 @@ class GroupManager extends BaseGroupManager
     /**
      * GroupManager constructor.
      *
-     * @param ObjectManager $om
-     * @param string        $class
+     * @param string $class
      */
     public function __construct(ObjectManager $om, $class)
     {

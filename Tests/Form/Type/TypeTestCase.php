@@ -42,7 +42,7 @@ abstract class TypeTestCase extends BaseTypeTestCase
      */
     protected function getTypeExtensions()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -50,6 +50,6 @@ abstract class TypeTestCase extends BaseTypeTestCase
      */
     protected function getTypes()
     {
-        return array();
+        return [];
     }
 }

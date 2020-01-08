@@ -22,12 +22,12 @@ class ActivateUserCommandTest extends TestCase
     public function testExecute()
     {
         $commandTester = $this->createCommandTester($this->getManipulator('user'));
-        $exitCode = $commandTester->execute(array(
+        $exitCode = $commandTester->execute([
             'username' => 'user',
-        ), array(
+        ], [
             'decorated' => false,
             'interactive' => false,
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
@@ -38,7 +38,7 @@ class ActivateUserCommandTest extends TestCase
         $application = new Application();
 
         $helper = $this->getMockBuilder('Symfony\Component\Console\Helper\QuestionHelper')
-            ->setMethods(array('ask'))
+            ->setMethods(['ask'])
             ->getMock();
 
         $helper->expects($this->at(0))
@@ -48,19 +48,16 @@ class ActivateUserCommandTest extends TestCase
         $application->getHelperSet()->set($helper, 'question');
 
         $commandTester = $this->createCommandTester($this->getManipulator('user'), $application);
-        $exitCode = $commandTester->execute(array(), array(
+        $exitCode = $commandTester->execute([], [
             'decorated' => false,
             'interactive' => true,
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
     /**
-     * @param UserManipulator  $manipulator
-     * @param Application|null $application
-     *
      * @return CommandTester
      */
     private function createCommandTester(UserManipulator $manipulator, Application $application = null)

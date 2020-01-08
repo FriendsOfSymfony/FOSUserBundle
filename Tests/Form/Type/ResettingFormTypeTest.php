@@ -21,12 +21,12 @@ class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
         $user = new TestUser();
 
         $form = $this->factory->create(ResettingFormType::class, $user);
-        $formData = array(
-            'plainPassword' => array(
+        $formData = [
+            'plainPassword' => [
                 'first' => 'test',
                 'second' => 'test',
-            ),
-        );
+            ],
+        ];
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
@@ -39,8 +39,8 @@ class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
      */
     protected function getTypes()
     {
-        return array_merge(parent::getTypes(), array(
+        return array_merge(parent::getTypes(), [
             new ResettingFormType('FOS\UserBundle\Tests\TestUser'),
-        ));
+        ]);
     }
 }

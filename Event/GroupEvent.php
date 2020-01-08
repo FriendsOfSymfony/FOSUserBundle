@@ -29,9 +29,6 @@ class GroupEvent extends Event
 
     /**
      * GroupEvent constructor.
-     *
-     * @param GroupInterface $group
-     * @param Request        $request
      */
     public function __construct(GroupInterface $group, Request $request)
     {

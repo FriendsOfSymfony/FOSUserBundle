@@ -39,11 +39,11 @@ abstract class RoleCommand extends Command
     protected function configure()
     {
         $this
-            ->setDefinition(array(
+            ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
                 new InputArgument('role', InputArgument::OPTIONAL, 'The role'),
                 new InputOption('super', null, InputOption::VALUE_NONE, 'Instead specifying role, use this to quickly add the super administrator role'),
-            ));
+            ]);
     }
 
     /**
@@ -65,16 +65,16 @@ abstract class RoleCommand extends Command
 
         $manipulator = $this->userManipulator;
         $this->executeRoleCommand($manipulator, $output, $username, $super, $role);
+
+        return 0;
     }
 
     /**
      * @see Command
      *
-     * @param UserManipulator $manipulator
-     * @param OutputInterface $output
-     * @param string          $username
-     * @param bool            $super
-     * @param string          $role
+     * @param string $username
+     * @param bool   $super
+     * @param string $role
      */
     abstract protected function executeRoleCommand(UserManipulator $manipulator, OutputInterface $output, $username, $super, $role);
 
@@ -83,7 +83,7 @@ abstract class RoleCommand extends Command
      */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
-        $questions = array();
+        $questions = [];
 
         if (!$input->getArgument('username')) {
             $question = new Question('Please choose a username:');

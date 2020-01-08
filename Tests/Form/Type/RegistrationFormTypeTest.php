@@ -21,14 +21,14 @@ class RegistrationFormTypeTest extends ValidatorExtensionTypeTestCase
         $user = new TestUser();
 
         $form = $this->factory->create(RegistrationFormType::class, $user);
-        $formData = array(
+        $formData = [
             'username' => 'bar',
             'email' => 'john@doe.com',
-            'plainPassword' => array(
+            'plainPassword' => [
                 'first' => 'test',
                 'second' => 'test',
-            ),
-        );
+            ],
+        ];
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
@@ -43,8 +43,8 @@ class RegistrationFormTypeTest extends ValidatorExtensionTypeTestCase
      */
     protected function getTypes()
     {
-        return array_merge(parent::getTypes(), array(
+        return array_merge(parent::getTypes(), [
             new RegistrationFormType('FOS\UserBundle\Tests\TestUser'),
-        ));
+        ]);
     }
 }

@@ -37,18 +37,18 @@ class ResettingFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('plainPassword', RepeatedType::class, array(
+        $builder->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
-            'options' => array(
+            'options' => [
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array(
+                'attr' => [
                     'autocomplete' => 'new-password',
-                ),
-            ),
-            'first_options' => array('label' => 'form.new_password'),
-            'second_options' => array('label' => 'form.new_password_confirmation'),
+                ],
+            ],
+            'first_options' => ['label' => 'form.new_password'],
+            'second_options' => ['label' => 'form.new_password_confirmation'],
             'invalid_message' => 'fos_user.password.mismatch',
-        ));
+        ]);
     }
 
     /**
@@ -56,10 +56,10 @@ class ResettingFormType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => $this->class,
             'csrf_token_id' => 'resetting',
-        ));
+        ]);
     }
 
     // BC for SF < 3.0

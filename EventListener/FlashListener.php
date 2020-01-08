@@ -22,7 +22,7 @@ class FlashListener implements EventSubscriberInterface
     /**
      * @var string[]
      */
-    private static $successMessages = array(
+    private static $successMessages = [
         FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'change_password.flash.success',
         FOSUserEvents::GROUP_CREATE_COMPLETED => 'group.flash.created',
         FOSUserEvents::GROUP_DELETE_COMPLETED => 'group.flash.deleted',
@@ -30,7 +30,7 @@ class FlashListener implements EventSubscriberInterface
         FOSUserEvents::PROFILE_EDIT_COMPLETED => 'profile.flash.updated',
         FOSUserEvents::REGISTRATION_COMPLETED => 'registration.flash.user_created',
         FOSUserEvents::RESETTING_RESET_COMPLETED => 'resetting.flash.success',
-    );
+    ];
 
     /**
      * @var SessionInterface
@@ -44,9 +44,6 @@ class FlashListener implements EventSubscriberInterface
 
     /**
      * FlashListener constructor.
-     *
-     * @param SessionInterface    $session
-     * @param TranslatorInterface $translator
      */
     public function __construct(SessionInterface $session, TranslatorInterface $translator)
     {
@@ -59,7 +56,7 @@ class FlashListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FOSUserEvents::CHANGE_PASSWORD_COMPLETED => 'addSuccessFlash',
             FOSUserEvents::GROUP_CREATE_COMPLETED => 'addSuccessFlash',
             FOSUserEvents::GROUP_DELETE_COMPLETED => 'addSuccessFlash',
@@ -67,11 +64,10 @@ class FlashListener implements EventSubscriberInterface
             FOSUserEvents::PROFILE_EDIT_COMPLETED => 'addSuccessFlash',
             FOSUserEvents::REGISTRATION_COMPLETED => 'addSuccessFlash',
             FOSUserEvents::RESETTING_RESET_COMPLETED => 'addSuccessFlash',
-        );
+        ];
     }
 
     /**
-     * @param Event  $event
      * @param string $eventName
      */
     public function addSuccessFlash(Event $event, $eventName)
@@ -85,11 +81,10 @@ class FlashListener implements EventSubscriberInterface
 
     /**
      * @param string$message
-     * @param array $params
      *
      * @return string
      */
-    private function trans($message, array $params = array())
+    private function trans($message, array $params = [])
     {
         return $this->translator->trans($message, $params, 'FOSUserBundle');
     }

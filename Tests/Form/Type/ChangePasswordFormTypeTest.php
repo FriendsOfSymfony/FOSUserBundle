@@ -22,13 +22,13 @@ class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
         $user->setPassword('foo');
 
         $form = $this->factory->create(ChangePasswordFormType::class, $user);
-        $formData = array(
+        $formData = [
             'current_password' => 'foo',
-            'plainPassword' => array(
+            'plainPassword' => [
                 'first' => 'bar',
                 'second' => 'bar',
-            ),
-        );
+            ],
+        ];
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
@@ -41,8 +41,8 @@ class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
      */
     protected function getTypes()
     {
-        return array_merge(parent::getTypes(), array(
+        return array_merge(parent::getTypes(), [
             new ChangePasswordFormType('FOS\UserBundle\Tests\TestUser'),
-        ));
+        ]);
     }
 }

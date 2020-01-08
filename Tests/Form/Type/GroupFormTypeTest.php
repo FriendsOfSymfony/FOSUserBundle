@@ -21,9 +21,9 @@ class GroupFormTypeTest extends TypeTestCase
         $group = new TestGroup('foo');
 
         $form = $this->factory->create(GroupFormType::class, $group);
-        $formData = array(
+        $formData = [
             'name' => 'bar',
-        );
+        ];
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
@@ -36,8 +36,8 @@ class GroupFormTypeTest extends TypeTestCase
      */
     protected function getTypes()
     {
-        return array_merge(parent::getTypes(), array(
+        return array_merge(parent::getTypes(), [
             new GroupFormType('FOS\UserBundle\Tests\TestGroup'),
-        ));
+        ]);
     }
 }

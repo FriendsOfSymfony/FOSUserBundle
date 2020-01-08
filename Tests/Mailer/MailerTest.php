@@ -62,20 +62,20 @@ class MailerTest extends TestCase
 
     public function goodEmailProvider()
     {
-        return array(
-            array('foo@example.com'),
-            array('foo@example.co.uk'),
-            array($this->getEmailAddressValueObject('foo@example.com')),
-            array($this->getEmailAddressValueObject('foo@example.co.uk')),
-        );
+        return [
+            ['foo@example.com'],
+            ['foo@example.co.uk'],
+            [$this->getEmailAddressValueObject('foo@example.com')],
+            [$this->getEmailAddressValueObject('foo@example.co.uk')],
+        ];
     }
 
     public function badEmailProvider()
     {
-        return array(
-            array('foo'),
-            array($this->getEmailAddressValueObject('foo')),
-        );
+        return [
+            ['foo'],
+            [$this->getEmailAddressValueObject('foo')],
+        ];
     }
 
     private function getMailer()
@@ -88,14 +88,14 @@ class MailerTest extends TestCase
             ),
             $this->getMockBuilder('Symfony\Component\Routing\Generator\UrlGeneratorInterface')->getMock(),
             $this->getTemplating(),
-            array(
+            [
                 'confirmation.template' => 'foo',
                 'resetting.template' => 'foo',
-                'from_email' => array(
+                'from_email' => [
                     'confirmation' => 'foo@example.com',
                     'resetting' => 'foo@example.com',
-                ),
-            )
+                ],
+            ]
         );
     }
 
@@ -122,7 +122,7 @@ class MailerTest extends TestCase
     private function getEmailAddressValueObject($emailAddressAsString)
     {
         $emailAddress = $this->getMockBuilder('EmailAddress')
-           ->setMethods(array('__toString'))
+           ->setMethods(['__toString'])
            ->getMock();
 
         $emailAddress->method('__toString')

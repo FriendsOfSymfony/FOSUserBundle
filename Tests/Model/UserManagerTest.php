@@ -32,10 +32,10 @@ class UserManagerTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->manager = $this->getUserManager(array(
+        $this->manager = $this->getUserManager([
             $this->passwordUpdater,
             $this->fieldsUpdater,
-        ));
+        ]);
     }
 
     public function testUpdateCanonicalFields()
@@ -64,7 +64,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+            ->with($this->equalTo(['usernameCanonical' => 'jack']));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeUsername')
             ->with('jack')
@@ -77,7 +77,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+            ->with($this->equalTo(['usernameCanonical' => 'jack']));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeUsername')
             ->with('JaCk')
@@ -90,7 +90,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+            ->with($this->equalTo(['emailCanonical' => 'jack@email.org']));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeEmail')
             ->with('jack@email.org')
@@ -103,7 +103,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')));
+            ->with($this->equalTo(['emailCanonical' => 'jack@email.org']));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeEmail')
             ->with('JaCk@EmAiL.oRg')
@@ -116,7 +116,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => 'jack')));
+            ->with($this->equalTo(['usernameCanonical' => 'jack']));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeUsername')
             ->with('JaCk')
@@ -129,7 +129,7 @@ class UserManagerTest extends TestCase
     {
         $this->manager->expects($this->once())
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => 'jack@email.org')))
+            ->with($this->equalTo(['emailCanonical' => 'jack@email.org']))
             ->willReturn($this->getUser());
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeEmail')
@@ -146,7 +146,7 @@ class UserManagerTest extends TestCase
 
         $this->manager->expects($this->at(0))
             ->method('findUserBy')
-            ->with($this->equalTo(array('emailCanonical' => $usernameThatLooksLikeEmail)))
+            ->with($this->equalTo(['emailCanonical' => $usernameThatLooksLikeEmail]))
             ->will($this->returnValue(null));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeEmail')
@@ -155,7 +155,7 @@ class UserManagerTest extends TestCase
 
         $this->manager->expects($this->at(1))
             ->method('findUserBy')
-            ->with($this->equalTo(array('usernameCanonical' => $usernameThatLooksLikeEmail)))
+            ->with($this->equalTo(['usernameCanonical' => $usernameThatLooksLikeEmail]))
             ->will($this->returnValue($user));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeUsername')
@@ -177,8 +177,6 @@ class UserManagerTest extends TestCase
     }
 
     /**
-     * @param array $args
-     *
      * @return mixed
      */
     private function getUserManager(array $args)

@@ -45,10 +45,6 @@ class UserManipulator
 
     /**
      * UserManipulator constructor.
-     *
-     * @param UserManagerInterface     $userManager
-     * @param EventDispatcherInterface $dispatcher
-     * @param RequestStack             $requestStack
      */
     public function __construct(UserManagerInterface $userManager, EventDispatcherInterface $dispatcher, RequestStack $requestStack)
     {

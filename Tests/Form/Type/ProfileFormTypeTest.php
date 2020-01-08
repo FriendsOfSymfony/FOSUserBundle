@@ -21,10 +21,10 @@ class ProfileFormTypeTest extends ValidatorExtensionTypeTestCase
         $user = new TestUser();
 
         $form = $this->factory->create(ProfileFormType::class, $user);
-        $formData = array(
+        $formData = [
             'username' => 'bar',
             'email' => 'john@doe.com',
-        );
+        ];
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
@@ -38,8 +38,8 @@ class ProfileFormTypeTest extends ValidatorExtensionTypeTestCase
      */
     protected function getTypes()
     {
-        return array_merge(parent::getTypes(), array(
+        return array_merge(parent::getTypes(), [
             new ProfileFormType('FOS\UserBundle\Tests\TestUser'),
-        ));
+        ]);
     }
 }

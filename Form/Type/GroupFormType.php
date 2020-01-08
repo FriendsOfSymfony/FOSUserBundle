@@ -35,7 +35,7 @@ class GroupFormType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', null, array('label' => 'form.group_name', 'translation_domain' => 'FOSUserBundle'));
+        $builder->add('name', null, ['label' => 'form.group_name', 'translation_domain' => 'FOSUserBundle']);
     }
 
     /**
@@ -43,10 +43,10 @@ class GroupFormType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => $this->class,
             'csrf_token_id' => 'group',
-        ));
+        ]);
     }
 
     // BC for SF < 3.0

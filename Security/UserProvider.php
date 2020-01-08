@@ -27,8 +27,6 @@ class UserProvider implements UserProviderInterface
 
     /**
      * Constructor.
-     *
-     * @param UserManagerInterface $userManager
      */
     public function __construct(UserManagerInterface $userManager)
     {
@@ -62,7 +60,7 @@ class UserProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Expected an instance of %s, but got "%s".', $this->userManager->getClass(), get_class($user)));
         }
 
-        if (null === $reloadedUser = $this->userManager->findUserBy(array('id' => $user->getId()))) {
+        if (null === $reloadedUser = $this->userManager->findUserBy(['id' => $user->getId()])) {
             throw new UsernameNotFoundException(sprintf('User with ID "%s" could not be reloaded.', $user->getId()));
         }
 

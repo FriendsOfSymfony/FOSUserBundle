@@ -32,15 +32,11 @@ interface GroupManagerInterface
 
     /**
      * Deletes a group.
-     *
-     * @param GroupInterface $group
      */
     public function deleteGroup(GroupInterface $group);
 
     /**
      * Finds one group by the given criteria.
-     *
-     * @param array $criteria
      *
      * @return GroupInterface
      */
@@ -71,8 +67,6 @@ interface GroupManagerInterface
 
     /**
      * Updates a group.
-     *
-     * @param GroupInterface $group
      */
     public function updateGroup(GroupInterface $group);
 }

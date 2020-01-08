@@ -62,20 +62,20 @@ class TwigSwiftMailerTest extends TestCase
 
     public function goodEmailProvider()
     {
-        return array(
-            array('foo@example.com'),
-            array('foo@example.co.uk'),
-            array($this->getEmailAddressValueObject('foo@example.com')),
-            array($this->getEmailAddressValueObject('foo@example.co.uk')),
-        );
+        return [
+            ['foo@example.com'],
+            ['foo@example.co.uk'],
+            [$this->getEmailAddressValueObject('foo@example.com')],
+            [$this->getEmailAddressValueObject('foo@example.co.uk')],
+        ];
     }
 
     public function badEmailProvider()
     {
-        return array(
-            array('foo'),
-            array($this->getEmailAddressValueObject('foo')),
-        );
+        return [
+            ['foo'],
+            [$this->getEmailAddressValueObject('foo')],
+        ];
     }
 
     private function getTwigSwiftMailer()
@@ -88,28 +88,28 @@ class TwigSwiftMailerTest extends TestCase
             ),
             $this->getMockBuilder('Symfony\Component\Routing\Generator\UrlGeneratorInterface')->getMock(),
             $this->getTwigEnvironment(),
-            array(
-                'template' => array(
+            [
+                'template' => [
                     'confirmation' => 'foo',
                     'resetting' => 'foo',
-                ),
-                'from_email' => array(
+                ],
+                'from_email' => [
                     'confirmation' => 'foo@example.com',
                     'resetting' => 'foo@example.com',
-                ),
-            )
+                ],
+            ]
         );
     }
 
     private function getTwigEnvironment()
     {
-        return new \Twig_Environment(new \Twig_Loader_Array(array('foo' => <<<'TWIG'
+        return new \Twig_Environment(new \Twig_Loader_Array(['foo' => <<<'TWIG'
 {% block subject 'foo' %}
 
 {% block body_text %}Test{% endblock %}
 
 TWIG
-        )));
+        ]));
     }
 
     private function getUser($emailAddress)
@@ -125,7 +125,7 @@ TWIG
     private function getEmailAddressValueObject($emailAddressAsString)
     {
         $emailAddress = $this->getMockBuilder('EmailAddress')
-           ->setMethods(array('__toString'))
+           ->setMethods(['__toString'])
            ->getMock();
 
         $emailAddress->method('__toString')

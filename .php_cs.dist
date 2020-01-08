@@ -12,7 +12,7 @@ EOF;
 return PhpCsFixer\Config::create()
     ->setRules([
         '@Symfony' => true,
-        'array_syntax' => ['syntax' => 'long'],
+        'array_syntax' => ['syntax' => 'short'],
         'combine_consecutive_unsets' => true,
         'header_comment' => ['header' => $header],
         'linebreak_after_opening_tag' => true,

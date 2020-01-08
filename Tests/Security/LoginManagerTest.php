@@ -32,8 +32,7 @@ class LoginManagerTest extends TestCase
     }
 
     /**
-     * @param string        $firewallName
-     * @param Response|null $response
+     * @param string $firewallName
      *
      * @return LoginManager
      */
@@ -87,7 +86,7 @@ class LoginManagerTest extends TestCase
         $user
             ->expects($this->once())
             ->method('getRoles')
-            ->will($this->returnValue(array('ROLE_USER')));
+            ->will($this->returnValue(['ROLE_USER']));
 
         return $user;
     }

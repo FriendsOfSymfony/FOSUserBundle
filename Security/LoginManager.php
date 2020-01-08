@@ -54,12 +54,6 @@ class LoginManager implements LoginManagerInterface
 
     /**
      * LoginManager constructor.
-     *
-     * @param TokenStorageInterface                  $tokenStorage
-     * @param UserCheckerInterface                   $userChecker
-     * @param SessionAuthenticationStrategyInterface $sessionStrategy
-     * @param RequestStack                           $requestStack
-     * @param RememberMeServicesInterface|null       $rememberMeService
      */
     public function __construct(TokenStorageInterface $tokenStorage, UserCheckerInterface $userChecker,
                                 SessionAuthenticationStrategyInterface $sessionStrategy,
@@ -95,8 +89,7 @@ class LoginManager implements LoginManagerInterface
     }
 
     /**
-     * @param string        $firewall
-     * @param UserInterface $user
+     * @param string $firewall
      *
      * @return UsernamePasswordToken
      */

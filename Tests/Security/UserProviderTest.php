@@ -59,7 +59,7 @@ class UserProviderTest extends TestCase
     public function testRefreshUserBy()
     {
         $user = $this->getMockBuilder('FOS\UserBundle\Model\User')
-                    ->setMethods(array('getId'))
+                    ->setMethods(['getId'])
                     ->getMock();
 
         $user->expects($this->once())
@@ -69,7 +69,7 @@ class UserProviderTest extends TestCase
         $refreshedUser = $this->getMockBuilder('FOS\UserBundle\Model\UserInterface')->getMock();
         $this->userManager->expects($this->once())
             ->method('findUserBy')
-            ->with(array('id' => '123'))
+            ->with(['id' => '123'])
             ->will($this->returnValue($refreshedUser));
 
         $this->userManager->expects($this->atLeastOnce())

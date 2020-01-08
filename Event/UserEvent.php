@@ -29,9 +29,6 @@ class UserEvent extends Event
 
     /**
      * UserEvent constructor.
-     *
-     * @param UserInterface $user
-     * @param Request|null  $request
      */
     public function __construct(UserInterface $user, Request $request = null)
     {

@@ -34,7 +34,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['db_driver']);
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     /**
@@ -45,7 +45,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['db_driver'] = 'foo';
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     /**
@@ -56,7 +56,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['firewall_name']);
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     /**
@@ -67,7 +67,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getFullConfig();
         unset($config['group']['group_class']);
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     /**
@@ -78,7 +78,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['user_class']);
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     /**
@@ -89,7 +89,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['db_driver'] = 'custom';
-        $loader->load(array($config), new ContainerBuilder());
+        $loader->load([$config], new ContainerBuilder());
     }
 
     public function testCustomDriver()
@@ -99,7 +99,7 @@ class FOSUserExtensionTest extends TestCase
         $config = $this->getEmptyConfig();
         $config['db_driver'] = 'custom';
         $config['service']['user_manager'] = 'acme.user_manager';
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
 
         $this->assertNotHasDefinition('fos_user.user_manager.default');
         $this->assertAlias('acme.user_manager', 'fos_user.user_manager');
@@ -112,7 +112,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['registration'] = false;
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.registration.form.factory');
 
         $mailer = $this->configuration->getDefinition('fos_user.mailer.default');
@@ -120,10 +120,10 @@ class FOSUserExtensionTest extends TestCase
             $mailer->getArgument(3)
         );
         $this->assertSame(
-            array(
-                'confirmation' => array('no-registration@acme.com' => 'Acme Ltd'),
-                'resetting' => array('admin@acme.org' => 'Acme Corp'),
-            ),
+            [
+                'confirmation' => ['no-registration@acme.com' => 'Acme Ltd'],
+                'resetting' => ['admin@acme.org' => 'Acme Corp'],
+            ],
             $parameters['from_email']
         );
     }
@@ -134,7 +134,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['resetting'] = false;
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.resetting.form.factory');
 
         $mailer = $this->configuration->getDefinition('fos_user.mailer.default');
@@ -142,10 +142,10 @@ class FOSUserExtensionTest extends TestCase
             $mailer->getArgument(3)
         );
         $this->assertSame(
-            array(
-                'confirmation' => array('admin@acme.org' => 'Acme Corp'),
-                'resetting' => array('no-resetting@acme.com' => 'Acme Ltd'),
-            ),
+            [
+                'confirmation' => ['admin@acme.org' => 'Acme Corp'],
+                'resetting' => ['no-resetting@acme.com' => 'Acme Ltd'],
+            ],
             $parameters['from_email']
         );
     }
@@ -156,7 +156,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['profile'] = false;
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.profile.form.factory');
     }
 
@@ -166,7 +166,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['change_password'] = false;
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertNotHasDefinition('fos_user.change_password.form.factory');
     }
 
@@ -179,7 +179,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config = array_merge($config, $testConfig);
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
 
         $this->assertParameter($registration, 'fos_user.registration.confirmation.from_email');
         $this->assertParameter($resetting, 'fos_user.resetting.email.from_email');
@@ -187,34 +187,34 @@ class FOSUserExtensionTest extends TestCase
 
     public function providerEmailsDisabledFeature()
     {
-        $configBothFeaturesDisabled = array('registration' => false, 'resetting' => false);
-        $configResettingDisabled = array('resetting' => false);
-        $configRegistrationDisabled = array('registration' => false);
-        $configOverridenRegistrationEmail = array(
-            'registration' => array(
-                'confirmation' => array(
-                    'from_email' => array('address' => 'ltd@acme.com', 'sender_name' => 'Acme Ltd'),
-                ),
-            ),
-        );
-        $configOverridenResettingEmail = array(
-            'resetting' => array(
-                'email' => array(
-                    'from_email' => array('address' => 'ltd@acme.com', 'sender_name' => 'Acme Ltd'),
-                ),
-            ),
-        );
+        $configBothFeaturesDisabled = ['registration' => false, 'resetting' => false];
+        $configResettingDisabled = ['resetting' => false];
+        $configRegistrationDisabled = ['registration' => false];
+        $configOverridenRegistrationEmail = [
+            'registration' => [
+                'confirmation' => [
+                    'from_email' => ['address' => 'ltd@acme.com', 'sender_name' => 'Acme Ltd'],
+                ],
+            ],
+        ];
+        $configOverridenResettingEmail = [
+            'resetting' => [
+                'email' => [
+                    'from_email' => ['address' => 'ltd@acme.com', 'sender_name' => 'Acme Ltd'],
+                ],
+            ],
+        ];
 
-        $default = array('admin@acme.org' => 'Acme Corp');
-        $overriden = array('ltd@acme.com' => 'Acme Ltd');
+        $default = ['admin@acme.org' => 'Acme Corp'];
+        $overriden = ['ltd@acme.com' => 'Acme Ltd'];
 
-        return array(
-            array($configBothFeaturesDisabled, array('no-registration@acme.com' => 'Acme Ltd'), array('no-resetting@acme.com' => 'Acme Ltd')),
-            array($configResettingDisabled, $default, array('no-resetting@acme.com' => 'Acme Ltd')),
-            array($configRegistrationDisabled, array('no-registration@acme.com' => 'Acme Ltd'), $default),
-            array($configOverridenRegistrationEmail, $overriden, $default),
-            array($configOverridenResettingEmail, $default, $overriden),
-        );
+        return [
+            [$configBothFeaturesDisabled, ['no-registration@acme.com' => 'Acme Ltd'], ['no-resetting@acme.com' => 'Acme Ltd']],
+            [$configResettingDisabled, $default, ['no-resetting@acme.com' => 'Acme Ltd']],
+            [$configRegistrationDisabled, ['no-registration@acme.com' => 'Acme Ltd'], $default],
+            [$configOverridenRegistrationEmail, $overriden, $default],
+            [$configOverridenResettingEmail, $default, $overriden],
+        ];
     }
 
     public function testUserLoadModelClassWithDefaults()
@@ -310,10 +310,10 @@ class FOSUserExtensionTest extends TestCase
         $this->createEmptyConfiguration();
 
         $this->assertParameter(false, 'fos_user.registration.confirmation.enabled');
-        $this->assertParameter(array('admin@acme.org' => 'Acme Corp'), 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter(['admin@acme.org' => 'Acme Corp'], 'fos_user.registration.confirmation.from_email');
         $this->assertParameter('@FOSUser/Registration/email.txt.twig', 'fos_user.registration.confirmation.template');
         $this->assertParameter('@FOSUser/Resetting/email.txt.twig', 'fos_user.resetting.email.template');
-        $this->assertParameter(array('admin@acme.org' => 'Acme Corp'), 'fos_user.resetting.email.from_email');
+        $this->assertParameter(['admin@acme.org' => 'Acme Corp'], 'fos_user.resetting.email.from_email');
         $this->assertParameter(86400, 'fos_user.resetting.token_ttl');
     }
 
@@ -322,10 +322,10 @@ class FOSUserExtensionTest extends TestCase
         $this->createFullConfiguration();
 
         $this->assertParameter(true, 'fos_user.registration.confirmation.enabled');
-        $this->assertParameter(array('register@acme.org' => 'Acme Corp'), 'fos_user.registration.confirmation.from_email');
+        $this->assertParameter(['register@acme.org' => 'Acme Corp'], 'fos_user.registration.confirmation.from_email');
         $this->assertParameter('AcmeMyBundle:Registration:mail.txt.twig', 'fos_user.registration.confirmation.template');
         $this->assertParameter('AcmeMyBundle:Resetting:mail.txt.twig', 'fos_user.resetting.email.template');
-        $this->assertParameter(array('reset@acme.org' => 'Acme Corp'), 'fos_user.resetting.email.from_email');
+        $this->assertParameter(['reset@acme.org' => 'Acme Corp'], 'fos_user.resetting.email.from_email');
         $this->assertParameter(7200, 'fos_user.resetting.retry_ttl');
     }
 
@@ -373,7 +373,7 @@ class FOSUserExtensionTest extends TestCase
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['db_driver'] = $dbDriver;
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
 
         $definition = $this->configuration->getDefinition('fos_user.object_manager');
 
@@ -396,11 +396,11 @@ class FOSUserExtensionTest extends TestCase
      */
     public function userManagerSetFactoryProvider()
     {
-        return array(
-            array('orm', 'doctrine'),
-            array('couchdb', 'doctrine_couchdb'),
-            array('mongodb', 'doctrine_mongodb'),
-        );
+        return [
+            ['orm', 'doctrine'],
+            ['couchdb', 'doctrine_couchdb'],
+            ['mongodb', 'doctrine_mongodb'],
+        ];
     }
 
     protected function createEmptyConfiguration()
@@ -408,7 +408,7 @@ class FOSUserExtensionTest extends TestCase
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
@@ -417,7 +417,7 @@ class FOSUserExtensionTest extends TestCase
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
         $config = $this->getFullConfig();
-        $loader->load(array($config), $this->configuration);
+        $loader->load([$config], $this->configuration);
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 

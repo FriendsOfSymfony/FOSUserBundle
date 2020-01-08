@@ -23,7 +23,6 @@ class RoutingTest extends TestCase
      *
      * @param string $routeName
      * @param string $path
-     * @param array  $methods
      */
     public function testLoadRouting($routeName, $path, array $methods)
     {
@@ -57,31 +56,31 @@ class RoutingTest extends TestCase
      */
     public function loadRoutingProvider()
     {
-        return array(
-            array('fos_user_change_password', '/change-password', array('GET', 'POST')),
+        return [
+            ['fos_user_change_password', '/change-password', ['GET', 'POST']],
 
-            array('fos_user_group_list', '/group/list', array('GET')),
-            array('fos_user_group_new', '/group/new', array('GET', 'POST')),
-            array('fos_user_group_show', '/group/{groupName}', array('GET')),
-            array('fos_user_group_edit', '/group/{groupName}/edit', array('GET', 'POST')),
-            array('fos_user_group_delete', '/group/{groupName}/delete', array('GET')),
+            ['fos_user_group_list', '/group/list', ['GET']],
+            ['fos_user_group_new', '/group/new', ['GET', 'POST']],
+            ['fos_user_group_show', '/group/{groupName}', ['GET']],
+            ['fos_user_group_edit', '/group/{groupName}/edit', ['GET', 'POST']],
+            ['fos_user_group_delete', '/group/{groupName}/delete', ['GET']],
 
-            array('fos_user_profile_show', '/profile/', array('GET')),
-            array('fos_user_profile_edit', '/profile/edit', array('GET', 'POST')),
+            ['fos_user_profile_show', '/profile/', ['GET']],
+            ['fos_user_profile_edit', '/profile/edit', ['GET', 'POST']],
 
-            array('fos_user_registration_register', '/register/', array('GET', 'POST')),
-            array('fos_user_registration_check_email', '/register/check-email', array('GET')),
-            array('fos_user_registration_confirm', '/register/confirm/{token}', array('GET')),
-            array('fos_user_registration_confirmed', '/register/confirmed', array('GET')),
+            ['fos_user_registration_register', '/register/', ['GET', 'POST']],
+            ['fos_user_registration_check_email', '/register/check-email', ['GET']],
+            ['fos_user_registration_confirm', '/register/confirm/{token}', ['GET']],
+            ['fos_user_registration_confirmed', '/register/confirmed', ['GET']],
 
-            array('fos_user_resetting_request', '/resetting/request', array('GET')),
-            array('fos_user_resetting_send_email', '/resetting/send-email', array('POST')),
-            array('fos_user_resetting_check_email', '/resetting/check-email', array('GET')),
-            array('fos_user_resetting_reset', '/resetting/reset/{token}', array('GET', 'POST')),
+            ['fos_user_resetting_request', '/resetting/request', ['GET']],
+            ['fos_user_resetting_send_email', '/resetting/send-email', ['POST']],
+            ['fos_user_resetting_check_email', '/resetting/check-email', ['GET']],
+            ['fos_user_resetting_reset', '/resetting/reset/{token}', ['GET', 'POST']],
 
-            array('fos_user_security_login', '/login', array('GET', 'POST')),
-            array('fos_user_security_check', '/login_check', array('POST')),
-            array('fos_user_security_logout', '/logout', array('GET', 'POST')),
-        );
+            ['fos_user_security_login', '/login', ['GET', 'POST']],
+            ['fos_user_security_check', '/login_check', ['POST']],
+            ['fos_user_security_logout', '/logout', ['GET', 'POST']],
+        ];
     }
 }

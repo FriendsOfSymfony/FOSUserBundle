@@ -61,8 +61,6 @@ interface GroupInterface
     public function setName($name);
 
     /**
-     * @param array $roles
-     *
      * @return static
      */
     public function setRoles(array $roles);

@@ -30,8 +30,8 @@ class ValidatorExtensionTypeTestCase extends TypeTestCase
         $validator = $this->getMockBuilder('Symfony\Component\Validator\Validator\ValidatorInterface')->getMock();
         $validator->method('validate')->will($this->returnValue(new ConstraintViolationList()));
 
-        return array(
+        return [
             new FormTypeValidatorExtension($validator),
-        );
+        ];
     }
 }

@@ -34,8 +34,7 @@ class AuthenticationListener implements EventSubscriberInterface
     /**
      * AuthenticationListener constructor.
      *
-     * @param LoginManagerInterface $loginManager
-     * @param string                $firewallName
+     * @param string $firewallName
      */
     public function __construct(LoginManagerInterface $loginManager, $firewallName)
     {
@@ -48,17 +47,15 @@ class AuthenticationListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FOSUserEvents::REGISTRATION_COMPLETED => 'authenticate',
             FOSUserEvents::REGISTRATION_CONFIRMED => 'authenticate',
             FOSUserEvents::RESETTING_RESET_COMPLETED => 'authenticate',
-        );
+        ];
     }
 
     /**
-     * @param FilterUserResponseEvent  $event
-     * @param string                   $eventName
-     * @param EventDispatcherInterface $eventDispatcher
+     * @param string $eventName
      */
     public function authenticate(FilterUserResponseEvent $event, $eventName, EventDispatcherInterface $eventDispatcher)
     {

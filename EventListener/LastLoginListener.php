@@ -25,8 +25,6 @@ class LastLoginListener implements EventSubscriberInterface
 
     /**
      * LastLoginListener constructor.
-     *
-     * @param UserManagerInterface $userManager
      */
     public function __construct(UserManagerInterface $userManager)
     {
@@ -38,15 +36,12 @@ class LastLoginListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FOSUserEvents::SECURITY_IMPLICIT_LOGIN => 'onImplicitLogin',
             SecurityEvents::INTERACTIVE_LOGIN => 'onSecurityInteractiveLogin',
-        );
+        ];
     }
 
-    /**
-     * @param UserEvent $event
-     */
     public function onImplicitLogin(UserEvent $event)
     {
         $user = $event->getUser();
@@ -55,9 +50,6 @@ class LastLoginListener implements EventSubscriberInterface
         $this->userManager->updateUser($user);
     }
 
-    /**
-     * @param InteractiveLoginEvent $event
-     */
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
     {
         $user = $event->getAuthenticationToken()->getUser();

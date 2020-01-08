@@ -63,7 +63,7 @@
                 </option>
             </constraint>
             <constraint name="Length">
-                <option name="min">8</option>
+                <option name="min">2</option>
                 <option name="max">4096</option>
                 <option name="minMessage">fos_user.password.short</option>
                 <option name="groups">

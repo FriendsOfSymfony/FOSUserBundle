@@ -22,13 +22,13 @@ class ChangePasswordCommandTest extends TestCase
     public function testExecute()
     {
         $commandTester = $this->createCommandTester($this->getManipulator('user', 'pass'));
-        $exitCode = $commandTester->execute(array(
+        $exitCode = $commandTester->execute([
             'username' => 'user',
             'password' => 'pass',
-        ), array(
+        ], [
             'decorated' => false,
             'interactive' => false,
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
@@ -39,7 +39,7 @@ class ChangePasswordCommandTest extends TestCase
         $application = new Application();
 
         $helper = $this->getMockBuilder('Symfony\Component\Console\Helper\QuestionHelper')
-            ->setMethods(array('ask'))
+            ->setMethods(['ask'])
             ->getMock();
 
         $helper->expects($this->at(0))
@@ -52,18 +52,17 @@ class ChangePasswordCommandTest extends TestCase
         $application->getHelperSet()->set($helper, 'question');
 
         $commandTester = $this->createCommandTester($this->getManipulator('user', 'pass'), $application);
-        $exitCode = $commandTester->execute(array(), array(
+        $exitCode = $commandTester->execute([], [
             'decorated' => false,
             'interactive' => true,
-        ));
+        ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
         $this->assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
     }
 
     /**
-     * @param UserManipulator  $container
-     * @param Application|null $application
+     * @param UserManipulator $container
      *
      * @return CommandTester
      */

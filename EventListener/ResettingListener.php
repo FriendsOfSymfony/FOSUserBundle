@@ -33,8 +33,7 @@ class ResettingListener implements EventSubscriberInterface
     /**
      * ResettingListener constructor.
      *
-     * @param UrlGeneratorInterface $router
-     * @param int                   $tokenTtl
+     * @param int $tokenTtl
      */
     public function __construct(UrlGeneratorInterface $router, $tokenTtl)
     {
@@ -47,16 +46,13 @@ class ResettingListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FOSUserEvents::RESETTING_RESET_INITIALIZE => 'onResettingResetInitialize',
             FOSUserEvents::RESETTING_RESET_SUCCESS => 'onResettingResetSuccess',
             FOSUserEvents::RESETTING_RESET_REQUEST => 'onResettingResetRequest',
-        );
+        ];
     }
 
-    /**
-     * @param GetResponseUserEvent $event
-     */
     public function onResettingResetInitialize(GetResponseUserEvent $event)
     {
         if (!$event->getUser()->isPasswordRequestNonExpired($this->tokenTtl)) {
@@ -64,9 +60,6 @@ class ResettingListener implements EventSubscriberInterface
         }
     }
 
-    /**
-     * @param FormEvent $event
-     */
     public function onResettingResetSuccess(FormEvent $event)
     {
         /** @var $user \FOS\UserBundle\Model\UserInterface */
@@ -77,9 +70,6 @@ class ResettingListener implements EventSubscriberInterface
         $user->setEnabled(true);
     }
 
-    /**
-     * @param GetResponseUserEvent $event
-     */
     public function onResettingResetRequest(GetResponseUserEvent $event)
     {
         if (!$event->getUser()->isAccountNonLocked()) {

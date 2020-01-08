@@ -33,10 +33,10 @@ class CanonicalizerTest extends TestCase
      */
     public function canonicalizeProvider()
     {
-        return array(
-            array(null, null),
-            array('FOO', 'foo'),
-            array(chr(171), PHP_VERSION_ID < 50600 ? chr(171) : '?'),
-        );
+        return [
+            [null, null],
+            ['FOO', 'foo'],
+            [chr(171), PHP_VERSION_ID < 50600 ? chr(171) : '?'],
+        ];
     }
 }

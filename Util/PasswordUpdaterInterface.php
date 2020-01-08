@@ -24,8 +24,6 @@ interface PasswordUpdaterInterface
      * The implement should be a no-op in case there is no new password (it should not erase the
      * existing hash with a wrong one).
      *
-     * @param UserInterface $user
-     *
      * @return void
      */
     public function hashPassword(UserInterface $user);

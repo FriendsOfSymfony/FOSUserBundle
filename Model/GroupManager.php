@@ -34,6 +34,6 @@ abstract class GroupManager implements GroupManagerInterface
      */
     public function findGroupByName($name)
     {
-        return $this->findGroupBy(array('name' => $name));
+        return $this->findGroupBy(['name' => $name]);
     }
 }

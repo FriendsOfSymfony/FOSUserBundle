@@ -30,6 +30,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
+ *
+ * @final
  */
 class ChangePasswordController extends Controller
 {
@@ -46,8 +48,6 @@ class ChangePasswordController extends Controller
 
     /**
      * Change user password.
-     *
-     * @param Request $request
      *
      * @return Response
      */
@@ -86,8 +86,8 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('@FOSUser/ChangePassword/change_password.html.twig', array(
+        return $this->render('@FOSUser/ChangePassword/change_password.html.twig', [
             'form' => $form->createView(),
-        ));
+        ]);
     }
 }
