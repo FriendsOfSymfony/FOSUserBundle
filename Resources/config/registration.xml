@@ -17,6 +17,10 @@
             <tag name="form.type" alias="fos_user_registration" />
             <argument>%fos_user.model.user.class%</argument>
         </service>
+        <service id="FOS\UserBundle\Form\Factory\FormFactory" alias="fos_user.registration.form.factory" />
+
+
+        <service id="FOS\UserBundle\Form\Type\RegistrationFormType" alias="fos_user.registration.form.type" />
 
         <service id="fos_user.registration.controller" class="FOS\UserBundle\Controller\RegistrationController" public="true">
             <argument type="service" id="event_dispatcher" />

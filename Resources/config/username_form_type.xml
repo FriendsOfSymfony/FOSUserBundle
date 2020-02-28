@@ -15,6 +15,10 @@
             <argument type="service" id="fos_user.user_manager" />
         </service>
 
+        <service id="FOS\UserBundle\Form\Type\UsernameFormType" alias="fos_user.username_form_type" />
+
+        <service id="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" alias="fos_user.user_to_username_transformer" public="false"/>
+
     </services>
 
 </container>

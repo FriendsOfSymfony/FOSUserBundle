@@ -25,6 +25,11 @@
                 <argument type="service" id="service_container" />
             </call>
         </service>
+
+        <service id="FOS\UserBundle\Form\Factory\FormFactory" alias="fos_user.group.form.factory" />
+
+        <service id="FOS\UserBundle\Form\Type\GroupFormType" alias="fos_user.group.form.type" />
+        <service id="FOS\UserBundle\Controller\GroupController" alias="fos_user.group.controller" />
     </services>
 
 </container>

@@ -49,6 +49,14 @@
         </service>
 
         <service id="fos_user.mailer.noop" class="FOS\UserBundle\Mailer\NoopMailer" public="false" />
+
+
+
+        <service id="FOS\UserBundle\Mailer\Mailer" alias="fos_user.mailer.default" />
+
+        <service id="FOS\UserBundle\Mailer\TwigSwiftMailer" alias="fos_user.mailer.twig_swift" />
+
+        <service id="FOS\UserBundle\Mailer\NoopMailer" alias="fos_user.mailer.noop" />
     </services>
 
 </container>

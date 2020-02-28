@@ -10,6 +10,7 @@
             <argument type="service" id="session" />
             <argument type="service" id="translator" />
         </service>
+        <service id="FOS\UserBundle\EventListener\FlashListener" alias="fos_user.listener.flash" />
     </services>
 
 </container>
