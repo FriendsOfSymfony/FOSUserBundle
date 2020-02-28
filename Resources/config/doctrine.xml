@@ -21,6 +21,12 @@
             <argument type="service" id="fos_user.util.password_updater" />
             <argument type="service" id="fos_user.util.canonical_fields_updater" />
         </service>
+
+
+        <service id="FOS\UserBundle\Doctrine\UserManager" alias="fos_user.user_manager.default" />
+        <!-- The factory is configured in the DI extension class to support more Symfony versions -->
+        <service id="Doctrine\Common\Persistence\ObjectManager" alias="fos_user.object_manager" />
+        <service id="FOS\UserBundle\Doctrine\UserListener" alias="fos_user.user_listener" public="false" />
     </services>
 
 </container>

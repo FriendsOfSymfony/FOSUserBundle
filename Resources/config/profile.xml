@@ -18,6 +18,10 @@
             <tag name="form.type" alias="fos_user_profile" />
         </service>
 
+        <service id="FOS\UserBundle\Form\Factory\FormFactory" alias="fos_user.profile.form.factory" />
+
+        <service id="FOS\UserBundle\Form\Type\ProfileFormType" alias="fos_user.profile.form.type" />
+
         <service id="fos_user.profile.controller" class="FOS\UserBundle\Controller\ProfileController" public="true">
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="fos_user.profile.form.factory" />

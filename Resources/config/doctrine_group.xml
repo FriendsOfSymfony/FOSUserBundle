@@ -13,6 +13,7 @@
             <argument type="service" id="fos_user.object_manager" />
             <argument>%fos_user.model.group.class%</argument>
         </service>
+        <service id="FOS\UserBundle\Doctrine\GroupManager" alias="fos_user.group_manager.default" public="false" />
     </services>
 
 </container>

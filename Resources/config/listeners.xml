@@ -10,6 +10,7 @@
             <argument type="service" id="fos_user.security.login_manager" />
             <argument>%fos_user.firewall_name%</argument>
         </service>
+        <service id="FOS\UserBundle\EventListener\AuthenticationListener" alias="fos_user.listener.authentication" />
     </services>
 
 </container>

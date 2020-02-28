@@ -29,6 +29,14 @@
             <argument type="service" id="fos_user.util.user_manipulator" />
             <tag name="console.command" command="fos:user:promote" />
         </service>
+
+
+        <service id="FOS\UserBundle\Command\ActivateUserCommand" alias="fos_user.command.activate_user" />
+        <service id="FOS\UserBundle\Command\ChangePasswordCommand" alias="fos_user.command.change_password" />
+        <service id="FOS\UserBundle\Command\CreateUserCommand" alias="fos_user.command.create_user" />
+        <service id="FOS\UserBundle\Command\DeactivateUserCommand" alias="fos_user.command.deactivate_user" />
+        <service id="FOS\UserBundle\Command\DemoteUserCommand" alias="fos_user.command.demote_user" />
+        <service id="FOS\UserBundle\Command\PromoteUserCommand" alias="fos_user.command.promote_user" />
     </services>
 
 </container>

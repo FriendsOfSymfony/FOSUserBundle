@@ -12,6 +12,7 @@
             <argument type="service" id="router" />
             <argument type="service" id="session" />
         </service>
+        <service id="FOS\UserBundle\EventListener\EmailConfirmationListener" alias="fos_user.listener.email_confirmation" />
     </services>
 
 </container>
