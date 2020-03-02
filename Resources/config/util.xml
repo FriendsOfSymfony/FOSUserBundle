@@ -10,7 +10,7 @@
         <service id="FOS\UserBundle\Util\Canonicalizer" alias="fos_user.util.canonicalizer.default" />
 
         <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.user_manager.default" />
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="request_stack" />
         </service>
@@ -18,8 +18,6 @@
 
         <service id="fos_user.util.token_generator.default" class="FOS\UserBundle\Util\TokenGenerator" public="false" />
         <service id="FOS\UserBundle\Util\TokenGenerator" alias="fos_user.util.token_generator.default" />
-
-        <service id="FOS\UserBundle\Util\TokenGeneratorInterface" alias="fos_user.util.token_generator" public="false" />
 
         <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
             <argument type="service" id="security.encoder_factory" />
@@ -33,8 +31,6 @@
         </service>
 
         <service id="FOS\UserBundle\Util\CanonicalFieldsUpdater" alias="fos_user.util.canonical_fields_updater" public="false" />
-
-        <service id="FOS\UserBundle\Model\UserManagerInterface" alias="fos_user.user_manager" public="false" />
     </services>
 
 </container>

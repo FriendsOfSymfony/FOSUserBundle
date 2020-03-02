@@ -12,7 +12,7 @@
     <services>
         <service id="fos_user.security.interactive_login_listener" class="%fos_user.security.interactive_login_listener.class%">
             <tag name="kernel.event_subscriber" />
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.user_manager.default" />
         </service>
 
         <service id="FOS\UserBundle\EventListener\LastLoginListener" alias="fos_user.security.interactive_login_listener" />
@@ -30,19 +30,19 @@
         <service id="FOS\UserBundle\Security\LoginManagerInterface" alias="fos_user.security.login_manager" public="false" />
 
         <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.user_manager.default" />
         </service>
 
         <service id="FOS\UserBundle\Security\UserProvider" alias="fos_user.user_provider.username" />
 
         <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.user_manager.default" />
         </service>
 
         <service id="FOS\UserBundle\Security\EmailUserProvider" alias="fos_user.user_provider.username_email" />
 
         <service id="fos_user.user_provider.email" class="FOS\UserBundle\Security\EmailProvider" public="false">
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="fos_user.user_manager.default" />
         </service>
         <service id="FOS\UserBundle\Security\EmailProvider" alias="fos_user.user_provider.email" />
 

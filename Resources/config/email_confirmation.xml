@@ -7,8 +7,8 @@
     <services>
         <service id="fos_user.listener.email_confirmation" class="FOS\UserBundle\EventListener\EmailConfirmationListener">
             <tag name="kernel.event_subscriber" />
-            <argument type="service" id="fos_user.mailer" />
-            <argument type="service" id="fos_user.util.token_generator" />
+            <argument type="service" id="fos_user.mailer.default" />
+            <argument type="service" id="fos_user.util.token_generator.default" />
             <argument type="service" id="router" />
             <argument type="service" id="session" />
         </service>
