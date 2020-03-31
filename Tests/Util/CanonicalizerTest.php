@@ -36,7 +36,7 @@ class CanonicalizerTest extends TestCase
         return [
             [null, null],
             ['FOO', 'foo'],
-            [chr(171), PHP_VERSION_ID < 50600 ? chr(171) : '?'],
+            [chr(171), '?'],
         ];
     }
 }

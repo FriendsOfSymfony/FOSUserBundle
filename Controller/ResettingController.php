@@ -20,7 +20,7 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,23 +34,16 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class ResettingController extends Controller
+final class ResettingController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;
     private $userManager;
     private $tokenGenerator;
     private $mailer;
-
-    /**
-     * @var int
-     */
     private $retryTtl;
 
-    /**
-     * @param int $retryTtl
-     */
-    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer, $retryTtl)
+    public function __construct(EventDispatcherInterface $eventDispatcher, FactoryInterface $formFactory, UserManagerInterface $userManager, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer, int $retryTtl)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory = $formFactory;

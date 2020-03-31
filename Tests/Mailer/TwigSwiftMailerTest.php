@@ -31,10 +31,11 @@ class TwigSwiftMailerTest extends TestCase
 
     /**
      * @dataProvider badEmailProvider
-     * @expectedException \Swift_RfcComplianceException
      */
     public function testSendConfirmationEmailMessageWithBadEmails($emailAddress)
     {
+        $this->expectException(\Swift_RfcComplianceException::class);
+
         $mailer = $this->getTwigSwiftMailer();
         $mailer->sendConfirmationEmailMessage($this->getUser($emailAddress));
     }
@@ -52,10 +53,11 @@ class TwigSwiftMailerTest extends TestCase
 
     /**
      * @dataProvider badEmailProvider
-     * @expectedException \Swift_RfcComplianceException
      */
     public function testSendResettingEmailMessageWithBadEmails($emailAddress)
     {
+        $this->expectException(\Swift_RfcComplianceException::class);
+
         $mailer = $this->getTwigSwiftMailer();
         $mailer->sendResettingEmailMessage($this->getUser($emailAddress));
     }
@@ -103,7 +105,7 @@ class TwigSwiftMailerTest extends TestCase
 
     private function getTwigEnvironment()
     {
-        return new \Twig_Environment(new \Twig_Loader_Array(['foo' => <<<'TWIG'
+        return new \Twig\Environment(new \Twig\Loader\ArrayLoader(['foo' => <<<'TWIG'
 {% block subject 'foo' %}
 
 {% block body_text %}Test{% endblock %}

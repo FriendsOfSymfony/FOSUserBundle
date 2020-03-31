@@ -52,16 +52,6 @@ class UsernameFormType extends AbstractType
         return TextType::class;
     }
 
-    // BC for SF < 3.0
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->getBlockPrefix();
-    }
-
     /**
      * {@inheritdoc}
      */

@@ -1,11 +1,9 @@
 language: php
 
 php:
-  - 5.5
-  - 5.6
-  - 7.1
   - 7.2
   - 7.3
+  - 7.4
 
 env:
   global:
@@ -14,14 +12,14 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
+    - php: 7.2
       env: TARGET=cs_dry_run
-    - php: 5.5
+    - php: 7.2
       env: COMPOSER_FLAGS="--prefer-lowest"
-    - php: 5.6
-      env: DEPENDENCIES="symfony/lts:^2"
-    - php: 7.1
-      env: DEPENDENCIES="symfony/lts:^3"
+    - php: 7.4
+      env: DEPENDENCIES="symfony/flex" SYMFONY_VERSION="^3.4"
+    - php: 7.4
+      env: DEPENDENCIES="symfony/flex" SYMFONY_VERSION="^4.4"
 
 sudo: false
 
@@ -31,9 +29,8 @@ cache:
 
 before_install:
   - echo "memory_limit=4G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
-  - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-  - if [ "$DEPENDENCIES" != "" ]; then composer require --no-update $DEPENDENCIES; fi;
+  - if ! [ -z "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+  - if ! [ -z "$SYMFONY_VERSION" ]; then composer config extra.symfony.require ${SYMFONY_VERSION}; fi
 
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 

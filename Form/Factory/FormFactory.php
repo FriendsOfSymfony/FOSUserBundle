@@ -35,14 +35,7 @@ class FormFactory implements FactoryInterface
      */
     private $validationGroups;
 
-    /**
-     * FormFactory constructor.
-     *
-     * @param string $name
-     * @param string $type
-     * @param array  $validationGroups
-     */
-    public function __construct(FormFactoryInterface $formFactory, $name, $type, array $validationGroups = null)
+    public function __construct(FormFactoryInterface $formFactory, string $name, string $type, array $validationGroups = null)
     {
         $this->formFactory = $formFactory;
         $this->name = $name;

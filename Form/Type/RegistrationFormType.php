@@ -67,16 +67,6 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 
-    // BC for SF < 3.0
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->getBlockPrefix();
-    }
-
     /**
      * {@inheritdoc}
      */

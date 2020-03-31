@@ -19,7 +19,7 @@
         <service id="fos_user.mailer.default" class="FOS\UserBundle\Mailer\Mailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
-            <argument type="service" id="templating" />
+            <argument type="service" id="twig" />
             <argument type="collection">
                 <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
                 <argument key="resetting.template">%fos_user.resetting.email.template%</argument>

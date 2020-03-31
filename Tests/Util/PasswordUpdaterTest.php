@@ -14,6 +14,8 @@ namespace FOS\UserBundle\Tests\Util;
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\NativePasswordEncoder;
 
 class PasswordUpdaterTest extends TestCase
 {
@@ -23,7 +25,7 @@ class PasswordUpdaterTest extends TestCase
     private $updater;
     private $encoderFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->encoderFactory = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface')->getMock();
 
@@ -52,11 +54,14 @@ class PasswordUpdaterTest extends TestCase
         $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
 
-    public function testUpdatePasswordWithBCrypt()
+    public function testUpdatePasswordWithSaltingEncoder()
     {
-        $encoder = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder')
-            ->disableOriginalConstructor()
-            ->getMock();
+        if (class_exists(NativePasswordEncoder::class)) {
+            $encoder = new NativePasswordEncoder(null, null, 13, \PASSWORD_BCRYPT);
+        } else {
+            $encoder = new BCryptPasswordEncoder(13);
+        }
+
         $user = new TestUser();
         $user->setPlainPassword('password');
         $user->setSalt('old_salt');
@@ -66,13 +71,8 @@ class PasswordUpdaterTest extends TestCase
             ->with($user)
             ->will($this->returnValue($encoder));
 
-        $encoder->expects($this->once())
-            ->method('encodePassword')
-            ->with('password', $this->isNull())
-            ->will($this->returnValue('encodedPassword'));
-
         $this->updater->hashPassword($user);
-        $this->assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
+        $this->assertTrue(password_verify('password', $user->getPassword()), '->updatePassword() sets encoded password');
         $this->assertNull($user->getSalt());
         $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }

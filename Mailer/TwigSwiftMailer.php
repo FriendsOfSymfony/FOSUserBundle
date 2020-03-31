@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
 
 /**
  * @author Christophe Coevoet <stof@notk.org>
@@ -30,7 +31,7 @@ class TwigSwiftMailer implements MailerInterface
     protected $router;
 
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $twig;
 
@@ -42,7 +43,7 @@ class TwigSwiftMailer implements MailerInterface
     /**
      * TwigSwiftMailer constructor.
      */
-    public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, \Twig_Environment $twig, array $parameters)
+    public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, Environment $twig, array $parameters)
     {
         $this->mailer = $mailer;
         $this->router = $router;
