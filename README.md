@@ -25,6 +25,8 @@ in this bundle, and available on symfony.com:
 
 [Read the Documentation for master](https://symfony.com/doc/master/bundles/FOSUserBundle/index.html)
 
+[Read the Documentation for 2.0.x](https://symfony.com/doc/2.0.x/bundles/FOSUserBundle/index.html)
+
 [Read the Documentation for 1.3.x](https://symfony.com/doc/1.3.x/bundles/FOSUserBundle/index.html)
 
 Installation
