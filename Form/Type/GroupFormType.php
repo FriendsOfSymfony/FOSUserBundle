@@ -20,7 +20,7 @@ class GroupFormType extends AbstractType
     /**
      * @var string
      */
-    private $class;
+    protected $class;
 
     /**
      * @param string $class The Group class name
