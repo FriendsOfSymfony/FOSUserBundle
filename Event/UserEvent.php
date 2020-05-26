@@ -12,10 +12,9 @@
 namespace FOS\UserBundle\Event;
 
 use FOS\UserBundle\Model\UserInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 
-class UserEvent extends Event
+class UserEvent extends EventBC
 {
     /**
      * @var Request|null
