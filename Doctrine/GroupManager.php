@@ -11,11 +11,16 @@
 
 namespace FOS\UserBundle\Doctrine;
 
+@trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\GroupManager as BaseGroupManager;
 
+/**
+ * @deprecated
+ */
 class GroupManager extends BaseGroupManager
 {
     /**

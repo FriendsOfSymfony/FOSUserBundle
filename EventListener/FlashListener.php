@@ -15,7 +15,8 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Contracts\EventDispatcher\Event as ContractsEvent;
 
 class FlashListener implements EventSubscriberInterface
 {
@@ -68,9 +69,10 @@ class FlashListener implements EventSubscriberInterface
     }
 
     /**
+     * @param Event|ContractsEvent $event
      * @param string $eventName
      */
-    public function addSuccessFlash(Event $event, $eventName)
+    public function addSuccessFlash($event, $eventName)
     {
         if (!isset(self::$successMessages[$eventName])) {
             throw new \InvalidArgumentException('This event does not correspond to a known flash message');
@@ -80,7 +82,7 @@ class FlashListener implements EventSubscriberInterface
     }
 
     /**
-     * @param string$message
+     * @param string $message
      *
      * @return string
      */

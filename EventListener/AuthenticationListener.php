@@ -18,6 +18,7 @@ use FOS\UserBundle\Security\LoginManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 class AuthenticationListener implements EventSubscriberInterface
 {
@@ -62,7 +63,15 @@ class AuthenticationListener implements EventSubscriberInterface
         try {
             $this->loginManager->logInUser($this->firewallName, $event->getUser(), $event->getResponse());
 
-            $eventDispatcher->dispatch(FOSUserEvents::SECURITY_IMPLICIT_LOGIN, new UserEvent($event->getUser(), $event->getRequest()));
+            $newEvent = new UserEvent($event->getUser(), $event->getRequest());
+            $newEventName = FOSUserEvents::SECURITY_IMPLICIT_LOGIN;
+
+            // BC layer for Symfony < 4.3
+            if ($eventDispatcher instanceof ContractsEventDispatcherInterface) {
+                $eventDispatcher->dispatch($newEvent, $newEventName);
+            } else {
+                $eventDispatcher->dispatch($newEventName, $newEvent);
+            }
         } catch (AccountStatusException $ex) {
             // We simply do not authenticate users which do not pass the user
             // checker (not enabled, expired, etc.).

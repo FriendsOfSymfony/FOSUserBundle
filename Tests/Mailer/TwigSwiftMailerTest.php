@@ -15,6 +15,8 @@ use FOS\UserBundle\Mailer\TwigSwiftMailer;
 use PHPUnit\Framework\TestCase;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
 
 class TwigSwiftMailerTest extends TestCase
 {
@@ -103,7 +105,7 @@ class TwigSwiftMailerTest extends TestCase
 
     private function getTwigEnvironment()
     {
-        return new \Twig_Environment(new \Twig_Loader_Array(['foo' => <<<'TWIG'
+        return new Environment(new ArrayLoader(['foo' => <<<'TWIG'
 {% block subject 'foo' %}
 
 {% block body_text %}Test{% endblock %}

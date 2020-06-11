@@ -13,7 +13,6 @@
         <indexes>
             <index>
                 <key name="name" order="asc" />
-                <option name="safe" value="true" />
                 <option name="unique" value="true" />
             </index>
         </indexes>

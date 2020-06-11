@@ -102,10 +102,8 @@ interface UserManagerInterface
 
     /**
      * Updates a user.
-     *
-     * @param bool $andFlush
      */
-    public function updateUser(UserInterface $user, $andFlush = true);
+    public function updateUser(UserInterface $user);
 
     /**
      * Updates the canonical username and email fields for a user.

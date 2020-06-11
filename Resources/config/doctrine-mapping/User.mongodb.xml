@@ -31,17 +31,14 @@
         <indexes>
             <index>
                 <key name="usernameCanonical" order="asc" />
-                <option name="safe" value="true" />
                 <option name="unique" value="true" />
             </index>
             <index>
                 <key name="emailCanonical" order="asc" />
-                <option name="safe" value="true" />
                 <option name="unique" value="true" />
             </index>
             <index>
                 <key name="confirmationToken" order="asc" />
-                <option name="safe" value="true" />
                 <option name="sparse" value="true" />
                 <option name="unique" value="true" />
             </index>

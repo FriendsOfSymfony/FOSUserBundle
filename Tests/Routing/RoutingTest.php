@@ -31,9 +31,6 @@ class RoutingTest extends TestCase
 
         $collection = new RouteCollection();
         $collection->addCollection($loader->load(__DIR__.'/../../Resources/config/routing/change_password.xml'));
-        $subCollection = $loader->load(__DIR__.'/../../Resources/config/routing/group.xml');
-        $subCollection->addPrefix('/group');
-        $collection->addCollection($subCollection);
         $subCollection = $loader->load(__DIR__.'/../../Resources/config/routing/profile.xml');
         $subCollection->addPrefix('/profile');
         $collection->addCollection($subCollection);
@@ -58,12 +55,6 @@ class RoutingTest extends TestCase
     {
         return [
             ['fos_user_change_password', '/change-password', ['GET', 'POST']],
-
-            ['fos_user_group_list', '/group/list', ['GET']],
-            ['fos_user_group_new', '/group/new', ['GET', 'POST']],
-            ['fos_user_group_show', '/group/{groupName}', ['GET']],
-            ['fos_user_group_edit', '/group/{groupName}/edit', ['GET', 'POST']],
-            ['fos_user_group_delete', '/group/{groupName}/delete', ['GET']],
 
             ['fos_user_profile_show', '/profile/', ['GET']],
             ['fos_user_profile_edit', '/profile/edit', ['GET', 'POST']],

@@ -61,6 +61,8 @@ class FOSUserExtensionTest extends TestCase
 
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     *
+     * @group legacy
      */
     public function testUserLoadThrowsExceptionUnlessGroupModelClassSet()
     {
@@ -238,6 +240,15 @@ class FOSUserExtensionTest extends TestCase
         $this->assertParameter('mongodb', 'fos_user.storage');
         $this->assertParameter(null, 'fos_user.model_manager_name');
         $this->assertAlias('fos_user.user_manager.default', 'fos_user.user_manager');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadManagerClassWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
         $this->assertNotHasDefinition('fos_user.group_manager');
     }
 
@@ -248,6 +259,15 @@ class FOSUserExtensionTest extends TestCase
         $this->assertParameter('orm', 'fos_user.storage');
         $this->assertParameter('custom', 'fos_user.model_manager_name');
         $this->assertAlias('acme_my.user_manager', 'fos_user.user_manager');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadManagerClass()
+    {
+        $this->createFullConfiguration();
+
         $this->assertAlias('fos_user.group_manager.default', 'fos_user.group_manager');
     }
 
@@ -257,9 +277,18 @@ class FOSUserExtensionTest extends TestCase
 
         $this->assertParameter('acme_my_profile', 'fos_user.profile.form.type');
         $this->assertParameter('acme_my_registration', 'fos_user.registration.form.type');
-        $this->assertParameter('acme_my_group', 'fos_user.group.form.type');
         $this->assertParameter('acme_my_change_password', 'fos_user.change_password.form.type');
         $this->assertParameter('acme_my_resetting', 'fos_user.resetting.form.type');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadFormClass()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('acme_my_group', 'fos_user.group.form.type');
     }
 
     public function testUserLoadFormNameWithDefaults()
@@ -278,9 +307,18 @@ class FOSUserExtensionTest extends TestCase
 
         $this->assertParameter('acme_profile_form', 'fos_user.profile.form.name');
         $this->assertParameter('acme_registration_form', 'fos_user.registration.form.name');
-        $this->assertParameter('acme_group_form', 'fos_user.group.form.name');
         $this->assertParameter('acme_change_password_form', 'fos_user.change_password.form.name');
         $this->assertParameter('acme_resetting_form', 'fos_user.resetting.form.name');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadFormName()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertParameter('acme_group_form', 'fos_user.group.form.name');
     }
 
     public function testUserLoadFormServiceWithDefaults()
@@ -289,9 +327,18 @@ class FOSUserExtensionTest extends TestCase
 
         $this->assertHasDefinition('fos_user.profile.form.factory');
         $this->assertHasDefinition('fos_user.registration.form.factory');
-        $this->assertNotHasDefinition('fos_user.group.form.factory');
         $this->assertHasDefinition('fos_user.change_password.form.factory');
         $this->assertHasDefinition('fos_user.resetting.form.factory');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadFormServiceWithDefaults()
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertNotHasDefinition('fos_user.group.form.factory');
     }
 
     public function testUserLoadFormService()
@@ -300,9 +347,18 @@ class FOSUserExtensionTest extends TestCase
 
         $this->assertHasDefinition('fos_user.profile.form.factory');
         $this->assertHasDefinition('fos_user.registration.form.factory');
-        $this->assertHasDefinition('fos_user.group.form.factory');
         $this->assertHasDefinition('fos_user.change_password.form.factory');
         $this->assertHasDefinition('fos_user.resetting.form.factory');
+    }
+
+    /**
+     * @group legacy
+     */
+    public function testLegacyUserLoadFormService()
+    {
+        $this->createFullConfiguration();
+
+        $this->assertHasDefinition('fos_user.group.form.factory');
     }
 
     public function testUserLoadConfirmationEmailWithDefaults()

@@ -15,8 +15,11 @@ use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 /**
  * Executes some manipulations on the users.
@@ -75,7 +78,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_CREATED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_CREATED);
 
         return $user;
     }
@@ -92,7 +95,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_ACTIVATED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_ACTIVATED);
     }
 
     /**
@@ -107,7 +110,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_DEACTIVATED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_DEACTIVATED);
     }
 
     /**
@@ -123,7 +126,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_PASSWORD_CHANGED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_PASSWORD_CHANGED);
     }
 
     /**
@@ -138,7 +141,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_PROMOTED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_PROMOTED);
     }
 
     /**
@@ -153,7 +156,7 @@ class UserManipulator
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
-        $this->dispatcher->dispatch(FOSUserEvents::USER_DEMOTED, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::USER_DEMOTED);
     }
 
     /**
@@ -222,5 +225,20 @@ class UserManipulator
     private function getRequest()
     {
         return $this->requestStack->getCurrentRequest();
+    }
+
+    /**
+     * BC layer for Symfony < 4.3
+     *
+     * @param Event $event
+     * @param string $eventName
+     */
+    private function dispatchWithBC(Event $event, $eventName)
+    {
+        if ($this->dispatcher instanceof ContractsEventDispatcherInterface) {
+            $this->dispatcher->dispatch($event, $eventName);
+        } else {
+            $this->dispatcher->dispatch($eventName, $event);
+        }
     }
 }

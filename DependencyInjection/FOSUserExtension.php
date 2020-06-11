@@ -126,6 +126,8 @@ class FOSUserExtension extends Extension
         }
 
         if (!empty($config['group'])) {
+            @trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
+
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
         }
 

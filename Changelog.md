@@ -2,19 +2,18 @@ Changelog
 =========
 
 ### 2.2.0 (2020-01-xx)
-=======
 
+* Deprecated the Groups feature.
 * Marked all controllers final.
 * Added Mongolian translation.
 * Added an email provider.
 * Added a custom user checker.
-* Added PHP 7.3 support.
+* Added PHP 7.4 support.
 * Removed fieldName attribute in MongoDB mapping.
 * Registration confirmation now redirects to login page if token is invalid.
 * User model will not rely on `AdvancedUserInterface` anymore.
 * Self-salting password encoders will not create a salt anymore.
 * FlashListener constructor now accepts `SessionInterface`.
-* Fixed `UserManagerInterface::updateUser` signature.
 * Fixed several Symfony deprecation notices.
 * Fixed several translations.
 

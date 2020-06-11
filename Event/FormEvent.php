@@ -11,12 +11,11 @@
 
 namespace FOS\UserBundle\Event;
 
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class FormEvent extends Event
+class FormEvent extends EventBC
 {
     /**
      * @var FormInterface

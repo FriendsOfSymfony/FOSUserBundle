@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Tests\Util;
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
 class PasswordUpdaterTest extends TestCase
 {
@@ -54,6 +55,11 @@ class PasswordUpdaterTest extends TestCase
 
     public function testUpdatePasswordWithBCrypt()
     {
+        // BC layer for Symfony < 5
+        if (!class_exists(BCryptPasswordEncoder::class)) {
+            $this->markTestSkipped(sprintf('%s class is not exists', BCryptPasswordEncoder::class));
+        }
+
         $encoder = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder')
             ->disableOriginalConstructor()
             ->getMock();

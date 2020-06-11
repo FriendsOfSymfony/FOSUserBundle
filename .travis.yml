@@ -1,15 +1,19 @@
 language: php
 
 php:
-  - 5.5
   - 5.6
   - 7.1
   - 7.2
   - 7.3
+  - 7.4
+
+allow_failures:
+  - php: 5.6
 
 env:
   global:
     - TARGET=test
+    - SYMFONY_DEPRECATIONS_HELPER=weak
 
 matrix:
   fast_finish: true
@@ -17,6 +21,7 @@ matrix:
     - php: 7.0
       env: TARGET=cs_dry_run
     - php: 5.5
+      dist: trusty
       env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 5.6
       env: DEPENDENCIES="symfony/lts:^2"

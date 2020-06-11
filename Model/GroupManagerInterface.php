@@ -11,6 +11,8 @@
 
 namespace FOS\UserBundle\Model;
 
+@trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 /**
  * Interface to be implemented by group managers. This adds an additional level
  * of abstraction between your application, and the actual repository.
@@ -18,6 +20,8 @@ namespace FOS\UserBundle\Model;
  * All changes to groups should happen through this interface.
  *
  * @author Christophe Coevoet <stof@notk.org>
+ *
+ * @deprecated
  */
 interface GroupManagerInterface
 {

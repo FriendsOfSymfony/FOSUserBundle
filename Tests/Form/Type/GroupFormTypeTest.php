@@ -14,6 +14,9 @@ namespace FOS\UserBundle\Tests\Form\Type;
 use FOS\UserBundle\Form\Type\GroupFormType;
 use FOS\UserBundle\Tests\TestGroup;
 
+/**
+ * @group legacy
+ */
 class GroupFormTypeTest extends TypeTestCase
 {
     public function testSubmit()

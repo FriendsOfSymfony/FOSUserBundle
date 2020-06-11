@@ -11,6 +11,8 @@
 
 namespace FOS\UserBundle\Controller;
 
+@trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 use FOS\UserBundle\Event\FilterGroupResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseGroupEvent;
@@ -20,11 +22,13 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\GroupManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 /**
  * RESTful controller managing group CRUD.
@@ -32,7 +36,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  *
- * @final
+ * @deprecated
  */
 class GroupController extends Controller
 {
@@ -83,7 +87,7 @@ class GroupController extends Controller
         $group = $this->findGroupBy('name', $groupName);
 
         $event = new GetResponseGroupEvent($group, $request);
-        $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_EDIT_INITIALIZE, $event);
+        $this->dispatchWithBC($event, FOSUserEvents::GROUP_EDIT_INITIALIZE);
 
         if (null !== $event->getResponse()) {
             return $event->getResponse();
@@ -96,7 +100,7 @@ class GroupController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_EDIT_SUCCESS, $event);
+            $this->dispatchWithBC($event, FOSUserEvents::GROUP_EDIT_SUCCESS);
 
             $this->groupManager->updateGroup($group);
 
@@ -105,7 +109,7 @@ class GroupController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_EDIT_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+            $this->dispatchWithBC(new FilterGroupResponseEvent($group, $request, $response), FOSUserEvents::GROUP_EDIT_COMPLETED);
 
             return $response;
         }
@@ -125,7 +129,7 @@ class GroupController extends Controller
     {
         $group = $this->groupManager->createGroup('');
 
-        $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_CREATE_INITIALIZE, new GroupEvent($group, $request));
+        $this->dispatchWithBC(new GroupEvent($group, $request), FOSUserEvents::GROUP_CREATE_INITIALIZE);
 
         $form = $this->formFactory->createForm();
         $form->setData($group);
@@ -134,7 +138,7 @@ class GroupController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_CREATE_SUCCESS, $event);
+            $this->dispatchWithBC($event, FOSUserEvents::GROUP_CREATE_SUCCESS);
 
             $this->groupManager->updateGroup($group);
 
@@ -143,7 +147,7 @@ class GroupController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_CREATE_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+            $this->dispatchWithBC(new FilterGroupResponseEvent($group, $request, $response), FOSUserEvents::GROUP_CREATE_COMPLETED);
 
             return $response;
         }
@@ -167,7 +171,7 @@ class GroupController extends Controller
 
         $response = new RedirectResponse($this->generateUrl('fos_user_group_list'));
 
-        $this->eventDispatcher->dispatch(FOSUserEvents::GROUP_DELETE_COMPLETED, new FilterGroupResponseEvent($group, $request, $response));
+        $this->dispatchWithBC(new FilterGroupResponseEvent($group, $request, $response), FOSUserEvents::GROUP_DELETE_COMPLETED);
 
         return $response;
     }
@@ -193,5 +197,20 @@ class GroupController extends Controller
         }
 
         return $group;
+    }
+
+    /**
+     * BC layer for Symfony < 4.3
+     *
+     * @param Event $event
+     * @param string $eventName
+     */
+    private function dispatchWithBC(Event $event, $eventName)
+    {
+        if ($this->eventDispatcher instanceof ContractsEventDispatcherInterface) {
+            $this->eventDispatcher->dispatch($event, $eventName);
+        } else {
+            $this->eventDispatcher->dispatch($eventName, $event);
+        }
     }
 }
