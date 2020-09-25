@@ -26,13 +26,11 @@ use FOS\UserBundle\Util\PasswordUpdaterInterface;
  * @author Christophe Coevoet <stof@notk.org>
  * @author David Buchmann <mail@davidbu.ch>
  */
-class UserListener implements EventSubscriber
-{
+class UserListener implements EventSubscriber {
     private $passwordUpdater;
     private $canonicalFieldsUpdater;
 
-    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater)
-    {
+    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater) {
         $this->passwordUpdater = $passwordUpdater;
         $this->canonicalFieldsUpdater = $canonicalFieldsUpdater;
     }
@@ -40,8 +38,7 @@ class UserListener implements EventSubscriber
     /**
      * {@inheritdoc}
      */
-    public function getSubscribedEvents()
-    {
+    public function getSubscribedEvents() {
         return [
             'prePersist',
             'preUpdate',
@@ -51,8 +48,7 @@ class UserListener implements EventSubscriber
     /**
      * Pre persist listener based on doctrine common.
      */
-    public function prePersist(LifecycleEventArgs $args)
-    {
+    public function prePersist(\Doctrine\ORM\Event\LifecycleEventArgs $args) {
         $object = $args->getObject();
         if ($object instanceof UserInterface) {
             $this->updateUserFields($object);
@@ -62,8 +58,7 @@ class UserListener implements EventSubscriber
     /**
      * Pre update listener based on doctrine common.
      */
-    public function preUpdate(LifecycleEventArgs $args)
-    {
+    public function preUpdate(\Doctrine\ORM\Event\LifecycleEventArgs $args) {
         $object = $args->getObject();
         if ($object instanceof UserInterface) {
             $this->updateUserFields($object);
@@ -71,11 +66,10 @@ class UserListener implements EventSubscriber
         }
     }
 
-    /**
+    /**`
      * Updates the user properties.
      */
-    private function updateUserFields(UserInterface $user)
-    {
+    private function updateUserFields(UserInterface $user) {
         $this->canonicalFieldsUpdater->updateCanonicalFields($user);
         $this->passwordUpdater->hashPassword($user);
     }
@@ -83,8 +77,7 @@ class UserListener implements EventSubscriber
     /**
      * Recomputes change set for Doctrine implementations not doing it automatically after the event.
      */
-    private function recomputeChangeSet(ObjectManager $om, UserInterface $user)
-    {
+    private function recomputeChangeSet(EntityManager $om, UserInterface $user) {
         $meta = $om->getClassMetadata(get_class($user));
 
         if ($om instanceof EntityManager) {
