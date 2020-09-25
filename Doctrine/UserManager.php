@@ -11,17 +11,16 @@
 
 namespace FOS\UserBundle\Doctrine;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManager as BaseUserManager;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;
 
-class UserManager extends BaseUserManager
-{
+class UserManager extends BaseUserManager {
     /**
-     * @var ObjectManager
+     * @var EntityManager
      */
     protected $objectManager;
 
@@ -35,8 +34,7 @@ class UserManager extends BaseUserManager
      *
      * @param string $class
      */
-    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, $class)
-    {
+    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, EntityManager $om, $class) {
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater);
 
         $this->objectManager = $om;
@@ -46,8 +44,7 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritdoc}
      */
-    public function deleteUser(UserInterface $user)
-    {
+    public function deleteUser(UserInterface $user) {
         $this->objectManager->remove($user);
         $this->objectManager->flush();
     }
@@ -55,8 +52,7 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritdoc}
      */
-    public function getClass()
-    {
+    public function getClass() {
         if (false !== strpos($this->class, ':')) {
             $metadata = $this->objectManager->getClassMetadata($this->class);
             $this->class = $metadata->getName();
@@ -68,32 +64,28 @@ class UserManager extends BaseUserManager
     /**
      * {@inheritdoc}
      */
-    public function findUserBy(array $criteria)
-    {
+    public function findUserBy(array $criteria) {
         return $this->getRepository()->findOneBy($criteria);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findUsers()
-    {
+    public function findUsers() {
         return $this->getRepository()->findAll();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function reloadUser(UserInterface $user)
-    {
+    public function reloadUser(UserInterface $user) {
         $this->objectManager->refresh($user);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function updateUser(UserInterface $user, $andFlush = true)
-    {
+    public function updateUser(UserInterface $user, $andFlush = true) {
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);
 
@@ -106,8 +98,7 @@ class UserManager extends BaseUserManager
     /**
      * @return ObjectRepository
      */
-    protected function getRepository()
-    {
+    protected function getRepository() {
         return $this->objectManager->getRepository($this->getClass());
     }
 }
