@@ -26,7 +26,7 @@ class EmailProviderTest extends TestCase
      */
     private $userProvider;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->userManager = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
         $this->userProvider = new EmailProvider($this->userManager);
@@ -43,11 +43,9 @@ class EmailProviderTest extends TestCase
         $this->assertSame($user, $this->userProvider->loadUserByUsername('foobar'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\UsernameNotFoundException
-     */
     public function testLoadUserByInvalidUsername()
     {
+        $this->expectException(\Symfony\Component\Security\Core\Exception\UsernameNotFoundException::class);
         $this->userManager->expects($this->once())
             ->method('findUserByEmail')
             ->with('foobar')
@@ -79,11 +77,9 @@ class EmailProviderTest extends TestCase
         $this->assertSame($refreshedUser, $this->userProvider->refreshUser($user));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\UsernameNotFoundException
-     */
     public function testRefreshDeleted()
     {
+        $this->expectException(\Symfony\Component\Security\Core\Exception\UsernameNotFoundException::class);
         $user = $this->getMockForAbstractClass('FOS\UserBundle\Model\User');
         $this->userManager->expects($this->once())
             ->method('findUserBy')
@@ -96,11 +92,9 @@ class EmailProviderTest extends TestCase
         $this->userProvider->refreshUser($user);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\UnsupportedUserException
-     */
     public function testRefreshInvalidUser()
     {
+        $this->expectException(\Symfony\Component\Security\Core\Exception\UnsupportedUserException::class);
         $user = $this->getMockBuilder('Symfony\Component\Security\Core\User\UserInterface')->getMock();
         $this->userManager->expects($this->any())
             ->method('getClass')
@@ -109,11 +103,9 @@ class EmailProviderTest extends TestCase
         $this->userProvider->refreshUser($user);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\UnsupportedUserException
-     */
     public function testRefreshInvalidUserClass()
     {
+        $this->expectException(\Symfony\Component\Security\Core\Exception\UnsupportedUserException::class);
         $user = $this->getMockBuilder('FOS\UserBundle\Model\User')->getMock();
         $providedUser = $this->getMockBuilder('FOS\UserBundle\Tests\TestUser')->getMock();
 

@@ -1,5 +1,7 @@
 .php_cs
 .php_cs.cache
+.phpunit.result.cache
+.idea/
 composer.lock
 phpunit.xml
 vendor/

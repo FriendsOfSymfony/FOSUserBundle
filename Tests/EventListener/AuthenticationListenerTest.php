@@ -15,7 +15,7 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\EventListener\AuthenticationListener;
 use FOS\UserBundle\FOSUserEvents;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class AuthenticationListenerTest extends TestCase
 {
@@ -30,7 +30,7 @@ class AuthenticationListenerTest extends TestCase
     /** @var AuthenticationListener */
     private $listener;
 
-    public function setUp()
+    public function setUp(): void
     {
         $user = $this->getMockBuilder('FOS\UserBundle\Model\UserInterface')->getMock();
 
@@ -38,7 +38,7 @@ class AuthenticationListenerTest extends TestCase
         $request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->getMock();
         $this->event = new FilterUserResponseEvent($user, $request, $response);
 
-        $this->eventDispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')->getMock();
+        $this->eventDispatcher = $this->getMockBuilder('Symfony\Contracts\EventDispatcher\EventDispatcherInterface')->getMock();
         $this->eventDispatcher
             ->expects($this->once())
             ->method('dispatch');
