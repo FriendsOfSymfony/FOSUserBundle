@@ -274,7 +274,7 @@ in your application:
         firewalls:
             main:
                 pattern: ^/
-                user_checker: fos_user.user_checker
+                user_checker: security.user_checker
                 form_login:
                     provider: fos_userbundle
                     csrf_token_generator: security.csrf.token_manager
