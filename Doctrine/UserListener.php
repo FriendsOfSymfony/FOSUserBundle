@@ -11,6 +11,7 @@
 
 namespace FOS\UserBundle\Doctrine;
 
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ObjectManager;
@@ -18,7 +19,6 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Doctrine listener updating the canonical username and password fields.
@@ -26,7 +26,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * @author Christophe Coevoet <stof@notk.org>
  * @author David Buchmann <mail@davidbu.ch>
  */
-class UserListener implements EventSubscriberInterface
+class UserListener implements EventSubscriber
 {
     private $passwordUpdater;
     private $canonicalFieldsUpdater;
@@ -40,7 +40,7 @@ class UserListener implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public function getSubscribedEvents()
     {
         return [
             'prePersist',
