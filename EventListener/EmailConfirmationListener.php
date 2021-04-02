@@ -22,10 +22,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class EmailConfirmationListener implements EventSubscriberInterface
 {
-    private $mailer;
-    private $tokenGenerator;
-    private $router;
-    private $session;
+    private MailerInterface $mailer;
+    private TokenGeneratorInterface $tokenGenerator;
+    private UrlGeneratorInterface $router;
+    private SessionInterface $session;
 
     /**
      * EmailConfirmationListener constructor.

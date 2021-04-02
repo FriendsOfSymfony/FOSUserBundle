@@ -6,6 +6,7 @@ php:
   - 7.1
   - 7.2
   - 7.3
+  - 7.4
 
 env:
   global:
@@ -14,6 +15,8 @@ env:
 matrix:
   fast_finish: true
   include:
+    - php: 7.4
+      env: TARGET=cs_dry_run
     - php: 7.0
       env: TARGET=cs_dry_run
     - php: 5.5
