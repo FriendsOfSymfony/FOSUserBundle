@@ -15,6 +15,9 @@ use FOS\UserBundle\Mailer\TwigSwiftMailer;
 use PHPUnit\Framework\TestCase;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
 
 class TwigSwiftMailerTest extends TestCase
 {
@@ -83,10 +86,10 @@ class TwigSwiftMailerTest extends TestCase
         return new TwigSwiftMailer(
             new Swift_Mailer(
                 new Swift_Transport_NullTransport(
-                    $this->getMockBuilder('Swift_Events_EventDispatcher')->getMock()
+                    $this->getMockBuilder(\Swift_Events_EventDispatcher::class)->getMock()
                 )
             ),
-            $this->getMockBuilder('Symfony\Component\Routing\Generator\UrlGeneratorInterface')->getMock(),
+            $this->getMockBuilder(UrlGeneratorInterface::class)->getMock(),
             $this->getTwigEnvironment(),
             [
                 'template' => [
@@ -103,7 +106,7 @@ class TwigSwiftMailerTest extends TestCase
 
     private function getTwigEnvironment()
     {
-        return new \Twig_Environment(new \Twig_Loader_Array(['foo' => <<<'TWIG'
+        return new Environment(new ArrayLoader(['foo' => <<<'TWIG'
 {% block subject 'foo' %}
 
 {% block body_text %}Test{% endblock %}

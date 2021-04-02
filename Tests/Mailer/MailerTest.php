@@ -15,6 +15,8 @@ use FOS\UserBundle\Mailer\Mailer;
 use PHPUnit\Framework\TestCase;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
 
 class MailerTest extends TestCase
 {
@@ -83,10 +85,10 @@ class MailerTest extends TestCase
         return new Mailer(
             new Swift_Mailer(
                 new Swift_Transport_NullTransport(
-                    $this->getMockBuilder('\Swift_Events_EventDispatcher')->getMock()
+                    $this->getMockBuilder(\Swift_Events_EventDispatcher::class)->getMock()
                 )
             ),
-            $this->getMockBuilder('Symfony\Component\Routing\Generator\UrlGeneratorInterface')->getMock(),
+            $this->getMockBuilder(UrlGeneratorInterface::class)->getMock(),
             $this->getTemplating(),
             [
                 'confirmation.template' => 'foo',
@@ -101,12 +103,10 @@ class MailerTest extends TestCase
 
     private function getTemplating()
     {
-        $templating = $this->getMockBuilder('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface')
+        return  $this->getMockBuilder(Environment::class)
             ->disableOriginalConstructor()
             ->getMock()
         ;
-
-        return $templating;
     }
 
     private function getUser($emailAddress)

@@ -14,18 +14,17 @@ namespace FOS\UserBundle\Tests\Util;
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class PasswordUpdaterTest extends TestCase
 {
-    /**
-     * @var PasswordUpdater
-     */
-    private $updater;
-    private $encoderFactory;
+    private PasswordUpdater $updater;
+    private EncoderFactoryInterface $encoderFactory;
 
     protected function setUp()
     {
-        $this->encoderFactory = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface')->getMock();
+        $this->encoderFactory = $this->createMock(EncoderFactoryInterface::class);
 
         $this->updater = new PasswordUpdater($this->encoderFactory);
     }
@@ -54,7 +53,7 @@ class PasswordUpdaterTest extends TestCase
 
     public function testUpdatePasswordWithBCrypt()
     {
-        $encoder = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder')
+        $encoder = $this->getMockBuilder(BCryptPasswordEncoder::class)
             ->disableOriginalConstructor()
             ->getMock();
         $user = new TestUser();

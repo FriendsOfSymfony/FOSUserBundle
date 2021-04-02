@@ -20,7 +20,7 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +34,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class ResettingController extends Controller
+class ResettingController extends AbstractController
 {
     private $eventDispatcher;
     private $formFactory;
