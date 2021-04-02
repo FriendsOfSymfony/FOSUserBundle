@@ -16,7 +16,7 @@ matrix:
   fast_finish: true
   include:
     - php: 7.4
-      env: TARGET=cs_dry_run
+      env: DEPENDENCIES="symfony/lts:^4"
     - php: 7.0
       env: TARGET=cs_dry_run
     - php: 5.5
