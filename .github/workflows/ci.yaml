@@ -1,0 +1,55 @@
+name: CI
+
+on:
+    pull_request:
+    push:
+        branches: [ master ]
+
+jobs:
+    run:
+        runs-on: ubuntu-18.04
+        strategy:
+            fail-fast: false
+            matrix:
+                php:
+                    - '5.5'
+                    - '5.6'
+                    - '7.1'
+                    - '7.2'
+                    - '7.3'
+                    - '7.4'
+                symfony-versions: [false]
+                include:
+                    -   description: 'Symfony 2.*'
+                        php: '5.6'
+                        symfony-versions: '^2.8'
+                    -   description: 'Symfony 3.*'
+                        php: '7.4'
+                        symfony-versions: '^3.0'
+                    -   description: 'Symfony 4.*'
+                        php: '7.4'
+                        symfony-versions: '^4.0'
+        name: PHP ${{ matrix.php }} ${{ matrix.description }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - uses: actions/cache@v2
+              with:
+                  path: ~/.composer/cache/files
+                  key: ${{ matrix.php }}-${{ matrix.symfony-versions }}
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+
+            - name: Install dependencies
+              run: composer require "symfony/symfony:${{ matrix.symfony-versions }}" --no-update
+              if: matrix.symfony-versions
+
+            - name: Install dependencies
+              run: composer install
+
+            - name: Run PHPUnit tests
+              run: ./vendor/bin/phpunit --coverage-text

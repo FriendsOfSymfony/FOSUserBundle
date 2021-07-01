@@ -15,7 +15,7 @@ Features include:
 **Note:** This bundle does *not* provide an authentication system but can
 provide the user provider for the core [SecurityBundle](https://symfony.com/doc/current/book/security.html).
 
-[![Build Status](https://travis-ci.org/FriendsOfSymfony/FOSUserBundle.svg?branch=master)](https://travis-ci.org/FriendsOfSymfony/FOSUserBundle) [![Total Downloads](https://poser.pugx.org/friendsofsymfony/user-bundle/downloads.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle) [![Latest Stable Version](https://poser.pugx.org/friendsofsymfony/user-bundle/v/stable.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle)
+[![Build Status](https://github.com/FriendsOfSymfony/FOSUserBundle/workflows/CI/badge.svg?branch=master)](https://github.com/FriendsOfSymfony/FOSUserBundle/actions?query=workflow%3ACI+branch%3Amaster) [![Total Downloads](https://poser.pugx.org/friendsofsymfony/user-bundle/downloads.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle) [![Latest Stable Version](https://poser.pugx.org/friendsofsymfony/user-bundle/v/stable.svg)](https://packagist.org/packages/friendsofsymfony/user-bundle)
 
 Documentation
 -------------

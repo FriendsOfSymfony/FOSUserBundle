@@ -1,0 +1,35 @@
+name: Code style and composer validate
+
+on:
+    pull_request:
+    push:
+        branches: [ master ]
+
+jobs:
+    composer-validate:
+        name: Validate composer.json
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2.0.0
+
+            - name: Validate
+              run: composer validate --no-check-lock --strict
+
+    php-cs-fixer:
+        name: PHP-CS-Fixer
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.4'
+
+            - name: Install dependencies
+              run: composer install
+
+            - name: Run script
+              run: vendor/bin/php-cs-fixer fix --verbose --diff --dry-run
