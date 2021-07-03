@@ -144,19 +144,19 @@ class UserManagerTest extends TestCase
         $usernameThatLooksLikeEmail = 'bob@example.com';
         $user = $this->getUser();
 
-        $this->manager->expects($this->at(0))
+        $this->manager->expects($this->exactly(2))
             ->method('findUserBy')
-            ->with($this->equalTo(['emailCanonical' => $usernameThatLooksLikeEmail]))
-            ->will($this->returnValue(null));
+            ->withConsecutive(
+                [$this->equalTo(['emailCanonical' => $usernameThatLooksLikeEmail])],
+                [$this->equalTo(['usernameCanonical' => $usernameThatLooksLikeEmail])]
+            )
+            ->willReturnOnConsecutiveCalls(null, $user);
+
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeEmail')
             ->with($usernameThatLooksLikeEmail)
             ->willReturn($usernameThatLooksLikeEmail);
 
-        $this->manager->expects($this->at(1))
-            ->method('findUserBy')
-            ->with($this->equalTo(['usernameCanonical' => $usernameThatLooksLikeEmail]))
-            ->will($this->returnValue($user));
         $this->fieldsUpdater->expects($this->once())
             ->method('canonicalizeUsername')
             ->with($usernameThatLooksLikeEmail)
