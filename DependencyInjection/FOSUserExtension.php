@@ -130,6 +130,9 @@ class FOSUserExtension extends Extension
         }
 
         if ($this->mailerNeeded) {
+            if ('fos_user.mailer.default' !== $config['service']['mailer']) {
+                $container->setAlias('fos_user.templating', $config['service']['templating']);
+            }
             $container->setAlias('fos_user.mailer', $config['service']['mailer']);
         }
 

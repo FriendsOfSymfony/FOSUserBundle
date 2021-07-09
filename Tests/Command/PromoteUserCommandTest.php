@@ -31,7 +31,7 @@ class PromoteUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertRegExp('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
+        $this->assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper()
@@ -42,12 +42,9 @@ class PromoteUserCommandTest extends TestCase
             ->setMethods(['ask'])
             ->getMock();
 
-        $helper->expects($this->at(0))
+        $helper->expects($this->exactly(2))
             ->method('ask')
-            ->will($this->returnValue('user'));
-        $helper->expects($this->at(1))
-            ->method('ask')
-            ->will($this->returnValue('role'));
+            ->willReturnOnConsecutiveCalls('user', 'role');
 
         $application->getHelperSet()->set($helper, 'question');
 
@@ -58,7 +55,7 @@ class PromoteUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertRegExp('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
+        $this->assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
     }
 
     /**

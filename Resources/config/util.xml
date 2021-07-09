@@ -19,7 +19,7 @@
         <service id="FOS\UserBundle\Util\TokenGeneratorInterface" alias="fos_user.util.token_generator" public="false" />
 
         <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
-            <argument type="service" id="security.encoder_factory" />
+            <argument type="service" id="security.password_hasher_factory" />
         </service>
 
         <service id="FOS\UserBundle\Util\PasswordUpdaterInterface" alias="fos_user.util.password_updater" public="false" />

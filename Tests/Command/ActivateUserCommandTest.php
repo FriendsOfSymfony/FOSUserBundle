@@ -30,7 +30,7 @@ class ActivateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
+        $this->assertMatchesRegularExpression('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper()
@@ -41,9 +41,9 @@ class ActivateUserCommandTest extends TestCase
             ->setMethods(['ask'])
             ->getMock();
 
-        $helper->expects($this->at(0))
+        $helper->expects($this->atLeastOnce())
             ->method('ask')
-            ->will($this->returnValue('user'));
+            ->willReturn('user');
 
         $application->getHelperSet()->set($helper, 'question');
 
@@ -54,7 +54,7 @@ class ActivateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
+        $this->assertMatchesRegularExpression('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
     /**
@@ -82,7 +82,7 @@ class ActivateUserCommandTest extends TestCase
      */
     private function getManipulator($username)
     {
-        $manipulator = $this->getMockBuilder('FOS\UserBundle\Util\UserManipulator')
+        $manipulator = $this->getMockBuilder(UserManipulator::class)
             ->disableOriginalConstructor()
             ->getMock();
 

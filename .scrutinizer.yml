@@ -1,0 +1,23 @@
+build:
+  environment:
+    php:
+      version: '8.0'
+  nodes:
+    analysis:
+      dependencies:
+        before:
+          - composer require friendsofphp/php-cs-fixer
+      project_setup:
+        override:
+          - 'true'
+      tests:
+        override:
+          - php-scrutinizer-run
+          -
+            command: ./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php /home/scrutinizer/build
+            use_website_config: false
+checks:
+  php: true
+coding_style:
+  php: {  }
+filter: {  }

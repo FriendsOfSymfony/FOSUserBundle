@@ -14,6 +14,8 @@ namespace FOS\UserBundle\Tests\Util;
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 class PasswordUpdaterTest extends TestCase
 {
@@ -21,59 +23,33 @@ class PasswordUpdaterTest extends TestCase
      * @var PasswordUpdater
      */
     private $updater;
-    private $encoderFactory;
+    private $hasherFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->encoderFactory = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface')->getMock();
+        $this->hasherFactory = $this->getMockBuilder(PasswordHasherFactoryInterface::class)->getMock();
 
-        $this->updater = new PasswordUpdater($this->encoderFactory);
+        $this->updater = new PasswordUpdater($this->hasherFactory);
     }
 
     public function testUpdatePassword()
     {
-        $encoder = $this->getMockPasswordEncoder();
+        $hasher = $this->getMockPasswordHasher();
         $user = new TestUser();
         $user->setPlainPassword('password');
 
-        $this->encoderFactory->expects($this->once())
-            ->method('getEncoder')
-            ->with($user)
-            ->will($this->returnValue($encoder));
+        $this->hasherFactory->expects($this->once())
+            ->method('getPasswordHasher')
+            ->with(get_class($user))
+            ->will($this->returnValue($hasher));
 
-        $encoder->expects($this->once())
-            ->method('encodePassword')
-            ->with('password', $this->isType('string'))
+        $hasher->expects($this->once())
+            ->method('hash')
+            ->with('password')
             ->will($this->returnValue('encodedPassword'));
 
         $this->updater->hashPassword($user);
         $this->assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
-        $this->assertNotNull($user->getSalt());
-        $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
-    }
-
-    public function testUpdatePasswordWithBCrypt()
-    {
-        $encoder = $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $user = new TestUser();
-        $user->setPlainPassword('password');
-        $user->setSalt('old_salt');
-
-        $this->encoderFactory->expects($this->once())
-            ->method('getEncoder')
-            ->with($user)
-            ->will($this->returnValue($encoder));
-
-        $encoder->expects($this->once())
-            ->method('encodePassword')
-            ->with('password', $this->isNull())
-            ->will($this->returnValue('encodedPassword'));
-
-        $this->updater->hashPassword($user);
-        $this->assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
-        $this->assertNull($user->getSalt());
         $this->assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
 
@@ -88,8 +64,8 @@ class PasswordUpdaterTest extends TestCase
         $this->assertSame('hash', $user->getPassword());
     }
 
-    private function getMockPasswordEncoder()
+    private function getMockPasswordHasher()
     {
-        return $this->getMockBuilder('Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface')->getMock();
+        return $this->getMockBuilder(PasswordHasherInterface::class)->disableOriginalConstructor()->getMock();
     }
 }

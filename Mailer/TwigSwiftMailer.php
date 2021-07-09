@@ -13,41 +13,26 @@ namespace FOS\UserBundle\Mailer;
 
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
 
 /**
  * @author Christophe Coevoet <stof@notk.org>
  */
-class TwigSwiftMailer implements MailerInterface
+class TwigSwiftMailer extends AbstractMailer
 {
     /**
-     * @var \Swift_Mailer
-     */
-    protected $mailer;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    protected $router;
-
-    /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $twig;
 
     /**
-     * @var array
-     */
-    protected $parameters;
-
-    /**
      * TwigSwiftMailer constructor.
      */
-    public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, \Twig_Environment $twig, array $parameters)
+    public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, array $parameters, Environment $twig)
     {
-        $this->mailer = $mailer;
-        $this->router = $router;
         $this->twig = $twig;
-        $this->parameters = $parameters;
+
+        parent::__construct($mailer, $router, $parameters);
     }
 
     /**
@@ -63,7 +48,7 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url,
         ];
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], (string) $user->getEmail());
+        $this->sendMessage($this->parameters['from_email']['confirmation'], (string) $user->getEmail(), $template, $context);
     }
 
     /**
@@ -79,25 +64,22 @@ class TwigSwiftMailer implements MailerInterface
             'confirmationUrl' => $url,
         ];
 
-        $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], (string) $user->getEmail());
+        $this->sendMessage($this->parameters['from_email']['resetting'], (string) $user->getEmail(), $template, $context);
     }
 
     /**
-     * @param string $templateName
-     * @param array  $context
-     * @param array  $fromEmail
-     * @param string $toEmail
+     * {@inheritDoc}
      */
-    protected function sendMessage($templateName, $context, $fromEmail, $toEmail)
+    protected function sendMessage($fromEmail, $toEmail, $template, $context = [])
     {
-        $template = $this->twig->load($templateName);
-        $subject = $template->renderBlock('subject', $context);
-        $textBody = $template->renderBlock('body_text', $context);
+        $twigTemplate = $this->twig->load($template);
+        $subject = $twigTemplate->renderBlock('subject', $context);
+        $textBody = $twigTemplate->renderBlock('body_text', $context);
 
         $htmlBody = '';
 
-        if ($template->hasBlock('body_html', $context)) {
-            $htmlBody = $template->renderBlock('body_html', $context);
+        if ($twigTemplate->hasBlock('body_html', $context)) {
+            $htmlBody = $twigTemplate->renderBlock('body_html', $context);
         }
 
         $message = (new \Swift_Message())

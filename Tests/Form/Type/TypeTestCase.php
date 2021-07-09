@@ -24,7 +24,7 @@ use Symfony\Component\Form\Test\TypeTestCase as BaseTypeTestCase;
  */
 abstract class TypeTestCase extends BaseTypeTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

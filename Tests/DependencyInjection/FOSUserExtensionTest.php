@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Tests\DependencyInjection;
 
 use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Yaml\Parser;
 
@@ -21,71 +22,59 @@ class FOSUserExtensionTest extends TestCase
     /** @var ContainerBuilder */
     protected $configuration;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->configuration = null;
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverSet()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['db_driver']);
         $loader->load([$config], new ContainerBuilder());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['db_driver'] = 'foo';
         $loader->load([$config], new ContainerBuilder());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessFirewallNameSet()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['firewall_name']);
         $loader->load([$config], new ContainerBuilder());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessGroupModelClassSet()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getFullConfig();
         unset($config['group']['group_class']);
         $loader->load([$config], new ContainerBuilder());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testUserLoadThrowsExceptionUnlessUserModelClassSet()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         unset($config['user_class']);
         $loader->load([$config], new ContainerBuilder());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testCustomDriverWithoutManager()
     {
+        $this->expectException(InvalidConfigurationException::class);
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $config['db_driver'] = 'custom';
@@ -117,7 +106,7 @@ class FOSUserExtensionTest extends TestCase
 
         $mailer = $this->configuration->getDefinition('fos_user.mailer.default');
         $parameters = $this->configuration->getParameterBag()->resolveValue(
-            $mailer->getArgument(3)
+            $mailer->getArgument(2)
         );
         $this->assertSame(
             [
@@ -139,7 +128,7 @@ class FOSUserExtensionTest extends TestCase
 
         $mailer = $this->configuration->getDefinition('fos_user.mailer.default');
         $parameters = $this->configuration->getParameterBag()->resolveValue(
-            $mailer->getArgument(3)
+            $mailer->getArgument(2)
         );
         $this->assertSame(
             [
@@ -343,6 +332,7 @@ class FOSUserExtensionTest extends TestCase
         $this->createFullConfiguration();
 
         $this->assertAlias('acme_my.mailer', 'fos_user.mailer');
+        $this->assertAlias('acme_my.templating', 'fos_user.templating');
         $this->assertAlias('acme_my.email_canonicalizer', 'fos_user.util.email_canonicalizer');
         $this->assertAlias('acme_my.username_canonicalizer', 'fos_user.util.username_canonicalizer');
     }
@@ -494,6 +484,7 @@ service:
     email_canonicalizer: acme_my.email_canonicalizer
     username_canonicalizer: acme_my.username_canonicalizer
     user_manager: acme_my.user_manager
+    templating: acme_my.templating
 group:
     group_class: Acme\MyBundle\Entity\Group
     form:

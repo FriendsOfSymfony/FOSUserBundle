@@ -16,10 +16,9 @@
     </parameters>
 
     <services>
-        <service id="fos_user.mailer.default" class="FOS\UserBundle\Mailer\Mailer" public="false">
+        <service id="fos_user.mailer.templating_swift" class="FOS\UserBundle\Mailer\Mailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
-            <argument type="service" id="templating" />
             <argument type="collection">
                 <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
                 <argument key="resetting.template">%fos_user.resetting.email.template%</argument>
@@ -28,13 +27,13 @@
                     <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
                 </argument>
             </argument>
+            <argument type="service" id="fos_user.templating" />
             <tag name="fos_user.requires_swift" />
         </service>
 
-        <service id="fos_user.mailer.twig_swift" class="FOS\UserBundle\Mailer\TwigSwiftMailer" public="false">
+        <service id="fos_user.mailer.default" class="FOS\UserBundle\Mailer\TwigSwiftMailer" public="false">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
-            <argument type="service" id="twig" />
             <argument type="collection">
                 <argument key="template" type="collection">
                     <argument key="confirmation">%fos_user.registration.confirmation.template%</argument>
@@ -45,6 +44,7 @@
                     <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
                 </argument>
             </argument>
+            <argument type="service" id="twig" />
             <tag name="fos_user.requires_swift" />
         </service>
 

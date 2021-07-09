@@ -20,7 +20,7 @@ use FOS\UserBundle\Model\UserInterface;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class NoopMailer implements MailerInterface
+class NoopMailer extends AbstractMailer
 {
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
@@ -28,6 +28,11 @@ class NoopMailer implements MailerInterface
     }
 
     public function sendResettingEmailMessage(UserInterface $user)
+    {
+        // nothing happens.
+    }
+
+    protected function sendMessage($fromEmail, $toEmail, $template, $context = [])
     {
         // nothing happens.
     }

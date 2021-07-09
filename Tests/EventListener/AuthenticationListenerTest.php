@@ -19,7 +19,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class AuthenticationListenerTest extends TestCase
 {
-    const FIREWALL_NAME = 'foo';
+    public const FIREWALL_NAME = 'foo';
 
     /** @var EventDispatcherInterface */
     private $eventDispatcher;
@@ -30,7 +30,7 @@ class AuthenticationListenerTest extends TestCase
     /** @var AuthenticationListener */
     private $listener;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $user = $this->getMockBuilder('FOS\UserBundle\Model\UserInterface')->getMock();
 
