@@ -25,7 +25,7 @@ class FlashListenerTest extends TestCase
     /** @var FlashListener */
     private $listener;
 
-    public function setUp()
+    public function setUp(): void
     {
         if (class_exists(ContractsEvent::class)) {
             $this->event = new ContractsEvent();
