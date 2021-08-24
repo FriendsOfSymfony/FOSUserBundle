@@ -28,7 +28,7 @@ class UserManagerTest extends TestCase
 
     public function setUp()
     {
-        if (!interface_exists('Doctrine\Common\Persistence\ObjectManager')) {
+        if (!interface_exists('Doctrine\Persistence\ObjectManager')) {
             $this->markTestSkipped('Doctrine Common has to be installed for this test to run.');
         }
 
@@ -37,8 +37,8 @@ class UserManagerTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $class = $this->getMockBuilder('Doctrine\Common\Persistence\Mapping\ClassMetadata')->getMock();
-        $this->om = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectManager')->getMock();
-        $this->repository = $this->getMockBuilder('Doctrine\Common\Persistence\ObjectRepository')->getMock();
+        $this->om = $this->getMockBuilder('Doctrine\Persistence\ObjectManager')->getMock();
+        $this->repository = $this->getMockBuilder('Doctrine\Persistence\ObjectRepository')->getMock();
 
         $this->om->expects($this->any())
             ->method('getRepository')
