@@ -32,7 +32,7 @@ class CreateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
+        $this->assertRegExp('/Created user user/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper()
@@ -58,7 +58,7 @@ class CreateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
+        $this->assertRegExp('/Created user user/', $commandTester->getDisplay());
     }
 
     /**

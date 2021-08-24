@@ -30,7 +30,7 @@ class DeactivateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
+        $this->assertRegExp('/User "user" has been deactivated/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper()
@@ -54,7 +54,7 @@ class DeactivateUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
+        $this->assertRegExp('/User "user" has been deactivated/', $commandTester->getDisplay());
     }
 
     /**

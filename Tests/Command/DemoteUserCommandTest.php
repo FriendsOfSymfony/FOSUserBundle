@@ -31,7 +31,7 @@ class DemoteUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
+        $this->assertRegExp('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper()
@@ -55,7 +55,7 @@ class DemoteUserCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $exitCode, 'Returns 0 in case of success');
-        $this->assertMatchesRegularExpression('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
+        $this->assertRegExp('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
     }
 
     /**
