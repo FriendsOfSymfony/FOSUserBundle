@@ -48,9 +48,6 @@ class UserManagerTest extends TestCase
             ->method('getClassMetadata')
             ->with($this->equalTo(static::USER_CLASS))
             ->will($this->returnValue($class));
-        $class->expects($this->any())
-            ->method('getName')
-            ->will($this->returnValue(static::USER_CLASS));
 
         $this->userManager = new UserManager($passwordUpdater, $fieldsUpdater, $this->om, static::USER_CLASS);
     }

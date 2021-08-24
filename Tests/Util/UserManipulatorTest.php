@@ -15,6 +15,7 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Tests\TestUser;
 use FOS\UserBundle\Util\UserManipulator;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 class UserManipulatorTest extends TestCase
@@ -376,7 +377,7 @@ class UserManipulatorTest extends TestCase
      */
     protected function getEventDispatcherMock($eventName, $once = true)
     {
-        $eventDispatcherMock = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
+        $eventDispatcherMock = $this->getMockBuilder(EventDispatcher::class)->getMock();
 
         $method = $eventDispatcherMock
             ->expects($once ? $this->once() : $this->never())
@@ -386,6 +387,7 @@ class UserManipulatorTest extends TestCase
         if ($eventDispatcherMock instanceof ContractsEventDispatcherInterface) {
             $method->willReturnCallback(function ($actualEvent, $actualEventName) use ($eventName) {
                 $this->assertSame($eventName, $actualEventName);
+                return new \stdClass;
             });
         } else {
             $method->with($eventName);
