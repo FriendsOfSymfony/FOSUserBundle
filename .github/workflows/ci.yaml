@@ -12,23 +12,26 @@ jobs:
             fail-fast: false
             matrix:
                 php:
-                    - '5.5'
-                    - '5.6'
                     - '7.1'
                     - '7.2'
                     - '7.3'
                     - '7.4'
+                    - '8.0'
+                    - '8.1'
                 symfony-versions: [false]
                 include:
-                    -   description: 'Symfony 2.*'
-                        php: '5.6'
-                        symfony-versions: '^2.8'
-                    -   description: 'Symfony 3.*'
-                        php: '7.4'
-                        symfony-versions: '^3.0'
                     -   description: 'Symfony 4.*'
                         php: '7.4'
                         symfony-versions: '^4.0'
+                    -   description: 'Symfony 5.*'
+                        php: '7.4'
+                        symfony-versions: '^5.0'
+                    -   description: 'Symfony 4.*'
+                        php: '8.0'
+                        symfony-versions: '^4.0'
+                    -   description: 'Symfony 5.*'
+                        php: '8.0'
+                        symfony-versions: '^5.0'
         name: PHP ${{ matrix.php }} ${{ matrix.description }}
         steps:
             - name: Checkout
