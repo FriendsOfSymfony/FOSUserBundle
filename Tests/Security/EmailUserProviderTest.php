@@ -47,7 +47,7 @@ class EmailUserProviderTest extends TestCase
 
     public function testLoadUserByInvalidUsername()
     {
-	    $this->expectException(UsernameNotFoundException::class);
+        $this->expectException(UsernameNotFoundException::class);
 
         $this->userManager->expects($this->once())
             ->method('findUserByUsernameOrEmail')
@@ -82,7 +82,7 @@ class EmailUserProviderTest extends TestCase
 
     public function testRefreshInvalidUser()
     {
-	    $this->expectException(UnsupportedUserException::class);
+        $this->expectException(UnsupportedUserException::class);
 
         $user = $this->getMockBuilder('Symfony\Component\Security\Core\User\UserInterface')->getMock();
 

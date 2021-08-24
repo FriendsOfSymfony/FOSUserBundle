@@ -36,7 +36,7 @@ class TwigSwiftMailerTest extends TestCase
      */
     public function testSendConfirmationEmailMessageWithBadEmails($emailAddress)
     {
-	    $this->expectException(\Swift_RfcComplianceException::class);
+        $this->expectException(\Swift_RfcComplianceException::class);
 
         $mailer = $this->getTwigSwiftMailer();
         $mailer->sendConfirmationEmailMessage($this->getUser($emailAddress));
@@ -58,7 +58,7 @@ class TwigSwiftMailerTest extends TestCase
      */
     public function testSendResettingEmailMessageWithBadEmails($emailAddress)
     {
-	    $this->expectException(\Swift_RfcComplianceException::class);
+        $this->expectException(\Swift_RfcComplianceException::class);
 
         $mailer = $this->getTwigSwiftMailer();
         $mailer->sendResettingEmailMessage($this->getUser($emailAddress));

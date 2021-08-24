@@ -43,7 +43,7 @@ class MailerTest extends TestCase
      */
     public function testSendConfirmationEmailMessageWithBadEmails($emailAddress)
     {
-	    $this->expectException(\Swift_RfcComplianceException::class);
+        $this->expectException(\Swift_RfcComplianceException::class);
 
         $mailer = $this->getMailer();
         $mailer->sendConfirmationEmailMessage($this->getUser($emailAddress));
@@ -65,7 +65,7 @@ class MailerTest extends TestCase
      */
     public function testSendResettingEmailMessageWithBadEmails($emailAddress)
     {
-	    $this->expectException(\Swift_RfcComplianceException::class);
+        $this->expectException(\Swift_RfcComplianceException::class);
 
         $mailer = $this->getMailer();
         $mailer->sendResettingEmailMessage($this->getUser($emailAddress));

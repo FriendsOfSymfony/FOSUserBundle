@@ -86,7 +86,7 @@ class UserManipulatorTest extends TestCase
 
     public function testActivateWithInvalidUsername()
     {
-	    $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
         $invalidusername = 'invalid_username';
@@ -139,7 +139,7 @@ class UserManipulatorTest extends TestCase
 
     public function testDeactivateWithInvalidUsername()
     {
-	    $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
         $invalidusername = 'invalid_username';
@@ -192,7 +192,7 @@ class UserManipulatorTest extends TestCase
 
     public function testPromoteWithInvalidUsername()
     {
-	    $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
         $invalidusername = 'invalid_username';
@@ -245,7 +245,7 @@ class UserManipulatorTest extends TestCase
 
     public function testDemoteWithInvalidUsername()
     {
-	    $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
         $invalidusername = 'invalid_username';
@@ -301,7 +301,7 @@ class UserManipulatorTest extends TestCase
 
     public function testChangePasswordWithInvalidUsername()
     {
-	    $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $userManagerMock = $this->getMockBuilder('FOS\UserBundle\Model\UserManagerInterface')->getMock();
 
@@ -387,7 +387,8 @@ class UserManipulatorTest extends TestCase
         if ($eventDispatcherMock instanceof ContractsEventDispatcherInterface) {
             $method->willReturnCallback(function ($actualEvent, $actualEventName) use ($eventName) {
                 $this->assertSame($eventName, $actualEventName);
-                return new \stdClass;
+
+                return new \stdClass();
             });
         } else {
             $method->with($eventName);

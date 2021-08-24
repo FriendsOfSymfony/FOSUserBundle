@@ -18,8 +18,8 @@ class UserCheckerTest extends TestCase
 {
     public function testCheckPreAuthFailsLockedOut()
     {
-	    $this->expectException(\Symfony\Component\Security\Core\Exception\LockedException::class);
-	    $this->expectExceptionMessage('User account is locked.');
+        $this->expectException(\Symfony\Component\Security\Core\Exception\LockedException::class);
+        $this->expectExceptionMessage('User account is locked.');
 
         $userMock = $this->getUser(false, false, false, false);
         $checker = new UserChecker();
@@ -28,8 +28,8 @@ class UserCheckerTest extends TestCase
 
     public function testCheckPreAuthFailsIsEnabled()
     {
-	    $this->expectException(\Symfony\Component\Security\Core\Exception\DisabledException::class);
-	    $this->expectExceptionMessage('User account is disabled.');
+        $this->expectException(\Symfony\Component\Security\Core\Exception\DisabledException::class);
+        $this->expectExceptionMessage('User account is disabled.');
 
         $userMock = $this->getUser(true, false, false, false);
         $checker = new UserChecker();
@@ -38,8 +38,8 @@ class UserCheckerTest extends TestCase
 
     public function testCheckPreAuthFailsIsAccountNonExpired()
     {
-	    $this->expectException(\Symfony\Component\Security\Core\Exception\AccountExpiredException::class);
-	    $this->expectExceptionMessage('User account has expired.');
+        $this->expectException(\Symfony\Component\Security\Core\Exception\AccountExpiredException::class);
+        $this->expectExceptionMessage('User account has expired.');
 
         $userMock = $this->getUser(true, true, false, false);
         $checker = new UserChecker();
@@ -60,8 +60,8 @@ class UserCheckerTest extends TestCase
 
     public function testCheckPostAuthFailsIsCredentialsNonExpired()
     {
-	    $this->expectException(\Symfony\Component\Security\Core\Exception\CredentialsExpiredException::class);
-	    $this->expectExceptionMessage('User credentials have expired.');
+        $this->expectException(\Symfony\Component\Security\Core\Exception\CredentialsExpiredException::class);
+        $this->expectExceptionMessage('User credentials have expired.');
 
         $userMock = $this->getUser(true, true, true, false);
         $checker = new UserChecker();
