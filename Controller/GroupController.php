@@ -200,9 +200,8 @@ class GroupController extends Controller
     }
 
     /**
-     * BC layer for Symfony < 4.3
+     * BC layer for Symfony < 4.3.
      *
-     * @param Event $event
      * @param string $eventName
      */
     private function dispatchWithBC(Event $event, $eventName)

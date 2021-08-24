@@ -15,10 +15,10 @@ use FOS\UserBundle\Event\UserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
-use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 /**
@@ -228,9 +228,8 @@ class UserManipulator
     }
 
     /**
-     * BC layer for Symfony < 4.3
+     * BC layer for Symfony < 4.3.
      *
-     * @param Event $event
      * @param string $eventName
      */
     private function dispatchWithBC(Event $event, $eventName)

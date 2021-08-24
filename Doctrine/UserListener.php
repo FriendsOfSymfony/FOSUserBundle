@@ -12,10 +12,10 @@
 namespace FOS\UserBundle\Doctrine;
 
 use Doctrine\Common\EventSubscriber;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\Persistence\ObjectManager;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;

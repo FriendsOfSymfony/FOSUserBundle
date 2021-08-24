@@ -19,12 +19,12 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 /**
@@ -94,9 +94,8 @@ class ChangePasswordController extends Controller
     }
 
     /**
-     * BC layer for Symfony < 4.3
+     * BC layer for Symfony < 4.3.
      *
-     * @param Event $event
      * @param string $eventName
      */
     private function dispatchWithBC(Event $event, $eventName)

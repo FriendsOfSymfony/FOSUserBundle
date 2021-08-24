@@ -15,8 +15,8 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Contracts\EventDispatcher\Event as ContractsEvent;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FlashListener implements EventSubscriberInterface
 {
@@ -70,7 +70,7 @@ class FlashListener implements EventSubscriberInterface
 
     /**
      * @param Event|ContractsEvent $event
-     * @param string $eventName
+     * @param string               $eventName
      */
     public function addSuccessFlash($event, $eventName)
     {
