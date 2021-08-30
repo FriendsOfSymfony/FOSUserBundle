@@ -25,36 +25,36 @@
         "ext-dom": "*",
         "ext-json": "*",
         "paragonie/random_compat": "^1 || ^2 || ^9",
-        "symfony/config": "^4.4",
-        "symfony/dependency-injection": "^4.4",
-        "symfony/form": "^4.4",
-        "symfony/framework-bundle": "^4.4",
-        "symfony/security-bundle": "^4.4",
-        "symfony/templating": "^4.4",
-        "symfony/translation": "^4.4",
-        "symfony/twig-bundle": "^4.4",
-        "symfony/validator": "^4.4",
+        "symfony/config": "^4.4 | ^5.3",
+        "symfony/dependency-injection": "^4.4 | ^5.3",
+        "symfony/form": "^4.4 | ^5.3",
+        "symfony/framework-bundle": "^4.4 | ^5.3",
+        "symfony/security-bundle": "^4.4 | ^5.3",
+        "symfony/templating": "^4.4 | ^5.3",
+        "symfony/translation": "^4.4 | ^5.3",
+        "symfony/twig-bundle": "^4.4 | ^5.3",
+        "symfony/validator": "^4.4 | ^5.3",
         "twig/twig": "^1.34 || ^2.4 || ^3.0"
     },
     "conflict": {
-        "doctrine/doctrine-bundle": "<1.3",
+        "doctrine/doctrine-bundle": "<2",
         "doctrine/persistence": "<1.3",
         "symfony/doctrine-bridge": "<4.4"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^1.3",
+        "doctrine/doctrine-bundle": "^2",
         "friendsofphp/php-cs-fixer": "^3.0.2",
         "swiftmailer/swiftmailer": "^4.3 || ^5.0 || ^6.0",
-        "symfony/console": "^4.4",
+        "symfony/console": "^4.4 | ^5.3",
         "symfony/phpunit-bridge": "^5.3",
-        "symfony/yaml": "^4.4"
+        "symfony/yaml": "^4.4 | ^5.3"
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.2.x-dev"
+            "dev-master": "2.3.x-dev"
         }
     },
     "autoload": {
