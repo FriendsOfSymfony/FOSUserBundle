@@ -15,9 +15,20 @@ use FOS\UserBundle\Mailer\Mailer;
 use PHPUnit\Framework\TestCase;
 use Swift_Mailer;
 use Swift_Transport_NullTransport;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
+/**
+ * @group legacy
+ */
 class MailerTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        if (!interface_exists(EngineInterface::class)) {
+            $this->markTestSkipped(sprintf('%s class not exists', EngineInterface::class));
+        }
+    }
+
     /**
      * @dataProvider goodEmailProvider
      */
