@@ -15,6 +15,7 @@ use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\Event as LegacyEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Translation\TranslatorInterface as LegacyTranslatorInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use TypeError;
@@ -51,8 +52,14 @@ class FlashListener implements EventSubscriberInterface
     /**
      * FlashListener constructor.
      */
-    public function __construct(SessionInterface $session, TranslatorInterface $translator)
+    public function __construct(SessionInterface $session, /* \Symfony\Contracts\Translation\TranslatorInterface */ $translator)
     {
+        if ($translator instanceof LegacyTranslatorInterface) {
+            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.3 and will be removed in 3.0.', LegacyTranslatorInterface::class), E_USER_DEPRECATED);
+        } elseif (!$translator instanceof TranslatorInterface) {
+            throw new TypeError(sprintf('Argument 2 passed to %s::__construct must be an instance of %s, %s given.', self::class, TranslatorInterface::class, get_debug_type($translator)));
+        }
+
         $this->session = $session;
         $this->translator = $translator;
     }
