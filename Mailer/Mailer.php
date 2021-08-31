@@ -15,8 +15,12 @@ use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+@trigger_error('Using Mailer is deprecated since version 2.3 and will be removed in 3.0. Use TwigSwiftMailer instead.', E_USER_DEPRECATED);
+
 /**
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
+ *
+ * @deprecated
  */
 class Mailer implements MailerInterface
 {
