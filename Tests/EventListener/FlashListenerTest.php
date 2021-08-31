@@ -37,7 +37,7 @@ class FlashListenerTest extends TestCase
             ->method('getFlashBag')
             ->willReturn($flashBag);
 
-        $translator = $this->getMockBuilder('Symfony\Component\Translation\TranslatorInterface')->getMock();
+        $translator = $this->getMockBuilder('Symfony\Contracts\Translation\TranslatorInterface')->getMock();
 
         $this->listener = new FlashListener($session, $translator);
     }
