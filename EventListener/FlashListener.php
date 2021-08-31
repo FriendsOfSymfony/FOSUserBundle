@@ -12,10 +12,12 @@
 namespace FOS\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
+use Symfony\Component\EventDispatcher\Event as LegacyEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Contracts\EventDispatcher\Event;
+use TypeError;
 
 /**
  * @internal
@@ -74,8 +76,14 @@ class FlashListener implements EventSubscriberInterface
     /**
      * @param string $eventName
      */
-    public function addSuccessFlash(Event $event, $eventName)
+    public function addSuccessFlash(/* \Symfony\Contracts\EventDispatcher\Event */ $event, $eventName)
     {
+        if ($event instanceof LegacyEvent) {
+            @trigger_error(sprintf('Passing an instance of "%s" is deprecated since version 2.3 and will be removed in 3.0.', LegacyEvent::class), E_USER_DEPRECATED);
+        } elseif (!$event instanceof Event) {
+            throw new TypeError(sprintf('Argument 2 passed to %s::addSuccessFlash must be an instance of %s, %s given.', self::class, Event::class, get_debug_type($event)));
+        }
+
         if (!isset(self::$successMessages[$eventName])) {
             throw new \InvalidArgumentException('This event does not correspond to a known flash message');
         }

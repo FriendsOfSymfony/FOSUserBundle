@@ -11,66 +11,128 @@
 
 namespace FOS\UserBundle\Event;
 
+use Symfony\Component\EventDispatcher\Event as LegacyEvent;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @final
- */
-class FormEvent extends Event
-{
+if (class_exists(LegacyEvent::class)) {
     /**
-     * @var FormInterface
+     * @final
      */
-    private $form;
-
-    /**
-     * @var Request
-     */
-    private $request;
-
-    /**
-     * @var Response
-     */
-    private $response;
-
-    /**
-     * FormEvent constructor.
-     */
-    public function __construct(FormInterface $form, Request $request)
+    class FormEvent extends LegacyEvent
     {
-        $this->form = $form;
-        $this->request = $request;
+        /**
+         * @var FormInterface
+         */
+        private $form;
+
+        /**
+         * @var Request
+         */
+        private $request;
+
+        /**
+         * @var Response
+         */
+        private $response;
+
+        /**
+         * FormEvent constructor.
+         */
+        public function __construct(FormInterface $form, Request $request)
+        {
+            $this->form = $form;
+            $this->request = $request;
+        }
+
+        /**
+         * @return FormInterface
+         */
+        public function getForm()
+        {
+            return $this->form;
+        }
+
+        /**
+         * @return Request
+         */
+        public function getRequest()
+        {
+            return $this->request;
+        }
+
+        public function setResponse(Response $response)
+        {
+            $this->response = $response;
+        }
+
+        /**
+         * @return Response|null
+         */
+        public function getResponse()
+        {
+            return $this->response;
+        }
     }
-
+} else {
     /**
-     * @return FormInterface
+     * @final
      */
-    public function getForm()
+    class FormEvent extends Event
     {
-        return $this->form;
-    }
+        /**
+         * @var FormInterface
+         */
+        private $form;
 
-    /**
-     * @return Request
-     */
-    public function getRequest()
-    {
-        return $this->request;
-    }
+        /**
+         * @var Request
+         */
+        private $request;
 
-    public function setResponse(Response $response)
-    {
-        $this->response = $response;
-    }
+        /**
+         * @var Response
+         */
+        private $response;
 
-    /**
-     * @return Response|null
-     */
-    public function getResponse()
-    {
-        return $this->response;
+        /**
+         * FormEvent constructor.
+         */
+        public function __construct(FormInterface $form, Request $request)
+        {
+            $this->form = $form;
+            $this->request = $request;
+        }
+
+        /**
+         * @return FormInterface
+         */
+        public function getForm()
+        {
+            return $this->form;
+        }
+
+        /**
+         * @return Request
+         */
+        public function getRequest()
+        {
+            return $this->request;
+        }
+
+        public function setResponse(Response $response)
+        {
+            $this->response = $response;
+        }
+
+        /**
+         * @return Response|null
+         */
+        public function getResponse()
+        {
+            return $this->response;
+        }
     }
 }

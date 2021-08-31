@@ -14,46 +14,90 @@ namespace FOS\UserBundle\Event;
 @trigger_error('Using Groups is deprecated since version 2.2 and will be removed in 3.0.', E_USER_DEPRECATED);
 
 use FOS\UserBundle\Model\GroupInterface;
+use Symfony\Component\EventDispatcher\Event as LegacyEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @deprecated
- */
-class GroupEvent extends Event
-{
+if (class_exists(LegacyEvent::class)) {
     /**
-     * @var GroupInterface
+     * @deprecated
      */
-    private $group;
-
-    /**
-     * @var Request
-     */
-    private $request;
-
-    /**
-     * GroupEvent constructor.
-     */
-    public function __construct(GroupInterface $group, Request $request)
+    class GroupEvent extends LegacyEvent
     {
-        $this->group = $group;
-        $this->request = $request;
+        /**
+         * @var GroupInterface
+         */
+        private $group;
+
+        /**
+         * @var Request
+         */
+        private $request;
+
+        /**
+         * GroupEvent constructor.
+         */
+        public function __construct(GroupInterface $group, Request $request)
+        {
+            $this->group = $group;
+            $this->request = $request;
+        }
+
+        /**
+         * @return GroupInterface
+         */
+        public function getGroup()
+        {
+            return $this->group;
+        }
+
+        /**
+         * @return Request
+         */
+        public function getRequest()
+        {
+            return $this->request;
+        }
     }
-
+} else {
     /**
-     * @return GroupInterface
+     * @deprecated
      */
-    public function getGroup()
+    class GroupEvent extends Event
     {
-        return $this->group;
-    }
+        /**
+         * @var GroupInterface
+         */
+        private $group;
 
-    /**
-     * @return Request
-     */
-    public function getRequest()
-    {
-        return $this->request;
+        /**
+         * @var Request
+         */
+        private $request;
+
+        /**
+         * GroupEvent constructor.
+         */
+        public function __construct(GroupInterface $group, Request $request)
+        {
+            $this->group = $group;
+            $this->request = $request;
+        }
+
+        /**
+         * @return GroupInterface
+         */
+        public function getGroup()
+        {
+            return $this->group;
+        }
+
+        /**
+         * @return Request
+         */
+        public function getRequest()
+        {
+            return $this->request;
+        }
     }
 }

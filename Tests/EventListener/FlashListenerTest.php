@@ -14,11 +14,12 @@ namespace FOS\UserBundle\Tests\EventListener;
 use FOS\UserBundle\EventListener\FlashListener;
 use FOS\UserBundle\FOSUserEvents;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\Event as LegacyEvent;
 use Symfony\Contracts\EventDispatcher\Event;
 
 class FlashListenerTest extends TestCase
 {
-    /** @var Event */
+    /** @var Event|LegacyEvent */
     private $event;
 
     /** @var FlashListener */
@@ -26,7 +27,7 @@ class FlashListenerTest extends TestCase
 
     public function setUp(): void
     {
-        $this->event = new Event();
+        $this->event = class_exists(LegacyEvent::class) ? new LegacyEvent() : new Event();
 
         $flashBag = $this->getMockBuilder('Symfony\Component\HttpFoundation\Session\Flash\FlashBag')->getMock();
 
