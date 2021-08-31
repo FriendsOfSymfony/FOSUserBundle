@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 2.3.x
+
+* Added compatibility with Symfony 5.3.
+* Use Event class from symfony/event-dispatcher-contracts when symfony/event-dispatcher:>=5 is available.
+* Use TranslationInterface from symfony/translation-contracts when symfony/translation:>=5 is available.
+* Deprecate Mailer class.
+
 ### 2.2.0 (2021-08-26)
 
 * Deprecated the Groups feature.
