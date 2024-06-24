@@ -9,7 +9,7 @@ on:
             - 3.x
 
 jobs:
-    run:
+    tests:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -52,3 +52,21 @@ jobs:
 
             - name: Run PHPUnit tests
               run: ./vendor/bin/phpunit
+
+    phpstan:
+        runs-on: ubuntu-latest
+        name: PHPStan
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                php-version: '8.4'
+
+            - name: Install dependencies
+              run: composer update
+
+            - name: Run analysis
+              run: ./vendor/bin/phpstan
