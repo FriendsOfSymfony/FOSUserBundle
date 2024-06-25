@@ -20,23 +20,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\RememberMe\RememberMeHandlerInterface;
-use Symfony\Component\Security\Http\RememberMe\RememberMeServicesInterface;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
 
 class LoginManagerTest extends TestCase
 {
     public function testLogInUserWithRequestStack()
     {
-        $loginManager = $this->createLoginManager('main');
+        $loginManager = $this->createLoginManager();
         $loginManager->logInUser('main', $this->mockUser());
     }
 
     public function testLogInUserWithRememberMeHandler()
     {
-        if (!interface_exists(RememberMeHandlerInterface::class)) {
-            $this->markTestSkipped('This test requires Symfony 5.3+.');
-        }
-
         $response = new Response();
         $user = $this->mockUser();
 
@@ -45,35 +40,11 @@ class LoginManagerTest extends TestCase
             ->method('createRememberMeCookie')
             ->with($user);
 
-        $loginManager = $this->createLoginManager('main', $rememberMeHandler);
+        $loginManager = $this->createLoginManager($rememberMeHandler);
         $loginManager->logInUser('main', $user, $response);
     }
 
-    /**
-     * @group legacy
-     */
-    public function testLogInUserWithRememberMeService()
-    {
-        if (!interface_exists(RememberMeServicesInterface::class)) {
-            $this->markTestSkipped('This test does not support Symfony 6+.');
-        }
-
-        $response = new Response();
-
-        $rememberMeService = $this->createMock(RememberMeServicesInterface::class);
-        $rememberMeService
-            ->expects($this->once())
-            ->method('loginSuccess')
-            ->with($this->isInstanceOf(Request::class), $response, $this->isInstanceOf(TokenInterface::class));
-
-        $loginManager = $this->createLoginManager('main', $rememberMeService);
-        $loginManager->logInUser('main', $this->mockUser(), $response);
-    }
-
-    /**
-     * @param RememberMeHandlerInterface|RememberMeServicesInterface|null $rememberMeHandler
-     */
-    private function createLoginManager(string $firewallName, $rememberMeHandler = null): LoginManager
+    private function createLoginManager(?RememberMeHandlerInterface $rememberMeHandler = null): LoginManager
     {
         $tokenStorage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
         $tokenStorage

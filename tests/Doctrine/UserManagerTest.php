@@ -36,10 +36,6 @@ class UserManagerTest extends TestCase
 
     protected function setUp(): void
     {
-        if (!interface_exists(ObjectManager::class)) {
-            $this->markTestSkipped('"doctrine/persistence" ^1.3 has to be installed for this test to run.');
-        }
-
         $passwordUpdater = $this->getMockBuilder('FOS\UserBundle\Util\PasswordUpdaterInterface')->getMock();
         $fieldsUpdater = $this->getMockBuilder('FOS\UserBundle\Util\CanonicalFieldsUpdater')
             ->disableOriginalConstructor()

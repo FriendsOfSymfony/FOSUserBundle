@@ -32,10 +32,6 @@ class HashingPasswordUpdaterTest extends TestCase
 
     protected function setUp(): void
     {
-        if (!interface_exists(PasswordHasherFactoryInterface::class)) {
-            self::markTestSkipped('This test requires having the password-hasher component.');
-        }
-
         $this->passwordHasherFactory = $this->getMockBuilder(PasswordHasherFactoryInterface::class)->getMock();
 
         $this->updater = new HashingPasswordUpdater($this->passwordHasherFactory);
