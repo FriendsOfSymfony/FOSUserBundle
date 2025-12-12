@@ -149,7 +149,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
             $this->enabled,
             $this->id,
             $this->email,
-            $this->emailCanonical
+            $this->emailCanonical,
         ] = $data;
     }
 

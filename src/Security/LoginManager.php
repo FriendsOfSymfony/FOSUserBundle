@@ -55,7 +55,7 @@ class LoginManager implements LoginManagerInterface
     public function __construct(TokenStorageInterface $tokenStorage, UserCheckerInterface $userChecker,
         SessionAuthenticationStrategyInterface $sessionStrategy,
         RequestStack $requestStack,
-        ?RememberMeHandlerInterface $rememberMeHandler = null
+        ?RememberMeHandlerInterface $rememberMeHandler = null,
     ) {
         $this->tokenStorage = $tokenStorage;
         $this->userChecker = $userChecker;
