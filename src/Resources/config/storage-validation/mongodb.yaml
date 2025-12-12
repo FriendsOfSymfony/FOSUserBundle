@@ -1,0 +1,12 @@
+FOS\UserBundle\Model\User:
+    constraints:
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique:
+              fields: usernameCanonical
+              errorPath: username
+              message: fos_user.username.already_used
+              groups: [Registration, Profile]
+        - Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique:
+              fields: emailCanonical
+              errorPath: email
+              message: fos_user.email.already_used
+              groups: [Registration, Profile]
