@@ -36,9 +36,9 @@ final class ValidationPass implements CompilerPassInterface
             return;
         }
 
-        $validationFile = __DIR__.'/../../Resources/config/storage-validation/'.$storage.'.xml';
+        $validationFile = __DIR__.'/../../Resources/config/storage-validation/'.$storage.'.yaml';
 
         $container->getDefinition('validator.builder')
-            ->addMethodCall('addXmlMapping', [$validationFile]);
+            ->addMethodCall('addYamlMapping', [$validationFile]);
     }
 }

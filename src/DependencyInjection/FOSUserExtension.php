@@ -17,7 +17,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
@@ -49,14 +49,14 @@ final class FOSUserExtension extends Extension
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if ('custom' !== $config['db_driver']) {
             if (isset(self::$doctrineDrivers[$config['db_driver']])) {
-                $loader->load('doctrine.xml');
+                $loader->load('doctrine.php');
                 $container->setAlias('fos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry'], false));
             } else {
-                $loader->load(sprintf('%s.xml', $config['db_driver']));
+                $loader->load(sprintf('%s.php', $config['db_driver']));
             }
             $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
         }
@@ -67,7 +67,7 @@ final class FOSUserExtension extends Extension
         }
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
-            $loader->load(sprintf('%s.xml', $basename));
+            $loader->load(sprintf('%s.php', $basename));
         }
 
         if (!$config['use_authentication_listener']) {
@@ -80,7 +80,7 @@ final class FOSUserExtension extends Extension
 
         if ($config['use_flash_notifications']) {
             $this->sessionNeeded = true;
-            $loader->load('flash_notifications.xml');
+            $loader->load('flash_notifications.php');
         }
 
         $container->setAlias('fos_user.util.email_canonicalizer', $config['service']['email_canonicalizer']);
@@ -95,7 +95,7 @@ final class FOSUserExtension extends Extension
         }
 
         if ($config['use_username_form_type']) {
-            $loader->load('username_form_type.xml');
+            $loader->load('username_form_type.php');
         }
 
         $this->remapParametersNamespaces($config, $container, [
@@ -184,9 +184,9 @@ final class FOSUserExtension extends Extension
     /**
      * @param array<string, mixed> $config
      */
-    private function loadProfile(array $config, ContainerBuilder $container, XmlFileLoader $loader): void
+    private function loadProfile(array $config, ContainerBuilder $container, PhpFileLoader $loader): void
     {
-        $loader->load('profile.xml');
+        $loader->load('profile.php');
 
         $this->remapParametersNamespaces($config, $container, [
             'form' => 'fos_user.profile.form.%s',
@@ -197,14 +197,14 @@ final class FOSUserExtension extends Extension
      * @param array<string, mixed>                        $config
      * @param array{address: string, sender_name: string} $fromEmail
      */
-    private function loadRegistration(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail): void
+    private function loadRegistration(array $config, ContainerBuilder $container, PhpFileLoader $loader, array $fromEmail): void
     {
-        $loader->load('registration.xml');
+        $loader->load('registration.php');
         $this->sessionNeeded = true;
 
         if ($config['confirmation']['enabled']) {
             $this->mailerNeeded = true;
-            $loader->load('email_confirmation.xml');
+            $loader->load('email_confirmation.php');
         }
 
         if (isset($config['confirmation']['from_email'])) {
@@ -223,9 +223,9 @@ final class FOSUserExtension extends Extension
     /**
      * @param array<string, mixed> $config
      */
-    private function loadChangePassword(array $config, ContainerBuilder $container, XmlFileLoader $loader): void
+    private function loadChangePassword(array $config, ContainerBuilder $container, PhpFileLoader $loader): void
     {
-        $loader->load('change_password.xml');
+        $loader->load('change_password.php');
 
         $this->remapParametersNamespaces($config, $container, [
             'form' => 'fos_user.change_password.form.%s',
@@ -236,10 +236,10 @@ final class FOSUserExtension extends Extension
      * @param array<string, mixed>                        $config
      * @param array{address: string, sender_name: string} $fromEmail
      */
-    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, array $fromEmail): void
+    private function loadResetting(array $config, ContainerBuilder $container, PhpFileLoader $loader, array $fromEmail): void
     {
         $this->mailerNeeded = true;
-        $loader->load('resetting.xml');
+        $loader->load('resetting.php');
 
         if (isset($config['email']['from_email'])) {
             // overwrite the global one

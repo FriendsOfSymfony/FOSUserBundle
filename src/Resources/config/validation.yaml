@@ -1,0 +1,34 @@
+FOS\UserBundle\Model\User:
+    properties:
+        username:
+            - NotBlank:
+                  message: fos_user.username.blank
+                  groups: [Registration, Profile]
+            - Length:
+                  min: 2
+                  minMessage: fos_user.username.short
+                  max: 100
+                  maxMessage: fos_user.username.long
+                  groups: [Registration, Profile]
+        email:
+            - NotBlank:
+                  message: fos_user.email.blank
+                  groups: [Registration, Profile]
+            - Length:
+                  min: 2
+                  minMessage: fos_user.email.short
+                  max: 100
+                  maxMessage: fos_user.email.long
+                  groups: [Registration, Profile]
+            - Email:
+                  message: fos_user.email.invalid
+                  groups: [Registration, Profile]
+        plainPassword:
+            - NotBlank:
+                  message: fos_user.password.blank
+                  groups: [Registration, ResetPassword]
+            - Length:
+                  min: 2
+                  minMessage: fos_user.password.short
+                  max: 4096
+                  groups: [Registration, Profile, ResetPassword, ChangePassword]
