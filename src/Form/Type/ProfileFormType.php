@@ -38,12 +38,10 @@ final class ProfileFormType extends AbstractType
     {
         $this->buildUserForm($builder, $options);
 
-        $constraintsOptions = [
-            'message' => 'fos_user.current_password.invalid',
-        ];
+        $groups = null;
 
         if (!empty($options['validation_groups'])) {
-            $constraintsOptions['groups'] = [reset($options['validation_groups'])];
+            $groups = [reset($options['validation_groups'])];
         }
 
         $builder->add('current_password', PasswordType::class, [
@@ -52,7 +50,7 @@ final class ProfileFormType extends AbstractType
             'mapped' => false,
             'constraints' => [
                 new NotBlank(),
-                new UserPassword($constraintsOptions),
+                new UserPassword(message: 'fos_user.current_password.invalid', groups: $groups),
             ],
             'attr' => [
                 'autocomplete' => 'current-password',
