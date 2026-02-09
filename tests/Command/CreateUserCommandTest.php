@@ -71,7 +71,7 @@ class CreateUserCommandTest extends TestCase
 
         $command = new CreateUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommands([$command]);
 
         return new CommandTester($application->find('fos:user:create'));
     }

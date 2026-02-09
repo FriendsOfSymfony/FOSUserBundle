@@ -67,7 +67,7 @@ class ActivateUserCommandTest extends TestCase
 
         $command = new ActivateUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommands([$command]);
 
         return new CommandTester($application->find('fos:user:activate'));
     }

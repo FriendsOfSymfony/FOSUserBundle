@@ -68,7 +68,7 @@ class PromoteUserCommandTest extends TestCase
 
         $command = new PromoteUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommands([$command]);
 
         return new CommandTester($application->find('fos:user:promote'));
     }

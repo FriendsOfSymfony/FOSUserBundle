@@ -68,7 +68,7 @@ class ChangePasswordCommandTest extends TestCase
 
         $command = new ChangePasswordCommand($userManipulator);
 
-        $application->add($command);
+        $application->addCommands([$command]);
 
         return new CommandTester($application->find('fos:user:change-password'));
     }
