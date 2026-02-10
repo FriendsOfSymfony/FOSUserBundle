@@ -50,9 +50,5 @@ jobs:
                 SYMFONY_REQUIRE: ${{ matrix.symfony-versions }}
               run: composer update
 
-            - name: Install PHPUnit
-              run: ./vendor/bin/simple-phpunit install
-
             - name: Run PHPUnit tests
-              run: |
-                ./vendor/bin/simple-phpunit
+              run: ./vendor/bin/phpunit
