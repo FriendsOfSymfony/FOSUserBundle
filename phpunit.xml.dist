@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./tests/bootstrap.php" colors="true">
+<phpunit bootstrap="./tests/bootstrap.php" colors="true"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd">
 
     <testsuites>
         <testsuite name="FOSUserBundle test suite">
@@ -8,16 +10,20 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <coverage>
+        <include>
             <directory>src/</directory>
-            <exclude>
-                <directory>src/Resources</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>src/Resources</directory>
+        </exclude>
+    </coverage>
 
     <php>
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[total]=0" />
     </php>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
 </phpunit>
