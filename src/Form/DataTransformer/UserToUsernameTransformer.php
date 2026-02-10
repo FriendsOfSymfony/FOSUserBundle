@@ -28,7 +28,7 @@ final class UserToUsernameTransformer implements DataTransformerInterface
     /**
      * @var UserManagerInterface
      */
-    protected $userManager;
+    private $userManager;
 
     /**
      * UserToUsernameTransformer constructor.
