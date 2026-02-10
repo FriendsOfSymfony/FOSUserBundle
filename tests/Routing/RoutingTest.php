@@ -13,6 +13,7 @@ namespace FOS\UserBundle\Tests\Routing;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Routing\Loader\PhpFileLoader;
 use Symfony\Component\Routing\Loader\XmlFileLoader;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -27,6 +28,43 @@ class RoutingTest extends TestCase
      */
     public function testLoadRouting($routeName, $path, array $methods)
     {
+        $locator = new FileLocator();
+        $loader = new PhpFileLoader($locator);
+
+        $collection = new RouteCollection();
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/change_password.php'));
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/profile.php');
+        $subCollection->addPrefix('/profile');
+        $collection->addCollection($subCollection);
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/registration.php');
+        $subCollection->addPrefix('/register');
+        $collection->addCollection($subCollection);
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/resetting.php');
+        $subCollection->addPrefix('/resetting');
+        $collection->addCollection($subCollection);
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/security.php'));
+
+        $route = $collection->get($routeName);
+        $this->assertNotNull($route, sprintf('The route "%s" should exists', $routeName));
+        $this->assertSame($path, $route->getPath());
+        $this->assertSame($methods, $route->getMethods());
+    }
+
+    /**
+     * @dataProvider loadRoutingProvider
+     *
+     * @group legacy
+     *
+     * @param string   $routeName
+     * @param string   $path
+     * @param string[] $methods
+     */
+    public function testLoadRoutingLegacy($routeName, $path, array $methods)
+    {
+        if (!class_exists(XmlFileLoader::class)) {
+            $this->markTestSkipped('XML routing files are not supported on Symfony 8.');
+        }
+
         $locator = new FileLocator();
         $loader = new XmlFileLoader($locator);
 
@@ -52,7 +90,7 @@ class RoutingTest extends TestCase
     /**
      * @return iterable<array{string, string, string[]}>
      */
-    public function loadRoutingProvider(): iterable
+    public static function loadRoutingProvider(): iterable
     {
         return [
             ['fos_user_change_password', '/change-password', ['GET', 'POST']],
@@ -75,4 +113,38 @@ class RoutingTest extends TestCase
             ['fos_user_security_logout', '/logout', ['GET', 'POST']],
         ];
     }
+
+    /**
+     * @dataProvider provideRouteFiles
+     *
+     * @group legacy
+     */
+    public function testLegacyFileConsistency(string $filename): void
+    {
+        if (!class_exists(XmlFileLoader::class)) {
+            $this->markTestSkipped('XML routing files are not supported on Symfony 8.');
+        }
+
+        $locator = new FileLocator();
+
+        $phpLoader = new PhpFileLoader($locator);
+        $xmlLoader = new XmlFileLoader($locator);
+
+        $phpCollection = $phpLoader->load(__DIR__.\sprintf('/../../src/Resources/config/routing/%s.php', $filename));
+        $xmlCollection = $xmlLoader->load(__DIR__.\sprintf('/../../src/Resources/config/routing/%s.xml', $filename));
+
+        $this->assertEquals($phpCollection->all(), $xmlCollection->all());
+    }
+
+    /**
+     * @return iterable<array{string}>
+     */
+    public static function provideRouteFiles(): iterable
+    {
+        yield ['profile'];
+        yield ['registration'];
+        yield ['resetting'];
+        yield ['security'];
+    }
 }
+// @php-cs-fixer-ignore php_unit_strict We intentionally use a non-strict comparison to verify that loaded routes are equivalent in the consistency test.
