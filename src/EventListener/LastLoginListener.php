@@ -27,7 +27,7 @@ final class LastLoginListener implements EventSubscriberInterface
     /**
      * @var UserManagerInterface
      */
-    protected $userManager;
+    private $userManager;
 
     /**
      * LastLoginListener constructor.
