@@ -360,12 +360,12 @@ logging in, creating users, etc.
 
         # app/config/routing.yml
         fos_user:
-            resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+            resource: "@FOSUserBundle/Resources/config/routing/all.php"
 
     .. code-block:: xml
 
             <!-- app/config/routing.xml -->
-            <import resource="@FOSUserBundle/Resources/config/routing/all.xml"/>
+            <import resource="@FOSUserBundle/Resources/config/routing/all.php"/>
 
 .. note::
 
