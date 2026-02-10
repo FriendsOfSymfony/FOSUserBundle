@@ -68,7 +68,7 @@ class DemoteUserCommandTest extends TestCase
 
         $command = new DemoteUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommands([$command]);
 
         return new CommandTester($application->find('fos:user:demote'));
     }

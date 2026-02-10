@@ -12,6 +12,7 @@
 namespace FOS\UserBundle\Security;
 
 use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\DisabledException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
@@ -20,6 +21,8 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
  * UserChecker checks the user account flags.
  *
  * @author Julian Finkler (Devtronic) <julian@developer-heaven.de>
+ *
+ * @final
  */
 class UserChecker implements UserCheckerInterface
 {
@@ -32,7 +35,7 @@ class UserChecker implements UserCheckerInterface
         }
     }
 
-    public function checkPostAuth(BaseUserInterface $user): void
+    public function checkPostAuth(BaseUserInterface $user, ?TokenInterface $token = null): void
     {
     }
 }

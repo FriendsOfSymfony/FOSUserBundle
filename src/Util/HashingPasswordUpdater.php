@@ -50,6 +50,6 @@ class HashingPasswordUpdater implements PasswordUpdaterInterface
         }
 
         $user->setPassword($hashedPassword);
-        $user->eraseCredentials();
+        $user->setPlainPassword(null);
     }
 }
