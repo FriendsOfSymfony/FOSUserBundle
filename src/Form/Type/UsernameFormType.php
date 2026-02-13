@@ -41,7 +41,7 @@ final class UsernameFormType extends AbstractType
         $builder->addModelTransformer($this->usernameTransformer);
     }
 
-    public function getParent(): ?string
+    public function getParent(): string
     {
         return TextType::class;
     }

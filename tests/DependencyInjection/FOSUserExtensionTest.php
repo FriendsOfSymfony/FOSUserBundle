@@ -20,12 +20,7 @@ use Symfony\Component\Yaml\Parser;
 class FOSUserExtensionTest extends TestCase
 {
     /** @var ContainerBuilder */
-    protected $configuration;
-
-    protected function tearDown(): void
-    {
-        unset($this->configuration);
-    }
+    private $configuration;
 
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverSet()
     {
@@ -157,8 +152,12 @@ class FOSUserExtensionTest extends TestCase
 
     /**
      * @dataProvider providerEmailsDisabledFeature
+     *
+     * @param array<string, mixed>                        $testConfig
+     * @param array{address: string, sender_name: string} $registration
+     * @param array{address: string, sender_name: string} $resetting
      */
-    public function testEmailsDisabledFeature($testConfig, $registration, $resetting)
+    public function testEmailsDisabledFeature(array $testConfig, array $registration, array $resetting)
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
@@ -170,7 +169,10 @@ class FOSUserExtensionTest extends TestCase
         $this->assertParameter($resetting, 'fos_user.resetting.email.from_address');
     }
 
-    public function providerEmailsDisabledFeature()
+    /**
+     * @return iterable<array{array<string, mixed>, array{address: string, sender_name: string}, array{address: string, sender_name: string}}>
+     */
+    public function providerEmailsDisabledFeature(): iterable
     {
         $configBothFeaturesDisabled = ['registration' => false, 'resetting' => false];
         $configResettingDisabled = ['resetting' => false];
@@ -343,7 +345,7 @@ class FOSUserExtensionTest extends TestCase
     /**
      * @dataProvider userManagerSetFactoryProvider
      */
-    public function testUserManagerSetFactory($dbDriver, $doctrineService)
+    public function testUserManagerSetFactory(string $dbDriver, string $doctrineService)
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
@@ -357,6 +359,7 @@ class FOSUserExtensionTest extends TestCase
 
         $factory = $definition->getFactory();
 
+        $this->assertIsArray($factory);
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\Reference', $factory[0]);
         $this->assertSame('fos_user.doctrine_registry', (string) $factory[0]);
         $this->assertSame('getManager', $factory[1]);
@@ -373,27 +376,23 @@ class FOSUserExtensionTest extends TestCase
         ];
     }
 
-    protected function createEmptyConfiguration()
+    protected function createEmptyConfiguration(): void
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
         $config = $this->getEmptyConfig();
         $loader->load([$config], $this->configuration);
-        $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
-    protected function createFullConfiguration()
+    protected function createFullConfiguration(): void
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FOSUserExtension();
         $config = $this->getFullConfig();
         $loader->load([$config], $this->configuration);
-        $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
     /**
-     * getEmptyConfig.
-     *
      * @return array<string, mixed>
      */
     protected function getEmptyConfig(): array

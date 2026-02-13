@@ -50,7 +50,12 @@
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^1.3 || ^2",
+        "doctrine/mongodb-odm": "^2.16",
+        "doctrine/orm": "^2.6.3 || ^3",
         "friendsofphp/php-cs-fixer": "^3.0.2, !=3.5.0",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^9.6",
         "symfony/console": "^7.3",
         "symfony/mailer": "^7.3",
@@ -58,6 +63,9 @@
         "symfony/phpunit-bridge": "^7.3"
     },
     "config": {
+        "platform": {
+            "ext-mongodb": "2.1.8"
+        },
         "sort-packages": true
     },
     "extra": {

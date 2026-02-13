@@ -27,15 +27,17 @@ class UserManager extends BaseUserManager
 
     /**
      * @var string
+     *
+     * @phpstan-var class-string<UserInterface>
      */
     private $class;
 
     /**
      * Constructor.
      *
-     * @param string $class
+     * @phpstan-param class-string<UserInterface> $class
      */
-    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, $class)
+    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, string $class)
     {
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater);
 
@@ -80,7 +82,7 @@ class UserManager extends BaseUserManager
         $this->objectManager->refresh($user);
     }
 
-    public function updateUser(UserInterface $user, $andFlush = true): void
+    public function updateUser(UserInterface $user, bool $andFlush = true): void
     {
         $this->updateCanonicalFields($user);
         $this->updatePassword($user);

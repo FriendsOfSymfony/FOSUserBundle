@@ -41,6 +41,8 @@ class CanonicalFieldsUpdater
      * Canonicalizes an email.
      *
      * @param string|null $email
+     *
+     * @phpstan-return ($email is null ? null : string)
      */
     public function canonicalizeEmail($email): ?string
     {
@@ -51,6 +53,8 @@ class CanonicalFieldsUpdater
      * Canonicalizes a username.
      *
      * @param string|null $username
+     *
+     * @phpstan-return ($username is null ? null : string)
      */
     public function canonicalizeUsername($username): ?string
     {

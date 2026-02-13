@@ -1,0 +1,15 @@
+parameters:
+    level: 8
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: false
+    paths:
+        - src/
+        - tests/
+    ignoreErrors:
+        - '~Method FOS\\UserBundle\\Tests\\[\w\\]+Test::test\w+\(\) has no return type specified.~'
+
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+#    - vendor/phpstan/phpstan-symfony/extension.neon
+#    - vendor/phpstan/phpstan-symfony/rules.neon

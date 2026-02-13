@@ -71,7 +71,7 @@ final class ResettingController extends AbstractController
      */
     public function sendEmailAction(Request $request): Response
     {
-        $username = $request->request->get('username');
+        $username = $request->request->getString('username');
 
         $user = $this->userManager->findUserByUsernameOrEmail($username);
 
