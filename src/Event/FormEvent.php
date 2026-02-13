@@ -29,7 +29,7 @@ final class FormEvent extends Event
     private $request;
 
     /**
-     * @var Response
+     * @var Response|null
      */
     private $response;
 

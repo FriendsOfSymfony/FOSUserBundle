@@ -46,7 +46,7 @@ class UserCheckerTest extends TestCase
         $this->expectNotToPerformAssertions();
     }
 
-    private function getUser($isEnabled): User
+    private function getUser(bool $isEnabled): User
     {
         $userMock = $this->getMockBuilder('FOS\UserBundle\Model\User')->getMock();
         $userMock
