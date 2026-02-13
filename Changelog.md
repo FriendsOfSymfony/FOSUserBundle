@@ -1,6 +1,16 @@
 Changelog
 =========
 
+### 4.1.0 (2026-02-13)
+
+* Convert XML config files to other formats to fix the deprecation of XML config files in Symfony
+* Add PHP routing files alongside the XML ones. Loading the XML routing files triggers a deprecation in Symfony 7.4.
+* Fix deprecation in the UserChecker
+* Fix the HashingPasswordUpdater to avoid trigger deprecations for `UserInterface::eraseCredentials`
+* Deprecate `\FOS\UserBundle\Model\User::eraseCredentials`
+* Remove support for Symfony < 7.3
+* Remove support for PHP < 8.2
+
 ### 4.0.0 (2024-07-04)
 
 * [BC break] Removed the CouchDB ODM integration
