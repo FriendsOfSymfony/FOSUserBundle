@@ -15,16 +15,12 @@ jobs:
             fail-fast: false
             matrix:
                 php:
-                    - '8.1'
                     - '8.2'
                     - '8.3'
                     - '8.4'
                     - '8.5'
                 symfony-versions: [false]
                 include:
-                    -   description: 'Symfony 6.4 LTS'
-                        php: '8.2'
-                        symfony-versions: '^6.4'
                     -   description: 'Symfony 7.4 LTS'
                         php: '8.4'
                         symfony-versions: '^7.4'
