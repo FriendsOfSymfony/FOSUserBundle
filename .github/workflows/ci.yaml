@@ -18,17 +18,22 @@ jobs:
                     - '8.1'
                     - '8.2'
                     - '8.3'
+                    - '8.4'
+                    - '8.5'
                 symfony-versions: [false]
                 include:
-                    -   description: 'Symfony 6.*'
+                    -   description: 'Symfony 6.4 LTS'
                         php: '8.2'
                         symfony-versions: '^6.4'
+                    -   description: 'Symfony 7.4 LTS'
+                        php: '8.4'
+                        symfony-versions: '^7.4'
         name: PHP ${{ matrix.php }} ${{ matrix.description }}
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
-            - uses: actions/cache@v4
+            - uses: actions/cache@v5
               with:
                   path: ~/.composer/cache/files
                   key: composer-${{ matrix.php }}-${{ matrix.symfony-versions }}-${{ hashFiles('composer.json') }}
