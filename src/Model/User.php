@@ -183,6 +183,7 @@ abstract class User implements UserInterface, EquatableInterface, \Serializable
         return $this;
     }
 
+    #[\Deprecated]
     public function eraseCredentials(): void
     {
         $this->plainPassword = null;
