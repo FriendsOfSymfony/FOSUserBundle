@@ -3,6 +3,7 @@ Changelog
 
 ### 4.1.0 (2026-02-13)
 
+* Restore the serialized array type used by the ORM roles mapping for DBAL 4 compatibility
 * Convert XML config files to other formats to fix the deprecation of XML config files in Symfony
 * Add PHP routing files alongside the XML ones. Loading the XML routing files triggers a deprecation in Symfony 7.4.
 * Fix deprecation in the UserChecker
