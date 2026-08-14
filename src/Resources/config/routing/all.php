@@ -14,15 +14,15 @@ namespace Symfony\Component\Routing\Loader\Configurator;
 return static function (RoutingConfigurator $routes): void {
     $routes->import('@FOSUserBundle/Resources/config/routing/security.php');
 
-    $routes->import('@FOSUserBundle/Resources/config/profile.php')
+    $routes->import('@FOSUserBundle/Resources/config/routing/profile.php')
         ->prefix('/profile');
 
-    $routes->import('@FOSUserBundle/Resources/config/registration.php')
+    $routes->import('@FOSUserBundle/Resources/config/routing/registration.php')
         ->prefix('/register');
 
-    $routes->import('@FOSUserBundle/Resources/config/resetting.php')
+    $routes->import('@FOSUserBundle/Resources/config/routing/resetting.php')
         ->prefix('/resetting');
 
-    $routes->import('@FOSUserBundle/Resources/config/change_password.php')
+    $routes->import('@FOSUserBundle/Resources/config/routing/change_password.php')
         ->prefix('/profile');
 };
