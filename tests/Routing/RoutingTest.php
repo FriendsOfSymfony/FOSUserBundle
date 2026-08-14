@@ -13,12 +13,37 @@ namespace FOS\UserBundle\Tests\Routing;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\HttpKernel\Config\FileLocator as KernelFileLocator;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Loader\PhpFileLoader;
 use Symfony\Component\Routing\Loader\XmlFileLoader;
 use Symfony\Component\Routing\RouteCollection;
 
 class RoutingTest extends TestCase
 {
+    private const BUNDLE_PREFIX = '@FOSUserBundle/';
+    private const SOURCE_DIR = __DIR__.'/../../src';
+
+    public function testLoadAllRouting(): void
+    {
+        $kernel = $this->createMock(KernelInterface::class);
+        $kernel->method('locateResource')->willReturnCallback(static function (string $resource): string {
+            self::assertStringStartsWith(self::BUNDLE_PREFIX, $resource);
+
+            return self::SOURCE_DIR.'/'.substr($resource, \strlen(self::BUNDLE_PREFIX));
+        });
+
+        $loader = new PhpFileLoader(new KernelFileLocator($kernel));
+        $collection = $loader->load(self::SOURCE_DIR.'/Resources/config/routing/all.php');
+
+        $expectedRouteNames = array_column(self::loadRoutingProvider(), 0);
+        $actualRouteNames = array_keys($collection->all());
+        sort($expectedRouteNames);
+        sort($actualRouteNames);
+
+        self::assertSame($expectedRouteNames, $actualRouteNames);
+    }
+
     /**
      * @dataProvider loadRoutingProvider
      *
